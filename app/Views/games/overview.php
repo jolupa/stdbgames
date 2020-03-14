@@ -45,11 +45,6 @@
                 <?= $item['gAbout'] ?>
               </div>
             </div>
-            <div class="columns is-centered">
-              <div class="column is-two-thirds">
-                <p class="title is-4"><span class="icon has-text-danger"><i class="far fa-images"></i></span> Gallery:</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
