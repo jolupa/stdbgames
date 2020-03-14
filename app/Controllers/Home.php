@@ -5,6 +5,7 @@ use CodeIgniter\Controller;
 
 helper('url');
 helper('text');
+helper('cookie');
 
 class Home extends Controller{
 	public function index(){

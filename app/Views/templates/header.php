@@ -25,6 +25,7 @@
         <div class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="<?= base_url() ?>/about/">About</a>
+            <?php if ( get_cookie($admin) != NULL ): ?>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">New...</a>
               <div class="navbar-dropdown">
@@ -33,6 +34,7 @@
                 <a class="navbar-item" href="<?= base_url() ?>/games/pubform/">...Publisher</a>
               </div>
             </div>
+            <?php endif; ?>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">

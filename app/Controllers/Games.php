@@ -5,6 +5,7 @@ use CodeIgniter\Controller;
 
 helper('url');
 helper('text');
+helper('cookie');
 
 class Games extends Controller
 {

@@ -7,7 +7,7 @@
             <div class="content">
               <p class="subtitle is-5">Publisher:</p>
               <p class="title is-3"><?= $publisher['0']['pName'] ?></p>
-              <p class="subtitle is-5"><?php if (isset ($publisher['0']['pWebsite'])): ?><a href="<?= $publisher['0']['pWebsite'] ?>"><span class="icon"><i class="fas fa-sign-out-alt"></i></span></a><?php endif; ?> <a href="<?= base_url() ?>/games/pubeditform/<?= $publisher['0']['pSlug'] ?>"><span class="icon"><i class="far fa-edit"></i></span></a></p>
+              <p class="subtitle is-5"><?php if (isset ($publisher['0']['pWebsite'])): ?><a href="<?= $publisher['0']['pWebsite'] ?>"><span class="icon"><i class="fas fa-sign-out-alt"></i></span></a><?php endif; ?> <?php if ( get_cookie($admin) != NULL ): ?><a href="<?= base_url() ?>/games/pubeditform/<?= $publisher['0']['pSlug'] ?>"><span class="icon"><i class="far fa-edit"></i></span></a><?php endif; ?></p>
             </div>
           </div>
           <div class="card-content">
