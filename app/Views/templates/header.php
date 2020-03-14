@@ -24,7 +24,7 @@
         </div>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="<?= base_url() ?>/about/">About</a>
+            <a class="navbar-item" href="<?= base_url() ?>/about">About</a>
             <?php if ( get_cookie($admin) != NULL ): ?>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">New...</a>

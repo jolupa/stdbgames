@@ -10,7 +10,7 @@
         </div>
       </div>
     <!-- Date Entry -->
-    <div class="field is-grouped">
+    <div class="field is-grouped is-grouped-multiline">
       <div class="control is-expanded">
         <label class="label">Release Date</label>
         <input class="input" type="text" name="Release">
