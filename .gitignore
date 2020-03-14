@@ -131,3 +131,6 @@ app/Database/db/Stadia_DB.db
 
 #Images
 public/images/*
+
+#Others
+spark
