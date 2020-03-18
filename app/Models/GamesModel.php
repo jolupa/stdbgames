@@ -8,7 +8,7 @@ class GamesModel extends Model
     $db = \Config\Database::connect();
     $builder = $db->table('games')
                   ->select('Gameid AS gId,
-                            Title AS gTitle,
+                            Name AS gName,
                             games.Slug AS gSlug,
                             Image AS gImage,
                             games.Developerid AS gdId,
@@ -84,7 +84,7 @@ class GamesModel extends Model
                             developers.Name AS dName,
                             developers.Website AS dWebsite,
                             developers.Slug AS dSlug,
-                            games.Title AS dgTitle,
+                            games.Name AS dgName,
                             games.Image AS dgImage,
                             games.Slug AS dgSlug,
                             games.Release AS dgRelease,
@@ -106,7 +106,7 @@ class GamesModel extends Model
                             publishers.Name AS pName,
                             publishers.Website AS pWebsite,
                             publishers.Slug AS pSlug,
-                            games.Title AS pgTitle,
+                            games.Name AS pgName,
                             games.Image AS pgImage,
                             games.Slug AS pgSlug,
                             games.Release AS pgRelease,

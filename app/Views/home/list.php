@@ -23,7 +23,7 @@
             </p>
           </figure>
           <div class="media-content">
-            <p class="title is-5"><a href="<?= base_url() ?>/games/game/<?= $games['gSlug'] ?>"><?= character_limiter($games['gTitle'], 15, '...') ?></a></p>
+            <p class="title is-5"><a href="<?= base_url() ?>/games/game/<?= $games['gSlug'] ?>"><?= character_limiter($games['gName'], 15, '...') ?></a></p>
             <p class="subtitle is-7"><?= $games['dName'] ?> / <?= $games['pName'] ?>
             <br>
             <?= $games['gRelease'] ?>

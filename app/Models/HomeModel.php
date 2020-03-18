@@ -5,7 +5,7 @@ class HomeModel extends Model{
   public function getGamesHome(){
     $db = \Config\Database::connect();
     $builder = $db->table('games')
-                  ->select('Title AS gTitle,
+                  ->select('games.Name AS gName,
                             games.Slug AS gSlug,
                             Image AS gImage,
                             Release AS gRelease,
@@ -25,7 +25,7 @@ class HomeModel extends Model{
   public function getFoundersHome(){
     $db = \Config\Database::connect();
     $builder = $db->table('games')
-                  ->select('Title AS gTitle,
+                  ->select('games.Name AS gName,
                             games.Slug AS gSlug,
                             Image AS gImage,
                             Release AS gRelease,
@@ -45,7 +45,7 @@ class HomeModel extends Model{
   public function getGamesSoon(){
     $db = \Config\Database::connect();
     $builder = $db->table('games')
-                  ->select('Title AS gTitle,
+                  ->select('games.Name AS gName,
                             games.Slug AS gSlug,
                             Image AS gImage,
                             Release AS gRelease,

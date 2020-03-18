@@ -19,9 +19,10 @@ class Home extends Controller{
 
 		echo view('templates/header', $data);
 		echo view('home/founders', $data['founders']);
+		echo view('search/searchform');
 		echo view('home/soon', $data['soon']);
 		echo view('home/list', $data['games']);
-		echo view('templates/footer', $data);
+		echo view('templates/footer');
 	}
 }
 ?>

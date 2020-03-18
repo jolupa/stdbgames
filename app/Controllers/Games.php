@@ -79,7 +79,7 @@ class Games extends Controller
 	public function insertgame()
 	{
 		$insert = new GamesModel();
-		$data['Title'] = $this->request->getVar('Title');
+		$data['Name'] = $this->request->getVar('Title');
 		$data['Slug'] = strtolower(url_title($this->request->getVar('Title')));
 		$data['Release'] = $this->request->getVar('Release');
 		$data['Pro'] = $this->request->getVar('Pro');
@@ -130,7 +130,7 @@ class Games extends Controller
 	public function updategame()
 	{
 		$data['Gameid'] = $this->request->getVar('Gameid');
-		$data['Title'] = $this->request->getVar('Title');
+		$data['Name'] = $this->request->getVar('Title');
 		$data['Slug'] = $this->request->getVar('Slug');
 		$data['Release'] = $this->request->getVar('Release');
 		$data['Pro'] = $this->request->getVar('Pro');

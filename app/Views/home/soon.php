@@ -23,7 +23,7 @@
             </p>
           </figure>
           <div class="media-content">
-            <p class="title is-5"><a href="<?= base_url() ?>/games/game/<?= $soon['gSlug'] ?>"><?= character_limiter($soon['gTitle'], 15, '...') ?></a></p>
+            <p class="title is-5"><a href="<?= base_url() ?>/games/game/<?= $soon['gSlug'] ?>"><?= character_limiter($soon['gName'], 15, '...') ?></a></p>
             <p class="subtitle is-7"><?= $soon['dName'] ?> / <?= $soon['pName'] ?>
             <br>
             <?= $soon['gRelease'] ?>

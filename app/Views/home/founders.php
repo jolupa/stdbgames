@@ -26,7 +26,7 @@
           <div class="card-content">
             <div class="media">
               <div class="media-content">
-                <p class="title is-4"><a href="<?= base_url() ?>/games/game/<?= $founders['gSlug'] ?>"><?= character_limiter($founders['gTitle'], 10, '...') ?></a></p>
+                <p class="title is-4"><a href="<?= base_url() ?>/games/game/<?= $founders['gSlug'] ?>"><?= character_limiter($founders['gName'], 10, '...') ?></a></p>
                 <p class="subtitle is-6">Developer: <?= $founders['dName'] ?>
                 <br>
                 Publisher: <?= $founders['pName'] ?>

@@ -8,7 +8,7 @@
       <div class="field">
         <label class="label">Name</label>
         <div class="control">
-          <input class="input" type="text" name="Title" value="<?= $game['gTitle'] ?>">
+          <input class="input" type="text" name="Title" value="<?= $game['gName'] ?>">
         </div>
       </div>
     <!-- Date Entry -->
