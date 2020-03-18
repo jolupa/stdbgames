@@ -2,11 +2,17 @@
 use CodeIgniter\Model;
 
 class SearchModel extends Model{
-  public function getResults($query,$table){
+  public function getResults( $query, $table ){
     $db = \Config\Database::connect();
     $builder = $db->table($table)
-                  ->select('*')
-                  ->like('Name',$query);
+                  ->select('Gameid,
+                            Name,
+                            Release,
+                            Image,
+                            Slug,
+                            About')
+                  ->like('Name', $query)
+                  ->like('About', $query);
     return $builder->get()
                    ->getResultArray();
   }
