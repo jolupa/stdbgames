@@ -5,13 +5,7 @@
         <form action="<?= base_url() ?>/search/searchresult" method="post">
           <div class="field has-addons">
             <div class="control">
-              <span class="select">
-                <select name="table">
-                  <option value="games" selected>Games</option>
-                  <option value="developers">Developers</option>
-                  <option value="publishers">Publishers</option>
-                </select>
-              </span>
+              <button class="button is-static">Games</button>
             </div>
             <div class="control is-expanded">
               <input class="input" name="query">
