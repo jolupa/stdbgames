@@ -26,7 +26,7 @@
                     </p>
                   </figure>
                   <div class="media-content">
-                    <p class="title is-5"><a href="<?= base_url() ?>/games/game/<?= $publisher['pgSlug'] ?>"><?= character_limiter($publisher['pgTitle'], 15, '...') ?></a></p>
+                    <p class="title is-5"><a href="<?= base_url() ?>/games/game/<?= $publisher['pgSlug'] ?>"><?= character_limiter($publisher['pgName'], 15, '...') ?></a></p>
                     <p class="subtitle is-7"><strong>Released:</strong> <?= $publisher['pgRelease'] ?><br>
                     <strong>Developed by:</strong> <?php if ( isset ($publisher['pdSlug'])): ?><a href="<?= base_url() ?>/games/developer/<?= $publisher['pdSlug'] ?>"><?= $publisher['pdName'] ?></a><?php else: ?><?= $publisher['pdName'] ?><?php endif; ?></p>
                     </p>
