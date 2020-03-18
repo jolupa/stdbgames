@@ -14,26 +14,20 @@
     <?php endif; ?>
 
     <div class="columns is-multiline">
-    <?php
-    foreach ($founders as $founders): ?>
-      <div class="column is-one-fifth">
-        <div class="card" style="height: 100%;">
-          <div class="card-image">
-            <figure class="image is-16by9">
-              <img src="<?= base_url() ?>/images/<?= $founders['gImage'] ?>">
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="media">
-              <div class="media-content">
-                <p class="title is-4"><a href="<?= base_url() ?>/games/game/<?= $founders['gSlug'] ?>"><?= character_limiter($founders['gName'], 10, '...') ?></a></p>
-                <p class="subtitle is-6">Developer: <?= $founders['dName'] ?>
-                <br>
-                Publisher: <?= $founders['pName'] ?>
-                <br>
-                Release Date: <?= $founders['gRelease'] ?></p>
-              </div>
-            </div>
+    <?php foreach ($founders as $founders): ?>
+      <div class="column is-one-quarter">
+        <div class="media">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img src="<?= base_url() ?>/images/<?= $founders['gImage'] ?>-thumb">
+            </p>
+          </figure>
+          <div class="media-content">
+            <p class="title is-5"><a href="<?= base_url() ?>/games/game/<?= $founders['gSlug'] ?>"><?= character_limiter($founders['gName'], 15, '...') ?></a></p>
+            <p class="subtitle is-7"><?= $founders['dName'] ?> / <?= $founders['pName'] ?>
+            <br>
+            <?= $founders['gRelease'] ?>
+            </p>
           </div>
         </div>
       </div>

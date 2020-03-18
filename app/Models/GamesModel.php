@@ -8,7 +8,7 @@ class GamesModel extends Model
     $db = \Config\Database::connect();
     $builder = $db->table('games')
                   ->select('Gameid AS gId,
-                            Name AS gName,
+                            games.Name AS gName,
                             games.Slug AS gSlug,
                             Image AS gImage,
                             games.Developerid AS gdId,
