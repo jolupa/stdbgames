@@ -10,7 +10,6 @@ class Search extends Controller{
   public function searchresult(){
     $result = new SearchModel();
     $query = $this->request->getVar('query');
-    $table = $this->request->getVar('table');
     $data['results'] = $result->getResults( $query, $table );
     $data['query'] = $query;
 

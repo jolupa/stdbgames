@@ -5,7 +5,7 @@
       <div class="column is-full">
         <p class="subtitle is-5">You searched for:</p>
         <p class="title is is-3"><?= $query ?></p>
-        <p class="subtitle is-5">Your search produced <strong><?= count($results) ?></strong> result/s:</p>
+        <p class="subtitle is-5">Your search produced <strong><?= count($results) ?></strong> <?php if (count($results) == 1): ?>result<?php else: ?>results<?php endif; ?>:</p>
       </div>
     </div>
     <div class="columns is-multiline">
@@ -38,13 +38,7 @@
         <form action="<?= base_url() ?>/search/searchresult" method="post">
           <div class="field has-addons has-addons-right ">
             <div class="control">
-              <span class="select">
-                <select name="table">
-                  <option value="games" selected>Games</option>
-                  <option value="developers">Developers</option>
-                  <option value="publishers">Publishers</option>
-                </select>
-              </span>
+              <button class="button is-static">Games</button>
             </div>
             <div class="control is-expanded">
               <input class="input" name="query">
