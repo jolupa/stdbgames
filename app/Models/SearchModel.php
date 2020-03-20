@@ -6,8 +6,7 @@ class SearchModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('games')
                   ->select('*')
-                  ->like('Name', $query)
-                  ->like('About', $query);
+                  ->like('Name', $query);
     return $builder->get()
                    ->getResultArray();
   }
