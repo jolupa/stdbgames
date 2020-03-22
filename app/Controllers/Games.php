@@ -247,5 +247,15 @@ class Games extends Controller
 
 		return redirect()->to('/home/index');
 	}
+
+	public function list ($type){
+		$list = new GamesModel();
+		$data['gametype'] = $list->getGames($type);
+		$data['type'] = $type;
+
+		echo view('templates/header');
+		echo view('games/list', $data);
+		echo view('templates/footer');
+	}
 }
 ?>

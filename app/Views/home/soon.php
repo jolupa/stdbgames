@@ -2,7 +2,8 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <p class="title is-4"><span class="icon has-text-grey-dark"><i class="fas fa-gamepad"></i></span> Comming Soon</p>
+        <p class="subtitle is-5">Games</p>
+        <p class="title is-3">Coming Soon!</p>
       </div>
     </div>
     <?php if (!isset ($soon)): ?>
@@ -32,6 +33,11 @@
         </div>
       </div>
     <?php endforeach; ?>
+    </div>
+    <div class="columns has-text-centered">
+      <div class="column is-full-width">
+        <a href="<?= base_url() ?>/games/list/soon"><button class="button is-warning">See All!</button></a>
+      </div>
     </div>
   </div>
 </section>

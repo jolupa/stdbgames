@@ -2,7 +2,8 @@
   <div class="container">
     <div class="columns">
       <div class="column">
-        <p class="title is-4"><span class="icon has-text-primary"><i class="fas fa-gamepad"></i></span> The Free Ones</p>
+        <p class="subtitle is-5">Games</p>
+        <p class="title is-3">Free for Pros</p>
       </div>
     </div>
     <?php if (!isset ($founders)): ?>

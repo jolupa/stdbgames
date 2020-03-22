@@ -161,5 +161,50 @@ class GamesModel extends Model
                   ->where('Publisherid', $data['Publisherid']);
     return $builder->update($data);
   }
+
+  public function getGames($type){
+    $db = \Config\Database::connect();
+    if ($type == 'soon'){
+      $builder = $db->table('games')
+                    ->select('Gameid AS gId,
+                              games.Name AS gName,
+                              games.Slug AS gSlug,
+                              games.Image AS gImage,
+                              games.Developerid AS gdId,
+                              games.Publisherid AS gpId,
+                              Release AS gRelease,
+                              games.About AS gAbout,
+                              developers.Name AS gdName,
+                              developers.Slug AS gdSlug,
+                              publishers.Name AS gpName,
+                              publishers.Slug AS gpSlug')
+                    ->join('developers', 'developers.Developerid = games.Developerid')
+                    ->join('publishers', 'publishers.Publisherid = games.Publisherid')
+                    ->where('gRelease >', date('Y-m-d'))
+                    ->orderBy('gRelease', 'ASC');
+      return $builder->get()
+                     ->getResultArray();
+    } if ($type == 'launched') {
+      $builder = $db->table('games')
+                    ->select('Gameid AS gId,
+                              games.Name AS gName,
+                              games.Slug AS gSlug,
+                              games.Image AS gImage,
+                              games.Developerid AS gdId,
+                              games.Publisherid AS gpId,
+                              Release AS gRelease,
+                              games.About AS gAbout,
+                              developers.Name AS gdName,
+                              developers.Slug AS gdSlug,
+                              publishers.Name AS gpName,
+                              publishers.Slug AS gpSlug')
+                    ->join('developers', 'games.Developerid = developers.Developerid')
+                    ->join('publishers', 'games.Publisherid = publishers.Publisherid')
+                    ->where('gRelease <=', date('Y-m-d'))
+                    ->orderBy('gRelease', 'DESC');
+      return $builder->get()
+                     ->getResultArray();
+    }
+  }
 }
 ?>

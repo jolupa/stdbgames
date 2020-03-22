@@ -18,7 +18,7 @@ class HomeModel extends Model{
                   ->where('gRelease <=', date('Y-m-d'))
                   ->orderBy('gRelease', 'DESC')
                   ->orderBy('gTitle', 'ASC');
-    return $builder->get()
+    return $builder->get(16)
                    ->getResultArray();
   }
 
@@ -57,7 +57,7 @@ class HomeModel extends Model{
                   ->join('publishers', 'publishers.Publisherid = games.Publisherid')
                   ->where('gRelease >', date('Y-m-d'))
                   ->orderBy('gRelease', 'ASC');
-    return $builder->get()
+    return $builder->get(16)
                    ->getResultArray();
   }
 }
