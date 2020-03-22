@@ -1,6 +1,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> in <strong>Barcelona</strong> <span class="icon"><i class="fas fa-copyright"></i></span> <?= date("Y") ?> jolupa</p>
+        <p>We are in <a href="https://twitter.com/DbStadia" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span></a></p>
       </div>
     </footer>
   </body>
