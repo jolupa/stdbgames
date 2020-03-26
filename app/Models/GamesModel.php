@@ -16,6 +16,8 @@ class GamesModel extends Model
                             games.About AS gAbout,
                             Release AS gRelease,
                             Pro AS gPro,
+                            Profrom AS gProfrom,
+                            Protill AS gProtill,
                             developers.Name AS gdName,
                             developers.Slug AS gdSlug,
                             publishers.Name AS gpName,

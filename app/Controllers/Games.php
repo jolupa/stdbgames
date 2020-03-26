@@ -83,6 +83,12 @@ class Games extends Controller
 		$data['Slug'] = strtolower(url_title($this->request->getVar('Title')));
 		$data['Release'] = $this->request->getVar('Release');
 		$data['Pro'] = $this->request->getVar('Pro');
+		if ($this->request->getVar('Profrom') != NULL){
+			$data['Profrom'] = $this->request->getVar('Profrom');
+		}
+		if ($this->request->getVar('Protill') != NULL){
+			$data['Protill'] = $this->request->getVar('Protill');
+		}
 		$data['Developerid'] = $this->request->getVar('Developerid');
 		$data['Publisherid'] = $this->request->getVar('Publisherid');
 		if ($this->request->getVar('About') != NULL)
@@ -134,6 +140,12 @@ class Games extends Controller
 		$data['Slug'] = $this->request->getVar('Slug');
 		$data['Release'] = $this->request->getVar('Release');
 		$data['Pro'] = $this->request->getVar('Pro');
+		if ($this->request->getVar('Profrom') != NULL){
+			$data['Profrom'] = $this->request->getVar('Profrom');
+		}
+		if ($this->request->getVar('Protill') != NULL){
+			$data['Protill'] = $this->request->getVar('Protill');
+		}
 		$data['Developerid'] = $this->request->getVar('Developerid');
 		$data['Publisherid'] = $this->request->getVar('Publisherid');
 		if ($this->request->getVar('About') != NULL)

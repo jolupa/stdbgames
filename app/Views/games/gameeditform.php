@@ -27,6 +27,16 @@
             </select>
           </div>
         </div>
+        <div class="control">
+          <label class="label">Is Founder since:</label>
+          <input class="input" type="text" name="Profrom" value="<?= $game['gProfrom'] ?>">
+          <p class="help">date in form YYY-MM-DD</p>
+        </div>
+        <div class="control">
+          <label class="label">Is founder till:</label>
+          <input class="input" type="text" name="Protill" value="<?= $game['gProtill'] ?>">
+          <p class="help">date in form YYY-MM-DD</p>
+        </div>
       <!-- Developer Entry -->
       <div class="control">
         <label class="label">Developer:</label>
