@@ -53,7 +53,7 @@
                     <td>Is Free for Pro:</td>
                     <?php if ($item['gPro'] == 1): ?>
                       <td>Yes</td>
-                    <?php elseif (!empty ($item['gProfrom'])): ?>
+                    <?php elseif (!empty ($item['gProtill']) && $item['gProtill'] < date('Y-m-d')): ?>
                       <td>It Was Free</td>
                     <?php else: ?>
                       <td>No</td>
