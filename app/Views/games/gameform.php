@@ -24,8 +24,18 @@
               <option value="0">No Founders</option>
               <option value="1">Is Founders</option>
             </select>
-          </div>
         </div>
+      </div>
+      <div class="control">
+        <label class="label">Is Founder since:</label>
+        <input class="input" type="text" name="Profrom">
+        <p class="help">date in form YYY-MM-DD</p>
+      </div>
+      <div class="control">
+        <label class="label">Is founder till:</label>
+        <input class="input" type="text" name="Protill">
+        <p class="help">date in form YYY-MM-DD</p>
+      </div>
       <!-- Developer Entry -->
       <div class="control">
         <label class="label">Developer:</label>
@@ -67,7 +77,7 @@
         </div>
       </div>
       <!-- File Chooser Entry -->
-      <div class="field is-grouped file has-name is-right">
+      <div class="field is-grouped is-grouped-multiline file has-name is-right">
         <div class="control is-expanded">
           <label class="file-label" id="insertgame">
             <input class="file-input" type="file" name="Image">
@@ -79,7 +89,7 @@
             </span>
             <span class="file-name"></span>
           </label>
-          <p class="help">Any Kind of file. Less that 2Gb</p>
+          <p class="help">Any Kind of file. Less than 2Mb</p>
         </div>
         <!-- Button Send -->
         <div class="control">
