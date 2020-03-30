@@ -3,6 +3,9 @@
     <form method="post" action="<?= base_url() ?>/games/insertdeveloper">
       <!-- Name Entry -->
       <div class="field">
+        <?= \Config\Services::validation()->listErrors(); ?>
+      </div>
+      <div class="field">
         <label class="label">Name</label>
         <div class="control">
           <input class="input" type="text" placeholder="Developer Name" name="Name">

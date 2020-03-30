@@ -51,72 +51,101 @@ class Games extends Controller
 
 	public function insertdeveloper()
 	{
+		$val = $this->validate(['Name'=>'required|is_unique[developers.Name]']);
 		$insert = new GamesModel();
-		$data['Name'] = $this->request->getVar('Name');
-		$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
-		if ($this->request->getVar('Website') != NULL)
-		{
-			$data['Website'] = $this->request->getVar('Website');
-		}
-		$insert->insertDeveloper($data);
+		if (!$val){
+			echo view('templates/header');
+			echo view('games/devform', ['validation'=>$this->validator]);
+			echo view('templates/footer');
+		} else {
+			$data['Name'] = $this->request->getVar('Name');
+			$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
+			if ($this->request->getVar('Website') != NULL)
+			{
+				$data['Website'] = $this->request->getVar('Website');
+			}
+			$insert->insertDeveloper($data);
 
-		return redirect()->to('/home/index');
+			return redirect()->to('/games/developer/'.$data['Slug']);
+		}
 	}
 
 	public function insertpublisher()
 	{
+		$val = $this->validate(['Name'=>'required|is_unique[publishers.Name]']);
 		$insert = new GamesModel();
-		$data['Name'] = $this->request->getVar('Name');
-		$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
-		if ($this->request->getVar('Website'))
-		{
-			$data['Website'] = $this->request->getVar('Website');
+		if (!$val){
+			echo view('templates/header');
+			echo view('games/pubform', ['validations'=>$this->validator]);
+			echo view('templates/footer');
+		} else {
+			$data['Name'] = $this->request->getVar('Name');
+			$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
+			if ($this->request->getVar('Website'))
+			{
+				$data['Website'] = $this->request->getVar('Website');
+			}
+			$insert->insertPublisher($data);
+			return redirect()->to('/games/publisher/'.$data['Slug']);
 		}
-		$insert->insertPublisher($data);
-		return redirect()->to('/home/index');
 	}
 
 	public function insertgame()
 	{
+		$val = $this->validate([
+														'Title'		=>'required|is_unique[games.Name]',
+														'Image'		=>'required|max_size[Image,3048]|is_image[Image]',
+													]);
 		$insert = new GamesModel();
-		$data['Name'] = $this->request->getVar('Title');
-		$data['Slug'] = strtolower(url_title($this->request->getVar('Title')));
-		$data['Release'] = $this->request->getVar('Release');
-		$data['Pro'] = $this->request->getVar('Pro');
-		if ($this->request->getVar('Profrom') != NULL){
-			$data['Profrom'] = $this->request->getVar('Profrom');
-		}
-		if ($this->request->getVar('Protill') != NULL){
-			$data['Protill'] = $this->request->getVar('Protill');
-		}
-		$data['Developerid'] = $this->request->getVar('Developerid');
-		$data['Publisherid'] = $this->request->getVar('Publisherid');
-		if ($this->request->getVar('About') != NULL)
-		{
-			$data['About'] = $this->request->getVar('About');
-		}
-		if ($this->request->getFile('Image') != NULL)
-		{
-			if ( is_dir (ROOTPATH.'/public/images') == FALSE)
-			{
-				mkdir(ROOTPATH.'/public/images', 0777, true);
+		if (!$val){
+			$developers = new GamesModel();
+			$publishers = new GamesModel();
+			$data['publishers'] = $publishers->getPublishers();
+			$data['developers'] = $developers->getDevelopers();
+
+			echo view('templates/header');
+			echo view('games/gameform', $data, ['validations'=>$this->validator]);
+			echo view('templates/footer');
+		} else {
+			$data['Name'] = $this->request->getVar('Title');
+			$data['Slug'] = strtolower(url_title($this->request->getVar('Title')));
+			$data['Release'] = $this->request->getVar('Release');
+			$data['Pro'] = $this->request->getVar('Pro');
+			if ($this->request->getVar('Profrom') != NULL){
+				$data['Profrom'] = $this->request->getVar('Profrom');
 			}
-			$data['Image'] = strtolower(url_title($this->request->getVar('Title')));
-			$newname = strtolower(url_title($this->request->getVar('Title')));
-			$file = $this->request->getFile('Image')
-													 ->move(WRITEPATH.'uploads/', $newname);
-		 	$image = \Config\Services::image()
-							->withFile(WRITEPATH.'uploads/'.$newname)
-							->resize(1980, 1024, true, 'height')
-							->convert(IMAGETYPE_JPEG)
-							->save(ROOTPATH.'public/images/'.$newname);
-			$imagethumb = \Config\Services::image()
-									 ->withFile(WRITEPATH.'uploads/'.$newname)
-									 ->fit(256, 256, 'center')
-									 ->save(ROOTPATH.'public/images/'.$newname.'-thumb');
+			if ($this->request->getVar('Protill') != NULL){
+				$data['Protill'] = $this->request->getVar('Protill');
+			}
+			$data['Developerid'] = $this->request->getVar('Developerid');
+			$data['Publisherid'] = $this->request->getVar('Publisherid');
+			if ($this->request->getVar('About') != NULL)
+			{
+				$data['About'] = $this->request->getVar('About');
+			}
+			if ($this->request->getFile('Image') != NULL)
+			{
+				if ( is_dir (ROOTPATH.'/public/images') == FALSE)
+				{
+					mkdir(ROOTPATH.'/public/images', 0777, true);
+				}
+				$data['Image'] = strtolower(url_title($this->request->getVar('Title')));
+				$newname = strtolower(url_title($this->request->getVar('Title')));
+				$file = $this->request->getFile('Image')
+														 ->move(WRITEPATH.'uploads/', $newname);
+			 	$image = \Config\Services::image()
+								->withFile(WRITEPATH.'uploads/'.$newname)
+								->resize(1980, 1024, true, 'height')
+								->convert(IMAGETYPE_JPEG)
+								->save(ROOTPATH.'public/images/'.$newname);
+				$imagethumb = \Config\Services::image()
+										 ->withFile(WRITEPATH.'uploads/'.$newname)
+										 ->fit(256, 256, 'center')
+										 ->save(ROOTPATH.'public/images/'.$newname.'-thumb');
+			}
+		  $insert->insertGame($data);
+			return redirect()->to('/games/game/'.$data['Slug']);
 		}
-	  $insert->insertGame($data);
-		return redirect()->to('/home/index');
 	}
 
 	public function gameeditform($slug)
@@ -175,7 +204,7 @@ class Games extends Controller
 
 		$update = new GamesModel();
 		$update->updateGame($data);
-		return redirect()->to('/home/index');
+		return redirect()->to('/games/game/'.$data['Slug']);
 	}
 
 	public function developer($slug)
@@ -226,7 +255,7 @@ class Games extends Controller
 		$update = new GamesModel();
 		$update->updateDeveloper($data);
 
-		return redirect()->to('/home/index');
+		return redirect()->to('/games/developer/'.strtolower(url_title($data['Name'])));
 	}
 
 	public function pubeditform($slug)
@@ -257,7 +286,7 @@ class Games extends Controller
 		$update = new GamesModel();
 		$update->updatePublisher($data);
 
-		return redirect()->to('/home/index');
+		return redirect()->to('/games/publisher/'.strtolower(url_title($data['Name'])));
 	}
 
 	public function list ($type){

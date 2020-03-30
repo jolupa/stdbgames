@@ -3,6 +3,9 @@
   <form method="post" action="<?= base_url() ?>/games/insertpublisher">
     <!-- Name Entry -->
     <div class="field">
+      <?= \Config\Services::validation()->listErrors('my_list'); ?>
+    </div>
+    <div class="field">
       <label class="label">Name</label>
       <div class="control">
         <input class="input" type="text" placeholder="Publisher Name" name="Name">
