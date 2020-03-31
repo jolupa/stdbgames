@@ -100,6 +100,9 @@
           <button class="button is-light" type="reset" name="reset">Clear</button>
         </div>
       </div>
+      <div class="field">
+        <?= \Config\Services::validation()->listErrors('my_list'); ?>
+      </div>
     </form>
   </div>
 </section>

@@ -26,6 +26,9 @@
           <button class="button is-light" type="reset" name="clear">Clear</button>
         </p>
       </div>
+      <div class="field">
+        <?= \Config\Services::validation()->listErrors('my_list'); ?>
+      </div>
     </form>
   </div>
 </section>
