@@ -3,9 +3,6 @@
     <form method="post" action="<?= base_url() ?>/games/insertdeveloper">
       <!-- Name Entry -->
       <div class="field">
-        <?= \Config\Services::validation()->listErrors(); ?>
-      </div>
-      <div class="field">
         <label class="label">Name</label>
         <div class="control">
           <input class="input" type="text" placeholder="Developer Name" name="Name">
@@ -28,6 +25,9 @@
         <p class="control">
           <button class="button is-light" type="reset" name="clear">Clear</button>
         </p>
+      </div>
+      <div class="field">
+        <?= \Config\Services::validation()->listErrors('my_list'); ?>
       </div>
     </form>
   </div>

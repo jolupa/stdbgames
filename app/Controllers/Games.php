@@ -51,7 +51,12 @@ class Games extends Controller
 
 	public function insertdeveloper()
 	{
-		$val = $this->validate(['Name'=>'required|is_unique[developers.Name]']);
+		$val = $this->validate(['Name'	=>	['label'	=>	'Name',
+																				 'rules'	=>	'required|is_unique[developers.Name]',
+																				 'errors'	=>	['required'		=>	'You must enter the Developer Name',
+																				 							 'is_unique'	=>	'The Developer alreaday exists in the Database',],
+																				],
+														]);
 		$insert = new GamesModel();
 		if (!$val){
 			echo view('templates/header');
@@ -72,7 +77,12 @@ class Games extends Controller
 
 	public function insertpublisher()
 	{
-		$val = $this->validate(['Name'=>'required|is_unique[publishers.Name]']);
+		$val = $this->validate(['Name'=> ['label'	=>	'Name',
+																			'rules'	=>	'required|is_unique[publishers.Name]',
+																			'errors'=>	['required'	=>	'You must enter a Publisher Name',
+																									 'is_unique'	=>	'The Publisher already exists in the Database',],
+																			],
+														]);
 		$insert = new GamesModel();
 		if (!$val){
 			echo view('templates/header');
@@ -92,9 +102,16 @@ class Games extends Controller
 
 	public function insertgame()
 	{
-		$val = $this->validate([
-														'Title'		=>'required|is_unique[games.Name]',
-														'Image'		=>'required|max_size[Image,3048]|is_image[Image]',
+		$val = $this->validate(['Title'	=>	['label'	=>	'Name',
+																				 'rules'	=>	'required|is_unique[games.Name]',
+																			 	 'errors'	=>	['required'	=>	'You forgot to give a Name to the Game',
+																				 							 'is_unique'=>	'The Game is in the database'],
+																				],
+														'Image'	=>	['label'	=>	'Image',
+																				 'rules'	=>	'max_size[Image,3048]|is_image[Image]',
+																			 	 'errors'	=>	['max_size'	=>	'The Image is too big. The maximum is 3,5Mb',
+																											 'is_image'	=>	'Are you sure the file you uploaded is an image'],
+																				],
 													]);
 		$insert = new GamesModel();
 		if (!$val){
@@ -142,6 +159,7 @@ class Games extends Controller
 										 ->withFile(WRITEPATH.'uploads/'.$newname)
 										 ->fit(256, 256, 'center')
 										 ->save(ROOTPATH.'public/images/'.$newname.'-thumb');
+				unlink(WRITEPATH.'uploads/'.$newname);
 			}
 		  $insert->insertGame($data);
 			return redirect()->to('/games/game/'.$data['Slug']);
@@ -200,6 +218,7 @@ class Games extends Controller
 									 ->fit(256, 256, 'center')
 									 ->save(ROOTPATH.'public/images/'.$newname.'-thumb');
 		  $data['Image'] = $newname;
+			unlink(WRITEPATH.'uploads/'.$newname);
 		}
 
 		$update = new GamesModel();

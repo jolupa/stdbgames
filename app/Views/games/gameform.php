@@ -4,9 +4,6 @@
     <form method="post" action="<?= base_url() ?>/games/insertgame" enctype="multipart/form-data">
       <!-- Name Entry -->
       <div class="field">
-        <?= \Config\Services::validation()->listErrors(); ?>
-      </div>
-      <div class="field">
         <label class="label">Name</label>
         <div class="control">
           <input class="input" type="text" name="Title">
@@ -102,6 +99,9 @@
         <div class="control">
           <button class="button is-light" type="reset" name="reset">Clear</button>
         </div>
+      </div>
+      <div class="field">
+        <?= \Config\Services::validation()->listErrors('my_list'); ?>
       </div>
     </form>
   </div>
