@@ -25,7 +25,7 @@
             <div class="control is-expanded">
               <label class="label">Birthdate:</label>
               <input class="input" type="text" name="Userbirthdate">
-              <p class="help">In the form of YYY-MM-DD</p>
+              <p class="help">In the form of YYYY-MM-DD</p>
             </div>
           </div>
           <div class="field">
