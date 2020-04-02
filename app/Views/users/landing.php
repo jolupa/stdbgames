@@ -8,6 +8,9 @@
               <p class="subtitle is-5">Your</p>
               <p class="title is-3">Profile:</p>
               <p class="subtitle is-5"><?= session('username') ?></p>
+              <?php if( session('is_logged' != TRUE)): ?>
+                <p>Seems like you are not logged in. Go to the <a href="<?= base_url() ?>/users/loguser">Login</a> page or <a href="<?= base_url() ?>/users/signuser">Register</a> to access your profile.</p>
+              <?php endif; ?>
               <?php if( session('role') == 1): ?>
                 <table class="table">
                   <tr>
