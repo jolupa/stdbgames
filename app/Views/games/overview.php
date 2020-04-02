@@ -13,7 +13,7 @@
               <div class="level-item has-text-centered">
                 <div>
                   <p class="heading">Title</p>
-                  <p class="title is-6"><?= $item['gName'] ?> <?php if ( get_cookie($admin) != NULL ): ?><span class="icon has-text-color-info"><a href="<?= base_url() ?>/games/gameeditform/<?= $item['gSlug'] ?>"><i class="far fa-edit"></i></a></span><?php endif; ?></p>
+                  <p class="title is-6"><?= $item['gName'] ?> <?php if ( session('role') == 1 ): ?><span class="icon has-text-color-info"><a href="<?= base_url() ?>/games/gameeditform/<?= $item['gSlug'] ?>"><i class="far fa-edit"></i></a></span><?php endif; ?></p>
                 </div>
               </div>
               <div class="level-item has-text-centered">

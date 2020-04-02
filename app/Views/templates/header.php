@@ -26,7 +26,7 @@
         <div class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="<?= base_url() ?>/about">About</a>
-            <?php if ( get_cookie($admin) != NULL ): ?>
+            <?php if ( session('role') == 1): ?>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">New...</a>
               <div class="navbar-dropdown">
@@ -40,8 +40,13 @@
           <div class="navbar-end">
             <div class="navbar-item">
               <div class="buttons">
-                <a class="button is-primary">Sign In</a>
-                <a class="button is-light">Log In</a>
+              <?php if( session('is_logged') != TRUE): ?>
+                <a class="button is-primary" href="<?= base_url() ?>/users/signuser">Sign In</a>
+                <a class="button is-light" href="<?= base_url() ?>/users/loguser">Log In</a>
+                <?php else: ?>
+                  <a class="button is-primary" href="<?= base_url() ?>/users/landing/<?= session('username') ?>">Profile</a>
+                  <a class="button is-light" href="<?= base_url() ?>/users/logout">Log Out</a>
+                <?php endif; ?>
               </div>
             </div>
           </div>

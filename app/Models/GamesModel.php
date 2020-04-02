@@ -53,7 +53,7 @@ class GamesModel extends Model
   {
     $db = \Config\Database::connect();
     $builder = $db->table('developers');
-     return $builder->insert($data);
+    return $builder->insert($data);
   }
 
   public function insertPublisher($data)

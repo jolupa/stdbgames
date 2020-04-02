@@ -7,7 +7,7 @@
             <div class="content">
               <p class="subtitle is-5">Developer:</p>
               <p class="title is-3"><?= $developer['0']['dName'] ?></p>
-              <p class="subtitle is-5"><?php if (isset ($developer['0']['dWebsite'])): ?><span class="icon"><a href="<?= $developer['0']['dWebsite'] ?>" target="_blank"><i class="fas fa-sign-out-alt"></i></a></span><?php endif; ?> <?php if ( get_cookie($admin) != NULL): ?><span class="icon"><a href="<?= base_url() ?>/games/deveditform/<?= $developer['0']['dSlug'] ?>"><i class="far fa-edit"></i></a></span><?php endif; ?></p>
+              <p class="subtitle is-5"><?php if (isset ($developer['0']['dWebsite'])): ?><span class="icon"><a href="<?= $developer['0']['dWebsite'] ?>" target="_blank"><i class="fas fa-sign-out-alt"></i></a></span><?php endif; ?> <?php if ( session('role') == 1): ?><span class="icon"><a href="<?= base_url() ?>/games/deveditform/<?= $developer['0']['dSlug'] ?>"><i class="far fa-edit"></i></a></span><?php endif; ?></p>
             </div>
           </div>
           <div class="card-content">
