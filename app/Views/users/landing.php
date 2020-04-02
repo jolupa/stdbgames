@@ -8,9 +8,9 @@
               <p class="subtitle is-5">Your</p>
               <p class="title is-3">Profile:</p>
               <p class="subtitle is-5"><?= session('username') ?></p>
-              <?php if( session('is_logged' != TRUE)): ?>
+              <?php if( !session('is_logged')): ?>
                 <p>Seems like you are not logged in. Go to the <a href="<?= base_url() ?>/users/loguser">Login</a> page or <a href="<?= base_url() ?>/users/signuser">Register</a> to access your profile.</p>
-              <?php endif; ?>
+              <?php else: ?>
               <?php if( session('role') == 1): ?>
                 <table class="table">
                   <tr>
@@ -24,6 +24,7 @@
                 </table>
               <?php endif; ?>
               <p>A little bit empty right now! But we are working to put more things! Stay tunned.</p>
+              <?php endif; ?>
             </div>
           </div>
         </div>
