@@ -94,5 +94,43 @@ class Users extends Controller{
     }
     echo view('templates/footer');
   }
+
+  public function edit($user){
+    if (session('role') == 1){
+      $getuser = new UsersModel();
+      $data['getuser'] = $getuser->getUser($user);
+
+      echo view('templates/header');
+      echo view('users/edit', $data);
+      echo view('templates/footer');
+    } else {
+      return redirect()->to('/home');
+    }
+  }
+
+  public function updateuser(){
+    if (session('role') == 1){
+      $update = new UsersModel();
+      $data['Username'] = $this->request->getVar('Username');
+      $data['Userrole'] = $this->request->getVar('Userrole');
+      $data['Userbirthdate'] = $this->request->getVar('Userbirthdate');
+      $data['Usermail'] = $this->request->getVar('Usermail');
+      $data['Userid'] = $this->request->getVar('Userid');
+      $update->updateUser($data);
+      return redirect()->to('/users/landing/'.session('username'));
+    } else {
+      return redirect()->to('/home');
+    }
+  }
+
+  public function deleteUser($id){
+    if (session('role') == 1){
+      $delete = new UsersModel();
+      $delete->deleteUser($id);
+      return redirect()->to('/users/landing/'.session('username'));
+    } else {
+      return redirect()->to('/home');
+    }
+  }
 }
 ?>

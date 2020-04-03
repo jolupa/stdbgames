@@ -27,10 +27,33 @@ class UsersModel extends Model{
                             Username,
                             Usermail,
                             Userbirthdate,
-                            Userdateregistry')
+                            Userdateregistry,
+                            Userrole')
                   ->orderBy('Userid', 'DESC');
     return $builder->get(10)
                    ->getResultArray();
+  }
+
+  public function getUser($user){
+    $db = \Config\Database::connect();
+    $builder = $db->table('users')
+                  ->where('Username', $user);
+    return $builder->get()
+                   ->getRowArray();
+  }
+
+  public function updateUser($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('users')
+                  ->where('Userid', $data['Userid']);
+    return $builder->update($data);
+  }
+
+  public function deleteUser($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('users')
+                  ->where('Userid', $id);
+    return $builder->delete();
   }
 }
 ?>

@@ -13,6 +13,7 @@
                   <th>Registered since</th>
                   <th>Birthday</th>
                   <th>Mail</th>
+                  <th>Action</th>
                 </tr>
                 <?php foreach ($lastusers as $lastusers): ?>
                 <tr>
@@ -20,6 +21,7 @@
                   <td><?= $lastusers['Userdateregistry'] ?></td>
                   <td><?= $lastusers['Userbirthdate'] ?></td>
                   <td><?= $lastusers['Usermail'] ?></td>
+                  <td><?php if($lastusers['Userrole'] == 0): ?> <a href="<?= base_url() ?>/users/deleteuser/<?= $lastusers['Userid'] ?>">Delete</a><?php endif; ?></td>
                 </tr>
               <?php endforeach; ?>
               </table>
