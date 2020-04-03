@@ -87,7 +87,11 @@ class Users extends Controller{
   }
   public function landing($user){
     echo view('templates/header');
-    echo view('users/landing');
+    if (session('role') == 1){
+      $lastusers = new UsersModel();
+      $data['lastusers'] = $lastusers->getLastUsers();
+      echo view('users/lastusers', $data);
+    }
     echo view('templates/footer');
   }
 }

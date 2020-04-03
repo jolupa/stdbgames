@@ -19,5 +19,18 @@ class UsersModel extends Model{
     return $builder->get()
                    ->getRowArray();
   }
+
+  public function getLastUsers(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('users')
+                  ->select('Userid,
+                            Username,
+                            Usermail,
+                            Userbirthdate,
+                            Userdateregistry')
+                  ->orderBy('Userid', 'DESC');
+    return $builder->get(10)
+                   ->getResultArray();
+  }
 }
 ?>
