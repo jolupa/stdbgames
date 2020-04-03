@@ -60,5 +60,24 @@ class HomeModel extends Model{
     return $builder->get(16)
                    ->getResultArray();
   }
+
+  public function getLastGames(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('games')
+                  ->select('games.Gameid AS gId,
+                            games.Name AS gName,
+                            games.Slug AS gSlug,
+                            Image AS gImage,
+                            Release AS gRelease,
+                            games.Developerid AS gdId,
+                            games.Publisherid AS gpId,
+                            developers.Name AS dName,
+                            publishers.Name AS pName')
+                  ->join('developers', 'developers.Developerid = games.Developerid')
+                  ->join('publishers', 'publishers.Publisherid = games.Publisherid')
+                  ->orderBy('gId', 'DESC');
+    return $builder->get(4)
+                   ->getResultArray();
+  }
 }
 ?>

@@ -12,16 +12,19 @@ class Home extends Controller{
 		$gameshome = new HomeModel();
 		$foundershome = new HomeModel();
 		$soonhome = new HomeModel();
+		$lastgames = new HomeModel();
 		$data['title'] = "Stadia GamesDB!";
 		$data['games'] = $gameshome->getGamesHome();
 		$data['founders'] = $foundershome->getFoundersHome();
 		$data['soon'] = $soonhome->getGamesSoon();
+		$data['lasts'] = $lastgames->getLastGames();
 
 		echo view('templates/header', $data);
 		echo view('home/founders', $data['founders']);
 		echo view('search/searchform');
 		echo view('home/soon', $data['soon']);
 		echo view('home/list', $data['games']);
+		echo view('home/lasts', $data['lasts']);
 		echo view('templates/footer');
 	}
 }
