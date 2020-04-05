@@ -13,7 +13,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
   <body>
-    <section class="container">
+    <section class="section">
+      <div class="container">
       <nav class="navbar">
         <div class="navbar-brand">
           <a class="navbar-item" href="<?= base_url() ?>">Stadia GamesDB!</a>
@@ -52,4 +53,5 @@
           </div>
         </div>
       </nav>
+      </div>
     </section>

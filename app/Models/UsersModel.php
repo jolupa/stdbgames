@@ -55,5 +55,34 @@ class UsersModel extends Model{
                   ->where('Userid', $id);
     return $builder->delete();
   }
+
+  public function castVote($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('votes');
+    return $builder->insert($data);
+  }
+
+  public function checkvote($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('votes')
+                  ->where('Userid', $data['Userid'])
+                  ->where('Gameid', $data['Gameid']);
+    return $builder->get()
+                   ->getRowArray();
+  }
+
+  public function getGamesVoted($user){
+    $db = \Config\Database::connect();
+    $builder = $db->table('votes')
+                  ->select('votes.Gameid,
+                            votes.Userid,
+                            games.Slug,
+                            games.Name,
+                            games,Image')
+                   ->join('games', 'votes.Gameid = games.Gameid')
+                   ->where('Userid', $user);
+     return $builder->get()
+                    ->getResultArray();
+  }
 }
 ?>

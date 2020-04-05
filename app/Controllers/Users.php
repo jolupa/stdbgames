@@ -14,9 +14,10 @@ class Users extends Controller{
   public function insertuser(){
     $val = $this->validate([
                             'Username'      =>  ['label'  =>  'Name',
-                                                 'rules'  =>  'required|is_unique[users.Username]',
-                                                 'errors' =>  ['required'   =>  'You must set a Name for your login',
-                                                               'is_unique'  =>  'That Name actually exist in the Database',],
+                                                 'rules'  =>  'required|alpha_numeric|is_unique[users.Username]',
+                                                 'errors' =>  ['required'       =>  'You must set a Name for your login',
+                                                               'alpha_numeric'  =>  'Only letters and numbers in the Username',
+                                                               'is_unique'      =>  'That Name actually exist in the Database',],
                                                 ],
                             'Userpassword'  =>  ['label'  =>  'Password',
                                                  'rules'  =>  'required|min_length[6]|max_length[20]',
@@ -86,7 +87,15 @@ class Users extends Controller{
     return redirect()->to('/home');
   }
   public function landing($user){
+    $getuser = new UsersModel();
+    $voted = new UsersModel();
+    $data['user'] = $getuser->getUser(session('username'));
+    $user = session('id');
+    $data['voted'] = $voted->getGamesVoted($user);
+
     echo view('templates/header');
+    echo view('users/landing', $data);
+    echo view('users/votes', $data);
     if (session('role') == 1){
       $lastusers = new UsersModel();
       $data['lastusers'] = $lastusers->getLastUsers();
@@ -124,12 +133,32 @@ class Users extends Controller{
   }
 
   public function deleteUser($id){
+    $delete = new UsersModel();
+    $delete->deleteUser($id);
     if (session('role') == 1){
-      $delete = new UsersModel();
-      $delete->deleteUser($id);
       return redirect()->to('/users/landing/'.session('username'));
     } else {
       return redirect()->to('/home');
+    }
+  }
+
+  public function uservote($vote, $item, $session){
+    $uvote = new UsersModel();
+    if ($vote == 'upvote'){
+      $data['score'] = 100;
+    }
+    if ($vote == 'downvote') {
+      $data['score'] = -100;
+    }
+    $data['Gameid'] = $item;
+    $data['Userid'] = $session;
+    if ($uvote->checkvote($data)){
+      $session = \Config\Services::session();
+      $session->setFlashdata('voted', 1);
+      return redirect()->to(session('_ci_previous_url'));
+    } else {
+      $uvote->castVote($data);
+      return redirect()->to(session('_ci_previous_url'));
     }
   }
 }

@@ -33,12 +33,9 @@
               <input class="input" type="text" name="Userbirthdate" value="<?= $getuser['Userbirthdate'] ?>" <?php if( session('username') != $getuser['Username']): ?>disabled<?php endif; ?>>
             </div>
           </div>
-            <div class="field is-grouped is-grouped-centered">
+            <div class="field">
               <div class="control">
                 <button class="button is-primary" name="submit">Edit!</button>
-              </div>
-              <div class="control is-light">
-                <button class="button" name="cancel">Cancel</button>
               </div>
             </div>
           </div>
