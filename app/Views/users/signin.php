@@ -28,6 +28,22 @@
               <p class="help">In the form of YYYY-MM-DD</p>
             </div>
           </div>
+          <!-- File Chooser Entry -->
+          <div class="field is-grouped is-grouped-multiline file has-name is-right">
+            <div class="control is-expanded">
+              <label class="file-label" id="insertgame">
+                <input class="file-input" type="file" name="Image">
+                <span class="file-cta is-expanded">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">Choose a file...</span>
+                </span>
+                <span class="file-name"></span>
+              </label>
+              <p class="help">Any Image file. Less than 2Mb</p>
+            </div>
+          </div>
           <div class="field">
             <div class="control">
               <label class="checkbox">
@@ -52,3 +68,13 @@
     </div>
   </div>
 </section>
+
+<script>
+  const fileInput = document.querySelector('#insertgame input[type=file]');
+  fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+      const fileName = document.querySelector('#insertgame .file-name');
+      fileName.textContent = fileInput.files[0].name;
+    }
+  }
+</script>

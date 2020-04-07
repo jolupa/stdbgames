@@ -33,6 +33,23 @@
               <input class="input" type="text" name="Userbirthdate" value="<?= $getuser['Userbirthdate'] ?>" <?php if( session('username') != $getuser['Username']): ?>disabled<?php endif; ?>>
             </div>
           </div>
+          <?php if(!empty($getuser['Userimage'])): ?>
+          <input type="hidden" name="Userimage" value="<?= $getuser['Userimage'] ?>">
+          <?php else: ?>
+          <div class="field is-grouped file has-name is-right">
+            <div class="control is-expanded">
+              <label class="file-label" id="insertuser">
+                <input class="file-input" type="file" name="Userimage">
+                <span class="file-cta is-expanded">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">Choose a file...</span>
+                </span>
+                <span class="file-name"></span>
+              </label>
+            </div>
+          <?php endif; ?>
             <div class="field">
               <div class="control">
                 <button class="button is-primary" name="submit">Edit!</button>
@@ -44,3 +61,13 @@
     </div>
   </div>
 </section>
+
+<script>
+  const fileInput = document.querySelector('#insertuser input[type=file]');
+  fileInput.onchange = () => {
+    if (fileInput.files.length > 0) {
+      const fileName = document.querySelector('#insertuser .file-name');
+      fileName.textContent = fileInput.files[0].name;
+    }
+  }
+</script>

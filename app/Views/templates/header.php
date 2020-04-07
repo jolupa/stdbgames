@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php if (isset ( $games )): ?>
-    <title><?= $game['Name'] ?></title>
+    <?php if (isset ( $item['gName'] )): ?>
+    <title>Stadia GamesDB! -- <?= $item['gName'] ?></title>
     <?php else: ?>
     <title><?= $title ?></title>
     <?php endif; ?>

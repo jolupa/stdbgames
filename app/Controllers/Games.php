@@ -18,7 +18,7 @@ class Games extends Controller
 		$data['developer'] = $developer->getDevelopers();
 		$data['publisher'] = $publisher->getPublishers();
 
-		echo view('templates/header');
+		echo view('templates/header', $data);
 		echo view('games/overview', $data);
 		echo view('templates/footer');
 	}
@@ -158,6 +158,7 @@ class Games extends Controller
 				$imagethumb = \Config\Services::image()
 										 ->withFile(WRITEPATH.'uploads/'.$newname)
 										 ->fit(256, 256, 'center')
+										 ->convert(IMAGETYPE_JPEG)
 										 ->save(ROOTPATH.'public/images/'.$newname.'-thumb');
 				unlink(WRITEPATH.'uploads/'.$newname);
 			}

@@ -20,23 +20,27 @@ class Users extends Controller{
                                                                'is_unique'      =>  'That Name actually exist in the Database',],
                                                 ],
                             'Userpassword'  =>  ['label'  =>  'Password',
-                                                 'rules'  =>  'required|min_length[6]|max_length[20]',
-                                                 'errors' =>  ['required'   => 'You must set a Password for the account',
+                                                                'rules'  =>  'required|min_length[6]|max_length[20]',
+                                                                'errors' =>  ['required'   => 'You must set a Password for the account',
                                                                'min_length' =>  'The minimum characters for the Password is 6 characters',
                                                                'max_length' =>  'The maximum characters for the Password is 20 characters',],
                                                 ],
                             'Userbirthdate' =>  ['label'  =>  'Birthdate',
-                                                 'rules'  =>  'required|valid_date[Y-m-d]',
-                                                 'errors' =>  ['required'   =>  'You have to set your birthdate',
+                                                              'rules'  =>  'required|valid_date[Y-m-d]',
+                                                              'errors' =>  ['required'   =>  'You have to set your birthdate',
                                                                'valid_date' =>  'The valid format for the date is YYY-MM-DD',],
                                                 ],
-                            'Usermail'      =>  ['label'  => 'Mail',
-                                                 'rules'  =>  'valid_email',
-                                                 'errors' =>  ['valid_email'  =>  'Please, give us your correct email... Or just the trash mail.',],
+                            'Usermail'          =>  ['label'  => 'Mail',
+                                                              'rules'  =>  'valid_email',
+                                                              'errors' =>  ['valid_email'  =>  'Please, give us your correct email... Or just the trash mail.',],
                                                ],
-                            'accept'        =>  ['label'  =>  'Accept',
-                                                 'rules'  =>  'required',
-                                                 'errors' =>  ['required' =>  'You have to accept that we include this data in the database.',],
+                            'Userimage'        => ['label'  =>  'Avatar',
+                                                               'rules'  =>  'required',
+                                                              'errors'  =>  ['required'  =>  'Ey! Upload an Avatar so you can be really... Really cool!',],
+                                               ],
+                            'accept'                 => ['label'  =>  'Accept',
+                                                                'rules'  =>  'required',
+                                                                'errors' =>  ['required' =>  'You have to accept that we include this data in the database.',],
                                                 ],
                           ]);
     $insuser = new UsersModel();
@@ -54,6 +58,23 @@ class Users extends Controller{
         $data['Userrole'] = $this->request->getVar('Userrole');
       } else {
         $data['Userrole'] = 0;
+      }
+      if ($this->request->getFile('Userimage') != NULL)
+      {
+        if ( is_dir (ROOTPATH.'/public/images/avatar') == FALSE)
+        {
+          mkdir(ROOTPATH.'/public/images/avatar', 0777, true);
+        }
+        $data['Userimage'] = strtolower(url_title($this->request->getVar('Username')));
+        $newname = url_title($this->request->getVar('Username'));
+        $file = $this->request->getFile('Userimage')
+                             ->move(WRITEPATH.'uploads/', $newname);
+        $imagethumb = \Config\Services::image()
+                     ->withFile(WRITEPATH.'uploads/'.$newname)
+                     ->fit(256, 256, 'center')
+                     ->convert(IMAGETYPE_JPEG)
+                     ->save(ROOTPATH.'public/images/avatar/'.$newname);
+        unlink(WRITEPATH.'uploads/'.$newname);
       }
       $insuser->insertUser($data);
 
@@ -125,6 +146,25 @@ class Users extends Controller{
       $data['Userbirthdate'] = $this->request->getVar('Userbirthdate');
       $data['Usermail'] = $this->request->getVar('Usermail');
       $data['Userid'] = $this->request->getVar('Userid');
+      if ($this->request->getVar('Userimage') != NULL)
+      {
+        $data['Userimage'] = $this->request->getVar('Userimage');
+      }
+      if ($this->request->getFile('Userimage') != NULL)
+      {
+        if ( is_dir (ROOTPATH.'/public/images/avatar') == FALSE)
+        {
+          mkdir(ROOTPATH.'/public/images/avatar', 0777, true);
+        }
+        $data['Userimage'] = $this->request->getVar('Username');
+        $newname = $this->request->getVar('Username');
+        $file = $this->request->getFile('Userimage')
+                                             ->move(WRITEPATH.'uploads/', $newname);
+        $imagethumb = \Config\Services::image()
+                     ->withFile(WRITEPATH.'uploads/'.$newname)
+                     ->fit(256, 256, 'center')
+                     ->save(ROOTPATH.'public/images/avatar/'.$newname);
+      }
       $update->updateUser($data);
       return redirect()->to('/users/landing/'.session('username'));
     } else {

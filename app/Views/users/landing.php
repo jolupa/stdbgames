@@ -8,7 +8,7 @@
               <div class="media">
                 <figure class="media-left">
                   <p class="image is-96x96">
-                    <img src="<?= base_url() ?>/images/avatars/avatar01.jpg">
+                    <img src="<?= base_url() ?>/images/avatars/<?= session('username') ?>">
                   </p>
                 </figure>
                 <div class="media-content">
