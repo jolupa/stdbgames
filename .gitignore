@@ -129,6 +129,9 @@ nb-configuration.xml
 #Database
 app/Database/db/Stadia_DB.db
 
+#Config
+app/Config/App.php
+
 #Images
 public/images/*
 
