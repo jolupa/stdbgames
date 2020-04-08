@@ -11,7 +11,7 @@
       <meta name="twitter:site" content="@DbStadia">
       <meta name="twitter:creator" content="@DbStadia">
       <meta property="og:url" content="<?= base_url() ?>/games/game/<?= $item['gSlug'] ?>">
-      <meta property="og:tittle" content="<?=$item['gName']  ?> by <?= $item['gdName'] ?> on Stadia">
+      <meta property="og:title" content="<?=$item['gName']  ?> by <?= $item['gdName'] ?> on Stadia">
       <meta property="og:description" content="<?= character_limiter($item['gAbout'], 80, '...') ?>">
       <meta property="og:image" content="<?= base_url() ?>/images/<?= $item['gImage'] ?>">
     <?php elseif (isset($developer[0]['dName'])): ?>
@@ -30,7 +30,7 @@
       <meta name="twitter:site" content="@DbStadia">
       <meta name="twitter:creator" content="@DbStadia">
       <meta property="og:url" content="<?= base_url() ?>/list/<?php if (isset($games)): ?>soon<?php else: ?>launched<?php endif; ?>">
-      <meta property="og:tittle" content="Stadia GamesDB!">
+      <meta property="og:title" content="Stadia GamesDB!">
       <meta property="og:description" content="All the Google Stadia Games in one place.">
       <?php $number = array_rand($gametype, 1); ?>
       <meta property="og:image" content="<?= base_url() ?>/images/<?= $gametype[$number]['gImage'] ?>">
@@ -42,9 +42,13 @@
       <meta name="twitter:site" content="@DbStadia">
       <meta name="twitter:creator" content="@DbStadia">
       <meta property="og:url" content="<?= base_url() ?>">
-      <meta property="og:tittle" content="Stadia GamesDB!">
+      <meta property="og:title" content="Stadia GamesDB!">
       <meta property="og:description" content="All the Google Stadia Games in one place.">
-      <?php $number = array_rand($founders, 1); ?>
+      <?php if (isset ($founders)): ?>
+        <?php $number = array_rand($founders, 1); ?>
+      <?php else: ?>
+        <?php $number = random_int(0, 30); ?>
+      <?php endif; ?>
       <meta property="og:image" content="<?= base_url() ?>/images/<?=$founders[$number]['gImage']  ?>">
     <?php endif; ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
