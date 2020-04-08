@@ -34,10 +34,6 @@ class Users extends Controller{
                                                               'rules'  =>  'valid_email',
                                                               'errors' =>  ['valid_email'  =>  'Please, give us your correct email... Or just the trash mail.',],
                                                ],
-                            'Userimage'        => ['label'  =>  'Avatar',
-                                                               'rules'  =>  'required',
-                                                              'errors'  =>  ['required'  =>  'Ey! Upload an Avatar so you can be really... Really cool!',],
-                                               ],
                             'accept'                 => ['label'  =>  'Accept',
                                                                 'rules'  =>  'required',
                                                                 'errors' =>  ['required' =>  'You have to accept that we include this data in the database.',],
@@ -126,7 +122,7 @@ class Users extends Controller{
   }
 
   public function edit($user){
-    if (session('role') == 1){
+    if (session('is_logged') == TRUE){
       $getuser = new UsersModel();
       $data['getuser'] = $getuser->getUser($user);
 
@@ -139,7 +135,7 @@ class Users extends Controller{
   }
 
   public function updateuser(){
-    if (session('role') == 1){
+    if (session('role') == 1 || session('is_logged' == TRUE)){
       $update = new UsersModel();
       $data['Username'] = $this->request->getVar('Username');
       $data['Userrole'] = $this->request->getVar('Userrole');

@@ -3,10 +3,37 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php if (isset ( $item['gName'] )): ?>
-    <title>Stadia GamesDB! -- <?= $item['gName'] ?></title>
+    <?php if (isset($item['gName'])): ?>
+      <title>Stadia GamesDB -- <?= $item['gName'] ?></title>
+      <meta name="description" content="Information about <?= $item['gName'] ?> developed by <?= $item['gdName'] ?> and published by <?= $item['gpName'] ?> in Stadia">
+      <meta name="keywords" content="<?= $item['gName'] ?>, <?= $item['gdName'] ?>, <?= $item['gpName'] ?>, Stadia, Stream, Games, Online">
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:site" content="@DbStadia">
+      <meta name="twitter:creator" content="@DbStadia">
+      <meta property="og:url" content="<?= base_url() ?>/games/game/<?= $item['gSlug'] ?>">
+      <meta property="og:tittle" content="<?=$item['gName']  ?> by <?= $item['gdName'] ?> on Stadia">
+      <meta property="og:description" content="<?= character_limiter($item['gAbout'], 80, '...') ?>">
+      <meta property="og:image" content="<?= base_url() ?>/images/<?= $item['gImage'] ?>">
+    <?php elseif (isset($developer[0]['dName'])): ?>
+      <title>Stadia GamesDB -- <?= $developer[0]['dName'] ?></title>
+      <meta name="description" content="Information about <?= $developer[0]['dName'] ?> developers of <?= $developer[0]['dgName'] ?>, and published by <?= $developer[0]['dpName'] ?> in Stadia">
+      <meta name="keywords" content="<?php foreach ($developer as $developer): ?><?= $developer['dgName'] ?>, <?= $developer['dName'] ?>, <?= $developer['dpName'] ?><?php endforeach; ?>, Stadia, Stream, Games, Online">
+    <?php elseif (isset($publisher[0]['pName'])): ?>
+      <title>Stadia GamesDB -- <?= $publisher[0]['pName'] ?></title>
+      <meta name="description" content="Information about <?= $publisher[0]['pName'] ?> publishers of <?= $publisher[0]['pgName'] ?> and published by <?= $publisher[0]['pName'] ?> in Stadia">
+      <meta name="keywords" content="<?php foreach ($publisher as $publisher): ?><?= $publisher['pgName'] ?>, <?= $publisher['pName'] ?>, <?= $publisher['pdName'] ?><?php endforeach; ?>, Stadia, Stream, Games, Online">
     <?php else: ?>
-    <title><?= $title ?></title>
+      <title>Stadia Games DB</title>
+      <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
+      <meta name="keywords" content="Stadia, Google, Games, Database, db, funny, play, stream">
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:site" content="@DbStadia">
+      <meta name="twitter:creator" content="@DbStadia">
+      <meta property="og:url" content="<?= base_url() ?>">
+      <meta property="og:tittle" content="Stadia GamesDB!">
+      <meta property="og:description" content="All the Google Stadia Games in one place.">
+      <?php $number=random_int(0, count($founders)); ?>
+      <meta property="og:image" content="<?= base_url() ?>/images/<?= $founders[$number]['gImage'] ?>">
     <?php endif; ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>

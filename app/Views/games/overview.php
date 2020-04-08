@@ -42,7 +42,7 @@
             <?php if (session('is_logged') == TRUE): ?>
             <div class="columns is-centered is-multiline">
               <div class="column is-two-thirds">
-                <p><span class="tag is-primary is-medium"><span class="heading">Add to Whishlist</span></span> <span class="tag is-primary is-medium"><span class="heading">Game Bought!</span></span> <a href="<?= base_url() ?>/users/uservote/upvote/<?= $item['gId'] ?>/<?= session('id') ?>"><span class="tag is-info is-medium"><span class="heading">UPVOTE</span></span></a> <a href="<?= base_url() ?>/users/uservote/downvote/<?= $item['gId'] ?>/<?= session('id') ?>"><span class="tag is-danger is-medium"><span class="heading">DOWNVOTE</span></span></a></p>
+                <p><?php if ($item['gRelease'] >= date('Y-m-d')): ?><span class="tag is-primary is-medium"><span class="heading">Add to Whishlist</span></span><?php endif; ?> <?php if ($item['gRelease'] <= date('Y-m-d')): ?><span class="tag is-primary is-medium"><span class="heading">Game Bought!</span></span> <a href="<?= base_url() ?>/users/uservote/upvote/<?= $item['gId'] ?>/<?= session('id') ?>"><span class="tag is-info is-medium"><span class="heading">UPVOTE</span></span></a> <a href="<?= base_url() ?>/users/uservote/downvote/<?= $item['gId'] ?>/<?= session('id') ?>"><span class="tag is-danger is-medium"><span class="heading">DOWNVOTE</span></span></a><?php endif; ?></p>
                 <?php if (session('voted') == 1): ?><p>You already voted on this game!!</p><?php endif; ?>
               </div>
             </div>

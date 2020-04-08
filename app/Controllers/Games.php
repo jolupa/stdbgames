@@ -232,7 +232,7 @@ class Games extends Controller
 		$developer = new GamesModel();
 		$data['developer'] = $developer->developerOverview($slug);
 
-		echo view('templates/header');
+		echo view('templates/header', $data);
 		echo view('games/developer', $data);
 		echo view('templates/footer');
 	}
@@ -242,7 +242,7 @@ class Games extends Controller
 		$publisher = new GamesModel();
 		$data['publisher'] = $publisher->publisherOverview($slug);
 
-		echo view('templates/header');
+		echo view('templates/header', $data);
 		echo view('games/publisher', $data);
 		echo view('templates/footer');
 	}
