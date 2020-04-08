@@ -7,7 +7,7 @@
       <title>Stadia GamesDB -- <?= $item['gName'] ?></title>
       <meta name="description" content="Information about <?= $item['gName'] ?> developed by <?= $item['gdName'] ?> and published by <?= $item['gpName'] ?> in Stadia">
       <meta name="keywords" content="<?= $item['gName'] ?>, <?= $item['gdName'] ?>, <?= $item['gpName'] ?>, Stadia, Stream, Games, Online">
-      <meta name="twitter:card" content="summary">
+      <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:site" content="@DbStadia">
       <meta name="twitter:creator" content="@DbStadia">
       <meta property="og:url" content="<?= base_url() ?>/games/game/<?= $item['gSlug'] ?>">
@@ -26,7 +26,7 @@
       <title>Stadia Games DB</title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
       <meta name="keywords" content="Stadia, Google, Games, Database, db, funny, play, stream">
-      <meta name="twitter:card" content="summary">
+      <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:site" content="@DbStadia">
       <meta name="twitter:creator" content="@DbStadia">
       <meta property="og:url" content="<?= base_url() ?>/list/<?php if (isset($games)): ?>soon<?php else: ?>launched<?php endif; ?>">
@@ -38,7 +38,7 @@
       <title>Stadia Games DB</title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
       <meta name="keywords" content="Stadia, Google, Games, Database, db, funny, play, stream">
-      <meta name="twitter:card" content="summary">
+      <meta name="twitter:card" content="summary_large_image">
       <meta name="twitter:site" content="@DbStadia">
       <meta name="twitter:creator" content="@DbStadia">
       <meta property="og:url" content="<?= base_url() ?>">
