@@ -13,7 +13,7 @@
       <meta property="og:url" content="<?= base_url() ?>/games/game/<?= $item['gSlug'] ?>">
       <meta property="og:title" content="<?=$item['gName']  ?> by <?= $item['gdName'] ?> on Stadia">
       <meta property="og:description" content="<?= character_limiter($item['gAbout'], 80, '...') ?>">
-      <meta property="og:image" content="<?= base_url() ?>/images/<?= $item['gImage'] ?>">
+      <meta property="og:image" content="<?= base_url() ?>/images/<?= $item['gImage'] ?>.jpg">
     <?php elseif (isset($developer[0]['dName'])): ?>
       <title>Stadia GamesDB -- <?= $developer[0]['dName'] ?></title>
       <meta name="description" content="Information about <?= $developer[0]['dName'] ?> developers of <?= $developer[0]['dgName'] ?>, and published by <?= $developer[0]['dpName'] ?> in Stadia">
@@ -33,7 +33,7 @@
       <meta property="og:title" content="Stadia GamesDB!">
       <meta property="og:description" content="All the Google Stadia Games in one place.">
       <?php $number = array_rand($gametype, 1); ?>
-      <meta property="og:image" content="<?= base_url() ?>/images/<?= $gametype[$number]['gImage'] ?>">
+      <meta property="og:image" content="<?= base_url() ?>/images/<?= $gametype[$number]['gImage'] ?>.jpg">
     <?php else: ?>
       <title>Stadia Games DB</title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
@@ -49,7 +49,7 @@
       <?php else: ?>
         <?php $number = random_int(0, 30); ?>
       <?php endif; ?>
-      <meta property="og:image" content="<?= base_url() ?>/images/<?=$founders[$number]['gImage']  ?>">
+      <meta property="og:image" content="<?= base_url() ?>/images/<?=$founders[$number]['gImage']  ?>.jpg">
     <?php endif; ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
