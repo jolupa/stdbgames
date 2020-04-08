@@ -314,7 +314,7 @@ class Games extends Controller
 		$data['gametype'] = $list->getGames($type);
 		$data['type'] = $type;
 
-		echo view('templates/header');
+		echo view('templates/header', $data);
 		echo view('games/list', $data);
 		echo view('templates/footer');
 	}

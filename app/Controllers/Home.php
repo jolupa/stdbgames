@@ -20,11 +20,11 @@ class Home extends Controller{
 		$data['lasts'] = $lastgames->getLastGames();
 
 		echo view('templates/header', $data);
-		echo view('home/lasts', $data['lasts']);
-		echo view('home/founders', $data['founders']);
+		echo view('home/lasts', $data);
+		echo view('home/founders', $data);
 		echo view('search/searchform');
-		echo view('home/soon', $data['soon']);
-		echo view('home/list', $data['games']);
+		echo view('home/soon', $data);
+		echo view('home/list', $data);
 		echo view('templates/footer');
 	}
 }

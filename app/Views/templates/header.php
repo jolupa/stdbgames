@@ -22,6 +22,18 @@
       <title>Stadia GamesDB -- <?= $publisher[0]['pName'] ?></title>
       <meta name="description" content="Information about <?= $publisher[0]['pName'] ?> publishers of <?= $publisher[0]['pgName'] ?> and published by <?= $publisher[0]['pName'] ?> in Stadia">
       <meta name="keywords" content="<?php foreach ($publisher as $publisher): ?><?= $publisher['pgName'] ?>, <?= $publisher['pName'] ?>, <?= $publisher['pdName'] ?><?php endforeach; ?>, Stadia, Stream, Games, Online">
+    <?php elseif (isset($gametype)): ?>
+      <title>Stadia Games DB</title>
+      <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
+      <meta name="keywords" content="Stadia, Google, Games, Database, db, funny, play, stream">
+      <meta name="twitter:card" content="summary">
+      <meta name="twitter:site" content="@DbStadia">
+      <meta name="twitter:creator" content="@DbStadia">
+      <meta property="og:url" content="<?= base_url() ?>/list/<?php if (isset($games)): ?>soon<?php else: ?>launched<?php endif; ?>">
+      <meta property="og:tittle" content="Stadia GamesDB!">
+      <meta property="og:description" content="All the Google Stadia Games in one place.">
+      <?php $number = array_rand($gametype, 1); ?>
+      <meta property="og:image" content="<?= base_url() ?>/images/<?= $gametype[$number]['gImage'] ?>">
     <?php else: ?>
       <title>Stadia Games DB</title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
@@ -32,8 +44,8 @@
       <meta property="og:url" content="<?= base_url() ?>">
       <meta property="og:tittle" content="Stadia GamesDB!">
       <meta property="og:description" content="All the Google Stadia Games in one place.">
-      <?php $number=random_int(0, count($founders)); ?>
-      <meta property="og:image" content="<?= base_url() ?>/images/<?= $founders[$number]['gImage'] ?>">
+      <?php $number = array_rand($founders, 1); ?>
+      <meta property="og:image" content="<?= base_url() ?>/images/<?=$founders[$number]['gImage']  ?>">
     <?php endif; ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
