@@ -208,5 +208,47 @@ class GamesModel extends Model
                      ->getResultArray();
     }
   }
+
+	public function getGamesVotedBy($gameid){
+		$db = \Config\Database::connect();
+		$builder = $db->table('votes')
+                                ->select('Gameid AS vgId,
+                                                users.Image AS vuImage')
+                                ->join('users', 'users.Userid = votes.Userid')
+											->where('vgId', $gameid);
+		return $builder->get()
+											 ->getResultArray();
+	}
+
+  public function getGamesInLibraries($gameid){
+    $db = \Config\Database::connect();
+    $builder = $db->table('libraries')
+                                ->select('Gameid AS vgId,
+                                    users.Image AS vuImage')
+                                ->join('users', 'users.Userid = libraries.Userid')
+                                ->where('vgId', $gameid);
+    return $builder->get()
+                              ->getResultArray();
+  }
+
+  public function getGamesWished($gameid){
+    $db = \Config\Database::connect();
+    $builder = $db->table('wishes')
+                                ->select('Gameid AS vgId,
+                                    users.Image AS vuImage')
+                                ->join('users', 'users.Userid = wishes.Userid')
+                                ->where('vgId', $gameid);
+    return $builder->get()
+                              ->getResultArray();
+  }
+
+  public function getTotalScore($gameid){
+    $db = \Config\Database::connect();
+    $builder = $db->table('votes')
+                              ->selectAVG('Score')
+                              ->where('Gameid', $gameid);
+    return $builder->get()
+                              ->getRowArray();
+  }
 }
 ?>

@@ -20,7 +20,7 @@
         <div class="media">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img src="<?= base_url() ?>/images/<?= $soon['gImage'] ?>-thumb">
+              <img title="<?= $soon['gName'] ?>" src="<?= base_url() ?>/images/<?= $soon['gImage'] ?>-thumb">
             </p>
           </figure>
           <div class="media-content">

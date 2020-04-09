@@ -17,7 +17,7 @@
         <div class="media">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img src="<?= base_url() ?>/images/<?= $games['gImage'] ?>-thumb">
+              <img title="<?= $games['gName'] ?>" src="<?= base_url() ?>/images/<?= $games['gImage'] ?>-thumb">
             </p>
           </figure>
           <div class="media-content">

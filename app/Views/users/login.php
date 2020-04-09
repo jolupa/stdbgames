@@ -8,7 +8,7 @@
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
               <label class="label">Username:</label>
-              <input class="input" type="text" name="Username">
+              <input class="input" type="text" name="Name">
             </div>
             <div class="control is-expanded">
               <label class="label">Password:</label>

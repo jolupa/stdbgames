@@ -20,7 +20,7 @@
         <div class="media">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img src="<?= base_url() ?>/images/<?= $founders['gImage'] ?>-thumb">
+              <img title="<?= $founders['gName'] ?>" src="<?= base_url() ?>/images/<?= $founders['gImage'] ?>-thumb">
             </p>
           </figure>
           <div class="media-content">

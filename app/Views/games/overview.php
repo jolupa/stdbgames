@@ -34,21 +34,17 @@
                   <p class="title is-6"><?= $item['gRelease'] ?></p>
                 </div>
               </div>
+              <?= view_cell( '\App\Controllers\Games::totalvotes', 'gameid='.$item['gId'] ) ?>
             </nav>
           </div>
         </div>
         <div class="card-content">
           <div class="content">
             <?php if (session('is_logged') == TRUE): ?>
-            <div class="columns is-centered is-multiline">
-              <div class="column is-two-thirds">
-                <p><?php if ($item['gRelease'] >= date('Y-m-d')): ?><span class="tag is-primary is-medium"><span class="heading">Add to Whishlist</span></span><?php endif; ?> <?php if ($item['gRelease'] <= date('Y-m-d')): ?><span class="tag is-primary is-medium"><span class="heading">Game Bought!</span></span> <a href="<?= base_url() ?>/users/uservote/upvote/<?= $item['gId'] ?>/<?= session('id') ?>"><span class="tag is-info is-medium"><span class="heading">UPVOTE</span></span></a> <a href="<?= base_url() ?>/users/uservote/downvote/<?= $item['gId'] ?>/<?= session('id') ?>"><span class="tag is-danger is-medium"><span class="heading">DOWNVOTE</span></span></a><?php endif; ?></p>
-                <?php if (session('voted') == 1): ?><p>You already voted on this game!!</p><?php endif; ?>
-              </div>
-            </div>
+              <?= view_cell( '\App\Controllers\Users::userinteraction', 'gameid='.$item['gId'].', userid='.session('id') ) ?>
             <?php endif; ?>
             <?php if ( isset($item['gRelease']) && $item['gRelease'] <= date('Y-m-d')): ?>
-            <div class="columns is-centered is-multiline">
+            <div class="columns is-centered">
               <div class="column is-two-thirds">
                 <p><?php if ($item['gPro'] == 1 || $item['gProtill'] > date('Y-m-d')): ?><span class="tag is-primary is-medium"><span class="heading">Free for <strong>Pro</strong></span></span><?php elseif (!empty($item['gProtill']) && $item['gProtill'] < date('Y-m-d')): ?><span class="tag is-danger is-medium"><span class="heading">Was free for <strong>Pro</strong></span></span><?php else: ?><span class="tag is-danger is-medium"><span class="heading">No Free for <strong>Pro</strong></span></span><?php endif; ?> <?php if (!empty($item['gProfrom'])): ?><?php if (!empty($item['gProtill']) && $item['gProtill'] < date('Y-m-d')): ?><span class="tag is-danger is-medium"><span class="heading">Was Free on <strong><?= $item['gProfrom'] ?></strong></span></span><?php else: ?><span class="tag is-primary is-medium"><span class="heading">Is free since <strong><?= $item['gProfrom'] ?></strong></span></span><?php endif; ?> <?php if (!empty($item['gProtill']) && $item['gProtill'] < date('Y-m-d')): ?><span class="tag is-danger is-medium"><span class="heading">Was Free till <strong><?= $item['gProtill'] ?></strong></span></span><?php elseif ($item['gProtill'] > date('Y-m-d')): ?><span class="tag is-danger is-medium"><span class="heading">Free till <strong><?= $item['gProtill'] ?></strong></span></span><?php endif; ?><?php endif; ?></p>
               </div>
@@ -61,6 +57,8 @@
                 <?= $item['gAbout'] ?>
               </div>
             </div>
+            <?= view_cell( '\App\Controllers\Games::usersvote', 'gameid='.$item['gId'] ) ?>
+            <?= view_cell( '\App\Controllers\Games::userslibrary', 'gameid='.$item['gId'] ) ?>
           </div>
         </div>
       </div>

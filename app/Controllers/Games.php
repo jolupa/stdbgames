@@ -17,7 +17,8 @@ class Games extends Controller
 		$data['item'] = $item->getGame($slug);
 		$data['developer'] = $developer->getDevelopers();
 		$data['publisher'] = $publisher->getPublishers();
-
+		$session = \Config\Services::session();
+		$session->set('current_url', $_SERVER['REQUEST_URI']);
 		echo view('templates/header', $data);
 		echo view('games/overview', $data);
 		echo view('templates/footer');
@@ -317,6 +318,34 @@ class Games extends Controller
 		echo view('templates/header', $data);
 		echo view('games/list', $data);
 		echo view('templates/footer');
+	}
+
+	public function usersvote($gameid){
+		$uvotes = new gamesModel();
+		$data['votesby'] = $uvotes->getGamesVotedBy($gameid);
+
+		return view('games/votedby', $data);
+	}
+
+	public function userslibrary($gameid){
+		$library = new gamesModel();
+		$data['library'] = $library->getGamesInLibraries($gameid);
+
+		return view('games/library', $data);
+	}
+
+	public function userswish($gameid){
+		$wish = new gamesModel();
+		$data['wish'] = $wish->getGamesWished($gameid);
+
+		return view('games/wish', $data);
+	}
+
+	public function totalvotes($gameid){
+		$total = new GamesModel();
+		$data['total'] = $total->getTotalScore($gameid);
+
+		return view('games/totalvotes', $data);
 	}
 }
 ?>

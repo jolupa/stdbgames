@@ -12,10 +12,10 @@ class UsersModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('users')
                   ->select('Userid,
-                            Username,
-                            Userpassword,
-                            Userrole')
-                  ->where('Username', $form['Username']);
+                            Name,
+                            Password,
+                            Role')
+                  ->where('Name', $form['Name']);
     return $builder->get()
                    ->getRowArray();
   }
@@ -24,11 +24,11 @@ class UsersModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('users')
                   ->select('Userid,
-                            Username,
-                            Usermail,
-                            Userbirthdate,
-                            Userdateregistry,
-                            Userrole')
+                            Name,
+                            Mail,
+                            Birthdate,
+                            Registrydate,
+                            Role')
                   ->orderBy('Userid', 'DESC');
     return $builder->get(10)
                    ->getResultArray();
@@ -37,7 +37,7 @@ class UsersModel extends Model{
   public function getUser($user){
     $db = \Config\Database::connect();
     $builder = $db->table('users')
-                  ->where('Username', $user);
+                  ->where('Name', $user);
     return $builder->get()
                    ->getRowArray();
   }
@@ -62,13 +62,52 @@ class UsersModel extends Model{
     return $builder->insert($data);
   }
 
-  public function checkvote($data){
+  public function addUserLibrary($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('libraries');
+    return $builder->insert($data);
+  }
+
+  public function addUserWish($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('wishes');
+    return $builder->insert($data);
+  }
+
+  public function checkUserVote($gameid, $userid){
     $db = \Config\Database::connect();
     $builder = $db->table('votes')
-                  ->where('Userid', $data['Userid'])
-                  ->where('Gameid', $data['Gameid']);
-    return $builder->get()
-                   ->getRowArray();
+                  ->where('Userid', $userid)
+                  ->where('Gameid', $gameid);
+    if (is_array($builder->get()->getRowArray())){
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  public function checkUserPurchase($gameid, $userid){
+    $db = \Config\Database::connect();
+    $builder = $db->table('libraries')
+                              ->where('Gameid', $gameid)
+                              ->where('Userid', $userid);
+    if (is_array($builder->get()->getRowArray())){
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
+  public function checkUserWish($gameid, $userid){
+    $db = \Config\Database::connect();
+    $builder = $db->table('wishes')
+                              ->where('Gameid', $gameid)
+                              ->where('Userid');
+    if (!empty ($builder->get()->getRowArray() )){
+      return 1;
+      } else {
+        return 0;
+      }
   }
 
   public function getGamesVoted($user){
@@ -83,6 +122,40 @@ class UsersModel extends Model{
                    ->where('Userid', $user);
      return $builder->get()
                     ->getResultArray();
+  }
+
+  public function getGamesWish($user){
+    $db = \Config\Database::connect();
+    $builder = $db->table('wishes')
+                  ->select('wishes.Gameid,
+                            wishes.Userid,
+                            games.Slug,
+                            games.Name,
+                            games,Image')
+                   ->join('games', 'wishes.Gameid = games.Gameid')
+                   ->where('Userid', $user);
+     return $builder->get()
+                    ->getResultArray();
+  }
+
+  public function getGamesLibrary($user){
+    $db = \Config\Database::connect();
+    $builder = $db->table('libraries')
+                  ->select('games.Slug,
+                            games.Name,
+                            games,Image')
+                   ->join('games', 'libraries.Gameid = games.Gameid')
+                   ->where('Userid', $user);
+     return $builder->get()
+                    ->getResultArray();
+  }
+
+  public function deleteUserWish($gameid, $userid){
+    $db = \Config\Database::connect();
+    $builder = $db->table('wished')
+                              ->where('Gameid', $gameid)
+                              ->where('Userid', $userid);
+      return $builder->delete();
   }
 }
 ?>

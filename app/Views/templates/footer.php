@@ -5,6 +5,8 @@
       </div>
     </footer>
   </body>
+</html>
+
   <script>
     $(document).ready(function() {
 
@@ -18,4 +20,3 @@
       });
     });
   </script>
-</html>

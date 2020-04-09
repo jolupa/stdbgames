@@ -13,7 +13,8 @@
           <div class="card-content">
             <div class="columns">
               <div class="column">
-                <p class="title is-4"><span class="icon has-text-success"><i class="fas fa-laptop-code"></i></span> Developed Games:</p>
+                <p class="subtitle is-5">Games</p>
+                <p class="title is-3">Developer:</p>
               </div>
             </div>
             <div class="columns is-multiline">
@@ -22,7 +23,7 @@
                 <div class="media">
                   <figure class="media-left">
                     <p class="image is-64x64">
-                      <img src="<?= base_url() ?>/images/<?= $developer['dgImage'] ?>-thumb">
+                      <img title="<?= $developer['dgName'] ?>" src="<?= base_url() ?>/images/<?= $developer['dgImage'] ?>-thumb">
                     </p>
                   </figure>
                   <div class="media-content">

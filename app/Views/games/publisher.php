@@ -13,7 +13,8 @@
           <div class="card-content">
             <div class="columns">
               <div class="column">
-                <p class="title is-4"><span class="icon has-text-success"><i class="fas fa-cloud-upload-alt"></i></span> Published Games:</p>
+                <p class="subtitle is-5">Games</p>
+                <p class="title is-3">Published:</p>
               </div>
             </div>
             <div class="columns is-multiline">
@@ -22,7 +23,7 @@
                 <div class="media">
                   <figure class="media-left">
                     <p class="image is-64x64">
-                      <img src="<?= base_url() ?>/images/<?= $publisher['pgImage'] ?>-thumb">
+                      <img title="<?= $publisher['pgName'] ?>" src="<?= base_url() ?>/images/<?= $publisher['pgImage'] ?>-thumb">
                     </p>
                   </figure>
                   <div class="media-content">

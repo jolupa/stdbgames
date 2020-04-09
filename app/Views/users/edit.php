@@ -4,20 +4,20 @@
       <div class="column is-full-width">
         <p class="subtitle is-5">Edit</p>
         <p class="title is-3">User:</p>
-        <form method="post" action="<?= base_url() ?>/users/updateuser">
+        <form method="post" action="<?= base_url() ?>/users/updateuser" enctype="multipart/form-data">
           <input type="hidden" name="Userid" value="<?= $getuser['Userid'] ?>">
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
               <label class="label">Username</label>
-              <input class="input" type="text" name="Username" value="<?= $getuser['Username'] ?>">
+              <input class="input" type="text" name="Name" value="<?= $getuser['Name'] ?>">
             </div>
             <?php if ( session('role') == 1 || session('is_logged' == TRUE)): ?>
             <div class="control">
               <label class="label">Role</label>
               <div class="select">
-                <select name="Userrole">
-                  <option value="0" <?php if ($getuser['Userrole'] == 0): ?>selected<?php endif; ?>>User</option>
-                  <option value="1" <?php if ($getuser['Userrole'] == 1): ?>selected<?php endif; ?> >Admin</option>
+                <select name="Role">
+                  <option value="0" <?php if ($getuser['Role'] == 0): ?>selected<?php endif; ?>>User</option>
+                  <option value="1" <?php if ($getuser['Role'] == 1): ?>selected<?php endif; ?> >Admin</option>
                 </select>
               </div>
             </div>
@@ -26,20 +26,20 @@
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
               <label class="label">E-Mail:</label>
-              <input class="input" type="text" name="Usermail" value="<?= $getuser['Usermail'] ?>">
+              <input class="input" type="text" name="Mail" value="<?= $getuser['Mail'] ?>">
             </div>
             <div class="control is-expanded">
               <label class="label">Birthdate:</label>
-              <input class="input" type="text" name="Userbirthdate" value="<?= $getuser['Userbirthdate'] ?>" <?php if( session('username') != $getuser['Username']): ?>disabled<?php endif; ?>>
+              <input class="input" type="text" name="Birthdate" value="<?= $getuser['Birthdate'] ?>" <?php if( session('username') != $getuser['Username']): ?>disabled<?php endif; ?>>
             </div>
           </div>
-          <?php if(!empty($getuser['Userimage'])): ?>
-          <input type="hidden" name="Userimage" value="<?= $getuser['Userimage'] ?>">
+          <?php if(!empty($getuser['Image'])): ?>
+          <input type="hidden" name="Image" value="<?= $getuser['Image'] ?>">
           <?php else: ?>
           <div class="field is-grouped file has-name is-right">
             <div class="control is-expanded">
               <label class="file-label" id="insertuser">
-                <input class="file-input" type="file" name="Userimage">
+                <input class="file-input" type="file" name="Image">
                 <span class="file-cta is-expanded">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>

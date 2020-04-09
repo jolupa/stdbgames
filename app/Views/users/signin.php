@@ -4,7 +4,7 @@
       <div class="column is-two-thirds">
         <p class="subtitle is-5">Be part</p>
         <p class="title is-3">of Us:</p>
-        <form method="post" action="<?= base_url() ?>/users/insertuser">
+        <form method="post" action="<?= base_url() ?>/users/insertuser" enctype="multipart/form-data">
           <p class="is-4">We don't use your data to trade with anyone. We only use your data for the correct use of the site and to cast votes over the games we have in the database. Thanks!</p><br>
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
@@ -32,7 +32,7 @@
           <div class="field is-grouped is-grouped-multiline file has-name is-right">
             <div class="control is-expanded">
               <label class="file-label" id="insertgame">
-                <input class="file-input" type="file" name="Image">
+                <input class="file-input" type="file" name="UserImage">
                 <span class="file-cta is-expanded">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>
