@@ -8,7 +8,7 @@
       <div class="column is-1 is-inline-block">
           <div class="media">
             <div class="media-left">
-              <figure class="image is-48x48">
+              <figure class="image is-96x96">
                 <img title="<?= $votesby['vuImage'] ?>" src="<?= base_url() ?>/images/avatar/<?= $votesby['vuImage'] ?>">
               </figure>
             </div>
