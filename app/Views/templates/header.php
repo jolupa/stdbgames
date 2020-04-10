@@ -11,7 +11,9 @@
       <meta name="twitter:site" content="@DbStadia">
       <meta name="twitter:creator" content="@DbStadia">
       <meta property="twitter:title" content="<?=$item['gName']  ?> by <?= $item['gdName'] ?> on Stadia">
+      <?php if (!empty($item['gAbout'])): ?>
       <meta property="twitter:description" content="<?= character_limiter($item['gAbout'], 80, '...') ?>">
+      <?php endif; ?>
       <meta property="twitter:image" content="<?= base_url() ?>/images/<?= $item['gImage'] ?>.jpeg">
       <meta property="twitter:image:alt" content="content="<?=$item['gName']  ?> by <?= $item['gdName'] ?> on Stadia">
     <?php elseif (isset($developer[0]['dName'])): ?>
