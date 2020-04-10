@@ -250,5 +250,25 @@ class GamesModel extends Model
     return $builder->get()
                               ->getRowArray();
   }
+
+  public function countGames(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('games');
+    return $builder->get()->getResultArray();
+  }
+
+  public function countGamesLaunched(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('games')
+                              ->where('Release <=', date('Y-m-d'));
+    return $builder->get()->getResultArray();
+  }
+
+  public function countGamesComing(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('games')
+                              ->where('Release >=', date('Y-m-d'));
+    return $builder->get()->getResultArray();
+  }
 }
 ?>

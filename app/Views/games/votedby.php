@@ -5,17 +5,15 @@
     <p class="title is-3">voted by:</p>
     <div class="columns is-multiline">
       <?php foreach ( $votesby as $votesby ): ?>
-      <div class="column is-1">
-        <div class="content">
+      <div class="column is-1 is-inline-block">
           <div class="media">
             <div class="media-left">
-              <p class="image is-64x64">
-              <img title="<?= $votesby['vuImage'] ?>" src="<?= base_url() ?>/images/avatar/<?= $votesby['vuImage'] ?>">
-              </p>
+              <figure class="image is-48x48">
+                <img title="<?= $votesby['vuImage'] ?>" src="<?= base_url() ?>/images/avatar/<?= $votesby['vuImage'] ?>">
+              </figure>
             </div>
           </div>
         </div>
-      </div>
       <?php endforeach; ?>
     </div>
   </div>

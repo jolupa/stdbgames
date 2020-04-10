@@ -87,7 +87,7 @@
       <!-- og Metatags Not Essential Only Analytics -->
       <meta name="twitter:site" content="@DbStadia">
     <?php endif; ?>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.1/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </head>
@@ -106,13 +106,21 @@
         <div class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="<?= base_url() ?>/about">About</a>
+            <?=  view_cell ( '\App\Controllers\Games::statistics' ) ?>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">Go to...</a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="<?= base_url() ?>/games/list/launched">... Games Launched</a>
+                <a class="navbar-item" href="<?= base_url() ?>/games/list/soon">... Games Coming Soon</a>
+              </div>
+            </div>
             <?php if ( session('role') == 1): ?>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">New...</a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="<?= base_url() ?>/games/gameform/">...Game</a>
-                <a class="navbar-item" href="<?= base_url() ?>/games/devform/">...Developer</a>
-                <a class="navbar-item" href="<?= base_url() ?>/games/pubform/">...Publisher</a>
+                <a class="navbar-item" href="<?= base_url() ?>/games/gameform/">... Game</a>
+                <a class="navbar-item" href="<?= base_url() ?>/games/devform/">... Developer</a>
+                <a class="navbar-item" href="<?= base_url() ?>/games/pubform/">... Publisher</a>
               </div>
             </div>
             <?php endif; ?>

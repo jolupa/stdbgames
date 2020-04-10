@@ -8,12 +8,12 @@
       </div>
       <div class="columns is-multiline">
       <?php foreach($library as $library): ?>
-      <div class="column is-1">
-        <div class="content">
-          <div class="media">
-              <a href="<?= base_url() ?>/games/game/<?= $library['Slug'] ?>"><p class="image is-96x96">
-                <img title="<?= $library['Name'] ?>" src="<?= base_url() ?>/images/<?= $library['Image'] ?>-thumb" alt="<?= $library['Name'] ?>"></a>
-              </p>
+      <div class="column is-1 is-inline-block">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-96x96">
+              <a href="<?= base_url() ?>/games/game/<?= $library['Slug'] ?>"><img title="<?= $library['Name'] ?>" src="<?= base_url() ?>/images/<?= $library['Image'] ?>-thumb" alt="<?= $library['Name'] ?>"></a>
+            </figure>
           </div>
         </div>
       </div>

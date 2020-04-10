@@ -347,5 +347,16 @@ class Games extends Controller
 
 		return view('games/totalvotes', $data);
 	}
+
+	public function statistics(){
+		$totgames = new GamesModel();
+		$totlaunched = new GamesModel();
+		$totcoming = new GamesModel();
+		$data['totgames'] = $totgames->countGames();
+		$data['totlaunched'] = $totlaunched->countGamesLaunched();
+		$data['totcoming'] = $totcoming->countGamesComing();
+
+		return view('games/statics', $data);
+	}
 }
 ?>
