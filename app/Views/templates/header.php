@@ -14,7 +14,7 @@
       <?php if (!empty($item['gAbout'])): ?>
       <meta property="twitter:description" content="<?= character_limiter($item['gAbout'], 80, '...') ?>">
       <?php endif; ?>
-      <meta property="twitter:image" content="<?= base_url() ?>/images/<?= $item['gImage'] ?>.jpeg.<?= uniqid() ?>">
+      <meta property="twitter:image" content="<?= base_url() ?>/images/<?= $item['gImage'] ?>.jpeg?<?= uniqid() ?>">
       <meta property="twitter:image:alt" content="content="<?=$item['gName']  ?> by <?= $item['gdName'] ?> on Stadia">
     <?php elseif (isset($developer[0]['dName'])): ?>
       <title>Stadia GamesDB -- <?= $developer[0]['dName'] ?></title>
@@ -34,7 +34,7 @@
       <meta property="twitter:title" content="Stadia GamesDB!">
       <meta property="twitter:description" content="All the Google Stadia Games in one place.">
       <?php $number = array_rand($gametype, 1); ?>
-      <meta property="twitter:image" content="<?= base_url() ?>/images/<?= $gametype[$number]['gImage'] ?>.jpeg.<?= uniqid() ?>">
+      <meta property="twitter:image" content="<?= base_url() ?>/images/<?= $gametype[$number]['gImage'] ?>.jpeg?<?= uniqid() ?>">
       <meta property="twitter:image:alt" content="<?= $gametype[$number]['gName'] ?>">
     <?php else: ?>
       <title>Stadia Games DB</title>
@@ -50,7 +50,7 @@
       <?php else: ?>
         <?php $number = random_int(0, 30); ?>
       <?php endif; ?>
-      <meta property="twitter:image" content="<?= base_url() ?>/images/<?=$founders[$number]['gImage']  ?>.jpeg.<?= uniqid() ?>">
+      <meta property="twitter:image" content="<?= base_url() ?>/images/<?=$founders[$number]['gImage']  ?>.jpeg?<?= uniqid() ?>">
       <meta property="twitter:image:alt" content"<?= $founders[$number]['gName'] ?>">
     <?php endif; ?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
