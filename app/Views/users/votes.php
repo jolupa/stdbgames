@@ -11,11 +11,9 @@
       <div class="column is-1">
         <div class="content">
           <div class="media">
-            <figure class="media-left">
-              <a href="<?= base_url() ?>/games/game/<?= $voted['Slug'] ?>"><p class="image is-96x96">
-                <img title="<?= $voted['Name'] ?>" src="<?= base_url() ?>/images/<?= $voted['Image'] ?>-thumb" alt="<?= $voted['Name'] ?>"></a>
-              </p>
-            </figure>
+            <p class="image is-96x96">
+              <a href="<?= base_url() ?>/games/game/<?= $voted['Slug'] ?>"><img title="<?= $voted['Name'] ?>" src="<?= base_url() ?>/images/<?= $voted['Image'] ?>-thumb" alt="<?= $voted['Name'] ?>"></a>
+            </p>
           </div>
         </div>
       </div>
