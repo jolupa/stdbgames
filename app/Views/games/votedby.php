@@ -7,7 +7,7 @@
   </div>
   <div class="columns">
       <?php foreach ( $votesby as $votesby ): ?>
-        <div class="column is-1 is-inline-bloc">
+        <div class="column is-1 is-inline-block">
           <div class="media">
             <div class="media-left">
               <figure class="image is-96x96">
