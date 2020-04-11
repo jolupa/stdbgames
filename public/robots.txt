@@ -2,4 +2,4 @@ User-agent: *
 Disallow:
 
 User-agent: Twitterbot
-Allow: images/
+Allow: /images
