@@ -72,7 +72,7 @@
       <div class="field">
         <label class="label">What's the game about:</label>
         <div class="control">
-          <textarea class="textarea" name="About"><?= $game['gAbout'] ?></textarea>
+          <textarea class="textarea" name="About" id="tinymce"><?= $game['gAbout'] ?></textarea>
         </div>
       </div>
       <!-- File Chooser Entry -->

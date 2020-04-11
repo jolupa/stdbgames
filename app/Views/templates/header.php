@@ -22,17 +22,17 @@
       <meta name="twitter:site" content="@DbStadia">
     <?php elseif (isset($developer[0]['dName'])): ?>
       <title>Stadia GamesDB -- <?= $developer[0]['dName'] ?></title>
-      <meta name="description" content="Information about <?= $developer[0]['dName'] ?> developers of <?= $developer[0]['dgName'] ?>, and published by <?= $developer[0]['dpName'] ?> in Stadia">
+      <meta name="description" content="Information about <?= $developer[0]['dName'] ?>  in Stadia">
       <meta name="keywords" content="<?php foreach ($developer as $developer): ?><?= $developer['dgName'] ?>, <?= $developer['dName'] ?>, <?= $developer['dpName'] ?><?php endforeach; ?>, Stadia, Stream, Games, Online">
       <!-- og Metatags -->
-      <meta property="og:title" content="Games Developed by <?= $item['dName'] ?> on Stadia -- Stadia GamesDB!">
-      <meta property="og:description" content="All the games Developed by <?= $item['dName'] ?>">
-      <meta property="og:image" content="<?= base_url() ?>/images/<?= $item['dgImage'] ?>.jpeg">
-      <meta property="og:url" content="<?= base_url() ?>/games/developer/<?= $item['dSlug'] ?>">
+      <meta property="og:title" content="Games Developed by <?= $item[0]['dName'] ?> on Stadia -- Stadia GamesDB!">
+      <meta property="og:description" content="All the games Developed by <?= $item[0]['dName'] ?>">
+      <meta property="og:image" content="<?= base_url() ?>/images/<?= $item[0]['dgImage'] ?>.jpeg">
+      <meta property="og:url" content="<?= base_url() ?>/games/developer/<?= $item[0]['dSlug'] ?>">
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
       <meta property="og_site_name" content="Stadia GamesDB!">
-      <meta name="twitter:image_alt" content="<?= $item['dName'] ?>">
+      <meta name="twitter:image_alt" content="<?= $item[0]['dName'] ?>">
       <!-- og Metatags Not Essential Only Analytics -->
       <meta name="twitter:site" content="@DbStadia">
     <?php elseif (isset($publisher[0]['pName'])): ?>

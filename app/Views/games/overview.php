@@ -44,14 +44,14 @@
               <?= view_cell( '\App\Controllers\Users::userinteraction', 'gameid='.$item['gId'].', userid='.session('id') ) ?>
             <?php endif; ?>
             <?php if ( isset($item['gRelease']) && $item['gRelease'] <= date('Y-m-d')): ?>
-            <div class="columns is-centered">
-              <div class="column is-two-thirds">
+            <div class="columns">
+              <div class="column is-full-width">
                 <p><?php if ($item['gPro'] == 1 || $item['gProtill'] > date('Y-m-d')): ?><span class="tag is-primary is-medium"><span class="heading">Free for <strong>Pro</strong></span></span><?php elseif (!empty($item['gProtill']) && $item['gProtill'] < date('Y-m-d')): ?><span class="tag is-danger is-medium"><span class="heading">Was free for <strong>Pro</strong></span></span><?php else: ?><span class="tag is-danger is-medium"><span class="heading">No Free for <strong>Pro</strong></span></span><?php endif; ?> <?php if (!empty($item['gProfrom'])): ?><?php if (!empty($item['gProtill']) && $item['gProtill'] < date('Y-m-d')): ?><span class="tag is-danger is-medium"><span class="heading">Was Free on <strong><?= $item['gProfrom'] ?></strong></span></span><?php else: ?><span class="tag is-primary is-medium"><span class="heading">Is free since <strong><?= $item['gProfrom'] ?></strong></span></span><?php endif; ?> <?php if (!empty($item['gProtill']) && $item['gProtill'] < date('Y-m-d')): ?><span class="tag is-danger is-medium"><span class="heading">Was Free till <strong><?= $item['gProtill'] ?></strong></span></span><?php elseif ($item['gProtill'] > date('Y-m-d')): ?><span class="tag is-danger is-medium"><span class="heading">Free till <strong><?= $item['gProtill'] ?></strong></span></span><?php endif; ?><?php endif; ?></p>
               </div>
             </div>
             <?php endif; ?>
-            <div class="columns is-centered">
-              <div class="column is-two-thirds">
+            <div class="columns">
+              <div class="column is-full-widht">
                 <p class="subtitle is-5">About the</p>
                 <p class="title is-3">Game:</p>
                 <?= $item['gAbout'] ?>

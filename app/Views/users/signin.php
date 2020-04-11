@@ -9,22 +9,22 @@
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
               <label class="label">Username</label>
-              <input class="input" type="text" name="Username">
+              <input class="input" type="text" name="Name">
             </div>
             <div class="control is-expanded">
               <label class="label">Password</label>
-              <input class="input" type="password" name="Userpassword">
+              <input class="input" type="password" name="Password">
               <p class="help">6 characters minimum-10 maximum</p>
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
               <label class="label">E-Mail:</label>
-              <input class="input" type="text" name="Usermail">
+              <input class="input" type="text" name="Mail">
             </div>
             <div class="control is-expanded">
               <label class="label">Birthdate:</label>
-              <input class="input" type="text" name="Userbirthdate">
+              <input class="input" type="text" name="Birthdate">
               <p class="help">In the form of YYYY-MM-DD</p>
             </div>
           </div>
@@ -32,7 +32,7 @@
           <div class="field is-grouped is-grouped-multiline file has-name is-right">
             <div class="control is-expanded">
               <label class="file-label" id="insertgame">
-                <input class="file-input" type="file" name="UserImage">
+                <input class="file-input" type="file" name="Image">
                 <span class="file-cta is-expanded">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>

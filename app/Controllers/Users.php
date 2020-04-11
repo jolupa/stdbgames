@@ -186,9 +186,11 @@ class Users extends Controller{
     $uvote = new UsersModel();
     if ($vote == 'upvote'){
       $data['score'] = 100;
+    } elseif ($vote == 'well'){
+      $data['score'] = 50;
     }
     if ($vote == 'downvote') {
-      $data['score'] = -100;
+      $data['score'] = 0;
     }
     $data['Gameid'] = $gameid;
     $data['Userid'] = $userid;
