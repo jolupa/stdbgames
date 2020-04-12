@@ -14,7 +14,7 @@
             <div class="columns">
               <div class="column">
                 <p class="subtitle is-5">Games</p>
-                <p class="title is-3">Developer:</p>
+                <p class="title is-3">Developed:</p>
               </div>
             </div>
             <div class="columns is-multiline">
