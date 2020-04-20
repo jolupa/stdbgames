@@ -39,7 +39,7 @@ class Games extends Controller{
 	}
 	public function insert(){
 		echo view('templates/header');
-		echo view('games/gameform');
+		echo view('games/insert');
 		echo view('templates/footer');
 	}
 	public function insertgame(){

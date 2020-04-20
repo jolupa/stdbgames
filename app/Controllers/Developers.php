@@ -20,7 +20,7 @@ class Developers extends Controller{
 
 		return view('developers/bypublisher', $data);
 	}
-	public function getdevelopers($developerid){
+	public function getdevelopers($developerid = false){
 		$developers = new DevelopersModel();
 		$data['developer'] = $developers->getDevelopers();
 		$data['developerid'] = $developerid;

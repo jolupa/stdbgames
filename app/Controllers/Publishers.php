@@ -27,9 +27,11 @@ class Publishers extends Controller{
 
 		return view('publishers/bydevelopers', $data);
 	}
-	public function edit(){
+	public function edit($slug){
+		$publisher = new PublishersModel();
+		$data['publisher'] = $publisher->getPublisher($slug);
 		echo view('templates/header');
-		echo view('publishers/edit');
+		echo view('publishers/edit', $data);
 		echo view('templates/footer');
 	}
 	public function updatepublisher(){
