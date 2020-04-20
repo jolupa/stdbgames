@@ -15,6 +15,13 @@
           <input class="input" type="text" placeholder="https://developer.address" name="Website">
         </div>
       </div>
+			<!-- About -->
+			<div class="field">
+				<label class="label">About:</label>
+				<div class="control">
+					<textarea class="textarea"></textarea>
+				</div>
+			</div>
       <!-- File Chooser Entry -->
       <div class="field is-grouped">
         <!-- Button Send -->

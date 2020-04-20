@@ -23,17 +23,17 @@ class UsersModel extends Model{
 	public function getUser($slug){
 		$db = \Config\Database::connect();
 		$builder = $db->table('users')
-											->select('Userid AS uId,
-																Name AS uName,
-																Slug AS uSlug,
-																Mail AS uMail,
-																Role AS uRole,
-																Birthdate AS uBirthdate,
-																Registrydate AS uRegistrydate,
-																Image AS uImage')
-											->where('Slug', $slug);
+									->select('Userid AS uId,
+														Name AS uName,
+														Slug AS uSlug,
+														Mail AS uMail,
+														Role AS uRole,
+														Birthdate AS uBirthdate,
+														Registrydate AS uRegistrydate,
+														Image AS uImage')
+									->where('Slug', $slug);
 		return $builder->get()
-											->getRowArray();
+										->getRowArray();
 	}
   public function getUserLibrary($userid){
     $db = \Config\Database::connect();
