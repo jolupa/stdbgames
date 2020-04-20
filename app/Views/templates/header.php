@@ -121,7 +121,7 @@
                 <a class="navbar-item" href="<?= base_url() ?>/games/list/soon">... Games Coming Soon</a>
               </div>
             </div>
-            <?php if ( session('role') == 1): ?>
+            <?php if ( session('is_logged') == TRUE): ?>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">New...</a>
               <div class="navbar-dropdown">

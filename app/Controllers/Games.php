@@ -164,15 +164,5 @@ class Games extends Controller{
 		echo view('templates/about');
 		echo view('templates/footer');
 	}
-	public function statistics(){
-		$totalgames = new GamesModel();
-		$totallaunched = new GamesModel();
-		$totalsoon = new GamesModel();
-		$data['totalgames'] = $totalgames->totalGames();
-		$data['totallaunched'] = $totallaunched->totalGamesLaunched();
-		$data['totalsoon'] = $totalsoon->totalGamesSoon();
-
-		return view('games/statistics', $data);
-	}
 }
  ?>
