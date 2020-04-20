@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="columns is-multiline">
-    <?php foreach ($gametype as $games): ?>
+    <?php foreach ($games as $games): ?>
       <div class="column is-one-quarter">
         <div class="media">
           <figure class="media-left">

@@ -1,243 +1,175 @@
-<?php namespace App\Controllers;
+<?php
+namespace App\Controllers;
 use App\Models\UsersModel;
 use CodeIgniter\Controller;
 
-helper(['cookie', 'url']);
+helper(['url','text','cookie']);
 
 class Users extends Controller{
-  public function signuser(){
-    echo view('templates/header');
-    echo view('users/signin');
-    echo view('templates/footer');
-  }
+	public function login(){
+		echo view('templates/header');
+		echo view('users/login');
+		echo view('templates/footer');
+	}
+	public function loguser(){
+		$user = new UsersModel();
+		$username = $this->request->getVar('Name');
+		$password = $this->request->getVar('Password');
+		$data = $user->userLog($username);
+		if (password_verify($password, $data['uPassword']) == TRUE){
+			$session = \Config\Services::session();
+			$session->set(['username'=>$data['uName'], 'id'=>$data['uId'], 'role'=>$data['uRole'], 'is_logged'=>TRUE]);
 
-  public function insertuser(){
+			return redirect()->to('/users/profile/'.$data['uSlug']);
+		} else {
+			$data['error'] = "The username or the password not match... Try again...";
+			echo view('templates/header');
+			echo view('users/login', $data);
+			echo view('templates/footer');
+		}
+	}
+	public function register(){
+		echo view('templates/header');
+		echo view('users/register');
+		echo view('templates/footer');
+	}
+	public function insertuser(){
     $val = $this->validate([
-                            'Name'      =>  ['label'  =>  'Name',
-                                                 'rules'  =>  'required|alpha_numeric|is_unique[users.Username]',
-                                                 'errors' =>  ['required'       =>  'You must set a Name for your login',
-                                                               'alpha_numeric'  =>  'Only letters and numbers in the Username',
-                                                               'is_unique'      =>  'That Name actually exist in the Database',],
-                                                ],
-                            'Password'  =>  ['label'  =>  'Password',
-                                                                'rules'  =>  'required|min_length[6]|max_length[20]',
-                                                                'errors' =>  ['required'   => 'You must set a Password for the account',
-                                                               'min_length' =>  'The minimum characters for the Password is 6 characters',
-                                                               'max_length' =>  'The maximum characters for the Password is 20 characters',],
-                                                ],
-                            'Birthdate' =>  ['label'  =>  'Birthdate',
-                                                              'rules'  =>  'required|valid_date[Y-m-d]',
-                                                              'errors' =>  ['required'   =>  'You have to set your birthdate',
-                                                               'valid_date' =>  'The valid format for the date is YYY-MM-DD',],
-                                                ],
-                            'Mail'          =>  ['label'  => 'Mail',
-                                                              'rules'  =>  'valid_email',
-                                                              'errors' =>  ['valid_email'  =>  'Please, give us your correct email... Or just the trash mail.',],
-                                               ],
-                            'accept'                 => ['label'  =>  'Accept',
-                                                                'rules'  =>  'required',
-                                                                'errors' =>  ['required' =>  'You have to accept that we include this data in the database.',],
-                                                ],
-                          ]);
-    $insuser = new UsersModel();
-    if (!$val){
-      echo view('templates/header');
-      echo view('users/signin', ['validations'=>$this->validator]);
-      echo view('templates/footer');
-    } else {
-      $data['Name'] = $this->request->getVar('Name');
-      $data['Password'] = password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT);
-      $data['Birthdate'] = $this->request->getVar('Birthdate');
-      $data['Mail'] = $this->request->getVar('Mail');
-      $data['Registrydate'] = date('Y-m-d');
-      if ($this->request->getVar('Role') != NULL){
-        $data['Role'] = $this->request->getVar('Role');
-      } else {
-        $data['Role'] = 0;
-      }
-      if ($this->request->getFile('Image') != NULL)
-      {
-        if ( is_dir (ROOTPATH.'/public/images/avatar') == FALSE)
-        {
-          mkdir(ROOTPATH.'/public/images/avatar', 0777, true);
-        }
-        $data['Image'] = strtolower(url_title($this->request->getVar('Name')));
-        $newname = url_title($this->request->getVar('Name'));
-        $file = $this->request->getFile('Image')
-                             ->move(WRITEPATH.'uploads/', $newname);
-        $imagethumb = \Config\Services::image()
-                     ->withFile(WRITEPATH.'uploads/'.$newname)
-                     ->fit(256, 256, 'center')
-                     ->convert(IMAGETYPE_JPEG)
-                     ->save(ROOTPATH.'public/images/avatar/'.$newname);
-        unlink(WRITEPATH.'uploads/'.$newname);
-      }
-      $insuser->insertUser($data);
-
-      return redirect()->to('/users/loguser');
-    }
-  }
-  public function loguser(){
-    echo view('templates/header');
-    echo view('users/login');
-    echo view('templates/footer');
-  }
-  public function login(){
-    $log = new UsersModel();
-    $form['Name'] = $this->request->getVar('Name');
-    $form['Password'] = $this->request->getVar('Password');
-    $data = $log->logUser($form);
-    if (password_verify($form['Password'], $data['Password']) == TRUE){
-      $session = \Config\Services::session();
-      $session->set(['username'=>$form['Name'],'id'=>$data['Userid'],'role'=>$data['Role'],'is_logged'=>TRUE]);
-      return redirect()->to('/users/landing/'.$form['Name']);
-    } else {
-      $data['error'] = "Sure you put the correct User and Password";
-      echo view('templates/header');
-      echo view('users/login', $data);
-      echo view('templates/footer');
-    }
-  }
-  public function logout(){
-    $session = \Config\Services::session();
-    $session->destroy();
-    return redirect()->to('/home');
-  }
-  public function landing($user){
+                            'Name' => [ 'label' => 'Name',
+                                        'rules' => 'required|alpha_numeric|is_unique[users.Name]',
+                                        'errors' => [ 'required' => 'You dont want an username... Sorry you have to take one!',
+                                                      'alpha_numeric' => 'You can only put letters and numbers in your name, nothing too much fancy',
+                                                      'is_unique' => 'Sorry... We dont have Founders here and your username is taken', ]
+                            ],
+                            'Password' => [ 'label' => 'Password',
+                                            'rules' => 'required|min_length[6]|max_length[20]',
+                                            'errors' => [ 'required' => 'Set a password... Is more safety',
+                                                          'min_length' => 'A minimum of six characters... Easy...',
+                                                          'max_length' => 'Maximum twenty characters... Not too easy', ]
+                            ],
+                            'Birthdate' => [ 'label' => 'Birthdate',
+                                              'rules' => 'required|valid_date[Y-m-d]',
+                                              'errors' => [ 'required' => 'Your birthdate... Imagine we can send you something... Who knows!',
+                                                            'valid_date' => 'The correct date format is YYYY-MM-DD... We are a little weirdos', ]
+                            ],
+                            'Mail' => [ 'label' => 'Mail',
+                                        'rules' => 'valid_email',
+                                        'errors' => [ 'valid_email' => 'Just your email... To Stay informed...',]
+                            ],
+                            'accept' => [ 'label' => 'Accept',
+                                          'rules' => 'required',
+                                          'errors' => [ 'required' => 'You have to know that the data you are entering is only for the database... Nothing More! Yeah! Clear!',]
+                            ],
+    ],);
+		if (!$val){
+			echo view('templates/header');
+			echo view('users/register', ['validations'=>$this->validator]);
+			echo view('templates/footer');
+		} else {
+			$insert = new UsersModel();
+			$data['Name'] = $this->request->getVar('Name');
+			$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
+			$data['Password'] = password_hash($this->request->getVar('Password'), PASSWORD_DEFAULT);
+			$data['Birthdate'] = $this->request->getVar('Birthdate');
+			$data['Mail'] = $this->request->getVar('Mail');
+			$data['Registrydate'] = date('Y-m-d');
+			if ($this->request->getVar('Stadiauser') != NULL){
+				$data['Stadiauser'] = $this->request->getVar('Stadiauser');
+			}
+			$data['Role'] = 0;
+			if ($this->request->getFile('Image') != NULL){
+				if (is_dir(ROOTPATH.'public/images/avatar') == FALSE){
+					mkdir (ROOTPATH.'public/images/avatar', 0777, true);
+				}
+				$data['Image'] = strtolower(url_title($this->request->getVar('Name')));
+				$newname = strtolower(url_title($this->request->getVar('Name')));
+				$file = $this->request->getFile('Image')
+																	->move(WRITEPATH.'uploads', $newname);
+				$image = \Config\Services::image()
+									->withFile(WRITEPATH.'uploads/'.$newname)
+									->fit(256, 256, 'center')
+									->convert(IMAGETYPE_JPEG)
+									->save(ROOTPATH.'public/images/avatar/'.$newname);
+				unlink(WRITEPATH.'uploads/'.$newname);
+			}
+			$insert->userInsert($data);
+			return redirect()->to('/users/login');
+		}
+	}
+  public function profile($slug){
     $getuser = new UsersModel();
-    $voted = new UsersModel();
+    $data['user'] = $getuser->getUser($slug);
+
+		if (session('is_logged') == TRUE){
+	    echo view('templates/header');
+	    echo view('users/landing', $data);
+	    echo view('templates/footer');
+		} else {
+			return redirect()->to('/games');
+		}
+  }
+  public function library($userid){
     $library = new UsersModel();
-    $data['user'] = $getuser->getUser(session('username'));
-    $userid = session('id');
-    $data['voted'] = $voted->getGamesVoted($userid);
-    $data['library'] = $library->getGamesLibrary($userid);
+    $data['library'] = $library->getUserLibrary($userid);
 
-    echo view('templates/header');
-    echo view('users/landing', $data);
-    echo view('users/votes', $data);
-    echo view('users/library', $data);
-    if (session('role') == 1){
-      $lastusers = new UsersModel();
-      $data['lastusers'] = $lastusers->getLastUsers();
-      echo view('users/lastusers', $data);
-    }
-    echo view('templates/footer');
+    return view('users/library', $data);
   }
+	public function vote($userid){
+		$votes = new UsersModel();
+		$data['votes'] = $votes->getUserVotes($userid);
 
-  public function edit($user){
-    if (session('is_logged') == TRUE){
-      $getuser = new UsersModel();
-      $data['getuser'] = $getuser->getUser($user);
+		return view('users/votes', $data);
+	}
+	public function listusers(){
+		$listusers = new UsersModel();
+		$data['userlist'] = $listusers->getUsers();
 
-      echo view('templates/header');
-      echo view('users/edit', $data);
-      echo view('templates/footer');
-    } else {
-      return redirect()->to('/home');
-    }
-  }
+		return view('users/listusers', $data);
+	}
+	public function edit($slug){
+		$user = new UsersModel();
+		$data['user'] = $user->getUser($slug);
 
-  public function updateuser(){
-    if (session('role') == 1 || session('is_logged' == TRUE)){
-      $update = new UsersModel();
-      $data['Name'] = $this->request->getVar('Name');
-      $data['Role'] = $this->request->getVar('Role');
-      $data['Birthdate'] = $this->request->getVar('Birthdate');
-      $data['Mail'] = $this->request->getVar('Mail');
-      $data['Userid'] = $this->request->getVar('Userid');
-      if ($this->request->getVar('Image') != NULL)
-      {
-        $data['Image'] = $this->request->getVar('Image');
-      }
-      if ($this->request->getFile('Image') != NULL)
-      {
-        if ( is_dir (ROOTPATH.'/public/images/avatar') == FALSE)
-        {
-          mkdir(ROOTPATH.'/public/images/avatar', 0777, true);
-        }
-        $data['Image'] = $this->request->getVar('Name');
-        $newname = $this->request->getVar('Name');
-        $file = $this->request->getFile('Image')
-                                             ->move(WRITEPATH.'uploads/', $newname);
-        $imagethumb = \Config\Services::image()
-                     ->withFile(WRITEPATH.'uploads/'.$newname)
-                     ->fit(256, 256, 'center')
-                     ->save(ROOTPATH.'public/images/avatar/'.$newname);
-        unlink(WRITEPATH.'uploads/'.$newname);
-      }
-      $update->updateUser($data);
-      return redirect()->to('/users/landing/'.session('username'));
-    } else {
-      return redirect()->to('/home');
-    }
-  }
+		echo view('templates/header');
+		echo view('users/edit', $data);
+		echo view('templates/footer');
+	}
+	public function updateuser(){
+		$user = new UsersModel();
+		$data['Name'] = $this->request->getVar('Name');
+		$data['Userid'] = $this->request->getVar('Userid');
+		$data['Slug'] = $this->request->getVar('Slug');
+		if ($this->request->getVar('Image') != NULL){
+			$data['Image'] = $this->request->getVar('Image');
+		}
+		$data['Mail'] = $this->request->getVar('Mail');
+		$data['Registrydate'] = $this->request->getVar('Registrydate');
+		$data['Birthdate'] = $this->request->getVar('Birthdate');
+		if ($this->request->getFile('Image') != NULL){
+			if (is_dir(ROOTPATH.'public/images/avatar') == FALSE){
+				mkdir (ROOTPATH.'public/images/avatar', 0777, true);
+			}
+			$data['Image'] = strtolower(url_title($this->request->getVar('Name')));
+			$newname = strtolower(url_title($this->request->getVar('Name')));
+			$file = $this->request->getFile('Image')
+																->move(WRITEPATH.'uploads', $newname);
+			$image = \Config\Services::image()
+								->withFile(WRITEPATH.'uploads/'.$newname)
+								->fit(256, 256, 'center')
+								->convert(IMAGETYPE_JPEG)
+								->save(ROOTPATH.'public/images/avatar/'.$newname);
+			unlink(WRITEPATH.'uploads/'.$newname);
+		}
+		$user->updateUser($data);
 
-  public function deleteUser($id){
-    $delete = new UsersModel();
-    $delete->deleteUser($id);
-    if (session('role') == 1){
-      return redirect()->to('/users/landing/'.session('username'));
-    } else {
-      return redirect()->to('/home');
-    }
-  }
+		return redirect()->to('/users/profile/'.$data['Slug']);
+	}
+	public function logout(){
+		$session = \Config\Services::session();
+		$session->destroy();
 
-  public function uservote($vote, $gameid, $userid){
-    $uvote = new UsersModel();
-    if ($vote == 'upvote'){
-      $data['score'] = 100;
-    } elseif ($vote == 'well'){
-      $data['score'] = 50;
-    }
-    if ($vote == 'downvote') {
-      $data['score'] = 0;
-    }
-    $data['Gameid'] = $gameid;
-    $data['Userid'] = $userid;
-    $uvote->castVote($data);
-
-    return redirect()->to(session('current_url'));
-  }
-
-  public function userinteraction($gameid, $userid){
-    $wish = new UsersModel();
-    $purchase = new UsersModel();
-    $vote = new UsersModel();
-    $data['wish'] = $wish->checkUserWish($gameid, $userid);
-    $data['purchase'] = $purchase->checkUserPurchase($gameid, $userid);
-    $data['vote'] = $vote->checkUserVote($gameid, $userid);
-
-    return view('users/interaction', $data);
-  }
-
-  public function addlibrary($gameid, $userid){
-    $checkwish = new UsersModel();
-    if ($checkwish->checkUserWish($gameid, $userid) == 0){
-      $add = new UsersModel();
-      $data['Gameid'] = $gameid;
-      $data['Userid'] = $userid;
-      $add->addUserLibrary($data);
-
-      return redirect()->to(session('current_url'));
-    } else {
-      $delwish = new UsersModel();
-      $delwish->deleteUserWish($gameid, $userid);
-      $add = new UsersModel();
-      $data['Gameid'] = $gameid;
-      $data['Userid'] = $userid;
-      $add->addUserLibrary($data);
-
-      return redirect()->to(session('current_url'));
-    }
-  }
-
-  public function addwish($gameid, $userid){
-    $add = new UsersModel();
-    $data['Gameid'] = $gameid;
-    $data['Userid'] = $userid;
-    $add->addUserWish($data);
-
-    return redirect()->to(session('current_url'));
-  }
+		return redirect()->to('/games');
+	}
 }
-?>
+
+ ?>

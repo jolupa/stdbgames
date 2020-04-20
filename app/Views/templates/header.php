@@ -3,53 +3,61 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <?php if (isset($item['gName'])): ?>
-      <title>Stadia GamesDB -- <?= $item['gName'] ?></title>
-      <meta name="description" content="Information about <?= $item['gName'] ?> developed by <?= $item['gdName'] ?> and published by <?= $item['gpName'] ?> in Stadia">
-      <meta name="keywords" content="<?= $item['gName'] ?>, <?= $item['gdName'] ?>, <?= $item['gpName'] ?>, Stadia, Stream, Games, Online">
-      <!-- og Metatags -->
-      <meta property="og:title" content="<?= $item['gName'] ?> by <?= $item['gdName'] ?> on Stadia -- Stadia GamesDB!">
-      <?php if (!empty($item['gAbout'])): ?>
-        <meta property="og:description" content="<?= character_limiter($item['gAbout'], 80, '...') ?>">
-      <?php endif; ?>
-      <meta property="og:image" content="<?= base_url() ?>/images/<?= $item['gImage'] ?>">
-      <meta property="og:url" content="<?= base_url() ?>/games/game/<?= $item['gSlug'] ?>">
-      <meta name="twitter:card" content="summary_large_image">
-      <!-- og Metatags Not Essential Recommended -->
-      <meta property="og_site_name" content="Stadia GamesDB!">
-      <meta name="twitter:image_alt" content="<?= $item['gName'] ?>">
-      <!-- og Metatags Not Essential Only Analytics -->
-      <meta name="twitter:site" content="@DbStadia">
-    <?php elseif (isset($developer[0]['dName'])): ?>
-      <title>Stadia GamesDB -- <?= $developer[0]['dName'] ?></title>
-      <meta name="description" content="Information about <?= $developer[0]['dName'] ?>  in Stadia">
-      <meta name="keywords" content="<?php foreach ($developer as $developer): ?><?= $developer['dgName'] ?>, <?= $developer['dName'] ?>, <?= $developer['dpName'] ?><?php endforeach; ?>, Stadia, Stream, Games, Online">
-      <!-- og Metatags -->
-      <meta property="og:title" content="Games Developed by <?= $item[0]['dName'] ?> on Stadia -- Stadia GamesDB!">
-      <meta property="og:description" content="All the games Developed by <?= $item[0]['dName'] ?>">
-      <meta property="og:image" content="<?= base_url() ?>/images/<?= $item[0]['dgImage'] ?>">
-      <meta property="og:url" content="<?= base_url() ?>/games/developer/<?= $item[0]['dSlug'] ?>">
-      <meta name="twitter:card" content="summary_large_image">
-      <!-- og Metatags Not Essential Recommended -->
-      <meta property="og_site_name" content="Stadia GamesDB!">
-      <meta name="twitter:image_alt" content="<?= $item[0]['dName'] ?>">
-      <!-- og Metatags Not Essential Only Analytics -->
-      <meta name="twitter:site" content="@DbStadia">
-    <?php elseif (isset($publisher[0]['pName'])): ?>
-      <title>Stadia GamesDB -- <?= $publisher[0]['pName'] ?></title>
-      <meta name="description" content="Information about <?= $publisher[0]['pName'] ?> publishers of <?= $publisher[0]['pgName'] ?> and published by <?= $publisher[0]['pName'] ?> in Stadia">
-      <meta name="keywords" content="<?php foreach ($publisher as $publisher): ?><?= $publisher['pgName'] ?>, <?= $publisher['pName'] ?>, <?= $publisher['pdName'] ?><?php endforeach; ?>, Stadia, Stream, Games, Online">
-      <!-- og Metatags -->
-      <meta property="og:title" content="Games Published by <?= $item['pName'] ?> on Stadia -- Stadia GamesDB!">
-      <meta property="og:description" content="All the games Published by <?= $item['pName'] ?>">
-      <meta property="og:image" content="<?= base_url() ?>/images/<?= $item['pgImage'] ?>">
-      <meta property="og:url" content="<?= base_url() ?>/games/publisher/<?= $item['pSlug'] ?>">
-      <meta name="twitter:card" content="summary_large_image">
-      <!-- og Metatags Not Essential Recommended -->
-      <meta property="og_site_name" content="Stadia GamesDB!">
-      <meta name="twitter:image_alt" content="<?= $item['pName'] ?>">
-      <!-- og Metatags Not Essential Only Analytics -->
-      <meta name="twitter:site" content="@DbStadia">
+		<?php if (isset($game)): ?>
+			<title>Stadia GamesDB! - <?= $game['gName'] ?></title>
+			<meta name="description" content="Information about <?= $game['gName'] ?> developed by <?= $game['gdName'] ?> and published by <?= $game['gpName'] ?> in Stadia">
+			<meta name="keywords" content="<?= $game['gName'] ?>, <?= $game['gdName'] ?>, <?= $game['gpName'] ?>, Stadia, Stream, Cloud, Games, Online">
+			<!-- og Metatags -->
+			<meta property="og:title" content="<?= $game['gName'] ?> by <?= $game['gdName'] ?> on Stadia - Stadia GamesDB!">
+			<?php if(!empty($game['About'])): ?>
+				<meta property="og:description" content="<?= character_limiter($game['gAbout'], 80, '...') ?>">
+			<?php endif; ?>
+			<meta property="og:image" content="<?= base_url() ?>/images/<?= $game['gImage'] ?>">
+			<meta property="og:url" content="<?= base_url() ?>/games/game/<?= $game['gSlug'] ?>">
+			<meta name="twitter:card" content="summary_large_image">
+			<!-- og Metatags Not Essential Recommended -->
+			<meta property="og_site_name" content="Stadia GamesDB!">
+			<meta name="twitter:image_alt" content="<?= $game['gName'] ?>">
+			<!-- og Metatags Not Essential Only Analytic -->
+			<meta name="twitter:site" content="@DBStadia">
+		<?php elseif (isset($developer)): ?>
+			<title>Stadia GamesDB! - <?= $developer['dName'] ?></title>
+			<meta name="description" content="Information About <?= $developer['dName'] ?> in Stadia">
+			<meta name="keywords" content="<?= $developer['dName'] ?>, Stadia, Stream, Cloud, Games, Online">
+			<!-- og metatags -->
+			<meta property="og:title" content="Games Developed by <?= $developer['dName'] ?> on Stadia - Stadia GamesDB!">
+			<meta property="og:description" content="All the games Developed by <?= $developer['dName'] ?>">
+			<?php if(isset($developer['dImage'])): ?>
+				<meta property="og:image" content="<?= base_url() ?>/images/developers/<?= $developer['dImage'] ?>">
+			<?php endif; ?>
+			<meta property="og:url" content="<?= base_url() ?>/developers/developer/<?= $developer['dSlug'] ?>">
+			<meta name="twitter:card" content="summary_large_image">
+			<!-- og Metatags No Essential Recommended -->
+			<meta property="og_site_name" content="Stadia GamesDB!">
+			<?php if(isset($developer['dImage'])): ?>
+				<meta name="twitter:image_alt" content="<?= $developer['dImage'] ?>">
+			<?php endif; ?>
+			<!-- og Metatags Not Essential Only Analytics -->
+			<meta name="twitter:site" content="@DBStadia">
+		<?php elseif (isset($publisher)): ?>
+			<title>Stadia GamesDB! - <?= $publisher['pName'] ?></title>
+			<meta name="description" content="Information About <?= $publisher['pName'] ?> in Stadia">
+			<meta name="keywords" content="<?= $publisher['pName'] ?>, Stadia, Stream, Cloud, Games, Online">
+			<!-- og metatags -->
+			<meta property="og:title" content="Games Published by <?= $publisher['pName'] ?> on Stadia - Stadia GamesDB!">
+			<meta property="og:description" content="All the games Published by <?= $publisher['pName'] ?>">
+			<?php if(isset($publisher['pImage'])): ?>
+				<meta property="og:image" content="<?= base_url() ?>/images/publishers/<?= $publisher['pImage'] ?>">
+			<?php endif; ?>
+			<meta property="og:url" content="<?= base_url() ?>/publishers/publisher/<?= $publisher['pSlug'] ?>">
+			<meta name="twitter:card" content="summary_large_image">
+			<!-- og Metatags No Essential Recommended -->
+			<meta property="og_site_name" content="Stadia GamesDB!">
+			<?php if(isset($publisher['pImage'])): ?>
+				<meta name="twitter:image_alt" content="<?= $publisher['pImage'] ?>">
+			<?php endif; ?>
+			<!-- og Metatags Not Essential Only Analytics -->
+			<meta name="twitter:site" content="@DBStadia">
     <?php elseif (isset($gametype)): ?>
       <title>Stadia Games DB</title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
@@ -105,8 +113,7 @@
         </div>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item" href="<?= base_url() ?>/about">About</a>
-            <?=  view_cell ( '\App\Controllers\Games::statistics' ) ?>
+            <a class="navbar-item" href="<?= base_url() ?>/games/about">About</a>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">Go to...</a>
               <div class="navbar-dropdown">
@@ -118,9 +125,9 @@
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">New...</a>
               <div class="navbar-dropdown">
-                <a class="navbar-item" href="<?= base_url() ?>/games/gameform/">... Game</a>
-                <a class="navbar-item" href="<?= base_url() ?>/games/devform/">... Developer</a>
-                <a class="navbar-item" href="<?= base_url() ?>/games/pubform/">... Publisher</a>
+                <a class="navbar-item" href="<?= base_url() ?>/games/insert/">... Game</a>
+                <a class="navbar-item" href="<?= base_url() ?>/developers/insert/">... Developer</a>
+                <a class="navbar-item" href="<?= base_url() ?>/publishers/insert/">... Publisher</a>
               </div>
             </div>
             <?php endif; ?>
@@ -129,10 +136,10 @@
             <div class="navbar-item">
               <div class="buttons">
               <?php if( session('is_logged') != TRUE): ?>
-                <a class="button is-primary" href="<?= base_url() ?>/users/signuser">Sign In</a>
-                <a class="button is-light" href="<?= base_url() ?>/users/loguser">Log In</a>
+                <a class="button is-primary" href="<?= base_url() ?>/users/register">Sign In</a>
+                <a class="button is-light" href="<?= base_url() ?>/users/login">Log In</a>
                 <?php else: ?>
-                  <a class="button is-primary" href="<?= base_url() ?>/users/landing/<?= session('username') ?>">Profile</a>
+                  <a class="button is-primary" href="<?= base_url() ?>/users/profile/<?= session('username') ?>">Profile</a>
                   <a class="button is-light" href="<?= base_url() ?>/users/logout">Log Out</a>
                 <?php endif; ?>
               </div>

@@ -1,0 +1,1 @@
+<?= $Gameid ?><br><?= $Userid ?><br><?= $Score ?><br>
