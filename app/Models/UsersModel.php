@@ -31,7 +31,7 @@ class UsersModel extends Model{
 														Birthdate AS uBirthdate,
 														Registrydate AS uRegistrydate,
 														Image AS uImage')
-									->where('Slug', $slug);
+									->where('uSlug', $slug);
 		return $builder->get()
 										->getRowArray();
 	}

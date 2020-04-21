@@ -5,7 +5,7 @@
 				<div class="media">
 					<figure class="media-left">
 						<p class="image is-128x128">
-							<img title="<?= $user['uName'] ?>" src="<?= base_url() ?>/images/avatar/<?php if ( file_exists(ROOTPATH.'/public/images/avatar/'.$user['uImage'])): ?><?= $user['uImage'] ?><?php else: ?>avatar01<?php endif; ?>">
+							<img title="<?= $user['uName'] ?>" src="<?= base_url() ?>/images/avatar/<?php if ( file_exists(ROOTPATH.'/public/images/avatar/'.$uImage)): ?><?= $uImage ?><?php else: ?>avatar01<?php endif; ?>">
 						</p>
 					</figure>
 					<div class="media-content">
@@ -15,7 +15,7 @@
 							Member since: <?= $user['uRegistrydate'] ?>
 						</p>
 						<p>
-							<a href="<?= base_url() ?>/users/edit/<?= $user['uName'] ?>"><span class="tag is-primary"><span class="heading">Edit Profile</span></span></a>
+							<a href="<?= base_url() ?>/users/edit/<?= $user['uSlug'] ?>"><span class="tag is-primary"><span class="heading">Edit Profile</span></span></a>
 						</p>
 					</div>
 				</div>

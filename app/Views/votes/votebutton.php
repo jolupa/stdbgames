@@ -5,7 +5,7 @@
 		<div class="box has-text-centered">
 			<p>
 				<?php $i = 0; while ($i <= 10):  ?>
-					<span class="icon has-text-info"><a href="<?= base_url() ?>/votes/addvote/<?= $gameid ?>/<?= $userid ?>/<?= $i ?>" class="close-modal"><i class="fas fa-star"></i></a></span>
+					<span class="icon has-text-info"><a title="<?= $i ?>" href="<?= base_url() ?>/votes/addvote/<?= $gameid ?>/<?= $userid ?>/<?= $i ?>" class="close-modal"><i class="fas fa-star"></i></a></span>
 				<?php $i++; endwhile; ?>
 			</p>
 		</div>

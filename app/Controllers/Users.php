@@ -18,9 +18,9 @@ class Users extends Controller{
 		$data = $user->userLog($username);
 		if (password_verify($password, $data['uPassword']) == TRUE){
 			$session = \Config\Services::session();
-			$session->set(['username'=>$data['uName'], 'id'=>$data['uId'], 'role'=>$data['uRole'], 'is_logged'=>TRUE]);
+			$session->set(['username'=>$data['uSlug'], 'id'=>$data['uId'], 'role'=>$data['uRole'], 'is_logged'=>TRUE]);
 
-			return redirect()->to('/users/profile/'.$data['uSlug']);
+			return redirect()->to('/users/profile/'.session('username'));
 		} else {
 			$data['error'] = "The username or the password not match... Try again...";
 			echo view('templates/header');
@@ -96,11 +96,12 @@ class Users extends Controller{
 			return redirect()->to('/users/login');
 		}
 	}
-  public function profile($slug){
+  public function profile(){
     $getuser = new UsersModel();
+		$slug = session('username');
     $data['user'] = $getuser->getUser($slug);
 
-		if (session('is_logged') == TRUE){
+		if (session('is_logged') == TRUE && session('username') == $slug){
 	    echo view('templates/header');
 	    echo view('users/landing', $data);
 	    echo view('templates/footer');
