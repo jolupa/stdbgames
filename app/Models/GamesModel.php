@@ -31,7 +31,7 @@ class GamesModel extends Model{
 																	publishers.Name AS gpName')
 											->join('developers', 'developers.Developerid = games.Developerid')
 											->join('publishers', 'publishers.Publisherid = games.Publisherid')
-											->where('Release >=', date('Y-m-d'))
+											->where('Release >', date('Y-m-d'))
 											->orderBy('Release', 'ASC');
 		return $builder->get(8)
 											->getResultArray();
