@@ -153,7 +153,8 @@ class GamesModel extends Model{
 		$builder = $db->table('prices')
 									->select('Price AS pPrice,
 														Date AS pDate')
-									->where('Gameid', $gameid);
+									->where('Gameid', $gameid)
+									->orderBy('pDate', 'ASC');
 		return $builder->get()
 										->getResultArray();
 	}

@@ -172,6 +172,8 @@ class Games extends Controller{
 		$data['Price'] = $this->request->getVar('Price');
 		if($this->request->getVar('Date') == NULL){
 			$data['Date'] = date('Y-m-d');
+		} else {
+			$data['Date'] = $this->request->getVar('Date');
 		}
 		$data['Gameid'] = $this->request->getVar('Gameid');
 		$data['Discounttype'] = $this->request->getVar('Discounttype');

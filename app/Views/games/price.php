@@ -21,8 +21,8 @@
 					<div class="control is-expanded">
 						<div class="select">
 							<select name="Discounttype">
-								<option value="Pro">Pro</option>
 								<option value="Normal">Normal</option>
+								<option value="Pro">Pro</option>
 							</select>
 						</div>
 					</div>
@@ -41,7 +41,7 @@
 
 	var ctx = document.getElementById("pricechart");
 	var myChart = new Chart(ctx, {
-  type: 'line',
+  type: 'bar',
   data: {
     labels: date,
     datasets: [
