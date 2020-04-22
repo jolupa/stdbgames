@@ -1,13 +1,22 @@
 <div class="columns">
-	<div class="column is-full-width">
+	<div class="column is-full">
 		<p class="subtitle is-5">Price</p>
 		<p class="title is-3">History:</p>
-		<canvas id="pricechart" height="90"></canvas>
+		<canvas id="pricechart" height="90" class="is-hidden-touch"></canvas>
+	</div>
+</div>
+<div class="columns is-multiline is-hidden-desktop">
+	<div class="column is-full">
+		<?php foreach ($price as $mobile): ?>
+			<div class="notification is-inline-block">
+				<p>Price: <strong><?= $mobile['pPrice'] ?></strong> (<?= $mobile['pDate'] ?>)</p>
+			</div>
+		<?php endforeach; ?>
 	</div>
 </div>
 <?php if(session('role') == 1): ?>
-	<div class="columns">
-		<div class="column is-full-width">
+	<div class="columns is-hidden-touch">
+		<div class="column is-full">
 			<form method="post" action="<?= base_url() ?>/games/newprice">
 				<input type="hidden" name="Gameid" value="<?= $game['gId'] ?>">
 				<input type="hidden" name="Slug" value="<?= $game['gSlug'] ?>">
