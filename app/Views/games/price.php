@@ -50,18 +50,26 @@
 
 	var ctx = document.getElementById("pricechart");
 	var myChart = new Chart(ctx, {
-  type: 'line',
+  type: 'bar',
   data: {
     labels: date,
     datasets: [
       {
-        data: price
+				barThickness: 'flex',
+        data: price,
       }
     ]
   },
 	options:{
 		legend:{
 			display: false,
+		},
+		scales:{
+			yAxes:[{
+				ticks:{
+					beginAtZero: true,
+				}
+			}]
 		}
 	}
 });
