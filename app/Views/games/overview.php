@@ -61,6 +61,9 @@
 								<?= $game['gAbout'] ?>
 							</div>
 						</div>
+						<?php if(date('Y-m-d') >= $game['gRelease']): ?>
+							<?= view_cell('\App\Controllers\Games::historyprice', 'gameid='.$game['gId']) ?>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>

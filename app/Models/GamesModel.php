@@ -143,6 +143,20 @@ class GamesModel extends Model{
 
 		return $builder->insert($data);
 	}
+	public function newPrice($data){
+		$db = \Config\Database::connect();
+		$builder = $db->table('prices');
+		return $builder->insert($data);
+	}
+	public function getPrices($gameid){
+		$db = \Config\Database::connect();
+		$builder = $db->table('prices')
+									->select('Price AS pPrice,
+														Date AS pDate')
+									->where('Gameid', $gameid);
+		return $builder->get()
+										->getResultArray();
+	}
 }
 
  ?>

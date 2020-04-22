@@ -45,10 +45,10 @@ class Games extends Controller{
 	public function insertgame(){
 		$insert = new GamesModel();
 		$val = $this->validate([ 'Name'=>[ 'label'=>'Name',
-		 																					'rules'=>'required|is_unique[games.Name]',
-																							'errors'=>[ 'required'=>'The Game has a Name nope?',
-																														'is_unique'=>'The game is already in the DB!', ],
-																						],
+																				'rules'=>'required|is_unique[games.Name]',
+																			'errors'=>[ 'required'=>'The Game has a Name nope?',
+																										'is_unique'=>'The game is already in the DB!', ],
+																		],
 																'Image'=>[ 'label'=>'Image',
 																 							'rules'=>'max_size[Image,3048]|is_image[Image]',
 																							'errors'=>[ 'max_size'=>'We have a maximum size, try to reduce the Image',
@@ -163,6 +163,27 @@ class Games extends Controller{
 		echo view('templates/header');
 		echo view('templates/about');
 		echo view('templates/footer');
+	}
+	public function pricehistory($gameid){
+		return view('games/price');
+	}
+	public function newprice(){
+		$newprice = new GamesModel();
+		$data['Price'] = $this->request->getVar('Price');
+		if($this->request->getVar('Date') == NULL){
+			$data['Date'] = date('Y-m-d');
+		}
+		$data['Gameid'] = $this->request->getVar('Gameid');
+		$data['Discounttype'] = $this->request->getVar('Discounttype');
+		$newprice->newPrice($data);
+
+		return redirect()->to(session('current_url'));
+	}
+	public function historyprice($gameid){
+		$price = new GamesModel();
+		$data['price'] = $price->getPrices($gameid);
+
+		return view('games/price', $data);
 	}
 }
  ?>
