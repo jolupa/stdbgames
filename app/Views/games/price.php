@@ -41,7 +41,7 @@
 
 	var ctx = document.getElementById("pricechart");
 	var myChart = new Chart(ctx, {
-  type: 'bar',
+  type: 'line',
   data: {
     labels: date,
     datasets: [
