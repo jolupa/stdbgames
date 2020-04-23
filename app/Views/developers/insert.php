@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container">
-    <form method="post" action="<?= base_url() ?>/developers/insert">
+    <form method="post" action="<?= base_url() ?>/developers/insertdeveloper">
       <!-- Name Entry -->
       <div class="field">
         <label class="label">Name</label>
