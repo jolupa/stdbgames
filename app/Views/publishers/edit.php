@@ -1,7 +1,8 @@
 <section class="section">
 <div class="container">
-  <form method="post" action="<?= base_url() ?>/games/updatepublisher">
+  <form method="post" action="<?= base_url() ?>/publishers/updatepublisher">
 		<input type="hidden" name="Publisherid" value="<?= $publisher['pId'] ?>">
+		<input type="hidden" name="Slug" value="<?= $publisher['pSlug'] ?>">
     <!-- Name Entry -->
     <div class="field">
       <label class="label">Name</label>

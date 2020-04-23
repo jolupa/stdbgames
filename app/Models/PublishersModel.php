@@ -44,7 +44,7 @@ class PublishersModel extends Model{
 
 		return $builder->update($data);
 	}
-	public function inserPublisher($data){
+	public function insertPublisher($data){
 		$db = \Config\Database::connect();
 		$builder = $db->table('publishers');
 

@@ -42,9 +42,10 @@ class Publishers extends Controller{
 		if ($this->request->getVar('About') != NULL){
 			$data['About'] = $this->request->getVar('About');
 		}
+		$slug = $this->request->getVar('Slug');
 		$updatepublisher->updatePublisher($data);
 
-		return redirect()->to('/games');
+		return redirect()->to('/developers/developer/'.$slug);
 	}
 	public function insert(){
 		echo view('templates/header');
@@ -55,13 +56,14 @@ class Publishers extends Controller{
 		$insertpublisher = new PublishersModel();
 		$data['Publisherid'] = $this->request->getVar('Publisherid');
 		$data['Name'] = $this->request->getVar('Name');
+		$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
 		$data['Website'] = $this->request->getVar('Website');
 		if($this->request->getVar('About') != NULL){
 			$data['About'] = $this->request->getVar('About');
 		}
 		$insertpublisher->insertPublisher($data);
 
-		return redirect()->to('/games');
+		return redirect()->to('/developers/developer/'.$data['Slug']);
 	}
 }
 

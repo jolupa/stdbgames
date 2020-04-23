@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container">
-    <form method="post" action="<?= base_url() ?>/games/insertpublisher">
+    <form method="post" action="<?= base_url() ?>/publishers/insertpublisher">
       <!-- Name Entry -->
       <div class="field">
         <label class="label">Name</label>
