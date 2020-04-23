@@ -55,7 +55,7 @@ class Developers extends Controller{
 	public function insertdeveloper(){
 		$insertdeveloper = new DevelopersModel();
 		$data['Name'] = $this->request->getVar('Name');
-		$data['Slug'] = strtolower(url_text($this->request->getVar('Name')));
+		$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
 		$data['Website'] = $this->request->getVar('Website');
 		if($this->request->getVar('About') != NULL){
 			$data['About'] = $this->request->getVar('About');
