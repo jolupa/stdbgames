@@ -43,8 +43,9 @@ class Developers extends Controller{
 		if($this->request->getVar('About') != NULL){
 			$data['About'] = $this->request->getVar('About');
 		}
+		$slug = $this->request->getVar('Slug');
 		$updatedeveloper->developerUpdate($data);
-		return redirect()->to('/games');
+		return redirect()->to('/developers/developer/'.$slug);
 	}
 	public function insert(){
 		echo view('templates/header');
@@ -61,7 +62,7 @@ class Developers extends Controller{
 		}
 		$insertdeveloper->insertDeveloper($data);
 
-		return redirect()->to('/developers/developer'.)
+		return redirect()->to('/developers/developer/'.$data['Slug'])
 	}
 }
 

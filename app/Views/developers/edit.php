@@ -4,6 +4,7 @@
       <!-- Name Entry -->
       <div class="field">
         <input type="hidden" name="Developerid" value="<?= $developer['dId'] ?>">
+				<input type="hidden" name="Slug" value="<?= $developer['dSlug'] ?>">
         <label class="label">Name</label>
         <div class="control">
           <input class="input" type="text" placeholder="Developer Name" name="Name" value="<?= $developer['dName'] ?>">
