@@ -76,11 +76,11 @@
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
       <meta name="twitter:image_alt" content="<?= $founders[$number]['gImage'] ?>">
-      <!-- og Metatags Not Essential Only Analytics -->
-			<meta name="og_site_name" content="Stadia GamesDB!">
-			<meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:site" content="@DbStadia">
     <?php endif; ?>
+		<!-- og Metatags Not Essential Only Analytics -->
+		<meta name="og_site_name" content="Stadia GamesDB!">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@DbStadia">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
