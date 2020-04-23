@@ -46,6 +46,7 @@
         <label class="label">What's the game about:</label>
         <div class="control">
           <textarea class="textarea" name="About"></textarea>
+					<p class="help"><strong>HTML Tags:</strong> <code>p, br, a, strong</code></p>
         </div>
       </div>
       <!-- File Chooser Entry -->
