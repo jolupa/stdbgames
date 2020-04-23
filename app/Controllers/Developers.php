@@ -62,7 +62,7 @@ class Developers extends Controller{
 		}
 		$insertdeveloper->insertDeveloper($data);
 
-		return redirect()->to('/developers/developer/'.$data['Slug'])
+		return redirect()->to('/developers/developer/'.$data['Slug']);
 	}
 }
 
