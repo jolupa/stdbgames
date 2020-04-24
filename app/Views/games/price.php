@@ -56,6 +56,7 @@
     datasets: [
       {
 				barThickness: 'flex',
+				backgroundColor: 'rgba(0,204,102,1)',
         data: price,
       }
     ]
