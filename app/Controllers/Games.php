@@ -108,9 +108,10 @@ class Games extends Controller{
 		echo view('templates/footer');
 	}
 	public function updategame(){
+		$update = new GamesModel();
 		$data['Gameid'] = $this->request->getVar('Gameid');
 		$data['Name'] = $this->request->getVar('Name');
-		$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
+		$slug = $this->request->getVar('Slug');
 		$data['Release'] = $this->request->getVar('Release');
 		$data['Pro'] = $this->request->getVar('Pro');
 		if ($this->request->getVar('Profrom') != NULL){
@@ -148,7 +149,7 @@ class Games extends Controller{
 		}
 		$update->updateGame($data);
 
-		return redirect()->to('/games/game/'.$data['Slug']);
+		return redirect()->to('/games/game/'.$slug);
 	}
 	public function list($type){
 		$games = new GamesModel();

@@ -1,14 +1,14 @@
 ﻿<!-- Game Insert Form -->
 <section class="section">
 	<div class="container">
-		<form method="post" action="<?= base_url() ?>/games/update" enctype="multipart/form-data">
+		<form method="post" action="<?= base_url() ?>/games/updategame" enctype="multipart/form-data">
 			<input type="hidden" name="Slug" value="<?= $game['gSlug'] ?>">
 			<input type="hidden" name="Gameid" value="<?= $game['gId'] ?>">
 			<!-- Name Entry -->
 			<div class="field is-grouped is-grouped-multiline">
 				<div class="control is-expanded">
 					<label class="label">Name</label>
-					<input class="input" type="text" name="Title" value="<?= $game['gName'] ?>">
+					<input class="input" type="text" name="Name" value="<?= $game['gName'] ?>">
 				</div>
 				<div class="control is-expanded">
 					<label class="label">Release Date</label>
