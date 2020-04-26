@@ -2,6 +2,9 @@
 	<div class="column is-full-width">
 		<form method="post" action="<?= base_url() ?>/prices/<?php if($addon): ?>newpriceaddon<?php else: ?>newprice<?php endif; ?>">
 			<input type="hidden" name="<?php if($addon): ?>Addonid<?php else: ?>Gameid<?php endif; ?>" value="<?php if($addon): ?><?= $addon['aId'] ?><?php else: ?><?= $game['gId'] ?><?php endif; ?>">
+			<?php if($addon): ?>
+				<input type="hidden" name="Slug" value="<?= $addon['aSlug'] ?>">
+			<?php endif; ?>
 			<div class="field is-grouped is-grouped-multiline">
 				<div class="control is-expanded">
 					<input class="input" type="text" name="Price" placeholder="Price">

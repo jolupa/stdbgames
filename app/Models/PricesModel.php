@@ -25,6 +25,18 @@ class PricesModel extends Model{
 		return $builder->get(10)
 										->getResultArray();
 	}
+	public function newPriceGame($data){
+		$db = \Config\Database::connect();
+		$builder = $db->table('prices');
+
+		return $builder->insert($data);
+	}
+	public function newPriceAddon($data){
+		$db = \Config\Database::connect();
+		$builder = $db->table('pricesaddons');
+
+		return $builder->insert($data);
+	}
 }
 
  ?>
