@@ -72,14 +72,20 @@
 			</div>
 		</div>
 	</form>
+</div>
+</section>
+<section class="section">
+	<div class="container">
+		<?= view_cell('App\Controllers\Prices::price') ?>
 	</div>
 </section>
 
 <script>
 	const fileInput = document.querySelector('#insertgame input[type=file]');
 	fileInput.onchange = () => {
-	if (fileInput.files.length > 0) {
-	const fileName = document.querySelector('#insertgame .file-name');
-	fileName.textContent = fileInput.files[0].name;
-}}
+		if (fileInput.files.length > 0) {
+			const fileName = document.querySelector('#insertgame .file-name');
+			fileName.textContent = fileInput.files[0].name;
+		}
+	}
 </script>

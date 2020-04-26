@@ -107,7 +107,7 @@ class GamesModel extends Model{
 
 		return $builder->update($data);
 	}
-	public function getGames($type){
+	public function getGames($type = false){
 		$db = \Config\Database::connect();
 		if ($type == 'soon'){
 			$builder = $db->table('games')
@@ -121,7 +121,7 @@ class GamesModel extends Model{
 										->join('publishers', 'publishers.Publisherid = games.Publisherid')
 										->where('Release >', date('Y-m-d'))
 										->orderBy('Release', 'ASC');
-		} else {
+		} else if ($type == 'launched'){
 			$builder = $db->table('games')
 										->select('games.Slug AS gSlug,
 															games.Name AS gName,
@@ -133,6 +133,11 @@ class GamesModel extends Model{
 										->join('publishers', 'publishers.Publisherid = games.Publisherid')
 										->where('Release <=', date('Y-m-d'))
 										->orderBy('Release', 'DESC');
+		} else {
+			$builder = $db->table('games')
+										->select('games.Gameid AS gId,
+															games.Name AS gName')
+										->orderBy('Name', 'ASC');
 		}
 		return $builder->get()
 									->getResultArray();

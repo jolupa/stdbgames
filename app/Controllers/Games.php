@@ -58,6 +58,7 @@ class Games extends Controller{
 		if (!$val){
 			echo view('templates/header');
 			echo view('games/gameform', ['validations'=>$this->validator]);
+			echo view('templates/footer');
 		} else {
 			$data['Name'] = $this->request->getVar('Name');
 			$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
@@ -151,14 +152,17 @@ class Games extends Controller{
 
 		return redirect()->to('/games/game/'.$slug);
 	}
-	public function list($type){
+	public function list($type = false){
 		$games = new GamesModel();
 		$data['games'] = $games->getGames($type);
 		$data['type'] = $type;
-
-		echo view('templates/header', $data);
-		echo view('games/list', $data);
-		echo view('templates/footer');
+		if($type == 'soon' || $type == 'launched'){
+			echo view('templates/header', $data);
+			echo view('games/list', $data);
+			echo view('templates/footer');
+		} else {
+			return view('games/allgames', $data);
+		}
 	}
 	public function about(){
 		echo view('templates/header');

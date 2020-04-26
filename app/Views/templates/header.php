@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<?php if (isset($game)): ?>
+		<?php if ($game): ?>
 			<title>Stadia GamesDB! - <?= $game['gName'] ?></title>
 			<meta name="description" content="Information about <?= $game['gName'] ?> developed by <?= $game['gdName'] ?> and published by <?= $game['gpName'] ?> in Stadia">
 			<meta name="keywords" content="<?= $game['gName'] ?>, <?= $game['gdName'] ?>, <?= $game['gpName'] ?>, Stadia, Stream, Cloud, Games, Online">
@@ -16,7 +16,7 @@
 			<meta property="og:url" content="<?= base_url() ?>/games/game/<?= $game['gSlug'] ?>">
 			<!-- og Metatags Not Essential Recommended -->
 			<meta name="twitter:image_alt" content="<?= $game['gName'] ?>">
-		<?php elseif (isset($developer)): ?>
+		<?php elseif ($developer): ?>
 			<title>Stadia GamesDB! - <?= $developer['dName'] ?></title>
 			<meta name="description" content="Information About <?= $developer['dName'] ?> in Stadia">
 			<meta name="keywords" content="<?= $developer['dName'] ?>, Stadia, Stream, Cloud, Games, Online">
@@ -31,7 +31,7 @@
 			<?php if(isset($developer['dImage'])): ?>
 				<meta name="twitter:image_alt" content="<?= $developer['dImage'] ?>">
 			<?php endif; ?>
-		<?php elseif (isset($publisher)): ?>
+		<?php elseif ($publisher): ?>
 			<title>Stadia GamesDB! - <?= $publisher['pName'] ?></title>
 			<meta name="description" content="Information About <?= $publisher['pName'] ?> in Stadia">
 			<meta name="keywords" content="<?= $publisher['pName'] ?>, Stadia, Stream, Cloud, Games, Online">
@@ -46,8 +46,8 @@
 			<?php if(isset($publisher['pImage'])): ?>
 				<meta name="twitter:image_alt" content="<?= $publisher['pImage'] ?>">
 			<?php endif; ?>
-    <?php elseif (isset($gametype)): ?>
-      <title>Stadia Games DB</title>
+    <?php elseif ($gametype): ?>
+      <title>Stadia Games DB - <?= $addon['aName'] ?></title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
       <meta name="keywords" content="Stadia, Google, Games, Database, db, funny, play, stream">
       <!-- og Metatags -->
@@ -59,6 +59,18 @@
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
       <meta name="twitter:image_alt" content="<?= $gametype[$number]['gName'] ?>">
+		<?php elseif(isset($addon)): ?>
+			<title>Stadia Games DB - <?= $addon['aName'] ?></title>
+			<meta name="desciption" content="<?= $addon['aName'] ?> Addon for <?= $addon['agName'] ?> on Stadia">
+			<meta name="keywords" content="<?= $addon['aName'] ?>, <?= $addon['agName'] ?>, <?= $addon['adName'] ?>, <?= $addon['apName'] ?>, Stadia, Google, Games, Database, db, funny, play, stream">
+			<!-- og Metatags -->
+			<meta property="og:title" content="<?= $addon['aName'] ?> addon for <?= $addon['agName'] ?> -- Stadia GamesDB!">
+			<meta property="og:description" content="<?= character_limiter($addon['aAbout'], 80, '...') ?>">
+			<meta property="og:image" content="<?= base_url() ?>/images/<?= $addon['aImage'] ?>">
+			<meta property="og:url" content="<?= base_url() ?>/addons/addon/<?= $addon['aSlug'] ?>">
+			<meta name="twitter:card" content="summary_large_image">
+			<!-- og Metatags Not Essential Recommended -->
+			<meta name="twitter:image_alt" content="<?= $addon['aName'] ?>">
     <?php else: ?>
       <title>Stadia Games DB</title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
@@ -113,6 +125,7 @@
               <a class="navbar-link">New...</a>
               <div class="navbar-dropdown">
                 <a class="navbar-item" href="<?= base_url() ?>/games/insert/">... Game</a>
+								<a class="navbar-item" href="<?= base_url() ?>/addons/insert/">... Addon</a>
                 <a class="navbar-item" href="<?= base_url() ?>/developers/insert/">... Developer</a>
                 <a class="navbar-item" href="<?= base_url() ?>/publishers/insert/">... Publisher</a>
               </div>
