@@ -17,7 +17,7 @@ class Images extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $libraryPath = '/usr/local/bin/convert';
+	public $libraryPath = '/usr/bin/convert';
 
 	/**
 	 * The available handler classes.
