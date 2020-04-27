@@ -113,13 +113,7 @@
         <div class="navbar-menu">
           <div class="navbar-start">
             <a class="navbar-item" href="<?= base_url() ?>/games/about">About</a>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">Go to...</a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item" href="<?= base_url() ?>/games/list/launched">... Games Launched</a>
-                <a class="navbar-item" href="<?= base_url() ?>/games/list/soon">... Games Coming Soon</a>
-              </div>
-            </div>
+						<?= view_cell('App\Controllers\Stats::gamesstats') ?>
             <?php if ( session('is_logged') == TRUE): ?>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">New...</a>
