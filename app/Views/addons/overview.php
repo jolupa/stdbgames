@@ -4,7 +4,7 @@
 			<div class="card">
 				<div class="card-image">
 					<figure class="image is16by9">
-						<img src="<?= base_url() ?>/images/<?= $addon['aImage'] ?>">
+						<img src="<?= base_url() ?>/images/<?= $addon['aImage'] ?>.jpeg">
 					</figure>
 				</div>
 				<div class="card-content">

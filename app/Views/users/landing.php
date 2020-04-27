@@ -5,7 +5,7 @@
 				<div class="media">
 					<figure class="media-left">
 						<p class="image is-128x128">
-							<img title="<?= $user['uName'] ?>" src="<?= base_url() ?>/images/avatar/<?php if ( file_exists(ROOTPATH.'/public/images/avatar/'.$user['uSlug'])): ?><?= $user['uImage'] ?><?php else: ?>avatar01<?php endif; ?>">
+							<img title="<?= $user['uName'] ?>" src="<?= base_url() ?>/images/avatar/<?php if ( file_exists(ROOTPATH.'/public/images/avatar/'.$user['uSlug'])): ?><?= $user['uImage'] ?>.jpeg<?php else: ?>avatar01.jpeg<?php endif; ?>">
 						</p>
 					</figure>
 					<div class="media-content">

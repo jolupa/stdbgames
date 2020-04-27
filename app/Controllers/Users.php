@@ -84,13 +84,13 @@ class Users extends Controller{
 				$data['Image'] = strtolower(url_title($this->request->getVar('Name')));
 				$newname = strtolower(url_title($this->request->getVar('Name')));
 				$file = $this->request->getFile('Image')
-																	->move(WRITEPATH.'uploads', $newname);
-				$image = \Config\Services::image()
-									->withFile(WRITEPATH.'uploads/'.$newname)
+																	->move(WRITEPATH.'uploads', $newname.'.jpeg');
+				$image = \Config\Services::image('imagick')
+									->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
 									->fit(256, 256, 'center')
 									->convert(IMAGETYPE_JPEG)
-									->save(ROOTPATH.'public/images/avatar/'.$newname);
-				unlink(WRITEPATH.'uploads/'.$newname);
+									->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
+				unlink(WRITEPATH.'uploads/'.$newname.'.jpeg');
 			}
 			$insert->userInsert($data);
 			return redirect()->to('/users/login');
@@ -153,13 +153,13 @@ class Users extends Controller{
 			$data['Image'] = strtolower(url_title($this->request->getVar('Name')));
 			$newname = strtolower(url_title($this->request->getVar('Name')));
 			$file = $this->request->getFile('Image')
-																->move(WRITEPATH.'uploads', $newname);
+																->move(WRITEPATH.'uploads', $newname.'.jpeg');
 			$image = \Config\Services::image()
-								->withFile(WRITEPATH.'uploads/'.$newname)
+								->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
 								->fit(256, 256, 'center')
 								->convert(IMAGETYPE_JPEG)
-								->save(ROOTPATH.'public/images/avatar/'.$newname);
-			unlink(WRITEPATH.'uploads/'.$newname);
+								->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
+			unlink(WRITEPATH.'uploads/'.$newname.'.jpeg');
 		}
 		$user->updateUser($data);
 

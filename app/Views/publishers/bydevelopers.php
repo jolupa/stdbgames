@@ -11,7 +11,7 @@
 				<div class="media">
 					<figure class="media-left">
 						<p class="image is-64x64">
-							<img title="<?= $developerpublisher['gName'] ?>" src="<?= base_url() ?>/images/<?= $developerpublisher['gImage'] ?>-thumb">
+							<img title="<?= $developerpublisher['gName'] ?>" src="<?= base_url() ?>/images/<?= $developerpublisher['gImage'] ?>-thumb.jpeg">
 						</p>
 					</figure>
 					<div class="media-content">

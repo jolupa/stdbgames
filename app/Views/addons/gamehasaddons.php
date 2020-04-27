@@ -21,7 +21,7 @@
 				<div class="media">
 					<div class="media-left">
 						<figure class="image is-256x256">
-							<a href="<?= base_url() ?>/addons/addon/<?= $gamehasaddons['aSlug'] ?>"><img title="<?= $gamehasaddons['aImage'] ?>" src="<?= base_url() ?>/images/<?= $gamehasaddons['aImage'] ?>-thumb" title="<?= $gamehasaddons['aName'] ?>"></a>
+							<a href="<?= base_url() ?>/addons/addon/<?= $gamehasaddons['aSlug'] ?>"><img title="<?= $gamehasaddons['aImage'] ?>" src="<?= base_url() ?>/images/<?= $gamehasaddons['aImage'] ?>-thumb.jpeg" title="<?= $gamehasaddons['aName'] ?>"></a>
 						</figure>
 					</div>
 				</div>

@@ -10,7 +10,7 @@
 			<div class="media">
 				<div class="media-left">
 					<figure class="image is-64x64">
-						<a href="<?= base_url() ?>/games/game/<?= $library['gSlug'] ?>"><img title="<?= $library['gImage'] ?>" src="<?= base_url() ?>/images/<?= $library['gImage'] ?>-thumb" title="<?= $library['gName'] ?>"></a>
+						<a href="<?= base_url() ?>/games/game/<?= $library['gSlug'] ?>"><img title="<?= $library['gImage'] ?>" src="<?= base_url() ?>/images/<?= $library['gImage'] ?>-thumb.jpeg" title="<?= $library['gName'] ?>"></a>
 					</figure>
 				</div>
 			</div>

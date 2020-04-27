@@ -83,17 +83,17 @@ class Games extends Controller{
 				$data['Image'] = $newname;
 				$file = $this->request->getFile('Image')
 														 			->move(WRITEPATH.'uploads', $newname);
-			 	$image = \Config\Services::image()
-								->withFile(WRITEPATH.'uploads/'.$newname)
+			 	$image = \Config\Services::image('imagick')
+								->withFile(WRITEPATH.'uploads/'.$newname.'jpeg')
 								->resize(1980, 1024, true, 'height')
 								->convert(IMAGETYPE_JPEG)
-								->save(ROOTPATH.'public/images/'.$newname);
+								->save(ROOTPATH.'public/images/'.$newname.'.jpeg');
 				$imagethumb = \Config\Services::image()
-												 ->withFile(WRITEPATH.'uploads/'.$newname)
+												 ->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
 												 ->fit(256, 256, 'center')
 												 ->convert(IMAGETYPE_JPEG)
-												 ->save(ROOTPATH.'public/images/'.$newname.'-thumb');
-				unlink(WRITEPATH.'uploads/'.$newname);
+												 ->save(ROOTPATH.'public/images/'.$newname.'-thumb.jpeg');
+				unlink(WRITEPATH.'uploads/'.$newname.'.jpeg');
 			}
 		 	$insert->insertGame($data);
 
@@ -136,17 +136,17 @@ class Games extends Controller{
 			$data['Image'] = $newname;
 			$file = $this->request->getFile('Image')
 																->move(WRITEPATH.'uploads', $newname);
-			$image = \Config\Services::image()
-							->withFile(WRITEPATH.'uploads/'.$newname)
+			$image = \Config\Services::image('imagick')
+							->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
 							->resize(1980, 1024, true, 'height')
 							->convert(IMAGETYPE_JPEG)
-							->save(ROOTPATH.'public/images/'.$newname);
+							->save(ROOTPATH.'public/images/'.$newname.'.jpeg');
 			$imagethumb = \Config\Services::image()
-											 ->withFile(WRITEPATH.'uploads/'.$newname)
+											 ->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
 											 ->fit(256, 256, 'center')
 											 ->convert(IMAGETYPE_JPEG)
-											 ->save(ROOTPATH.'public/images/'.$newname.'-thumb');
-			unlink(WRITEPATH.'uploads/'.$newname);
+											 ->save(ROOTPATH.'public/images/'.$newname.'-thumb.jpeg');
+			unlink(WRITEPATH.'uploads/'.$newname.'.jpeg');
 		}
 		$update->updateGame($data);
 

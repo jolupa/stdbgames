@@ -20,7 +20,7 @@
         <div class="media">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img title="<?= $addonshome['aName'] ?>" src="<?= base_url() ?>/images/<?= $addonshome['aImage'] ?>-thumb">
+              <img title="<?= $addonshome['aName'] ?>" src="<?= base_url() ?>/images/<?= $addonshome['aImage'] ?>-thumb.jpeg">
             </p>
           </figure>
           <div class="media-content">

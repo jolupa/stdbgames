@@ -12,7 +12,7 @@
 			<?php if(!empty($game['About'])): ?>
 				<meta property="og:description" content="<?= character_limiter($game['gAbout'], 80, '...') ?>">
 			<?php endif; ?>
-			<meta property="og:image" content="<?= base_url() ?>/images/<?= $game['gImage'] ?>">
+			<meta property="og:image" content="<?= base_url() ?>/images/<?= $game['gImage'] ?>.jpeg">
 			<meta property="og:url" content="<?= base_url() ?>/games/game/<?= $game['gSlug'] ?>">
 			<!-- og Metatags Not Essential Recommended -->
 			<meta name="twitter:image_alt" content="<?= $game['gName'] ?>">
@@ -24,7 +24,7 @@
 			<meta property="og:title" content="Games Developed by <?= $developer['dName'] ?> on Stadia - Stadia GamesDB!">
 			<meta property="og:description" content="All the games Developed by <?= $developer['dName'] ?>">
 			<?php if(isset($developer['dImage'])): ?>
-				<meta property="og:image" content="<?= base_url() ?>/images/developers/<?= $developer['dImage'] ?>">
+				<meta property="og:image" content="<?= base_url() ?>/images/<?= $developer['dImage'] ?>.jpeg">
 			<?php endif; ?>
 			<meta property="og:url" content="<?= base_url() ?>/developers/developer/<?= $developer['dSlug'] ?>">
 			<!-- og Metatags No Essential Recommended -->
@@ -39,7 +39,7 @@
 			<meta property="og:title" content="Games Published by <?= $publisher['pName'] ?> on Stadia - Stadia GamesDB!">
 			<meta property="og:description" content="All the games Published by <?= $publisher['pName'] ?>">
 			<?php if(isset($publisher['pImage'])): ?>
-				<meta property="og:image" content="<?= base_url() ?>/images/publishers/<?= $publisher['pImage'] ?>">
+				<meta property="og:image" content="<?= base_url() ?>/images/<?= $publisher['pImage'] ?>.jpeg">
 			<?php endif; ?>
 			<meta property="og:url" content="<?= base_url() ?>/publishers/publisher/<?= $publisher['pSlug'] ?>">
 			<!-- og Metatags No Essential Recommended -->
@@ -54,7 +54,7 @@
       <meta property="og:title" content="Games on Stadia -- Stadia GamesDB!">
       <meta property="og:description" content="Search the Stadia GamesDB!">
       <?php $number = array_rand($gametype, 1); ?>
-      <meta property="og:image" content="<?= base_url() ?>/images/<?= $gametype[$number]['gImage'] ?>">
+      <meta property="og:image" content="<?= base_url() ?>/images/<?= $gametype[$number]['gImage'] ?>.jpeg">
       <meta property="og:url" content="<?= base_url() ?>">
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
@@ -66,7 +66,7 @@
 			<!-- og Metatags -->
 			<meta property="og:title" content="<?= $addon['aName'] ?> addon for <?= $addon['agName'] ?> -- Stadia GamesDB!">
 			<meta property="og:description" content="<?= character_limiter($addon['aAbout'], 80, '...') ?>">
-			<meta property="og:image" content="<?= base_url() ?>/images/<?= $addon['aImage'] ?>">
+			<meta property="og:image" content="<?= base_url() ?>/images/<?= $addon['aImage'] ?>.jpeg">
 			<meta property="og:url" content="<?= base_url() ?>/addons/addon/<?= $addon['aSlug'] ?>">
 			<meta name="twitter:card" content="summary_large_image">
 			<!-- og Metatags Not Essential Recommended -->
@@ -83,7 +83,7 @@
       <?php else: ?>
         <?php $number = random_int(0, 30); ?>
       <?php endif; ?>
-        <meta property="og:image" content="<?= base_url() ?>/images/<?= $founders[$number]['gImage'] ?>">
+        <meta property="og:image" content="<?= base_url() ?>/images/<?= $founders[$number]['gImage'] ?>.jpeg">
       <meta property="og:url" content="<?= base_url() ?>">
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->

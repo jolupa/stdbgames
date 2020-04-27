@@ -20,7 +20,7 @@
         <div class="media">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img title="<?= $launched['gName'] ?>" src="<?= base_url() ?>/images/<?= $launched['gImage'] ?>-thumb">
+              <img title="<?= $launched['gName'] ?>" src="<?= base_url() ?>/images/<?= $launched['gImage'] ?>-thumb.jpeg">
             </p>
           </figure>
           <div class="media-content">

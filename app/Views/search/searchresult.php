@@ -14,7 +14,7 @@
           <div class="media">
             <figure class="media-left">
               <p class="image is-64x64">
-                <img title="<?= $results['Name'] ?>" src="<?= base_url() ?>/images/<?= $results['Image'] ?>-thumb">
+                <img title="<?= $results['Name'] ?>" src="<?= base_url() ?>/images/<?= $results['Image'] ?>-thumb.jpeg">
               </p>
             </figure>
             <div class="media-content">

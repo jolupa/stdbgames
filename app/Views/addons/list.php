@@ -12,7 +12,7 @@
 					<div class="media">
 						<figure class="media-left">
 							<p class="image is-64x64">
-								<img title="<?= $addons['aName'] ?>" src="<?= base_url() ?>/images/<?= $addons['aImage'] ?>-thumb">
+								<img title="<?= $addons['aName'] ?>" src="<?= base_url() ?>/images/<?= $addons['aImage'] ?>-thumb.jpeg">
 							</p>
 						</figure>
 						<div class="media-content">

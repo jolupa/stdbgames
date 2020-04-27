@@ -10,7 +10,7 @@
 			<div class="media">
 				<div class="media-left">
 					<figure class="image is-64x64">
-						<a href="<?= base_url() ?>/games/game/<?= $votesbyuser['gSlug'] ?>"><img title="<?= $votesbyuser['gName'] ?>" src="<?= base_url() ?>/images/<?= $votesbyuser['gImage'] ?>-thumb" alt="<?= $votesbyuser['gName'] ?>"></a>
+						<a href="<?= base_url() ?>/games/game/<?= $votesbyuser['gSlug'] ?>"><img title="<?= $votesbyuser['gName'] ?>" src="<?= base_url() ?>/images/<?= $votesbyuser['gImage'] ?>-thumb.jpeg" alt="<?= $votesbyuser['gName'] ?>"></a>
 					</figure>
 				</div>
 			</div>
