@@ -84,9 +84,9 @@ class Users extends Controller{
 				$data['Image'] = strtolower(url_title($this->request->getVar('Name')));
 				$newname = strtolower(url_title($this->request->getVar('Name')));
 				$file = $this->request->getFile('Image')
-																	->move(WRITEPATH.'uploads', $newname.'.jpeg');
+																	->move(WRITEPATH.'uploads', $newname);
 				$image = \Config\Services::image('imagick')
-									->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
+									->withFile(WRITEPATH.'uploads/'.$newname)
 									->fit(256, 256, 'center')
 									->convert(IMAGETYPE_JPEG)
 									->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
@@ -153,9 +153,9 @@ class Users extends Controller{
 			$data['Image'] = strtolower(url_title($this->request->getVar('Name')));
 			$newname = strtolower(url_title($this->request->getVar('Name')));
 			$file = $this->request->getFile('Image')
-																->move(WRITEPATH.'uploads', $newname.'.jpeg');
+																->move(WRITEPATH.'uploads', $newname);
 			$image = \Config\Services::image()
-								->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
+								->withFile(WRITEPATH.'uploads/'.$newname)
 								->fit(256, 256, 'center')
 								->convert(IMAGETYPE_JPEG)
 								->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
