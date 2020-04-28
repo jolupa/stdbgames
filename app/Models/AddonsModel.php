@@ -49,7 +49,7 @@ class AddonsModel extends Model{
 														Slug AS aSlug,
 														Image AS aImage')
 									->where('Gameid', $gameid)
-									->orderBy('Release', 'ASC');
+									->orderBy('Release', 'DESC');
 
 		return $builder->get()
 										->getResultArray();
