@@ -50,18 +50,18 @@ class Addons extends Controller{
 				$newname = $data['Slug'].'-addon';
 				$data['Image'] = $newname;
 				$file = $this->request->getFile('Image')
-																	->move(WRITEPATH.'uploads', $newname.'.jpeg');
+																	->move(WRITEPATH.'uploads', $newname);
 				$image = \Config\Services::image('imagick')
-								->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
+								->withFile(WRITEPATH.'uploads/'.$newname)
 								->resize(1980, 1024, true, 'height')
 								->convert(IMAGETYPE_JPEG)
 								->save(ROOTPATH.'public/images/'.$newname.'.jpeg');
 				$imagethumb = \Config\Services::image('imagick')
-												 ->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
+												 ->withFile(WRITEPATH.'uploads/'.$newname)
 												 ->fit(256, 256, 'center')
 												 ->convert(IMAGETYPE_JPEG)
 												 ->save(ROOTPATH.'public/images/'.$newname.'-thumb.jpeg');
-				unlink(WRITEPATH.'uploads/'.$newname.'.jpeg');
+				unlink(WRITEPATH.'uploads/'.$newname);
 			}
 			$insert->insertAddon($data);
 
