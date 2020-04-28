@@ -26,7 +26,7 @@
       <div class="field is-grouped">
         <!-- Button Send -->
         <p class="control">
-          <button class="button is-primary" type="submit" name="submit">Add Developer</button>
+          <button class="button is-primary" type="submit" name="submit">Add Publisher</button>
         </p>
         <!-- Button Clear -->
         <p class="control">
