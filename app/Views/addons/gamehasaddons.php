@@ -10,7 +10,7 @@
 			<div class="media">
 				<div class="media-left">
 					<figure class="image is-256x256">
-						<img title="This Game has no addons at the momment" src="<?= base_url() ?>/images/avatar/avatar01">
+						<img title="This Game has no addons at the momment" src="<?= base_url() ?>/images/avatar/avatar01.jpg">
 					</figure>
 				</div>
 			</div>
