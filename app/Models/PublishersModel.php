@@ -18,7 +18,8 @@ class PublishersModel extends Model{
 									->select('Publisherid AS pId,
 														Name AS pName,
 														Slug AS pSlug,
-														Website AS pWebsite')
+														Website AS pWebsite,
+														About AS pAbout')
 									->where('Slug', $slug);
 		return $builder->get()
 										->getRowArray();

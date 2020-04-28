@@ -15,6 +15,7 @@
 									<span class="icon"><a href="<?= base_url() ?>/developers/edit/<?= $developer['dSlug'] ?>"><i class="far fa-edit"></i></a></span>
 								<?php endif; ?>
 							</p>
+							<p><?= $developer['dAbout'] ?></p>
 						</div>
 					</div>
 					<?= view_cell( '\App\Controllers\Developers::publishersbydeveloper', 'developerid='.$developer['dId'] ) ?>

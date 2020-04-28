@@ -15,6 +15,7 @@
 									<span class="icon"><a href="<?= base_url() ?>/publishers/edit/<?= $publisher['pSlug'] ?>"><i class="far fa-edit"></i></a></span>
 								<?php endif; ?>
 							</p>
+							<p><?= $publisher['pAbout'] ?></p>
 						</div>
 					</div>
 					<?= view_cell( '\App\Controllers\Publishers::developersbypublisher', 'publisherid='.$publisher['pId'] ) ?>
