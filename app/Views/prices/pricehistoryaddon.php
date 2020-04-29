@@ -46,7 +46,7 @@
 	var pricechart = new Chart(ctx, {
 		type: 'bar',
 		data: {
-			labels:[<?php foreach($price as $date): ?>'<?= $date['pDate'] ?>',<?php endforeach; ?>],
+			labels:[<?php foreach($price as $date): ?>'<?= $date['pDate'] ?> <?php if($data['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?>',<?php endforeach; ?>],
 			datasets: [{
 				data: [<?php foreach($price as $price): ?>'<?= $price['pPrice'] ?>',<?php endforeach; ?> ],
 				backgroundColor: [ 'rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)', ],

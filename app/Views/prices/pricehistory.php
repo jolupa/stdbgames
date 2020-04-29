@@ -24,12 +24,14 @@
 						<tr>
 							<th>Price</th>
 							<th>Date</th>
+							<th>Type of Discount</th>
 						</tr>
 					</thead>
 					<?php foreach($price as $mobile): ?>
 						<tr>
 							<td><?= $mobile['pPrice'] ?></td>
 							<td><?= $mobile['pDate'] ?></td>
+							<td><?= $mobile['pDiscounttype'] ?>
 						</tr>
 					<?php endforeach; ?>
 				</table>
@@ -46,10 +48,10 @@
 	var pricechart = new Chart(ctx, {
 		type: 'bar',
 		data: {
-			labels:[<?php foreach($price as $date): ?>'<?= $date['pDate'] ?>',<?php endforeach; ?>],
+			labels:[<?php foreach($price as $date): ?>'<?= $date['pDate'] ?> <?php if( $date['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?>',<?php endforeach; ?>],
 			datasets: [{
 				data: [<?php foreach($price as $price): ?>'<?= $price['pPrice'] ?>',<?php endforeach; ?> ],
-				backgroundColor: [ 'rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)', ],
+				backgroundColor: ['rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)',],
 				barThickness: 'flex',
 			}],
 		},
@@ -60,9 +62,6 @@
 						beginAtZero: true,
 						min: 0,
 					},
-					backgroundColor: [
-						'rgba(51,153,51,1)',
-					]
 				}]
 			},
 			legend: {

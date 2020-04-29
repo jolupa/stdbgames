@@ -7,22 +7,24 @@ class PricesModel extends Model{
 		$db = \Config\Database::connect();
 		$builder = $db->table('prices')
 									->select('Date AS pDate,
-														Price AS pPrice')
+														Price AS pPrice,
+														Discounttype AS pDiscounttype')
 									->where('Gameid', $gameid)
 									->orderBy('Date', 'ASC');
 
-		return $builder->get(10)
+		return $builder->get(8)
 										->getResultArray();
 	}
 	public function getPricesAddons($addonid){
 		$db = \Config\Database::connect();
 		$builder = $db->table('pricesaddons')
 									->select('Date AS pDate,
-														Price AS pPrice')
+														Price AS pPrice,
+														Discounttype AS pDiscounttype')
 									->where('Addonid', $addonid)
 									->orderBy('Date', 'ASC');
 
-		return $builder->get(10)
+		return $builder->get(8)
 										->getResultArray();
 	}
 	public function newPriceGame($data){
