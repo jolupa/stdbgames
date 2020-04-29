@@ -192,5 +192,8 @@ class Games extends Controller{
 
 		return view('games/price', $data);
 	}
+	public function Store(){
+		return view('games/store');
+	}
 }
  ?>

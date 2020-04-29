@@ -1,9 +1,9 @@
 <section class="section">
   <div class="container">
     <p class="title is-3">What is this!</p>
-    <p class="subtitle is-5">This is only a spare time project to retake the PHP coding I left behind for about 25 years or more.</p>
-    <p class="subtitle is-5">The project is made with <strong><a href="https://codeigniter.com" target="_blank">CodeIgniter 4</a></strong> and with <strong><a href="https://bulma.io" target="_blank">BulmaCSS</a></strong>, I love both projects.</p>
-    <p class="subtitle is-5">Hope you enjoy, and if you have some idea to implement just send me and email to <strong>jolupameister at dot g[mail] dot c[om]</strong></p>
+    <p class="subtitle is-5">This is only a spare time project to retake the PHP coding I left behind for about 25 years or more.<br>
+    The project is made with <strong><a href="https://codeigniter.com" target="_blank">CodeIgniter 4</a></strong> and with <strong><a href="https://bulma.io" target="_blank">BulmaCSS</a></strong>, I love both projects.<br>
+    Hope you enjoy, and if you have some idea to implement just send me and email to <strong>jolupameister at dot g[mail] dot c[om]</strong></p>
   </div>
 </section>
 <section class="section">
@@ -22,14 +22,14 @@
 		Our website uses these "cookies" to collection information and to improve our Service. You have the option to either accept or refuse these cookies, and know when a cookie is being sent to your computer. If you choose to refuse our cookies, you may not be able to use some portions of our Service.<br>
 		For more general information on cookies, please read "What Are Cookies".</p>
 		<p class="title is-3">Service Providers</p>
-		<p class="subtitle is-5">We may employ third-party companies and individuals due to the following reasons:</p>
+		<p class="subtitle is-5">We may employ third-party companies and individuals due to the following reasons:<br>
 		<ul>
 			<li>To facilitate our Service;</li>
 			<li>To provide the Service on our behalf;</li>
 			<li>To perform Service-related services; or</li>
 			<li>To assist us in analyzing how our Service is used.</li>
 		</ul>
-		<p class="subtitle is-5">We want to inform our Service users that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.</p>
+		<br>We want to inform our Service users that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose.</p>
 		<p class="title is-3">Security</p>
 		<p class="subtitle is-5">We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security.</p>
 		<p class="title is-3">Links to Other Sites</p>

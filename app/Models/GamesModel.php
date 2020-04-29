@@ -15,7 +15,8 @@ class GamesModel extends Model{
 																	publishers.Name AS gpName')
 											->join('developers', 'developers.Developerid = games.Developerid')
 											->join('publishers', 'publishers.Publisherid = games.Publisherid')
-											->where('Pro', 1);
+											->where('Pro', 1)
+											->where('Profrom <=', date('Y-m-d'));
 		return $builder->get()
 											->getResultArray();
 	}
