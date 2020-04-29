@@ -11,7 +11,7 @@
 				<div class="media">
 					<div class="media-left">
 						<figure class="image is-256x256">
-							<img title="No price tracking for this title" src="<?= base_url() ?>/images/avatar/avatar01">
+							<img title="No price tracking for this title" src="<?= base_url() ?>/images/avatar/avatar01.jpeg">
 						</figure>
 					</div>
 				</div>
