@@ -29,9 +29,9 @@
 					</thead>
 					<?php foreach($price as $mobile): ?>
 						<tr>
-							<td><?= $mobile['pPrice'] ?></td>
+							<td><?= round($mobile['pPrice']) ?></td>
 							<td><?= $mobile['pDate'] ?></td>
-							<td><?= $mobile['pDiscounttype'] ?>
+							<td><?php if($mobile['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?></td>
 						</tr>
 					<?php endforeach; ?>
 				</table>
@@ -51,7 +51,7 @@
 			labels:[<?php foreach($price as $date): ?>'<?= $date['pDate'] ?> <?php if( $date['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?>',<?php endforeach; ?>],
 			datasets: [{
 				data: [<?php foreach($price as $price): ?>'<?= $price['pPrice'] ?>',<?php endforeach; ?> ],
-				backgroundColor: ['rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)',],
+				backgroundColor: ['rgba(0,204,102,1)', 'rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)','rgba(0,204,102,1)',],
 				barThickness: 'flex',
 			}],
 		},

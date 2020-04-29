@@ -24,12 +24,14 @@
 						<tr>
 							<th>Price</th>
 							<th>Date</th>
+							<th>Discount Type</th>
 						</tr>
 					</thead>
 				<?php foreach($price as $mobile): ?>
 					<tr>
 						<td><?= $mobile['pPrice'] ?></td>
 						<td><?= $mobile['pDate'] ?></td>
+						<td><?php if($mobile['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?></td>
 					</tr>
 				<?php endforeach; ?>
 				</table>
