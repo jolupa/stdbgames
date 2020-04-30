@@ -87,7 +87,7 @@
       <meta property="og:url" content="<?= base_url() ?>">
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
-      <meta name="twitter:image_alt" content="<?= $founders[$number]['gImage'] ?>">
+      <meta name="twitter:image_alt" content="<?= $founders[$number]['gName'] ?>">
     <?php endif; ?>
 		<!-- og Metatags Not Essential Only Analytics -->
 		<meta name="og_site_name" content="Stadia GamesDB!">

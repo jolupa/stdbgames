@@ -22,15 +22,15 @@ class Addons extends Controller{
 	public function insertaddon(){
 		$insert = new AddonsModel();
 		$val = $this->validate([ 'Name'=>[ 'label'=>'Name',
-																				'rules'=>'required|is_unique[games.Name]',
-																				'errors'=>[ 'required'=>'The Addon has a Name nope?',
-																										'is_unique'=>'The Addon is already in the DB!', ],
-																		],
-															'Image'=>[ 'label'=>'Image',
-													 								'rules'=>'max_size[Image,3048]',
-																					'errors'=>[ 'max_size'=>'We have a maximum size, try to reduce the Image',],
-																						],
-															 ]);
+											'rules'=>'required|is_unique[games.Name]',
+											'errors'=>[ 'required'=>'The Addon has a Name nope?',
+														'is_unique'=>'The Addon is already in the DB!', ],
+									],
+								'Image'=>[ 'label'=>'Image',
+														'rules'=>'max_size[Image,3048]',
+														'errors'=>[ 'max_size'=>'We have a maximum size, try to reduce the Image',],
+															],
+								]);
 		if(!$val){
 			echo view('templates/header');
 			echo view('addons/insert', ['validations'=>$this->validator]);
