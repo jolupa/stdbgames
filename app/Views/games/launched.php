@@ -41,4 +41,3 @@
     </div>
   </div>
 </section>
-<?= view_cell('App\Controllers\Addons::addonshome') ?>

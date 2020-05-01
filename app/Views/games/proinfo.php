@@ -13,7 +13,7 @@
 	<?php else: ?>
 		<span class="tag is-primary is-medium"><span class="heading">Is free since <strong><?= $game['gProfrom'] ?></strong></span></span>
 	<?php endif; ?>
-	<?php if(!empty($game['gProtill']) && date('Y-m-d') > $game['gProtill']): ?>
+	<?php if(!empty($game['gProtill']) && date('Y-m-d') <= $game['gProtill']): ?>
 		<span class="tag is-danger is-medium"><span class="heading">Was Free till <strong><?= $game['gProtill'] ?></strong></span></span>
 	<?php elseif(date('Y-m-s') < $game['gProtill']): ?>
 		<span class="tag is-danger is-medium"><span class="heading">Free till <strong><?= $game['gProtill'] ?></strong></span></span>
