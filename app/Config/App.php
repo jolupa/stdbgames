@@ -21,7 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'https://stdb.games/';
+	public $baseURL = 'https://stdb.games';
 
 	/*
 	|--------------------------------------------------------------------------
