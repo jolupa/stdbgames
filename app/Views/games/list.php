@@ -1,7 +1,7 @@
 <section class="section">
   <div class="container">
     <div class="columns">
-      <div class="column is-full-time">
+      <div class="column is-full-width">
         <p class="subtitle is-5">Games</p>
         <?php if ( $type == 'soon'): ?>
           <p class="title is-3">Coming Soon!</p>

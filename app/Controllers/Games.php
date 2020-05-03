@@ -75,6 +75,12 @@ class Games extends Controller{
 			if ($this->request->getVar('About') != NULL){
 				$data['About'] = $this->request->getVar('About');
 			}
+			if ($this->request->getVar('Sku') != NULL){
+				$data['Sku'] = $this->request->getVar('Sku');
+			}
+			if ($this->request->getVar('Appid') != NULL){
+				$data['Appid'] = $this->request->getVar('Appid');
+			}
 			if ($this->request->getFile('Image') != NULL){
 				if ( is_dir (ROOTPATH.'/public/images') == FALSE){
 					mkdir(ROOTPATH.'/public/images', 0777, true);
@@ -125,6 +131,13 @@ class Games extends Controller{
 		$data['Publisherid'] = $this->request->getVar('Publisherid');
 		if ($this->request->getVar('About') != NULL){
 			$data['About'] = $this->request->getVar('About');
+		}
+
+		if ($this->request->getVar('Sku') != NULL){
+			$data['Sku'] = $this->request->getVar('Sku');
+		}
+		if ($this->request->getVar('Appid') != NULL){
+			$data['Appid'] = $this->request->getVar('Appid');
 		}
 		if ($this->request->getVar('Image') != NULL){
 			$data['Image'] = $this->request->getVar('Image');
@@ -192,7 +205,7 @@ class Games extends Controller{
 
 		return view('games/price', $data);
 	}
-	public function Store(){
+	public function store(){
 		return view('games/store');
 	}
 }

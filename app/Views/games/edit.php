@@ -8,11 +8,11 @@
 			<div class="field is-grouped is-grouped-multiline">
 				<div class="control is-expanded">
 					<label class="label">Name</label>
-					<input class="input" type="text" name="Name" value="<?= $game['gName'] ?>">
+					<input class="input" type="text" name="Name" placeholder="Game's Name" value="<?= $game['gName'] ?>">
 				</div>
 				<div class="control is-expanded">
 					<label class="label">Release Date</label>
-					<input class="input" type="text" name="Release" value="<?= $game['gRelease'] ?>">
+					<input class="input" type="text" name="Release" placeholder="YYYY-MM-DD" value="<?= $game['gRelease'] ?>">
 				</div>
 			</div>
 			<!-- Date Entry -->
@@ -28,24 +28,33 @@
 				</div>
 				<div class="control">
 					<label class="label">Is Founder since:</label>
-					<input class="input" type="text" name="Profrom" value="<?= $game['gProfrom'] ?>">
+					<input class="input" type="text" name="Profrom" placeholder="YYYY-MM-DD" value="<?= $game['gProfrom'] ?>">
 					<p class="help">date in form YYY-MM-DD</p>
 				</div>
 				<div class="control">
 					<label class="label">Is founder till:</label>
-					<input class="input" type="text" name="Protill" value="<?= $game['gProtill'] ?>">
-					<p class="help">date in form YYY-MM-DD</p>
+					<input class="input" type="text" name="Protill" placeholder="YYYY-MM-DD" value="<?= $game['gProtill'] ?>">
 				</div>
 				<!-- Developer Entry -->
 				<?= view_cell('App\Controllers\Developers:getdevelopers', 'developerid='.$game['gdId']) ?>
 				<!-- Publisher Entry -->
 				<?= view_cell('App\Controllers\Publishers::getpublishers', 'publisherid='.$game['gpId']) ?>
 			</div>
+			<div class="field is-grouped is-grouped-multiline">
+				<div class="control is-expanded">
+					<label class="label">Game SKU</label>
+					<input class="input" name="Sku" placeholder="Google's Game SKU" value="<?= $game['gSku'] ?>">
+				</div>
+				<div class="control is-expanded">
+					<label class="label">Game AppId</label>
+					<input class="input" name="Appid" placeholder="Google's Appid" value="<?= $game['gAppid'] ?>">
+				</div>
+			</div>
 			<!-- Game History Entry -->
 			<div class="field">
 				<label class="label">What's the game about:</label>
 				<div class="control">
-					<textarea class="textarea" name="About"><?= $game['gAbout'] ?></textarea>
+					<textarea class="textarea" name="About" placeholder="Text with info about the game. You can use the HTML tags <p> <br> <a> <strong>"><?= $game['gAbout'] ?></textarea>
 				</div>
 			</div>
 			<!-- File Chooser Entry -->

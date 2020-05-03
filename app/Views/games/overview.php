@@ -51,6 +51,11 @@
 										<?= view_cell( '\App\Controllers\Games::gameproinfo' ) ?>
 									<?php endif; ?>
 								</p>
+								<p>
+									<?php if(date('Y-m-d') > $game['gRelease'] && isset($game['gSku'])): ?>
+										<?= view_cell('App\Controllers\Games::store') ?>
+									<?php endif; ?>
+								</p>
 							</div>
 						</div>
 						<div class="columns">

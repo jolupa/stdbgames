@@ -124,13 +124,11 @@ class Addons extends Controller{
 
 		return view('addons/addonshome', $data);
 	}
-	public function list(){
-		$addons = new AddonsModel();
-		$data['addons'] = $addons->listAddons();
+	public function addonslist(){
+		$addonlist = new AddonsModel();
+		$data['addons'] = $addonlist->addonsList();
 
-		echo view('templates/header', $data);
-		echo view('addons/list', $data);
-		echo view('templates/footer');
+		return view('addons/list', $data);
 	}
 }
 
