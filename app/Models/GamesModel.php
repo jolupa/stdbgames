@@ -73,27 +73,29 @@ class GamesModel extends Model{
 	public function getGame($slug){
 		$db = \Config\Database::connect();
 		$builder = $db->table('games')
-											->select('Gameid AS gId,
-																games.Name AS gName,
-																games.Slug AS gSlug,
-																games.Image AS gImage,
-																games.Developerid AS gdId,
-																games.Publisherid AS gpId,
-																games.About AS gAbout,
-																Pro AS gPro,
-																Profrom AS gProfrom,
-																Protill AS gProtill,
-																Release AS gRelease,
-																games.About AS gAbout,
-																developers.Name AS gdName,
-																developers.Slug AS gdSlug,
-																publishers.Name AS gpName,
-																publishers.Slug AS gpSlug')
-											->join('developers', 'developers.Developerid = games.Developerid')
-											->join('publishers', 'publishers.Publisherid = games.Publisherid')
-											->where('gSlug', $slug);
+									->select('Gameid AS gId,
+														games.Name AS gName,
+														games.Slug AS gSlug,
+														Image AS gImage,
+														games.Developerid AS gdId,
+														games.Publisherid AS gpId,
+														games.About AS gAbout,
+														games.Sku AS gSku,
+														games.Appid AS gAppid,
+														Pro AS gPro,
+														Profrom AS gProfrom,
+														Protill AS gProtill,
+														Release AS gRelease,
+														games.About AS gAbout,
+														developers.Name AS gdName,
+														developers.Slug AS gdSlug,
+														publishers.Name AS gpName,
+														publishers.Slug AS gpSlug')
+									->join('developers', 'developers.Developerid = games.Developerid')
+									->join('publishers', 'publishers.Publisherid = games.Publisherid')
+									->where('gSlug', $slug);
 		return $builder->get()
-											->getRowArray();
+										->getRowArray();
 	}
 	public function insertGame($data){
 		$db = \Config\Database::connect();

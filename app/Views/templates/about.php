@@ -3,7 +3,7 @@
     <p class="title is-3">What is this!</p>
     <p class="subtitle is-5">This is only a spare time project to retake the PHP coding I left behind for about 25 years or more.<br>
     The project is made with <strong><a href="https://codeigniter.com" target="_blank">CodeIgniter 4</a></strong> and with <strong><a href="https://bulma.io" target="_blank">BulmaCSS</a></strong>, I love both projects.<br>
-    Hope you enjoy, and if you have some idea to implement just send me and email to <strong>jolupameister at dot g[mail] dot c[om]</strong></p>
+    Hope you enjoy, and if you have some idea to implement just send me and email to <strong>stadiagamesdb at dot g[mail] dot c[om]</strong></p>
 		<p>&nbsp;</p>
 		<p class="title is-3">Privacy Policy of Stadia GamesDB!</p>
 		<p class="subtitle is-5">Stadia GamesDB! operates the https://stdb.games website, which provides the SERVICE.<br>
