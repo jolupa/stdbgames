@@ -19,7 +19,7 @@
 		<?php else: ?>
 			<div class="column is-full-width">
 				<table class="table is-full-width">
-					<thead class="has-background-color-info">
+					<thead>
 							<th>Release Price</th>
 							<th></th>
 							<th></th>
@@ -27,7 +27,7 @@
 						</tr>
 					</thead>
 					<tr>
-						<td><?= $game['gReleaseprice']?></td>
+						<td><?= number_format($game['gReleaseprice'], 2) ?></td>
 						<td></td>
 						<td></td>
 						<td></td>
@@ -40,9 +40,9 @@
 					</thead>
 					<?php foreach($price as $mobile): ?>
 						<tr>
-							<td><?= $mobile['pPrice'] ?></td>
+							<td><?= number_format($mobile['pPrice'], 2) ?></td>
 							<td><?= $mobile['pDate'] ?></td>
-							<td><?php if($mobile['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?></td>
+							<td <?php if($mobile['pDiscount'] == 1): ?>class="has-background-color-light"<?php endif; ?>><?php if($mobile['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?></td>
 							<td><?php if(session('role') == 1): ?><a title="Delete Discount" href="<?= base_url() ?>/prices/deleteprice/<?= $mobile['pId'] ?>"><span class="icon"><i class="fas fa-trash-alt"></i></span></a><?php endif; ?></td>
 						</tr>
 					<?php endforeach; ?>
