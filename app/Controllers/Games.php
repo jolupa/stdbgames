@@ -137,6 +137,9 @@ class Games extends Controller{
 		if ($this->request->getVar('Appid') != NULL){
 			$data['Appid'] = $this->request->getVar('Appid');
 		}
+		if ($this->request->getVar('Releaseprice') != NULL){
+			$data['Appid'] = $this->request->getVar('Releaseprice');
+		}
 		if ($this->request->getVar('Image') != NULL){
 			$data['Image'] = $this->request->getVar('Image');
 		} else {
