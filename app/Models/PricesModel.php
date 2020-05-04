@@ -28,7 +28,7 @@ class PricesModel extends Model{
 		return $builder->get(8)
 										->getResultArray();
 	}
-	public function newPriceGame($data){
+	public function newPrice($data){
 		$db = \Config\Database::connect();
 		$builder = $db->table('prices');
 

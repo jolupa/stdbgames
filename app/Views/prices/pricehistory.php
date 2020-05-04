@@ -30,12 +30,12 @@
 					<td colspan="4" class="has-text-centered">No History Price at this moment</td>
 				</tr>
 			<?php else: ?>
-				<?php foreach($price as $mobile): ?>
-					<tr <?php if($mobile['pDiscounttype'] == 1): ?>class="has-background-light"<?php endif; ?>>
-						<td><?= number_format($mobile['pPrice'], 2) ?></td>
-						<td><?= $mobile['pDate'] ?></td>
-						<td><?php if($mobile['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?></td>
-							<td><?php if(session('role') == 1): ?><a title="Delete Discount" href="<?= base_url() ?>/prices/deleteprice/<?= 	$mobile['pId'] ?>"><span class="icon"><i class="fas fa-trash-alt"></i></span></a><?php endif; ?></td>
+				<?php foreach($price as $price): ?>
+					<tr <?php if($price['pDiscounttype'] == 1): ?>class="has-background-light"<?php endif; ?>>
+						<td><?= number_format($price['pPrice'], 2) ?></td>
+						<td><?= $price['pDate'] ?></td>
+						<td><?php if($price['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?></td>
+							<td><?php if(session('role') == 1): ?><a title="Delete Discount" href="<?= base_url() ?>/prices/deleteprice/<?= 	$price['pId'] ?>"><span class="icon"><i class="fas fa-trash-alt"></i></span></a><?php endif; ?></td>
 						</tr>
 					<?php endforeach; ?>
 				<?php endif; ?>
