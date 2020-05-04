@@ -7,7 +7,7 @@
 			<?php endif; ?>
 			<div class="field is-grouped is-grouped-multiline">
 				<div class="control is-expanded">
-					<input class="input" type="text" name="Price" placeholder="Price">
+					<input class="input" type="text" name="Price" placeholder="$$.$$">
 				</div>
 				<div class="control is-expanded">
 					<input class="input" type="text" name="Date" placeholder="YYYY-MM-DD">
@@ -15,8 +15,8 @@
 				<div class="control">
 					<div class="select">
 						<select name="Discounttype">
-							<option value="Normal">Normal</option>
-							<option value="Pro">Pro</option>
+							<option value=0>Normal</option>
+							<option value=1>Pro</option>
 						</select>
 					</div>
 				</div>
