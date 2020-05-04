@@ -50,7 +50,7 @@ class Addons extends Controller{
 			}
 			$insert->insertAddon($data);
 
-			return redirect()->to(session('current_url');
+			return redirect()->to(session('current_url'));
 		}
 	}
 	public function update($slug){
