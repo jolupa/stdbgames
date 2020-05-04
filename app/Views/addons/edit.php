@@ -19,7 +19,7 @@
   		<div class="field is-grouped is-grouped-multiline">
         <div class="control">
           <label class="label">Price</label>
-          <input class="input" type="input" name="Releaseprice" placeholder="$$.$$" value="<?= $addon['Releaseprice'] ?>">
+          <input class="input" type="input" name="Releaseprice" placeholder="$$.$$" value="<?= $addon['aReleaseprice'] ?>">
         </div>
   			<!-- Games Entry -->
   			<?= view_cell('App\Controllers\Games::list') ?>

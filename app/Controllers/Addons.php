@@ -70,15 +70,9 @@ class Addons extends Controller{
 		$data['Developerid'] = $this->request->getVar('Developerid');
 		$data['Publisherid'] = $this->request->getVar('Publisherid');
 		$data['About'] = $this->request->getVar('About');
-		if($this->request->getVar('Releaseprice') != NULL){
-			$data['Releaseprice'] = $this->request->getVar('Releaseprice');
-		}
-		if ($this->request->getVar('Sku') != NULL){
-			$data['Sku'] = $this->request->getVar('Sku');
-		}
-		if ($this->request->getVar('Appid') != NULL){
-			$data['Appid'] = $this->request->getVar('Appid');
-		}
+		$data['Releaseprice'] = $this->request->getVar('Releaseprice');
+		$data['Sku'] = $this->request->getVar('Sku');
+		$data['Appid'] = $this->request->getVar('Appid');
 		$slug = $this->request->getVar('Slug');
 		$update->updateAddon($data);
 
