@@ -96,6 +96,12 @@ class Addons extends Controller{
 
 		return view('addons/list', $data);
 	}
+	public function deleteaddon($addonid){
+		$delete = new AddonsModel();
+		$delete->deleteAddon($addonid);
+
+		return redirect()->to(session('current_url'));
+	}
 }
 
  ?>

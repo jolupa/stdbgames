@@ -66,6 +66,12 @@ class AddonsModel extends Model{
 		return $builder->get()
 										->getResultArray();
 	}
+	public function deleteAddon($addonid){
+		$db = \Config\Database::connect();
+		$builder = $db->table('addons');
+
+		return $builder->delete(['Addonid'=>$addonid]);
+	}
 }
 
  ?>

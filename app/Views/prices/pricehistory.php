@@ -25,7 +25,7 @@
 				<th>Type of Discount</th>
 				<th></th>
 			</thead>
-			<?php if(!$price['pDiscounttype']): ?>
+			<?php if(!$price): ?>
 				<tr>
 					<td colspan="4" class="has-text-centered">No History Price at this moment</td>
 				</tr>

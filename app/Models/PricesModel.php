@@ -13,7 +13,7 @@ class PricesModel extends Model{
 									->where('Gameid', $gameid)
 									->orderBy('Date', 'ASC');
 
-		return $builder->get(8)
+		return $builder->get()
 										->getResultArray();
 	}
 	public function getPricesAddons($addonid){
@@ -34,9 +34,10 @@ class PricesModel extends Model{
 
 		return $builder->insert($data);
 	}
-	public function deleteprice($priceid){
+	public function deletePrice($priceid){
 		$db = \Config\Database::connect();
 		$builder = $db->table('prices');
+
 		return $builder->delete(['Priceid'=>$priceid]);
 	}
 	public function newPriceAddon($data){

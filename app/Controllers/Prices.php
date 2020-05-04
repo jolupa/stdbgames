@@ -27,7 +27,13 @@ class Prices extends Controller{
 		$data['Date'] = $this->request->getVar('Date');
 		$data['Discounttype'] = $this->request->getVar('Discounttype');
 		$data['Gameid'] = $this->request->getVar('Gameid');
-		$price->newPriceGame($data);
+		$price->newPrice($data);
+
+		return redirect()->to(session('current_url'));
+	}
+	public function deleteprice($priceid){
+		$delete = new PricesModel();
+		$delete->deletePrice($priceid);
 
 		return redirect()->to(session('current_url'));
 	}
@@ -41,12 +47,6 @@ class Prices extends Controller{
 		$price->newPriceAddon($data);
 
 		return redirect()->to('/addons/addon/'.$slug);
-	}
-	public function deleteprice($priceid){
-		$delete = new PricesModel();
-		$delete->deletePrice($priceid);
-
-		return redirect()->to(session('current_url'));
 	}
 }
 
