@@ -43,17 +43,13 @@
 						<div class="columns">
 							<div class="column is-full-width">
 								<p>
-									<?php if(date('Y-m-d') >= $game['gRelease'] && session('is_logged') == TRUE): ?><?= view_cell('\App\Controllers\Libraries::checklibrary', 'userid='.session('id').', gameid='.$game['gId']) ?> <?= view_cell('\App\Controllers\Votes::checkvote', 'userid='.session('id').', gameid='.$game['gId']) ?>
-									<?php endif; ?>
-								</p>
-								<p>
-									<?php if(date('Y-m-d') > $game['gRelease']): ?>
-										<?= view_cell( '\App\Controllers\Games::gameproinfo' ) ?>
-									<?php endif; ?>
-								</p>
-								<p>
 									<?php if(date('Y-m-d') > $game['gRelease'] && isset($game['gSku'])): ?>
 										<?= view_cell('App\Controllers\Games::store') ?>
+									<?php endif; ?>&nbsp;
+									<?php if(date('Y-m-d') > $game['gRelease']): ?>
+										<?= view_cell( '\App\Controllers\Games::gameproinfo' ) ?>
+									<?php endif; ?>&nbsp;
+									<?php if(date('Y-m-d') >= $game['gRelease'] && session('is_logged') == TRUE): ?><?= view_cell('\App\Controllers\Libraries::checklibrary', 'userid='.session('id').', gameid='.$game['gId']) ?> <?= view_cell('\App\Controllers\Votes::checkvote', 'userid='.session('id').', gameid='.$game['gId']) ?>
 									<?php endif; ?>
 								</p>
 							</div>

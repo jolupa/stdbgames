@@ -26,10 +26,6 @@ class Addons extends Controller{
 											'errors'=>[ 'required'=>'The Addon has a Name nope?',
 														'is_unique'=>'The Addon is already in the DB!', ],
 									],
-								'Image'=>[ 'label'=>'Image',
-														'rules'=>'max_size[Image,3048]',
-														'errors'=>[ 'max_size'=>'We have a maximum size, try to reduce the Image',],
-															],
 								]);
 		if(!$val){
 			echo view('templates/header');
@@ -43,25 +39,14 @@ class Addons extends Controller{
 			$data['Publisherid'] = $this->request->getVar('Publisherid');
 			$data['About'] = $this->request->getVar('About');
 			$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
-			if ($this->request->getFile('Image') != NULL){
-				if ( is_dir (ROOTPATH.'/public/images') == FALSE){
-					mkdir(ROOTPATH.'/public/images', 0777, true);
-				}
-				$newname = $data['Slug'].'-addon';
-				$data['Image'] = $newname;
-				$file = $this->request->getFile('Image')
-																	->move(WRITEPATH.'uploads', $newname);
-				$image = \Config\Services::image('imagick')
-								->withFile(WRITEPATH.'uploads/'.$newname)
-								->resize(1980, 1024, true, 'height')
-								->convert(IMAGETYPE_JPEG)
-								->save(ROOTPATH.'public/images/'.$newname.'.jpeg');
-				$imagethumb = \Config\Services::image('imagick')
-												 ->withFile(WRITEPATH.'uploads/'.$newname)
-												 ->fit(256, 256, 'center')
-												 ->convert(IMAGETYPE_JPEG)
-												 ->save(ROOTPATH.'public/images/'.$newname.'-thumb.jpeg');
-				unlink(WRITEPATH.'uploads/'.$newname);
+			if ($this->request->getVar('Releaseprice') != NULL){
+				$data['Releaseprice'] = $this->request->getVar('Releaseprice');
+			}
+			if ($this->request->getVar('Sku') != NULL){
+				$data['Sku'] = $this->request->getVar('Sku');
+			}
+			if ($this->request->getVar('Appid') != NULL){
+				$data['Appid'] = $this->request->getVar('Appid');
 			}
 			$insert->insertAddon($data);
 
@@ -85,29 +70,16 @@ class Addons extends Controller{
 		$data['Developerid'] = $this->request->getVar('Developerid');
 		$data['Publisherid'] = $this->request->getVar('Publisherid');
 		$data['About'] = $this->request->getVar('About');
-		$slug = $this->request->getVar('Slug');
-		if ($this->request->getVar('Image') != NULL){
-			$data['Image'] = $this->request->getVar('Image');
-		} else {
-			if ( is_dir (ROOTPATH.'/public/images') == FALSE){
-				mkdir(ROOTPATH.'/public/images', 0777, true);
-			}
-			$newname = $data['Slug'].'-addon';
-			$data['Image'] = $newname;
-			$file = $this->request->getFile('Image')
-																->move(WRITEPATH.'uploads', $newname.'.jpeg');
-			$image = \Config\Services::image('imagick')
-							->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
-							->resize(1980, 1024, true, 'height')
-							->convert(IMAGETYPE_JPEG)
-							->save(ROOTPATH.'public/images/'.$newname.'.jpeg');
-			$imagethumb = \Config\Services::image('imagick')
-											 ->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
-											 ->fit(256, 256, 'center')
-											 ->convert(IMAGETYPE_JPEG)
-											 ->save(ROOTPATH.'public/images/'.$newname.'-thumb.jpeg');
-			unlink(WRITEPATH.'uploads/'.$newname.'.jpeg');
+		if($this->request->getVar('Releaseprice') != NULL){
+			$data['Releaseprice'] = $this->request->getVar('Releaseprice');
 		}
+		if ($this->request->getVar('Sku') != NULL){
+			$data['Sku'] = $this->request->getVar('Sku');
+		}
+		if ($this->request->getVar('Appid') != NULL){
+			$data['Appid'] = $this->request->getVar('Appid');
+		}
+		$slug = $this->request->getVar('Slug');
 		$update->updateAddon($data);
 
 		return redirect()->to('/addons/addon/'.$slug);

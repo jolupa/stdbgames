@@ -39,6 +39,10 @@
 			<?= view_cell('App\Controllers\Publishers::getpublishers') ?>
 		</div>
     <div class="field is-grouped is-grouped-multiline">
+      <div class="control">
+        <label class="label">Price</label>
+        <input class="input" name="Releaseprice" placeholder="$$.$$">
+      </div>
       <div class="control is-expanded">
         <label class="label">Game SKU</label>
         <input class="input" name="Sku" placeholder="Google's Game SKU">

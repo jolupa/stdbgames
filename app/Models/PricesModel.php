@@ -6,7 +6,8 @@ class PricesModel extends Model{
 	public function getPrices($gameid){
 		$db = \Config\Database::connect();
 		$builder = $db->table('prices')
-									->select('Date AS pDate,
+									->select('Priceid AS pId,
+														Date AS pDate,
 														Price AS pPrice,
 														Discounttype AS pDiscounttype')
 									->where('Gameid', $gameid)
@@ -32,6 +33,11 @@ class PricesModel extends Model{
 		$builder = $db->table('prices');
 
 		return $builder->insert($data);
+	}
+	public function deleteprice($priceid){
+		$db = \Config\Database::connect();
+		$builder = $db->table('prices');
+		return $builder->delete(['Priceid'=>$priceid]);
 	}
 	public function newPriceAddon($data){
 		$db = \Config\Database::connect();

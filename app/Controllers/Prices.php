@@ -42,6 +42,12 @@ class Prices extends Controller{
 
 		return redirect()->to('/addons/addon/'.$slug);
 	}
+	public function deleteprice($priceid){
+		$delete = new PricesModel();
+		$delete->deletePrice($priceid);
+
+		return redirect()->to(session('current_url'));
+	}
 }
 
  ?>

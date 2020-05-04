@@ -16,21 +16,24 @@
 			</div>
 		</div>
 	<?php else: ?>
-		<?php foreach($gamehasaddons as $gamehasaddons): ?>
-			<div class="column is-3 is-inline-block">
-				<div class="media">
-					<div class="media-left">
-						<figure class="image is-256x256">
-							<img title="<?= $gamehasaddons['aName'] ?>" src="<?= base_url() ?>/images/<?= $gamehasaddons['aImage'] ?>-thumb.jpeg" title="<?= $gamehasaddons['aName'] ?>">
-						</figure>
-					</div>
-				</div>
-				<div class="media">
-					<div class="media-content">
-						<a title="<?= $gamehasaddons['aName'] ?>" href="<?= base_url() ?>/addons/addon/<?= $gamehasaddons['aSlug'] ?>"><p class="heading has-text-centered"><?= $gamehasaddons['aName'] ?></p></a>
-					</div>
-				</div>
-			</div>
-		<?php endforeach; ?>
+		<div class="column is-full-width">
+			<table class="is-fullwitdth is-hoverable">
+				<thead>
+					<th>Addon Name</th>
+					<th>Release Date</th>
+					<th>Release Price</th>
+					<th></th>
+				</thead>
+				<?php foreach($gamehasaddons as $gamehasaddons): ?>
+					<tr>
+						<td><strong><?= $gamehasaddons['aName'] ?></strong></td>
+						<td><?= $gamehasaddons['aRelease'] ?></td>
+						<td><?php if(!$gamehasaddons['aReleaseprice']): ?><strong>No Price</strong><?php else: ?><?= $gamehasaddons['aReleaseprice'] ?><?php endif; ?></td>
+						<td><?php if(session('role') == 1): ?><a title="Delete Addon" href="<?= base_url() ?>/addons/deleteaddon/<?= $gamehasaddons['aId'] ?>"><span class="icon"><i class="fas fa-trash-alt"></i></span></a>&nbsp;<a title="Edit Addon" href="<?= base_url() ?>/addons/update/<?= $gamehasaddons['aSlug'] ?>"><span class="icon"><i class="fas fa-edit"></i></span></a><?php endif; ?></td>
+					</tr>
+
+				<?php endforeach; ?>
+			</table>
+		</div>
 	<?php endif; ?>
 </div>

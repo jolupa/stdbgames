@@ -29,7 +29,6 @@
 				<div class="control">
 					<label class="label">Is Founder since:</label>
 					<input class="input" type="text" name="Profrom" placeholder="YYYY-MM-DD" value="<?= $game['gProfrom'] ?>">
-					<p class="help">date in form YYY-MM-DD</p>
 				</div>
 				<div class="control">
 					<label class="label">Is founder till:</label>
@@ -41,6 +40,10 @@
 				<?= view_cell('App\Controllers\Publishers::getpublishers', 'publisherid='.$game['gpId']) ?>
 			</div>
 			<div class="field is-grouped is-grouped-multiline">
+			<div class="control">
+				<label class="label">Price</label>
+				<input class="input" name="Releaseprice" placeholder="$$.$$" value="<?= $game['gReleaseprice'] ?>">
+			</div>
 				<div class="control is-expanded">
 					<label class="label">Game SKU</label>
 					<input class="input" name="Sku" placeholder="Google's Game SKU" value="<?= $game['gSku'] ?>">
@@ -55,7 +58,7 @@
 				<label class="label">What's the game about:</label>
 				<div class="control">
 					<textarea class="textarea" name="About" placeholder="Text with info about the game. You can use the HTML tags <p> <br> <a> <strong>"><?= $game['gAbout'] ?></textarea>
-				</div>
+					</div>
 			</div>
 			<!-- File Chooser Entry -->
 			<?php if(!empty($game['gImage'])): ?>
@@ -74,19 +77,19 @@
 							<span class="file-name"></span>
 						</label>
 					</div>
-			<?php endif; ?>
-			<!-- Button Send -->
-			<div class="control">
-				<button class="button is-primary" type="submit" name="submit">Update Game</button>
+				<?php endif; ?>
+				<!-- Button Send -->
+				<div class="control">
+					<button class="button is-primary" type="submit" name="submit">Update Game</button>
+				</div>
 			</div>
-		</div>
-	</form>
-</div>
+		</form>
+	</div>
 </section>
 <section class="section">
-	<div class="container">
-		<?= view_cell('App\Controllers\Prices::price') ?>
-	</div>
+<div class="container">
+<?= view_cell('App\Controllers\Prices::price') ?>
+</div>
 </section>
 
 <script>

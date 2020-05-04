@@ -49,11 +49,6 @@ class Games extends Controller{
 																			'errors'=>[ 'required'=>'The Game has a Name nope?',
 																										'is_unique'=>'The game is already in the DB!', ],
 																		],
-																'Image'=>[ 'label'=>'Image',
-																 							'rules'=>'max_size[Image,3048]|is_image[Image]',
-																							'errors'=>[ 'max_size'=>'We have a maximum size, try to reduce the Image',
-																							 							'is_image'=>'Sure you are uploading an Image',],
-																						],
 															 ]);
 		if (!$val){
 			echo view('templates/header');
@@ -80,6 +75,9 @@ class Games extends Controller{
 			}
 			if ($this->request->getVar('Appid') != NULL){
 				$data['Appid'] = $this->request->getVar('Appid');
+			}
+			if ($this->request->getVar('Releaseprice') != NULL){
+				$data['Releaseprice'] = $this->request->getVar('Releaseprice');
 			}
 			if ($this->request->getFile('Image') != NULL){
 				if ( is_dir (ROOTPATH.'/public/images') == FALSE){
@@ -181,29 +179,6 @@ class Games extends Controller{
 		echo view('templates/header');
 		echo view('templates/about');
 		echo view('templates/footer');
-	}
-	public function pricehistory($gameid){
-		return view('games/price');
-	}
-	public function newprice(){
-		$newprice = new GamesModel();
-		$data['Price'] = $this->request->getVar('Price');
-		if($this->request->getVar('Date') == NULL){
-			$data['Date'] = date('Y-m-d');
-		} else {
-			$data['Date'] = $this->request->getVar('Date');
-		}
-		$data['Gameid'] = $this->request->getVar('Gameid');
-		$data['Discounttype'] = $this->request->getVar('Discounttype');
-		$newprice->newPrice($data);
-
-		return redirect()->to(session('current_url'));
-	}
-	public function historyprice($gameid){
-		$price = new GamesModel();
-		$data['price'] = $price->getPrices($gameid);
-
-		return view('games/price', $data);
 	}
 	public function store(){
 		return view('games/store');

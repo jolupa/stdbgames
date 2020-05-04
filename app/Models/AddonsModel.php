@@ -45,33 +45,15 @@ class AddonsModel extends Model{
 	public function gameHasAddons($gameid){
 		$db = \Config\Database::connect();
 		$builder = $db->table('addons')
-									->select('Name AS aName,
+									->select('Addonid AS aId,
+														Name AS aName,
 														Slug AS aSlug,
-														Image AS aImage')
+														Release AS aRelease,
+														Releaseprice As aReleaseprice')
 									->where('Gameid', $gameid)
 									->orderBy('Release', 'DESC');
 
 		return $builder->get()
-										->getResultArray();
-	}
-	public function getAddons(){
-		$db = \Config\Database::connect();
-		$builder = $db->table('addons')
-									->select('addons.Slug AS aSlug,
-														addons.Name AS aName,
-														addons.Image AS aImage,
-														addons.About AS aAbout,
-														addons.Release AS aRelease,
-														developers.Name AS adName,
-														developers.Slug AS adSlug,
-														publishers.Name AS apName,
-														publishers.Slug AS apSlug')
-									->join('developers', 'developers.Developerid = addons.Developerid')
-									->join('publishers', 'publishers.Publisherid = addons.Publisherid')
-									->where('aRelease <=', date('Y-m-d'))
-									->orderBy('aRelease', 'DESC');
-
-		return $builder->get(8)
 										->getResultArray();
 	}
 	public function addonsList(){
