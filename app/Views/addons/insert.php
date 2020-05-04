@@ -3,7 +3,7 @@
   <div class="container">
     <form method="post" action="<?= base_url() ?>/addons/insertaddon" enctype="multipart/form-data">
       <!-- Name Entry -->
-  		<div class="field">
+  		<div class="field is-grouped is-grouped-multiline">
         <div class="control is-expanded">
   				<label class="label">Name</label>
           <input class="input" type="text" name="Name" placeholder="Addon's Name">
