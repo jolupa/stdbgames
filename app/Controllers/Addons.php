@@ -82,7 +82,7 @@ class Addons extends Controller{
 		$slug = $this->request->getVar('Slug');
 		$update->updateAddon($data);
 
-		return redirect()->to('/addons/addon/'.$slug);
+		return redirect()->to(session('current_url'));
 	}
 	public function gamehasaddons($gameid){
 		$hasaddons = new AddonsModel();
