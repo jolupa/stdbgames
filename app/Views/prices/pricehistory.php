@@ -39,10 +39,10 @@
 						<th></th>
 					</thead>
 					<?php foreach($price as $mobile): ?>
-						<tr>
+						<tr <?php if($mobile['pDiscounttype'] == 1): ?>class="has-background-light"<?php endif; ?>>
 							<td><?= number_format($mobile['pPrice'], 2) ?></td>
 							<td><?= $mobile['pDate'] ?></td>
-							<td <?php if($mobile['pDiscount'] == 1): ?>class="has-background-color-light"<?php endif; ?>><?php if($mobile['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?></td>
+							<td><?php if($mobile['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?></td>
 							<td><?php if(session('role') == 1): ?><a title="Delete Discount" href="<?= base_url() ?>/prices/deleteprice/<?= $mobile['pId'] ?>"><span class="icon"><i class="fas fa-trash-alt"></i></span></a><?php endif; ?></td>
 						</tr>
 					<?php endforeach; ?>
