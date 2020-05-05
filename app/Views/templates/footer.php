@@ -3,7 +3,7 @@
         <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> in <strong>Barcelona</strong> <span class="icon"><i class="fas fa-copyright"></i></span> <?= date("Y") ?> jolupa</p>
 				<p>This site is not affiliated with <strong>Google</strong>.<br>
 					<strong>Stadia</strong> and the <strong>Stadia Logo</strong> are <span class="icon"><i class="fas fa-trademark"></i></span> of Google</p>
-        <p>We are in <a href="https://twitter.com/DbStadia" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span></a></p>
+        <p><a href="https://twitter.com/DbStadia" target="_blank" title="Twitter"><span class="icon is-medium"><i class="fab fa-twitter"></i></span></a> <a target="_blank" href="https://github.com/jolupa/stdbgames" title="Github"><span class="icon is-medium"><i class="fab fa-github"></i></span></a></p>
       </div>
     </footer>
   </body>
