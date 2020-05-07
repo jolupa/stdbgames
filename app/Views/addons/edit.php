@@ -1,8 +1,7 @@
 <!-- Game Insert Form -->
 <section class="section">
   <div class="container">
-    <form method="post" action="<?= base_url() ?>/addons/updateaddon" enctype="multipart/form-data">
-			<input type="hidden" name="Slug" value="<?= $addon['aSlug'] ?>">
+    <form method="post" action="<?= base_url() ?>/addons/updateaddon">
 			<input type="hidden" name="Addonid" value="<?= $addon['aId'] ?>">
       <!-- Name Entry -->
   		<div class="field is-grouped is-grouped-multiline">
@@ -22,7 +21,7 @@
           <input class="input" type="input" name="Releaseprice" placeholder="$$.$$" value="<?= $addon['aReleaseprice'] ?>">
         </div>
   			<!-- Games Entry -->
-  			<?= view_cell('App\Controllers\Games::list') ?>
+  			<?= view_cell('App\Controllers\Games::list', 'gameid='.$addon['agId']) ?>
         <!-- Developer Entry -->
   			<?= view_cell('App\Controllers\Developers::getdevelopers', 'developerid='.$addon['adId']) ?>
         <!-- Publisher Entry -->

@@ -107,7 +107,7 @@ class GamesModel extends Model{
 	public function updateGame($data){
 		$db = \Config\Database::connect();
 		$builder = $db->table('games')
-											->where('Gameid', $data['Gameid']);
+									->where('Gameid', $data['Gameid']);
 
 		return $builder->update($data);
 	}
