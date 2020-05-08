@@ -29,7 +29,8 @@
 			<?php endif; ?>
 			<?php if(session('role') == 1): ?>
 				<tr>
-					<td colspan="4" class="has-text-centered"><a href="<?= base_url() ?>/addons/insert"><span class="icon"><i class="fas fa-plus"></i></span></a></td>
+					<td colspan="3"></td>
+					<td class="has-text-centered"><a title="Add Addon to DB! for <?= $game['gName'] ?>" href="<?= base_url() ?>/addons/insert"><span class="icon"><i class="fas fa-plus"></i></span></a></td>
 				</tr>
 			<?php endif; ?>
 		</table>
