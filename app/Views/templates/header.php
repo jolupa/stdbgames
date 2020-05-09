@@ -102,7 +102,9 @@
       <div class="container">
       <nav class="navbar">
         <div class="navbar-brand">
-          <a class="navbar-item" href="<?= base_url() ?>">Stadia GamesDB!</a>
+          <a class="navbar-item" href="<?= base_url() ?>">
+            <img src="<?= base_url() ?>/assets/stadiadb.png" height="64">
+          </a>
           <div class="navbar-burger">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -114,15 +116,17 @@
             <a class="navbar-item" href="<?= base_url() ?>/games/about">About</a>
 						<?= view_cell('App\Controllers\Stats::gamesstats') ?>
             <?php if ( session('is_logged') == TRUE): ?>
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">New...</a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item" href="<?= base_url() ?>/games/insert/">... Game</a>
-								<a class="navbar-item" href="<?= base_url() ?>/addons/insert/">... Addon</a>
-                <a class="navbar-item" href="<?= base_url() ?>/developers/insert/">... Developer</a>
-                <a class="navbar-item" href="<?= base_url() ?>/publishers/insert/">... Publisher</a>
-              </div>
-            </div>
+              <?php if (session('role') == 1 || session('role') == 3): ?>
+                <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link">New...</a>
+                  <div class="navbar-dropdown">
+                    <a class="navbar-item" href="<?= base_url() ?>/games/insert/">... Game</a>
+    								<a class="navbar-item" href="<?= base_url() ?>/addons/insert/">... Addon</a>
+                    <a class="navbar-item" href="<?= base_url() ?>/developers/insert/">... Developer</a>
+                    <a class="navbar-item" href="<?= base_url() ?>/publishers/insert/">... Publisher</a>
+                  </div>
+                </div>
+              <?php endif; ?>
             <?php endif; ?>
           </div>
           <div class="navbar-end">
