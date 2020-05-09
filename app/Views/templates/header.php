@@ -102,7 +102,7 @@
       <div class="container">
       <nav class="navbar">
         <div class="navbar-brand">
-          <a class="navbar-item" href="<?= base_url() ?>">
+          <a title="Stadia GamesDB!" class="navbar-item" href="<?= base_url() ?>">
             <img src="<?= base_url() ?>/assets/stadiadb.png" height="64">
           </a>
           <div class="navbar-burger">
