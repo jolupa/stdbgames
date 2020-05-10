@@ -59,18 +59,6 @@
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
       <meta name="twitter:image_alt" content="<?= $gametype[$number]['gName'] ?>">
-		<?php elseif(isset($addon)): ?>
-			<title>Stadia Games DB - <?= $addon['aName'] ?></title>
-			<meta name="desciption" content="<?= $addon['aName'] ?> Addon for <?= $addon['agName'] ?> on Stadia">
-			<meta name="keywords" content="<?= $addon['aName'] ?>, <?= $addon['agName'] ?>, <?= $addon['adName'] ?>, <?= $addon['apName'] ?>, Stadia, Google, Games, Database, db, funny, play, stream">
-			<!-- og Metatags -->
-			<meta property="og:title" content="<?= $addon['aName'] ?> addon for <?= $addon['agName'] ?> -- Stadia GamesDB!">
-			<meta property="og:description" content="<?= character_limiter($addon['aAbout'], 80, '...') ?>">
-			<meta property="og:image" content="<?= base_url() ?>/images/<?= $addon['aImage'] ?>.jpeg">
-			<meta property="og:url" content="<?= base_url() ?>/addons/addon/<?= $addon['aSlug'] ?>">
-			<meta name="twitter:card" content="summary_large_image">
-			<!-- og Metatags Not Essential Recommended -->
-			<meta name="twitter:image_alt" content="<?= $addon['aName'] ?>">
     <?php else: ?>
       <title>Stadia Games DB</title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
@@ -78,12 +66,7 @@
       <!-- og Metatags -->
       <meta property="og:title" content="Stadia GamesDB!!">
       <meta property="og:description" content="All the Google Stadia Games in one place">
-      <?php if (isset($founders)): ?>
-        <?php $number = array_rand($founders, 1); ?>
-      <?php else: ?>
-        <?php $number = random_int(0, 30); ?>
-      <?php endif; ?>
-        <meta property="og:image" content="<?= base_url() ?>/images/<?= $founders[$number]['gImage'] ?>.jpeg">
+      <meta property="og:image" content="<?= base_url() ?>/assets/stdb_logo_big.png">
       <meta property="og:url" content="<?= base_url() ?>">
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
