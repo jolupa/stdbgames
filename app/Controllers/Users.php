@@ -90,7 +90,7 @@ class Users extends Controller{
 									->fit(256, 256, 'center')
 									->convert(IMAGETYPE_JPEG)
 									->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
-				unlink(WRITEPATH.'uploads/'.$newname.'.jpeg');
+				unlink(WRITEPATH.'uploads/'.$newname);
 			}
 			$insert->userInsert($data);
 			return redirect()->to('/users/login');
@@ -170,6 +170,12 @@ class Users extends Controller{
 		$session->destroy();
 
 		return redirect()->to('/games');
+	}
+	public function deleteuser($userid){
+		$delete = new UsersModel();
+		$delete->deleteUser($userid);
+
+		return redirect()->to('/users/profile/'.session('username'));
 	}
 }
 

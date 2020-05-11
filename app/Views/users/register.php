@@ -13,35 +13,17 @@
             </div>
             <div class="control is-expanded">
               <label class="label">Password</label>
-              <input class="input" type="password" name="Password">
-              <p class="help">6 characters minimum-10 maximum</p>
+              <input class="input" type="password" name="Password" placeholder="Minimum 6 characters Max. 20">
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
               <label class="label">E-Mail:</label>
-              <input class="input" type="text" name="Mail">
+              <input class="input" type="text" name="Mail" placeholder="Your Email address">
             </div>
             <div class="control is-expanded">
               <label class="label">Birthdate:</label>
-              <input class="input" type="text" name="Birthdate">
-              <p class="help">In the form of YYYY-MM-DD</p>
-            </div>
-          </div>
-          <!-- File Chooser Entry -->
-          <div class="field is-grouped is-grouped-multiline file has-name is-right">
-            <div class="control is-expanded">
-              <label class="file-label" id="insertgame">
-                <input class="file-input" type="file" name="Image">
-                <span class="file-cta is-expanded">
-                  <span class="file-icon">
-                    <i class="fas fa-upload"></i>
-                  </span>
-                  <span class="file-label">Choose a file...</span>
-                </span>
-                <span class="file-name"></span>
-              </label>
-              <p class="help">Any Image file. Less than 2Mb</p>
+              <input class="input" type="text" name="Birthdate" placeholder="YYYY-MM-DD">
             </div>
           </div>
           <div class="field">

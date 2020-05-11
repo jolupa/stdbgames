@@ -65,7 +65,7 @@ class UsersModel extends Model{
 														Slug AS uSlug,
 														Registrydate AS uRegistrydate,
 														Role AS uRole')
-									->where('Role', 0);
+									->where('Role !=', 1);
 		return $builder->get(5)
 										->getResultArray();
 	}
@@ -75,6 +75,11 @@ class UsersModel extends Model{
 									->where('Userid', $data['Userid']);
 
 		return $builder->update($data);
+	}
+	public function deleteUser($userid){
+		$db = \Config\Database::connect();
+		$builder = $db->table('users');
+		return $builder->delete(['Userid'=>$userid]);
 	}
 }
 

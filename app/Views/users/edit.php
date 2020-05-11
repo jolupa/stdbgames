@@ -7,6 +7,7 @@
         <form method="post" action="<?= base_url() ?>/users/updateuser" enctype="multipart/form-data">
           <input type="hidden" name="Userid" value="<?= $user['uId'] ?>">
 					<input type="hidden" name="Slug" value="<?= $user['uSlug'] ?>">
+          <input type="hidden" name="Registrydate" value="<?= $user['uRegistrydate'] ?>">
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
               <label class="label">Username</label>
@@ -35,31 +36,13 @@
               <input class="input" type="text" name="Birthdate" value="<?= $user['uBirthdate'] ?>">
             </div>
           </div>
-          <?php if(!empty($user['uImage'])): ?>
-          <input type="hidden" name="Image" value="<?= $user['uImage'] ?>">
-          <?php else: ?>
-          <div class="field is-grouped file has-name is-right">
-            <div class="control is-expanded">
-              <label class="file-label">
-                <input class="file-input" type="file" name="Image">
-                <span class="file-cta is-expanded">
-                  <span class="file-icon">
-                    <i class="fas fa-upload"></i>
-                  </span>
-                  <span class="file-label">Choose a file...</span>
-                </span>
-                <span class="file-name"></span>
-              </label>
-            </div>
-          <?php endif; ?>
-            <div class="field">
-              <div class="control">
-                <button class="button is-primary" name="submit">Edit!</button>
-              </div>
+          <div class="field">
+            <div class="control">
+              <button class="button is-primary" name="submit">Edit!</button>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </div>
 </section>
