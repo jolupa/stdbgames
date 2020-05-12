@@ -41,7 +41,7 @@
 <?php if(!$reviews && !$review): ?>
   <div class="columns">
     <div class="column is-full-width has-text-centered">
-      <p>There's no Reviews for <strong><?= $game['gName'] ?></strong> <?php if(session('is_logged') === FALSE): ?>. <a href="<?= base_url() ?>/users/register">Register</a> or <a href="<?= base_url() ?>/users/login">Login</a> and<?php endif; ?> be the first one to post a Review!</p>
+      <p>There's no Reviews for <strong><?= $game['gName'] ?></strong> <?php if(!session('is_logged')): ?> <a href="<?= base_url() ?>/users/register">Register</a> or <a href="<?= base_url() ?>/users/login">Login</a> and<?php endif; ?> be the first one to post a Review!</p>
     </div>
   </div>
 <?php else: ?>
