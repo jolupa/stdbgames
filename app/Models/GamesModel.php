@@ -6,17 +6,17 @@ class GamesModel extends Model{
 	public function getGamesFounders(){
 		$db = \Config\Database::connect();
 		$builder = $db->table('games')
-											->select('Gameid AS gId,
-																	games.Name AS gName,
-																	games.Slug AS gSlug,
-																	Release AS gRelease,
-																	Image AS gImage,
-																	developers.Name AS gdName,
-																	publishers.Name AS gpName')
-											->join('developers', 'developers.Developerid = games.Developerid')
-											->join('publishers', 'publishers.Publisherid = games.Publisherid')
-											->where('Pro', 1)
-											->where('Profrom <=', date('Y-m-d'));
+									->select('Gameid AS gId,
+														games.Name AS gName,
+														games.Slug AS gSlug,
+														Release AS gRelease,
+														Image AS gImage,
+														developers.Name AS gdName,
+														publishers.Name AS gpName')
+									->join('developers', 'developers.Developerid = games.Developerid')
+									->join('publishers', 'publishers.Publisherid = games.Publisherid')
+									->where('Pro', 1)
+									->where('Profrom <=', date('Y-m-d'));
 		return $builder->get()
 											->getResultArray();
 	}
@@ -24,12 +24,12 @@ class GamesModel extends Model{
 		$db = \Config\Database::connect();
 		$builder = $db->table('games')
 											->select('Gameid AS gId,
-																	games.Name AS gName,
-																	games.Slug AS gSlug,
-																	Release AS gRelease,
-																	Image AS gImage,
-																	developers.Name AS gdName,
-																	publishers.Name AS gpName')
+																games.Name AS gName,
+																games.Slug AS gSlug,
+																Release AS gRelease,
+																Image AS gImage,
+																developers.Name AS gdName,
+																publishers.Name AS gpName')
 											->join('developers', 'developers.Developerid = games.Developerid')
 											->join('publishers', 'publishers.Publisherid = games.Publisherid')
 											->where('Release >', date('Y-m-d'))
@@ -41,12 +41,12 @@ class GamesModel extends Model{
 		$db = \Config\Database::connect();
 		$builder = $db->table('games')
 											->select('Gameid AS gId,
-																	games.Name AS gName,
-																	games.Slug AS gSlug,
-																	Release AS gRelease,
-																	Image AS gImage,
-																	developers.Name AS gdName,
-																	publishers.Name AS gpName')
+																games.Name AS gName,
+																games.Slug AS gSlug,
+																Release AS gRelease,
+																Image AS gImage,
+																developers.Name AS gdName,
+																publishers.Name AS gpName')
 											->join('developers', 'developers.Developerid = games.Developerid')
 											->join('publishers', 'publishers.Publisherid = games.Publisherid')
 											->where('Release <=', date('Y-m-d'))
@@ -58,12 +58,12 @@ class GamesModel extends Model{
 		$db = \Config\Database::connect();
 		$builder = $db->table('games')
 											->select('Gameid AS gId,
-																	games.Name AS gName,
-																	games.Slug AS gSlug,
-																	Release AS gRelease,
-																	Image AS gImage,
-																	developers.Name AS gdName,
-																	publishers.Name AS gpName')
+																games.Name AS gName,
+																games.Slug AS gSlug,
+																Release AS gRelease,
+																Image AS gImage,
+																developers.Name AS gdName,
+																publishers.Name AS gpName')
 											->join('developers', 'developers.Developerid = games.Developerid')
 											->join('publishers', 'publishers.Publisherid = games.Publisherid')
 											->orderBy('Gameid', 'DESC');

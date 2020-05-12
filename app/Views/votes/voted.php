@@ -1,1 +1,1 @@
-<span class="tag is-primary is-medium"><span class="heading">Voted!</span></span>
+<button class="button is-primary" disabled="true" >Voted!</button>

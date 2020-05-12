@@ -23,6 +23,21 @@
     });
   </script>
 
+  <script>
+    tinymce.init({
+      selector: '.textarea',
+      plugins: 'code',
+      menubar: false,
+      toolbar:[{
+        name: 'formatting', items: ['bold','italic','code']
+      }],
+      block_formats: 'Paragraph=p',
+      valid_elements: 'p,strong,br,b/strong',
+      elementpath: false,
+      branding: false,
+    });
+  </script>
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162315480-1"></script>
 <script>

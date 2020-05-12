@@ -3,13 +3,19 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class VotesModel extends Model{
-	public function votesTotal($gameid){
+	public function votesTotal($gameid = false, $userid = false){
 		$db = \Config\Database::connect();
+		if($userid){
 		$builder = $db->table('votes')
-											->selectAvg('Score', 'gScore')
-											->where('Gameid', $gameid);
-		return $builder->get()
-										->getRowArray();
+									->selectAvg('Score', 'gScore')
+									->where('Userid', $userid)
+									->where('Gameid', $gameid);
+		} else {
+			$builder = $db->table('votes')
+										->selectAvg('Score', 'gScore')
+										->where('Gameid', $gameid);
+		}
+		return $builder->get()->getRowArray();
 	}
 	public function addVote($data){
 		$db = \Config\Database::connect();
@@ -23,8 +29,11 @@ class VotesModel extends Model{
 														Userid')
 									->where('Gameid', $gameid)
 									->where('Userid', $userid);
-		return $builder->get()
-										->getRowArray();
+		if($builder->countAllResults() > 0){
+			return TRUE;
+		} else {
+			return FALSE;
+		}
 	}
 	public function votesByUser($userid){
 		$db = \Config\Database::connect();

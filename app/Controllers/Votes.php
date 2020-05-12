@@ -6,17 +6,21 @@ use CodeIgniter\Controller;
 helper(['url', 'text','cookie']);
 
 class Votes extends Controller{
-	public function total($gameid){
+	public function total($gameid = false, $userid = false){
 		$totalvote = new VotesModel();
-		$data['totalvote'] = $totalvote->votesTotal($gameid);
+		if($userid){
+			$data['totalvote'] = $totalvote->votesTotal($gameid, $userid);
+		} else {
+			$data['totalvote'] = $totalvote->votesTotal($gameid);
+		}
 
 		return view('votes/totalvote', $data);
 	}
 	public function checkvote($userid, $gameid){
 		$check = new VotesModel();
 		$data['checkvote'] = $check->checkVote($userid, $gameid);
-		if (empty($data['checkvote'])){
-			return view('votes/votebutton', ['userid'=>$userid, 'gameid'=>$gameid]);
+		if($data['checkvote'] == FALSE){
+			return view('votes/votebutton');
 		} else {
 			return view('votes/voted');
 		}

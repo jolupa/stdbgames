@@ -1,21 +1,21 @@
 <?php if (!empty($game['gPro'])): ?>
 	<?php if(date('Y-m-d') > $game['Protill']): ?>
-		<span class="tag is-primary is-medium"><span class="heading">Free for <strong>Pro</strong></span></span>
+		<button class="button is-primary has-text-dark is-small">Free for&nbsp;<strong>Pro</strong></button>
 	<?php elseif(!empty($game['gProtill']) && date('Y-m-d') > $game['gProtill']): ?>
-		<span class="tag is-danger is-medium"><span class="heading">Was free for <strong>Pro</strong></span></span>
+		<button class="button is-danger has-text-white is-small">Was free for&nbsp;<strong>Pro</strong></button>
 	<?php else: ?>
-		<span class="tag is-danger is-medium"><span class="heading">No Free for <strong>Pro</strong></span></span>
+		<button class="button is-danger has-text-white is-small">No Free for&nbsp;<strong>Pro</strong></button>
 	<?php endif; ?>
 <?php endif; ?>
 <?php if(!empty($game['gProfrom'])): ?>
 	<?php if(!empty($game['gProtill']) && date('Y-m-d') > $game['gProtill']): ?>
-		<span class="tag is-danger is-medium"><span class="heading">Was Free on <strong><?= $game['gProfrom'] ?></strong></span></span>
+		<button class="button is-danger has-text-white is-small">Was Free on&nbsp;<strong><?= $game['gProfrom'] ?></strong></button>
 	<?php else: ?>
-		<span class="tag is-primary is-medium"><span class="heading">Is free since <strong><?= $game['gProfrom'] ?></strong></span></span>
+		<button class="button is-primary has-text-dark is-small">Is free since&nbsp;<strong><?= $game['gProfrom'] ?></strong></button>
 	<?php endif; ?>
 	<?php if(!empty($game['gProtill']) && date('Y-m-d') <= $game['gProtill']): ?>
-		<span class="tag is-danger is-medium"><span class="heading">Was Free till <strong><?= $game['gProtill'] ?></strong></span></span>
+		<button class="button is-danger hast-text-white is-small">Was Free till&nbsp;<strong><?= $game['gProtill'] ?></strong></button>
 	<?php elseif(date('Y-m-s') < $game['gProtill']): ?>
-		<span class="tag is-danger is-medium"><span class="heading">Free till <strong><?= $game['gProtill'] ?></strong></span></span>
+		<button class="button is-danger has-text-white is-small">Free till&nbsp;<strong><?= $game['gProtill'] ?></strong></button>
 	<?php endif; ?>
 <?php endif; ?>

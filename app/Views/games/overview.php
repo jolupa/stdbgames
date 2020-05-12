@@ -34,7 +34,16 @@
 									<p class="title is-6"><?= $game['gRelease'] ?></p>
 								</div>
 							</div>
-							<?= view_cell( 'App\Controllers\Votes::total', 'gameid='.$game['gId'] ) ?>
+							<div class="level-item has-text-centered">
+								<div>
+									<p class="heading">Score</p>
+									<?php if ( $game['gRelease'] > date('Y-m-d')): ?>
+										<p class="title is-6">Not Released</p>
+									<?php else: ?>
+										<p class="title is-6"><?= view_cell( 'App\Controllers\Votes::total', 'gameid='.$game['gId'] ) ?></p>
+									<?php endif; ?>
+								</div>
+							</div>
 						</nav>
 					</div>
 				</div>
@@ -49,7 +58,8 @@
 									<?php if(date('Y-m-d') > $game['gRelease']): ?>
 										<?= view_cell( '\App\Controllers\Games::gameproinfo' ) ?>
 									<?php endif; ?>&nbsp;
-									<?php if(date('Y-m-d') >= $game['gRelease'] && session('is_logged') == TRUE): ?><?= view_cell('\App\Controllers\Libraries::checklibrary', 'userid='.session('id').', gameid='.$game['gId']) ?> <?= view_cell('\App\Controllers\Votes::checkvote', 'userid='.session('id').', gameid='.$game['gId']) ?>
+									<?php if(date('Y-m-d') >= $game['gRelease']): ?>
+										<?= view_cell('\App\Controllers\Libraries::checklibrary', 'userid='.session('id').', gameid='.$game['gId']) ?>
 									<?php endif; ?>
 								</p>
 							</div>
@@ -61,6 +71,9 @@
 								<?= $game['gAbout'] ?>
 							</div>
 						</div>
+						<?php if(date('Y-m-d') >= $game['gRelease']): ?>
+							<?= view_cell('\App\Controllers\Reviews::review', 'gameid='.$game['gId'].' userid='.session('id')) ?>
+						<?php endif; ?>
 						<?php if(date('Y-m-d') >= $game['gRelease']): ?>
 							<?= view_cell('\App\Controllers\Addons::gamehasaddons', 'gameid='.$game['gId']) ?>
 							<?= view_cell('\App\Controllers\Prices::pricehistory', 'gameid='.$game['gId']) ?>

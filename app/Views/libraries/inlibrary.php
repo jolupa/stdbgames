@@ -1,1 +1,1 @@
-<span class="tag is-primary is-medium"><span class="heading">In your library</span></span>
+<button class="button is-primary is-small has-text-dark">In Your Library</button>
