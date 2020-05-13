@@ -31,7 +31,6 @@
       toolbar:[{
         name: 'formatting', items: ['bold','italic','code']
       }],
-      block_formats: 'Paragraph=p',
       valid_elements: 'p,strong,br,b/strong',
       elementpath: false,
       branding: false,

@@ -58,7 +58,7 @@
 									<?php if(date('Y-m-d') > $game['gRelease']): ?>
 										<?= view_cell( '\App\Controllers\Games::gameproinfo' ) ?>
 									<?php endif; ?>&nbsp;
-									<?php if(date('Y-m-d') >= $game['gRelease']): ?>
+									<?php if(date('Y-m-d') >= $game['gRelease'] && session('is_logged') === TRUE): ?>
 										<?= view_cell('\App\Controllers\Libraries::checklibrary', 'userid='.session('id').', gameid='.$game['gId']) ?>
 									<?php endif; ?>
 								</p>
