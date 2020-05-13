@@ -13,7 +13,7 @@
 							<div class="level-item has-text-centered">
 								<div>
 									<p class="heading">Title</p>
-									<p class="title is-6"><?= $game['gName'] ?> <?php if ( session('role') == 1  ): ?><span class="icon has-text-color-info"><a href="<?= base_url() ?>/games/update/<?= $game['gSlug'] ?>"><i class="far fa-edit"></i></a></span><?php endif; ?></p>
+									<p class="title is-6"><?= $game['gName'] ?>&nbsp;<?php if ( session('role') == 1  ): ?><span class="icon has-text-color-info"><a href="<?= base_url() ?>/games/update/<?= $game['gSlug'] ?>"><i class="far fa-edit"></i></a></span>&nbsp;<span class="icon has-text-color-alert"><a href="<?= base_url() ?>/games/delete/<?= $game['gId'] ?>"><i class="fas fa-trash-alt"></i></a></span><?php endif; ?></p>
 								</div>
 							</div>
 							<div class="level-item has-text-centered">

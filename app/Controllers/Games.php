@@ -186,5 +186,10 @@ class Games extends Controller{
 	public function store(){
 		return view('games/store');
 	}
+	public function delete($gameid){
+		$delete = new GamesModel();
+		$delete->deleteGame($gameid);
+		return redirect()->to('/games');
+	}
 }
  ?>

@@ -167,6 +167,11 @@ class GamesModel extends Model{
 		return $builder->get()
 										->getResultArray();
 	}
+	public function deleteGame($gameid){
+		$db = \Config\Database::connect();
+		$builder = $db->table('games');
+		return $builder->delete(['Gameid'=>$gameid]);
+	}
 }
 
  ?>
