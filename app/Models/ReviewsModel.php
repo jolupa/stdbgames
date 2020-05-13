@@ -14,7 +14,7 @@ class ReviewsModel extends Model{
       return FALSE;
     }
   }
-  public function getReviews($gameid = false, $userid = false){
+  public function getReviews($gameid = false){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews')
                   ->select('Reviewid AS rId,
@@ -24,7 +24,6 @@ class ReviewsModel extends Model{
                             users.Image AS ruImage')
                   ->join('users', 'users.Userid = reviews.Userid')
                   ->where('Gameid', $gameid)
-                  ->where('Userid !=', $userid)
                   ->orderBy('Date', 'ASC');
     return $builder->get()->getResultArray();
   }
