@@ -26,12 +26,12 @@
   <script>
     tinymce.init({
       selector: '.textarea',
-      plugins: 'code',
+      plugins: 'code, lists',
       menubar: false,
       toolbar:[{
-        name: 'formatting', items: ['bold','italic','code']
+        name: 'formatting', items: ['bold','italic','code','numlist','bullist']
       }],
-      valid_elements: 'p,strong,br,b/strong',
+      valid_elements: 'p,strong,br,b/strong,ul,ol,li',
       elementpath: false,
       branding: false,
     });
