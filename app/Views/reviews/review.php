@@ -53,7 +53,7 @@
             <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$reviews['ruImage'].'.jpeg') === TRUE): ?>
               <a id="Review<?= $reviews['rId'] ?>"><img src="<?= base_url() ?>/images/avatar/<?= $reviews['ruImage'] ?>.jpeg"></a>
             <?php else: ?>
-              <img src="<?= base_url() ?>/images/avatar/avatar01.jpeg">
+              <a id="Review<?= $reviews['rId'] ?>"><img src="<?= base_url() ?>/images/avatar/avatar01.jpeg"></a>
             <?php endif; ?>
           </figure>
           <div class="media-content">
