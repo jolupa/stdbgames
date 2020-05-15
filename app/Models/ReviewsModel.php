@@ -56,7 +56,7 @@ class ReviewsModel extends Model{
                             users.Name AS ruName')
                   ->join('games', 'games.Gameid = reviews.Gameid')
                   ->join('users', 'users.Userid = reviews.Userid')
-                  ->orderBy('reviews.Date', 'DESC');
+                  ->orderBy('reviews.Date', 'ASC');
     return $builder->get(4)->getResultArray();
   }
 }
