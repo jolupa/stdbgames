@@ -26,6 +26,21 @@
               <input class="input" type="text" name="Birthdate" placeholder="YYYY-MM-DD">
             </div>
           </div>
+          <!-- File Chooser Entry -->
+          <div class="field is-grouped is-grouped-multiline file has-name is-right">
+            <div class="control is-expanded">
+              <label class="file-label" id="insertgame">
+                <input class="file-input" type="file" name="Image">
+                <span class="file-cta is-expanded">
+                  <span class="file-icon">
+                    <i class="fas fa-upload"></i>
+                  </span>
+                  <span class="file-label">Choose a file...</span>
+                </span>
+                <span class="file-name"></span>
+              </label>
+            </div>
+          </div>
           <div class="field">
             <div class="control">
               <label class="checkbox">
@@ -40,13 +55,12 @@
                 <button class="button" name="cancel">Cancel</button>
               </div>
             </div>
-            </div>
-            <div class="field">
-              <?= \Config\Services::validation()->listErrors('my_list'); ?>
-            </div>
           </div>
-        </form>
-      </div>
+          <div class="field">
+            <?= \Config\Services::validation()->listErrors('my_list'); ?>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </section>

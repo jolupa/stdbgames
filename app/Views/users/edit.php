@@ -36,6 +36,25 @@
               <input class="input" type="text" name="Birthdate" value="<?= $user['uBirthdate'] ?>">
             </div>
           </div>
+          <!-- File Chooser Entry -->
+          <?php if($user['Image']): ?>
+            <div class="field file has-name is-right">
+              <div class="control is-expanded">
+                <label class="file-label" id="insertgame">
+                  <input class="file-input" type="file" name="Image">
+                  <span class="file-cta is-expanded">
+                    <span class="file-icon">
+                      <i class="fas fa-upload"></i>
+                    </span>
+                    <span class="file-label">Choose a file...</span>
+                  </span>
+                  <span class="file-name"></span>
+                </label>
+              </div>
+            </div>
+          <?php else: ?>
+            <input type="hidden" name="Image" value="<?= $user['Image'] ?>">
+          <?php endif; ?>
           <div class="field">
             <div class="control">
               <button class="button is-primary" name="submit">Edit!</button>
