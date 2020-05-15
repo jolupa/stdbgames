@@ -41,3 +41,4 @@
     </div>
   </div>
 </section>
+<?= view_cell('\App\Controllers\Reviews::latestreviews') ?>

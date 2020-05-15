@@ -1,7 +1,7 @@
 <div class="columns">
   <div class="column is-full-width">
     <p class="subtitle is-5">Users</p>
-    <p class="title is-3">Reviews:</p>
+    <p class="title is-3"><a id="Reviews">#</a>Reviews:</p>
   </div>
 </div>
 <?php if($insert === TRUE && session('is_logged') === TRUE): ?>
@@ -51,7 +51,7 @@
         <article class="media">
           <figure class="media-left image is-96x96">
             <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$reviews['ruImage'].'.jpeg') === TRUE): ?>
-              <img src="<?= base_url() ?>/images/avatar/<?= $reviews['ruImage'] ?>.jpeg">
+              <a id="Review<?= $reviews['rId'] ?>"><img src="<?= base_url() ?>/images/avatar/<?= $reviews['ruImage'] ?>.jpeg"></a>
             <?php else: ?>
               <img src="<?= base_url() ?>/images/avatar/avatar01.jpeg">
             <?php endif; ?>

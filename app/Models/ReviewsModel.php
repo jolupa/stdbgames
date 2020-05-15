@@ -45,6 +45,20 @@ class ReviewsModel extends Model{
     $builder = $db->table('reviews');
     return $builder->insert($data);
   }
+  public function getLatestsReviews(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('reviews')
+                  ->select('Reviewid AS rId,
+                            reviews.About AS rAbout,
+                            games.Name AS rgName,
+                            games.Slug AS rgSlug,
+                            games.Image AS rgImage,
+                            users.Name AS ruName')
+                  ->join('games', 'games.Gameid = reviews.Gameid')
+                  ->join('users', 'users.Userid = reviews.Userid')
+                  ->orderBy('reviews.Date', 'DESC');
+    return $builder->get(4)->getResultArray();
+  }
 }
 
 ?>

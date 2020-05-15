@@ -149,7 +149,7 @@ class Games extends Controller{
 			$newname = $data['Slug'];
 			$data['Image'] = $newname;
 			$file = $this->request->getFile('Image')
-																->move(WRITEPATH.'uploads', $newname);
+														->move(WRITEPATH.'uploads', $newname);
 			$image = \Config\Services::image('imagick')
 							->withFile(WRITEPATH.'uploads/'.$newname.'.jpeg')
 							->resize(1980, 1024, true, 'height')

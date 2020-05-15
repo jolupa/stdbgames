@@ -39,6 +39,11 @@ class Reviews extends Controller{
       return redirect()->to(session('current_url'));
     }
   }
+  public function latestreviews(){
+    $latest = new ReviewsModel();
+    $data['latest'] = $latest->getLatestsReviews();
+    return view('reviews/latest', $data);
+  }
 }
 
 ?>
