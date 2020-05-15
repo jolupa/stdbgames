@@ -1,1 +1,1 @@
-<a href="https://stadia.google.com/store/details/<?= $game['gAppid'] ?>/sku/<?= $game['gSku'] ?>" target="_blank" title="Go to <?= $game['gName'] ?>"><span class="tag is-danger is-medium"><span class="heading">Go to Stadia Store</span></span></a>
+<a href="https://stadia.google.com/store/details/<?= $game['gAppid'] ?>/sku/<?= $game['gSku'] ?>" target="_blank" title="Go to <?= $game['gName'] ?>"><button class="button is-danger is-medium has-text-white">Go to Stadia Store</button></a>
