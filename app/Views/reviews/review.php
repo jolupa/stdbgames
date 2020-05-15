@@ -47,7 +47,7 @@
 <?php else: ?>
   <?php foreach($reviews as $reviews): ?>
     <div class="columns">
-      <div class="column is-full-width">
+      <div class="column is-full-width <?php if(($reviews['rId'] % 2) === 0): ?>has-background-color-grey-lighter<?php endif; ?>">
         <article class="media">
           <figure class="media-left image is-96x96">
             <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$reviews['ruImage'].'.jpeg') === TRUE): ?>

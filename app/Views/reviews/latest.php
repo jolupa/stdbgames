@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section has-background-grey-lighter">
   <div class="container">
     <div class="columns">
       <div class="column">
