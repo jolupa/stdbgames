@@ -31,7 +31,7 @@
       toolbar:[{
         name: 'formatting', items: ['bold','italic','code','numlist','bullist']
       }],
-      valid_elements: 'p,strong,br,b/strong,ul,ol,li',
+      valid_elements: 'p,strong,br,strong/b,ul,ol,li',
       elementpath: false,
       branding: false,
     });

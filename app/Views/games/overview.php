@@ -67,7 +67,7 @@
 						<div class="columns">
 							<div class="column is-full-widht">
 								<p class="subtitle is-5">About the</p>
-								<p class="title is-3">Game:</p>
+								<p class="title is-3"><a id="About Game">#</a>Game:</p>
 								<?= $game['gAbout'] ?>
 							</div>
 						</div>
@@ -76,8 +76,8 @@
 						<?php endif; ?>
 						<?php if(date('Y-m-d') >= $game['gRelease']): ?>
 							<?= view_cell('\App\Controllers\Addons::gamehasaddons', 'gameid='.$game['gId']) ?>
-							<?= view_cell('\App\Controllers\Prices::pricehistory', 'gameid='.$game['gId']) ?>
 						<?php endif; ?>
+						<?= view_cell('\App\Controllers\Prices::pricehistory', 'gameid='.$game['gId']) ?>
 					</div>
 				</div>
 			</div>
