@@ -59,6 +59,18 @@
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
       <meta name="twitter:image_alt" content="<?= $gametype[$number]['gName'] ?>">
+    <?php elseif($specials): ?>
+      <title>Stadia Games DB - A Special About <?= $specials['sTitle'] ?></title>
+      <meta name="desciption" content="<?= $specials['sTitle'] ?>">
+      <meta name="keywords" content="Stadia, Google, Games, Database, db, funny, play, stream">
+      <!-- og Metatags -->
+      <meta property="og:title" content="A Special Article -- Stadia GamesDB!">
+      <meta property="og:description" content="<?= $specials['sTitle'] ?>">
+      <meta property="og:image" content="<?= base_url() ?>/assets/<?= $specials['sImage'] ?>">
+      <meta property="og:url" content="<?= base_url() ?>/specials/special/<?= $specials['sSlug'] ?>">
+      <meta name="twitter:card" content="summary_large_image">
+      <!-- og Metatags Not Essential Recommended -->
+      <meta name="twitter:image_alt" content="<?= $specials['sTitle'] ?>">
     <?php else: ?>
       <title>Stadia Games DB</title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
