@@ -15,7 +15,13 @@
 	<?php endif; ?>
 	<?php if(!empty($game['gProtill']) && date('Y-m-d') <= $game['gProtill']): ?>
 		<button class="button is-danger hast-text-white is-small">Was Free till&nbsp;<strong><?= $game['gProtill'] ?></strong></button>
-	<?php elseif(date('Y-m-s') < $game['gProtill']): ?>
+	<?php elseif(date('Y-m-d') < $game['gProtill']): ?>
 		<button class="button is-danger has-text-white is-small">Free till&nbsp;<strong><?= $game['gProtill'] ?></strong></button>
 	<?php endif; ?>
+<?php endif; ?>
+<?php if($game['gFirstonstadia'] === 1): ?>
+	<button class="button is-danger has-text-white is-small"><strong>First</strong>&nbsp;on Stadia</button>
+<?php endif; ?>
+<?php if($game['gStadiaexclusive'] === 1): ?>
+	<button class="button is-danger has-text-white is-small">Stadia&nbsp;<strong>Exclusive</strong></button>
 <?php endif; ?>

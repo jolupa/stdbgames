@@ -39,53 +39,73 @@
 			<?= view_cell('App\Controllers\Publishers::getpublishers') ?>
 		</div>
     <div class="field is-grouped is-grouped-multiline">
-      <div class="control">
-        <label class="label">Price</label>
-        <input class="input" name="Releaseprice" placeholder="$$.$$">
+      <div class="control is-expanded">
+        <label class="label">Is First on Stadia?</label>
+        <div class="select">
+          <select name="Firstonstadia">
+            <option value="0" selected>No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
       </div>
       <div class="control is-expanded">
-        <label class="label">Game SKU</label>
-        <input class="input" name="Sku" placeholder="Google's Game SKU">
-      </div>
-      <div class="control is-expanded">
-        <label class="label">Game AppId</label>
-        <input class="input" name="Appid" placeholder="Google's AppId">
+        <label class="label">Is Exclusive to Stadia?</label>
+        <div class="select">
+          <select name="Stadiaexclusive">
+            <option value="0" selected>No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
       </div>
     </div>
-    <!-- Game History Entry -->
-    <div class="field">
-      <label class="label">What's the game about:</label>
-      <div class="control">
-        <textarea class="textarea" name="About" placeholder="Text with info about the game. You can use the HTML tags <p> <br> <a> <strong>"></textarea>
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control">
+          <label class="label">Price</label>
+          <input class="input" name="Releaseprice" placeholder="$$.$$">
+        </div>
+        <div class="control is-expanded">
+          <label class="label">Game SKU</label>
+          <input class="input" name="Sku" placeholder="Google's Game SKU">
+        </div>
+        <div class="control is-expanded">
+          <label class="label">Game AppId</label>
+          <input class="input" name="Appid" placeholder="Google's AppId">
+        </div>
       </div>
-    </div>
-    <!-- File Chooser Entry -->
-    <div class="field is-grouped is-grouped-multiline file has-name is-right">
-      <div class="control is-expanded">
-        <label class="file-label" id="insertgame">
-          <input class="file-input" type="file" name="Image">
-          <span class="file-cta is-expanded">
-            <span class="file-icon">
-              <i class="fas fa-upload"></i>
+      <!-- Game History Entry -->
+      <div class="field">
+        <label class="label">What's the game about:</label>
+        <div class="control">
+          <textarea class="textarea" name="About" placeholder="Text with info about the game. You can use the HTML tags <p> <br> <a> <strong>"></textarea>
+        </div>
+      </div>
+      <!-- File Chooser Entry -->
+      <div class="field is-grouped is-grouped-multiline file has-name is-right">
+        <div class="control is-expanded">
+          <label class="file-label" id="insertgame">
+            <input class="file-input" type="file" name="Image">
+            <span class="file-cta is-expanded">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">Choose a file...</span>
             </span>
-            <span class="file-label">Choose a file...</span>
-          </span>
-          <span class="file-name"></span>
-        </label>
-        <p class="help">Any Kind of file. Less than 2Mb</p>
+            <span class="file-name"></span>
+          </label>
+          <p class="help">Any Kind of file. Less than 2Mb</p>
+        </div>
+        <!-- Button Send -->
+        <div class="control">
+          <button class="button is-primary" type="submit" name="submit">Add Game</button>
+        </div>
+        <!-- Button Clear -->
+        <div class="control">
+          <button class="button is-light" type="reset" name="reset">Clear</button>
+        </div>
       </div>
-      <!-- Button Send -->
-      <div class="control">
-        <button class="button is-primary" type="submit" name="submit">Add Game</button>
+      <div class="field">
+        <?= \Config\Services::validation()->listErrors('my_list'); ?>
       </div>
-      <!-- Button Clear -->
-      <div class="control">
-        <button class="button is-light" type="reset" name="reset">Clear</button>
-      </div>
-    </div>
-    <div class="field">
-      <?= \Config\Services::validation()->listErrors('my_list'); ?>
-    </div>
     </form>
   </div>
 </section>

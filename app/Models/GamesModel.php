@@ -83,6 +83,8 @@ class GamesModel extends Model{
 														games.Sku AS gSku,
 														games.Appid AS gAppid,
 														games.Releaseprice AS gReleaseprice,
+														games.Firstonstadia AS gFirstonstadia,
+														games.Stadiaexclusive AS gStadiaexclusive,
 														Pro AS gPro,
 														Profrom AS gProfrom,
 														Protill AS gProtill,

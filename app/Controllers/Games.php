@@ -79,6 +79,8 @@ class Games extends Controller{
 			if ($this->request->getVar('Releaseprice') != NULL){
 				$data['Releaseprice'] = $this->request->getVar('Releaseprice');
 			}
+			$data['Firstonstadia'] = $this->request->getVar('Firstonstadia');
+			$data['Stadiaexclusive'] = $this->request->getVar('Stadiaexclusive');
 			if ($this->request->getFile('Image') != NULL){
 				if ( is_dir (ROOTPATH.'/public/images') == FALSE){
 					mkdir(ROOTPATH.'/public/images', 0777, true);
@@ -140,6 +142,8 @@ class Games extends Controller{
 		if ($this->request->getVar('Releaseprice') != NULL){
 			$data['Releaseprice'] = $this->request->getVar('Releaseprice');
 		}
+		$data['Firstonstadia'] = $this->request->getVar('Firstonstadia');
+		$data['Stadiaexclusive'] = $this->request->getVar('Stadiaexclusive');
 		if ($this->request->getVar('Image') != NULL){
 			$data['Image'] = $this->request->getVar('Image');
 		} else {

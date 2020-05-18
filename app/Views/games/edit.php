@@ -40,6 +40,26 @@
 				<?= view_cell('App\Controllers\Publishers::getpublishers', 'publisherid='.$game['gpId']) ?>
 			</div>
 			<div class="field is-grouped is-grouped-multiline">
+				<div class="control is-expanded">
+					<label class="label">Is First on Stadia?</label>
+					<div class="select">
+						<select name="Firstonstadia">
+							<option value="0" <?php if($game['gFirstonstadia'] === 0): ?>selected<?php endif; ?>>No</option>
+							<option value="1" <?php if($game['gFirstonstadia'] === 1): ?>selected<?php endif; ?>>Yes</option>
+						</select>
+					</div>
+				</div>
+				<div class="control is-expanded">
+					<label class="label">Is Exclusive to Stadia?</label>
+					<div class="select">
+						<select name="Stadiaexclusive">
+							<option value="0" <?php if($game['gStadiaexclusive'] === 0): ?>selected<?php endif; ?>>No</option>
+							<option value="1" <?php if($game['gStadiaexclusive'] === 1): ?>selected<?php endif; ?>>Yes</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="field is-grouped is-grouped-multiline">
 			<div class="control">
 				<label class="label">Price</label>
 				<input class="input" name="Releaseprice" placeholder="$$.$$" value="<?= $game['gReleaseprice'] ?>">
