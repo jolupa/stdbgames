@@ -163,6 +163,17 @@ class GamesModel extends Model{
 										->join('publishers', 'publishers.Publisherid = games.Publisherid')
 										->where('Stadiaexclusive', 1)
 										->orderBy('Release', 'DESC');
+		} elseif($type === 'all'){
+			$builder = $db->table('games')
+										->select('games.Slug AS gSlug,
+															games.Name AS gName,
+															games.Image AS gImage,
+															Release AS gRelease,
+															developers.Name AS gdName,
+															publishers.Name AS gpName')
+										->join('developers', 'developers.Developerid = games.Developerid')
+										->join('publishers', 'publishers.Publisherid = games.Publisherid')
+										->orderBy('Release', 'DESC');
 		} else {
 			$builder = $db->table('games')
 										->select('games.Gameid AS gId,

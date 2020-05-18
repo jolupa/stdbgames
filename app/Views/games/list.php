@@ -15,16 +15,20 @@
         <?php if($type === 'stadiaexclusive'): ?>
           <p class="title is-3">Stadia Exclusives</p>
         <?php endif; ?>
+        <?php if($type === 'all'): ?>
+          <p class="title is-3">All Games</p>
+        <?php endif; ?>
       </div>
     </div>
     <div class="columns">
       <div class="column is-full-width">
         <nav class="breadcrumb has-dot-separator is-centered">
           <ul>
-            <li><a href="<?= base_url() ?>/games/list/launched"<?php if($type === 'launched'): ?>class="is-active"<?php endif; ?>>Launched</a></li>
-            <li><a href="<?= base_url() ?>/games/list/soon" <?php if($type === 'soon'): ?>class="is-active"<?php endif; ?>>Soon</a></li>
-            <li><a href="<?= base_url() ?>/games/list/firstonstadia" <?php if($type === 'firstonstadia'): ?>class="is-active"<?php endif; ?>>First on Stadia</a></li>
-            <li><a href="<?= base_url() ?>/games/list/stadiaexclusive" <?php if($type === 'stadiaexclusive'): ?>class="is-active"<?php endif; ?>>Stadia Exclusives</a></li>
+            <li <?php if($type === 'all'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/games/list/all">All</a></li>
+            <li <?php if($type === 'launched'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/games/list/launched">Launched</a></li>
+            <li <?php if($type === 'soon'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/games/list/soon">Soon</a></li>
+            <li <?php if($type === 'firstonstadia'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/games/list/firstonstadia">First on Stadia</a></li>
+            <li <?php if($type === 'stadiaexclusive'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/games/list/stadiaexclusive">Stadia Exclusives</a></li>
           </ul>
         </nav>
         <hr>
