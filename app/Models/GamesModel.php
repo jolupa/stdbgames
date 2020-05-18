@@ -127,7 +127,7 @@ class GamesModel extends Model{
 										->join('publishers', 'publishers.Publisherid = games.Publisherid')
 										->where('Release >', date('Y-m-d'))
 										->orderBy('Release', 'ASC');
-		} else if ($type == 'launched'){
+		} elseif ($type == 'launched'){
 			$builder = $db->table('games')
 										->select('games.Slug AS gSlug,
 															games.Name AS gName,
@@ -138,6 +138,30 @@ class GamesModel extends Model{
 										->join('developers', 'developers.Developerid = games.Developerid')
 										->join('publishers', 'publishers.Publisherid = games.Publisherid')
 										->where('Release <=', date('Y-m-d'))
+										->orderBy('Release', 'DESC');
+		} elseif ($type === 'firstonstadia'){
+			$builder = $db->table('games')
+										->select('games.Slug AS gSlug,
+															games.Name AS gName,
+															games.Image AS gImage,
+															Release AS gRelease,
+															developers.Name AS gdName,
+															publishers.Name AS gpName')
+										->join('developers', 'developers.Developerid = games.Developerid')
+										->join('publishers', 'publishers.Publisherid = games.Publisherid')
+										->where('Firstonstadia', 1)
+										->orderBy('Release', 'DESC');
+		} elseif ($type === 'stadiaexclusive'){
+			$builder = $db->table('games')
+										->select('games.Slug AS gSlug,
+															games.Name AS gName,
+															games.Image AS gImage,
+															Release AS gRelease,
+															developers.Name AS gdName,
+															publishers.Name AS gpName')
+										->join('developers', 'developers.Developerid = games.Developerid')
+										->join('publishers', 'publishers.Publisherid = games.Publisherid')
+										->where('Stadiaexclusive', 1)
 										->orderBy('Release', 'DESC');
 		} else {
 			$builder = $db->table('games')

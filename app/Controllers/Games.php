@@ -174,7 +174,7 @@ class Games extends Controller{
 		$games = new GamesModel();
 		$data['games'] = $games->getGames($type);
 		$data['type'] = $type;
-		if($type == 'soon' || $type == 'launched'){
+		if($type){
 			echo view('templates/header', $data);
 			echo view('games/list', $data);
 			echo view('templates/footer');
