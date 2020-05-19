@@ -29,6 +29,11 @@ class Libraries extends Controller{
 			return view('libraries/inlibrary');
 		}
 	}
+	public function deletelibraryuser($userid){
+		$delete = new LibrariesModel();
+		$delete->deleteLibraryUser($userid);
+		return redirect()->to('/users/profile/'.session('username'));
+	}
 }
 
  ?>

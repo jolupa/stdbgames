@@ -30,6 +30,11 @@ class LibrariesModel extends Model{
 		return $builder->get()
 										->getRowArray();
 	}
+	public function deleteLibraryUser($userid){
+		$db = \Config\Database::connect();
+		$builder = $db->table('libraries');
+		return $builder->delete(['Userid'=>$userid]);
+	}
 }
 
 

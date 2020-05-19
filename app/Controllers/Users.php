@@ -41,32 +41,32 @@ class Users extends Controller{
 	// If all goes well we sen the user to the register form
 	public function insertuser(){
     $val = $this->validate([
-                            'Name' => [ 'label' => 'Name',
-                                        'rules' => 'required|alpha_numeric|is_unique[users.Name]',
-                                        'errors' => [ 'required' => 'You dont want an username... Sorry you have to take one!',
-                                                      'alpha_numeric' => 'You can only put letters and numbers in your name, nothing too much fancy',
-                                                      'is_unique' => 'Sorry... We dont have Founders here and your username is taken', ]
-                            ],
-                            'Password' => [ 'label' => 'Password',
-                                            'rules' => 'required|min_length[6]|max_length[20]',
-                                            'errors' => [ 'required' => 'Set a password... Is more safety',
-                                                          'min_length' => 'A minimum of six characters... Easy...',
-                                                          'max_length' => 'Maximum twenty characters... Not too easy', ]
-                            ],
-                            'Birthdate' => [ 'label' => 'Birthdate',
-                                              'rules' => 'required|valid_date[Y-m-d]',
-                                              'errors' => [ 'required' => 'Your birthdate... Imagine we can send you something... Who knows!',
-                                                            'valid_date' => 'The correct date format is YYYY-MM-DD... We are a little weirdos', ]
-                            ],
-                            'Mail' => [ 'label' => 'Mail',
-                                        'rules' => 'valid_email',
-                                        'errors' => [ 'valid_email' => 'Just your email... To Stay informed...',]
-                            ],
-                            'accept' => [ 'label' => 'Accept',
-                                          'rules' => 'required',
-                                          'errors' => [ 'required' => 'You have to know that the data you are entering is only for the database... Nothing More! Yeah! Clear!',]
-                            ],
-    ],);
+														'Name' => [ 'label' => 'Name',
+																				'rules' => 'required|alpha_numeric|is_unique[users.Name]',
+																				'errors' => [ 'required' => 'You dont want an username... Sorry you have to take one!',
+																											'alpha_numeric' => 'You can only put letters and numbers in your name, nothing too much fancy',
+																											'is_unique' => 'Sorry... We dont have Founders here and your username is taken', ]
+																				],
+														'Password' => [ 'label' => 'Password',
+																						'rules' => 'required|min_length[6]|max_length[20]',
+																						'errors' => [ 'required' => 'Set a password... Is more safety',
+																													'min_length' => 'A minimum of six characters... Easy...',
+																													'max_length' => 'Maximum twenty characters... Not too easy', ]
+																						],
+														'Birthdate' => [ 'label' => 'Birthdate',
+																							'rules' => 'required|valid_date[Y-m-d]',
+																							'errors' => [ 'required' => 'Your birthdate... Imagine we can send you something... Who knows!',
+																														'valid_date' => 'The correct date format is YYYY-MM-DD... We are a little weirdos', ]
+																							],
+														'Mail' => [ 'label' => 'Mail',
+																				'rules' => 'valid_email',
+																				'errors' => [ 'valid_email' => 'Just your email... To Stay informed...',]
+																				],
+														'accept' => [ 'label' => 'Accept',
+																					'rules' => 'required',
+																					'errors' => [ 'required' => 'You have to know that the data you are entering is only for the database... Nothing More! Yeah! Clear!',]
+																					],
+													],);
 		if (!$val){
 			echo view('templates/header');
 			echo view('users/register', ['validations'=>$this->validator]);
@@ -83,7 +83,10 @@ class Users extends Controller{
 				$data['Stadiauser'] = $this->request->getVar('Stadiauser');
 			}
 			$data['Role'] = 0;
-			if ($this->request->getFile('Image') != NULL){
+			if ($_FILES['Image']['error'] == 4){
+				$insert->userInsert($data);
+				return redirect()->to('/users/login');
+			} else {
 				if (is_dir(ROOTPATH.'public/images/avatar') == FALSE){
 					mkdir (ROOTPATH.'public/images/avatar', 0777, true);
 				}
@@ -97,9 +100,9 @@ class Users extends Controller{
 									->convert(IMAGETYPE_JPEG)
 									->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
 				unlink(WRITEPATH.'uploads/'.$newname);
+				$insert->userInsert($data);
+				return redirect()->to('/users/login');
 			}
-			$insert->userInsert($data);
-			return redirect()->to('/users/login');
 		}
 	}
 	// The page with all the option for the user
@@ -116,22 +119,6 @@ class Users extends Controller{
 			return redirect()->to('/games');
 		}
   }
-	/* Delete if all goes well with the library controller
-  public function library($userid){
-    $library = new UsersModel();
-    $data['library'] = $library->getUserLibrary($userid);
-
-    return view('users/library', $data);
-  }
-	*/
-	/* Delete if all goes well with the votes controller
-	public function vote($userid){
-		$votes = new UsersModel();
-		$data['votes'] = $votes->getUserVotes($userid);
-
-		return view('users/votes', $data);
-	}
-	*/
 	// Function only for admins where all the new users registered
 	// is presenten in a list
 	public function listusers(){
@@ -163,7 +150,10 @@ class Users extends Controller{
 		$data['Mail'] = $this->request->getVar('Mail');
 		$data['Registrydate'] = $this->request->getVar('Registrydate');
 		$data['Birthdate'] = $this->request->getVar('Birthdate');
-		if ($this->request->getFile('Image')){
+		if ($_FILES['Image']['error'] == 4){
+			$user->updateUser($data);
+			return redirect()->to('/users/profile/'.$data['Slug']);
+		} else {
 			if($this->request->getVar('oldimage') != NULL){
 				unlink(ROOTPATH.'public/images/avatar/'.$this->request->getVar('oldimage').'.jpeg');
 			}
@@ -180,10 +170,9 @@ class Users extends Controller{
 								->convert(IMAGETYPE_JPEG)
 								->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
 			unlink(WRITEPATH.'uploads/'.$newname);
+			$user->updateUser($data);
+			return redirect()->to('/users/profile/'.$data['Slug']);
 		}
-		$user->updateUser($data);
-
-		return redirect()->to('/users/profile/'.$data['Slug']);
 	}
 	// Functio to logout the user
 	public function logout(){
@@ -193,11 +182,12 @@ class Users extends Controller{
 		return redirect()->to('/games');
 	}
 	// Function to delete the user if he wants
-	public function deleteuser($userid){
+	public function deleteuser($userid, $image){
 		$delete = new UsersModel();
 		$delete->deleteUser($userid);
+		unlink(ROOTPATH.'public/images/avatar/'.$image.'.jpeg');
 
-		return redirect()->to('/users/profile/'.session('username'));
+		return redirect()->to('/libraries/deletelibraryuser/'.$userid);
 	}
 }
 
