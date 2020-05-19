@@ -60,7 +60,7 @@ class VotesModel extends Model{
 									->join('publishers', 'publishers.Publisherid = games.Publisherid')
 									->groupBy('Score')
 									->orderBy('Score', 'DESC');
-		return $builder->get(4)->getResultArray();
+		return $builder->get(5)->getResultArray();
 	}
 }
 
