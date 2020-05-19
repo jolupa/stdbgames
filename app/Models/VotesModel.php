@@ -46,6 +46,22 @@ class VotesModel extends Model{
 		return $builder->get()
 									->getResultArray();
 	}
+	public function getBestVoted(){
+		$db = \Config\Database::connect();
+		$builder = $db->table('votes')
+									->select('AVG(Score) AS vScore,
+														games.Name As vgName,
+														games.Image AS vgImage,
+														games.Slug AS vgSlug,
+														developers.Name AS vdName,
+														publishers.Name AS vpName')
+									->join('games', 'games.Gameid = votes.Gameid')
+									->join('developers', 'developers.Developerid = games.Developerid')
+									->join('publishers', 'publishers.Publisherid = games.Publisherid')
+									->groupBy('Score')
+									->orderBy('Score', 'DESC');
+		return $builder->get(4)->getResultArray();
+	}
 }
 
  ?>

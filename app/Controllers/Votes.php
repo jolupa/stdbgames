@@ -40,5 +40,10 @@ class Votes extends Controller{
 
 		return view('users/votes', $data);
 	}
+	public function votesfront(){
+		$bestvoted = new VotesModel();
+		$data['bestvoted'] = $bestvoted->getBestVoted();
+		return view('votes/votesfront', $data);
+	}
 }
  ?>
