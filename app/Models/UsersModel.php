@@ -66,7 +66,7 @@ class UsersModel extends Model{
 														Registrydate AS uRegistrydate,
 														Role AS uRole')
 									->where('Role !=', 1);
-		return $builder->get(5)
+		return $builder->get(10)
 										->getResultArray();
 	}
 	public function updateUser($data){
