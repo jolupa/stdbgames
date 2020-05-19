@@ -36,42 +36,18 @@
               <input class="input" type="text" name="Birthdate" value="<?= $user['uBirthdate'] ?>">
             </div>
           </div>
-          <!-- File Chooser Entry -->
-          <?php if($user['Image']): ?>
-            <div class="field file has-name is-right">
-              <div class="control is-expanded">
-                <label class="file-label" id="insertgame">
-                  <input class="file-input" type="file" name="Image">
-                  <span class="file-cta is-expanded">
-                    <span class="file-icon">
-                      <i class="fas fa-upload"></i>
-                    </span>
-                    <span class="file-label">Choose a file...</span>
-                  </span>
-                  <span class="file-name"></span>
-                </label>
-              </div>
+          <div class="field is-grouped is-grouped is-grouped-multiline">
+            <div class="control is-expanded">
+              <input type="file" name="Image" class="input" placeholder="Images .png .jpeg max. 4MB">
+              <p class="help">Images .png .jpeg max. 4MB without spaces</p>
             </div>
-          <?php else: ?>
-            <input type="hidden" name="Image" value="<?= $user['Image'] ?>">
-          <?php endif; ?>
-          <div class="field">
+            <input type="hidden" name="oldimage" value="<?= $user['Image'] ?>">
             <div class="control">
               <button class="button is-primary" name="submit">Edit!</button>
             </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </section>
-
-<script>
-  const fileInput = document.querySelector('#insertuser input[type=file]');
-  fileInput.onchange = () => {
-    if (fileInput.files.length > 0) {
-      const fileName = document.querySelector('#insertuser .file-name');
-      fileName.textContent = fileInput.files[0].name;
-    }
-  }
-</script>

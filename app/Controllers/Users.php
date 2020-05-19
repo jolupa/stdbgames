@@ -1,4 +1,5 @@
 <?php
+// The Controller for all the functions related to Users.
 namespace App\Controllers;
 use App\Models\UsersModel;
 use CodeIgniter\Controller;
@@ -6,11 +7,13 @@ use CodeIgniter\Controller;
 helper(['url','text','cookie']);
 
 class Users extends Controller{
+	// Form to log the user in the system
 	public function login(){
 		echo view('templates/header');
 		echo view('users/login');
 		echo view('templates/footer');
 	}
+	// Function to log the user in her account
 	public function loguser(){
 		$user = new UsersModel();
 		$username = $this->request->getVar('Name');
@@ -28,11 +31,14 @@ class Users extends Controller{
 			echo view('templates/footer');
 		}
 	}
+	// Form to register the user
 	public function register(){
 		echo view('templates/header');
 		echo view('users/register');
 		echo view('templates/footer');
 	}
+	// We register the user in the DB if the essential fields are completed
+	// If all goes well we sen the user to the register form
 	public function insertuser(){
     $val = $this->validate([
                             'Name' => [ 'label' => 'Name',
@@ -96,6 +102,7 @@ class Users extends Controller{
 			return redirect()->to('/users/login');
 		}
 	}
+	// The page with all the option for the user
   public function profile(){
     $getuser = new UsersModel();
 		$slug = session('username');
@@ -109,24 +116,33 @@ class Users extends Controller{
 			return redirect()->to('/games');
 		}
   }
+	/* Delete if all goes well with the library controller
   public function library($userid){
     $library = new UsersModel();
     $data['library'] = $library->getUserLibrary($userid);
 
     return view('users/library', $data);
   }
+	*/
+	/* Delete if all goes well with the votes controller
 	public function vote($userid){
 		$votes = new UsersModel();
 		$data['votes'] = $votes->getUserVotes($userid);
 
 		return view('users/votes', $data);
 	}
+	*/
+	// Function only for admins where all the new users registered
+	// is presenten in a list
 	public function listusers(){
 		$listusers = new UsersModel();
 		$data['userlist'] = $listusers->getUsers();
 
 		return view('users/listusers', $data);
 	}
+	// Function for the user to edit his profile we check if is
+	// registered and if the page is his profile, then  we put
+	// the form to edit his data
 	public function edit($slug){
 		$user = new UsersModel();
 		$data['user'] = $user->getUser($slug);
@@ -135,6 +151,7 @@ class Users extends Controller{
 		echo view('users/edit', $data);
 		echo view('templates/footer');
 	}
+	// Function to update in DB the user data
 	public function updateuser(){
 		$user = new UsersModel();
 		$data['Name'] = $this->request->getVar('Name');
@@ -146,7 +163,10 @@ class Users extends Controller{
 		$data['Mail'] = $this->request->getVar('Mail');
 		$data['Registrydate'] = $this->request->getVar('Registrydate');
 		$data['Birthdate'] = $this->request->getVar('Birthdate');
-		if ($this->request->getFile('Image') != NULL){
+		if ($this->request->getFile('Image')){
+			if($this->request->getVar('oldimage') != NULL){
+				unlink(ROOTPATH.'public/images/avatar/'.$this->request->getVar('oldimage').'.jpeg');
+			}
 			if (is_dir(ROOTPATH.'public/images/avatar') == FALSE){
 				mkdir (ROOTPATH.'public/images/avatar', 0777, true);
 			}
@@ -154,23 +174,25 @@ class Users extends Controller{
 			$newname = strtolower(url_title($this->request->getVar('Name')));
 			$file = $this->request->getFile('Image')
 																->move(WRITEPATH.'uploads', $newname);
-			$image = \Config\Services::image()
+			$image = \Config\Services::image('imagick')
 								->withFile(WRITEPATH.'uploads/'.$newname)
 								->fit(256, 256, 'center')
 								->convert(IMAGETYPE_JPEG)
 								->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
-			unlink(WRITEPATH.'uploads/'.$newname.'.jpeg');
+			unlink(WRITEPATH.'uploads/'.$newname);
 		}
 		$user->updateUser($data);
 
 		return redirect()->to('/users/profile/'.$data['Slug']);
 	}
+	// Functio to logout the user
 	public function logout(){
 		$session = \Config\Services::session();
 		$session->destroy();
 
 		return redirect()->to('/games');
 	}
+	// Function to delete the user if he wants
 	public function deleteuser($userid){
 		$delete = new UsersModel();
 		$delete->deleteUser($userid);

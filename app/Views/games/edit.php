@@ -84,19 +84,10 @@
 			<?php if(!empty($game['gImage'])): ?>
 				<input type="hidden" name="Image" value="<?= $game['gImage'] ?>">
 			<?php else: ?>
-				<div class="field is-grouped file has-name is-right">
-					<div class="control is-expanded">
-						<label class="file-label" id="insertgame">
-							<input class="file-input" type="file" name="Image">
-							<span class="file-cta is-expanded">
-								<span class="file-icon">
-									<i class="fas fa-upload"></i>
-								</span>
-								<span class="file-label">Choose a file...</span>
-							</span>
-							<span class="file-name"></span>
-						</label>
-					</div>
+			<div class="field is-grouped is-grouped is-grouped-multiline">
+				<div class="control is-expanded">
+					<input type="file" name="Image" class="input" placeholder="Images .png .jpeg max. 4MB">
+				</div>
 				<?php endif; ?>
 				<!-- Button Send -->
 				<div class="control">
@@ -111,13 +102,3 @@
 <?= view_cell('App\Controllers\Prices::price') ?>
 </div>
 </section>
-
-<script>
-	const fileInput = document.querySelector('#insertgame input[type=file]');
-	fileInput.onchange = () => {
-		if (fileInput.files.length > 0) {
-			const fileName = document.querySelector('#insertgame .file-name');
-			fileName.textContent = fileInput.files[0].name;
-		}
-	}
-</script>
