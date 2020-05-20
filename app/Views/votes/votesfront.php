@@ -15,7 +15,7 @@
         </figure>
         <div class="media-content">
           <p class="title is-5"><a href="<?= base_url() ?>/games/game/<?= $bestvoted['vgSlug'] ?>"><?= $bestvoted['vgName'] ?></a></p>
-          <p class="subtitle is-7">Developed by: <?= $bestvoted['vdName'] ?> / Published by: <?= $bestvoted['vpName'] ?></p>
+          <p class="subtitle is-7">Developer <?= $bestvoted['vdName'] ?> / Publisher <?= $bestvoted['vpName'] ?></p>
         </div>
         <div class="media-right">
           <figure class="image <?php if($bestvoted['vScore'] > 9): ?>has-background-primary<?php elseif($bestvoted['vScore'] > 5): ?>has-background-warning<?php elseif($bestvoted['vScore'] > 3): ?>has-background-link has-text-color-white<? else: ?>has-background-danger has-text-color-white<?php endif; ?> is-64x64 has-text-centered">
