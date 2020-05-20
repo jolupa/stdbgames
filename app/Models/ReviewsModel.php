@@ -19,6 +19,7 @@ class ReviewsModel extends Model{
     $builder = $db->table('reviews')
                   ->select('Reviewid AS rId,
                             About AS rAbout,
+                            reviews.Userid AS rUid,
                             Date AS rDate,
                             users.Name AS ruName,
                             users.Image AS ruImage')
@@ -27,6 +28,7 @@ class ReviewsModel extends Model{
                   ->orderBy('Date', 'ASC');
     return $builder->get()->getResultArray();
   }
+  /* Posible that this model function didnt work I disable the controller function
   public function getReview($gameid = false, $userid = false){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews')
@@ -40,6 +42,7 @@ class ReviewsModel extends Model{
                   ->where('reviews.Gameid', $gameid);
     return $builder->get()->getRowArray();
   }
+  */
   public function addReview($data){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews');
