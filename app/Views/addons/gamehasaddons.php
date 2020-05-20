@@ -1,7 +1,7 @@
 <div class="columns">
 	<div class="column">
 		<p class="subtitle is-5">Addons Avalaible</p>
-		<p class="title is-3">for this Game:</p>
+		<p class="title is-3"><a id="Addons">#</a>for this Game:</p>
 	</div>
 </div>
 <div class="columns is-multiline">

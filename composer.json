@@ -1,0 +1,6 @@
+{
+    "require": {
+        "codeigniter4/framework": "^4.0",
+        "abraham/twitteroauth": "^1.1"
+    }
+}

@@ -12,9 +12,6 @@
             <div class="control is-expanded">
               <input class="input" name="Title" placeholder="The Special Title">
             </div>
-            <div class="control">
-              <input class="input" name="Date" placeholder="Where it goes live">
-            </div>
           </div>
           <div class="field">
             <div class="control">
