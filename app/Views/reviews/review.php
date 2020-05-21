@@ -47,7 +47,7 @@
               <?php endif; ?>
             </figure>
             <div class="media-content">
-              <p class="title is-5"><?= $reviews['ruName'] ?> Just voted with a: <strong><?= view_cell('\App\Controllers\Votes::total', 'gameid='.$game['gId'].' userid='.$reviews['rUid']) ?></strong></p>
+              <small><?= $reviews['ruName'] ?> Just voted with <strong><?= view_cell('\App\Controllers\Votes::total', 'gameid='.$game['gId'].' userid='.$reviews['rUid']) ?></strong> on <?= $reviews['rDate'] ?></small>
             </div>
             <hr>
           </article>
