@@ -19,7 +19,7 @@
         </div>
         <div class="media-right">
           <figure class="image <?php if($bestvoted['vScore'] > 9): ?>has-background-primary<?php elseif($bestvoted['vScore'] > 5): ?>has-background-warning<?php elseif($bestvoted['vScore'] > 3): ?>has-background-link has-text-color-white<? else: ?>has-background-danger has-text-color-white<?php endif; ?> is-64x64 has-text-centered">
-            <br><p class="title is-5"><strong><?= $bestvoted['vScore'] ?></strong></p>
+            <br><p class="title is-5"><strong><?= round($bestvoted['vScore']) ?></strong></p>
           </figure>
         </div>
       </div>
