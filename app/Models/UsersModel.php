@@ -77,7 +77,7 @@ class UsersModel extends Model{
 														Registrydate AS uRegistrydate,
 														Role AS uRole')
 									->where('Role !=', 1)
-									->orderBy('Name', 'DESC');
+									->orderBy('Registrydate', 'DESC');
 		return $builder->get(10)
 										->getResultArray();
 	}

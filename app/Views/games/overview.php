@@ -52,7 +52,7 @@
 						<div class="columns">
 							<div class="column is-full-width">
 								<p>
-									<?php if(date('Y-m-d') > $game['gRelease'] && isset($game['gSku'])): ?>
+									<?php if(date('Y-m-d') >= $game['gRelease'] && isset($game['gSku'])): ?>
 										<?= view_cell('App\Controllers\Games::store') ?>
 									<?php endif; ?>&nbsp;
 									<?= view_cell( '\App\Controllers\Games::gameproinfo' ) ?>&nbsp;
