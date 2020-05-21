@@ -15,8 +15,9 @@
   </div>
 <?php else: ?>
   <?php foreach($reviews as $reviews): ?>
+    <?php if(!empty($reviews['rAbout'])): ?>
     <div class="columns">
-      <div class="column is-full-width <?php if(($reviews['rId'] % 2) === 0): ?>has-background-color-grey-lighter<?php endif; ?>">
+      <div class="column is-full-width has-background-color-grey-lighter">
         <article class="media">
           <figure class="media-left image is-96x96">
             <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$reviews['ruImage'].'.jpeg') === TRUE): ?>
@@ -26,11 +27,33 @@
             <?php endif; ?>
           </figure>
           <div class="media-content">
-            <?= $reviews['rAbout'] ?>
             <small>Author: <strong><?= $reviews['ruName'] ?></strong> Posted: <strong><?= $reviews['rDate'] ?></strong> Voted: <strong><?= view_cell('\App\Controllers\Votes::total', 'gameid='.$game['gId'].' userid='.$reviews['rUid']) ?></strong></small>
+            <?= $reviews['rAbout'] ?>
           </div>
         </article>
+        <hr>
       </div>
     </div>
+    <?php endif; ?>
+    <?php if(empty($reviews['rAbout'])): ?>
+      <div class="columns">
+        <div class="column is-full-width">
+          <article class="media">
+            <figure class="media-left image is-96x96">
+              <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$reviews['ruImage'].'.jpeg') === TRUE): ?>
+                <a id="Review<?= $reviews['rId'] ?>"><img src="<?= base_url() ?>/images/avatar/<?= $reviews['ruImage'] ?>.jpeg"></a>
+              <?php else: ?>
+                <a id="Review<?= $reviews['rId'] ?>"><img src="<?= base_url() ?>/images/avatar/avatar01.jpeg"></a>
+              <?php endif; ?>
+            </figure>
+            <figure class="media-right image is-96x96 has-background-primary has-text-centered">
+              <br><p class="title is-5"><?= view_cell('\App\Controllers\Votes::total', 'gameid='.$game['gId'].' userid='.$reviews['rUid']) ?></p>
+            </figure>
+            <hr>
+          </article>
+          <hr>
+        </div>
+      </div>
+    <?php endif; ?>
   <?php endforeach; ?>
 <?php endif; ?>
