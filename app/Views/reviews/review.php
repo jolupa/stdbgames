@@ -46,9 +46,9 @@
                 <a id="Review<?= $reviews['rId'] ?>"><img src="<?= base_url() ?>/images/avatar/avatar01.jpeg"></a>
               <?php endif; ?>
             </figure>
-            <figure class="media-right image is-96x96 has-background-primary has-text-centered">
-              <br><p class="title is-5"><?= view_cell('\App\Controllers\Votes::total', 'gameid='.$game['gId'].' userid='.$reviews['rUid']) ?></p>
-            </figure>
+            <div class="media-content">
+              <p class="title is-5"><?= $reviews['ruName'] ?> Just voted with a: <strong><?= view_cell('\App\Controllers\Votes::total', 'gameid='.$game['gId'].' userid='.$reviews['rUid']) ?></strong></p>
+            </div>
             <hr>
           </article>
           <hr>
