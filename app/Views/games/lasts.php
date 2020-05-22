@@ -1,4 +1,4 @@
-<?php if(date('Y-m-d') === '2020-05-19' || date('Y-m-d') > date('2020-05-19 + 3 days')): ?>
+<?php if(date('Y-m-d') === '2020-05-19' || date('Y-m-d') <= date('2020-05-19 + 3 days')): ?>
   <?= view_cell('App\Controllers\Specials::specialhome', 'slug=six-months-with-stadia') ?>
 <?php endif; ?>
 <section class="section has-background-grey-lighter">
