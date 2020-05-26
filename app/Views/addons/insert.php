@@ -17,10 +17,6 @@
         <input class="input" type="text" name="Release" placeholder="YYYY-MM-DD">
       </div>
       <?= view_cell('App\Controllers\Games::list') ?>
-      <!-- Developer Entry -->
-			<?= view_cell('App\Controllers\Developers::getdevelopers') ?>
-      <!-- Publisher Entry -->
-			<?= view_cell('App\Controllers\Publishers::getpublishers') ?>
 		</div>
     <div class="field is-grouped is-grouped-multiline">
       <div class="control">

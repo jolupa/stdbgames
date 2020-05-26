@@ -20,7 +20,7 @@
             </div>
             <div class="field is-grouped is-grouped-multiline">
               <div class="control">
-                <?= view_cell('\App\Controllers\Votes::checkvote', 'gameid= '.$game['gId'].', userid= '.session('id')) ?>
+                <?= view_cell('\App\Controllers\Reviews::checkvote', 'gameid= '.$game['gId'].', userid= '.session('id')) ?>
               </div>
               <div class="control">
                 <button class="button is-primary" type="submit">Add Review!</button>

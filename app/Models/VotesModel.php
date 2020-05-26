@@ -48,7 +48,7 @@ class VotesModel extends Model{
 	}
 	public function getBestVoted(){
 		$db = \Config\Database::connect();
-		$builder = $db->table('votes')
+		$builder = $db->table('reviews')
 									->select('AVG(Score) AS vScore,
 														games.Name As vgName,
 														games.Image AS vgImage,

@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="column is-half">
-        <?= view_cell('App\Controllers\Votes::votesfront') ?>
+        <?= view_cell('App\Controllers\Reviews::votesfront') ?>
       </div>
     </div>
   </div>

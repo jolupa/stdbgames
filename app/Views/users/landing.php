@@ -20,7 +20,7 @@
 					</div>
 				</div>
         <?= view_cell('App\Controllers\Libraries::libraryuser', 'userid='.$user['uId']) ?>
-				<?= view_cell('App\Controllers\Votes::votesbyuser', 'userid='.$user['uId']) ?>
+				<?= view_cell('App\Controllers\Reviews::votesbyuser', 'userid='.$user['uId']) ?>
 				<?php if(session('role') == 1): ?>
 					<?= view_cell('App\Controllers\Users::listusers') ?>
 				<?php endif; ?>

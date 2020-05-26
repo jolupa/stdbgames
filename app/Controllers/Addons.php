@@ -25,8 +25,6 @@ class Addons extends Controller{
 		$data = [
 						'Name' => $this->request->getVar('Name'),
 						'Gameid' => $this->request->getVar('Gameid'),
-						'Developerid' => $this->request->getVar('Developerid'),
-						'Publisherid' => $this->request->getVar('Publisherid'),
 						'Slug' => strtolower(url_title($this->request->getVar('Name'))),
 						'Releaseprice' => $this->request->getVar('Releaseprice'),
 						'Sku' => $this->request->getVar('Sku'),

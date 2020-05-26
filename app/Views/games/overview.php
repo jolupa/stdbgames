@@ -40,7 +40,7 @@
 									<?php if ( $game['gRelease'] > date('Y-m-d')): ?>
 										<p class="title is-6">Not Released</p>
 									<?php else: ?>
-										<p class="title is-6"><?= view_cell( 'App\Controllers\Votes::total', 'gameid='.$game['gId'] ) ?></p>
+										<p class="title is-6"><?= view_cell( 'App\Controllers\Reviews::total', 'gameid='.$game['gId'] ) ?></p>
 									<?php endif; ?>
 								</div>
 							</div>

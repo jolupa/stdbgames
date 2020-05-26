@@ -25,28 +25,61 @@ class Reviews extends Controller{
     $add = new ReviewsModel();
     if($this->request->getVar('About') != NULL){
       $data['About'] = $this->request->getVar('About');
-      $data['Date'] = date('Y-m-d H:m:s');
-      $data['Gameid'] = $this->request->getVar('Gameid');
-      $data['Userid'] = $this->request->getVar('Userid');
-      $add->addReview($data);
     }
+    $data['Date'] = date('Y-m-d H:m:s');
+    $data['Gameid'] = $this->request->getVar('Gameid');
+    $data['Userid'] = $this->request->getVar('Userid');
     if($this->request->getVar('Score') != NULL){
-      if($this->request->getVar('Score') == 'Cast Your Vote!'){
-        return redirect()->to(session('current_url'));
-      } else {
-        $gameid = $this->request->getVar('Gameid');
-        $userid = $this->request->getVar('Userid');
-        $vote = $this->request->getVar('Score');
-        return redirect()->to('/votes/addvote/'.$gameid.'/'.$userid.'/'.$vote);
-      }
-    } else {
-      return redirect()->to(session('current_url'));
+      $data['Score'] = $this->request->getVar('Score');
     }
+    $add->addReview($data);
+    return redirect()->to(session('current_url'));
   }
   public function latestreviews(){
     $latest = new ReviewsModel();
     $data['latest'] = $latest->getLatestsReviews();
     return view('reviews/latest', $data);
+  }
+  public function total($gameid = false, $userid = false){
+    $totalvote = new ReviewsModel();
+    if($userid){
+      $data['totalvote'] = $totalvote->votesTotal($gameid, $userid);
+    } else {
+      $data['totalvote'] = $totalvote->votesTotal($gameid);
+    }
+
+    return view('reviews/totalvote', $data);
+  }
+  public function checkvote($userid, $gameid){
+    $check = new ReviewsModel();
+    $data['checkvote'] = $check->checkVote($userid, $gameid);
+    if($data['checkvote'] == FALSE){
+      return view('votes/votebutton');
+    } else {
+      return view('reviews/voted');
+    }
+  }
+  /*
+  public function addvote($gameid, $userid, $vote){
+    $addvote = new ReviewsModel();
+    $data['Gameid'] = $gameid;
+    $data['Userid'] = $userid;
+    $data['Score'] = $vote;
+    $data['addvote'] =$addvote->addVote($data);
+
+    return redirect()->to(session('current_url'));
+  }
+  */
+  public function votesbyuser($userid){
+    $votesbyuser = new ReviewsModel();
+    $data['votesbyuser'] = $votesbyuser->votesByUser($userid);
+
+    return view('users/votes', $data);
+  }
+  public function votesfront(){
+    $bestvoted = new ReviewsModel();
+    $data['bestvoted'] = $bestvoted->getBestVoted();
+    return view('reviews/votesfront', $data);
   }
 }
 

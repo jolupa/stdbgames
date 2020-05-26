@@ -27,7 +27,7 @@
             <?php endif; ?>
           </figure>
           <div class="media-content">
-            <small>Author: <strong><?= $reviews['ruName'] ?></strong> Posted: <strong><?= $reviews['rDate'] ?></strong> Voted: <strong><?= view_cell('\App\Controllers\Votes::total', 'gameid='.$game['gId'].' userid='.$reviews['rUid']) ?></strong></small>
+            <small>Author: <strong><?= $reviews['ruName'] ?></strong> Posted: <strong><?= $reviews['rDate'] ?></strong> Voted: <strong><?= $reviews['rScore'] ?></strong></small>
             <?= $reviews['rAbout'] ?>
           </div>
         </article>
@@ -39,7 +39,7 @@
       <div class="columns">
         <div class="column is-full-width">
           <article class="media">
-            <figure class="media-left image is-96x96">
+            <figure class="media-left image is-64x64">
               <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$reviews['ruImage'].'.jpeg') === TRUE): ?>
                 <a id="Review<?= $reviews['rId'] ?>"><img src="<?= base_url() ?>/images/avatar/<?= $reviews['ruImage'] ?>.jpeg"></a>
               <?php else: ?>
@@ -47,7 +47,7 @@
               <?php endif; ?>
             </figure>
             <div class="media-content">
-              <small><?= $reviews['ruName'] ?> Just voted with <strong><?= view_cell('\App\Controllers\Votes::total', 'gameid='.$game['gId'].' userid='.$reviews['rUid']) ?></strong> on <?= $reviews['rDate'] ?></small>
+              <small><?= $reviews['ruName'] ?> Just voted with <strong><?= $reviews['rScore'] ?></strong> on <?= $reviews['rDate'] ?></small>
             </div>
             <hr>
           </article>
