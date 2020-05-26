@@ -13,6 +13,7 @@
           <form method="post" action="<?= base_url() ?>/reviews/addreview">
             <input type="hidden" name="Userid" value="<?= session('id') ?>">
             <input type="hidden" name="Gameid" value="<?= $game['gId'] ?>">
+            <input type="hidden" name="Datesaved" value="<? $review['rDate'] ?>">
             <div class="field">
               <div class="control">
                 <textarea class="textarea" name="About" placeholder="You can use HTML tags p,strong"></textarea>

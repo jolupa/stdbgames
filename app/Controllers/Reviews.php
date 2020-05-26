@@ -23,17 +23,26 @@ class Reviews extends Controller{
   }
   public function addreview(){
     $add = new ReviewsModel();
-    if($this->request->getVar('About') != NULL){
-      $data['About'] = $this->request->getVar('About');
+    if($this->request->getVar('About') == NULL && $this->request->getVar('Score') == NULL){
+      return redirect()->to(session('current_url'));
+    } else {
+      if($this->request->getVar('About') != NULL){
+        $data['About'] = $this->request->getVar('About');
+      }
+      if($this->request->getVar('Datesaved') != NULL){
+        $data['Date'] = $this->request->getVar('Datesaved');
+      } else {
+
+        $data['Date'] = date('Y-m-d H:m:s');
+      }
+      $data['Gameid'] = $this->request->getVar('Gameid');
+      $data['Userid'] = $this->request->getVar('Userid');
+      if($this->request->getVar('Score') != NULL){
+        $data['Score'] = $this->request->getVar('Score');
+      }
+      $add->addReview($data);
+      return redirect()->to(session('current_url'));
     }
-    $data['Date'] = date('Y-m-d H:m:s');
-    $data['Gameid'] = $this->request->getVar('Gameid');
-    $data['Userid'] = $this->request->getVar('Userid');
-    if($this->request->getVar('Score') != NULL){
-      $data['Score'] = $this->request->getVar('Score');
-    }
-    $add->addReview($data);
-    return redirect()->to(session('current_url'));
   }
   public function latestreviews(){
     $latest = new ReviewsModel();
@@ -54,7 +63,7 @@ class Reviews extends Controller{
     $check = new ReviewsModel();
     $data['checkvote'] = $check->checkVote($userid, $gameid);
     if($data['checkvote'] == FALSE){
-      return view('votes/votebutton');
+      return view('reviews/votebutton');
     } else {
       return view('reviews/voted');
     }

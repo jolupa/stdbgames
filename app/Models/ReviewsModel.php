@@ -6,12 +6,16 @@ class ReviewsModel extends Model{
   public function checkReview($gameid, $userid){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews')
+                  ->select('Date AS rDate,
+                            About AS rAbout')
                   ->where('Gameid', $gameid)
                   ->where('Userid', $userid);
     if($builder->countAllResults() > 0){
       return TRUE;
+      return $review = $builder->get()->getRowArray();
     } else {
       return FALSE;
+      return $review = $builder->get()->getRowArray();
     }
   }
   public function getReviews($gameid = false){
