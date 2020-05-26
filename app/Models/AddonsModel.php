@@ -11,7 +11,9 @@ class AddonsModel extends Model{
 														Name AS aName,
 														Slug AS aSlug,
 														Release AS aRelease,
-														Releaseprice AS aReleaseprice')
+														Releaseprice AS aReleaseprice,
+														Sku AS aSku,
+														Appid AS aAppid')
 									->where('Gameid', $gameid)
 									->orderBy('Release', 'DESC');
 		return $builder->get()->getResultArray();

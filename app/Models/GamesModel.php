@@ -176,8 +176,8 @@ class GamesModel extends Model{
 										->orderBy('Release', 'DESC');
 		} else {
 			$builder = $db->table('games')
-										->select('games.Gameid AS gId,
-															games.Name AS gName')
+										->select('Gameid AS gId,
+															Name AS gName')
 										->orderBy('Name', 'ASC');
 		}
 		return $builder->get()

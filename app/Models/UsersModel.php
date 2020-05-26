@@ -39,32 +39,6 @@ class UsersModel extends Model{
 		return $builder->get()
 										->getRowArray();
 	}
-	/* To delete if the Libraries Controller work
-  public function getUserLibrary($userid){
-    $db = \Config\Database::connect();
-    $builder = $db->table('libraries')
-                  ->select('games.Name AS gName,
-                            games.Image AS gImage,
-                            games.Slug AS gSlug')
-                  ->join('games', 'games.Gameid = libraries.Gameid')
-                  ->where('libraries.Userid', $userid);
-    return $builder->get()
-                    ->getResultArray();
-  }
-	*/
-	/* To delete if the Votes Controller work
-	public function getUserVotes($userid){
-		$db = \Config\Database::connect();
-		$builder = $db->table('votes')
-									->select('games.Name AS gName,
-														games.Image AS gImage,
-														games.Slug AS gSlug')
-									->join('games', 'games.Gameid = votes.Gameid')
-									->where('votes', $userid);
-		return $builder->get()
-										->getResultArray();
-	}
-	*/
 	// Model for the admin function to list the Users
 	// now limited to 10
 	public function getUsers(){

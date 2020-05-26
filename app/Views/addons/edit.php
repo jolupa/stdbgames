@@ -16,16 +16,12 @@
   		</div>
   		<!-- Date Entry -->
   		<div class="field is-grouped is-grouped-multiline">
-        <div class="control">
+        <div class="control is-expanded">
           <label class="label">Price</label>
           <input class="input" type="input" name="Releaseprice" placeholder="$$.$$" value="<?= $addon['aReleaseprice'] ?>">
         </div>
   			<!-- Games Entry -->
-  			<?= view_cell('App\Controllers\Games::list', 'gameid='.$addon['agId']) ?>
-        <!-- Developer Entry -->
-  			<?= view_cell('App\Controllers\Developers::getdevelopers', 'developerid='.$addon['adId']) ?>
-        <!-- Publisher Entry -->
-  			<?= view_cell('App\Controllers\Publishers::getpublishers', 'publisherid='.$addon['apId'])?>
+  			<?= view_cell('App\Controllers\Games::list') ?>
   		</div>
       <div class="field is-grouped is-grouped-multiline">
         <div class="control is-expanded">

@@ -49,5 +49,25 @@
         </form>
       </div>
     </div>
+    <div class="columns">
+      <div class="column is-full-width">
+        <p class="subtitle is-5">Change</p>
+        <p class="title is-3">Password</p>
+        <form method="post" action="<?= base_url() ?>/users/changepass">
+          <input type="hidden" name="Username" value="<?= $user['uName'] ?>">
+          <div class="field is-grouped is-grouped-multiline">
+            <div class="control is-expanded">
+              <input class="input" type="password" name="Newpass" placeholder="New password">
+            </div>
+            <div class="control is-expanded">
+              <input class="input" type="password" name="Checknewpass" placeholder="Repeat new password">
+            </div>
+            <div class="control">
+              <button class="button is-primary">Change Password</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </section>

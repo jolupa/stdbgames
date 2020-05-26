@@ -21,7 +21,7 @@ class Users extends Controller{
 		$data = $user->userLog($username);
 		if (password_verify($password, $data['uPassword']) == TRUE){
 			$session = \Config\Services::session();
-			$session->set(['username'=>$data['uSlug'], 'id'=>$data['uId'], 'role'=>$data['uRole'], 'is_logged'=>TRUE]);
+			$session->set(['username'=>$data['uName'], 'slug'=>$data['uSlug'], 'id'=>$data['uId'], 'role'=>$data['uRole'], 'is_logged'=>TRUE]);
 
 			return redirect()->to('/users/profile/'.session('username'));
 		} else {
@@ -174,7 +174,7 @@ class Users extends Controller{
 			return redirect()->to('/users/profile/'.$data['Slug']);
 		}
 	}
-	// Functio to logout the user
+	// Function to logout the user
 	public function logout(){
 		$session = \Config\Services::session();
 		$session->destroy();
@@ -191,4 +191,4 @@ class Users extends Controller{
 	}
 }
 
- ?>
+?>

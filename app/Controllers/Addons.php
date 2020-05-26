@@ -13,7 +13,7 @@ class Addons extends Controller{
 
 		return view('addons/gamehasaddons', $data);
 	}
-	//We presente the form to insert a new addon on the DB
+	//We present the form to insert a new addon on the DB
 	public function insert(){
 		echo view('templates/header');
 		echo view('addons/insert');
@@ -57,8 +57,6 @@ class Addons extends Controller{
 			'Addonid' => $this->request->getVar('Addonid'),
 			'Name' => $this->request->getVar('Name'),
 			'Gameid'=> $this->request->getVar('Gameid'),
-			'Developerid' => $this->request->getVar('Developerid'),
-			'Publisherid' => $this->request->getVar('Publisherid'),
 			'Releaseprice' => $this->request->getVar('Releaseprice'),
 			'Release' => $this->request->getVar('Release'),
 			'Sku' => $this->request->getVar('Sku'),
