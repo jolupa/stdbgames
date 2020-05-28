@@ -189,6 +189,22 @@ class Users extends Controller{
 
 		return redirect()->to('/libraries/deletelibraryuser/'.$userid);
 	}
+	// Change password
+	public function changepass(){
+		$user = new UsersModel();
+		$oldpassword = $this->request->getVar('oldpassword');
+		$data = $user->userLog(session('username'));
+		if(password_verify($oldpassword, $data['uPassword']) === TRUE){
+			if($this->request->getVar('newpassword') === $this->request->getVar('checkpassword')){
+				$user->changePassword(session('id'), password_hash($this->request->getVar('newpassword'), PASSWORD_DEFAULT));
+				return redirect()->to('/users/logout');
+			} else {
+				return redirect()->to('/users/edit'.session('username'));
+			}
+		} else {
+			return redirect()->to('/users/edit'.session('username'));
+		}
+	}
 }
 
 ?>

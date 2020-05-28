@@ -68,6 +68,12 @@ class UsersModel extends Model{
 		$builder = $db->table('users');
 		return $builder->delete(['Userid'=>$userid]);
 	}
+	public function changePassword($userid, $password){
+		$db = \Config\Database::connect();
+		$builder = $db->table('users')
+									->where('Userid', $userid);
+		return $builder->update(['Password'=>$password]);
+	}
 }
 
  ?>

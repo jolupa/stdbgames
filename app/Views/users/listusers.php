@@ -8,7 +8,7 @@
 			</tr>
 			<?php foreach ($userlist as $userlist): ?>
 				<tr>
-					<td><strong><?= $userlist['uName'] ?></strong></td>
+					<td><?= $userlist['uName'] ?></td>
 					<td><?= $userlist['uRegistrydate'] ?></td>
 					<td><a href="<?= base_url() ?>/users/edit/<?= $userlist['uSlug'] ?>">Edit</a><?php if(session('role') == 1): ?> | <a href="<?= base_url() ?>/users/deleteuser/<?= $userlist['uId'] ?>/<?= $userlist['uImage'] ?>">Delete</a><?php endif; ?></td>
 				</tr>

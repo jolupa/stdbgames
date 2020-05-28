@@ -57,10 +57,13 @@
           <input type="hidden" name="Username" value="<?= $user['uName'] ?>">
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
-              <input class="input" type="password" name="Newpass" placeholder="New password">
+              <input class="input" type="password" name="oldpassword" placeholder="Your Actual Password">
             </div>
             <div class="control is-expanded">
-              <input class="input" type="password" name="Checknewpass" placeholder="Repeat new password">
+              <input class="input" type="password" name="newpassword" placeholder="New password">
+            </div>
+            <div class="control is-expanded">
+              <input class="input" type="password" name="checkpassword" placeholder="Repeat new password">
             </div>
             <div class="control">
               <button class="button is-primary">Change Password</button>

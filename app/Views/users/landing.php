@@ -19,8 +19,11 @@
 						</p>
 					</div>
 				</div>
+				<hr>
         <?= view_cell('App\Controllers\Libraries::libraryuser', 'userid='.$user['uId']) ?>
+				<hr>
 				<?= view_cell('App\Controllers\Reviews::votesbyuser', 'userid='.$user['uId']) ?>
+				<hr>
 				<?php if(session('role') == 1): ?>
 					<?= view_cell('App\Controllers\Users::listusers') ?>
 				<?php endif; ?>
