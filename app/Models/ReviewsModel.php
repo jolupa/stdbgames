@@ -12,10 +12,8 @@ class ReviewsModel extends Model{
                   ->where('Userid', $userid);
     if($builder->countAllResults() > 0){
       return TRUE;
-      return $review = $builder->get()->getRowArray();
     } else {
       return FALSE;
-      return $review = $builder->get()->getRowArray();
     }
   }
   public function getReviews($gameid = false){

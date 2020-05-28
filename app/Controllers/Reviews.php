@@ -29,12 +29,7 @@ class Reviews extends Controller{
       if($this->request->getVar('About') != NULL){
         $data['About'] = $this->request->getVar('About');
       }
-      if($this->request->getVar('Datesaved') != NULL){
-        $data['Date'] = $this->request->getVar('Datesaved');
-      } else {
-
-        $data['Date'] = date('Y-m-d H:m:s');
-      }
+      $data['Date'] = date('Y-m-d H:m:s');
       $data['Gameid'] = $this->request->getVar('Gameid');
       $data['Userid'] = $this->request->getVar('Userid');
       if($this->request->getVar('Score') != NULL){

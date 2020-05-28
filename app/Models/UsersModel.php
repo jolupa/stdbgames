@@ -52,8 +52,7 @@ class UsersModel extends Model{
 														Role AS uRole')
 									->where('Role !=', 1)
 									->orderBy('Registrydate', 'DESC');
-		return $builder->get(10)
-										->getResultArray();
+		return $builder->get()->getResultArray();
 	}
 	// Update the DB with new User information
 	public function updateUser($data){
