@@ -53,11 +53,16 @@
 							<div class="column is-full-width">
 								<p>
 									<?php if(date('Y-m-d') >= $game['gRelease'] && isset($game['gSku'])): ?>
-										<?= view_cell('App\Controllers\Games::store') ?>
-									<?php endif; ?>&nbsp;
-									<?= view_cell( '\App\Controllers\Games::gameproinfo' ) ?>&nbsp;
+										<?= view_cell('App\Controllers\Games::store') ?>&nbsp;
+										<?= view_cell( '\App\Controllers\Games::gameproinfo' ) ?>
+									<?php endif; ?>
+								</p>
+								<p>
 									<?php if(date('Y-m-d') >= $game['gRelease'] && session('is_logged') === TRUE): ?>
-										<?= view_cell('\App\Controllers\Libraries::checklibrary', 'userid='.session('id').', gameid='.$game['gId']) ?>
+										<?= view_cell('\App\Controllers\Libraries::checklibrary', 'userid='.session('id').', gameid='.$game['gId']) ?>&nbsp;
+									<?php endif; ?>
+									<?php if(session('is_logged') == TRUE): ?>
+										<?= view_cell('\App\Controllers\Wishlists::wishbutton', 'userid='.session('id').', gameid='.$game['gId']) ?>&nbsp;
 									<?php endif; ?>
 								</p>
 							</div>

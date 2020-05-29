@@ -23,12 +23,13 @@ class LibrariesModel extends Model{
 	public function checkLibrary($userid, $gameid){
 		$db = \Config\Database::connect();
 		$builder = $db->table('libraries')
-									->select('Gameid,
-														Userid')
 									->where('Gameid', $gameid)
 									->where('Userid', $userid);
-		return $builder->get()
-										->getRowArray();
+		if($builder->countAllResults() > 0){
+			return TRUE;
+		} else {
+			return FALSE;
+		}
 	}
 	public function deleteLibraryUser($userid){
 		$db = \Config\Database::connect();

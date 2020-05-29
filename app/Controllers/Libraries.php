@@ -22,12 +22,12 @@ class Libraries extends Controller{
 	}
 	public function checklibrary($userid, $gameid){
 		$check = new LibrariesModel();
-		$data['checklibrary'] = $check->checkLibrary($userid, $gameid);
-		if (empty($data['checklibrary'])){
-			return view('libraries/librarybutton', ['userid'=>$userid, 'gameid'=>$gameid]);
-		} else {
-			return view('libraries/inlibrary');
+		if($check->checkLibrary($userid, $gameid) == TRUE){
+			$data['lib_buttontype'] = FALSE;
+ 		} else {
+			$data['lib_buttontype'] = TRUE;
 		}
+		return view('libraries/libbutton', $data);
 	}
 	public function deletelibraryuser($userid){
 		$delete = new LibrariesModel();
