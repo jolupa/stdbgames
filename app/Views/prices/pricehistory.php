@@ -23,27 +23,29 @@
 				<thead>
 					<th>Price</th>
 					<th>Date Discounted</th>
+					<th>Discount is Valid</th>
 					<th>Type of Discount</th>
 					<th></th>
 				</thead>
 				<?php if(!$price): ?>
 					<tr>
-						<td colspan="4" class="has-text-centered">No History Price at this moment</td>
+						<td colspan="5" class="has-text-centered">No History Price at this moment</td>
 					</tr>
 				<?php else: ?>
 					<?php foreach($price as $price): ?>
 						<tr <?php if($price['pDiscounttype'] == 1): ?>class="has-background-light"<?php endif; ?>>
 							<td><?= number_format($price['pPrice'], 2) ?></td>
 							<td><?= $price['pDate'] ?></td>
+							<td><?= $price['pDatetill'] ?></td>
 							<td><?php if($price['pDiscounttype'] == 0): ?>Normal<?php else: ?>Pro<?php endif; ?></td>
-								<td><?php if(session('role') == 1): ?><a title="Delete Discount" href="<?= base_url() ?>/prices/deleteprice/<?= 	$price['pId'] ?>"><span class="icon"><i class="fas fa-trash-alt"></i></span></a><?php endif; ?></td>
-							</tr>
-						<?php endforeach; ?>
-					<?php endif; ?>
+							<td><?php if(session('role') == 1): ?><a title="Delete Discount" href="<?= base_url() ?>/prices/deleteprice/<?= 	$price['pId'] ?>"><span class="icon"><i class="fas fa-trash-alt"></i></span></a><?php endif; ?></td>
+						</tr>
+					<?php endforeach; ?>
 				<?php endif; ?>
-			</table>
-		</div>
+			<?php endif; ?>
+		</table>
 	</div>
+</div>
 <?php if(session('role') == 1): ?>
 	<?= view_cell('App\Controllers\Prices::price') ?>
 <?php endif; ?>

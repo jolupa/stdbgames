@@ -78,7 +78,7 @@ class Reviews extends Controller{
     $votesbyuser = new ReviewsModel();
     $data['votesbyuser'] = $votesbyuser->votesByUser($userid);
 
-    return view('users/votes', $data);
+    return view('reviews/votes', $data);
   }
   public function votesfront(){
     $bestvoted = new ReviewsModel();

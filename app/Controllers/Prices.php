@@ -25,6 +25,11 @@ class Prices extends Controller{
 		$price = new PricesModel();
 		$data['Price'] = $this->request->getVar('Price');
 		$data['Date'] = $this->request->getVar('Date');
+		if($this->request->getVar('Datetill') != NULL){
+			$data['Datetill'] = $this->request->getVar('Datetill');
+		} else {
+			$data['Datetill'] = date('Y-m-d', strtotime($data['Date'].'+7 days'));
+		}
 		$data['Discounttype'] = $this->request->getVar('Discounttype');
 		$data['Gameid'] = $this->request->getVar('Gameid');
 		$price->newPrice($data);

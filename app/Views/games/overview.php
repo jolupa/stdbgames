@@ -54,6 +54,8 @@
 								<p>
 									<?php if(date('Y-m-d') >= $game['gRelease'] && isset($game['gSku'])): ?>
 										<?= view_cell('App\Controllers\Games::store') ?>&nbsp;
+									<?php endif; ?>
+									<?php if(date('Y-m-d') >= $game['gRelease']): ?>
 										<?= view_cell( '\App\Controllers\Games::gameproinfo' ) ?>
 									<?php endif; ?>
 								</p>

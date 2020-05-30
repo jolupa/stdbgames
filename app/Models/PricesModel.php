@@ -8,6 +8,7 @@ class PricesModel extends Model{
 		$builder = $db->table('prices')
 									->select('Priceid AS pId,
 														Date AS pDate,
+														Datetill AS pDatetill,
 														Price AS pPrice,
 														Discounttype AS pDiscounttype')
 									->where('Gameid', $gameid)
@@ -20,6 +21,7 @@ class PricesModel extends Model{
 		$db = \Config\Database::connect();
 		$builder = $db->table('pricesaddons')
 									->select('Date AS pDate,
+														Datetill AS pDatetill,
 														Price AS pPrice,
 														Discounttype AS pDiscounttype')
 									->where('Addonid', $addonid)

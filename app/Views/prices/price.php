@@ -10,7 +10,10 @@
 					<input class="input" type="text" name="Price" placeholder="$$.$$">
 				</div>
 				<div class="control is-expanded">
-					<input class="input" type="text" name="Date" placeholder="YYYY-MM-DD">
+					<input class="input" type="text" name="Date" placeholder="Valid date YYYY-MM-DD">
+				</div>
+				<div class="control is-expanded">
+					<input class="input" type="text" name="Datetill" placeholder="Is valid till YYYY-MM-DD">
 				</div>
 				<div class="control">
 					<div class="select">
