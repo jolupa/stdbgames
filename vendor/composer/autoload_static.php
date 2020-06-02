@@ -49,10 +49,6 @@ class ComposerStaticInit2313b622dd40605ec4e3bdf6a37e43b3
         array (
             'CodeIgniter\\' => 12,
         ),
-        'A' => 
-        array (
-            'Abraham\\TwitterOAuth\\' => 21,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -101,10 +97,6 @@ class ComposerStaticInit2313b622dd40605ec4e3bdf6a37e43b3
         'CodeIgniter\\' => 
         array (
             0 => __DIR__ . '/..' . '/codeigniter4/framework/system',
-        ),
-        'Abraham\\TwitterOAuth\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/abraham/twitteroauth/src',
         ),
     );
 
@@ -259,6 +251,7 @@ class ComposerStaticInit2313b622dd40605ec4e3bdf6a37e43b3
         'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
+        'TwitterAPIExchange' => __DIR__ . '/..' . '/j7mbo/twitter-api-php/TwitterAPIExchange.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

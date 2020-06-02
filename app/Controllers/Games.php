@@ -102,7 +102,6 @@ class Games extends Controller{
 				unlink(WRITEPATH.'uploads/'.$newname);
 			}
 		 	$insert->insertGame($data);
-
 			return redirect()->to('/games/game/'.$data['Slug']);
 		}
 	}

@@ -1,6 +1,6 @@
 {
     "require": {
         "codeigniter4/framework": "^4.0",
-        "abraham/twitteroauth": "^1.1"
+        "j7mbo/twitter-api-php": "^1.0"
     }
 }
