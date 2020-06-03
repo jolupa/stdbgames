@@ -19,6 +19,13 @@
                 <textarea class="textarea" name="About" placeholder="You can use HTML tags p,strong"></textarea>
               </div>
             </div>
+            <?php if(session('role') == 2): ?>
+              <div class="field">
+                <div class="control">
+                  <input class="input" type="text" name="Exturl" value="<?= $reviews['rExturl'] ?>" placeholder="URL to external review">
+                </div>
+              </div>
+            <?php endif; ?>
             <div class="field is-grouped is-grouped-multiline">
               <div class="control">
                 <?= view_cell('\App\Controllers\Reviews::checkvote', 'gameid= '.$game['gId'].', userid= '.session('id')) ?>

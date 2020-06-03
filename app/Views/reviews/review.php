@@ -17,7 +17,7 @@
   <?php foreach($reviews as $reviews): ?>
     <?php if(!empty($reviews['rAbout'])): ?>
     <div class="columns">
-      <div class="column is-full-width has-background-color-grey-lighter">
+      <div class="column is-full-width">
         <article class="media">
           <figure class="media-left image is-96x96">
             <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$reviews['ruImage'].'.jpeg') === TRUE): ?>
@@ -25,10 +25,18 @@
             <?php else: ?>
               <a id="Review<?= $reviews['rId'] ?>"><img src="<?= base_url() ?>/images/avatar/avatar01.jpeg"></a>
             <?php endif; ?>
+            <?php if($reviews['ruRole'] == 2): ?>
+              <div class="tags is-normal">
+                <p class="tag is-danger has-text-white">MEDIA MEMBER</p>
+              </div>
+            <?php endif; ?>
           </figure>
           <div class="media-content">
             <small>Author: <strong><?= $reviews['ruName'] ?></strong> Posted: <strong><?= $reviews['rDate'] ?></strong> Voted: <strong><?= $reviews['rScore'] ?></strong></small>
             <?= $reviews['rAbout'] ?>
+            <?php if($reviews['rExturl']): ?>
+              <small>Read full review in <a href="<?= $reviews['rExturl'] ?>" target="_blank"><?= $reviews['rExturl'] ?></a></small>
+            <?php endif; ?>
           </div>
         </article>
         <hr>

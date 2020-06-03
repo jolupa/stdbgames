@@ -9,7 +9,7 @@
 						</p>
 					</figure>
 					<div class="media-content">
-						<p class="title is-4"><strong><?= $user['uName'] ?></strong></p>
+						<p class="title is-4"><strong><?= $user['uName'] ?></strong> <?php if($user['uRole'] == 1): ?><span class="tag is-danger has-text-white">STAFF MEMBER</span><?php elseif($user['uRole'] == 2): ?><span class="tag is-danger has-text-white">MEDIA MEMBER</span><?php endif; ?></p>
 						<p class="subtitle is-7">E-mail: <?= $user['uMail'] ?><br>
 							Birthday: <?= $user['uBirthdate'] ?><br>
 							Member since: <?= $user['uRegistrydate'] ?>

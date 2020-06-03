@@ -24,8 +24,10 @@ class ReviewsModel extends Model{
                             Score AS rScore,
                             reviews.Userid AS rUid,
                             Date AS rDate,
+                            Exturl AS rExturl,
                             users.Name AS ruName,
-                            users.Image AS ruImage')
+                            users.Image AS ruImage,
+                            users.Role AS ruRole')
                   ->join('users', 'users.Userid = reviews.Userid')
                   ->where('Gameid', $gameid)
                   ->orderBy('Date', 'ASC');

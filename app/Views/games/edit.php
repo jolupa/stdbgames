@@ -40,6 +40,14 @@
 				<?= view_cell('App\Controllers\Publishers::getpublishers', 'publisherid='.$game['gpId']) ?>
 			</div>
 			<div class="field is-grouped is-grouped-multiline">
+				<div class="control">
+					<label class="label">Is First on Stadia?</label>
+					<input type="radio" name="Firstonstadia" selected value="0">No&nbsp;<input type="radio" name="Firstonstadia" value="1">Yes
+				</div>
+				<div class="control">
+					<label class="label">Is Exclusive to Stadia?:</label>
+					<input type="radio" name="Stadiaexclusive" selected value="0">No&nbsp;<input type="radio" name="Stadiaexclusive" value="1">Yes
+				</div>
 				<div class="control is-expanded">
 					<label class="label">Is First on Stadia?</label>
 					<div class="select">

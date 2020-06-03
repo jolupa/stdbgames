@@ -20,7 +20,7 @@
                 <select name="Role">
                   <option value="0" <?php if ($user['uRole'] == 0): ?>selected<?php endif; ?>>User</option>
                   <option value="1" <?php if ($user['uRole'] == 1): ?>selected<?php endif; ?>>Admin</option>
-                  <option value="3" <?php if ($user['uRole'] == 2): ?>selected<?php endif; ?>>Pro</option>
+                  <option value="2" <?php if ($user['uRole'] == 2): ?>selected<?php endif; ?>>Media</option>
                 </select>
               </div>
             </div>

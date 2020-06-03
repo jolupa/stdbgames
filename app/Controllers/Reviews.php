@@ -32,6 +32,9 @@ class Reviews extends Controller{
       $data['Date'] = date('Y-m-d H:m:s');
       $data['Gameid'] = $this->request->getVar('Gameid');
       $data['Userid'] = $this->request->getVar('Userid');
+      if($this->request->getVar('Exturl') != NULL){
+        $data['Exturl'] = $this->request->getVar('Exturl');
+      }
       if($this->request->getVar('Score') != NULL){
         $data['Score'] = $this->request->getVar('Score');
       }

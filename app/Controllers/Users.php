@@ -147,6 +147,7 @@ class Users extends Controller{
 		if ($this->request->getVar('Image') != NULL){
 			$data['Image'] = $this->request->getVar('Image');
 		}
+		$data['Role'] = $this->request->getVar('Role');
 		$data['Mail'] = $this->request->getVar('Mail');
 		$data['Registrydate'] = $this->request->getVar('Registrydate');
 		$data['Birthdate'] = $this->request->getVar('Birthdate');

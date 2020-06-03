@@ -38,27 +38,15 @@
       <!-- Publisher Entry -->
 			<?= view_cell('App\Controllers\Publishers::getpublishers') ?>
 		</div>
-    <div class="field is-grouped is-grouped-multiline">
-      <div class="control is-expanded">
-        <label class="label">Is First on Stadia?</label>
-        <div class="select">
-          <select name="Firstonstadia">
-            <option value="0" selected>No</option>
-            <option value="1">Yes</option>
-          </select>
-        </div>
-      </div>
-      <div class="control is-expanded">
-        <label class="label">Is Exclusive to Stadia?</label>
-        <div class="select">
-          <select name="Stadiaexclusive">
-            <option value="0" selected>No</option>
-            <option value="1">Yes</option>
-          </select>
-        </div>
-      </div>
-    </div>
       <div class="field is-grouped is-grouped-multiline">
+        <div class="control">
+          <label class="label">Is First on Stadia?</label>
+          <input type="radio" name="Firstonstadia" selected value="0">No&nbsp;<input type="radio" name="Firstonstadia" value="1">Yes
+        </div>
+        <div class="control">
+          <label class="label">Is Exclusive to Stadia?:</label>
+          <input type="radio" name="Stadiaexclusive" selected value="0">No&nbsp;<input type="radio" name="Stadiaexclusive" value="1">Yes
+        </div>
         <div class="control">
           <label class="label">Price</label>
           <input class="input" name="Releaseprice" placeholder="$$.$$">
@@ -77,6 +65,14 @@
         <label class="label">What's the game about:</label>
         <div class="control">
           <textarea class="textarea" name="About" placeholder="Text with info about the game. You can use the HTML tags <p> <br> <a> <strong>"></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Genres</label>
+        <div class="tag">
+          <?php $genres = array('Adventures','FPS','Sports','Platform','Puzzle','Action',); foreach($genres as $genres): ?>
+            <span class="tag is-primary has-text-dark"><input type="checkbox" name="Genres[]" value="<?= $genres ?>">&nbsp;<?= $genres ?></span>&nbsp;
+          <?php endforeach; ?>
         </div>
       </div>
       <!-- File Chooser Entry -->
