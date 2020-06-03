@@ -19,7 +19,7 @@
                 </figure>
                 <div class="media-content">
                   <p class="title is-5"><?php if(empty($latest['rAbout'])): ?><?= $latest['ruName'] ?><p class="subtitle is-7">Voted for <a href="<?= base_url() ?>/games/game/<?= $latest['rgSlug'] ?>"><?= $latest['rgName'] ?></a></p><?php else: ?><?= $latest['ruName'] ?><?php if($latest['ruRole'] == 2): ?>&nbsp;<span class="tag is-danger hast-text-white is-normal">MEDIA MEMBER</span><?php endif; ?></p>
-                    <p class="subtitle is-7">Reviewed <a href="<?= base_url() ?>/games/game/<?= $latest['rgSlug'] ?>"><?= $latest['rgName'] ?></a></p><?php endif; ?></p>
+                    <p class="subtitle is-7">Reviewed <a href="<?= base_url() ?>/games/game/<?= $latest['rgSlug'] ?>#Review<?= $latest['rId'] ?>"><?= $latest['rgName'] ?></a></p><?php endif; ?></p>
                 </div>
               </div>
             <?php endforeach; ?>
