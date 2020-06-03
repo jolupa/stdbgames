@@ -23,7 +23,7 @@ class Reviews extends Controller{
   }
   public function addreview(){
     $add = new ReviewsModel();
-    if($this->request->getVar('About') == NULL && $this->request->getVar('Score') == NULL){
+    if($this->request->getVar('About') == NULL && $this->request->getVar('Score') == NULL || $this->request->getVar('Score') == 'Cast Your Vote!'){
       return redirect()->to(session('current_url'));
     } else {
       if($this->request->getVar('About') != NULL){
