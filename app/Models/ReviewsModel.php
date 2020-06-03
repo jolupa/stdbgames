@@ -33,21 +33,6 @@ class ReviewsModel extends Model{
                   ->orderBy('Date', 'ASC');
     return $builder->get()->getResultArray();
   }
-  /* Posible that this model function didnt work I disable the controller function
-  public function getReview($gameid = false, $userid = false){
-    $db = \Config\Database::connect();
-    $builder = $db->table('reviews')
-                  ->select('Reviewid AS rId,
-                            reviews.About AS rAbout,
-                            Date AS rDate,
-                            users.Name AS ruName,
-                            users.Image AS ruImage')
-                  ->join('users', 'users.Userid = reviews.Userid')
-                  ->where('reviews.Userid', $userid)
-                  ->where('reviews.Gameid', $gameid);
-    return $builder->get()->getRowArray();
-  }
-  */
   public function addReview($data){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews');
@@ -61,7 +46,8 @@ class ReviewsModel extends Model{
                             games.Name AS rgName,
                             games.Slug AS rgSlug,
                             games.Image AS rgImage,
-                            users.Name AS ruName')
+                            users.Name AS ruName,
+                            users.Role AS ruRole')
                   ->join('games', 'games.Gameid = reviews.Gameid')
                   ->join('users', 'users.Userid = reviews.Userid')
                   ->orderBy('reviews.Date', 'DESC');
@@ -94,13 +80,6 @@ class ReviewsModel extends Model{
       return FALSE;
     }
   }
-  /*
-  public function addVote($data){
-    $db = \Config\Database::connect();
-    $builder = $db->table('reviews');
-    return $builder->insert($data);
-  }
-  */
   public function votesByUser($userid){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews')
