@@ -129,7 +129,7 @@
             <div class="navbar-item">
               <div class="buttons">
               <?php if( session('is_logged') != TRUE): ?>
-                <a class="button is-primary" href="<?= base_url() ?>/users/register">Sign In</a>
+                <a class="button is-primary" href="<?= base_url() ?>/users/register">Sign Up</a>
                 <a class="button is-light" href="<?= base_url() ?>/users/login">Log In</a>
                 <?php else: ?>
                   <a class="button is-primary" href="<?= base_url() ?>/users/profile/<?= session('username') ?>">Profile</a>
