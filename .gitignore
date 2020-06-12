@@ -127,7 +127,7 @@ nb-configuration.xml
 /.phpunit.*.cache
 
 #Database
-app/Database/db/Stadia_DB.db
+app/Database/Stadia_DB.db
 
 #Config
 app/Config/App.php

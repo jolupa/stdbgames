@@ -34,7 +34,7 @@ class Database extends \CodeIgniter\Database\Config
 		'hostname' => '',
 		'username' => '',
 		'password' => '',
-		'database' => APPPATH.'Database/db/Stadia_DB.db',
+		'database' => APPPATH.'Database/Stadia_DB.db',
 		'DBDriver' => 'SQLite3',
 		'DBPrefix' => '',
 		'pConnect' => false,

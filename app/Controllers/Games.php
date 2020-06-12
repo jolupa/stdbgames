@@ -7,15 +7,11 @@ helper(['url','text','cookie']);
 
 class Games extends Controller{
 	public function index(){
-		$founders = new GamesModel();
-		$soon = new GamesModel();
-		$launched = new GamesModel();
-		$lasts = new GamesModel();
-		$data['founders'] = $founders->getGamesFounders();
-		$data['soon'] = $soon->getGamesSoon();
-		$data['launched'] = $launched->getGamesLaunched();
-		$data['lasts'] = $lasts->getGamesLasts();
-
+		$gamemodel = new GamesModel();
+		$data['founders'] = $gamemodel->getGamesFounders();
+		$data['soon'] = $gamemodel->getGamesSoon();
+		$data['launched'] = $gamemodel->getGamesLaunched();
+		$data['lasts'] = $gamemodel->getGamesLasts();
 		echo view('templates/header', $data);
 		echo view('games/lasts', $data['lasts']);
 		echo view('games/founders', $data['founders']);
@@ -91,7 +87,7 @@ class Games extends Controller{
 														 			->move(WRITEPATH.'uploads', $newname);
 			 	$image = \Config\Services::image('imagick')
 								->withFile(WRITEPATH.'uploads/'.$newname)
-								->resize(1980, 1024, true, 'height')
+								->resize(1370, 728, true, 'width')
 								->convert(IMAGETYPE_JPEG)
 								->save(ROOTPATH.'public/images/'.$newname.'.jpeg');
 				$imagethumb = \Config\Services::image()
