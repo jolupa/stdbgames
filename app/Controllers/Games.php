@@ -8,10 +8,11 @@ helper(['url','text','cookie']);
 class Games extends Controller{
 	public function index(){
 		$gamemodel = new GamesModel();
-		$data['founders'] = $gamemodel->getGamesFounders();
-		$data['soon'] = $gamemodel->getGamesSoon();
-		$data['launched'] = $gamemodel->getGamesLaunched();
-		$data['lasts'] = $gamemodel->getGamesLasts();
+		$data['founders'] = $founders->getGamesFounders();
+		$data['soon'] = $soon->getGamesSoon();
+		$data['launched'] = $launched->getGamesLaunched();
+		$data['lasts'] = $lasts->getGamesLasts();
+
 		echo view('templates/header', $data);
 		echo view('games/lasts', $data['lasts']);
 		echo view('games/founders', $data['founders']);
@@ -84,16 +85,10 @@ class Games extends Controller{
 				$newname = $data['Slug'];
 				$data['Image'] = $newname;
 				$file = $this->request->getFile('Image')
-												 			->move(WRITEPATH.'uploads', $newname);
-			 	$info = \Config\Services::image('imagick')
+														 			->move(WRITEPATH.'uploads', $newname);
+			 	$image = \Config\Services::image('imagick')
 								->withFile(WRITEPATH.'uploads/'.$newname)
-								->getFile()
-								->getProperties(true);
-				$xoffset = ($info['width'] / 2) - 685;
-				$yoffset = ($info['height'] / 2) - 364;
-				$image = \Config\Services::image('imagick')
-								->withFile(WRITEPATH.'uploads/'.$newname)
-								->crop(1370, 728, $xoffset, $yoffset)
+								->resize(1370, 728, true, 'width')
 								->convert(IMAGETYPE_JPEG)
 								->save(ROOTPATH.'public/images/'.$newname.'.jpeg');
 				$imagethumb = \Config\Services::image()
