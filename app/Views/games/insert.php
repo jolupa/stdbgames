@@ -67,14 +67,6 @@
           <textarea class="textarea" name="About" placeholder="Text with info about the game. You can use the HTML tags <p> <br> <a> <strong>"></textarea>
         </div>
       </div>
-      <div class="field">
-        <label class="label">Genres</label>
-        <div class="tag">
-          <?php $genres = array('Adventures','FPS','Sports','Platform','Puzzle','Action',); foreach($genres as $genres): ?>
-            <span class="tag is-primary has-text-dark"><input type="checkbox" name="Genres[]" value="<?= $genres ?>">&nbsp;<?= $genres ?></span>&nbsp;
-          <?php endforeach; ?>
-        </div>
-      </div>
       <!-- File Chooser Entry -->
       <div class="field is-grouped is-grouped is-grouped-multiline">
         <div class="control is-expanded">

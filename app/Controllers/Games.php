@@ -84,10 +84,16 @@ class Games extends Controller{
 				$newname = $data['Slug'];
 				$data['Image'] = $newname;
 				$file = $this->request->getFile('Image')
-														 			->move(WRITEPATH.'uploads', $newname);
-			 	$image = \Config\Services::image('imagick')
+												 			->move(WRITEPATH.'uploads', $newname);
+			 	$info = \Config\Services::image('imagick')
 								->withFile(WRITEPATH.'uploads/'.$newname)
-								->resize(1370, 728, true, 'width')
+								->getFile()
+								->getProperties(true);
+				$xoffset = ($info['width'] / 2) - 685;
+				$yoffset = ($info['height'] / 2) - 364;
+				$image = \Config\Services::image('imagick')
+								->withFile(WRITEPATH.'uploads/'.$newname)
+								->crop(1370, 728, $xoffset, $yoffset)
 								->convert(IMAGETYPE_JPEG)
 								->save(ROOTPATH.'public/images/'.$newname.'.jpeg');
 				$imagethumb = \Config\Services::image()
