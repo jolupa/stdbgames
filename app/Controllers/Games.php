@@ -8,10 +8,10 @@ helper(['url','text','cookie']);
 class Games extends Controller{
 	public function index(){
 		$gamemodel = new GamesModel();
-		$data['founders'] = $founders->getGamesFounders();
-		$data['soon'] = $soon->getGamesSoon();
-		$data['launched'] = $launched->getGamesLaunched();
-		$data['lasts'] = $lasts->getGamesLasts();
+		$data['founders'] = $gamemodel->getGamesFounders();
+		$data['soon'] = $gamemodel->getGamesSoon();
+		$data['launched'] = $gamemodel->getGamesLaunched();
+		$data['lasts'] = $gamemodel->getGamesLasts();
 
 		echo view('templates/header', $data);
 		echo view('games/lasts', $data['lasts']);
