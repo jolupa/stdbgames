@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<?php if ($game): ?>
+		<?php if (isset($game)): ?>
 			<title>Stadia GamesDB! - <?= $game['gName'] ?></title>
 			<meta name="description" content="Information about <?= $game['gName'] ?> developed by <?= $game['gdName'] ?> and published by <?= $game['gpName'] ?> in Stadia">
 			<meta name="keywords" content="<?= $game['gName'] ?>, <?= $game['gdName'] ?>, <?= $game['gpName'] ?>, Stadia, Stream, Cloud, Games, Online">
@@ -16,7 +16,7 @@
 			<meta property="og:url" content="<?= base_url() ?>/games/game/<?= $game['gSlug'] ?>">
 			<!-- og Metatags Not Essential Recommended -->
 			<meta name="twitter:image_alt" content="<?= $game['gName'] ?>">
-		<?php elseif ($developer): ?>
+		<?php elseif (isset($developer)): ?>
 			<title>Stadia GamesDB! - <?= $developer['dName'] ?></title>
 			<meta name="description" content="Information About <?= $developer['dName'] ?> in Stadia">
 			<meta name="keywords" content="<?= $developer['dName'] ?>, Stadia, Stream, Cloud, Games, Online">
@@ -31,7 +31,7 @@
 			<?php if(isset($developer['dImage'])): ?>
 				<meta name="twitter:image_alt" content="<?= $developer['dImage'] ?>">
 			<?php endif; ?>
-		<?php elseif ($publisher): ?>
+		<?php elseif (isset($publisher)): ?>
 			<title>Stadia GamesDB! - <?= $publisher['pName'] ?></title>
 			<meta name="description" content="Information About <?= $publisher['pName'] ?> in Stadia">
 			<meta name="keywords" content="<?= $publisher['pName'] ?>, Stadia, Stream, Cloud, Games, Online">
@@ -46,7 +46,7 @@
 			<?php if(isset($publisher['pImage'])): ?>
 				<meta name="twitter:image_alt" content="<?= $publisher['pImage'] ?>">
 			<?php endif; ?>
-    <?php elseif ($gametype): ?>
+    <?php elseif (isset($gametype)): ?>
       <title>Stadia Games DB - <?= $addon['aName'] ?></title>
       <meta name="desciption" content="All the games published on the Google Stadia platform in one place">
       <meta name="keywords" content="Stadia, Google, Games, Database, db, funny, play, stream">
@@ -59,7 +59,7 @@
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
       <meta name="twitter:image_alt" content="<?= $gametype[$number]['gName'] ?>">
-    <?php elseif($specials): ?>
+    <?php elseif(isset($specials)): ?>
       <title>Stadia Games DB - A Special About <?= $specials['sTitle'] ?></title>
       <meta name="desciption" content="<?= $specials['sTitle'] ?>">
       <meta name="keywords" content="Stadia, Google, Games, Database, db, funny, play, stream">
@@ -82,7 +82,7 @@
       <meta property="og:url" content="<?= base_url() ?>">
       <meta name="twitter:card" content="summary_large_image">
       <!-- og Metatags Not Essential Recommended -->
-      <meta name="twitter:image_alt" content="<?= $founders[$number]['gName'] ?>">
+      <meta name="twitter:image_alt" content="Stadia GamesDB!">
     <?php endif; ?>
 		<!-- og Metatags Not Essential Only Analytics -->
 		<meta name="og_site_name" content="Stadia GamesDB!">

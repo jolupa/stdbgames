@@ -76,6 +76,7 @@
 								<?= $game['gAbout'] ?>
 							</div>
 						</div>
+						<?= view_cell('App\Controllers\Interviews::interviews', 'id='.$game['gId']) ?>
 						<?php if(date('Y-m-d') >= $game['gRelease']): ?>
 							<?= view_cell('\App\Controllers\Reviews::review', 'gameid='.$game['gId'].' userid='.session('id')) ?>
 						<?php endif; ?>
