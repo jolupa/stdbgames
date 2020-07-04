@@ -82,7 +82,7 @@
         <p><a id="Review<?= $review['id'] ?>">#</a>Review by <strong><?= $review['user_name'] ?></strong>&nbsp;writted at <?= $review['date'] ?>&nbsp;and voted with <strong><?= $review['score'] ?></strong></p>
         <?= $review['about'] ?>
         <?php if($review['url']): ?>
-          <p>Read full Review at: <?= $review['url'] ?></p>
+          <p>Read full Review <a href="<?= $review['url'] ?>" target="_blank">HERE</a></p>
         <?php endif; ?>
       </div>
     </div>
