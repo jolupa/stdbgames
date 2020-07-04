@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="field">
-        <?= \Config\Services\validation()->listErrors('my_list'); ?>
+        <?= \Config\Services::validation()->listErrors('my_list'); ?>
       </div>
     </form>
   </div>
