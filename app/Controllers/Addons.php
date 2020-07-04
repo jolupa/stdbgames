@@ -26,7 +26,7 @@ class Addons extends Controller{
     ]);
     if(!$val){
       echo view('templates/header');
-      echo view('addons/insert', ['validations'=>$this->validator()]);
+      echo view('addons/insert',['validations'=>$this->validator]);
       echo view('templates/footer');
     } else {
       $addonmodel = new AddonsModel();
