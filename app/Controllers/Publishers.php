@@ -3,68 +3,30 @@ namespace App\Controllers;
 use App\Models\PublishersModel;
 use CodeIgniter\Controller;
 
-helper(['url','text','copkie']);
+helper(['text']);
 
 class Publishers extends Controller{
-	public function getpublishers($publisherid){
-		$publishers = new PublishersModel();
-		$data['publisher'] = $publishers->getPublishers();
-		$data['publisherid'] = $publisherid;
-
-		return view('publishers/allpubs', $data);
-	}
-	public function publisher($slug){
-		$publisher = new PublishersModel();
-		$data['publisher'] = $publisher->getPublisher($slug);
-		echo view('templates/header', $data);
-
-		echo view('publishers/overview', $data);
-		echo view('templates/footer');
-	}
-	public function developersbypublisher($publisherid){
-		$developerpublisher = new PublishersModel();
-		$data['developerpublisher'] = $developerpublisher->developersByPublisher($publisherid);
-
-		return view('publishers/bydevelopers', $data);
-	}
-	public function edit($slug){
-		$publisher = new PublishersModel();
-		$data['publisher'] = $publisher->getPublisher($slug);
-		echo view('templates/header');
-		echo view('publishers/edit', $data);
-		echo view('templates/footer');
-	}
-	public function updatepublisher(){
-		$updatepublisher = new PublishersModel();
-		$data['Publisherid'] = $this->request->getVar('Publisherid');
-		$data['Name'] = $this->request->getVar('Name');
-		$data['Website'] = $this->request->getVar('Website');
-		if ($this->request->getVar('About') != NULL){
-			$data['About'] = $this->request->getVar('About');
-		}
-		$slug = $this->request->getVar('Slug');
-		$updatepublisher->updatePublisher($data);
-
-		return redirect()->to('/developers/developer/'.$slug);
-	}
-	public function insert(){
-		echo view('templates/header');
-		echo view('publishers/insert');
-		echo view('templates/footer');
-	}
-	public function insertPublisher(){
-		$insertpublisher = new PublishersModel();
-		$data['Publisherid'] = $this->request->getVar('Publisherid');
-		$data['Name'] = $this->request->getVar('Name');
-		$data['Slug'] = strtolower(url_title($this->request->getVar('Name')));
-		$data['Website'] = $this->request->getVar('Website');
-		if($this->request->getVar('About') != NULL){
-			$data['About'] = $this->request->getVar('About');
-		}
-		$insertpublisher->insertPublisher($data);
-
-		return redirect()->to('/developers/developer/'.$data['Slug']);
-	}
+  public function overviewgamepublisher($id){
+    $publishermodel = new PublishersModel();
+    $data['publisher'] = $publishermodel->getPublisherById($id);
+    return view('publishers/overviewgamepublisher', $data);
+  }
+  public function allpubs(){
+    $publishermodel = new PublishersModel();
+    $data['publisher'] = $publishermodel->getAllPublishers();
+    return view('publishers/pubselection', $data);
+  }
+  public function overview($slug){
+    $publishermodel = new PublishersModel();
+    $data['publisher'] = $publishermodel->getPublisherBySlug($slug);
+    echo view('templates/header', $data);
+    echo view('publishers/overview', $data);
+    echo view('templates/footer');
+  }
+  public function gamespublishedby($publisher_id){
+    $publishermodel = new PublishersModel();
+    $data['game'] = $publishermodel->getGamesPublishedBy($publisher_id);
+    return view('publishers/publishedby', $data);
+  }
 }
-
- ?>
+?>

@@ -3,110 +3,97 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class ReviewsModel extends Model{
-  public function checkReview($gameid, $userid){
+  public function getReviewsAll($id){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews')
-                  ->select('Date AS rDate,
-                            About AS rAbout')
-                  ->where('Gameid', $gameid)
-                  ->where('Userid', $userid);
-    if($builder->countAllResults() > 0){
-      return TRUE;
+                  ->select('reviews.id AS id,
+                            reviews.about AS about,
+                            reviews.score AS score,
+                            reviews.date AS date,
+                            reviews.url AS url,
+                            users.id AS user_id,
+                            users.image AS user_image,
+                            users.name AS user_name,
+                            users.role AS user_role,
+                            games.id AS game_id,
+                            games.name AS game_name,')
+                  ->where('game_id', $id)
+                  ->join('users', 'users.id = reviews.user_id')
+                  ->join('games', 'games.id = reviews.game_id');
+    if($builder->countAllResults(FALSE) > 0){
+      return $builder->get()->getResultArray();
     } else {
       return FALSE;
     }
   }
-  public function getReviews($gameid = false){
+  public function getReviewUser($id, $user_id){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews')
-                  ->select('Reviewid AS rId,
-                            About AS rAbout,
-                            Score AS rScore,
-                            reviews.Userid AS rUid,
-                            Date AS rDate,
-                            Exturl AS rExturl,
-                            users.Name AS ruName,
-                            users.Image AS ruImage,
-                            users.Role AS ruRole')
-                  ->join('users', 'users.Userid = reviews.Userid')
-                  ->where('Gameid', $gameid)
-                  ->orderBy('Date', 'ASC');
-    return $builder->get()->getResultArray();
+                  ->select('reviews.id AS id,
+                            reviews.about AS about,
+                            reviews.score AS score,
+                            reviews.date AS date,
+                            reviews.url AS url,
+                            users.id AS user_id,
+                            users.name AS user_name,
+                            users.image AS user_image,
+                            users.role AS user_role,
+                            games.id AS game_id,
+                            games.name AS game_name')
+                  ->where('game_id', $id)
+                  ->where('user_id', $user_id)
+                  ->join('users', 'users.id = reviews.user_id')
+                  ->join('games', 'games.id = reviews.game_id');
+    if($builder->countAllResults(FALSE) > 0){
+      return $builder->get()->getRowArray();
+    } else {
+      return FALSE;
+    }
   }
-  public function addReview($data){
+  public function getScoreById($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('reviews')
+                  ->select('AVG(score) AS score')
+                  ->where('game_id', $id);
+    return $builder->get()->getRowArray();
+  }
+  public function getAllReviews(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('reviews')
+                  ->select('reviews.id AS id,
+                            reviews.score AS score,
+                            reviews.about AS about,
+                            reviews.date AS date,
+                            users.name AS user_name,
+                            users.role AS user_role,
+                            games.name AS game_name,
+                            games.slug AS game_slug,
+                            games.image AS game_image')
+                  ->join('users', 'users.id = reviews.user_id')
+                  ->join('games', 'games.id = reviews.game_id')
+                  ->orderBy('reviews.date', 'DESC');
+    return $builder->get(5)->getResultArray();
+  }
+  public function chart(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('reviews')
+                  ->select('AVG(score) AS score,
+                            games.name AS game_name,
+                            games.image AS game_image,
+                            games.slug AS game_slug,
+                            developers.name AS developer_name,
+                            publishers.name AS publisher_name')
+                  ->join('games', 'games.id = reviews.game_id')
+                  ->join('developers', 'developers.id = games.developer_id')
+                  ->join('publishers', 'publishers.id = games.publisher_id')
+                  ->groupBy('reviews.game_id')
+                  ->orderBy('reviews.score', 'DESC');
+    return $builder->get(5)->getResultArray();
+  }
+  public function addReviewDb($data){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews');
     return $builder->insert($data);
   }
-  public function getLatestsReviews(){
-    $db = \Config\Database::connect();
-    $builder = $db->table('reviews')
-                  ->select('Reviewid AS rId,
-                            reviews.About AS rAbout,
-                            games.Name AS rgName,
-                            games.Slug AS rgSlug,
-                            games.Image AS rgImage,
-                            users.Name AS ruName,
-                            users.Role AS ruRole')
-                  ->join('games', 'games.Gameid = reviews.Gameid')
-                  ->join('users', 'users.Userid = reviews.Userid')
-                  ->orderBy('reviews.Date', 'DESC');
-    return $builder->get(5)->getResultArray();
-  }
-  public function votesTotal($gameid = false, $userid = false){
-    $db = \Config\Database::connect();
-    if($userid){
-    $builder = $db->table('reviews')
-                  ->selectAvg('Score', 'gScore')
-                  ->where('Userid', $userid)
-                  ->where('Gameid', $gameid);
-    } else {
-      $builder = $db->table('reviews')
-                    ->selectAvg('Score', 'gScore')
-                    ->where('Gameid', $gameid);
-    }
-    return $builder->get()->getRowArray();
-  }
-  public function checkVote($userid, $gameid){
-    $db = \Config\Database::connect();
-    $builder = $db->table('reviews')
-                  ->select('Gameid,
-                            Userid')
-                  ->where('Gameid', $gameid)
-                  ->where('Userid', $userid);
-    if($builder->countAllResults() > 0){
-      return TRUE;
-    } else {
-      return FALSE;
-    }
-  }
-  public function votesByUser($userid){
-    $db = \Config\Database::connect();
-    $builder = $db->table('reviews')
-                  ->select('games.Name AS gName,
-                            games.Slug AS gSlug,
-                            games.Image AS gImage')
-                  ->join('games', 'games.Gameid = reviews.Gameid')
-                  ->where('Userid', $userid);
-    return $builder->get()
-                  ->getResultArray();
-  }
-  public function getBestVoted(){
-    $db = \Config\Database::connect();
-    $builder = $db->table('reviews')
-                  ->select('AVG(Score) AS vScore,
-                            games.Name As vgName,
-                            games.Image AS vgImage,
-                            games.Slug AS vgSlug,
-                            developers.Name AS vdName,
-                            publishers.Name AS vpName')
-                  ->join('games', 'games.Gameid = reviews.Gameid')
-                  ->join('developers', 'developers.Developerid = games.Developerid')
-                  ->join('publishers', 'publishers.Publisherid = games.Publisherid')
-                  ->groupBy('reviews.Gameid')
-                  ->orderBy('vScore', 'DESC');
-    return $builder->get(5)->getResultArray();
-  }
 }
-
 ?>

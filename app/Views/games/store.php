@@ -1,1 +1,0 @@
-<a href="https://stadia.google.com/store/details/<?= $game['gAppid'] ?>/sku/<?= $game['gSku'] ?>" target="_blank" title="Go to <?= $game['gName'] ?>"><button class="button is-danger is-small has-text-white">Go to Stadia Store</button></a>

@@ -127,13 +127,13 @@ nb-configuration.xml
 /.phpunit.*.cache
 
 #Database
-app/Database/Stadia_DB.db
+writable/database/Stadia_DB.db
 
 #Config
 app/Config/App.php
 
-#Images
-public/images/*
+#Public
+public/*
 
 #Others
 spark

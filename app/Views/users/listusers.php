@@ -1,18 +1,19 @@
-<div class="columns">
-	<div class="column">
-		<table class="table is-fullwidth">
-			<tr>
-				<th>User Name</th>
-				<th>Registered since</th>
-				<th>Action</th>
-			</tr>
-			<?php foreach ($userlist as $userlist): ?>
-				<tr>
-					<td><?= $userlist['uName'] ?></td>
-					<td><?= $userlist['uRegistrydate'] ?></td>
-					<td><a href="<?= base_url() ?>/users/edit/<?= $userlist['uSlug'] ?>">Edit</a><?php if(session('role') == 1): ?> | <a href="<?= base_url() ?>/users/deleteuser/<?= $userlist['uId'] ?>/<?= $userlist['uImage'] ?>">Delete</a><?php endif; ?></td>
-				</tr>
-			<?php endforeach; ?>
-		</table>
-	</div>
+<div class="columns is-multiline mb-2">
+  <div class="column">
+    <?php foreach($userlist as $userlist): ?>
+      <div class="card is-inline-block">
+        <div class="card-image">
+          <figure class="image is-96x96">
+            <a href="<?= base_url() ?>/user/edit/<?= $userlist['id'] ?>" title="Edit <?= $userlist['name'] ?>">
+              <?php if(file_exists(ROOTPATH.'public/images/avatar/'.$userlist['image'].'.jpeg') == true): ?>
+                <img src="<?= base_url() ?>/images/avatar/<?= $userlist['image'] ?>.jpeg">
+              <?php else: ?>
+                <img src="<?= base_url() ?>/images/avatar/avatar01.jpeg">
+              <?php endif; ?>
+            </a>
+          </figure>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  </div>
 </div>

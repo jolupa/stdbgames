@@ -34,7 +34,7 @@ class Database extends \CodeIgniter\Database\Config
 		'hostname' => '',
 		'username' => '',
 		'password' => '',
-		'database' => APPPATH.'Database/Stadia_DB.db',
+		'database' => WRITEPATH.'database/Stadia_DB.db',
 		'DBDriver' => 'SQLite3',
 		'DBPrefix' => '',
 		'pConnect' => false,
@@ -47,8 +47,8 @@ class Database extends \CodeIgniter\Database\Config
 		'encrypt'  => false,
 		'compress' => false,
 		'strictOn' => false,
-		//'failover' => [],
-		//'port'     => 3306,
+		#'failover' => [],
+		#'port'     => 3306,
 	];
 
 	/**

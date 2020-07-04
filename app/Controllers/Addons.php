@@ -3,72 +3,47 @@ namespace App\Controllers;
 use App\Models\AddonsModel;
 use CodeIgniter\Controller;
 
-helper(['url','text','cookie']);
-
 class Addons extends Controller{
-	// We get the addons for the Overview of Games
-	public function gamehasaddons($gameid){
-		$gamehasaddons = new AddonsModel();
-		$data['gamehasaddons'] = $gamehasaddons->getAddons($gameid);
-
-		return view('addons/gamehasaddons', $data);
-	}
-	//We present the form to insert a new addon on the DB
-	public function insert(){
-		echo view('templates/header');
-		echo view('addons/insert');
-		echo view('templates/footer');
-	}
-	//We insert the addon on DB
-	public function insertaddon(){
-		$insert = new AddonsModel();
-		$data = [
-						'Name' => $this->request->getVar('Name'),
-						'Gameid' => $this->request->getVar('Gameid'),
-						'Slug' => strtolower(url_title($this->request->getVar('Name'))),
-						'Releaseprice' => $this->request->getVar('Releaseprice'),
-						'Sku' => $this->request->getVar('Sku'),
-						'Appid' => $this->request->getVar('Appid'),
-						'Release' => $this->request->getVar('Release')
-					];
-		$insert->insertAddon($data);
-		//If we insert the addon from a game page we return to
-		//If not we return to the index page
-		if(session('current_url')){
-			return redirect()->to(session('current_url'));
-		} else {
-			return redirect()->to(base_url());
-		}
-	}
-	//We presente the form to update the addon based on the addon-Slug
-	public function update($slug){
-		$update = new AddonsModel();
-		$data['addon'] = $update->getAddon($slug);
-		echo view('templates/header');
-		echo view('addons/edit', $data);
-		echo view('templates/footer');
-	}
-	//We update the addon on DB
-	public function updateaddon(){
-		$update = new AddonsModel();
-		$data = [
-			'Addonid' => $this->request->getVar('Addonid'),
-			'Name' => $this->request->getVar('Name'),
-			'Gameid'=> $this->request->getVar('Gameid'),
-			'Releaseprice' => $this->request->getVar('Releaseprice'),
-			'Release' => $this->request->getVar('Release'),
-			'Sku' => $this->request->getVar('Sku'),
-			'Appid' => $this->request->getVar('Appid')
-		];
-		$update->updateAddon($data);
-		return redirect()->to(session('current_url'));
-	}
-	//We delete the addon from DB based on addon-Id
-	public function deleteaddon($addonid){
-		$delete = new AddonsModel();
-		$delete->deleteAddon($addonid);
-		return redirect()->to(session('current_url'));
-	}
+  public function addonsgamelist($id){
+    $addonmodel = new AddonsModel();
+    if($addonmodel->getAddonsByGameId($id) == TRUE){
+      $data['addon'] = $addonmodel->getAddonsByGameId($id);
+    } else {
+      $data['addon'] = FALSE;
+    }
+    return view('addons/addonsgamelist', $data);
+  }
+  public function insertform(){
+    $val = $this->validate([
+      'Name'=>[
+        'label'=>'name',
+        'rules'=>'required|is_unique[addons.name]',
+        'errors'=>[
+          'required'=>'We need a name for the addon',
+          'is_unique'=>'The addon exists on the DB!',
+        ],
+      ],
+    ]);
+    if(!$val){
+      echo view('templates/header');
+      echo view('addons/insert', ['validations'=>$this->validator()]);
+      echo view('templates/footer');
+    } else {
+      $addonmodel = new AddonsModel();
+      $data['name'] = $this->request->getVar('name');
+      $data['release'] = $this->request->getVar('release');
+      $data['game_id'] = $this->request->getVar('game_id');
+      $data['price'] = $this->request->getVar('price');
+      $data['sku'] = $this->request->getVar('sku');
+      $data['appid'] = $this->request->getVar('appid');
+      $data['created_at'] = date('Y-m-d H:m:s');
+      $slug = $this->request->getVar('slug');
+      if($addonmodel->createAddonDb($data) == true){
+        return redirect()->to('/game/'.$slug);
+      } else {
+        return redirect()->to('/update/game/'.$slug);
+      }
+    }
+  }
 }
-
 ?>

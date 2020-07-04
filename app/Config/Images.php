@@ -9,7 +9,7 @@ class Images extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $defaultHandler = 'imagick';
+	public $defaultHandler = 'gd';
 
 	/**
 	 * The path to the image library.

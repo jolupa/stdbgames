@@ -31,6 +31,22 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Games::index');
+$routes->get('/game/(:segment)', 'Games::overview/$1');
+$routes->get('/games/game/(:segment)', 'Games::overview/$1');
+$routes->get('/list/(:segment)', 'Games::list/$1');
+$routes->get('/create/game', 'Games::insertform');
+$routes->get('/create/developer', 'Developers::insertform');
+$routes->get('/update/game/(:segment)', 'Games::updateform/$1');
+$routes->get('/update/developer/(:segment)', 'Developers::updateform/$1');
+$routes->get('developer/(:segment)', 'Developers::overview/$1');
+$routes->get('publisher/(:segment)', 'Publishers::overview/$1');
+$routes->get('/signup', 'Users::signupform');
+$routes->get('/login', 'Users::loginform');
+$routes->get('/logout', 'Users::logoutuser');
+$routes->get('/user/profile/(:segment)', 'Users::profile/$1');
+$routes->get('/user/edit/(:segment)', 'Users::edituser/$1');
+$routes->get('/add/tolibrary/(:segment)', 'Libraries::addtouserlibrary/$1');
+$routes->get('/about', 'Games::about');
 
 /**
  * --------------------------------------------------------------------

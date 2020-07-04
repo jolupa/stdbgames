@@ -4,16 +4,13 @@ use App\Models\StatsModel;
 use CodeIgniter\Controller;
 
 class Stats extends Controller{
-	public function gamesstats(){
-		$totalgames = new StatsModel();
-		$launchedgames = new StatsModel();
-		$comingames = new StatsModel();
-		$data['totalgames'] = $totalgames->totalGamesStats();
-		$data['launchedgames'] = $launchedgames->launchedGamesStats();
-		$data['comingames'] = $comingames->comingGamesStats();
-
-		return view('stats/headnavbar', $data);
-	}
+  public function gamestats(){
+    $statsmodel = new StatsModel();
+    $data['totalgames'] = $statsmodel->totalGames();
+    $data['launchedgames'] = $statsmodel->launchedGames();
+    $data['cominggames'] = $statsmodel->comingGames();
+    return view('stats/statsnavbar', $data);
+  }
 }
 
- ?>
+?>

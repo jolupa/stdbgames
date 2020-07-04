@@ -1,28 +1,44 @@
-    <footer class="footer">
+  </div>
+    <div class="footer">
       <div class="content has-text-centered">
-        <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> in <strong>Barcelona</strong> <span class="icon"><i class="fas fa-copyright"></i></span> <?= date("Y") ?> jolupa</p>
-				<p>This site is not affiliated with <strong>Google</strong>.<br>
-					<strong>Stadia</strong> and the <strong>Stadia Logo</strong> are <span class="icon"><i class="fas fa-trademark"></i></span> of Google</p>
-        <p><a href="https://twitter.com/DbStadia" target="_blank" title="We are on Twitter"><span class="icon is-medium"><i class="fab fa-twitter"></i></span></a> <a target="_blank" href="https://github.com/jolupa/stdbgames" title="Help us on Github"><span class="icon is-medium"><i class="fab fa-github"></i></span></a><a title="Patron soon" href="#"><span class="icon is-medium"><i class="fab fa-patreon"></i></span></a></p>
+        <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> In Barcelona <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span>&nbsp;<?= date('Y') ?> <strong>jolupa</strong><br>
+        Stadia and the Stadia Logo are <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span> & <span class="icon has-text-dark"><i class="fas fa-trademark"></i></span> of Google Inc.<br>
+        All Games Names, Images, and Logos are property of their respective owners<br>
+        <a href="https://twitter.com/DbStadia" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span></a> <a href="https://github.com/jolupa/stdbgames" target="_blank"><span class="icon"><i class="fab fa-github"></i></span></a> <span class="icon"><i class="fab fa-patreon"></i></span></p>
       </div>
-    </footer>
+    </div>
   </body>
 </html>
+<script>
+  $(document).ready(function() {
 
-  <script>
-    $(document).ready(function() {
+    // Check for click events on the navbar burger icon
+    $(".navbar-burger").click(function() {
 
-      // Check for click events on the navbar burger icon
-      $(".navbar-burger").click(function() {
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        $(".navbar-burger").toggleClass("is-active");
+        $(".navbar-menu").toggleClass("is-active");
 
-          // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-          $(".navbar-burger").toggleClass("is-active");
-          $(".navbar-menu").toggleClass("is-active");
-
-      });
     });
-  </script>
+  });
+</script>
 
+<!-- Default Statcounter code for Stadia GamesDB! https://stdb.games -->
+<script type="text/javascript">
+var sc_project=12351925;
+var sc_invisible=1;
+var sc_security="24327085";
+var sc_https=1;
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js" async></script>
+<noscript><div class="statcounter"><a title="Web Analytics Made Easy -
+StatCounter" href="https://statcounter.com/" target="_blank"><img
+class="statcounter" src="https://c.statcounter.com/12351925/0/24327085/1/"
+alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
+<!-- End of Statcounter Code -->
+
+<?php if(isset($editor)): ?>
   <script>
     tinymce.init({
       selector: '.textarea',
@@ -36,3 +52,4 @@
       branding: false,
     });
   </script>
+<?php endif; ?>

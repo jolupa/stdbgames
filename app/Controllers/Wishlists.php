@@ -1,41 +1,31 @@
 <?php
 namespace App\Controllers;
-use App\Models\WishlistsModel;
+use App\Models\WishlistModel;
 use CodeIgniter\Controller;
 
-helper(['url','text','cookie']);
-
 class Wishlists extends Controller{
-  public function wishbutton($userid, $gameid){
-    $wish = new WishlistsModel();
-    if($wish->checkWishList($userid, $gameid) == TRUE){
-      $data['wis_buttontype'] = FALSE;
+  public function userwishlist($user_id){
+    $wishlistmodel = new WishlistModel();
+    if($wishlistmodel->getUserWishlist($user_id) == true){
+      $data['wishlist'] = $wishlistmodel->getUserWishlist($user_id);
     } else {
-      $data['wis_buttontype'] = TRUE;
+      $data['wishlist'] = false;
     }
-    return view('wishlists/wishbutton', $data);
+    return view('wishlists/userwishlist', $data);
   }
-  public function addtowishlist($userid, $gameid){
-    $add = new WishlistsModel();
-    if($add->addToWishList($userid, $gameid) == TRUE){
-      return redirect()->to(session('current_url'));
-    } else {
-      return redirect()->back()->with('error','It seems that somethings goes wrong!');
+  public function isinwishlist($id){
+    $whislistmodel = new WishlistModel();
+    if($whislistmodel->checkGameWishlist($id, session('user_id')) == true){
+      $data['wishlist'] = true;
+    }else{
+      $data['wishlist'] = false;
     }
+    return view('wishlists/wishlistbutton', $data);
   }
-  public function deletefromlibrary($userid, $gameid){
-    $delete = new WishlistsModel();
-    if($delete->deleteUserGameWish($userid, $gameid) == TRUE){
-      return redirect()->to(session('current_url'));
-    } else {
-      return redirect()->back()->with('error', 'It seems that somethings goes wrong!');
-    }
-  }
-  public function wishlistuser($userid){
-    $wishlist = new WishlistsModel();
-    $data['wishlist'] = $wishlist->getWishListUser($userid);
-    return view('wishlists/wishlistuser', $data);
+  public function addtouserwishlist($id){
+    $wishlistmodel = new WishlistsModel();
+    $wishlistmodel->addToUserWishlist($id, session('user_id'));
+    return redirect()->back();
   }
 }
-
 ?>

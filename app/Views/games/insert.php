@@ -1,84 +1,84 @@
-﻿<!-- Game Insert Form -->
-<section class="section">
-  <div class="container">
-    <form method="post" action="<?= base_url() ?>/games/insertgame" enctype="multipart/form-data">
-      <!-- Name Entry -->
-		<div class="field is-grouped is-grouped-multiline">
+<div class="columns">
+  <div class="column">
+    <p class="subtitle is-5">Insert new</p>
+    <p class="title is-3">Game:</p>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <form method="post" action="<?= base_url() ?>/games/creategamedb" enctype="multipart/form-data">
+      <div class="field is-grouped is-grouped-multiline">
         <div class="control is-expanded">
-	       <label class="label">Name</label>
-         <input class="input" type="text" name="Name" placeholder="Game's Name">
+          <input type="input" class="input" name="name" placeholder="Game's name">
         </div>
-			<!-- Date Entry -->
-			<div class="control is-expanded">
-				<label class="label">Release Date</label>
-				<input class="input" type="text" name="Release" placeholder="YYYY-MM-DD">
-			</div>
-      </div>
-      <!-- Founder Entry -->
-    <div class="field is-grouped is-grouped-multiline">
-      <div class="control">
-        <label class="label">Game Is Founder?</label>
-        <div class="select">
-            <select name="Pro">
-              <option value="0">No Founders</option>
-              <option value="1">Is Founders</option>
-            </select>
+        <div class="control is-expanded">
+          <input type="text" class="input" name="release" placeholder="Release Date: YYYY-MM-DD">
+        </div>
+        <div class="control is-expanded">
+          <input type="text" class="input" name="price" placeholder="Release Price: €€.€€">
         </div>
       </div>
-      <div class="control">
-        <label class="label">Is Founder since:</label>
-        <input class="input" type="text" name="Profrom" placeholder="YYYY-MM-DD">
-      </div>
-      <div class="control">
-        <label class="label">Is Founder till:</label>
-        <input class="input" type="text" name="Protill" placeholder="YYYY-MM-DD">
-      </div>
-      <!-- Developer Entry -->
-			<?= view_cell('App\Controllers\Developers::getdevelopers') ?>
-      <!-- Publisher Entry -->
-			<?= view_cell('App\Controllers\Publishers::getpublishers') ?>
-		</div>
       <div class="field is-grouped is-grouped-multiline">
         <div class="control">
           <label class="label">Is First on Stadia?</label>
-          <input type="radio" name="Firstonstadia" selected value="0">No&nbsp;<input type="radio" name="Firstonstadia" value="1">Yes
+          <div class="select">
+            <select name="first_on_stadia">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
         </div>
         <div class="control">
-          <label class="label">Is Exclusive to Stadia?:</label>
-          <input type="radio" name="Stadiaexclusive" selected value="0">No&nbsp;<input type="radio" name="Stadiaexclusive" value="1">Yes
+          <label class="label">Is Stadia Exclusive?</label>
+          <div class="select">
+            <select name="stadia_exclusive">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
         </div>
         <div class="control">
-          <label class="label">Price</label>
-          <input class="input" name="Releaseprice" placeholder="$$.$$">
+          <label class="label">Is Pro?</label>
+          <div class="select">
+            <select name="pro">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
         </div>
         <div class="control is-expanded">
-          <label class="label">Game SKU</label>
-          <input class="input" name="Sku" placeholder="Google's Game SKU">
+          <label class="label">Is Pro From date</label>
+          <input type="text" name="pro_from" class="input" placeholder="Is Free From: YYYY-MM-DD">
         </div>
         <div class="control is-expanded">
-          <label class="label">Game AppId</label>
-          <input class="input" name="Appid" placeholder="Google's AppId">
+          <label class="label">Is Pro Till date</label>
+          <input type="text" class="input" name="pro_till" placeholder="Is Free Till: YYYY-MM-DD">
         </div>
       </div>
-      <!-- Game History Entry -->
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control is-expanded">
+          <input type="text" class="input" name="appid" placeholder="Google's Game AppId">
+        </div>
+        <div class="control is-expanded">
+          <input type="text" class="input" name="sku" placeholder="Google's Game Sku">
+        </div>
+        <?= view_cell('App\Controllers\Developers::alldevs') ?>
+        <?= view_cell('App\Controllers\Publishers::allpubs') ?>
+      </div>
       <div class="field">
-        <label class="label">What's the game about:</label>
-        <div class="control">
-          <textarea class="textarea" name="About" placeholder="Text with info about the game. You can use the HTML tags <p> <br> <a> <strong>"></textarea>
+        <div class="control is-expanded">
+          <textarea class="textarea" name="about" placeholder="All About the Game"></textarea>
         </div>
       </div>
-      <!-- File Chooser Entry -->
-      <div class="field is-grouped is-grouped is-grouped-multiline">
+      <div class="field is-grouped is-grouped-multiline">
         <div class="control is-expanded">
-          <input type="file" name="Image" class="input" placeholder="Images .png .jpeg max. 4MB">
+          <input type="file" name="image" class="input">
         </div>
-        <!-- Button Send -->
         <div class="control">
-          <button class="button is-primary" type="submit" name="submit">Add Game</button>
-        </div>
-        <!-- Button Clear -->
-        <div class="control">
-          <button class="button is-light" type="reset" name="reset">Clear</button>
+          <div class="buttons">
+            <button class="button is-primary has-text-dark" value="submit">Add Game!</button>
+            <button class="button is-danger has-text-white" value="reset">Start Over</button>
+          </div>
         </div>
       </div>
       <div class="field">
@@ -86,4 +86,4 @@
       </div>
     </form>
   </div>
-</section>
+</div>

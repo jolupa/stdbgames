@@ -3,23 +3,25 @@ namespace App\Controllers;
 use App\Models\SearchModel;
 use CodeIgniter\Controller;
 
-helper('url');
-helper('cookie');
+helper(['text']);
 
 class Search extends Controller{
-  public function searchresult(){
-    $result = new SearchModel();
-	if (!$this->request->getVar('query')){
-		return redirect()->to(base_url());
-		} else{
-	    $query = $this->request->getVar('query');
-	    $data['results'] = $result->getResults( $query, $table );
-	    $data['query'] = $query;
-
-	    echo view('templates/header');
-	    echo view('search/searchresult', $data);
-	    echo view('templates/footer');
-		}
+  public function result(){
+    $searchmodel = new SearchModel();
+    $keyword = $this->request->getVar('keyword');
+    if($searchmodel->searchResult($keyword) == TRUE){
+      $data['keyword'] = $keyword;
+      $data['search'] = $searchmodel->searchResult($keyword);
+    } else {
+      $data['keyword'] = $keyword;
+      $data['search'] = FALSE;
+    }
+    echo view('templates/header');
+    echo view('search/searchresult', $data);
+    echo view('templates/footer');
+  }
+  public function searchform(){
+    return view('search/form');
   }
 }
 ?>

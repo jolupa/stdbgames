@@ -3,51 +3,16 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class PricesModel extends Model{
-	public function getPrices($gameid){
-		$db = \Config\Database::connect();
-		$builder = $db->table('prices')
-									->select('Priceid AS pId,
-														Date AS pDate,
-														Datetill AS pDatetill,
-														Price AS pPrice,
-														Discounttype AS pDiscounttype')
-									->where('Gameid', $gameid)
-									->orderBy('Date', 'ASC');
-
-		return $builder->get()
-										->getResultArray();
-	}
-	public function getPricesAddons($addonid){
-		$db = \Config\Database::connect();
-		$builder = $db->table('pricesaddons')
-									->select('Date AS pDate,
-														Datetill AS pDatetill,
-														Price AS pPrice,
-														Discounttype AS pDiscounttype')
-									->where('Addonid', $addonid)
-									->orderBy('Date', 'ASC');
-
-		return $builder->get(8)
-										->getResultArray();
-	}
-	public function newPrice($data){
-		$db = \Config\Database::connect();
-		$builder = $db->table('prices');
-
-		return $builder->insert($data);
-	}
-	public function deletePrice($priceid){
-		$db = \Config\Database::connect();
-		$builder = $db->table('prices');
-
-		return $builder->delete(['Priceid'=>$priceid]);
-	}
-	public function newPriceAddon($data){
-		$db = \Config\Database::connect();
-		$builder = $db->table('pricesaddons');
-
-		return $builder->insert($data);
-	}
+  public function getPricesByGameId($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('prices')
+                  ->where('game_id', $id)
+                  ->orderBy('release', 'ASC');
+    if($builder->countAllResults(FALSE) > 0){
+      return $builder->get()->getResultArray();
+    } else {
+      return FALSE;
+    }
+  }
 }
-
- ?>
+?>

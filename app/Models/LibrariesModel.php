@@ -3,40 +3,37 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class LibrariesModel extends Model{
-	public function libraryByUser($userid){
-		$db = \Config\Database::connect();
-		$builder = $db->table('libraries')
-									->select('games.Name AS gName,
-														games.Slug AS gSlug,
-														games.Image AS gImage')
-									->join('games', 'games.Gameid = libraries.Gameid')
-									->where('libraries.Userid', $userid);
-		return $builder->get()
-									->getResultArray();
-	}
-	public function addToLibrary($data){
-		$db = \Config\Database::connect();
-		$builder = $db->table('libraries');
-
-		return $builder->insert($data);
-	}
-	public function checkLibrary($userid, $gameid){
-		$db = \Config\Database::connect();
-		$builder = $db->table('libraries')
-									->where('Gameid', $gameid)
-									->where('Userid', $userid);
-		if($builder->countAllResults() > 0){
-			return TRUE;
-		} else {
-			return FALSE;
-		}
-	}
-	public function deleteLibraryUser($userid){
-		$db = \Config\Database::connect();
-		$builder = $db->table('libraries');
-		return $builder->delete(['Userid'=>$userid]);
-	}
+  public function getUserLibrary($user_id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('libraries')
+                  ->select('games.name AS game_name,
+                            games.slug AS game_slug,
+                            games.image AS game_image,
+                            games.appid AS game_appid')
+                  ->join('games', 'games.id = libraries.game_id')
+                  ->where('user_id', $user_id);
+    if($builder->countAllResults(false) > 0){
+      return $builder->get()->getResultArray();
+    } else {
+      return false;
+    }
+  }
+  public function checkGameLibrary($id, $user_id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('libraries')
+                  ->where('game_id', $id)
+                  ->where('user_id', $user_id);
+    if($builder->countAllResults() > 0){
+      return true;
+    } else {
+      return false;
+    }
+  }
+  public function addToUserLibrary($id, $user_id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('libraries');
+    return $builder->insert(['game_id'=>$id, 'user_id'=>$user_id]);
+  }
 }
 
-
- ?>
+?>

@@ -1,50 +1,42 @@
-﻿<!-- Game Insert Form -->
-<section class="section">
-  <div class="container">
-    <form method="post" action="<?= base_url() ?>/addons/insertaddon">
-      <!-- Name Entry -->
-	    <div class="field">
+<div class="columns mt-2">
+  <div class="column">
+    <p class="subtitle is-5">Add</p>
+    <p class="title is-3">Add-on</p>
+  </div>
+</div>
+<div class="columns mb-2">
+  <div class="column">
+    <form action="<?= base_url() ?>/addon/createaddondb" method="post">
+      <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
+      <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
+      <div class="field is-grouped is-grouped-multiline">
         <div class="control is-expanded">
-	       <label class="label">Name</label>
-         <input class="input" type="text" name="Name" placeholder="Addons's Name">
+          <input type="text" class="input" name="name" placeholder="Addon's Name">
+        </div>
+        <div class="control is-expanded">
+          <input type="text" class="input" name="release" placeholder="Release Date YYYY-MM-DD">
+        </div>
+        <div class="control is-expanded">
+          <input type="text" class="input" name="price" placeholder="Price $$.$$">
+        </div>
+        <div class="control is-expanded">
+          <input type="text" class="input" name="sku" placeholder="Google's Game SKU">
+        </div>
+        <div class="control is-expanded">
+          <input type="text" class="input" name="appid" placeholder="Google's Game Appid">
         </div>
       </div>
-      <!-- Founder Entry -->
-    <div class="field is-grouped is-grouped-multiline">
-      <!-- Date Entry -->
-      <div class="control">
-        <label class="label">Release Date</label>
-        <input class="input" type="text" name="Release" placeholder="YYYY-MM-DD">
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control">
+          <button class="button is-primary has-text-dark is-small" value="submit">Add Add-on!</button>
+        </div>
+        <div class="control">
+          <button class="button is-danger has-text-white is-small" value="reset">Clear</button>
+        </div>
       </div>
-      <?= view_cell('App\Controllers\Games::list') ?>
-		</div>
-    <div class="field is-grouped is-grouped-multiline">
-      <div class="control">
-        <label class="label">Price</label>
-        <input class="input" name="Releaseprice" placeholder="$$.$$">
+      <div class="field">
+        <?= \Config\Services\validation()->listErrors('my_list'); ?>
       </div>
-      <div class="control is-expanded">
-        <label class="label">Game SKU</label>
-        <input class="input" name="Sku" placeholder="Google's Game SKU">
-      </div>
-      <div class="control is-expanded">
-        <label class="label">Game AppId</label>
-        <input class="input" name="Appid" placeholder="Google's AppId">
-      </div>
-    </div>
-    <!-- File Chooser Entry -->
-    <div class="field is-grouped is-grouped-multiline file has-name is-right">
-      <!-- Button Send -->
-      <div class="control">
-        <button class="button is-primary" type="submit" name="submit">Add Game</button>
-      </div>
-      <!-- Button Clear -->
-      <div class="control">
-        <button class="button is-light" type="reset" name="reset">Clear</button>
-      </div>
-    <div class="field">
-      <?= \Config\Services::validation()->listErrors('my_list'); ?>
-    </div>
     </form>
   </div>
-</section>
+</div>
