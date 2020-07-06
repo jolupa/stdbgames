@@ -15,7 +15,7 @@
       <?php foreach($addon as $addon): ?>
         <tr>
           <td>
-            <?php if(isset($addon['appid'])): ?>
+            <?php if($addon['appid'] !== ''): ?>
               <a title="Go To Store" href="https://stadia.google.com/store/details/<?= $addon['appid'] ?>/sku/<?= $addon['sku'] ?>" target="_blank"><?= $addon['name'] ?></a>
             <?php else: ?>
               <?= $addon['name'] ?>

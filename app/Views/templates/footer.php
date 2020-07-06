@@ -1,14 +1,18 @@
   </div>
-    <div class="footer">
-      <div class="content has-text-centered">
-        <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> In Barcelona <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span>&nbsp;<?= date('Y') ?> <strong>jolupa</strong><br>
-        Stadia and the Stadia Logo are <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span> & <span class="icon has-text-dark"><i class="fas fa-trademark"></i></span> of Google Inc.<br>
-        All Games Names, Images, and Logos are property of their respective owners<br>
-        <a href="https://twitter.com/DbStadia" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span></a> <a href="https://github.com/jolupa/stdbgames" target="_blank"><span class="icon"><i class="fab fa-github"></i></span></a> <span class="icon"><i class="fab fa-patreon"></i></span></p>
-      </div>
+</div>
+<div class="section">
+  <div class="footer">
+    <div class="content has-text-centered">
+      <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> In Barcelona <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span>&nbsp;<?= date('Y') ?> <strong>jolupa</strong><br>
+      Stadia and the Stadia Logo are <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span> & <span class="icon has-text-dark"><i class="fas fa-trademark"></i></span> of Google Inc.<br>
+      All Games Names, Images, and Logos are property of their respective owners<br>
+      <a href="https://twitter.com/DbStadia" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span></a> <a href="https://github.com/jolupa/stdbgames" target="_blank"><span class="icon"><i class="fab fa-github"></i></span></a> <span class="icon"><i class="fab fa-patreon"></i></span></p>
     </div>
-  </body>
+  </div>
+</div>
+</body>
 </html>
+
 <script>
   $(document).ready(function() {
 

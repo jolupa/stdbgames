@@ -13,5 +13,10 @@ class AddonsModel extends Model{
       return FALSE;
     }
   }
+  public function createAddonDb($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('addons');
+    return $builder->insert($data);
+  }
 }
 ?>

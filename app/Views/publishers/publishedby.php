@@ -1,3 +1,9 @@
+<div class="columns mt-2">
+  <div class="column is-fullwidth">
+    <p class="subtitle is-5">Games</p>
+    <p class="title is-3">Published:</p>
+  </div>
+</div>
 <div class="columns is-multiline mb-2">
   <?php foreach($game as $game): ?>
     <div class="column is-3">

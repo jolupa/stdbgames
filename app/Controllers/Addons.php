@@ -14,36 +14,27 @@ class Addons extends Controller{
     return view('addons/addonsgamelist', $data);
   }
   public function insertform(){
-    $val = $this->validate([
-      'Name'=>[
-        'label'=>'name',
-        'rules'=>'required|is_unique[addons.name]',
-        'errors'=>[
-          'required'=>'We need a name for the addon',
-          'is_unique'=>'The addon exists on the DB!',
-        ],
-      ],
-    ]);
-    if(!$val){
-      echo view('templates/header');
-      echo view('addons/insert',['validations'=>$this->validator]);
-      echo view('templates/footer');
-    } else {
-      $addonmodel = new AddonsModel();
-      $data['name'] = $this->request->getVar('name');
-      $data['release'] = $this->request->getVar('release');
-      $data['game_id'] = $this->request->getVar('game_id');
-      $data['price'] = $this->request->getVar('price');
+    return view('addons/insert');
+  }
+  public function createaddon(){
+    $addonmodel = new AddonsModel();
+    $data['name'] = $this->request->getVar('name');
+    $data['slug'] = strtolower(url_title($data['name']));
+    $data['price'] = $this->request->getVar('price');
+    $data['game_id'] = $this->request->getVar('game_id');
+    $data['release'] = $this->request->getVar('release');
+    if($this->request->getVar('sku') !== null){
       $data['sku'] = $this->request->getVar('sku');
-      $data['appid'] = $this->request->getVar('appid');
-      $data['created_at'] = date('Y-m-d H:m:s');
-      $slug = $this->request->getVar('slug');
-      if($addonmodel->createAddonDb($data) == true){
-        return redirect()->to('/game/'.$slug);
-      } else {
-        return redirect()->to('/update/game/'.$slug);
-      }
+    } else {
+      $data['sku'] = null;
     }
+    if($this->request->getVar('appid') !== null){
+      $data['appid'] = $this->request->getVar('appid');
+    } else {
+      $data['appid'] = null;
+    }
+    $addonmodel->createAddonDb($data);
+    return redirect()->to('/game/'.$this->request->getVar('slug'));
   }
 }
 ?>

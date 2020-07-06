@@ -56,26 +56,27 @@
   <link rel="icon" type="image/png" href="<?= base_url() ?>/assets/stdb_logo_header.png">
 </head>
 <body>
-  <div class="container">
-    <div class="navbar">
-      <div class="navbar-brand">
-        <a title="Stadia GamesDB!" class="navbar-item" href="<?= base_url() ?>">
-          <img src="<?= base_url() ?>/assets/stdb_logo_header.png">
-        </a>
-      </div>
-      <a href="<?= base_url() ?>/about" class="navbar-item">About</a>
-      <?= view_cell('App\Controllers\Stats::gamestats') ?>
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            <?php if(session('logged') == true): ?>
-              <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
-              <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/logout">Log Out</a>
-            <?php else: ?>
-              <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/signup">Sign Up</a>
-              <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/login">Log In</a>
-            <?php endif; ?>
+  <div class="section">
+    <div class="container">
+      <div class="navbar">
+        <div class="navbar-brand">
+          <a title="Stadia GamesDB!" class="navbar-item" href="<?= base_url() ?>">
+            <img src="<?= base_url() ?>/assets/stdb_logo_header.png">
+          </a>
+        </div>
+        <a href="<?= base_url() ?>/about" class="navbar-item">About</a>
+        <?= view_cell('App\Controllers\Stats::gamestats') ?>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <?php if(session('logged') == true): ?>
+                <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
+                <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/logout">Log Out</a>
+              <?php else: ?>
+                <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/signup">Sign Up</a>
+                <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/login">Log In</a>
+              <?php endif; ?>
+            </div>
           </div>
         </div>
       </div>
-    </div>
