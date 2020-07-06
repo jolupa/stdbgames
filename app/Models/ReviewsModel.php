@@ -86,8 +86,8 @@ class ReviewsModel extends Model{
                   ->join('games', 'games.id = reviews.game_id')
                   ->join('developers', 'developers.id = games.developer_id')
                   ->join('publishers', 'publishers.id = games.publisher_id')
-                  ->groupBy('reviews.game_id')
-                  ->orderBy('reviews.score', 'DESC');
+                  ->groupBy('game_id')
+                  ->orderBy('score', 'DESC');
     return $builder->get(5)->getResultArray();
   }
   public function addReviewDb($data){
