@@ -35,13 +35,15 @@ class Reviews extends Controller{
   }
   public function addreview(){
     $reviewmodel = new ReviewsModel();
-    if($this->request->getVar('score') == null || $this->request->getVar('score') == 'Cast Your Vote!'){
+    if($this->request->getVar('about') == null || $this->request->getVar('score') == 'Cast Your Vote!'){
       return redirect()->back();
     } else{
       $data['about'] = $this->request->getVar('about');
       $data['game_id'] = $this->request->getVar('game_id');
       $data['user_id'] = $this->request->getVar('user_id');
-      $data['url'] = $this->request->getVar('url');
+      if($this->request->getVar('url') !== null){
+        $data['url'] = $this->request->getVar('url');
+      }
       $data['score'] = $this->request->getVar('score');
       $data['date'] = date('Y-m-d H:m:s');
       $return = $this->request->getVar('return');
