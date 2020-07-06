@@ -133,7 +133,7 @@
       $data['sku'] = $this->request->getVar('sku');
       $data['developer_id'] = $this->request->getVar('developer_id');
       $data['publisher_id'] = $this->request->getVar('publisher_id');
-      $data['about'] = $this->request->getVar('abou');
+      $data['about'] = $this->request->getVar('about');
       $data['updated_at'] = date('Y-m-d H:m:s');
       if($_FILES['image']['error'] !== 4){
         if(file_exists(ROOTPATH.'public/images/'.$this->request->getVar('oldimage').'.jpeg') == TRUE){
