@@ -144,18 +144,18 @@
         }
         $newname = $this->request->getVar('oldimage');
         $file = $this->request->getFile('image')
-                              ->move(WRITEPATH.'/uploads/', $newname);
+                              ->move(WRITEPATH.'uploads/', $newname);
         $image = \Config\Services::image('imagick')
-                  ->withFile(WRITEPATH.'/uploads/'.$newname)
+                  ->withFile(WRITEPATH.'uploads/'.$newname)
                   ->resize(1370, 728, true, 'width')
                   ->convert(IMAGETYPE_JPEG)
-                  ->save(ROOTPATH.'/public/images/'.$data['slug'].'.jpeg');
+                  ->save(ROOTPATH.'public/images/'.$data['slug'].'.jpeg');
         $imagethumb = \Config\Services::image('imagick')
-                      ->withFile(WRITEPATH.'/uploads/'.$newname)
+                      ->withFile(WRITEPATH.'uploads/'.$newname)
                       ->fit(256, 256, 'center')
                       ->convert(IMAGETYPE_JPEG)
-                      ->save(ROOTPATH.'/public/images/'.$data['slug'].'-thumb.jpeg');
-        unlink(WRITEPATH.'/uploads/'.$newname);
+                      ->save(ROOTPATH.'public/images/'.$data['slug'].'-thumb.jpeg');
+        unlink(WRITEPATH.'uploads/'.$newname);
         $data['image'] = $this->request->getVar('oldimage');
       } else {
         $data['image'] = $this->request->getVar('oldimage');
