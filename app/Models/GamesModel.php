@@ -131,7 +131,9 @@
                                 games.release,
                                 developers.name AS developer_name,
                                 publishers.name AS publisher_name')
-                      ->where('games.firstonstadia', 1)
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.first_on_stadia', 1)
                       ->orderBy('games.release', 'ASC');
       } elseif($type == 'stadiaexclusive'){
         $builder = $db->table('games')
@@ -143,7 +145,7 @@
                                 publishers.name AS publisher_name')
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
-                      ->where('games.stadiaexclusive', 1)
+                      ->where('games.stadia_exclusive', 1)
                       ->orderBy('games.release', 'ASC');
       } else {
         $builder = $db->table('games')
