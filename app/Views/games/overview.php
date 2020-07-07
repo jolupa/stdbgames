@@ -76,7 +76,7 @@
       <?php if($game['release'] > date('Y-m-d') && session('logged') == true): ?>
         <?= view_cell('App\Controllers\Wishlists::isinwishlist', 'id='.$game['id']) ?>
       <?php endif; ?>
-      <?php if(isset($game['appid'])): ?>
+      <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
         &nbsp;<a href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank"><button class="button is-primary has-text-dark is-small">Play on Stadia</button></a>
       <?php endif; ?>
     </p>
