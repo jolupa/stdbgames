@@ -78,7 +78,7 @@ class Users extends Controller{
           'role' => $data['role'],
           'logged' => true,
         ]);
-        return redirect()->to('/users/profile/'.$data['slug']);
+        return redirect()->to('/games/');
       } else {
         $data['error'] = "Your username or password doesn't match. Try again";
         echo view('templates/header');

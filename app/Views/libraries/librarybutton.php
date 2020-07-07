@@ -1,5 +1,5 @@
 <?php if($library == false): ?>
-  &nbsp;<a href="<?= base_url() ?>/add/tolibrary/<?= $game['id'] ?>"><button class="button is-danger has-text-white is-small">Add To Library</button></a>
+  <a href="<?= base_url() ?>/add/tolibrary/<?= $game['id'] ?>"><button class="button is-danger has-text-white is-small">Add To Library</button></a>&nbsp;
 <?php else: ?>
-  &nbsp;<button class="button is-primary has-text-dark is-small">In Your Library</button>
+  <button class="button is-primary has-text-dark is-small">In Your Library</button>&nbsp;
 <?php endif; ?>

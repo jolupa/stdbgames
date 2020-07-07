@@ -61,7 +61,7 @@
 <?php endif; ?>
 <?php if($review == FALSE): ?>
   <div class="has-text-centered">
-    <p>Be the first to add a Review for <strong><?= $game['name'] ?></strong>. Sign Up or Log In to add yours.</p>
+    <p>Be the first to add a Review for <strong><?= $game['name'] ?></strong>. <?php if(session('logged') !== true): ?> <a href="<?= base_url() ?>/signup" title="Sign Up">Sign Up</a> or <a href="<?= base_url() ?>/login" title="Log In">Log In</a> to add yours.<?php endif; ?></p>
   </div>
 <?php else: ?>
   <?php foreach($review as $review): ?>

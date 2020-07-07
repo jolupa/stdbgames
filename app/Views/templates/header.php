@@ -63,19 +63,26 @@
           <a title="Stadia GamesDB!" class="navbar-item" href="<?= base_url() ?>">
             <img src="<?= base_url() ?>/assets/stdb_logo_header.png">
           </a>
+          <a role="button" class="navbar-burger burger" data-target="navMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-        <a href="<?= base_url() ?>/about" class="navbar-item">About</a>
-        <?= view_cell('App\Controllers\Stats::gamestats') ?>
-        <div class="navbar-end">
-          <div class="navbar-item">
-            <div class="buttons">
-              <?php if(session('logged') == true): ?>
-                <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
-                <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/logout">Log Out</a>
-              <?php else: ?>
-                <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/signup">Sign Up</a>
-                <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/login">Log In</a>
-              <?php endif; ?>
+        <div class="navbar-menu" id="navMenu">
+          <a href="<?= base_url() ?>/about" class="navbar-item">About</a>
+          <?= view_cell('App\Controllers\Stats::gamestats') ?>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <?php if(session('logged') == true): ?>
+                  <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
+                  <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/logout">Log Out</a>
+                <?php else: ?>
+                  <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/signup">Sign Up</a>
+                  <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/login">Log In</a>
+                <?php endif; ?>
+              </div>
             </div>
           </div>
         </div>

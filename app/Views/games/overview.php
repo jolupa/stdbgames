@@ -64,11 +64,11 @@
       <?php if($game['appid']): ?>
         <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/<?= $game['sku'] ?>" target="_blank"><button class="button is-danger has-text-white is-small">Go to Stadia Store</button></a>&nbsp;
       <?php endif; ?>
-      <?php if($game['pro'] == 1 && date('Y-m-d') >= $game['pro_from']): ?>
-        <button class="button is-primary has-text-dark is-small">Free for Pro&nbsp;<strong>Now!</strong></button>
+      <?php if($game['pro'] == 1 && date('Y-m-d') >= $game['pro_from'] && $game['release'] !== 'TBA'): ?>
+        <button class="button is-primary has-text-dark is-small">Free for Pro&nbsp;<strong>Now!</strong></button>&nbsp;
       <?php endif; ?>
       <?php if($game['pro_from'] && $game['pro'] == 0): ?>
-        <button class="button is-danger has-text-white is-small">Was free from&nbsp;<strong><?= $game['pro_from'] ?></strong>&nbsp;until&nbsp;<strong><?= $game['pro_till'] ?></strong></button>
+        <button class="button is-danger has-text-white is-small">Was free from&nbsp;<strong><?= $game['pro_from'] ?></strong>&nbsp;until&nbsp;<strong><?= $game['pro_till'] ?></strong></button>&nbsp;
       <?php endif; ?>
       <?php if($game['release'] <= date('Y-m-d') && session('logged') == true): ?>
         <?= view_cell('App\Controllers\Libraries::isinlibrary', 'id='.$game['id']) ?>
@@ -77,7 +77,7 @@
         <?= view_cell('App\Controllers\Wishlists::isinwishlist', 'id='.$game['id']) ?>
       <?php endif; ?>
       <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
-        &nbsp;<a href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank"><button class="button is-primary has-text-dark is-small">Play on Stadia</button></a>
+        ;<a href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank"><button class="button is-primary has-text-dark is-small">Play on Stadia</button></a>&nbsp;
       <?php endif; ?>
     </p>
   </div>
@@ -86,10 +86,10 @@
   <div class="column is-10">
     <p>
       <?php if($game['first_on_stadia'] == 1): ?>
-        <button class="button is-primary has-text-dark is-small">First On Stadia</button>
+        <button class="button is-primary has-text-dark is-small">First On Stadia</button>&nbsp;
       <?php endif; ?>
       <?php if($game['stadia_exclusive'] == 1): ?>
-        <button class="button is-primary has-text-dark is-small">Stadia Exclusive</button>
+        <button class="button is-primary has-text-dark is-small">Stadia Exclusive</button>&nbsp;
       <?php endif; ?>
     </p>
   </div>
