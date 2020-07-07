@@ -4,9 +4,15 @@
     <p class="title is-3">
       <?= $developer['name'] ?>
     </p>
-    <div class="content">
-      <p><span class="icon"><i class="fas fa-chevron-right"></i></span>&nbsp;<a href="<?= $developer['url'] ?>" target="_blank">Visit Website</a></p>
-    </div>
+    <?php if($developer['url'] !== ''): ?>
+      <div class="content">
+        <p><span class="icon"><i class="fas fa-chevron-right"></i></span>&nbsp;<a href="<?= $developer['url'] ?>" target="_blank">Visit Website</a></p>
+      </div>
+    <?php endif; ?>
+    <?php if(isset($developer['about']) && $developer['aboout'] !== ''): ?>
+      <p><span class="icon"><i class="fas fa-chevron-right"></i></span></p>
+      <?= $developer['about'] ?>
+    <?php endif; ?>
   </div>
 </div>
 <?= view_cell('App\Controllers\Developers::gamesdevelopedby', 'developer_id='.$developer['id']) ?>
