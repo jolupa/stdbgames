@@ -44,9 +44,9 @@
     }
     public function creategamedb(){
       $val = $this->validate([
-        'Name'=>[
-          'label'=>'name',
-          'rules'=>'required|us_unique[games.name]',
+        'name'=>[
+          'label'=>'Name',
+          'rules'=>'required|is_unique[games.name]',
           'errors'=>[
             'required'=>'We need a name for the game',
             'is_unique'=>'The game already exists',
@@ -74,7 +74,7 @@
         $data['developer_id'] = $this->request->getVar('developer_id');
         $data['publisher_id'] = $this->request->getVar('publisher_id');
         $data['about'] = $this->request->getVar('about');
-        $data['created_at'] = data('Y-m-d H:m:s');
+        $data['created_at'] = date('Y-m-d H:m:s');
         if($_FILES['image']['error'] !== 4){
           if(is_dir(ROOTPATH.'/public/images') == FALSE){
             mkdir(ROOTPATH.'/public/images', 0777, true);
@@ -95,11 +95,8 @@
                         ->save(ROOTPATH.'public/images/'.$newname.'-thumb.jpeg');
           unlink(WRITEPATH.'uploads/'.$newname);
         }
-        if($gamemodel->createGameDb($data) == TRUE){
-          return redirect()->to('/game/'.$data['slug']);
-        } else {
-          return redirect()->route('create/game');
-        }
+        $gamemodel->createGameDb($data);
+        return redirect()->to('/game/'.$data['slug']);
       }
     }
     public function updateform($slug){
