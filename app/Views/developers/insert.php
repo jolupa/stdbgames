@@ -15,7 +15,7 @@
   </div>
   <div class="columns">
     <div class="column">
-      <form action="<?= base_url() ?>/insert/developer" method="post" enctype="multipart/form-data">
+      <form action="<?= base_url() ?>/developers/createdeveloperdb" method="post" enctype="multipart/form-data">
         <div class="field">
           <div class="control">
             <input type="text" class="input" name="name" placeholder="Developer's Name">

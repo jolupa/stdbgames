@@ -9,7 +9,7 @@
         <p><span class="icon"><i class="fas fa-chevron-right"></i></span>&nbsp;<a href="<?= $developer['url'] ?>" target="_blank">Visit Website</a></p>
       </div>
     <?php endif; ?>
-    <?php if(isset($developer['about']) && $developer['aboout'] !== ''): ?>
+    <?php if(isset($developer['about']) && $developer['about'] !== ''): ?>
       <p><span class="icon"><i class="fas fa-chevron-right"></i></span></p>
       <?= $developer['about'] ?>
     <?php endif; ?>
