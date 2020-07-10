@@ -46,6 +46,7 @@ $routes->get('/logout', 'Users::logoutuser');
 $routes->get('/user/profile/(:segment)', 'Users::profile/$1');
 $routes->get('/user/edit/(:segment)', 'Users::edituser/$1');
 $routes->get('/add/tolibrary/(:segment)', 'Libraries::addtouserlibrary/$1');
+$routes->get('/add/towishlist/(:segment)', 'Wishlists::addToUserWishlist/$1');
 $routes->get('/about', 'Games::about');
 
 /**

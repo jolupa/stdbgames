@@ -30,7 +30,7 @@ class WishlistModel extends Model{
   }
   public function addToUserWishlist($id, $user_id){
     $db = \Config\Database::connect();
-    $builder = $db->table('wishlist');
+    $builder = $db->table('wishlists');
     return $builder->insert(['game_id'=>$id, 'user_id'=>$user_id]);
   }
 }

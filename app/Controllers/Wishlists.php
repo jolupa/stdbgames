@@ -23,7 +23,7 @@ class Wishlists extends Controller{
     return view('wishlists/wishlistbutton', $data);
   }
   public function addtouserwishlist($id){
-    $wishlistmodel = new WishlistsModel();
+    $wishlistmodel = new WishlistModel();
     $wishlistmodel->addToUserWishlist($id, session('user_id'));
     return redirect()->back();
   }
