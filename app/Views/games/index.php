@@ -4,7 +4,7 @@
       <img src="<?= base_url() ?>/assets/stadia_connect.png" title="Google Stadia Connnect">
       <nav class="breadcrumb is-small has-dot-separator is-centered mt-2">
         <ul>
-          <li><strong>You can Watch it here:</strong></li>
+          <li><strong>Watch it here:</strong></li>
           <li><a href="https://www.youtube.com/channel/UCQKyy9Wl7hsVn1BP7BC53Yg" target="_blank">Oficial Stadia Youtube Channel</a></li>
         </ul>
       </nav>
