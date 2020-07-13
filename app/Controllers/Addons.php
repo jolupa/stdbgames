@@ -53,6 +53,7 @@ class Addons extends Controller{
     $data['price'] = $this->request->getVar('price');
     $data['sku'] = $this->request->getVar('sku');
     $data['appid'] = $this->request->getVar('appid');
+    $data['release'] = $this->request->getVar('release');
     $slug = $this->request->getVar('slug');
     $addonmodel->updateAddonDb($data);
     return redirect()->to('/game/'.$slug);
