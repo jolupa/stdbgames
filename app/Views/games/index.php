@@ -6,6 +6,7 @@
         <ul>
           <li><strong>Watch it here:</strong></li>
           <li><a href="https://www.youtube.com/channel/UCQKyy9Wl7hsVn1BP7BC53Yg" target="_blank">Oficial Stadia Youtube Channel</a></li>
+          <li><a href="https://www.twitch.tv/EFFtendo" target="_blank">EFFtendo Twitch Channel</a></li>
         </ul>
       </nav>
     </figure>
