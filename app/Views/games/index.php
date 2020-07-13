@@ -40,6 +40,39 @@
   <div class="column">
     <div class="columns">
       <div class="column">
+        <p class="subtile is-5">Games</p>
+        <p class="title is-3">Launched:</p>
+      </div>
+    </div>
+    <div class="columns is-multiline">
+      <?php foreach($launched as $launched): ?>
+        <div class="column is-one-quarter">
+          <div class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img title="<?= $launched['name'] ?>" src="<?= base_url() ?>/images/<?= $launched['image'] ?>-thumb.jpeg">
+              </p>
+            </figure>
+            <div class="media-content">
+              <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $launched['slug'] ?>"><?= character_limiter($launched['name'], 15, '...') ?></a></p>
+              <p class="subtitle is-7">Developer <?= $launched['developer_name'] ?> / Publisher <?= $launched['publisher_name'] ?><br>
+                <?= $launched['release'] ?></p>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+    <div class="columns is-centered">
+      <div class="column has-text-centered">
+        <a href="<?= base_url() ?>/list/launched"><button class="button is-warning is-small">See All!</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="columns mt-2">
+  <div class="column">
+    <div class="columns">
+      <div class="column">
         <p class="subtile is-5">Coming</p>
         <p class="title is-3">Soon:</p>
       </div>
@@ -67,35 +100,6 @@
         <a href="<?= base_url() ?>/list/soon"><button class="button is-warning is-small">See All!</button></a>
       </div>
     </div>
-  </div>
-</div>
-<div class="columns mt-2">
-  <div class="column">
-    <p class="subtile is-5">Games</p>
-    <p class="title is-3">Launched:</p>
-  </div>
-</div>
-<div class="columns is-multiline">
-  <?php foreach($launched as $launched): ?>
-    <div class="column is-one-quarter">
-      <div class="media">
-        <figure class="media-left">
-          <p class="image is-64x64">
-            <img title="<?= $launched['name'] ?>" src="<?= base_url() ?>/images/<?= $launched['image'] ?>-thumb.jpeg">
-          </p>
-        </figure>
-        <div class="media-content">
-          <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $launched['slug'] ?>"><?= character_limiter($launched['name'], 15, '...') ?></a></p>
-          <p class="subtitle is-7">Developer <?= $launched['developer_name'] ?> / Publisher <?= $launched['publisher_name'] ?><br>
-            <?= $launched['release'] ?></p>
-        </div>
-      </div>
-    </div>
-  <?php endforeach; ?>
-</div>
-<div class="columns is-centered">
-  <div class="column has-text-centered">
-    <a href="<?= base_url() ?>/list/launched"><button class="button is-warning is-small">See All!</button></a>
   </div>
 </div>
 <div class="columns has-background-light mt-2">
