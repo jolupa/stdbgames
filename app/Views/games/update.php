@@ -96,5 +96,6 @@
       </form>
     </div>
   </div>
+  <?= view_cell('App\Controllers\Interviews::interviewform', 'game_id='.$game['id']) ?>
   <?= view_cell('App\Controllers\Addons::insertform') ?>
 <?php endif; ?>

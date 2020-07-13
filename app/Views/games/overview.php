@@ -103,7 +103,7 @@
     </div>
   </div>
 </div>
-<?= view_cell('App\Controllers\Interviews::interviews', 'id='.$game['id']) ?>
+<?= view_cell('App\Controllers\Interviews::interviews', 'game_id='.$game['id']) ?>
 <?php if($game['release'] <= date('Y-m-d')): ?>
   <div class="columns is-centered mt-2">
     <div class="column is-10">
