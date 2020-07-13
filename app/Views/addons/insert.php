@@ -6,7 +6,7 @@
 </div>
 <div class="columns mb-2">
   <div class="column">
-    <form action="<?= base_url() ?>/addons/createaddon" method="post">
+    <form action="<?= base_url() ?>/addons/createaddondb" method="post">
       <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
       <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
       <div class="field is-grouped is-grouped-multiline">

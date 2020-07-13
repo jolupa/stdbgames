@@ -3,10 +3,10 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class AddonsModel extends Model{
-  public function getAddonsByGameId($id){
+  public function getAddonsByGameId($game_id){
     $db = \Config\Database::connect();
     $builder = $db->table('addons')
-                  ->where('game_id', $id)
+                  ->where('game_id', $game_id)
                   ->orderBy('release', 'DESC');
     if($builder->countAllResults(FALSE) > 0){
       return $builder->get()->getResultArray();
@@ -18,6 +18,12 @@ class AddonsModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('addons');
     return $builder->insert($data);
+  }
+  public function updateAddonDb($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('addons')
+                  ->where('id', $data['id']);
+    return $builder->update($data);
   }
 }
 ?>

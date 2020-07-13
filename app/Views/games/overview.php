@@ -115,7 +115,7 @@
   <div class="column is-10">
     <p class="subtitle is-5">Game</p>
     <p class="title is-3">Addons:</p>
-    <?= view_cell('App\Controllers\Addons::addonsgamelist', 'id='.$game['id']) ?>
+    <?= view_cell('App\Controllers\Addons::addonsgamelist', 'game_id='.$game['id']) ?>
   </div>
 </div>
 <div class="columns is-centered mt-2">
