@@ -14,7 +14,7 @@
           <input type="text" class="input" name="name" placeholder="Addon's Name">
         </div>
         <div class="control is-expanded">
-          <input type="text" class="input" name="release" placeholder="Release Date YYYY-MM-DD">
+          <input type="date" class="input" name="release" placeholder="Release Date YYYY-MM-DD">
         </div>
         <div class="control is-expanded">
           <input type="text" class="input" name="price" placeholder="Price $$.$$">

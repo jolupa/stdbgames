@@ -17,7 +17,7 @@
               <input type="text" class="input" name="name" placeholder="Addon's Name" value="<?= $addon['name'] ?>">
             </div>
             <div class="control is-expanded">
-              <input type="text" class="input" name="release" placeholder="Release Date YYYY-MM-DD" value="<?= $addon['release'] ?>">
+              <input type="date" class="input" name="release" placeholder="Release Date YYYY-MM-DD" value="<?= $addon['release'] ?>">
             </div>
             <div class="control is-expanded">
               <input type="text" class="input" name="price" placeholder="Price $$.$$" value="<?= $addon['price'] ?>">
