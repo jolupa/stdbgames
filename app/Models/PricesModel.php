@@ -14,5 +14,10 @@ class PricesModel extends Model{
       return FALSE;
     }
   }
+  public function createPriceDb($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('prices');
+    return $builder->insert($data);
+  }
 }
 ?>
