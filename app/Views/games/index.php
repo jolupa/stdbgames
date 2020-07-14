@@ -1,17 +1,3 @@
-<div class="columns my-2">
-  <div class="column has-text-centered">
-    <figure class="image is-16x9">
-      <img src="<?= base_url() ?>/assets/stadia_connect.png" title="Google Stadia Connnect">
-      <nav class="breadcrumb is-small has-dot-separator is-centered mt-2">
-        <ul>
-          <li><strong>Watch it here:</strong></li>
-          <li><a href="https://www.youtube.com/channel/UCQKyy9Wl7hsVn1BP7BC53Yg" target="_blank">Oficial Stadia Youtube Channel</a></li>
-          <li><a href="https://www.twitch.tv/EFFtendo" target="_blank">EFFtendo Twitch Channel</a></li>
-        </ul>
-      </nav>
-    </figure>
-  </div>
-</div>
 <div class="columns mt-2">
   <div class="column">
     <p class="subtitle is-5">Pro</p>
