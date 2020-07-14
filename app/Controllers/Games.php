@@ -37,10 +37,17 @@
       return view('games/releasebydate', $data);
     }
     public function insertform(){
-      $data['editor'] = true;
-      echo view('templates/header');
-      echo view('games/insert');
-      echo view('templates/footer', $data);
+      if(session('role') == 1){
+        $data['editor'] = true;
+        echo view('templates/header');
+        echo view('games/insert');
+        echo view('templates/footer', $data);
+      } else {
+        $data['error'] = "You don't have permissions to see this page";
+        echo view('templates/header');
+        echo view('games/insert', $data);
+        echo view('templates/footer');
+      }
     }
     public function creategamedb(){
       $val = $this->validate([
