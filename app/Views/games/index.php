@@ -93,8 +93,8 @@
   <div class="column">
     <div class="columns">
       <div class="column">
-        <p class="subtile is-5">New Games</p>
-        <p class="title is-3">Added:</p>
+        <p class="subtile is-5">Lasts Games</p>
+        <p class="title is-3">Added/Updated:</p>
       </div>
     </div>
     <div class="columns is-multiline">
