@@ -21,7 +21,7 @@
             <input type="input" class="input" name="name" placeholder="Game's name">
           </div>
           <div class="control is-expanded">
-            <input type="text" class="input" name="release" placeholder="Release Date: YYYY-MM-DD">
+            <input type="date" class="input" name="release" placeholder="Release Date: YYYY-MM-DD">
           </div>
           <div class="control is-expanded">
             <input type="text" class="input" name="price" placeholder="Release Price: €€.€€">
@@ -57,11 +57,11 @@
           </div>
           <div class="control is-expanded">
             <label class="label">Is Pro From date</label>
-            <input type="text" name="pro_from" class="input" placeholder="Is Free From: YYYY-MM-DD">
+            <input type="date" name="pro_from" class="input" placeholder="Is Free From: YYYY-MM-DD">
           </div>
           <div class="control is-expanded">
             <label class="label">Is Pro Till date</label>
-            <input type="text" class="input" name="pro_till" placeholder="Is Free Till: YYYY-MM-DD">
+            <input type="date" class="input" name="pro_till" placeholder="Is Free Till: YYYY-MM-DD">
           </div>
         </div>
         <div class="field is-grouped is-grouped-multiline">

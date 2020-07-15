@@ -42,7 +42,12 @@
         <div class="media-content">
           <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
           <p class="subtitle is-7">Developer <?= $list['developer_name'] ?> / Publisher <?= $list['publisher_name'] ?><br>
-            <?= $list['release'] ?></p>
+            <?php if($list['release'] == '2099-01-01' || $list['release'] == 'TBA'): ?>
+              TBA
+            <?php else: ?>
+              <?= $list['release'] ?>
+            <?php endif; ?>
+          </p>
         </div>
       </div>
     </div>

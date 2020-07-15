@@ -15,7 +15,7 @@
         </figure>
         <div class="media-content">
           <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $game['slug'] ?>"><?= character_limiter($game['name'], 15, '...') ?></a></p>
-          <p class="subtitle is-7">Release <?= $game['release'] ?></p>
+          <p class="subtitle is-7">Release <?php if($game['release'] == '2099-01-01' || $game['release'] == 'TBA'): ?>TBA<?php else: ?><?= $game['release'] ?><?php endif; ?></p>
         </div>
       </div>
     </div>

@@ -76,7 +76,12 @@
             <div class="media-content">
               <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $soon['slug'] ?>"><?= character_limiter($soon['name'], 15, '...') ?></a></p>
               <p class="subtitle is-7">Developer <?= $soon['developer_name'] ?> / Publisher <?= $soon['publisher_name'] ?><br>
-                <?= $soon['release'] ?></p>
+                <?php if($soon['release'] == '2099-01-01' || $soon['release'] == 'TBA'): ?>
+                  TBA
+                <?php else: ?>
+                  <?= $soon['release'] ?>
+                <?php endif; ?>
+              </p>
             </div>
           </div>
         </div>
@@ -109,7 +114,12 @@
             <div class="media-content">
               <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $last['slug'] ?>"><?= character_limiter($last['name'], 15, '...') ?></a></p>
               <p class="subtitle is-7">Developer <?= $last['developer_name'] ?> / Publisher <?= $last['publisher_name'] ?><br>
-                <?= $last['release'] ?></p>
+                <?php if($last['release'] == '2099-01-01' || $last['release'] == 'TBA'): ?>
+                  TBA
+                <?php else: ?>
+                  <?= $last['release'] ?>
+                <?php endif; ?>
+              </p>
             </div>
           </div>
         </div>

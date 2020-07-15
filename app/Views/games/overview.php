@@ -46,7 +46,13 @@
       <div class="level-item has-text-centered">
         <div>
           <p>Release Date</p>
-          <p><strong><?= $game['release'] ?></strong></p>
+          <p>
+            <?php if($game['release'] == '2099-01-01' || $game['release'] == 'TBA'): ?>
+              <strong>TBA</strong>
+            <?php else: ?>
+              <strong><?= $game['release'] ?></strong>
+            <?php endif; ?>
+          </p>
         </div>
       </div>
       <div class="level-item has-text-centered">
