@@ -10,8 +10,9 @@
       </div>
     <?php endif; ?>
     <?php if(isset($developer['about']) && $developer['about'] !== ''): ?>
-      <p><span class="icon"><i class="fas fa-chevron-right"></i></span></p>
-      <?= $developer['about'] ?>
+      <div class="content">
+        <?= $developer['about'] ?>
+      </div>
     <?php endif; ?>
   </div>
 </div>

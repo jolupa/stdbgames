@@ -10,7 +10,6 @@
       </div>
     <?php endif; ?>
     <?php if(isset($publisher['about']) && $publisher['about'] !== ''): ?>
-      <p><span class="icon"><i class="fas fa-chevron-right"></i></span></p>
       <?= $publisher['about'] ?>
     <?php endif; ?>
   </div>
