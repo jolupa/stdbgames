@@ -79,7 +79,7 @@
       <?php if(date('Y-m-d') >= $game['release'] && session('logged') == true): ?>
         <?= view_cell('App\Controllers\Libraries::isinlibrary', 'id='.$game['id']) ?>
       <?php endif; ?>
-      <?php if($game['release'] > date('Y-m-d') && session('logged') == true): ?>
+      <?php if(date('Y-m-d') >= $game['release'] && session('logged') == true): ?>
         <?= view_cell('App\Controllers\Wishlists::isinwishlist', 'id='.$game['id']) ?>
       <?php endif; ?>
       <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
