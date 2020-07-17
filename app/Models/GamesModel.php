@@ -124,7 +124,7 @@
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.release <=', date('Y-m-d'))
-                      ->orderBy('games.release', 'ASC');
+                      ->orderBy('games.release', 'DESC');
       } elseif($type == 'firstonstadia'){
         $builder = $db->table('games')
                       ->select('games.name,
