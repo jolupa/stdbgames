@@ -76,7 +76,7 @@
       <?php if($game['pro_from'] && $game['pro'] == 0): ?>
         <button class="button is-danger has-text-white is-small">Was free from&nbsp;<strong><?= $game['pro_from'] ?></strong>&nbsp;until&nbsp;<strong><?= $game['pro_till'] ?></strong></button>&nbsp;
       <?php endif; ?>
-      <?php if($game['release'] <= date('Y-m-d') && session('logged') == true): ?>
+      <?php if(date('Y-m-d') >= $game['release'] && session('logged') == true): ?>
         <?= view_cell('App\Controllers\Libraries::isinlibrary', 'id='.$game['id']) ?>
       <?php endif; ?>
       <?php if($game['release'] > date('Y-m-d') && session('logged') == true): ?>
