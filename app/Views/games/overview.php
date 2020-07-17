@@ -70,7 +70,7 @@
       <?php if($game['appid']): ?>
         <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/<?= $game['sku'] ?>" target="_blank"><button class="button is-danger has-text-white is-small">Go to Stadia Store</button></a>&nbsp;
       <?php endif; ?>
-      <?php if($game['pro'] == 1 && date('Y-m-d') >= $game['pro_from'] && $game['release'] !== 'TBA'): ?>
+      <?php if($game['pro'] == 1 && date('Y-m-d') > $game['pro_from'] && $game['release'] !== 'TBA'): ?>
         <button class="button is-primary has-text-dark is-small">Free for Pro&nbsp;<strong>Now!</strong></button>&nbsp;
       <?php endif; ?>
       <?php if($game['pro_from'] && $game['pro'] == 0): ?>
