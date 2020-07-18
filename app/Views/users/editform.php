@@ -33,25 +33,5 @@
         </div>
       </div>
     </form>
-    <form method="post" action="<?= base_url() ?>/users/changepassdb" enctype="multipart/form-data" class="mt-5">
-      <input type="hidden" name="id" value="<?= $user['id'] ?>">
-      <div class="field is-grouped is-grouped-multiline">
-        <div class="control is-expanded">
-          <input type="password" class="input" name="oldpassword" placeholder="Old Password">
-        </div>
-        <div class="control is-expanded">
-          <input type="password" class="input" name="new_password" placeholder="New Password">
-        </div>
-          <input type="password" class="input" name="password_check" placeholder="Repeat PassWord">
-      </div>
-      <div class="field is-grouped is-grouped-centered mt-2">
-        <div class="contol">
-          <button class="button is-primary has-text-dark" value="submit">Change password!</button>
-        </div>
-        <div class="control">
-          <button class="button is-danger has-text-white" value="reset">Exit</button>
-        </div>
-      </div>
-    </form>
   </div>
 </div>
