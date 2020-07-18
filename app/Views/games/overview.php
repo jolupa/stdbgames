@@ -128,7 +128,7 @@
     <?= view_cell('App\Controllers\Prices::gamepricehistory', 'id='.$game['id']) ?>
   </div>
 </div>
-<?php if($game['release'] != 'TBA' || $gam['release'] != '2099-01-01'): ?>
+<?php if($game['release'] != 'TBA' || $game['release'] != '2099-01-01'): ?>
   <div class="columns is-centered mt-2">
     <div class="column is-10">
       <p class="subtitle is-5">Games Released</p>
