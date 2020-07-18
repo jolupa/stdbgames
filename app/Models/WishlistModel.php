@@ -33,6 +33,13 @@ class WishlistModel extends Model{
     $builder = $db->table('wishlists');
     return $builder->insert(['game_id'=>$id, 'user_id'=>$user_id]);
   }
+  public function deleteGameWishlist($id, $user_id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('wishlists')
+                  ->where('game_id', $id)
+                  ->where('user_id', $user_id);
+    return $builder->delete();
+  }
 }
 
 ?>

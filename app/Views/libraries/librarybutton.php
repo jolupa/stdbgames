@@ -3,3 +3,6 @@
 <?php else: ?>
   <button class="button is-primary has-text-dark is-small">In Your Library</button>&nbsp;
 <?php endif; ?>
+<?php if($library == false): ?>
+  <?= view_cell('App\Controllers\Wishlists::isinwishlist', 'id='.$game['id']) ?>
+<?php endif; ?>

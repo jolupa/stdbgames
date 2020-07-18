@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\LibrariesModel;
+use App\Models\WishlistModel;
 use CodeIgniter\Controller;
 
 class Libraries extends Controller{
@@ -24,8 +25,13 @@ class Libraries extends Controller{
   }
   public function addtouserlibrary($id){
     $librarymodel = new LibrariesModel();
-    $librarymodel->addToUserLibrary($id, session('user_id'));
-    $goto = session('ci_previous_url');
+    $whislistmodel = new WishlistModel();
+    if($whislistmodel->checkGameWishlist($id, session('user_id')) == true){
+      $whislistmodel->deleteGameWishlist($id, session('user_id'));
+      $librarymodel->addToUserLibrary($id, session('user_id'));
+    } else {
+      $librarymodel->addTowUserLibrary($id, session('user_id'));
+    }
     return redirect()->back();
   }
 }
