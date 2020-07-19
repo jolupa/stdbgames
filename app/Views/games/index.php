@@ -114,11 +114,7 @@
             <div class="media-content">
               <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $last['slug'] ?>"><?= character_limiter($last['name'], 15, '...') ?></a></p>
               <p class="subtitle is-7">Developer <?= $last['developer_name'] ?> / Publisher <?= $last['publisher_name'] ?><br>
-                <?php if($last['release'] == '2099-01-01' || $last['release'] == 'TBA'): ?>
-                  TBA
-                <?php else: ?>
-                  <?= $last['release'] ?>
-                <?php endif; ?>
+                Last update: <strong><?= $last['updated_at'] ?></strong>
               </p>
             </div>
           </div>

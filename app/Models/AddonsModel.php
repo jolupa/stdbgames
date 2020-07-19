@@ -17,13 +17,23 @@ class AddonsModel extends Model{
   public function createAddonDb($data){
     $db = \Config\Database::connect();
     $builder = $db->table('addons');
-    return $builder->insert($data);
+    if($builder->insert($data) == true){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->where('id', $data['game_id']);
+      return $builder->update(['updated_at'=>date('Y-m-d H:m:s')]);
+    }
   }
   public function updateAddonDb($data){
     $db = \Config\Database::connect();
     $builder = $db->table('addons')
                   ->where('id', $data['id']);
-    return $builder->update($data);
+    if($builder->update($data) == true){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->where('id', $data['game_id']);
+      return $builder->update(['updated_at'=>date('Y-m-d H:m:s')]);
+    }
   }
 }
 ?>

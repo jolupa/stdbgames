@@ -16,13 +16,23 @@ class InterviewsModel extends Model{
   public function createInterviewDb($data){
     $db = \Config\Database::connect();
     $builder = $db->table('interviews');
-    return $builder->insert($data);
+    if($builder->insert($data) == true){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->where('id', $data['game_id']);
+      return $builder->update(['updated_at'=>date('Y-m-d H:m:s')]);
+    }
   }
   public function updateInterviewDb($data){
     $db = \Config\Database::connect();
     $builder = $db->table('interviews')
                   ->where('id', $data['id']);
-    return $builder->update($data);
+    if($builder->update($data) == true){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->where('id', $data['game_id']);
+      return $builder->update(['updated_at'=>date('Y-m-d H:m:s')]);
+    }
   }
 }
 
