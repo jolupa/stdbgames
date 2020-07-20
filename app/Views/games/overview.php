@@ -94,6 +94,9 @@
       <?php if($game['stadia_exclusive'] == 1): ?>
         <button class="button is-primary has-text-dark is-small">Stadia Exclusive</button>&nbsp;
       <?php endif; ?>
+      <?php if($game['early_access'] == 1): ?>
+        <button class="button is-primary has-text-dark is-small">Early Access Game</button>&nbsp;
+      <?php endif; ?>
     </p>
   </div>
 </div>
