@@ -27,6 +27,7 @@
                               games.price,
                               games.first_on_stadia,
                               games.stadia_exclusive,
+                              games.early_access,
                               games.updated_at,
                               developers.name AS developer_name,
                               developers.slug AS developer_slug,
@@ -149,6 +150,18 @@
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.stadia_exclusive', 1)
+                      ->orderBy('games.release', 'ASC');
+      } elseif($type == 'earlyaccess'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.early_access', 1)
                       ->orderBy('games.release', 'ASC');
       } else {
         $builder = $db->table('games')

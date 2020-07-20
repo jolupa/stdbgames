@@ -73,6 +73,7 @@
         $data['price'] = $this->request->getVar('price');
         $data['first_on_stadia'] = $this->request->getVar('first_on_stadia');
         $data['stadia_exclusive'] = $this->request->getVar('stadia_exclusive');
+        $data['early_access'] = $this->request->getVar('early_access');
         $data['pro'] = $this->request->getVar('pro');
         $data['pro_from'] = $this->request->getVar('pro_from');
         $data['pro_till'] = $this->request->getVar('pro_till');
@@ -130,6 +131,7 @@
       $data['price'] = $this->request->getVar('price');
       $data['first_on_stadia'] = $this->request->getVar('first_on_stadia');
       $data['stadia_exclusive'] = $this->request->getVar('stadia_exclusive');
+      $data['early_access'] = $this->request->getVar('early_access');
       $data['pro'] = $this->request->getVar('pro');
       $data['pro_from'] = $this->request->getVar('pro_from');
       $data['pro_till'] = $this->request->getVar('pro_till');

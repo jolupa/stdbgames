@@ -10,6 +10,8 @@
         First On Stadia:
       <?php elseif($type === 'stadiaexclusive'): ?>
         Stadia Exclusive:
+      <?php elseif($type === 'earlyaccess'): ?>
+        Early Access:
       <?php else: ?>
         All Games:
       <?php endif; ?>
@@ -25,6 +27,7 @@
         <li <?php if($type === 'soon'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/soon">Soon</a></li>
         <li <?php if($type === 'firstonstadia'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a></li>
         <li <?php if($type === 'stadiaexclusive'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/stadiaexclusive">Stadia Exclusives</a></li>
+        <li <?php if($type === 'earlyaccess'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/earlyaccess">Early Access</a></li>
       </ul>
     </nav>
     <hr>
