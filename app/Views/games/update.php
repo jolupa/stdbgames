@@ -50,6 +50,15 @@
             </div>
           </div>
           <div class="control">
+            <label class="label">Is Early Access?</label>
+            <div class="select">
+              <select name="early_access">
+                <option value="0" <?php if($game['early_access'] == 0): ?>selected<?php endif; ?>>No</option>
+                <option value="1" <?php if($game['early_access'] == 1): ?>selected<?php endif; ?>>Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="control">
             <label class="label">Is Pro?</label>
             <div class="select">
               <select name="pro">

@@ -47,6 +47,15 @@
             </div>
           </div>
           <div class="control">
+            <label class="label">Is Early Access?</label>
+            <div class="select">
+              <select name="early_access">
+                <option value="0" selected>No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="control">
             <label class="label">Is Pro?</label>
             <div class="select">
               <select name="pro">
