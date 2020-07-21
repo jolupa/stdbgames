@@ -114,7 +114,7 @@
             <div class="media-content">
               <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $last['slug'] ?>"><?= character_limiter($last['name'], 15, '...') ?></a></p>
               <p class="subtitle is-7">Developer <?= $last['developer_name'] ?> / Publisher <?= $last['publisher_name'] ?><br>
-                Last update: <strong><?= $last['updated_at'] ?></strong>
+                Last update: <strong><?php if(isset($last['created_at'])): ?><?= $last['created_at'] ?><?php else: ?><?= $last['updated_at'] ?><?php endif; ?></strong>
               </p>
             </div>
           </div>
