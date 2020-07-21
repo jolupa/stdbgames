@@ -92,14 +92,28 @@
                               games.image,
                               games.release,
                               games.created_at,
-                              games.updated_at,
                               developers.name AS developer_name,
                               publishers.name AS publisher_name')
                     ->join('developers', 'developers.id = games.developer_id')
                     ->join('publishers', 'publishers.id = games.publisher_id')
                     ->where('games.created_at <=', date('Y-m-d'))
-                    ->orWhere('games.updated_at <=', date('Y-m-d'))
-                    ->orderBy('games.created_at, games.updated_at', 'DESC');
+                    ->orderBy('games.created_at', 'DESC');
+      return $builder->get(4)->getResultArray();
+    }
+    public function getLastsUpdatedGames(){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->select('games.name,
+                              games.slug,
+                              games.image,
+                              games.release,
+                              games.updated_at,
+                              developers.name AS developer_name,
+                              publishers.name AS publisher_name')
+                    ->join('developers', 'developers.id = games.developer_id')
+                    ->join('publishers', 'publishers.id = games.publisher_id')
+                    ->where('games.updated_at <=', date('Y-m-d'))
+                    ->orderBy('games.updated_at', 'DESC');
       return $builder->get(4)->getResultArray();
     }
     public function listAllGames($type){

@@ -99,7 +99,7 @@
     <div class="columns">
       <div class="column">
         <p class="subtile is-5">Lasts Games</p>
-        <p class="title is-3">Added/Updated:</p>
+        <p class="title is-3">Added:</p>
       </div>
     </div>
     <div class="columns is-multiline">
@@ -114,7 +114,31 @@
             <div class="media-content">
               <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $last['slug'] ?>"><?= character_limiter($last['name'], 15, '...') ?></a></p>
               <p class="subtitle is-7">Developer <?= $last['developer_name'] ?> / Publisher <?= $last['publisher_name'] ?><br>
-                Last update: <strong><?php if(isset($last['updated_at'])): ?><?= $last['updated_at'] ?><?php else: ?><?= $last['created_at'] ?><?php endif; ?></strong>
+                Created: <strong><?= $last['created_at'] ?></strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <p class="title is-3">Updated:</p>
+      </div>
+    </div>
+    <div class="columns is-multiline">
+      <?php foreach($lastupdated as $lastupdated): ?>
+        <div class="column is-one-quarter">
+          <div class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img title="<?= $lastupdated['name'] ?>" src="<?= base_url() ?>/images/<?= $lastupdated['image'] ?>-thumb.jpeg">
+              </p>
+            </figure>
+            <div class="media-content">
+              <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $lastupdated['slug'] ?>"><?= character_limiter($lastupdated['name'], 15, '...') ?></a></p>
+              <p class="subtitle is-7">Developer <?= $lastupdated['developer_name'] ?> / Publisher <?= $lastupdated['publisher_name'] ?><br>
+                Last update: <strong><?= $lastupdated['updated_at'] ?></strong>
               </p>
             </div>
           </div>

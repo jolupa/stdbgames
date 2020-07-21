@@ -11,6 +11,7 @@
       $data['soon'] = $gamemodel->getSoonGames();
       $data['launched'] = $gamemodel->getLaunchedGames();
       $data['last'] = $gamemodel->getLastsGames();
+      $data['lastupdated'] = $gamemodel->getLastsUpdatedGames();
       echo view('templates/header');
       echo view('games/index', $data);
       echo view('templates/footer');
