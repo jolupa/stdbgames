@@ -99,7 +99,7 @@
                     ->join('publishers', 'publishers.id = games.publisher_id')
                     ->where('games.created_at <=', date('Y-m-d'))
                     ->orWhere('games.updated_at <=', date('Y-m-d'))
-                    ->orderBy('games.created_at, games.updated_at', 'ASC');
+                    ->orderBy('games.created_at, games.updated_at', 'DESC');
       return $builder->get(4)->getResultArray();
     }
     public function listAllGames($type){
