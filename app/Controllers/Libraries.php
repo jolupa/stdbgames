@@ -30,7 +30,7 @@ class Libraries extends Controller{
       $whislistmodel->deleteGameWishlist($id, session('user_id'));
       $librarymodel->addToUserLibrary($id, session('user_id'));
     } else {
-      $librarymodel->addTowUserLibrary($id, session('user_id'));
+      $librarymodel->addToUserLibrary($id, session('user_id'));
     }
     return redirect()->back();
   }
