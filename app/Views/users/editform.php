@@ -15,7 +15,7 @@
           <input type="text" class="input" name="email" placeholder="Your Email address" value="<?= $user['email'] ?>">
         </div>
         <div class="control is-expanded">
-          <input type="text" class="input" name="birth_date" placeholder="Your birthdate" value="<?= $user['birth_date'] ?>">
+          <input type="date" class="input" name="birth_date" placeholder="Your birthdate" value="<?= $user['birth_date'] ?>">
         </div>
       </div>
       <div class="field">
