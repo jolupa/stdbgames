@@ -1,8 +1,8 @@
-<?php if($wishlist == false): ?>
+<?php if(isset($error)): ?>
   <div class="columns">
     <div class="column is-fullwidth">
       <div class="content">
-        <p>No Games on your Wishlist. Go to add someones!</p>
+        <p><?= $error ?></p>
       </div>
     </div>
   </div>

@@ -39,7 +39,7 @@ class Users extends Controller{
       $data['slug'] = strtolower(url_title($data['name']));
       $data['password'] = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
       $data['email'] = $this->request->getVar('email');
-      $data['birth_date'] = $this->request->getVar('birthdate');
+      $data['birth_date'] = $this->request->getVar('birth_date');
       $data['created_at'] = strtotime('now');
       $data['role'] = 0;
       if($_FILES['image']['error'] !== 4){
@@ -107,11 +107,9 @@ class Users extends Controller{
     }
   }
   public function listusers(){
-    if(session('logged') == true && session('role') == 1){
-      $usersmodel = new UsersModel();
-      $data['userlist'] = $usersmodel->getAllUsers();
-      return view('users/listusers', $data);
-    }
+    $usersmodel = new UsersModel();
+    $data['userlist'] = $usersmodel->getAllUsers();
+    return view('users/listusers', $data);
   }
   public function edituser($id){
     $usersmodel = new UsersModel();

@@ -44,10 +44,7 @@
     </div>
   </div>
   <?= view_cell('App\Controllers\Wishlists::userwishlist', 'user_id='.$user['id']) ?>
-  <div class="columns mt-2">
-    <div class="column is-fullwidth">
-      <p class="subtitle is-5">Users:</p>
-    </div>
-  </div>
-  <?= view_cell('App\Controllers\Users::listusers') ?>
+  <?php if(session('role') == 1): ?>
+    <?= view_cell('App\Controllers\Users::listusers') ?>
+  <?php endif; ?>
 <?php endif; ?>

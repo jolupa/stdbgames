@@ -1,8 +1,8 @@
-<?php if($library == false): ?>
+<?php if(isset($error)): ?>
   <div class="columns">
     <div class="column is-fullwidth">
       <div class="content">
-        <p>No Games on your Library. Go to add some games!</p>
+        <p><?= $error ?></p>
       </div>
     </div>
   </div>

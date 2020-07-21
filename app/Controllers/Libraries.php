@@ -7,10 +7,10 @@ use CodeIgniter\Controller;
 class Libraries extends Controller{
   public function userlibrary($user_id){
     $librarymodel = new LibrariesModel();
-    if($librarymodel->getUserLibrary($user_id) == true){
+    if(is_array($librarymodel->getUserLibrary($user_id))){
       $data['library'] = $librarymodel->getUserLibrary($user_id);
     } else {
-      $data['library'] = false;
+      $data['error'] = "You don't have games on your library. Add some games!";
     }
     return view('libraries/userlibrary', $data);
   }

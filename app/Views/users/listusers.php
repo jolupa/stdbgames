@@ -1,3 +1,8 @@
+<div class="columns mt-2">
+  <div class="column is-fullwidth">
+    <p class="subtitle is-5">Users:</p>
+  </div>
+</div>
 <div class="columns is-multiline mb-2">
   <div class="column">
     <?php foreach($userlist as $userlist): ?>
