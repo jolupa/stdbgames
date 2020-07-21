@@ -2,7 +2,7 @@
   <div class="columns">
     <div class="column is-fullwidth">
       <div class="content">
-        <p>No Games on your Library. Go to add someones!</p>
+        <p>No Games on your Library. Go to add some games!</p>
       </div>
     </div>
   </div>

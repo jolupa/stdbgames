@@ -8,10 +8,20 @@ class UsersModel extends Model{
     $builder = $db->table('users');
     return $builder->insert($data);
   }
-  public function getUserByName($user){
+  public function getUserByName($name){
     $db = \Config\Database::connect();
     $builder = $db->table('users')
-                  ->where('name', $user);
+                  ->where('name', $name);
+    if($builder->countAllResults(false) > 0){
+      return $builder->get()->getRowArray();
+    } else {
+      return false;
+    }
+  }
+  public function getUserBySlug($slug){
+    $db = \Config\Database::connect();
+    $builder = $db->table('users')
+                  ->where('slug', $slug);
     if($builder->countAllResults(false) > 0){
       return $builder->get()->getRowArray();
     } else {
@@ -36,6 +46,12 @@ class UsersModel extends Model{
     $builder = $db->table('users')
                   ->where('id', $data['id']);
     return $builder->update($data);
+  }
+  public function userResetPassword($newpassword, $id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('users')
+                  ->where('id', $id);
+    return $builder->update(['password'=>password_hash($newpassword, PASSWORD_DEFAULT)]);
   }
 }
 

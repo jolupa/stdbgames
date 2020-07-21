@@ -71,6 +71,7 @@
         </div>
         <div class="navbar-menu" id="navMenu">
           <a href="<?= base_url() ?>/about" class="navbar-item">About</a>
+          <a href="<?= base_url() ?>/list" class="navbar-item">Games List</a>
           <?= view_cell('App\Controllers\Stats::gamestats') ?>
           <div class="navbar-end">
             <div class="navbar-item">

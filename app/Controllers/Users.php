@@ -12,7 +12,7 @@ class Users extends Controller{
     echo view('templates/footer');
   }
   public function createuserdb(){
-    $usersmodel = new UsersModel();
+    $usermodel = new UsersModel();
     $val = $this->validate([
       'name' => [
         'label' => 'Name',
@@ -39,7 +39,7 @@ class Users extends Controller{
       $data['slug'] = strtolower(url_title($data['name']));
       $data['password'] = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
       $data['email'] = $this->request->getVar('email');
-      $data['birthdate'] = $this->request->getVar('birthdate');
+      $data['birth_date'] = $this->request->getVar('birthdate');
       $data['created_at'] = strtotime('now');
       $data['role'] = 0;
       if($_FILES['image']['error'] !== 4){
@@ -54,7 +54,7 @@ class Users extends Controller{
         unlink(WRITEPATH.'uploads/'.$newname);
         $data['image'] = $newname;
       }
-      $gamemodel->createUserDb($data);
+      $usermodel->createUserDb($data);
       return redirect()->to('/login');
     }
   }
@@ -95,7 +95,7 @@ class Users extends Controller{
   public function profile($slug){
     if(session('logged') == TRUE && $slug == session('slug')){
       $usersmodel = new UsersModel();
-      $data['user'] = $usersmodel->getUserByName($slug);
+      $data['user'] = $usersmodel->getUserBySlug($slug);
       echo view('templates/header');
       echo view('users/profile', $data);
       echo view('templates/footer');
@@ -150,6 +150,55 @@ class Users extends Controller{
     $session = \Config\Services::session();
     $session->destroy();
     return redirect()->to('/games');
+  }
+  public function rememberpasswordform(){
+    echo view('templates/header');
+    echo view('users/rememberpassword');
+    echo view('templates/footer');
+  }
+  public function rememberpassword(){
+    $usermodel = new UsersModel();
+    $email = $this->request->getVar('email');
+    $slug = strtolower(url_title($this->request->getVar('name')));
+    if($usermodel->getUserBySlug($slug) == true){
+      $data = $usermodel->getUserBySlug($slug);
+      if($email == $data['email']){
+        $newpassword = random_string('alnum', 16);
+        $id = $data['id'];
+        $usermodel->userResetPassword($newpassword, $id);
+        $email = \Config\Services::email();
+        $config['protocol'] = 'smtp';
+        $config['SMTPHost'] = 'smtp-relay.gmail.com';
+        $config['SMTPUser'] = 'hello@stdb.games';
+        $config['SMTPPass'] = 'jolupavon250575low';
+        $config['SMTPCrypto'] = 'tls';
+        $config['SMTPPort'] = 587;
+        $config['wordWrap'] = true;
+        $config['wrapChars'] = 80;
+        $config['mailType'] = 'text';
+        $config['priority'] = 3;
+        $email->initialize($config);
+        $email->setFrom('hello@stdb.games', 'Stadia GamesDB!');
+        $email->setTo($data['email']);
+        $email->setSubject('Password Reset for Stadia GamesDB!');
+        $email->setMessage('Here\'s your automated generated password '.$newpassword.' Please change it when you log back to the web!');
+        $email->send();
+        $data['success'] = "We send you an email with the new password, please change it when possible.";
+        echo view('templates/header');
+        echo view('users/rememberpassword', $data);
+        echo view('templates/footer');
+      } else {
+        $data['error'] = "We can't find the email address you give us on the Database, is it correct?";
+        echo view('templates/header');
+        echo view('users/rememberpassword', $data);
+        echo view('templates/footer');
+      }
+    } else {
+      $data['error'] = "We can't find your username on the Database, is it correct?";
+      echo view('templates/header');
+      echo view('users/rememberpassword', $data);
+      echo view('templates/footer');
+    }
   }
 }
 ?>

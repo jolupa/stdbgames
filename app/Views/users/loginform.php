@@ -33,3 +33,10 @@
     </form>
   </div>
 </div>
+<div class="columns mb-2">
+  <div class="column has-text-centered">
+    <div class="content">
+      <p class="help">If you forgot your password <a href="<?= base_url() ?>/user/reset">Click here</a></p>
+    </div>
+  </div>
+</div>
