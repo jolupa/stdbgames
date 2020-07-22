@@ -4,14 +4,14 @@
     <p class="title is-3">
       <?= $publisher['name'] ?>
     </p>
-    <?php if($publisher['url'] !== ''): ?>
-      <div class="content">
+    <div class="content">
+      <?php if($publisher['url'] !== ''): ?>
         <p><span class="icon"><i class="fas fa-chevron-right"></i></span>&nbsp;<a href="<?= $publisher['url'] ?>" target="_blank">Visit Website</a></p>
-      </div>
-    <?php endif; ?>
-    <?php if(isset($publisher['about']) && $publisher['about'] !== ''): ?>
-      <?= $publisher['about'] ?>
-    <?php endif; ?>
+      <?php endif; ?>
+      <?php if(isset($publisher['about']) && $publisher['about'] !== ''): ?>
+        <?= $publisher['about'] ?>
+      <?php endif; ?>
+    </div>
   </div>
 </div>
 <?= view_cell('App\Controllers\Publishers::gamespublishedby', 'publisher_id='.$publisher['id']) ?>

@@ -4,16 +4,14 @@
     <p class="title is-3">
       <?= $developer['name'] ?>
     </p>
-    <?php if($developer['url'] !== ''): ?>
-      <div class="content">
+    <div class="content">
+      <?php if($developer['url'] !== ''): ?>
         <p><span class="icon"><i class="fas fa-chevron-right"></i></span>&nbsp;<a href="<?= $developer['url'] ?>" target="_blank">Visit Website</a></p>
-      </div>
-    <?php endif; ?>
-    <?php if(isset($developer['about']) && $developer['about'] !== ''): ?>
-      <div class="content">
+      <?php endif; ?>
+      <?php if(isset($developer['about']) && $developer['about'] !== ''): ?>
         <?= $developer['about'] ?>
-      </div>
-    <?php endif; ?>
+      <?php endif; ?>
+    </div>
   </div>
 </div>
 <?= view_cell('App\Controllers\Developers::gamesdevelopedby', 'developer_id='.$developer['id']) ?>
