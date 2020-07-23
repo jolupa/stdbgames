@@ -53,6 +53,13 @@ class UsersModel extends Model{
                   ->where('id', $id);
     return $builder->update(['password'=>password_hash($newpassword, PASSWORD_DEFAULT)]);
   }
+  public function getMailConfig(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('config')
+                  ->select('pass')
+                  ->where('service', 'mail');
+    return $builder->get()->getRowArray();
+  }
 }
 
 ?>

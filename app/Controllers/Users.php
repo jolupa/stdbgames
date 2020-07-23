@@ -40,7 +40,7 @@ class Users extends Controller{
       $data['password'] = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
       $data['email'] = $this->request->getVar('email');
       $data['birth_date'] = $this->request->getVar('birth_date');
-      $data['created_at'] = strtotime('now');
+      $data['created_at'] = date('Y-m-d H:m:s');
       $data['role'] = 0;
       if($_FILES['image']['error'] !== 4){
         $newname = $data['slug'];
@@ -156,11 +156,12 @@ class Users extends Controller{
   }
   public function rememberpassword(){
     $usermodel = new UsersModel();
-    $email = $this->request->getVar('email');
+    $mail = $this->request->getVar('email');
     $slug = strtolower(url_title($this->request->getVar('name')));
     if($usermodel->getUserBySlug($slug) == true){
       $data = $usermodel->getUserBySlug($slug);
-      if($email == $data['email']){
+      $mconfig = $usermodel->getMailConfig();
+      if($mail == $data['email']){
         $newpassword = random_string('alnum', 16);
         $id = $data['id'];
         $usermodel->userResetPassword($newpassword, $id);
@@ -168,7 +169,7 @@ class Users extends Controller{
         $config['protocol'] = 'smtp';
         $config['SMTPHost'] = 'smtp-relay.gmail.com';
         $config['SMTPUser'] = 'hello@stdb.games';
-        $config['SMTPPass'] = 'jolupavon250575low';
+        $config['SMTPPass'] = $mconfig['pass'];
         $config['SMTPCrypto'] = 'tls';
         $config['SMTPPort'] = 587;
         $config['wordWrap'] = true;
@@ -179,7 +180,7 @@ class Users extends Controller{
         $email->setFrom('hello@stdb.games', 'Stadia GamesDB!');
         $email->setTo($data['email']);
         $email->setSubject('Password Reset for Stadia GamesDB!');
-        $email->setMessage('Here\'s your automated generated password '.$newpassword.' Please change it when you log back to the web!');
+        $email->setMessage('Here\'s your automated generated password '.$newpassword.'\n Please change it when you log back to the web!');
         $email->send();
         $data['success'] = "We send you an email with the new password, please change it when possible.";
         echo view('templates/header');

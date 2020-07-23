@@ -50,7 +50,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@DbStadia">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-  <script src="https://kit.fontawesome.com/7cb3f7dca8.js" crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" integrity="sha384-3Nqiqht3ZZEO8FKj7GR1upiI385J92VwWNLj+FqHxtLYxd9l+WYpeqSOrLh0T12c" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdn.tiny.cloud/1/25k6xs0os5kaxnymng45nlq4065x2mg02j2nrjqy70yfqrk0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <link rel="icon" type="image/png" href="<?= base_url() ?>/assets/stdb_logo_header.png">

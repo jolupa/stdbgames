@@ -7,9 +7,9 @@ class PricesModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('prices')
                   ->where('game_id', $id)
-                  ->orderBy('date', 'ASC');
+                  ->orderBy('date', 'DESC');
     if($builder->countAllResults(FALSE) > 0){
-      return $builder->get()->getResultArray();
+      return $builder->get(10)->getResultArray();
     } else {
       return FALSE;
     }
