@@ -180,7 +180,7 @@ class Users extends Controller{
         $email->setFrom('hello@stdb.games', 'Stadia GamesDB!');
         $email->setTo($data['email']);
         $email->setSubject('Password Reset for Stadia GamesDB!');
-        $email->setMessage('Here\'s your automated generated password '.$newpassword.'\n Please change it when you log back to the web!');
+        $email->setMessage('Here\'s your automated generated password '.$newpassword.' Please change it when you log back to the web!');
         $email->send();
         $data['success'] = "We send you an email with the new password, please change it when possible.";
         echo view('templates/header');
