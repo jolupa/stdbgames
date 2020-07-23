@@ -1,4 +1,3 @@
-
 <div class="columns my-2">
   <div class="column">
     <form method="post" action="<?= base_url() ?>/users/updateuserdb" enctype="multipart/form-data">
@@ -24,14 +23,41 @@
         </div>
         <p class="help">Images .png .jpg max 4Mb</p>
       </div>
-      <div class="field is-grouped is-grouped-centered">
+      <div class="field is-grouped">
         <div class="control">
           <button class="button is-primary has-text-dark" value="submit">Update!</button>
         </div>
         <div class="control">
-          <button class="button is-light has-text-dark" value="reset">Cancel</button>
+          <button class="button is-danger has-text-white" value="reset">Cancel</button>
         </div>
       </div>
     </form>
+    <form method="post" action="<?= base_url() ?>/users/changepassword" class="mt-4">
+      <input type="hidden" name="id" value="<?= $user['id'] ?>">
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control is-expanded">
+          <input type="password" class="input" name="oldpassword" placeholder="Your old password">
+        </div>
+        <div class="control is-expanded">
+          <input type="password" class="input" name="newpassword" placeholder="New Password">
+        </div>
+        <div class="control is-expanded">
+          <input type="password" class="input" name="checkpassword" placeholder="New Password Again">
+        </div>
+      </div>
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control">
+          <button class="button is-primary has-text-black" value="submit">Change Password!</button>
+        </div>
+        <div class="control">
+          <button class="button is-danger has-text-white" value="reset">Start Over</button>
+        </div>
+      </div>
+    </form>
+    <?php if(session('errorpass') !== NULL): ?>
+      <div class="content">
+        <p class="help"><?= session('errorpass') ?></p>
+      </div>
+    <?php endif; ?>
   </div>
 </div>

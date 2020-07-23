@@ -149,12 +149,12 @@ class Users extends Controller{
     $session->destroy();
     return redirect()->to('/games');
   }
-  public function rememberpasswordform(){
+  public function resetpasswordbymailform(){
     echo view('templates/header');
-    echo view('users/rememberpassword');
+    echo view('users/resetpasswordbymail');
     echo view('templates/footer');
   }
-  public function rememberpassword(){
+  public function resetpasswordbymail(){
     $usermodel = new UsersModel();
     $mail = $this->request->getVar('email');
     $slug = strtolower(url_title($this->request->getVar('name')));
@@ -197,6 +197,35 @@ class Users extends Controller{
       echo view('templates/header');
       echo view('users/rememberpassword', $data);
       echo view('templates/footer');
+    }
+  }
+  public function changepassword(){
+    $session = \Config\Services::session();
+    $usermodel = new UsersModel();
+    $id = $this->request->getVar('id');
+    $oldpassword = $this->request->getVar('oldpassword');
+    $newpassword = $this->request->getVar('newpassword');
+    $checkpassword = $this->request->getVar('checkpassword');
+    if($newpassword == $checkpassword){
+      if($usermodel->getUserById($id) == true){
+        $data = $usermodel->getUserById($id);
+        if(password_verify($oldpassword, $data['password']) == true){
+          $usermodel->userResetPassword($newpassword, $id);
+          return redirect()->to('/logout');
+        } else {
+          $errorpass = "Can't find the password on DB! Try again!";
+          $session->setFlashdata(['errorpass'=>$errorpass]);
+          return redirect()->back();
+        }
+      } else {
+        $errorpass = "It seems that we can't find the user... Weird, try again!";
+        $session->setFlashdata(['errorpass'=>$errorpass]);
+        return redirect()->back();
+      }
+    } else {
+      $errorpass = "The new password don't match with the check. Try again!";
+      $session->setFlashdata(['errorpass'=>$errorpass]);
+      return redirect()->back();
     }
   }
 }

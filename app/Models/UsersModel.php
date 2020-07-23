@@ -28,6 +28,16 @@ class UsersModel extends Model{
       return false;
     }
   }
+  public function getUserById($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('users')
+                  ->where('id', $id);
+    if ($builder->countAllResults(false) > 0){
+      return $builder->get()->getRowArray();
+    } else {
+      return false;
+    }
+  }
   public function getAllUsers(){
     $db = \Config\Database::connect();
     $builder = $db->table('users')
