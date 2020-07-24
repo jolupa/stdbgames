@@ -1,3 +1,9 @@
+<div class="columns mt-2">
+  <div class="column">
+    <p class="subtitle is-5">Edit</p>
+    <p class="title is-3">Profile:</p>
+  </div>
+</div>
 <div class="columns my-2">
   <div class="column">
     <form method="post" action="<?= base_url() ?>/users/updateuserdb" enctype="multipart/form-data">
@@ -32,6 +38,16 @@
         </div>
       </div>
     </form>
+  </div>
+</div>
+<div class="columns mt-2">
+  <div class="column">
+    <p class="subtitle is-5">Change</p>
+    <p class="title is-3">Password:</p>
+  </div>
+</div>
+<div class="columns mb-2">
+  <div class="column">
     <form method="post" action="<?= base_url() ?>/users/changepassword" class="mt-4">
       <input type="hidden" name="id" value="<?= $user['id'] ?>">
       <div class="field is-grouped is-grouped-multiline">
