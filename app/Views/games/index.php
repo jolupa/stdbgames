@@ -126,7 +126,7 @@
   <div class="column">
     <div class="columns">
       <div class="column">
-        <p class="subtile is-5">Lastest Games</p>
+        <p class="subtile is-5">Latest Games</p>
         <p class="title is-3">Added:</p>
       </div>
     </div>
