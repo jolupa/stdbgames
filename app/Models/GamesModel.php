@@ -116,6 +116,22 @@
                     ->orderBy('games.updated_at', 'DESC');
       return $builder->get(4)->getResultArray();
     }
+    public function getMonthRelease($month){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->select('games.name,
+                              games.slug,
+                              games.image,
+                              games.release,
+                              games.updated_at,
+                              developers.name AS developer_name,
+                              publishers.name AS publisher_name')
+                    ->join('developers', 'developers.id = games.developer_id')
+                    ->join('publishers', 'publishers.id = games.publisher_id')
+                    ->where('strftime("%m", release)', date('m'))
+                    ->orderBy('games.release', 'ASC');
+      return $builder->get()->getResultArray();
+    }
     public function listAllGames($type){
       $db = \Config\Database::connect();
       if($type == 'soon'){

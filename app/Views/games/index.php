@@ -27,6 +27,34 @@
   <div class="column">
     <div class="columns">
       <div class="column">
+        <p class="subtitle is-5">This month</p>
+        <p class="title is-3">Releases:</p>
+      </div>
+    </div>
+    <div class="columns is-multiline">
+      <?php foreach($month as $month): ?>
+        <div class="column is-one-quarter">
+          <div class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img title="<?= $month['name'] ?>" src="<?= base_url() ?>/images/<?= $month['image'] ?>-thumb.jpeg">
+              </p>
+            </figure>
+            <div class="media-content">
+              <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $month['slug'] ?>"><?= character_limiter($month['name'], 15, '...') ?></a></p>
+              <p class="subtitle is-7">Developer <?= $month['developer_name'] ?> / Publisher <?= $month['publisher_name'] ?><br>
+                <?= $month['release'] ?></p>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</div>
+<div class="columns mt-2">
+  <div class="column">
+    <div class="columns">
+      <div class="column">
         <p class="subtile is-5">Games</p>
         <p class="title is-3">Launched:</p>
       </div>
@@ -56,7 +84,7 @@
     </div>
   </div>
 </div>
-<div class="columns mt-2">
+<div class="columns has-background-light mt-2">
   <div class="column">
     <div class="columns">
       <div class="column">
@@ -94,7 +122,7 @@
     </div>
   </div>
 </div>
-<div class="columns has-background-light mt-2">
+<div class="columns mt-2">
   <div class="column">
     <div class="columns">
       <div class="column">
@@ -147,7 +175,7 @@
     </div>
   </div>
 </div>
-<div class="columns my-2">
+<div class="columns has-background-light my-2">
   <div class="column is-half">
     <?= view_cell('App\Controllers\Reviews::latestreviews') ?>
   </div>
