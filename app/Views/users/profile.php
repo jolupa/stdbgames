@@ -20,7 +20,7 @@
           </p>
         </figure>
         <div class="media-content">
-          <p class="title is-5"><?= $user['name'] ?> <?php if($user['role'] == 2): ?><span class="tag is-danger has-text-white is-small">MEDIA MEMBER</span><?php endif; ?></p>
+          <p class="title is-5"><?= $user['name'] ?> <?php if($user['role'] == 2): ?>&nbsp;<span class="has-background-danger has-text-white subtitle is-7 px-1">MEDIA MEMBER</span><?php endif; ?></p>
           <p class="subtitle is-7">E-mail: <?= $user['email'] ?><br>
             Birthdate: <?= $user['birth_date'] ?><br>
             Registered: <?= $user['created_at'] ?>
