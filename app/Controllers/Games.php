@@ -9,7 +9,6 @@
       $gamemodel = new GamesModel();
       $data['pro'] = $gamemodel->getProGames();
       $data['soon'] = $gamemodel->getSoonGames();
-      $data['launched'] = $gamemodel->getLaunchedGames();
       $data['last'] = $gamemodel->getLastsGames();
       $data['lastupdated'] = $gamemodel->getLastsUpdatedGames();
       $data['month'] = $gamemodel->getMonthRelease();

@@ -69,21 +69,6 @@
                     ->orderBy('release', 'ASC');
       return $builder->get(12)->getResultArray();
     }
-    public function getLaunchedGames(){
-      $db = \Config\Database::connect();
-      $builder = $db->table('games')
-                    ->select('games.name,
-                              games.slug,
-                              games.image,
-                              games.release,
-                              developers.name AS developer_name,
-                              publishers.name AS publisher_name')
-                    ->join('developers', 'developers.id = games.developer_id')
-                    ->join('publishers', 'publishers.id = games.publisher_id')
-                    ->where('release <=', date('Y-m-d'))
-                    ->orderBy('release', 'DESC');
-      return $builder->get(12)->getResultArray();
-    }
     public function getLastsGames(){
       $db = \Config\Database::connect();
       $builder = $db->table('games')
@@ -125,7 +110,7 @@
                               publishers.name AS publisher_name')
                     ->join('developers', 'developers.id = games.developer_id')
                     ->join('publishers', 'publishers.id = games.publisher_id')
-                    ->where('strftime("%m", release)', date('m'))
+                    ->where('strftime("%Y-%m", release)', date('Y-m'))
                     ->orderBy('games.release', 'ASC');
       return $builder->get()->getResultArray();
     }
