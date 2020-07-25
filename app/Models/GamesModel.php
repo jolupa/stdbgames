@@ -96,7 +96,6 @@
                               publishers.name AS publisher_name')
                     ->join('developers', 'developers.id = games.developer_id')
                     ->join('publishers', 'publishers.id = games.publisher_id')
-                    ->where('games.created_at <=', date('Y-m-d H:m:s'))
                     ->orderBy('games.created_at', 'DESC');
       return $builder->get(4)->getResultArray();
     }
@@ -112,7 +111,6 @@
                               publishers.name AS publisher_name')
                     ->join('developers', 'developers.id = games.developer_id')
                     ->join('publishers', 'publishers.id = games.publisher_id')
-                    ->where('games.updated_at <=', date('Y-m-d H:m:s'))
                     ->orderBy('games.updated_at', 'DESC');
       return $builder->get(4)->getResultArray();
     }
