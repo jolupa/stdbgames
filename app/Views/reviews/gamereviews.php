@@ -76,10 +76,7 @@
         </p>
       </figure>
       <div class="media-content">
-        <?php if($review['user_role'] == 2): ?>
-          <p class="tag is-danger has-text-white is-small">MEDIA MEMBER</p>
-        <?php endif; ?>
-        <p><a id="Review<?= $review['id'] ?>">#</a>Review by <strong><?= $review['user_name'] ?></strong>&nbsp;writted at <?= $review['date'] ?>&nbsp;and voted with <strong><?= $review['score'] ?></strong></p>
+        <p><a id="Review<?= $review['id'] ?>">#</a>Review by <strong><?= $review['user_name'] ?></strong>&nbsp;<?php if($review['user_role'] == 2): ?><span class="has-background-danger has-text-white subtitle is-7 px-1">MEDIA MEMBER</span><?php endif; ?>&nbsp;writted at <?= $review['date'] ?>&nbsp;and voted with <strong><?= $review['score'] ?></strong></p>
         <?= $review['about'] ?>
         <?php if($review['url']): ?>
           <p>Read full Review <a href="<?= $review['url'] ?>" target="_blank">HERE</a></p>
