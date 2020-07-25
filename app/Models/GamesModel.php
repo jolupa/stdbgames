@@ -116,7 +116,7 @@
                     ->orderBy('games.updated_at', 'DESC');
       return $builder->get(4)->getResultArray();
     }
-    public function getMonthRelease($month){
+    public function getMonthRelease(){
       $db = \Config\Database::connect();
       $builder = $db->table('games')
                     ->select('games.name,

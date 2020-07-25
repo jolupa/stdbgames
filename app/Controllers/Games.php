@@ -12,8 +12,7 @@
       $data['launched'] = $gamemodel->getLaunchedGames();
       $data['last'] = $gamemodel->getLastsGames();
       $data['lastupdated'] = $gamemodel->getLastsUpdatedGames();
-      $month = date('m');
-      $data['month'] = $gamemodel->getMonthRelease($month);
+      $data['month'] = $gamemodel->getMonthRelease();
       echo view('templates/header');
       echo view('games/index', $data);
       echo view('templates/footer');
