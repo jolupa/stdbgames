@@ -167,9 +167,6 @@
             <div class="control">
               <button class="button is-primary has-text-dark" value="submit">Send Us An Email</button>
             </div>
-            <div class="control">
-              <button class="button is-danger has-text-white" value="Reset">Start Over</button>
-            </div>
           </div>
         </form>
       </div>
