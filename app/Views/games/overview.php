@@ -146,26 +146,20 @@
       </div>
     </div>
   <?php else: ?>
-    <div class="columns is-centered mt-2 has-background-light">
+    <div class="columns is-centered mt-2">
       <div class="column is-10">
+        <hr class="my-2">
         <form method="post" action="<?= base_url() ?>/communications/wronggame">
           <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
           <input type="hidden" name="name" value="<?= $game['name'] ?>">
-          <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">What's Wrong:</label>
-            </div>
-            <div class="field-body">
-              <div class="field">
-                <div class="control is-expanded">
-                  <textarea class="textarea" name="wrong" placeholder="You see something wrong? Tell Us!"></textarea>
-                </div>
-              </div>
+          <div class="field">
+            <div class="control is-expanded">
+              <textarea class="textarea" name="wrong" placeholder="You see something wrong? Tell Us!"></textarea>
             </div>
           </div>
           <div class="field is-grouped is-grouped-centered">
             <div class="control">
-              <button class="button is-primary has-text-dark" value="submit">Send Us An Email</button>
+              <button class="button is-primary has-text-dark" value="submit">Tell Us!</button>
             </div>
           </div>
         </form>
