@@ -1,6 +1,6 @@
 <div class="columns mt-2">
   <div class="column is-fullwidth">
-    <p class="subtitle is-5">Users:</p>
+    <p class="title is-3">Users:</p>
   </div>
 </div>
 <div class="columns is-multiline mb-2">
