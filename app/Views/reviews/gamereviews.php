@@ -8,7 +8,7 @@
       <input type="hidden" name="return" value="<?= $game['slug'] ?>">
       <div class="field">
         <div class="control is-expanded">
-          <textarea class="textarea" name="about" placeholder="Write Your Review here!"></textarea>
+          <textarea class="textarea" id="textarea" name="about" placeholder="Write Your Review here!"></textarea>
         </div>
       </div>
       <?php if(session('role') == 2): ?>

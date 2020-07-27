@@ -139,6 +139,42 @@
     </div>
   </div>
   <?= view_cell('App\Controllers\Games::releasebydate', 'id='.$game['id'].', date='.$game['release']) ?>
+  <?php if($wrong == false): ?>
+    <div class="columns is-centered mt-2">
+      <div class="column is-10 has-text-centered">
+        <a href="<?= base_url() ?>/game/<?= $game['slug'] ?>/true"><p class="button is-warning has-text-dark">See something Wrong?</p></a>
+      </div>
+    </div>
+  <?php else: ?>
+    <div class="columns is-centered mt-2 has-background-light">
+      <div class="column is-10">
+        <form method="post" action="<?= base_url() ?>/communications/wronggame">
+          <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
+          <input type="hidden" name="name" value="<?= $game['name'] ?>">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">What's Wrong:</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control is-expanded">
+                  <textarea class="textarea" name="wrong" placeholder="You see something wrong? Tell Us!"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+              <button class="button is-primary has-text-dark" value="submit">Send Us An Email</button>
+            </div>
+            <div class="control">
+              <button class="button is-danger has-text-white" value="Reset">Start Over</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  <?php endif; ?>
 <?php endif; ?>
 <?php if(isset($game['updated_at'])): ?>
   <div class="columns is-centered my-2">

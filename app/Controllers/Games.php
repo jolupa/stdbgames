@@ -16,9 +16,10 @@
       echo view('games/index', $data);
       echo view('templates/footer');
     }
-    public function overview($slug){
+    public function overview($slug, $wrong = false){
       $gamemodel = new GamesModel();
       $data['game'] = $gamemodel->gameOverview($slug);
+      $data['wrong'] = $wrong;
       $data['editor'] = true;
       echo view('templates/header', $data);
       echo view('games/overview', $data);

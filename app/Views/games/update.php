@@ -88,7 +88,7 @@
         </div>
         <div class="field">
           <div class="control is-expanded">
-            <textarea class="textarea" name="about" placeholder="All About the Game"><?= $game['about'] ?></textarea>
+            <textarea class="textarea" id="textarea" name="about" placeholder="All About the Game"><?= $game['about'] ?></textarea>
           </div>
         </div>
         <div class="field is-grouped is-grouped-multiline">

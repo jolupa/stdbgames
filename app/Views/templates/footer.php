@@ -59,7 +59,7 @@ alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
 <?php if(isset($editor)): ?>
   <script>
     tinymce.init({
-      selector: '.textarea',
+      selector: '#textarea',
       plugins: 'code, lists',
       menubar: false,
       toolbar:[{

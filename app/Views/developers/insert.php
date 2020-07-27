@@ -28,7 +28,7 @@
         </div>
         <div class="field">
           <div class="control">
-            <textarea name="about" class="textarea" placeholder="Info about the developer"></textarea>
+            <textarea name="about" class="textarea" id="textarea" placeholder="Info about the developer"></textarea>
           </div>
         </div>
         <div class="field is-grouped">

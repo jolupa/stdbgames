@@ -12,7 +12,7 @@
       <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
       <div class="field">
         <div class="control is-extended">
-          <textarea name="body" class="textarea"></textarea>
+          <textarea name="body" class="textarea" id="textarea"></textarea>
         </div>
       </div>
       <div class="field is-grouped">
@@ -35,7 +35,7 @@
         <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
         <div class="field">
           <div class="control is-extended">
-            <textarea name="body" class="textarea"><?= $interview['body'] ?></textarea>
+            <textarea name="body" class="textarea" id="textarea"><?= $interview['body'] ?></textarea>
           </div>
         </div>
         <div class="field is-grouped">

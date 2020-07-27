@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use \App\Models\UsersModel;
+use \App\Models\ConfigModel;
 use CodeIgniter\Controller;
 
 helper(['text']);
@@ -160,7 +161,8 @@ class Users extends Controller{
     $slug = strtolower(url_title($this->request->getVar('name')));
     if($usermodel->getUserBySlug($slug) == true){
       $data = $usermodel->getUserBySlug($slug);
-      $mconfig = $usermodel->getMailConfig();
+      $communications = new CommunicationsModel();
+      $mconfig = $communications->getMailConfig();
       if($mail == $data['email']){
         $newpassword = random_string('alnum', 16);
         $id = $data['id'];
