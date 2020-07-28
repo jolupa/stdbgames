@@ -20,6 +20,12 @@ class StatsModel extends Model{
                   ->where('release >', date('Y-m-d'));
     return $builder->countAllResults();
   }
+  public function proGames(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('games')
+                  ->where('pro_till !=', null);
+    return $builder->countAllResults();
+  }
 }
 
 ?>
