@@ -76,7 +76,9 @@
       <?php if($game['pro'] == 1 && date('Y-m-d') > $game['pro_from'] && $game['release'] !== 'TBA'): ?>
         <button class="button is-primary has-text-dark is-small mt-1 mr-2">Free for Pro&nbsp;<strong>Now!</strong></button>
       <?php endif; ?>
-      <?php if($game['pro_from'] && $game['pro'] == 0): ?>
+      <?php if($game['pro'] == 0 && date('Y-m-d') <= $game['pro_till']): ?>
+        <button class="button is-warning has-text-dark is-small mt-1 mr-2">Hurry claim it before&nbsp;<strong><?= $game['pro_till'] ?></strong></button>
+      <?php elseif($game['pro_from'] && $game['pro'] == 0): ?>
         <button class="button is-danger has-text-white is-small mt-1 mr-2">Was free from&nbsp;<strong><?= $game['pro_from'] ?></strong>&nbsp;until&nbsp;<strong><?= $game['pro_till'] ?></strong></button>
       <?php endif; ?>
       <?php if(session('logged') == true): ?>
