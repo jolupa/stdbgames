@@ -68,7 +68,7 @@
   <div class="column is-10">
     <p>
       <?php if($game['appid']): ?>
-        <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/<?= $game['sku'] ?>" target="_blank"><button class="button is-danger has-text-white is-small mt-1 mr-2">Go to Stadia Store</button></a>
+        <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/<?= $game['sku'] ?>" target="_blank"><button class="button is-primary has-text-dark is-small mt-1 mr-2">Go to Stadia Store</button></a>
       <?php endif; ?>
       <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
         <a href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank"><button class="button is-primary has-text-dark is-small mt-1 mr-2">Play on Stadia</button></a>
