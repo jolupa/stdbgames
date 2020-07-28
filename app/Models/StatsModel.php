@@ -23,7 +23,7 @@ class StatsModel extends Model{
   public function proGames(){
     $db = \Config\Database::connect();
     $builder = $db->table('games')
-                  ->where('pro_from !=', null)
+                  ->where('pro_from !=', '')
                   ->where('pro_till <=', date('Y-m-d'));
     return $builder->countAllResults();
   }
