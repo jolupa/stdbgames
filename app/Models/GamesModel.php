@@ -176,6 +176,19 @@
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.early_access', 1)
                       ->orderBy('games.release', 'ASC');
+      } elseif($type == 'pro'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.pro_from !=', '')
+                      ->where('games.pro_from <=', date('Y-m-d'))
+                      ->orderBy('games.release', 'ASC');
       } else {
         $builder = $db->table('games')
                       ->select('games.name,
