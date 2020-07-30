@@ -53,7 +53,7 @@
             <?php else: ?>
               <?= $list['release'] ?>
             <?php endif; ?>
-            <?php if($type === 'pro'): ?>Entered Pro:&nbsp;<?= $game['pro_from'] ?><?php endif; ?>
+            <?php if($type === 'pro'): ?>Entered Pro:&nbsp;<?= $list['pro_from'] ?><?php endif; ?>
           </p>
         </div>
       </div>
