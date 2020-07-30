@@ -188,7 +188,7 @@
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.pro_from !=', '')
                       ->where('games.pro_from <=', date('Y-m-d'))
-                      ->orderBy('games.release', 'ASC');
+                      ->orderBy('games.pro_from', 'ASC');
       } else {
         $builder = $db->table('games')
                       ->select('games.name,
