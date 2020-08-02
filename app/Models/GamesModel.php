@@ -65,7 +65,7 @@
                               publishers.name AS publisher_name')
                     ->join('developers', 'developers.id = games.developer_id')
                     ->join('publishers', 'publishers.id = games.publisher_id')
-                    ->where('release >', date('Y-m-d'))
+                    ->where('strftime("%Y-%m", release) >', date('Y-m'))
                     ->orderBy('release', 'ASC');
       return $builder->get(12)->getResultArray();
     }
