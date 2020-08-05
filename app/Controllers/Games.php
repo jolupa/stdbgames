@@ -176,6 +176,11 @@
       echo view('templates/about');
       echo view('templates/footer');
     }
+    public function allgames(){
+      $gamemodel = new GamesModel();
+      $data['game'] = $gamemodel->getAllGames();
+      return view('games/gameselection', $data);
+    }
   }
 
 ?>

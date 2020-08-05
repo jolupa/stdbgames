@@ -53,6 +53,7 @@ $routes->get('/user/reset', 'Users::resetpasswordbymailform');
 $routes->get('/add/tolibrary/(:segment)', 'Libraries::addtouserlibrary/$1');
 $routes->get('/add/towishlist/(:segment)', 'Wishlists::addToUserWishlist/$1');
 $routes->get('/about', 'Games::about');
+$routes->get('/doodles', 'Doodles::index');
 
 /**
  * --------------------------------------------------------------------

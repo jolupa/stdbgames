@@ -223,6 +223,13 @@
                     ->orderBy('Name', 'ASC');
       return $builder->get()->getResultArray();
     }
+    public function getAllGames(){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->select('id,
+                              name')
+                    ->orderBy('name', 'ASC');
+      return $builder->get()->getResultArray();
+    }
   }
-
 ?>
