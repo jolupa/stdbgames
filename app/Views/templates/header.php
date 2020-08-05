@@ -44,7 +44,7 @@
     <meta property="og:description" content="The promo images for some Games made by Stadia">
     <?php
       $number = count($doodle);
-      $rand_number = rand(0, $number);
+      $rand_number = rand(1, $number);
     ?>
     <meta property="og:image" content="<?= base_url() ?>/images/doodles/<?= $doodle['image'][$rand_number] ?>.jpeg">
     <meta property="og:url" content="<?= base_url() ?>/doodles">
