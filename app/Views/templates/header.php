@@ -36,6 +36,19 @@
     <meta property="og:image" content="<?= base_url() ?>/assets/stdb_logo_big.png">
     <meta property="og:url" content="<?= base_url() ?>/developer/<?= $publisher['slug'] ?>">
     <meta name="twitter:image_alt" content="<?= $publisher['name'] ?>">
+  <?php elseif(isset($doodle)): ?>
+    <title>Stadia Doodles - Stadia GamesDB!</title>
+    <meta name="description" content="The promo images for some Games made by Stadia">
+    <meta name="keywords" content="<?php foreach($doodle as $doodle): ?><?= $doodle['game_name'] ?>,<?php endforeach; ?>, stadia, stream, gaming, cloud, online">
+    <meta property="og:title" content="Stadia Doodles - Stadia GamesDB!">
+    <meta property="og:description" content="The promo images for some Games made by Stadia">
+    <?php
+      $number = count($doodle);
+      $image = rand(1, $number);
+    ?>
+    <meta property="og:image" content="<?= base_url() ?>/images/doodles/<?= $doodle['image'][$image] ?>.jpeg">
+    <meta property="og:url" content="<?= base_url() ?>/doodles">
+    <meta name="twitter:image_alt" content="<?= $doodle['game_name'][$image] ?>">
   <?php else: ?>
     <title>Stadia GamesDB!</title>
     <meta name="description" content="All the Stadia Games in one place!">

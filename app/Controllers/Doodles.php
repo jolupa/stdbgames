@@ -14,7 +14,7 @@ class Doodles extends Controller{
     } else {
       $data['error'] = "Theres no Stadia Doodles on DB! At this momment";
     }
-    echo view('templates/header');
+    echo view('templates/header', $data);
     echo view('doodles/index', $data);
     echo view('templates/footer');
   }
