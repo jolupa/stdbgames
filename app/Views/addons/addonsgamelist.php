@@ -21,7 +21,7 @@
               <?= $addon['name'] ?>
             <?php endif; ?>
           </td>
-          <td class="has-text-centered"><?= $addon['release'] ?></td>
+          <td class="has-text-centered"><?php if($addon['release'] === 'TBA' || $addon['release'] === '2099-01-01'): ?>TBA<?php else: ?><?= $addon['release'] ?><?php endif; ?></td>
           <td class="has-text-right">
             <?php if(!$addon['price']): ?>
               No Info
