@@ -16,7 +16,7 @@ class Doodles extends Controller{
     }
     echo view('templates/header', $data);
     echo view('doodles/index', $data);
-    echo view('templates/footer');
+    echo view('templates/footer', $data);
   }
   public function insertdoodle(){
     $doodlemodel = new DoodlesModel();

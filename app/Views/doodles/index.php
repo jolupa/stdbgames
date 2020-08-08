@@ -30,7 +30,7 @@
             </figure>
           </div>
           <div class="card-content is-overlay">
-            <span class="tag is-primary has-text-dark"><a href="<?= base_url() ?>/game/<?= $doodle['game_slug'] ?>"><?= $doodle['game_name'] ?></a></span>
+            <span class="tag is-primary has-text-dark"><a href="<?= base_url() ?>/images/doodles/<?= $doodle['image'] ?>.jpeg" data-lightbox="doodle"><?= $doodle['game_name'] ?> click to enlarge</a></span>
           </div>
         </div>
       </div>

@@ -71,3 +71,9 @@ alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
     });
   </script>
 <?php endif; ?>
+
+<?php if(isset($doodle)): ?>
+  <script>
+    lighbox.option({})
+  </script>
+<?php endif; ?>
