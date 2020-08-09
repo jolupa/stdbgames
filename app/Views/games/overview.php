@@ -156,7 +156,7 @@
           <input type="hidden" name="name" value="<?= $game['name'] ?>">
           <div class="field">
             <div class="control is-expanded">
-              <textarea class="textarea" name="wrong" placeholder="You see something wrong? Tell Us!"></textarea>
+              <textarea class="textarea" name="wrong" placeholder="<?php if(session('error') !== null): ?><?= session('error') ?><?php else: ?>You see something wrong? Tell Us!<?php endif; ?>"></textarea>
             </div>
           </div>
           <div class="field is-grouped is-grouped-centered">
