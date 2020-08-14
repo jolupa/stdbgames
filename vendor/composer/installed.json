@@ -120,58 +120,6 @@
         ]
     },
     {
-        "name": "j7mbo/twitter-api-php",
-        "version": "1.0.6",
-        "version_normalized": "1.0.6.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/J7mbo/twitter-api-php.git",
-            "reference": "443d22c53d621b3cc6b7e0c56daa60c5ada033f7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/J7mbo/twitter-api-php/zipball/443d22c53d621b3cc6b7e0c56daa60c5ada033f7",
-            "reference": "443d22c53d621b3cc6b7e0c56daa60c5ada033f7",
-            "shasum": ""
-        },
-        "require": {
-            "ext-curl": "*"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "~4.5,>=4.5.1"
-        },
-        "time": "2017-05-08T12:10:56+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                "TwitterAPIExchange.php"
-            ]
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GNU Public License"
-        ],
-        "authors": [
-            {
-                "name": "James Mallison",
-                "homepage": "https://github.com/j7mbo/twitter-api-php"
-            }
-        ],
-        "description": "Simple PHP Wrapper for Twitter API v1.1 calls",
-        "homepage": "https://github.com/j7mbo/twitter-api-php",
-        "keywords": [
-            "api",
-            "php",
-            "twitter"
-        ]
-    },
-    {
         "name": "kint-php/kint",
         "version": "3.3",
         "version_normalized": "3.3.0.0",
@@ -1041,7 +989,8 @@
         "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
         "keywords": [
             "tokenizer"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "phpunit/phpunit",
