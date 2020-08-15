@@ -52,23 +52,22 @@
       }
     }
     public function creategamedb(){
-      $val = $this->validate([
-        'name'=>[
-          'label'=>'Name',
-          'rules'=>'required|is_unique[games.name]',
-          'errors'=>[
-            'required'=>'We need a name for the game',
-            'is_unique'=>'The game already exists',
-          ],
-        ],
-      ]);
-      if(!$val){
+      $gamemodel = new GamesModel();
+      $session = \Config\Services::session();
+      $error = array();
+      if(is_array($gamemodel->getGameByName($this->request->getVar('name')))){
+        array_push($error, "The Game exists on DB!");
+      }
+      if($this->request->getVar('name') === ''){
+        array_push($error, "You have to put a name for the Game.");
+      }
+      if(!empty($error)){
+        $session->setFlashdata(['error'=>$error]);
         $data['editor'] = true;
         echo view('templates/header');
-        echo view('games/insert',['validations'=>$this->validator]);
+        echo view('games/insert');
         echo view('templates/footer', $data);
       } else {
-        $gamemodel = new GamesModel();
         $data['name'] = $this->request->getVar('name');
         $data['slug'] = strtolower(url_title($data['name']));
         $data['release'] = $this->request->getVar('release');

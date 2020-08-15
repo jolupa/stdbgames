@@ -9,6 +9,12 @@
                     ->where('slug', $slug);
       return $builder->get()->getRowArray();
     }
+    public function getGameByName($name){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->where('name', $name);
+      return $builder->get()->getRowArray();
+    }
     public function gameOverview($slug){
       $db = \Config\Database::connect();
       $builder = $db->table('games')
@@ -51,7 +57,7 @@
                     ->join('publishers', 'publishers.id = games.publisher_id')
                     ->where('games.pro', 1)
                     ->where('games.pro_from <=', date('Y-m-d'))
-                    ->orderBy('release', 'ASC');
+                    ->orderBy('games.pro_from', 'ASC');
       return $builder->get()->getResultArray();
     }
     public function getSoonGames(){

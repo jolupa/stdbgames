@@ -99,10 +99,14 @@
             </div>
           </div>
         </div>
-        <div class="field">
-          <?= \Config\Services::validation()->listErrors('my_list'); ?>
-        </div>
       </form>
+      <?php if(session('error') !== null): ?>
+        <div class="content mt-2">
+          <?php foreach(session('error') as $session): ?>
+            <p><?= $session ?></p>
+          <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 <?php endif; ?>
