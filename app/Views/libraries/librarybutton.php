@@ -1,4 +1,4 @@
-<?php if(date('Y-m-d') >= $game['release']): ?>
+<?php if($game['release'] <= date('Y-m-d')): ?>
   <?php if($library == false): ?>
     <a href="<?= base_url() ?>/add/tolibrary/<?= $game['id'] ?>"><button class="button is-danger has-text-white is-small mt-1 mr-2">Add To Library</button></a>
   <?php else: ?>
