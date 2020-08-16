@@ -94,7 +94,9 @@
     </div>
   </div>
 </div>
-<div class="columns has-background-light mt-2">
+
+<?= view_cell('App\Controllers\Interviews::interviewlist') ?>
+<div class="columns mt-2">
   <div class="column">
     <div class="columns">
       <div class="column">
@@ -147,7 +149,6 @@
     </div>
   </div>
 </div>
-<?= view_cell('App\Controllers\Interviews::interviewlist') ?>
 <div class="columns my-2 has-background-light">
   <div class="column is-half">
     <?= view_cell('App\Controllers\Reviews::latestreviews') ?>
