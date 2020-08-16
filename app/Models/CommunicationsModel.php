@@ -10,6 +10,13 @@ class CommunicationsModel extends Model{
                   ->where('service', 'mail');
     return $builder->get()->getRowArray();
   }
+  public function getTweetConfig($service){
+    $db = \Config\Database::connect();
+    $builder = $db->table('config')
+                  ->select('pass')
+                  ->where('service', $service);
+    return $builder->get()->getResultArray();
+  }
 }
 
 ?>

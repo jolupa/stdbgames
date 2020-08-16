@@ -42,5 +42,10 @@ class Interviews extends Controller{
     $interviewmodel->updateInterviewDb($data);
     return redirect()->to('/game/'.$slug);
   }
+  public function interviewlist(){
+    $interviewmodel = new InterviewsModel();
+    $data['interview'] = $interviewmodel->getInterviews();
+    return view('interviews/interviewlist', $data);
+  }
 }
 ?>

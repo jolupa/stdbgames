@@ -34,6 +34,16 @@ class InterviewsModel extends Model{
       return $builder->update(['updated_at'=>date('Y-m-d H:m:s')]);
     }
   }
+  public function getInterviews(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('interviews')
+                  ->select('games.name AS game_name,
+                            games.image AS game_image,
+                            games.slug AS game_slug')
+                  ->join('games', 'games.id = interviews.game_id')
+                  ->orderBy('interviews.id', 'DESC');
+    return $builder->get(4)->getResultArray();
+  }
 }
 
 ?>

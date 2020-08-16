@@ -147,7 +147,8 @@
     </div>
   </div>
 </div>
-<div class="columns my-2">
+<?= view_cell('App\Controllers\Interviews::interviewlist') ?>
+<div class="columns my-2 has-background-light">
   <div class="column is-half">
     <?= view_cell('App\Controllers\Reviews::latestreviews') ?>
   </div>
