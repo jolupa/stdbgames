@@ -4,7 +4,7 @@
     <p class="title is-3">Interviews:</p>
   </div>
 </div>
-<div class="columns mt-2">
+<div class="columns">
   <?php foreach($interview as $interview): ?>
     <div class="column is-multiline">
       <div class="card">
