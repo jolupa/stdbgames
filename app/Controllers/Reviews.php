@@ -49,7 +49,7 @@ class Reviews extends Controller{
       $data['date'] = date('Y-m-d H:m:s');
       $game_name = $this->request->getVar('game_name');
       $return = $this->request->getVar('return');
-      $statusmessage = "New Review Added to DB! for ".$game_name]." by user ".session('user_name')." https://stdb.games/game/".$return;
+      $statusmessage = "New Review Added to DB! for ".$game_name." by user ".session('user_name')." https://stdb.games/game/".$return;
       $consumerkey = 'A1x814nXz6FhvUawg2eUt8stY';
       $consumersecret = 'EDfTKliLILSFmM1JEqEVuKOnezd8mO1cRNEhGrui9FCbVoff8Y';
       $token = '1219734996950319104-dbFL3gprlDageRxsN9CjX5YCTbY2Sj';
