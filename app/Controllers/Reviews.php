@@ -50,7 +50,7 @@ class Reviews extends Controller{
       $game_name = $this->request->getVar('game_name');
       $return = $this->request->getVar('return');
       require(ROOTPATH.'twitter.php');
-      $statusmessage = "New Review Added to DB! for ".$game_name." by user ".session('user_name')." https://stdb.games/game/".$return;
+      $statusmessage = "New Review Added to DB! for ".$game_name." by user ".session('username')." https://stdb.games/game/".$return;
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);
       $reviewmodel->AddReviewDb($data);
