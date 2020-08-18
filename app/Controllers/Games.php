@@ -1,7 +1,6 @@
 <?php
   namespace App\Controllers;
   use App\Models\GamesModel;
-  use App\Models\CommunicationsModel;
   use Abraham\TwitterOAuth\TwitterOAuth;
   use CodeIgniter\Controller;
   helper(['text']);
