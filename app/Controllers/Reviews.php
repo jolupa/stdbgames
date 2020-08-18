@@ -52,8 +52,8 @@ class Reviews extends Controller{
       $statusmessage = "New Review Added to DB! for ".$game_name." by user ".session('user_name')." https://stdb.games/game/".$return;
       $consumerkey = 'A1x814nXz6FhvUawg2eUt8stY';
       $consumersecret = 'EDfTKliLILSFmM1JEqEVuKOnezd8mO1cRNEhGrui9FCbVoff8Y';
-      $token = '1219734996950319104-dbFL3gprlDageRxsN9CjX5YCTbY2Sj';
-      $tokensecret = 'fS7FLOyU6Ubor5PwrGfjZBUCexqIRshwFvaTeuYJB5dmv';
+      $token = '1219734996950319104-XjhsBYTUlw8F9eSWsN8PgI0RcwqXo1';
+      $tokensecret = 'lvhjzVNhd5SWAv1buOWrHyuaamnA2Vw4aQe3EGVZr9Qw9';
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);
       $reviewmodel->AddReviewDb($data);
