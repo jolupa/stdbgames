@@ -42,11 +42,8 @@ class Doodles extends Controller{
       unlink(WRITEPATH.'uploads/'.$image);
       $data['image'] = $image;
     }
+    require(ROOTPATH.'twitter.php');
     $statusmessage = "New Doodle added to DB! https://stdb.games/doodles";
-    $consumerkey = 'A1x814nXz6FhvUawg2eUt8stY';
-    $consumersecret = 'EDfTKliLILSFmM1JEqEVuKOnezd8mO1cRNEhGrui9FCbVoff8Y';
-    $token = '1219734996950319104-XjhsBYTUlw8F9eSWsN8PgI0RcwqXo1';
-    $tokensecret = 'lvhjzVNhd5SWAv1buOWrHyuaamnA2Vw4aQe3EGVZr9Qw9';
     $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
     $connection->post("statuses/update", ["status" => $statusmessage]);
     $doodlemodel->createDoodleDb($data);

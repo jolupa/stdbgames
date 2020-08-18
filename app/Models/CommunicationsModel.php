@@ -15,7 +15,7 @@ class CommunicationsModel extends Model{
     $builder = $db->table('config')
                   ->select('pass')
                   ->where('service', $service);
-    return $builder->get()->getResultArray();
+    return $builder->get()->getResult();
   }
 }
 

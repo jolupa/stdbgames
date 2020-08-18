@@ -105,11 +105,8 @@
                         ->save(ROOTPATH.'public/images/'.$newname.'-thumb.jpeg');
           unlink(WRITEPATH.'uploads/'.$newname);
         }
+        require(ROOTPATH.'twitter.php');
         $statusmessage = "New game Added to DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
-        $consumerkey = 'A1x814nXz6FhvUawg2eUt8stY';
-        $consumersecret = 'EDfTKliLILSFmM1JEqEVuKOnezd8mO1cRNEhGrui9FCbVoff8Y';
-        $token = '1219734996950319104-XjhsBYTUlw8F9eSWsN8PgI0RcwqXo1';
-        $tokensecret = 'lvhjzVNhd5SWAv1buOWrHyuaamnA2Vw4aQe3EGVZr9Qw9';
         $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
         $connection->post("statuses/update", ["status" => $statusmessage]);
         $gamemodel->createGameDb($data);
@@ -175,11 +172,8 @@
       } else {
         $data['image'] = $this->request->getVar('oldimage');
       }
+      require(ROOTPATH.'twitter.php');
       $statusmessage = "Game Updated ".$data['name']." https://stdb.games/game/".$data['slug'];
-      $consumerkey = 'A1x814nXz6FhvUawg2eUt8stY';
-      $consumersecret = 'EDfTKliLILSFmM1JEqEVuKOnezd8mO1cRNEhGrui9FCbVoff8Y';
-      $token = '1219734996950319104-XjhsBYTUlw8F9eSWsN8PgI0RcwqXo1';
-      $tokensecret = 'lvhjzVNhd5SWAv1buOWrHyuaamnA2Vw4aQe3EGVZr9Qw9';
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);
       $gamemodel->updateGameDb($data);

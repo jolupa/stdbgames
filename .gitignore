@@ -135,5 +135,8 @@ app/Config/App.php
 #Public
 public/*
 
+#SomeConfig
+twitter.php
+
 #Others
 spark
