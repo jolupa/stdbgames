@@ -5,6 +5,7 @@
     <form method="post" action="<?= base_url() ?>/reviews/addreview">
       <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
       <input type="hidden" name="user_id" value="<?= session('user_id') ?>">
+      <input type="hidden" name="game_name" value="<?= $game['name'] ?>"> 
       <input type="hidden" name="return" value="<?= $game['slug'] ?>">
       <div class="field">
         <div class="control is-expanded">

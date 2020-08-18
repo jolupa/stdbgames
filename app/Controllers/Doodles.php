@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\DoodlesModel;
+use Abraham\TwitterOAuth\TwitterOAuth;
 use CodeIgniter\Controller;
 
 class Doodles extends Controller{
@@ -41,6 +42,13 @@ class Doodles extends Controller{
       unlink(WRITEPATH.'uploads/'.$image);
       $data['image'] = $image;
     }
+    $statusmessage = "New Doodle added to DB! https://stdb.games/doodles";
+    $consumerkey = 'A1x814nXz6FhvUawg2eUt8stY';
+    $consumersecret = 'EDfTKliLILSFmM1JEqEVuKOnezd8mO1cRNEhGrui9FCbVoff8Y';
+    $token = '1219734996950319104-dbFL3gprlDageRxsN9CjX5YCTbY2Sj';
+    $tokensecret = 'fS7FLOyU6Ubor5PwrGfjZBUCexqIRshwFvaTeuYJB5dmv';
+    $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
+    $connection->post("statuses/update", ["status" => $statusmessage]);
     $doodlemodel->createDoodleDb($data);
     return redirect()->to('/doodles');
   }
