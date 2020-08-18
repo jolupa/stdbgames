@@ -53,6 +53,10 @@ class ComposerStaticInit9e721b99b3b32e3bb9cb0095910ea6bc
         array (
             'CodeIgniter\\' => 12,
         ),
+        'A' => 
+        array (
+            'Abraham\\TwitterOAuth\\' => 21,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -105,6 +109,10 @@ class ComposerStaticInit9e721b99b3b32e3bb9cb0095910ea6bc
         'CodeIgniter\\' => 
         array (
             0 => __DIR__ . '/..' . '/codeigniter4/framework/system',
+        ),
+        'Abraham\\TwitterOAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/abraham/twitteroauth/src',
         ),
     );
 
