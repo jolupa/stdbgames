@@ -173,7 +173,7 @@
         $data['image'] = $this->request->getVar('oldimage');
       }
       require(ROOTPATH.'twitter.php');
-      $statusmessage = "Game Updated ".$data['name']." https://stdb.games/game/".$data['slug'];
+      $statusmessage = "Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);
       $gamemodel->updateGameDb($data);
