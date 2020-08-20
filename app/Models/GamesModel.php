@@ -15,6 +15,12 @@
                     ->where('name', $name);
       return $builder->get()->getRowArray();
     }
+    public function getGameById($id){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->where('id', $id);
+      return $builder->get()->getRowArray();
+    }
     public function gameOverview($slug){
       $db = \Config\Database::connect();
       $builder = $db->table('games')
@@ -236,6 +242,12 @@
                               name')
                     ->orderBy('name', 'ASC');
       return $builder->get()->getResultArray();
+    }
+    public function deleteGame($id){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->where('id', $id);
+      return $builder->delete();
     }
   }
 ?>

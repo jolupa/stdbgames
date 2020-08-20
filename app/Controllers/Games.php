@@ -189,6 +189,14 @@
       $data['game'] = $gamemodel->getAllGames();
       return view('games/gameselection', $data);
     }
+    public function deletegame($id){
+      $gamemodel = new GamesModel();
+      $data[] = $gamemodel->getGameById($id);
+      unlink(ROOTPATH.'public/images/'.$data[0]['image'].'.jpeg');
+      unlink(ROOTPATH.'public/images/'.$data[0]['image'].'-thumb.jpeg');
+      $gamemodel->deleteGame($id);
+      return redirect()->to('/games');
+    }
   }
 
 ?>

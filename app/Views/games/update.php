@@ -15,6 +15,11 @@
   </div>
   <div class="columns mb-2">
     <div class="column">
+      <a href="<?= base_url() ?>/games/deletegame/<?= $game['id'] ?>"><button class="button is-danger is-small has-text-white">Delete Game!</button></a>
+    </div>
+  </div>
+  <div class="columns mb-2">
+    <div class="column">
       <form method="post" action="<?= base_url() ?>/games/updategamedb" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $game['id'] ?>">
         <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
