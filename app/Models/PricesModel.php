@@ -27,9 +27,9 @@ class PricesModel extends Model{
   public function getPricesFrontPage(){
     $db = \Config\Database::connect();
     $builder = $db->table('prices')
-                  ->select('DISTINCT(game_id),
-                            prices.price AS price,
+                  ->select('prices.price AS price,
                             prices.date_till AS date_till,
+                            prices.discount_type AS discount_type,
                             games.name AS game_name,
                             games.image AS game_image,
                             games.slug AS game_url,')
