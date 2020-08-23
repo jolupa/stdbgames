@@ -15,7 +15,7 @@
             <p><?= $review['user_name'] ?>&nbsp;<?php if($review['user_role'] == 2): ?><span class="has-background-danger has-text-white subtitle is-7 px-1">MEDIA MEMBER</span><?php endif; ?></p>
             <p class="title is-7">
               <?php if(!empty($review['about'])): ?>
-                Reviewed <a href="<?= base_url() ?>/game/<?= $review['game_slug'] ?>#Review<?= $review['id'] ?>"><?= $review['game_name'] ?></a>
+                Reviewed <a href="<?= base_url() ?>/game/<?= $review['game_slug'] ?>#Review<?= $review['id'] ?>"><?= character_limiter($review['game_name'], 15, '...') ?></a>
               <?php elseif(!empty($review['score'])): ?>
                 Voted <a href="<?= base_url() ?>/game/<?= $review['game_slug'] ?>#Review<?= $review['id'] ?>"><?= $review['game_name'] ?></a>
               <?php endif; ?>

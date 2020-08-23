@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use App\Models\PricesModel;
 use CodeIgniter\Controller;
+helper(['text']);
 
 class Prices extends Controller{
   public function gamepricehistory($id){
@@ -26,6 +27,11 @@ class Prices extends Controller{
     $slug = $this->request->getVar('slug');
     $pricemodel->createPriceDb($data);
     return redirect()->to('/game/'.$slug);
+  }
+  public function pricesfrontpage(){
+    $pricemodel = new PricesModel();
+    $data['prices'] = $pricemodel->getPricesFrontPage();
+    return view('prices/pricesfrontpage', $data);
   }
 }
 ?>

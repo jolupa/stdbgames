@@ -150,10 +150,13 @@
   </div>
 </div>
 <div class="columns my-2 has-background-light">
-  <div class="column is-half">
+  <div class="column">
+    <?= view_cell('App\Controllers\Reviews::chart') ?>
+  </div>
+  <div class="column">
     <?= view_cell('App\Controllers\Reviews::latestreviews') ?>
   </div>
-  <div class="column is-half">
-    <?= view_cell('App\Controllers\Reviews::chart') ?>
+  <div class="column">
+    <?= view_cell('App\Controllers\Prices::pricesfrontpage') ?>
   </div>
 </div>
