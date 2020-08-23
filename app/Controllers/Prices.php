@@ -25,6 +25,10 @@ class Prices extends Controller{
     $data['date_till'] = $this->request->getVar('date_till');
     $data['discount_type'] = $this->request->getVar('discount_type');
     $slug = $this->request->getVar('slug');
+    require(ROOTPATH.'twitter.php');
+    $statusmessage = "New Deal! https://stdb.games/game/".$slug;
+    $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
+    $connection->post("statuses/update", ["status" => $statusmessage]);
     $pricemodel->createPriceDb($data);
     return redirect()->to('/game/'.$slug);
   }
