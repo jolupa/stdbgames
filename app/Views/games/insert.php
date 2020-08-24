@@ -16,6 +16,11 @@
   <div class="columns">
     <div class="column">
       <form method="post" action="<?= base_url() ?>/games/creategamedb" enctype="multipart/form-data">
+        <div class="field">
+          <div class="control">
+            <label class="checkbox"><input type="checkbox" value="1" name="rumor">&nbsp;It's a Rumor?</label>
+          </div>
+        </div>
         <div class="field is-grouped is-grouped-multiline">
           <div class="control is-expanded">
             <input type="input" class="input" name="name" placeholder="Game's name">

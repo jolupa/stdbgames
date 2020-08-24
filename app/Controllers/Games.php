@@ -84,6 +84,11 @@
         $data['developer_id'] = $this->request->getVar('developer_id');
         $data['publisher_id'] = $this->request->getVar('publisher_id');
         $data['about'] = $this->request->getVar('about');
+        if($this->request->getVar('rumor') !== null){
+          $data['rumor'] = 1;
+        } else {
+          $data['rumor'] = 0;
+        }
         $data['created_at'] = date('Y-m-d H:m:s');
         if($_FILES['image']['error'] !== 4){
           if(is_dir(ROOTPATH.'/public/images') == FALSE){
@@ -106,7 +111,11 @@
           unlink(WRITEPATH.'uploads/'.$newname);
         }
         require(ROOTPATH.'twitter.php');
-        $statusmessage = "New game Added to DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+        if($data['rumor'] == 1){
+          $statusmessage = "RUMOR!! Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+        } else {
+          $statusmessage = "Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+        }
         $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
         $connection->post("statuses/update", ["status" => $statusmessage]);
         $gamemodel->createGameDb($data);
@@ -146,6 +155,11 @@
       $data['developer_id'] = $this->request->getVar('developer_id');
       $data['publisher_id'] = $this->request->getVar('publisher_id');
       $data['about'] = $this->request->getVar('about');
+      if($this->request->getVar('rumor') !== null){
+        $data['rumor'] = 1;
+      } else {
+        $data['rumor'] = 0;
+      }
       $data['updated_at'] = date('Y-m-d H:m:s');
       if($_FILES['image']['error'] !== 4){
         if(file_exists(ROOTPATH.'public/images/'.$this->request->getVar('oldimage').'.jpeg') == TRUE){
@@ -173,7 +187,11 @@
         $data['image'] = $this->request->getVar('oldimage');
       }
       require(ROOTPATH.'twitter.php');
-      $statusmessage = "Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+      if($data['rumor'] == 1){
+        $statusmessage = "RUMOR!! Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+      } else {
+        $statusmessage = "Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+      }
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);
       $gamemodel->updateGameDb($data);

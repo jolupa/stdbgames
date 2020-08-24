@@ -1,8 +1,10 @@
 <div class="columns mt-2">
   <div class="column is-12">
-    <figure class="image is-16x9">
-      <img src="<?= base_url() ?>/images/<?= $game['image'] ?>.jpeg">
-    </figure>
+    <div>
+      <figure class="image is-16x9">
+        <img src="<?= base_url() ?>/images/<?= $game['image'] ?>.jpeg">
+      </figure>
+    </div>
   </div>
 </div>
 <div class="columns">
@@ -12,7 +14,7 @@
         <div>
           <p>Name</p>
           <p>
-            <strong><?= $game['name'] ?></strong>
+            <?php if($game['rumor'] == 1): ?><span class="icon"><i class="fas fa-exclamation-triangle has-text-danger" title="RUMOR!"></i></span>&nbsp;<?php endif; ?><strong><?= $game['name'] ?></strong>
             <?php if(session('logged') == true && session('role') == 1): ?>
               &nbsp;<span class="icon"><a href="<?= base_url() ?>/update/game/<?= $game['slug'] ?>"><i class="fas fa-edit"></i></a></span>
             <?php endif; ?>

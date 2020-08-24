@@ -41,6 +41,7 @@
                               games.stadia_exclusive,
                               games.early_access,
                               games.updated_at,
+                              games.rumor,
                               developers.name AS developer_name,
                               developers.slug AS developer_slug,
                               publishers.name AS publisher_name,
@@ -73,6 +74,7 @@
                               games.slug,
                               games.image,
                               games.release,
+                              games.rumor,
                               developers.name AS developer_name,
                               publishers.name AS publisher_name')
                     ->join('developers', 'developers.id = games.developer_id')
@@ -88,6 +90,7 @@
                               games.slug,
                               games.image,
                               games.release,
+                              games.rumor,
                               games.created_at,
                               developers.name AS developer_name,
                               publishers.name AS publisher_name')
@@ -103,6 +106,7 @@
                               games.slug,
                               games.image,
                               games.release,
+                              games.rumor,
                               games.updated_at,
                               developers.name AS developer_name,
                               publishers.name AS publisher_name')

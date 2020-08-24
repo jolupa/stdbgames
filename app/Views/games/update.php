@@ -24,6 +24,11 @@
         <input type="hidden" name="id" value="<?= $game['id'] ?>">
         <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
         <input type="hidden" name="oldimage" value="<?= $game['image'] ?>">
+        <div class="field">
+          <div class="control">
+            <label class="checkbox"><input type="checkbox" <?php if($game['rumor'] == 1): ?>checked<?php endif; ?> value="1" name="rumor">&nbsp;It's a Rumor?</label>
+          </div>
+        </div>
         <div class="field is-grouped is-grouped-multiline">
           <div class="control is-expanded">
             <input type="input" class="input" name="name" placeholder="Game's name" value="<?= $game['name'] ?>">
