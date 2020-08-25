@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\PricesModel;
+use Abraham\TwitterOAuth\TwitterOAuth;
 use CodeIgniter\Controller;
 helper(['text']);
 
