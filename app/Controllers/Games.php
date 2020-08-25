@@ -112,9 +112,9 @@
         }
         require(ROOTPATH.'twitter.php');
         if($data['rumor'] == 1){
-          $statusmessage = "RUMOR!! Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+          $statusmessage = "RUMOR!! Game Added to DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
         } else {
-          $statusmessage = "Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+          $statusmessage = "Game Added to DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
         }
         $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
         $connection->post("statuses/update", ["status" => $statusmessage]);

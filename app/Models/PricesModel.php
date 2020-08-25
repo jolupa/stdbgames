@@ -36,6 +36,7 @@ class PricesModel extends Model{
                   ->where('prices.date_till !=', '')
                   ->where('prices.date_till >=', date('Y-m-d'))
                   ->join('games', 'games.id = prices.game_id')
+                  ->groupBy('prices.game_id')
                   ->orderBy('prices.date_till', 'DESC');
     return $builder->get(5)->getResultArray();
   }

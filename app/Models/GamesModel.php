@@ -138,6 +138,7 @@
                                 games.slug,
                                 games.image,
                                 games.release,
+                                games.rumor,
                                 developers.name AS developer_name,
                                 publishers.name AS publisher_name')
                       ->join('developers', 'developers.id = games.developer_id')
