@@ -9,7 +9,7 @@
       <div class="column is-12">
         <div class="media">
           <figure class="media-left">
-            <img class="image is-64x64" src="<?= base_url() ?>/images/<?= $review['game_image'] ?>-thumb.jpeg">
+            <img class="image is-64x64" src="<?= base_url() ?>/images/<?= $review['game_image'] ?>-thumb.jpeg" alt="<?= $review['game_name'] ?>" title="<?= $review['game_name'] ?>">
           </figure>
           <div class="media-content">
             <p><?= $review['user_name'] ?>&nbsp;<?php if($review['user_role'] == 2): ?><span class="has-background-danger has-text-white subtitle is-7 px-1">MEDIA MEMBER</span><?php endif; ?></p>

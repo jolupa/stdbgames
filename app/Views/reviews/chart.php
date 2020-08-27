@@ -9,7 +9,7 @@
     <div class="column is-12">
       <div class="media">
         <figure class="media-left">
-            <img class="image is-64x64" src="<?= base_url() ?>/images/<?= $chart['game_image'] ?>-thumb.jpeg">
+            <img class="image is-64x64" src="<?= base_url() ?>/images/<?= $chart['game_image'] ?>-thumb.jpeg" title="<?= $chart['game_name'] ?>" alt="<?= $chart['game_name'] ?>">
         </figure>
         <div class="media-content">
           <p><a href="<?= base_url() ?>/game/<?= $chart['game_slug'] ?>"><?= character_limiter($chart['game_name'], 15, '...') ?></a></p>

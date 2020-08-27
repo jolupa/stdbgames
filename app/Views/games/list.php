@@ -42,7 +42,7 @@
       <div class="media">
         <figure class="media-left">
           <p class="image is-64x64">
-            <img title="<?= $list['name'] ?>" src="<?= base_url() ?>/images/<?= $list['image'] ?>-thumb.jpeg">
+            <img title="<?= $list['name'] ?>" src="<?= base_url() ?>/images/<?= $list['image'] ?>-thumb.jpeg" alt="<?= $list['name'] ?>">
           </p>
         </figure>
         <div class="media-content">

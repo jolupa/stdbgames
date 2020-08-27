@@ -10,7 +10,7 @@
       <div class="media">
         <figure class="media-left">
           <p class="image is-64x64">
-            <img title="<?= $pro['name'] ?>" src="<?= base_url() ?>/images/<?= $pro['image'] ?>-thumb.jpeg">
+            <img title="<?= $pro['name'] ?>" src="<?= base_url() ?>/images/<?= $pro['image'] ?>-thumb.jpeg" alt="<?= $pro['name'] ?>">
           </p>
         </figure>
         <div class="media-content">
@@ -37,7 +37,7 @@
           <div class="media">
             <figure class="media-left">
               <p class="image is-64x64">
-                <img title="<?= $month['name'] ?>" src="<?= base_url() ?>/images/<?= $month['image'] ?>-thumb.jpeg">
+                <img title="<?= $month['name'] ?>" src="<?= base_url() ?>/images/<?= $month['image'] ?>-thumb.jpeg" alt="<?= $month['name'] ?>">
               </p>
             </figure>
             <div class="media-content">
@@ -70,7 +70,7 @@
           <div class="media">
             <figure class="media-left">
               <p class="image is-64x64">
-                <img title="<?= $soon['name'] ?>" src="<?= base_url() ?>/images/<?= $soon['image'] ?>-thumb.jpeg">
+                <img title="<?= $soon['name'] ?>" src="<?= base_url() ?>/images/<?= $soon['image'] ?>-thumb.jpeg" alt="<?= $soon['name'] ?>">
               </p>
             </figure>
             <div class="media-content">
@@ -110,7 +110,7 @@
           <div class="media">
             <figure class="media-left">
               <p class="image is-64x64">
-                <img title="<?= $last['name'] ?>" src="<?= base_url() ?>/images/<?= $last['image'] ?>-thumb.jpeg">
+                <img title="<?= $last['name'] ?>" src="<?= base_url() ?>/images/<?= $last['image'] ?>-thumb.jpeg" alt="<?= $last['name'] ?>">
               </p>
             </figure>
             <div class="media-content">
@@ -134,7 +134,7 @@
           <div class="media">
             <figure class="media-left">
               <p class="image is-64x64">
-                <img title="<?= $lastupdated['name'] ?>" src="<?= base_url() ?>/images/<?= $lastupdated['image'] ?>-thumb.jpeg">
+                <img title="<?= $lastupdated['name'] ?>" src="<?= base_url() ?>/images/<?= $lastupdated['image'] ?>-thumb.jpeg" alt="<?= $lastupdated['name'] ?>">
               </p>
             </figure>
             <div class="media-content">

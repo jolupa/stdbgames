@@ -2,7 +2,7 @@
   <div class="column is-12">
     <div>
       <figure class="image is-16x9">
-        <img src="<?= base_url() ?>/images/<?= $game['image'] ?>.jpeg">
+        <img src="<?= base_url() ?>/images/<?= $game['image'] ?>.jpeg" title="<?= $game['name'] ?>" alt="<?= $game['name'] ?>">
       </figure>
     </div>
   </div>

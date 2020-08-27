@@ -36,28 +36,6 @@
       </div>
     </form>
     <hr>
-  <?php else: ?>
-    <div class="media">
-      <figure class="media-left">
-        <p class="image is-96x96">
-          <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$review_user['user_image'].'.jpeg') == TRUE): ?>
-            <img src="<?= base_url() ?>/images/avatar/<?= $review_user['user_image'] ?>.jpeg">
-          <?php else: ?>
-            <img src="<?= base_url() ?>/images/avatar/avatar01.jpeg">
-          <?php endif; ?>
-        </p>
-      </figure>
-      <div class="media-content">
-        <p><a id="Review<?= $review_user['id'] ?>">#</a>Review by <strong><?= $review_user['user_name'] ?></strong>&nbsp;writted at <?= $review_user['date'] ?>&nbsp; and voted with <strong><?= $review_user['score'] ?></strong></p>
-        <?php if(isset($review_user['about'])): ?>
-          <?= $review_user['about'] ?>
-        <?php endif; ?>
-        <?php if($review_user['url']): ?>
-          <p>Read full review <a href="<?= $review_user['url'] ?>" target="_blank">HERE</a></p>
-        <?php endif; ?>
-      </div>
-    </div>
-    <hr>
   <?php endif; ?>
 <?php endif; ?>
 <?php if($review == FALSE): ?>
@@ -70,9 +48,9 @@
       <figure class="media-left">
         <p class="image is-96x96">
           <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$review['user_image'].'.jpeg') == TRUE): ?>
-            <img src="<?= base_url() ?>/images/avatar/<?= $review['user_image'] ?>.jpeg">
+            <img src="<?= base_url() ?>/images/avatar/<?= $review['user_image'] ?>.jpeg" alt="<?= $review['user_name'] ?>" title="<?= $review['user_name'] ?>">
           <?php else: ?>
-            <img src="<?= base_url() ?>/images/avatar/avatar01.jpeg">
+            <img src="<?= base_url() ?>/images/avatar/avatar01.jpeg" title="Generic Avatar" alt="Generic Avatar">
           <?php endif; ?>
         </p>
       </figure>
