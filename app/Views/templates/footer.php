@@ -2,11 +2,19 @@
 </div>
 <div class="section">
   <div class="footer">
-    <div class="content has-text-centered">
-      <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> In Barcelona <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span>&nbsp;<?= date('Y') ?> <strong>jolupa</strong><br>
-      Stadia and the Stadia Logo are <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span> & <span class="icon has-text-dark"><i class="fas fa-trademark"></i></span> of Google Inc.<br>
-      All Games Names, Images, and Logos are property of their respective owners<br>
-      <a href="https://twitter.com/DbStadia" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span></a> <a href="https://github.com/jolupa/stdbgames" target="_blank"><span class="icon"><i class="fab fa-github"></i></span></a> <span class="icon"><i class="fab fa-patreon"></i></span></p>
+    <div class="columns is-centered">
+      <div class="column is-8 is-multiline">
+        <div class="content has-text-centered">
+          <p><strong>Our Stadia Friends:</strong></p>
+          <p><a href="https://www.cloudgamingxtreme.com" alt="Cloud Gaming Xtreme" title="Cloud Gaming Xtreme"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/xcloudxtreme.jpeg" alt="Cloud Gaming Xtreme" title="Cloud Gaming Xtreme"></a></p>
+        </div>
+        <div class="content has-text-centered">
+          <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> In Barcelona <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span>&nbsp;<?= date('Y') ?> <strong>jolupa</strong><br>
+          Stadia and the Stadia Logo are <span class="icon has-text-dark"><i class="fas fa-copyright"></i></span> & <span class="icon has-text-dark"><i class="fas fa-trademark"></i></span> of Google Inc.<br>
+          All Games Names, Images, and Logos are property of their respective owners<br>
+          <a href="https://twitter.com/DbStadia" target="_blank"><span class="icon"><i class="fab fa-twitter"></i></span></a> <a href="https://github.com/jolupa/stdbgames" target="_blank"><span class="icon"><i class="fab fa-github"></i></span></a> <span class="icon"><i class="fab fa-patreon"></i></span></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
