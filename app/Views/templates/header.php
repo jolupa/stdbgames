@@ -93,11 +93,11 @@
             <div class="navbar-item">
               <div class="buttons">
                 <?php if(session('logged') == true): ?>
-                  <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
-                  <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/logout">Log Out</a>
+                  <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
+                  <a class="button is-light has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/logout">Log Out</a>
                 <?php else: ?>
-                  <a class="button is-primary has-text-dark is-small" href="<?= base_url() ?>/signup">Sign Up</a>
-                  <a class="button is-light has-text-dark is-small" href="<?= base_url() ?>/login">Log In</a>
+                  <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/signup">Sign Up</a>
+                  <a class="button is-light has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/login">Log In</a>
                 <?php endif; ?>
               </div>
             </div>
