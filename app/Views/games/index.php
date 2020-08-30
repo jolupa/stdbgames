@@ -51,7 +51,7 @@
     </div>
     <div class="columns is-centered">
       <div class="column has-text-centered">
-        <a href="<?= base_url() ?>/list/launched"><button class="button is-warning is-small">See All Games Launched!</button></a>
+        <a class="button is-warning is-small" href="<?= base_url() ?>/list/launched">See All Games Launched!</a>
       </div>
     </div>
   </div>
@@ -89,7 +89,7 @@
     </div>
     <div class="columns is-centered">
       <div class="column has-text-centered">
-        <a href="<?= base_url() ?>/list/soon"><button class="button is-warning is-small">See All Games Coming!</button></a>
+        <a class="button is-warning is-small" href="<?= base_url() ?>/list/soon">See All Games Coming!</a>
       </div>
     </div>
   </div>
