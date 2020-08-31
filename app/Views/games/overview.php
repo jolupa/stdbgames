@@ -93,13 +93,13 @@
   <div class="column is-10">
     <p>
       <?php if($game['first_on_stadia'] == 1): ?>
-        <a href="<?= base_url() ?>/list/firstonstadia"><button class="button is-primary has-text-dark is-small">First On Stadia</button></a>&nbsp;
+        <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a>&nbsp;
       <?php endif; ?>
       <?php if($game['stadia_exclusive'] == 1): ?>
-        <a href="<?= base_url() ?>/list/stadiaexclusive"><button class="button is-primary has-text-dark is-small">Stadia Exclusive</button></a>&nbsp;
+        <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/list/stadiaexclusive">Stadia Exclusive</a>&nbsp;
       <?php endif; ?>
       <?php if($game['early_access'] == 1): ?>
-        <a href="<?= base_url() ?>/list/earlyaccess"><button class="button is-primary has-text-dark is-small">Early Access Game</button></a>&nbsp;
+        <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/list/earlyaccess">Early Access Game</a>&nbsp;
       <?php endif; ?>
     </p>
   </div>
