@@ -11,7 +11,7 @@
             <a  class="is-inline-block" href="https://twitter.com/scarlet_stream" alt="Scarlet Stream" title="Scarlet Stream" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/scarletlogo.jpeg" alt="Scarlet Stream" title="Scarlet Stream"></a>&nbsp;
             <a  class="is-inline-block" href="https://twitter.com/teamstadiaplay" alt="Team Stadia Play" title="Team Stadia Play" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/teamstadialogo.jpeg" alt="Team Stadia Play" title="Team Stadia Play"></a>&nbsp;
             <a  class="is-inline-block" href="https://twitter.com/deolhonostadia" alt="De olho no Stadia" title="De olho no Stadia" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/deolhostadialogo.jpeg" alt="De olho no Stadia" title="De olho no Stadia"></a>&nbsp;
-            <a  class="is-inline-block" href="https://www.youtube.com/channel/UCvx7nDcdRYMuwbqcYscoDAg" alt="Dr. Spaceman" title="Dr. Spaceman" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/avatar/avatar01.jpeg" alt="Dr. Spaceman" title="Dr. Spaceman"></a>
+            <a  class="is-inline-block" href="https://www.youtube.com/channel/UCvx7nDcdRYMuwbqcYscoDAg" alt="Dr. Spaceman" title="Dr. Spaceman" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/drspaceman.jpeg" alt="Dr. Spaceman" title="Dr. Spaceman"></a>
           </p>
         </div>
         <div class="content has-text-centered">
