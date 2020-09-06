@@ -94,7 +94,6 @@
     </div>
   </div>
 </div>
-
 <?= view_cell('App\Controllers\Interviews::interviewlist') ?>
 <div class="columns mt-2">
   <div class="column">

@@ -2,9 +2,6 @@
   <div class="column is-8">
     <form action="<?= base_url() ?>/search/result" method="post">
       <div class="field has-addons">
-        <div class="control">
-          <button class="button is-static is-small">Games</button>
-        </div>
         <div class="control is-expanded">
           <input class="input is-small" name="keyword" type="text">
         </div>

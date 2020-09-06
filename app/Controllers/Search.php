@@ -9,13 +9,22 @@ class Search extends Controller{
   public function result(){
     $searchmodel = new SearchModel();
     $keyword = $this->request->getVar('keyword');
-    if($searchmodel->searchResult($keyword) == TRUE){
-      $data['keyword'] = $keyword;
-      $data['search'] = $searchmodel->searchResult($keyword);
+    if(is_array($searchmodel->searchGames($keyword))){
+      $data['searchgames'] = $searchmodel->searchGames($keyword);
     } else {
-      $data['keyword'] = $keyword;
-      $data['search'] = FALSE;
+      $data['searchgames'] = false;
     }
+    if(is_array($searchmodel->searchDevelopers($keyword))){
+      $data['searchdevelopers'] = $searchmodel->searchDevelopers($keyword);
+    } else {
+      $data['searchdevelopers'] = false;
+    }
+    if(is_array($searchmodel->searchPublishers($keyword))){
+      $data['searchpublishers'] = $searchmodel->searchPublishers($keyword);
+    } else {
+      $data['searchpublishers'] = false;
+    }
+    $data['keyword'] = $keyword;
     echo view('templates/header');
     echo view('search/searchresult', $data);
     echo view('templates/footer');
