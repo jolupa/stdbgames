@@ -207,6 +207,18 @@
                       ->where('games.pro_from !=', '')
                       ->where('games.pro_from <=', date('Y-m-d'))
                       ->orderBy('games.pro_from', 'ASC');
+      } elseif($type == 'rumors'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.rumor', 1);
       } else {
         $builder = $db->table('games')
                       ->select('games.name,
