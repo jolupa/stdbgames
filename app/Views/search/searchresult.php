@@ -64,7 +64,7 @@
         <div class="column is-3">
           <div class="media">
             <div class="media-content">
-              <p class="title is-5"><a href="<?= base_url() ?>/developer/<?= $searchpublishers['slug'] ?>"><strong><?= character_limiter($searchpublishers['name'], 15, '...') ?></strong></a></p>
+              <p class="title is-5"><a href="<?= base_url() ?>/publisher/<?= $searchpublishers['slug'] ?>"><strong><?= character_limiter($searchpublishers['name'], 15, '...') ?></strong></a></p>
             </div>
           </div>
         </div>
