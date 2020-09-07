@@ -1,3 +1,4 @@
+<?= view_cell('App\Controllers\Search::searchform') ?>
 <div class="columns mt-2">
   <div class="column">
     <p class="subtitle is-5">Search</p>
@@ -10,7 +11,6 @@
       <p>We found nothing for <strong><?= $keyword ?></strong> in your search, but you can try again!</p>
     </div>
   </div>
-  <?= view_cell('App\Controllers\Search::searchform') ?>
 <?php else: ?>
   <?php if($searchgames): ?>
     <div class="columns is-multiline mb-2">
