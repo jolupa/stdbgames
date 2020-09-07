@@ -91,6 +91,9 @@
           <a href="<?= base_url() ?>/about" class="navbar-item">About</a>
           <div class="navbar-end">
             <div class="navbar-item">
+              <?= view_cell('App\Controllers\Search::searchnavbarform') ?>
+            </div>
+            <div class="navbar-item">
               <div class="buttons">
                 <?php if(session('logged') == true): ?>
                   <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>

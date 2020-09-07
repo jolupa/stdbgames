@@ -32,5 +32,8 @@ class Search extends Controller{
   public function searchform(){
     return view('search/form');
   }
+  public function searchnavbarform(){
+    return view('search/navbarsearchform');
+  }
 }
 ?>

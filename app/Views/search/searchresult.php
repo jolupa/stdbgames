@@ -1,4 +1,3 @@
-<?= view_cell('App\Controllers\Search::searchform') ?>
 <div class="columns mt-2">
   <div class="column">
     <p class="subtitle is-5">Search</p>

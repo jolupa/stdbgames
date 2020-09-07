@@ -6,7 +6,7 @@
           <input class="input is-small" name="keyword" type="text">
         </div>
         <div class="control">
-          <button class="button is-primary has-text-dark is-small" name="submit">Search!</button>
+          <button class="button is-link has-text-white is-small" name="submit">Search!</button>
         </div>
       </div>
     </form>
