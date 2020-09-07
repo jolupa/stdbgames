@@ -28,7 +28,7 @@
               </p>
             </figure>
             <div class="media-content">
-              <p class="title is-5"><?php if($list['rumor'] == 1): ?><span class="icon has-text-danger" title="RUMOR!"><i class="fas fa-exclamation-triangle"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $searchgames['slug'] ?>"><strong><?= character_limiter($searchgames['name'], 15, '...') ?></strong></a></p>
+              <p class="title is-5"><?php if($searchgames['rumor'] == 1): ?><span class="icon has-text-danger" title="RUMOR!"><i class="fas fa-exclamation-triangle"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $searchgames['slug'] ?>"><strong><?= character_limiter($searchgames['name'], 15, '...') ?></strong></a></p>
             </div>
           </div>
         </div>
