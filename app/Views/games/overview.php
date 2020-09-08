@@ -69,11 +69,15 @@
 <div class="columns is-centered">
   <div class="column is-10">
     <p>
-      <?php if($game['appid']): ?>
+      <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
         <a class="button has-text-white is-small mt-1 mr-2" style="background-color: #FC4A1F; border: none;" href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go to Stadia Store</a>
       <?php endif; ?>
       <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
-        <a class="button has-text-white is-small mt-1 mr-2 is-borderless" style="background-color: #FC4A1F; border: none;" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
+        <?php if($game['release'] > date('Y-m-d')): ?>
+          <a class="button has-text-white is-small mt-1 mr-2 is-borderless" style="background-color: #FC4A1F; border: none;" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Pre-Order on Stadia</a>
+        <?php else: ?>
+          <a class="button has-text-white is-small mt-1 mr-2 is-borderless" style="background-color: #FC4A1F; border: none;" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
+        <?php endif; ?>
       <?php endif; ?>
       <?php if($game['pro'] == 1 && date('Y-m-d') > $game['pro_from'] && $game['release'] !== 'TBA'): ?>
         <button class="button is-primary has-text-dark is-small mt-1 mr-2">Free for Pro&nbsp;<strong>Now!</strong></button>
