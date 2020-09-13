@@ -40,7 +40,7 @@
   <div class="columns mt-2">
     <div class="column is-fullwidth">
       <p class="subtitle is-5">Your</p>
-      <p class="title is-3">Whishlist</p>
+      <p class="title is-3">Wishlist</p>
     </div>
   </div>
   <?= view_cell('App\Controllers\Wishlists::userwishlist', 'user_id='.$user['id']) ?>
