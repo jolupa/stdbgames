@@ -1,7 +1,7 @@
-<div class="columns mt-2">
-  <div class="column">
-    <p class="subtitle is-5">Publisher</p>
-    <p class="title is-3">
+<div class="container">
+  <section class="section">
+    <p class="tile is-5">Publisher</p>
+    <p class="subtitle is-3">
       <?= $publisher['name'] ?>
     </p>
     <div class="content">
@@ -12,6 +12,6 @@
         <?= $publisher['about'] ?>
       <?php endif; ?>
     </div>
-  </div>
+    <?= view_cell('App\Controllers\Publishers::gamespublishedby', 'publisher_id='.$publisher['id']) ?>
+  </section>
 </div>
-<?= view_cell('App\Controllers\Publishers::gamespublishedby', 'publisher_id='.$publisher['id']) ?>

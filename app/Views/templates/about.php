@@ -1,5 +1,5 @@
-<div class="columns is-centered my-4">
-  <div class="column is-10">
+<div class="container">
+  <section class="section">
     <div class="content">
       <p class="title is-3">What is this!</p>
       <p class="subtitle">This is only a spare time project to retake the PHP coding I left behind for about 25 years or more.<br>
@@ -36,5 +36,5 @@
     	<p>Contact Us</p>
     	<p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.</p>
     </div>
-  </div>
+  </section>
 </div>

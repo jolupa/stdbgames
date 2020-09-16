@@ -1,5 +1,5 @@
 <?php if($game['release'] > date('Y-m-d')): ?>
-  <p><strong>Not Released</strong></p>
+  <span class="subtitle is-6">Score: Not Released</span>
 <?php else: ?>
-  <p><strong><?= round($score['score']) ?></strong></p>
+  <span class="subtitle is-6">Score: <?= round($score['score']) ?></span>
 <?php endif; ?>

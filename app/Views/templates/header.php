@@ -59,11 +59,11 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@DbStadia">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bulma-carousel.min.css">
   <?php if(isset($doodle)): ?>
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lightbox.css">
   <?php endif; ?>
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" integrity="sha384-3Nqiqht3ZZEO8FKj7GR1upiI385J92VwWNLj+FqHxtLYxd9l+WYpeqSOrLh0T12c" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdn.tiny.cloud/1/25k6xs0os5kaxnymng45nlq4065x2mg02j2nrjqy70yfqrk0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <?php if(isset($doodle)): ?>
     <script src="<?= base_url() ?>/assets/js/lightbox.js"></script>
@@ -71,39 +71,67 @@
   <link rel="icon" type="image/png" href="<?= base_url() ?>/assets/stdb_logo_header.png">
 </head>
 <body>
-  <div class="section">
-    <div class="container">
-      <div class="navbar">
-        <div class="navbar-brand">
-          <a title="Stadia GamesDB!" class="navbar-item" href="<?= base_url() ?>">
-            <img src="<?= base_url() ?>/assets/stdb_logo_header.png">
-          </a>
-          <a role="button" class="navbar-burger burger" data-target="navMenu">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-        <div class="navbar-menu" id="navMenu">
-          <a href="<?= base_url() ?>/list" class="navbar-item">Games List</a>
-          <a href="<?= base_url() ?>/doodles" class="navbar-item">Stadia Doodles</a>
-          <?= view_cell('App\Controllers\Stats::gamestats') ?>
-          <a href="<?= base_url() ?>/about" class="navbar-item">About</a>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <?= view_cell('App\Controllers\Search::searchnavbarform') ?>
-            </div>
-            <div class="navbar-item">
-              <div class="buttons">
-                <?php if(session('logged') == true): ?>
-                  <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
-                  <a class="button is-light has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/logout">Log Out</a>
-                <?php else: ?>
-                  <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/signup">Sign Up</a>
-                  <a class="button is-light has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/login">Log In</a>
-                <?php endif; ?>
-              </div>
+  <div class="container">
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <a title="Stadia GamesDB!" class="navbar-item" href="<?= base_url() ?>">
+          <img src="<?= base_url() ?>/assets/stdb_logo_header.png">
+        </a>
+        <a role="button" class="navbar-burger burger" data-target="navMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <div class="navbar-menu" id="navMenu">
+        <a href="<?= base_url() ?>/list" class="navbar-item">Games List</a>
+        <a href="<?= base_url() ?>/doodles" class="navbar-item">Stadia Doodles</a>
+        <?= view_cell('App\Controllers\Stats::gamestats') ?>
+        <a href="<?= base_url() ?>/about" class="navbar-item">About</a>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <?= view_cell('App\Controllers\Search::searchnavbarform') ?>
+          </div>
+          <div class="navbar-item">
+            <div class="buttons">
+              <?php if(session('logged') == true): ?>
+                <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
+                <a class="button is-light has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/logout">Log Out</a>
+              <?php else: ?>
+                <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/signup">Sign Up</a>
+                <a class="button is-light has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/login">Log In</a>
+              <?php endif; ?>
             </div>
           </div>
         </div>
       </div>
+    </nav>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach( el => {
+          el.addEventListener('click', () => {
+
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+
+    });
+  </script>

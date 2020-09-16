@@ -13,9 +13,14 @@
       $data['last'] = $gamemodel->getLastsGames();
       $data['lastupdated'] = $gamemodel->getLastsUpdatedGames();
       $data['month'] = $gamemodel->getMonthRelease();
-      echo view('templates/header');
+      echo view('templates/header', $data);
       echo view('games/index', $data);
       echo view('templates/footer');
+    }
+    public function getmonthrelease(){
+      $gamemodel = new GamesModel();
+      $data['month'] = $gamemodel->getMonthRelease();
+      return view('games/thismonth', $data);
     }
     public function overview($slug, $wrong = false){
       $gamemodel = new GamesModel();

@@ -1,7 +1,6 @@
 <?php
 namespace App\Controllers;
 use App\Models\InterviewsModel;
-use Abraham\TwitterOAuth\TwitterOAuth;
 use CodeIgniter\Controller;
 
 class Interviews extends Controller{
@@ -31,10 +30,10 @@ class Interviews extends Controller{
     $data['body'] = $this->request->getVar('body');
     $data['game_id'] = $this->request->getVar('game_id');
     $slug = $this->request->getVar('slug');
-    require(ROOTPATH.'twitter.php');
-    $statusmessage = "Check our new Small Interview added to DB! https://stdb.games/game/".$slug;
-    $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
-    $connection->post("statuses/update", ["status" => $statusmessage]);
+    //require(ROOTPATH.'twitter.php');
+    //$statusmessage = "Check our new Small Interview added to DB! https://stdb.games/game/".$slug;
+    //$connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
+    //$connection->post("statuses/update", ["status" => $statusmessage]);
     $interviewmodel->createInterviewDb($data);
     return redirect()->to('/game/'.$slug);
   }

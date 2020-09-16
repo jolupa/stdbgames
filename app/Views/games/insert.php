@@ -1,20 +1,11 @@
-<?php if(isset($error)): ?>
-  <div class="columns my-2">
-    <div class="column is-full-width has-text-centered">
-      <div class="content">
+<div class="container">
+  <section class="section">
+    <div class="content">
+      <?php if(isset($error)): ?>
         <p><?= $error ?></p>
-      </div>
-    </div>
-  </div>
-<?php else: ?>
-  <div class="columns">
-    <div class="column">
+      <?php else: ?>
       <p class="subtitle is-5">Insert new</p>
       <p class="title is-3">Game:</p>
-    </div>
-  </div>
-  <div class="columns">
-    <div class="column">
       <form method="post" action="<?= base_url() ?>/games/creategamedb" enctype="multipart/form-data">
         <div class="field">
           <div class="control">
@@ -112,6 +103,6 @@
           <?php endforeach; ?>
         </div>
       <?php endif; ?>
-    </div>
-  </div>
-<?php endif; ?>
+    <?php endif; ?>
+  </section>
+</div>

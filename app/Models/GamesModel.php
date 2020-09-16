@@ -59,7 +59,9 @@
                               games.image,
                               games.release,
                               developers.name AS developer_name,
-                              publishers.name AS publisher_name')
+                              developers.slug AS developer_slug,
+                              publishers.name AS publisher_name,
+                              publishers.slug AS publisher_slug')
                     ->join('developers', 'developers.id = games.developer_id')
                     ->join('publishers', 'publishers.id = games.publisher_id')
                     ->where('games.pro', 1)
@@ -123,7 +125,9 @@
                               games.image,
                               games.release,
                               developers.name AS developer_name,
-                              publishers.name AS publisher_name')
+                              developers.slug AS developer_slug,
+                              publishers.name AS publisher_name,
+                              publishers.slug AS publisher_slug')
                     ->join('developers', 'developers.id = games.developer_id')
                     ->join('publishers', 'publishers.id = games.publisher_id')
                     ->where('strftime("%Y-%m", release)', date('Y-m'))
@@ -254,6 +258,8 @@
       $db = \Config\Database::connect();
       $builder = $db->table('games')
                     ->where('id !=', $id)
+                    ->where('release !=', 'TBA')
+                    ->where('release !=', '2099-01-01')
                     ->where('release', $date)
                     ->orderBy('Name', 'ASC');
       return $builder->get()->getResultArray();

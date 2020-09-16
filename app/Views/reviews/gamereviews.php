@@ -1,5 +1,3 @@
-<p class="subtitle is-5">Game</p>
-<p class="title is-3">Reviews:</p>
 <?php if(session('logged') == TRUE): ?>
   <?php if($review_user == FALSE): ?>
     <form method="post" action="<?= base_url() ?>/reviews/addreview">
