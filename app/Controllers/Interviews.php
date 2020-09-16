@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\InterviewsModel;
+use Abraham\TwitterOAuth\TwitterOAuth;
 use CodeIgniter\Controller;
 
 class Interviews extends Controller{
