@@ -63,7 +63,6 @@
       	});
       }
     </script>
-    <?= view_cell('App\Controllers\Search::searchform'); ?>
     <div class="container has-background-light">
       <section class="section">
         <div class="columns">
