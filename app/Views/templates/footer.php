@@ -57,6 +57,7 @@ alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
 <?php endif; ?>
 
 <?php if(isset($doodle)): ?>
+  <script src="<?= base_url() ?>/assets/js/lightbox.js"></script>
   <script>
     lighbox.option({})
   </script>
