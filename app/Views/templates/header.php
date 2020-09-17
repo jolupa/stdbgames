@@ -42,9 +42,9 @@
     <meta name="keywords" content="<?php foreach($doodle as $doodle): ?><?= $doodle['game_name'] ?>,<?php endforeach; ?>, stadia, stream, gaming, cloud, online">
     <meta property="og:title" content="Stadia Doodles - Stadia GamesDB!">
     <meta property="og:description" content="The promo images for some Games made by Stadia">
-    <meta property="og:image" content="<?= base_url() ?>/images/doodles/<?= $doodle['image'][0] ?>.jpeg">
+    <meta property="og:image" content="<?= base_url() ?>/assets/stdb_logo_big.png">
     <meta property="og:url" content="<?= base_url() ?>/doodles">
-    <meta name="twitter:image_alt" content="<?= $doodle['game_name'][0] ?>">
+    <meta name="twitter:image_alt" content="Stadia Game Doodles">
   <?php else: ?>
     <title>Stadia GamesDB!</title>
     <meta name="description" content="All the Stadia Games in one place!">
