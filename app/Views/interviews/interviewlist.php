@@ -28,8 +28,8 @@
         slidesToShow: 3,
         pagination: false,
         loop: true,
-        breakpoints: [{ changePoint: 480, slidesToShow: 1, slidesToScroll: 1, navigationKeys: false },
-                      { changePoint: 640, slidesToShow: 2, slidesToScroll: 2, navigationKeys: false },
+        breakpoints: [{ changePoint: 480, slidesToShow: 1, slidesToScroll: 1, navigationKeys: false, navigation: false },
+                      { changePoint: 640, slidesToShow: 2, slidesToScroll: 2, navigationKeys: false, navigation: false},
                       { changePoint: 768, slidesToShow: 3, slidesToScroll: 3 }
                     ],
       });
