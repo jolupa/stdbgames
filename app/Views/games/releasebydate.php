@@ -2,7 +2,9 @@
   <div class="content mt-4">
     <p class="title is-5">Also released</p>
     <p class="subtitle is-3">this day:</p>
-    <?php if(date('Y-m-d') <= $game['release']): ?>
+    <?php if($game['release'] === '2099-01-01'): ?>
+      <p class="has-text-centered"><strong><?= $game['name'] ?></strong> Has no Release date yet!</p>
+    <?php elseif(date('Y-m-d') <= $game['release'] && $game['release'] !== '2099-01-01'): ?>
       <p class="has-text-centered"><strong><?= $game['name'] ?></strong> is the only game, at this moment, with this launch date</p>
     <?php else: ?>
       <p class="has-text-centered"><strong><?= $game['name'] ?></strong> is the only game released on this day.</p>
