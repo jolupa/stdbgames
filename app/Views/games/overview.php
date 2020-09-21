@@ -42,10 +42,10 @@
                   <a class="button has-text-white is-small mt-1 mr-2 is-borderless" style="background-color: #FC4A1F; border: none;" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
                 <?php endif; ?>
               <?php endif; ?>
-              <?php if($game['pro'] == 1 && $game['pro_from'] === '2099-01-01'): ?>
+              <?php if($game['pro'] == 1 && $game['release'] === '2099-01-01'): ?>
                 <button class="button is-primary has-text-dark is-small mt-1 mr-2">Will be&nbsp;<strong>Free</strong>&nbsp;on Launch</button>
               <?php endif; ?>
-              <?php if($game['pro'] == 1 && date('Y-m-d') > $game['pro_from'] && $game['release'] !== 'TBA'): ?>
+              <?php if($game['pro'] == 1 && date('Y-m-d') > $game['pro_from'] && $game['release'] !== 'TBA' && $game['release'] !== '2099-01-01'): ?>
                 <button class="button is-primary has-text-dark is-small mt-1 mr-2">Free for Pro&nbsp;<strong>Now!</strong></button>
               <?php endif; ?>
               <?php if($game['pro'] == 0 && date('Y-m-d') <= $game['pro_till']): ?>
