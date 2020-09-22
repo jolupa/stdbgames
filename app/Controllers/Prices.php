@@ -38,5 +38,26 @@ class Prices extends Controller{
     $data['prices'] = $pricemodel->getPricesFrontPage();
     return view('prices/pricesfrontpage', $data);
   }
+  public function updateprice($game_id){
+    $pricemodel = new PricesModel();
+    if($pricemodel->getPricesByGameId($game_id) == TRUE){
+      $data['price'] = $pricemodel->getPricesByGameId($game_id);
+    } else {
+      $data['price'] = FALSE;
+    }
+    return view('prices/pricesupdatelist', $data);
+  }
+  public function updatepricedb(){
+    $pricemodel = new PricesModel();
+    $data['price'] = $this->request->getVar('price');
+    $data['date'] = $this->request->getVar('date');
+    $data['date_till'] = $this->request->getVar('date_till');
+    $data['discount_type'] = $this->request->getVar('discount_type');
+    $data['game_id'] = $this->request->getVar('game_id');
+    $data['id'] = $this->request->getVar('id');
+    $slug = $this->request->getVar('slug');
+    $pricemodel->updatePriceDb($data);
+    return redirect()->to('/game/'.$slug);
+  }
 }
 ?>

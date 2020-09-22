@@ -40,5 +40,16 @@ class PricesModel extends Model{
                   ->orderBy('prices.date_till', 'DESC');
     return $builder->get(5)->getResultArray();
   }
+  public function updatePriceDb($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('prices')
+                  ->where('id', $data['id']);
+    if($builder->update($data) == true){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->where('id', $data['game_id']);
+      return $builder->update(['updated_at'=>date('Y-m-d H:m:s')]);
+    }
+  }
 }
 ?>
