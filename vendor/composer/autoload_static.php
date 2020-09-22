@@ -51,6 +51,7 @@ class ComposerStaticInit9e721b99b3b32e3bb9cb0095910ea6bc
         ),
         'C' => 
         array (
+            'Composer\\CaBundle\\' => 18,
             'CodeIgniter\\' => 12,
         ),
         'A' => 
@@ -105,6 +106,10 @@ class ComposerStaticInit9e721b99b3b32e3bb9cb0095910ea6bc
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Composer\\CaBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
         ),
         'CodeIgniter\\' => 
         array (
