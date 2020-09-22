@@ -32,7 +32,7 @@
           </div>
           <div class="content has-text-centered">
             <p>
-              <?php if(isset($game['appid']) && $game['appid'] !== '' && $game['release'] < date('Y-m-d')): ?>
+              <?php if(isset($game['appid']) && $game['appid'] !== '' && date('Y-m-d') >= $game['release']): ?>
                 <a class="button has-text-white is-small mt-1 mr-2" style="background-color: #FC4A1F; border: none;" href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go to Stadia Store</a>
               <?php endif; ?>
               <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
