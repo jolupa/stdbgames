@@ -63,7 +63,7 @@
                 <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/stadiaexclusive">Stadia Exclusive</a>
               <?php endif; ?>
               <?php if($game['early_access'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mr-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/earlyaccess">Early Access Game</a>
+                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/earlyaccess">Early Access Game</a>
               <?php endif; ?>
             </p>
           </div>
