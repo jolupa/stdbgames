@@ -166,7 +166,7 @@
         $data['rumor'] = 0;
       }
       $data['updated_at'] = date('Y-m-d H:m:s');
-      if($_FILES['image']['error'] !== 4){
+      if($_FILES['image']['error'] !== 4 && $_FILES['image']['error'] === 0){
         if(file_exists(ROOTPATH.'public/images/'.$this->request->getVar('oldimage').'.jpeg') == TRUE){
           unlink(ROOTPATH.'public/images/'.$this->request->getVar('oldimage').'.jpeg');
         }

@@ -15,18 +15,18 @@
           <input type="hidden" name="oldimage" value="<?= $game['image'] ?>">
           <div class="field">
             <div class="control">
-              <label class="checkbox"><input type="checkbox" <?php if($game['rumor'] == 1): ?>checked<?php endif; ?> value="1" name="rumor">&nbsp;It's a Rumor?</label>
+              <label class="checkbox"><input type="checkbox" <?php if($game['rumor'] == 1): ?>value="1"<?php endif; ?> name="rumor">&nbsp;It's a Rumor?</label>
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
-              <input type="input" class="input" name="name" placeholder="Game's name" value="<?= $game['name'] ?>">
+              <input type="input" class="input" name="name" value="<?= $game['name'] ?>">
             </div>
             <div class="control is-expanded">
-              <input type="date" class="input" name="release" placeholder="Release Date: YYYY-MM-DD" value="<?= $game['release'] ?>">
+              <input type="date" class="input" name="release" value="<?= $game['release'] ?>">
             </div>
             <div class="control is-expanded">
-              <input type="text" class="input" name="price" placeholder="Release Price: €€.€€" value="<?= $game['price'] ?>">
+              <input type="text" class="input" name="price" <?php if(isset($game['price'])): ?>value="<?= $game['price'] ?>"<?php else: ?> placeholder="Release Price: €€.€€"<?php endif; ?>>
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
@@ -68,26 +68,26 @@
             </div>
             <div class="control is-expanded">
               <label class="label">Is Pro From date</label>
-              <input type="date" name="pro_from" class="input" placeholder="Is Free From: YYYY-MM-DD" value="<?= $game['pro_from'] ?>">
+              <input type="date" name="pro_from" class="input" <?php if(isset($game['pro_from'])): ?>value="<?=$game['pro_from'] ?>" <?php else: ?>placeholder="Is Free From: YYYY-MM-DD"<?php endif; ?>>
             </div>
             <div class="control is-expanded">
               <label class="label">Is Pro Till date</label>
-              <input type="date" class="input" name="pro_till" placeholder="Is Free Till: YYYY-MM-DD" value="<?= $game['pro_till'] ?>">
+              <input type="date" class="input" name="pro_till" <?php if(isset($game['pro_till'])): ?>value="<?= $game['pro_till'] ?>"<?php else: ?>placeholder="Is Free Till: YYYY-MM-DD"<?php endif; ?>>
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
-              <input type="text" class="input" name="appid" placeholder="Google's Game AppId" value="<?= $game['appid'] ?>">
+              <input type="text" class="input" name="appid" <?php if(isset($game['appid'])): ?>value="<?= $game['appid'] ?>" <?php else: ?>placeholder="Google's Game AppId"<?php endif; ?>>
             </div>
             <div class="control is-expanded">
-              <input type="text" class="input" name="sku" placeholder="Google's Game Sku" value="<?= $game['sku'] ?>">
+              <input type="text" class="input" name="sku" <?php if(isset($game['sku'])): ?>value="<?= $game['sku'] ?>" <?php else: ?>placeholder="Google's Game Sku"<?php endif; ?>>
             </div>
             <?= view_cell('App\Controllers\Developers::alldevs') ?>
             <?= view_cell('App\Controllers\Publishers::allpubs') ?>
           </div>
           <div class="field">
             <div class="control is-expanded">
-              <textarea class="textarea" id="textarea" name="about" placeholder="All About the Game"><?= $game['about'] ?></textarea>
+              <textarea class="textarea" id="textarea" name="about" <?php if(!isset($game['about'])): ?>placeholder="All About the Game"<?php endif; ?>><?php if(isset($game['about'])): ?><?= $game['about'] ?><?php endif; ?></textarea>
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
