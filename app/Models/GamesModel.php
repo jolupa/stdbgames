@@ -58,6 +58,7 @@
                               games.slug,
                               games.image,
                               games.release,
+                              games.pro_till,
                               developers.name AS developer_name,
                               developers.slug AS developer_slug,
                               publishers.name AS publisher_name,

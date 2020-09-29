@@ -23,6 +23,11 @@
                               <a class="tag is-small is-warning has-text-dark" href="<?= base_url() ?>/developer/<?= $pro[$i]['developer_slug'] ?>" title="<?= $pro[$i]['developer_name'] ?>"><?= $pro[$i]['developer_name'] ?></a>
                               <br>
                               <a class="tag is-small is-warning has-text-dark" href="<?= base_url() ?>/publisher/<?= $pro[$i]['publisher_slug'] ?>" title="<?= $pro[$i]['publisher_name'] ?>"><?= $pro[$i]['publisher_name'] ?></a>
+                              <?php if(isset($game['pro_till'])): ?>
+                                <br>
+                                <span class="tag is-small is-danger has-test-white">Claim it before <?= $game['pro_till'] ?></span>
+                              <?php endif; ?>
+                            </p>
                           </div>
                         </div>
                       </div>
