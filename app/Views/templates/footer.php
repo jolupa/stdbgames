@@ -25,20 +25,16 @@
   </body>
 </html>
 
-<!-- Default Statcounter code for Stadia GamesDB! https://stdb.games -->
-<script type="text/javascript">
-var sc_project=12351925;
-var sc_invisible=1;
-var sc_security="24327085";
-var sc_https=1;
+<!-- Default Google Analytics code for Stadia GamesDB! https://stdb.games -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-179938115-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-179938115-1');
 </script>
-<script type="text/javascript"
-src="https://www.statcounter.com/counter/counter.js" async></script>
-<noscript><div class="statcounter"><a title="Web Analytics Made Easy -
-StatCounter" href="https://statcounter.com/" target="_blank"><img
-class="statcounter" src="https://c.statcounter.com/12351925/0/24327085/1/"
-alt="Web Analytics Made Easy - StatCounter"></a></div></noscript>
-<!-- End of Statcounter Code -->
+<!-- End of Google Analytics Code -->
 
 <?php if(isset($editor)): ?>
   <script>
