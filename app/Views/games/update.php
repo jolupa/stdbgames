@@ -104,8 +104,6 @@
         </form>
       </div>
       <?= view_cell('App\Controllers\Interviews::interviewform', 'game_id='.$game['id']) ?>
-      <?= view_cell('App\Controllers\Addons::insertform') ?>
-      <?= view_cell('App\Controllers\Addons::updateaddon', 'game_id='.$game['id']) ?>
       <?= view_cell('App\Controllers\Prices::addpriceform') ?>
       <?= view_cell('App\Controllers\Prices::updateprice', 'game_id='.$game['id']) ?>
     <?php endif; ?>

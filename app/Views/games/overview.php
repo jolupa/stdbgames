@@ -7,7 +7,6 @@
               <li class="tab is-active has-background-light" onclick="openTab(event,'About')"><a>About</a></li>
               <li class="tab has-background-light" onclick="openTab(event,'Reviews')"><a>Reviews</a></li>
               <li class="tab has-background-light" onclick="openTab(event,'Price')"><a>Price History</a></li>
-              <li class="tab has-background-light" onclick="openTab(event,'Addons')"><a>Add Ons</a></li>
             </ul>
           </div>
         </nav>
@@ -85,11 +84,6 @@
               <p><strong><?= $game['name'] ?></strong> is not yet released!</p>
             </div>
           <?php endif; ?>
-        </div>
-        <div id="Addons" class="content-tab" style="display: none;">
-          <div class="content">
-            <?= view_cell('App\Controllers\Addons::addonsgamelist', 'game_id='.$game['id']) ?>
-          </div>
         </div>
         <div id="Price" class="content-tab" style="display: none;">
           <div class="content">
