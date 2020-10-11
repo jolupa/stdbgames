@@ -77,7 +77,7 @@
                 <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crowdchoice"><span class="icon is-small"><i class="fas fa-globe-europe"></i></span>&nbsp;&nbsp;Crowd Play</a>
               <?php endif; ?>
               <?php if($game['stream_connect'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/streamconnect"><span class="icon is-small"><i class="fab fa-youtube"></i></span>&nbsp;&nbsp;Stream Connect</a>
+                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/streamconnect"><span class="icon is-small"><i class="fas fa-desktop"></i></span>&nbsp;&nbsp;Stream Connect</a>
               <?php endif; ?>
             </p>
           </div>
