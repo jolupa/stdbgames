@@ -42,6 +42,8 @@
                               games.early_access,
                               games.updated_at,
                               games.rumor,
+                              games.crowd_choice,
+                              games.cross_play,
                               developers.name AS developer_name,
                               developers.slug AS developer_slug,
                               publishers.name AS publisher_name,
@@ -230,6 +232,30 @@
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.rumor', 1);
+      } elseif($type == 'crossplay'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.cross_play', 1);
+      } elseif($type == 'crowdchoice'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.crowd_choice', 1);
       } else {
         $builder = $db->table('games')
                       ->select('games.name,

@@ -17,6 +17,10 @@
           Pro History:
         <?php elseif($type === 'rumors'): ?>
           Rumored:
+        <?php elseif($type === 'crossplay'): ?>
+          with Cross Play:
+        <?php elseif($type === 'crowdchoice'): ?>
+          with Crowd Choice
         <?php else: ?>
           All Games:
         <?php endif; ?>
@@ -26,6 +30,8 @@
           <ul>
             <li></li>
             <li <?php if($type === 'all'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/all">All</a></li>
+            <li <?php if($type === 'crossplay'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossplay">Cross Play</a></li>
+            <li <?php if($type === 'crowdchoice'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crowdchoice">Crowd Choice</a></li>
             <li <?php if($type === 'earlyaccess'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/earlyaccess">Early Access</a></li>
             <li <?php if($type === 'firstonstadia'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a></li>
             <li <?php if($type === 'launched'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/launched">Launched</a></li>
@@ -33,6 +39,7 @@
             <li <?php if($type === 'rumors'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/rumors">Rumored Games</a></li>
             <li <?php if($type === 'soon'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/soon">Soon</a></li>
             <li <?php if($type === 'stadiaexclusive'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/stadiaexclusive">Stadia Exclusives</a></li>
+            <li></li>
           </ul>
         </nav>
         <hr>

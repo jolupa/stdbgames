@@ -64,6 +64,12 @@
               <?php if($game['early_access'] == 1): ?>
                 <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/earlyaccess">Early Access Game</a>
               <?php endif; ?>
+              <?php if($game['cross_play'] == 1): ?>
+                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crossplay"><span class="icon is-small"><i class="fas fa-exchange-alt"></i></span>&nbsp;&nbsp;Cross Play</a>
+              <?php endif; ?>
+              <?php if($game['crowd_choice'] == 1): ?>
+                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crowdchoice"><span class="icon is-small"><i class="fas fa-user-injured"></i></span>&nbsp;&nbsp;Crowd Choice</a>
+              <?php endif; ?>
             </p>
           </div>
           <div class="content">
