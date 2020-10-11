@@ -67,8 +67,17 @@
               <?php if($game['cross_play'] == 1): ?>
                 <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crossplay"><span class="icon is-small"><i class="fas fa-exchange-alt"></i></span>&nbsp;&nbsp;Cross Play</a>
               <?php endif; ?>
+              <?php if($game['cross_save'] == 1): ?>
+                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crosssave"><span class="icon is-small"><i class="far fa-share-square"></i></span>&nbsp;&nbsp;Cross Save</a>
+              <?php endif; ?>
               <?php if($game['crowd_choice'] == 1): ?>
                 <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crowdchoice"><span class="icon is-small"><i class="fas fa-user-injured"></i></span>&nbsp;&nbsp;Crowd Choice</a>
+              <?php endif; ?>
+              <?php if($game['crowd_play'] == 1): ?>
+                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crowdchoice"><span class="icon is-small"><i class="fas fa-globe-europe"></i></span>&nbsp;&nbsp;Crowd Play</a>
+              <?php endif; ?>
+              <?php if($game['stream_connect'] == 1): ?>
+                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/streamconnect"><span class="icon is-small"><i class="fab fa-youtube"></i></span>&nbsp;&nbsp;Stream Connect</a>
               <?php endif; ?>
             </p>
           </div>

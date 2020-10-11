@@ -44,6 +44,9 @@
                               games.rumor,
                               games.crowd_choice,
                               games.cross_play,
+                              games.cross_save,
+                              games.stream_connect,
+                              games.crowd_play,
                               developers.name AS developer_name,
                               developers.slug AS developer_slug,
                               publishers.name AS publisher_name,
@@ -257,6 +260,45 @@
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.crowd_choice', 1)
+                      ->orderBy('games.release', 'ASC');
+      } elseif($type == 'crossave'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.cross_save', 1)
+                      ->orderBy('games.release', 'ASC');
+      } elseif($type == 'crowdplay'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.crowd_play', 1)
+                      ->orderBy('games.release', 'ASC');
+      } elseif($type == 'streamconnect'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.stream_connect', 1)
                       ->orderBy('games.release', 'ASC');
       } else {
         $builder = $db->table('games')

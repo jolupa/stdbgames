@@ -68,7 +68,9 @@
             <label class="label">Is Pro Till date</label>
             <input type="date" class="input" name="pro_till" placeholder="Is Free Till: YYYY-MM-DD">
           </div>
-          <div class="control">
+        </div>
+        <div class="field is-grouped is-grouped-multiline">
+          <div class="control is-expanded">
             <label class="label">Has CrossPlay</label>
             <div class="select">
               <select name="cross_play">
@@ -77,10 +79,37 @@
               </select>
             </div>
           </div>
-          <div class="control">
+          <div class="control is-expanded">
+            <label class="label">Has CrossSave</label>
+            <div class="select">
+              <select name="cross_save">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="control is-expanded">
+            <label class="label">Has StreamConnect</label>
+            <div class="select">
+              <select name="stream_connect">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="control is-expanded">
             <label class="label">Has CrowdChoice</label>
             <div class="select">
               <select name="crowd_choice">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="control is-expanded">
+            <label class="label">Has CrowdPlay</label>
+            <div class="select">
+              <select name="crowd_play">
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>

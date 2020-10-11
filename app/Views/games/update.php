@@ -74,7 +74,9 @@
               <label class="label">Is Pro Till date</label>
               <input type="date" class="input" name="pro_till" <?php if(isset($game['pro_till'])): ?>value="<?= $game['pro_till'] ?>"<?php else: ?>placeholder="Is Free Till: YYYY-MM-DD"<?php endif; ?>>
             </div>
-            <div class="control">
+          </div>
+          <div class="field is-grouped is-grouped-multiline">
+            <div class="control is-expanded">
               <label class="label">Has CrossPlay</label>
               <div class="select">
                 <select name="cross_play">
@@ -83,12 +85,39 @@
                 </select>
               </div>
             </div>
-            <div class="control">
+            <div class="control is-expanded">
+              <label class="label">Has CrossSave</label>
+              <div class="select">
+                <select name="cross_save">
+                  <option <?php if($game['cross_save'] == 0): ?>selected<?php endif; ?> value="0">No</option>
+                  <option <?php if($game['cross_save'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Has StreamConnect</label>
+              <div class="select">
+                <select name="stream_connect">
+                  <option <?php if($game['stream_connect'] == 0): ?>selected<?php endif; ?> value="0">No</option>
+                  <option <?php if($game['stream_connect'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="control is-expanded">
               <label class="label">Has CrowdChoice</label>
               <div class="select">
                 <select name="crowd_choice">
-                  <option value="0" <?php if($game['crowd_choice'] == 0): ?>selected<?php endif; ?>>No</option>
-                  <option value="1" <?php if($game['crowd_choice'] == 1): ?>selected<?php endif; ?>>Yes</option>
+                  <option <?php if($game['crowd_choice'] == 0): ?>selected<?php endif; ?> value="0">No</option>
+                  <option <?php if($game['crowd_choice'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Has CrowdPlay</label>
+              <div class="select">
+                <select name="crowd_play">
+                  <option <?php if($game['crowd_play'] == 0): ?>selected<?php endif; ?> value="0">No</option>
+                  <option <?php if($game['crowd_play'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
                 </select>
               </div>
             </div>

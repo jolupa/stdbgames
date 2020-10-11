@@ -119,6 +119,9 @@
         }
         $data['cross_play'] = $this->request->getVar('cross_play');
         $data['crowd_play'] = $this->request->getVar('crowd_choice');
+        $data['cross_save'] = $this->request->getVar('cross_save');
+        $data['stream_connect'] = $this->request->getVar('stream_connect');
+        $data['crowd_play'] = $this->request->getVar('crowd_play');
         $data['created_at'] = date('Y-m-d H:m:s');
         if($_FILES['image']['error'] !== 4){
           if(is_dir(ROOTPATH.'/public/images') == FALSE){
@@ -195,6 +198,9 @@
       }
       $data['cross_play'] = $this->request->getVar('cross_play');
       $data['crowd_choice'] = $this->request->getVar('crowd_choice');
+      $data['cross_save'] = $this->request->getVar('cross_save');
+      $data['stream_connect'] = $this->request->getVar('stream_connect');
+      $data['crowd_play'] = $this->request->getVar('crowd_play');
       $data['updated_at'] = date('Y-m-d H:m:s');
       if($_FILES['image']['error'] !== 4 && $_FILES['image']['error'] === 0){
         if(file_exists(ROOTPATH.'public/images/'.$this->request->getVar('oldimage').'.jpeg') == TRUE){
@@ -223,14 +229,14 @@
       }
       $gamemodel->updateGameDb($data);
       //If we update the game correctly we send a tweet
-      require(ROOTPATH.'twitter.php');
+      /*require(ROOTPATH.'twitter.php');
       if($data['rumor'] == 1){
         $statusmessage = "RUMOR!! Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
       } else {
         $statusmessage = "Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
       }
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
-      $connection->post("statuses/update", ["status" => $statusmessage]);
+      $connection->post("statuses/update", ["status" => $statusmessage]);*/
       return redirect()->to('/game/'.$data['slug']);
     }
     //About the site page

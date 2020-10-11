@@ -21,6 +21,12 @@
           with Cross Play:
         <?php elseif($type === 'crowdchoice'): ?>
           with Crowd Choice
+        <?php elseif($type === 'crowdplay'): ?>
+          with Crowd Play
+        <?php elseif($type === 'crosssave'): ?>
+          with Crowd Save
+        <?php elseif($type === 'streamconnect'): ?>
+          with Stream Connect
         <?php else: ?>
           All Games:
         <?php endif; ?>
@@ -31,7 +37,9 @@
             <li></li>
             <li <?php if($type === 'all'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/all">All</a></li>
             <li <?php if($type === 'crossplay'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossplay">Cross Play</a></li>
+            <li <?php if($type === 'crosssave'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossave">Cross Save</a></li>
             <li <?php if($type === 'crowdchoice'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crowdchoice">Crowd Choice</a></li>
+            <li <?php if($type === 'crowdplay'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crowdplay">Crowd Play</a></li>
             <li <?php if($type === 'earlyaccess'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/earlyaccess">Early Access</a></li>
             <li <?php if($type === 'firstonstadia'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a></li>
             <li <?php if($type === 'launched'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/launched">Launched</a></li>
@@ -39,6 +47,7 @@
             <li <?php if($type === 'rumors'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/rumors">Rumored Games</a></li>
             <li <?php if($type === 'soon'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/soon">Soon</a></li>
             <li <?php if($type === 'stadiaexclusive'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/stadiaexclusive">Stadia Exclusives</a></li>
+            <li <?php if($type === 'streamconnect'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/streamconnect">Stream Connect</a></li>
             <li></li>
           </ul>
         </nav>
