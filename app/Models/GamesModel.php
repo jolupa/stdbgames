@@ -243,7 +243,8 @@
                                 publishers.name AS publisher_name')
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
-                      ->where('games.cross_play', 1);
+                      ->where('games.cross_play', 1)
+                      ->orderBy('games.release', 'ASC');
       } elseif($type == 'crowdchoice'){
         $builder = $db->table('games')
                       ->select('games.name,
@@ -255,7 +256,8 @@
                                 publishers.name AS publisher_name')
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
-                      ->where('games.crowd_choice', 1);
+                      ->where('games.crowd_choice', 1)
+                      ->orderBy('games.release', 'ASC');
       } else {
         $builder = $db->table('games')
                       ->select('games.name,
