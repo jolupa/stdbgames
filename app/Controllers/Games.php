@@ -229,14 +229,14 @@
       }
       $gamemodel->updateGameDb($data);
       //If we update the game correctly we send a tweet
-      /*require(ROOTPATH.'twitter.php');
+      require(ROOTPATH.'twitter.php');
       if($data['rumor'] == 1){
         $statusmessage = "RUMOR!! Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
       } else {
         $statusmessage = "Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
       }
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
-      $connection->post("statuses/update", ["status" => $statusmessage]);*/
+      $connection->post("statuses/update", ["status" => $statusmessage]);
       return redirect()->to('/game/'.$data['slug']);
     }
     //About the site page
