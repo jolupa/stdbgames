@@ -7,7 +7,7 @@
 	"require": {
 		"php": ">=7.2",
 		"codeigniter4/framework": "^4",
-		"abraham/twitteroauth": "^1.1"
+		"abraham/twitteroauth": "^1.2"
 	},
 	"require-dev": {
 		"mikey179/vfsstream": "1.6.*",
