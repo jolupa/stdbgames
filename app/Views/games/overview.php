@@ -16,7 +16,7 @@
       <section class="section">
         <div id="About" class="content-tab">
           <div class="content has-text-centered">
-            <h1 class="title"><?php if($game['rumor'] == 1): ?><span class="icon has-text-danger" title="RUMOR!"><i class="fas fa-exclamation-triangle"></i></span>&nbsp;<?php endif; ?><?= $game['name'] ?></h1>
+            <h1 class="title"><?php if($game['rumor'] == 1): ?><span class="icon has-text-danger is-small" title="RUMOR!"><i class="fas fa-user-secret"></i></span>&nbsp;<?php endif; ?><?= $game['name'] ?></h1>
             <h2 class="subtitle">
               <a class="has-text-dark" href="<?= base_url() ?>/developer/<?= $game['developer_slug'] ?>"><?= $game['developer_name'] ?></a> / <a class="has-text-dark" href="<?= base_url() ?>/publisher/<?= $game['publisher_slug'] ?>"><?= $game['publisher_name'] ?></a>
               <br>
