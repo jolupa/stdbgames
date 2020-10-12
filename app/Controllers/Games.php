@@ -278,6 +278,9 @@
       if ($data['publisher_id'] !== $this->request->getVar('oldpublisher_id')){
         $statusmessage .= ' Updated Publisher';
       }
+      if ($data['cross_play'] !== $this->request->getVar('oldcross_play') || $data['cross_save'] !== $this->request->getVar('oldcross_save') || $data['crowd_play'] !== $this->request->getVar('oldcrowd_play') || $data['stream_connect'] !== $this->request->getVar('oldstream_connect') || $data['crowd_choice'] !== $this->request->getVar('oldcrowd_choice')){
+        $statusmessage .= ' Updated Game Features'
+      }
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);
       return redirect()->to('/game/'.$data['slug']);
