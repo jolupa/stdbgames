@@ -230,10 +230,53 @@
       $gamemodel->updateGameDb($data);
       //If we update the game correctly we send a tweet
       require(ROOTPATH.'twitter.php');
+      //Check the update changes to compose the tweet
       if($data['rumor'] == 1){
-        $statusmessage = "RUMOR!! Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+        $statusmessage = "RUMOR!! Game Updated on DB! ".$data['name'].": https://stdb.games/game/".$data['slug'];
       } else {
-        $statusmessage = "Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+        $statusmessage = "Game Updated on DB! ".$data['name'].": https://stdb.games/game/".$data['slug'];
+      }
+      if ($data['name'] !== $this->request->getVar('oldname')){
+        $statusmessage .= ' Name updated';
+      }
+      if ($data['release'] !== $this->request->getVar('oldrelease')){
+        $statusmessage .=' Release date updated';
+      }
+      if ($data['price'] !== $this->request->getVar('oldprice')){
+        $statusmessage .= ' Price updated';
+      }
+      if ($data['first_on_stadia'] !== $this->request->getVar('oldfirst_on_stadia')){
+        $statusmessage .= ' Updated First on Stadia info';
+      }
+      if ($data['stadia_exclusive'] !== $this->request->getVar('oldstadia_exclusive')){
+        $statusmessage .= ' Updated Stadia Exclusive info';
+      }
+      if ($data['early_access'] !== $this->request->getVar('oldearly_access')){
+        $statusmessage .= ' Updated Early Access info';
+      }
+      if ($data['pro'] !== $this->request->getVar('oldpro')){
+        $statusmessage .= ' Updated Pro info';
+      }
+      if ($this->request->getVar('oldpro_from') == '' && $data['pro_from'] !== ''){
+        $statusmessage .= ' Added Pro date';
+      } elseif ($this->request->getVar('oldpro_from') !== '' && $data['pro_from'] !== $this->request->getVar('oldpro_from')){
+        $statusmessage .= ' Updated Pro date';
+      }
+      if ($this->request->getVar('oldpro_till') == '' && $data['pro_till'] !== ''){
+        $statusmessage .= ' Added expiring Pro date';
+      } elseif ($this->request->getVar('oldpro_till') !== '' && $data['pro_till'] !== $this->request->getVar('oldpro_till')){
+        $statusmessage .= ' Updated expiring Pro date';
+      }
+      if ($this->request->getVar('oldappid') == '' && $this->request->getVar('oldsku') == '' && $data['appid'] !== '' && $data['sku'] !== ''){
+        $statusmessage .= ' Added links to Stadia Store and Direct play button';
+      } elseif ($this->request->getVar('oldappid') !== '' && $this->request->getVar('oldsku') !== '' && $data['appid'] !== $this->request->getVar('oldappid') || $data['sku'] !== $this->request->getVar('oldsku')){
+        $statusmessage .= ' Updated links to Stadia Store and Direct play button';
+      }
+      if ($data['developer_id'] !== $this->request->getVar('olddeveloper_id')){
+        $statusmessage .= ' Updated Developer';
+      }
+      if ($data['publisher_id'] !== $this->request->getVar('oldpublisher_id')){
+        $statusmessage .= ' Updated Publisher';
       }
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);

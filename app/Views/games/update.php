@@ -13,6 +13,24 @@
           <input type="hidden" name="id" value="<?= $game['id'] ?>">
           <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
           <input type="hidden" name="oldimage" value="<?= $game['image'] ?>">
+          <input type="hidden" name="oldname" value="<?= $game['name'] ?>">
+          <input type="hidden" name="oldrelease" value="<?= $game['release'] ?>">
+          <input type="hidden" name="oldprice" value="<?= $game['price'] ?>">
+          <input type="hidden" name="oldfirst_on_stadia" value="<?= $game['first_on_stadia'] ?>">
+          <input type="hidden" name="oldstadia_exclusive" value="<?= $game['stadia_exclusive'] ?>">
+          <input type="hidden" name="oldearly_access" value="<?= $game['early_access'] ?>">
+          <input type="hidden" name="oldpro" value="<?= $game['pro'] ?>">
+          <input type="hidden" name="oldpro_from" value="<?= $game['pro_from'] ?>">
+          <input type="hidden" name="oldpro_till" value="<?= $game['pro_till'] ?>">
+          <input type="hidden" name="oldcross_play" value="<?= $game['cross_play'] ?>">
+          <input type="hidden" name="oldcross_save" value="<?= $game['cross_save'] ?>">
+          <input type="hidden" name="oldstream_connect" value="<?= $game['stream_connect'] ?>">
+          <input type="hidden" name="oldcrowd_choice" value="<?= $game['crowd_choice'] ?>">
+          <input type="hidden" name="oldcrowd_play" value="<?= $game['crowd_play'] ?>">
+          <input type="hidden" name="oldappid" value="<?= $game['appid'] ?>">
+          <input type="hidden" name="oldsku" value="<?= $game['sku'] ?>">
+          <input type="hidden" name="olddeveloper_id" value="<?= $game['developer_id'] ?>">
+          <input type="hidden" name="oldpublisher_id" value="<?= $game['publisher_id'] ?>">
           <div class="field">
             <div class="control">
               <label class="checkbox"><input type="checkbox" <?php if($game['rumor'] == 1): ?>value="1"<?php endif; ?> name="rumor">&nbsp;It's a Rumor?</label>
