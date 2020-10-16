@@ -8,7 +8,7 @@
       <p class="title is-5">Update a</p>
       <p class="subtitle is-3">Game:</p>
       <div class="content mt-2">
-        <a class="button is-danger is-small has-text-white mb-2" href="<?= base_url() ?>/games/deletegame/<?= $game['id'] ?>"<?php if($game['rumor'] == 1) ?>selected<?php endif ?>>Delete Game!</a>
+        <a class="button is-danger is-small has-text-white mb-2" href="<?= base_url() ?>/games/deletegame/<?= $game['id'] ?>" <?php if($game['rumor'] == 1): ?>selected<?php endif ?>>Delete Game!</a>
         <form method="post" action="<?= base_url() ?>/games/updategamedb" enctype="multipart/form-data">
           <input type="hidden" name="id" value="<?= $game['id'] ?>">
           <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
