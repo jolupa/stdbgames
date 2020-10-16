@@ -27,6 +27,7 @@
           <input type="hidden" name="oldstream_connect" value="<?= $game['stream_connect'] ?>">
           <input type="hidden" name="oldcrowd_choice" value="<?= $game['crowd_choice'] ?>">
           <input type="hidden" name="oldcrowd_play" value="<?= $game['crowd_play'] ?>">
+          <input type="hidden" name="oldcross_progression" value="<?= $game['cross_progression'] ?>">
           <input type="hidden" name="oldappid" value="<?= $game['appid'] ?>">
           <input type="hidden" name="oldsku" value="<?= $game['sku'] ?>">
           <input type="hidden" name="olddeveloper_id" value="<?= $game['developer_id'] ?>">
@@ -100,6 +101,15 @@
                 <select name="cross_play">
                   <option <?php if($game['cross_play'] == 0): ?>selected<?php endif; ?> value="0">No</option>
                   <option <?php if($game['cross_play'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Has CrossProgression</label>
+              <div class="select">
+                <select name="cross_progression">
+                  <option value="0" <?php if($game['cross_progression'] == 0): ?>selected<?php endif; ?>>No</option>
+                  <option value="1" <?php if($game['cross_progression'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
               </div>
             </div>

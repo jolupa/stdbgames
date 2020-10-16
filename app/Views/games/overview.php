@@ -70,6 +70,9 @@
               <?php if($game['cross_save'] == 1): ?>
                 <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crosssave"><span class="icon is-small"><i class="far fa-share-square"></i></span>&nbsp;&nbsp;Cross Save</a>
               <?php endif; ?>
+              <?php if($game['cross_progression'] == 1): ?>
+                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crossprogression"><span class="icon is-small"><i class="fas fa-spinner"></i></span>&nbsp;&nbsp;Cross Progression</a>
+              <?php endif; ?>
               <?php if($game['crowd_choice'] == 1): ?>
                 <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crowdchoice"><span class="icon is-small"><i class="fas fa-user-injured"></i></span>&nbsp;&nbsp;Crowd Choice</a>
               <?php endif; ?>
