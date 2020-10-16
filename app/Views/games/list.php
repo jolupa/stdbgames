@@ -39,8 +39,8 @@
             <li></li>
             <li <?php if($type === 'all'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/all">All</a></li>
             <li <?php if($type === 'crossplay'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossplay">Cross Play</a></li>
-            <li <?php if($type === 'crosssave'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossave">Cross Save</a></li>
             <li <?php if($type === 'crossprogression'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossprogression">Cross Progression</a></li>
+            <li <?php if($type === 'crosssave'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossave">Cross Save</a></li>
             <li <?php if($type === 'crowdchoice'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crowdchoice">Crowd Choice</a></li>
             <li <?php if($type === 'crowdplay'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crowdplay">Crowd Play</a></li>
             <li <?php if($type === 'earlyaccess'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/earlyaccess">Early Access</a></li>
