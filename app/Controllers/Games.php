@@ -202,7 +202,7 @@
       $data['stream_connect'] = $this->request->getVar('stream_connect');
       $data['crowd_play'] = $this->request->getVar('crowd_play');
       $data['updated_at'] = date('Y-m-d H:m:s');
-      if($_FILES['image']['error'] !== 4 && $_FILES['image']['error'] === 0){
+      if($_FILES['image']['error'] !== 4){
         if(file_exists(ROOTPATH.'public/images/'.$this->request->getVar('oldimage').'.jpeg') == TRUE){
           unlink(ROOTPATH.'public/images/'.$this->request->getVar('oldimage').'.jpeg');
         }
