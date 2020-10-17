@@ -79,16 +79,15 @@
               </select>
             </div>
           </div>
-          <div class="field is-grouped is-grouped-multiline">
-            <div class="control is-expanded">
-              <label class="label">Has CrossProgression</label>
-              <div class="select">
-                <select name="cross_progression">
-                  <option value="0">No</option>
-                  <option value="1">Yes</option>
-                </select>
-              </div>
+          <div class="control is-expanded">
+            <label class="label">Has CrossProgression</label>
+            <div class="select">
+              <select name="cross_progression">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
             </div>
+          </div>
           <div class="control is-expanded">
             <label class="label">Has CrossSave</label>
             <div class="select">
@@ -120,6 +119,15 @@
             <label class="label">Has CrowdPlay</label>
             <div class="select">
               <select name="crowd_play">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="control is-expanded">
+            <label class="label">Has StateShare</label>
+            <div class="select">
+              <select name="state_share">
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>

@@ -28,6 +28,7 @@
           <input type="hidden" name="oldcrowd_choice" value="<?= $game['crowd_choice'] ?>">
           <input type="hidden" name="oldcrowd_play" value="<?= $game['crowd_play'] ?>">
           <input type="hidden" name="oldcross_progression" value="<?= $game['cross_progression'] ?>">
+          <input type="hidden" name="oldstate_share" value="<?= $game['state_share'] ?>"
           <input type="hidden" name="oldappid" value="<?= $game['appid'] ?>">
           <input type="hidden" name="oldsku" value="<?= $game['sku'] ?>">
           <input type="hidden" name="olddeveloper_id" value="<?= $game['developer_id'] ?>">
@@ -146,6 +147,15 @@
                 <select name="crowd_play">
                   <option <?php if($game['crowd_play'] == 0): ?>selected<?php endif; ?> value="0">No</option>
                   <option <?php if($game['crowd_play'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Has StateShare</label>
+              <div class="select">
+                <select name="state_share">
+                  <option value="0" <?php if($game['state_share'] == 0): ?>selected<?php endif; ?>>No</option>
+                  <option value="1" <?php if($game['state_share'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
               </div>
             </div>

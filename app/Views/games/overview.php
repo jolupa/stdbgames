@@ -82,6 +82,9 @@
               <?php if($game['stream_connect'] == 1): ?>
                 <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/streamconnect"><span class="icon is-small"><i class="fas fa-desktop"></i></span>&nbsp;&nbsp;Stream Connect</a>
               <?php endif; ?>
+              <?php if($game['state_share'] == 1): ?>
+                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/stateshare"><span class="icon is-small"><i class="fas fa-share-alt"></i></span>&nbsp;&nbsp;State Share</a>
+              <?php endif; ?>
             </p>
           </div>
           <div class="content">

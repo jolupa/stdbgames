@@ -48,6 +48,7 @@
                               games.cross_save,
                               games.stream_connect,
                               games.crowd_play,
+                              games.state_share,
                               developers.name AS developer_name,
                               developers.slug AS developer_slug,
                               publishers.name AS publisher_name,
@@ -313,6 +314,19 @@
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.cross_progression', 1)
+                      ->orderBy('games.release', 'ASC');
+      } elseif($type == 'stateshare'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.state_share', 1)
                       ->orderBy('games.release', 'ASC');
       } else {
         $builder = $db->table('games')
