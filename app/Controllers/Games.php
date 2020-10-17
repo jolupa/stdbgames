@@ -273,7 +273,7 @@
       }
       if ($this->request->getVar('oldappid') == '' && $this->request->getVar('oldsku') == '' && $data['appid'] !== '' && $data['sku'] !== ''){
         $statusmessage .= ' Added links to Stadia Store and Direct play button';
-      } elseif ($this->request->getVar('oldappid') !== '' && $this->request->getVar('oldsku') !== '' && $data['appid'] !== $this->request->getVar('oldappid') || $data['sku'] !== $this->request->getVar('oldsku')){
+      } elseif ($this->request->getVar('oldappid') !== $data['appid'] && $this->request->getVar('oldsku') !== $data['sku']){
         $statusmessage .= ' Updated links to Stadia Store and Direct play button';
       }
       if ($data['developer_id'] !== $this->request->getVar('olddeveloper_id')){
