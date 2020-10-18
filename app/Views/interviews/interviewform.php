@@ -5,6 +5,7 @@
     <form action="<?= base_url() ?>/interviews/createinterviewdb" method="post" enctype="multipart/form-data">
       <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
       <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
+      <input type="hidden" name="game_name" value="<?= $game['name'] ?>">
       <div class="field">
         <div class="control is-extended">
           <textarea name="body" class="textarea" id="textarea"></textarea>
