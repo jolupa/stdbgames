@@ -18,7 +18,7 @@
         <div class="select">
           <select name="discount_type">
             <option value="" disabled selected>Disc. Type</option>
-            <option value="0">Normal</option>
+            <option value="0">Everyone</option>
             <option value="1">Pro</option>
           </select>
         </div>

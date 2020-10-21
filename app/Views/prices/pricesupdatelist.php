@@ -21,7 +21,7 @@
             <div class="select">
               <select name="discount_type">
                 <option value="" <?php if($price['discount_type'] != 1 || $price['discount_type'] != 0): ?>disabled selected<?php endif; ?>>Disc. Type</option>
-                <option value="0" <?php if($price['discount_type'] == 0): ?>selected<?php endif; ?>>Normal</option>
+                <option value="0" <?php if($price['discount_type'] == 0): ?>selected<?php endif; ?>>Everyone</option>
                 <option value="1" <?php if($price['discount_type'] == 1): ?>selected<?php endif; ?>>Pro</option>
               </select>
             </div>

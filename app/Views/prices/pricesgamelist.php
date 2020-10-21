@@ -26,7 +26,7 @@
           <td class="has-text-left"><?= number_format($price['price'], 2) ?>&nbsp;€</td>
           <td class="has-text-centered"><?= $price['date'] ?></td>
           <td class="has-text-centered"><?= $price['date_till'] ?></td>
-          <td class="has-text-centered"><?php if($price['discount_type'] == 1): ?>Pro<?php else: ?>Normal<?php endif; ?></td>
+          <td class="has-text-centered"><?php if($price['discount_type'] == 1): ?>Pro<?php else: ?>Everyone<?php endif; ?></td>
         </tr>
       <?php endforeach; ?>
     <?php endif; ?>

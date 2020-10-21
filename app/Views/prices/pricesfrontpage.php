@@ -21,7 +21,7 @@
           <div class="media-content">
             <p><a href="<?= base_url() ?>/game/<?= $prices['game_url'] ?>"><strong><?= $prices['game_name'] ?></strong></a></p>
             <p class="title is-7">Till <?= $prices['date_till'] ?><br>
-            Discount for <strong><?php if($prices['discount_type'] === 1): ?>For Pro<?php else: ?>For Base<?php endif; ?></strong></p>
+            Discount for <strong><?php if($prices['discount_type'] === 1): ?>Pro<?php else: ?>Everyone<?php endif; ?></strong></p>
           </div>
         </div>
       </div>
