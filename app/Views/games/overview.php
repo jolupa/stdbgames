@@ -42,7 +42,7 @@
                 <?php endif; ?>
               <?php endif; ?>
               <?php if($game['pro'] == 1 && $game['release'] === '2099-01-01'): ?>
-                <button class="button is-primary has-text-dark is-small mt-1 mr-2">Will be&nbsp;<strong>Free</strong>&nbsp;on Launch</button>
+                <button class="button is-primary has-text-dark is-small mt-1 mr-2">Will be&nbsp;<strong>Free for PRO</strong>&nbsp;on Launch</button>
               <?php endif; ?>
               <?php if($game['pro'] == 1 && date('Y-m-d') > $game['pro_from'] && $game['release'] !== 'TBA' && $game['release'] !== '2099-01-01'): ?>
                 <button class="button is-primary has-text-dark is-small mt-1 mr-2">Free for Pro&nbsp;<strong>Now!</strong></button>
