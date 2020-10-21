@@ -91,6 +91,7 @@
           </div>
           <div class="navbar-item">
             <div class="buttons">
+              <a class="button is-danger has-text-white is-small" style="border: none;" href="https://stadia.com/link/home?si_rid=10063878286671281778" target="_blank"><strong>Try Stadia Free One Month</strong></a>
               <?php if(session('logged') == true): ?>
                 <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
                 <a class="button is-light has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/logout">Log Out</a>
