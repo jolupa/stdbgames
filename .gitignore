@@ -129,9 +129,6 @@ nb-configuration.xml
 #Database
 writable/database/Stadia_DB.db
 
-#Config
-app/Config/App.php
-
 #Public
 public/*
 
