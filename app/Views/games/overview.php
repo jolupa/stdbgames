@@ -36,7 +36,7 @@
               <?php endif; ?>
               <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
                 <?php if($game['release'] > date('Y-m-d')): ?>
-                  <a class="button has-text-white is-small mt-1 mr-2 is-borderless" style="background-color: #FC4A1F; border: none;" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Pre-Order on Stadia</a>
+                  <a class="button has-text-white is-small mt-1 mr-2 is-borderless" style="background-color: #FC4A1F; border: none;" href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Pre-Order on Stadia</a>
                 <?php else: ?>
                   <a class="button has-text-white is-small mt-1 mr-2 is-borderless" style="background-color: #FC4A1F; border: none;" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
                 <?php endif; ?>
