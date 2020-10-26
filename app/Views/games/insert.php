@@ -136,6 +136,34 @@
         </div>
         <div class="field is-grouped is-grouped-multiline">
           <div class="control is-expanded">
+            <label class="label">Is Pixel Count?</label>
+            <div class="select">
+              <select name="is_pxc">
+                <option value="0" selected>No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="control is-expanded">
+            <label class="label">Max. Resolution</label>
+            <input type="text" class="input" name="max_resolution" placeholder="Max. Resolution">
+          </div>
+          <div class="control is-expanded">
+            <label class="label">FPS</label>
+            <input type="text" class="input" name="fps" placeholder="Frames Per Second">
+          </div>
+          <div class="control is-expanded">
+            <label class="label">Is HDR or SDR?</label>
+            <div class="select">
+              <select name="hdr_sdr">
+                <option value="sdr" selected>SDR</option>
+                <option value="hdr">HDR</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="field is-grouped is-grouped-multiline">
+          <div class="control is-expanded">
             <input type="text" class="input" name="appid" placeholder="Google's Game AppId">
           </div>
           <div class="control is-expanded">

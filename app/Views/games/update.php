@@ -28,11 +28,15 @@
           <input type="hidden" name="oldcrowd_choice" value="<?= $game['crowd_choice'] ?>">
           <input type="hidden" name="oldcrowd_play" value="<?= $game['crowd_play'] ?>">
           <input type="hidden" name="oldcross_progression" value="<?= $game['cross_progression'] ?>">
-          <input type="hidden" name="oldstate_share" value="<?= $game['state_share'] ?>"
+          <input type="hidden" name="oldstate_share" value="<?= $game['state_share'] ?>">
           <input type="hidden" name="oldappid" value="<?= $game['appid'] ?>">
           <input type="hidden" name="oldsku" value="<?= $game['sku'] ?>">
           <input type="hidden" name="olddeveloper_id" value="<?= $game['developer_id'] ?>">
           <input type="hidden" name="oldpublisher_id" value="<?= $game['publisher_id'] ?>">
+          <input type="hidden" name="oldis_pxc" value="<?= $game['is_pxc'] ?>">
+          <input type="hidden" name="oldmax_resolution" value="<?= $game['max_resolution'] ?>">
+          <input type="hidden" name="oldfps" value="<?= $game['fps'] ?>">
+          <input type="hidden" name="oldhdr_sdr" value="<?= $game['hdr_sdr'] ?>">
           <div class="field">
             <div class="control">
               <label class="checkbox"><input type="checkbox" <?php if($game['rumor'] == 1): ?>checked<?php endif; ?> name="rumor">&nbsp;It's a Rumor?</label>
@@ -156,6 +160,34 @@
                 <select name="state_share">
                   <option value="0" <?php if($game['state_share'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['state_share'] == 1): ?>selected<?php endif; ?>>Yes</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field is-grouped is-grouped-multiline">
+            <div class="control is-expanded">
+              <label class="label">Is Pixel Count?</label>
+              <div class="select">
+                <select name="is_pxc">
+                  <option value="0" <?php if($game['is_pxc'] == 0): ?>selected<?php endif; ?>>No</option>
+                  <option value="1" <?php if($game['is_pxc'] == 1): ?>selected<?php endif; ?>>Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Max. Resolution</label>
+              <input type="text" class="input" name="max_resolution" value="<?= $game['max_resolution'] ?>" placeholder="Max. Resolution">
+            </div>
+            <div class="control is-expanded">
+              <label class="label">FPS</label>
+              <input type="text" class="input" name="fps" value="<?= $game['fps'] ?>" placeholder="Frames Per Second">
+            </div>
+            <div class="control is-expanded">
+              <label class="label">Is HDR or SDR?</label>
+              <div class="select">
+                <select name="hdr_sdr">
+                  <option value="sdr" <?php if($game['hdr_sdr'] == 'sdr'): ?>selected<?php endif; ?>>SDR</option>
+                  <option value="hdr" <?php if($game['hdr_sdr'] == 'hdr'): ?>selected<?php endif; ?>>HDR</option>
                 </select>
               </div>
             </div>

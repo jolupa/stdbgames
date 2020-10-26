@@ -86,6 +86,19 @@
                 <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/stateshare"><span class="icon is-small"><i class="fas fa-share-alt"></i></span>&nbsp;&nbsp;State Share</a>
               <?php endif; ?>
             </p>
+            <p>
+              <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;">
+                <span class="icon is-small">
+                  <i class="fas fa-desktop"></i>
+                </span>&nbsp;&nbsp;
+                <?php if($game['is_pxc'] == 1): ?>
+                  <strong>PxC</strong>&nbsp;&nbsp;
+                <?php endif; ?>
+                <?= $game['max_resolution'] ?>&nbsp;&nbsp;
+                <strong><?= $game['fps'] ?> FPS</strong>&nbsp;&nbsp;
+                <?php if($game['hdr_sdr'] == 'hdr'): ?>HDR<?php else: ?>SDR<?php endif; ?>&nbsp;&nbsp;
+              </a>
+            </p>
           </div>
           <div class="content">
             <p class="title is-5">About</p>

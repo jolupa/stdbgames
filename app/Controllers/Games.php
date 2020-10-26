@@ -124,6 +124,10 @@
         $data['crowd_play'] = $this->request->getVar('crowd_play');
         $data['cross_progression'] = $this->request->getVar('cross_progression');
         $data['state_share'] = $this->request->getVar('state_share');
+        $data['is_pxc'] = $this->request->getVar('is_pxc');
+        $data['max_resolution'] = $this->request->getVar('max_resolution');
+        $data['fps'] = $this->request->getVar('fps');
+        $data['hdr_sdr'] = $this->request->getVar('hdr_sdr');
         $data['created_at'] = date('Y-m-d H:m:s');
         if($_FILES['image']['error'] !== 4){
           if(is_dir(ROOTPATH.'/public/images') == FALSE){
@@ -205,6 +209,10 @@
       $data['crowd_play'] = $this->request->getVar('crowd_play');
       $data['cross_progression'] = $this->request->getVar('cross_progression');
       $data['state_share'] = $this->request->getVar('state_share');
+      $data['is_pxc'] = $this->request->getVar('is_pxc');
+      $data['max_resolution'] = $this->request->getVar('max_resolution');
+      $data['fps'] = $this->request->getVar('fps');
+      $data['hdr_sdr'] = $this->request->getVar('hdr_sdr');
       $data['updated_at'] = date('Y-m-d H:m:s');
       if($_FILES['image']['error'] !== 4){
         if(file_exists(ROOTPATH.'public/images/'.$this->request->getVar('oldimage').'.jpeg') == TRUE){
@@ -284,6 +292,9 @@
       }
       if ($data['cross_play'] !== $this->request->getVar('oldcross_play') || $data['cross_save'] !== $this->request->getVar('oldcross_save') || $data['crowd_play'] !== $this->request->getVar('oldcrowd_play') || $data['stream_connect'] !== $this->request->getVar('oldstream_connect') || $data['crowd_choice'] !== $this->request->getVar('oldcrowd_choice') || $data['cross_progression'] !== $this->request->getVar('oldcross_progression') || $data['state_share'] !== $this->request->getVar('oldstate_share')){
         $statusmessage .= ' Updated Game Features';
+      }
+      if ($data['is_pxc'] != $this->request->getVar('oldis_pxc') || $data['max_resolution'] != $this->request->getVar('oldmax_resolution') || $data['fps'] != $this->request->getVar('oldfps') || $data['hdr_sdr'] != $this->request->getVar('oldhdr_sdr')){
+        $statusmessage .= ' Updated Image resolution features';
       }
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);
