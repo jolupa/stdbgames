@@ -98,7 +98,7 @@
                   <?= $game['max_resolution'] ?>&nbsp;&nbsp;
                   <strong><?= $game['fps'] ?> FPS</strong>&nbsp;&nbsp;
                   <?php if($game['hdr_sdr'] != ''): ?>
-                    <?php if($game['hdr_sdr'] == 'hdr'): ?>HDR<?php elseif($game['hdr_sdr'] == 'sdr'): ?>SDR<?php endif; ?>&nbsp;&nbsp;<?php endif; ?>
+                    <?php if($game['hdr_sdr'] == 'hdr'): ?>HDR&nbsp;&nbsp;<?php elseif($game['hdr_sdr'] == 'sdr'): ?>SDR&nbsp;&nbsp;<?php endif; ?>
                   <?php endif; ?>
                 </a>
               </p>
