@@ -165,7 +165,7 @@
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
-            <div class="control is-expanded">
+            <div class="control">
               <label class="label">Is Pixel Count?</label>
               <div class="select">
                 <select name="is_pxc">
@@ -182,10 +182,11 @@
               <label class="label">FPS</label>
               <input type="text" class="input" name="fps" value="<?= $game['fps'] ?>" placeholder="Frames Per Second">
             </div>
-            <div class="control is-expanded">
+            <div class="control">
               <label class="label">Is HDR or SDR?</label>
               <div class="select">
                 <select name="hdr_sdr">
+                  <option <?php if($game['hdr_sdr'] == ''): ?>disabled selected<?php endif; ?>>Choose:</option>
                   <option value="sdr" <?php if($game['hdr_sdr'] == 'sdr'): ?>selected<?php endif; ?>>SDR</option>
                   <option value="hdr" <?php if($game['hdr_sdr'] == 'hdr'): ?>selected<?php endif; ?>>HDR</option>
                 </select>

@@ -135,7 +135,7 @@
           </div>
         </div>
         <div class="field is-grouped is-grouped-multiline">
-          <div class="control is-expanded">
+          <div class="control">
             <label class="label">Is Pixel Count?</label>
             <div class="select">
               <select name="is_pxc">
@@ -152,11 +152,12 @@
             <label class="label">FPS</label>
             <input type="text" class="input" name="fps" placeholder="Frames Per Second">
           </div>
-          <div class="control is-expanded">
+          <div class="control">
             <label class="label">Is HDR or SDR?</label>
             <div class="select">
               <select name="hdr_sdr">
-                <option value="sdr" selected>SDR</option>
+                <option disabled selected>Choose:</option>
+                <option value="sdr">SDR</option>
                 <option value="hdr">HDR</option>
               </select>
             </div>
