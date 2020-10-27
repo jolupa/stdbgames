@@ -144,13 +144,29 @@
               </select>
             </div>
           </div>
-          <div class="control is-expanded">
+          <div class="control">
             <label class="label">Max. Resolution</label>
-            <input type="text" class="input" name="max_resolution" placeholder="Max. Resolution">
+            <div class="select">
+              <select name="max_resolution">
+                <option disabled selected>Choose Resolution:</option>
+                <option value="3840x2160 (4K)">3840x2160 (4K)</option>
+                <option value="3200x1800 (3.5K)">3200x1800 (3.5K)</option>
+                <option value="2880x1620 (3K)">2880x1620 (3K)</option>
+                <option value="2560x1440 (2K)">2560x1440 (2K)</option>
+                <option value="1920x1080 (FHD)">1920x1080 (FHD)</option>
+              </select>
+            </div>
           </div>
-          <div class="control is-expanded">
+          <div class="control">
             <label class="label">FPS</label>
-            <input type="text" class="input" name="fps" placeholder="Frames Per Second">
+            <div class="select">
+              <select name="fps">
+                <option disabled selected>Choose FPS</option>
+                <option value="120">120</option>
+                <option value="60">60</option>
+                <option value="30">30</option>
+              </select>
+            </div>
           </div>
           <div class="control">
             <label class="label">Is HDR or SDR?</label>

@@ -169,26 +169,42 @@
               <label class="label">Is Pixel Count?</label>
               <div class="select">
                 <select name="is_pxc">
-                  <option value="0" <?php if($game['is_pxc'] == 0): ?>selected<?php endif; ?>>No</option>
+                  <option value="0" <?php if($game['is_pxc'] == '' || $game['is_pxc'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['is_pxc'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
               </div>
             </div>
-            <div class="control is-expanded">
+            <div class="control">
               <label class="label">Max. Resolution</label>
-              <input type="text" class="input" name="max_resolution" value="<?= $game['max_resolution'] ?>" placeholder="Max. Resolution">
+              <div class="select">
+                <select name="max_resolution">
+                  <option disabled <?php if($game['max_resolution'] == ''): ?>selected<?php endif; ?>>Choose Resolution:</option>
+                  <option value="3840x2160 (4K)" <?php if($game['max_resolution'] == '3840x2160 (4K)'): ?>selected<?php endif; ?>>3840x2160 (4K)</option>
+                  <option value="3200x1800 (3.5K)" <?php if($game['max_resolution'] == '3200x1800 (3.5K)'): ?>selected<?php endif; ?>>3200x1800 (3.5K)</option>
+                  <option value="2880x1620 (3K)" <?php if($game['max_resolution'] == '2880x1620 (3K)'): ?>selected<?php endif; ?>>2880x1620 (3K)</option>
+                  <option value="2560x1440 (2K)" <?php if($game['max_resolution'] == '2560x1440 (2K)'): ?>selected<?php endif; ?>>2560x1440 (2K)</option>
+                  <option value="1920x1080 (FHD)" <?php if($game['max_resolution'] == '1920x1080 (FHD)'): ?>selected<?php endif; ?>>1920x1080 (FHD)</option>
+                </select>
+              </div>
             </div>
-            <div class="control is-expanded">
+            <div class="control">
               <label class="label">FPS</label>
-              <input type="text" class="input" name="fps" value="<?= $game['fps'] ?>" placeholder="Frames Per Second">
+              <div class="select">
+                <select name="fps">
+                  <option disabled <?php if($game['fps'] == ''): ?>selected<?php endif; ?>>Choose FPS</option>
+                  <option value="120" <?php if($game['fps'] == 120): ?>selected<?php endif; ?>>120</option>
+                  <option value="60" <?php if($game['fps'] == 60): ?>selected<?php endif; ?>>60</option>
+                  <option value="30" <?php if($game['fps'] == 30): ?>selected<?php endif; ?>>30</option>
+                </select>
+              </div>
             </div>
             <div class="control">
               <label class="label">Is HDR or SDR?</label>
               <div class="select">
                 <select name="hdr_sdr">
-                  <option <?php if($game['hdr_sdr'] == ''): ?>disabled selected<?php endif; ?>>Choose:</option>
+                  <option disabled <?php if($game['hdr_sdr'] == ''): ?>selected<?php endif; ?>>Choose:</option>
                   <option value="sdr" <?php if($game['hdr_sdr'] == 'sdr'): ?>selected<?php endif; ?>>SDR</option>
-                  <option value="hdr" <?php if($game['hdr_sdr'] == 'hdr'): ?>selected<?php endif; ?>>HDR</option>
+                  <option value="hdr" <?php if($game['hdr_sdr'] == 'sdr'): ?>selected<?php endif; ?>>HDR</option>
                 </select>
               </div>
             </div>
