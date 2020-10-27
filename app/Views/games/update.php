@@ -204,7 +204,7 @@
                 <select name="hdr_sdr">
                   <option disabled <?php if($game['hdr_sdr'] == ''): ?>selected<?php endif; ?>>Choose:</option>
                   <option value="sdr" <?php if($game['hdr_sdr'] == 'sdr'): ?>selected<?php endif; ?>>SDR</option>
-                  <option value="hdr" <?php if($game['hdr_sdr'] == 'sdr'): ?>selected<?php endif; ?>>HDR</option>
+                  <option value="hdr" <?php if($game['hdr_sdr'] == 'hdr'): ?>selected<?php endif; ?>>HDR</option>
                 </select>
               </div>
             </div>
