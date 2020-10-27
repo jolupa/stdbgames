@@ -184,6 +184,7 @@
                   <option value="2880x1620 (3K)" <?php if($game['max_resolution'] == '2880x1620 (3K)'): ?>selected<?php endif; ?>>2880x1620 (3K)</option>
                   <option value="2560x1440 (2K)" <?php if($game['max_resolution'] == '2560x1440 (2K)'): ?>selected<?php endif; ?>>2560x1440 (2K)</option>
                   <option value="1920x1080 (FHD)" <?php if($game['max_resolution'] == '1920x1080 (FHD)'): ?>selected<?php endif; ?>>1920x1080 (FHD)</option>
+                  <option value="1280x720 (HD)" <?php if($game['max_resolution'] == '1280x720 (HD)'): ?>selected<?php endif; ?>>1280x720 (HD)</option>
                 </select>
               </div>
             </div>

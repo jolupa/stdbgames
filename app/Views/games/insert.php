@@ -154,6 +154,7 @@
                 <option value="2880x1620 (3K)">2880x1620 (3K)</option>
                 <option value="2560x1440 (2K)">2560x1440 (2K)</option>
                 <option value="1920x1080 (FHD)">1920x1080 (FHD)</option>
+                <option value="1280x720 (HD)">1280x720 (HD)</option>
               </select>
             </div>
           </div>
