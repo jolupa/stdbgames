@@ -27,5 +27,11 @@ class Wishlists extends Controller{
     $wishlistmodel->addToUserWishlist($id, session('user_id'));
     return redirect()->back();
   }
+  public function deleteuserwishlist($id){
+    $wishlistmodel = new WishlistModel();
+    if ($wishlistmodel->deleteFromWishlist($id) == true){
+      return redirect()->back();
+    }
+  }
 }
 ?>
