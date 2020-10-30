@@ -95,5 +95,11 @@ class ReviewsModel extends Model{
     $builder = $db->table('reviews');
     return $builder->insert($data);
   }
+  public function updateReviewDb($data){
+    $db = \Config\Database::connect();
+    $builder = $db->table('reviews')
+                  ->where('id', $data['id']);
+    return $builder->update($data);
+  }
 }
 ?>

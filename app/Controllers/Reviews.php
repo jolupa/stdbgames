@@ -57,5 +57,20 @@ class Reviews extends Controller{
       return redirect()->to('/game/'.$return);
     }
   }
+  public function updatereview(){
+    $reviewmodel = new ReviewsModel();
+    $data['id'] = $this->request->getVar('id');
+    $data['about'] = $this->request->getVar('about');
+    $data['game_id'] = $this->request->getVar('game_id');
+    $data['user_id'] = $this->request->getVar('user_id');
+    if($this->request->getVar('url') != null){
+      $data['url'] = $this->request->getVar('url');
+    }
+    $data['score'] = $this->request->getVar('score');
+    $data['date'] = date('Y-m-d H:m:s');
+    $return = $this->request->getVar('return');
+    $reviewmodel->updateReviewDB($data);
+    return redirect()->to('/game/'.$return);
+  }
 }
 ?>

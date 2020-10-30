@@ -40,6 +40,7 @@
     <p class="subtitle is-5">Update your</p>
     <p class="title is-3">Review:</p>
     <form method="post" action="<?= base_url() ?>/reviews/updatereview">
+      <input type="hidden" name="id" value="<?= $review_user['id'] ?>">
       <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
       <input type="hidden" name="user_id" value="<?= session('user_id') ?>">
       <input type="hidden" name="game_name" value="<?= $game['name'] ?>">
