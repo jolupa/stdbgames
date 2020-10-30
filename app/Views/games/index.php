@@ -195,7 +195,7 @@
                 <div class="media-content">
                   <p class="title is-5"><?php if($last['rumor'] == 1): ?><span class="icon has-text-danger is-small" title="RUMOR!"><i class="fas fa-user-secret"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $last['slug'] ?>"><?= character_limiter($last['name'], 15, '...') ?></a></p>
                   <p class="subtitle is-7">Developer <?= $last['developer_name'] ?> / Publisher <?= $last['publisher_name'] ?><br>
-                    Created: <strong><?= $last['created_at'] ?></strong>
+                    Added: <strong><?= $last['created_at'] ?></strong>
                   </p>
                 </div>
               </div>
