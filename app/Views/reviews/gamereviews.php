@@ -1,5 +1,7 @@
 <?php if(session('logged') == TRUE): ?>
   <?php if($review_user == FALSE): ?>
+    <p class="subtitle is-5">Add your</p>
+    <p class="title is-3">Review:</p>
     <form method="post" action="<?= base_url() ?>/reviews/addreview">
       <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
       <input type="hidden" name="user_id" value="<?= session('user_id') ?>">
@@ -30,6 +32,43 @@
         </div>
         <div class="control">
           <button class="button is-primary has-text-dark" value="submit">Add Review!</button>
+        </div>
+      </div>
+    </form>
+    <hr>
+  <?php elseif($review_user == TRUE): ?>
+    <p class="subtitle is-5">Update your</p>
+    <p class="title is-3">Review:</p>
+    <form method="post" action="<?= base_url() ?>/reviews/updatereview">
+      <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
+      <input type="hidden" name="user_id" value="<?= session('user_id') ?>">
+      <input type="hidden" name="game_name" value="<?= $game['name'] ?>">
+      <input type="hidden" name="return" value="<?= $game['slug'] ?>">
+      <div class="field">
+        <div class="control is-expanded">
+          <textarea class="textarea" id="textarea" name="about" placeholder="Write Your Review here!"><?= $review_user['about'] ?></textarea>
+        </div>
+      </div>
+      <?php if(session('role') == 2): ?>
+        <div class="field">
+          <div class="control">
+            <input class="input" name="url" placeholder="Url to original Review" value="<?= $review_user['url'] ?>">
+          </div>
+        </div>
+      <?php endif; ?>
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control">
+          <div class="select">
+            <select name="score">
+              <option disabled selected>Cast Your Vote!</option>
+              <?php $i = 0; while($i < 11): ?>
+                <option value="<?= $i ?>" <?php if($i == $review_user['score']): ?>selected<?php endif; ?>><?= $i ?></option>
+              <?php $i++; endwhile; ?>
+            </select>
+          </div>
+        </div>
+        <div class="control">
+          <button class="button is-primary has-text-dark" value="submit">Update Review!</button>
         </div>
       </div>
     </form>
