@@ -98,8 +98,8 @@
             <a id="Review<?= $review['id'] ?>">#</a>Review by <strong><?= $review['user_name'] ?></strong><?php if($review['user_role'] == 2): ?>&nbsp;<span class="icon has-text-danger is-small"><i class="far fa-newspaper"></i></span><?php endif; ?><br>
             Writted on: <strong><?= $review['date'] ?></strong><br>
             <?php if($review['updated_at'] != ''): ?>
-              Edited on: <strong><?= $review['updated_at'] ?></strong>
-            <?php endif; ?><br>
+              Edited on: <strong><?= $review['updated_at'] ?></strong><br>
+            <?php endif; ?>
             Voted with: <strong><?= $review['score'] ?></strong>
           </p>
         </div>
