@@ -46,7 +46,7 @@ class Reviews extends Controller{
         $data['url'] = $this->request->getVar('url');
       }
       $data['score'] = $this->request->getVar('score');
-      $data['date'] = date('Y-m-d H:m:s');
+      $data['created_at'] = date('Y-m-d H:m:s');
       $game_name = $this->request->getVar('game_name');
       $return = $this->request->getVar('return');
       require(ROOTPATH.'twitter.php');
@@ -67,7 +67,7 @@ class Reviews extends Controller{
       $data['url'] = $this->request->getVar('url');
     }
     $data['score'] = $this->request->getVar('score');
-    $data['date'] = date('Y-m-d H:m:s');
+    $data['updated_at'] = date('Y-m-d H:m:s');
     $return = $this->request->getVar('return');
     $reviewmodel->updateReviewDB($data);
     return redirect()->to('/game/'.$return);

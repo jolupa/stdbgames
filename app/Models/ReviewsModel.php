@@ -9,8 +9,9 @@ class ReviewsModel extends Model{
                   ->select('reviews.id AS id,
                             reviews.about AS about,
                             reviews.score AS score,
-                            reviews.date AS date,
+                            reviews.created_at AS date,
                             reviews.url AS url,
+                            reviews.updated_at AS updated_at,
                             users.id AS user_id,
                             users.image AS user_image,
                             users.name AS user_name,
@@ -32,8 +33,9 @@ class ReviewsModel extends Model{
                   ->select('reviews.id AS id,
                             reviews.about AS about,
                             reviews.score AS score,
-                            reviews.date AS date,
+                            reviews.created_at AS date,
                             reviews.url AS url,
+                            reviews.updated_at AS updated_at,
                             users.id AS user_id,
                             users.name AS user_name,
                             users.image AS user_image,
@@ -63,7 +65,7 @@ class ReviewsModel extends Model{
                   ->select('reviews.id AS id,
                             reviews.score AS score,
                             reviews.about AS about,
-                            reviews.date AS date,
+                            reviews.created_at AS date,
                             users.name AS user_name,
                             users.role AS user_role,
                             games.name AS game_name,
@@ -71,7 +73,7 @@ class ReviewsModel extends Model{
                             games.image AS game_image')
                   ->join('users', 'users.id = reviews.user_id')
                   ->join('games', 'games.id = reviews.game_id')
-                  ->orderBy('reviews.date', 'DESC');
+                  ->orderBy('reviews.created_at', 'DESC');
     return $builder->get(5)->getResultArray();
   }
   public function chart(){

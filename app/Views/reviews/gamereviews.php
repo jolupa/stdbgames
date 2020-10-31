@@ -93,7 +93,16 @@
         </p>
       </figure>
       <div class="media-content">
-        <p><a id="Review<?= $review['id'] ?>">#</a>Review by <strong><?= $review['user_name'] ?></strong><?php if($review['user_role'] == 2): ?>&nbsp;<span class="icon has-text-danger is-small"><i class="far fa-newspaper"></i></span><?php endif; ?>&nbsp;writted at <?= $review['date'] ?>&nbsp;and voted with <strong><?= $review['score'] ?></strong></p>
+        <div class="content has-background-light px-2 py-1">
+          <p>
+            <a id="Review<?= $review['id'] ?>">#</a>Review by <strong><?= $review['user_name'] ?></strong><?php if($review['user_role'] == 2): ?>&nbsp;<span class="icon has-text-danger is-small"><i class="far fa-newspaper"></i></span><?php endif; ?><br>
+            Writted on: <strong><?= $review['date'] ?></strong><br>
+            <?php if($review['updated_at'] != ''): ?>
+              Edited on: <strong><?= $review['updated_at'] ?></strong>
+            <?php endif; ?><br>
+            Voted with: <strong><?= $review['score'] ?></strong>
+          </p>
+        </div>
         <?= $review['about'] ?>
         <?php if($review['url']): ?>
           <p>Read full Review <a href="<?= $review['url'] ?>" target="_blank">HERE</a></p>

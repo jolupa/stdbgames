@@ -1,7 +1,7 @@
 <div class="columns">
   <div class="column">
     <p class="subtitle is-5">Latests</p>
-    <p class="title is-3">Votes/Reviews</p>
+    <p class="title is-3">Reviews</p>
   </div>
 </div>
 <div class="columns is-multiline">
