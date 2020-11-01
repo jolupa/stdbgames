@@ -27,7 +27,7 @@ class Libraries extends Controller{
     $librarymodel = new LibrariesModel();
     $whislistmodel = new WishlistModel();
     if($whislistmodel->checkGameWishlist($id, session('user_id')) == true){
-      $whislistmodel->deleteGameWishlist($id, session('user_id'));
+      $whislistmodel->deleteFromWishlist($id);
       $librarymodel->addToUserLibrary($id, session('user_id'));
     } else {
       $librarymodel->addToUserLibrary($id, session('user_id'));
