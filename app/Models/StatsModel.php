@@ -17,7 +17,8 @@ class StatsModel extends Model{
   public function comingGames(){
     $db = \Config\Database::connect();
     $builder = $db->table('games')
-                  ->where('release >', date('Y-m-d'));
+                  ->where('release >', date('Y-m-d'))
+                  ->where('rumor !=', 1);
     return $builder->countAllResults();
   }
   public function proGames(){
