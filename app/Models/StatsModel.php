@@ -27,6 +27,12 @@ class StatsModel extends Model{
                   ->where('pro_from <=', date('Y-m-d'));
     return $builder->countAllResults();
   }
+  public function rumorGames(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('games')
+                  ->where('rumor', 1);
+    return $builder->countAllResults();
+  }
 }
 
 ?>

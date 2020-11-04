@@ -9,7 +9,8 @@ class Stats extends Controller{
     $data['totalgames'] = $statsmodel->totalGames();
     $data['launchedgames'] = $statsmodel->launchedGames();
     $data['cominggames'] = $statsmodel->comingGames();
-    $data['prostats'] = $statsmodel->ProGames();
+    $data['prostats'] = $statsmodel->proGames();
+    $data['rumoredgames'] = $statsmodel->rumorGames();
     return view('stats/statsnavbar', $data);
   }
 }
