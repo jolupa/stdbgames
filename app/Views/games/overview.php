@@ -133,29 +133,9 @@
             <p class="help"><strong>Game Last Update:</strong> <?= $game['updated_at'] ?></p>
           </div>
         <?php endif; ?>
-        <?php if($wrong == false): ?>
-          <div class="content has-text-centered mt-2">
-            <a href="<?= base_url() ?>/game/<?= $game['slug'] ?>/true"><p class="button is-warning has-text-dark">See something Wrong?</p></a>
-          </div>
-        <?php else: ?>
-          <div class="ccontent has-text-centered mt-2">
-            <hr class="my-2">
-            <form method="post" action="<?= base_url() ?>/communications/wronggame">
-              <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
-              <input type="hidden" name="name" value="<?= $game['name'] ?>">
-              <div class="field">
-                <div class="control is-expanded">
-                  <textarea class="textarea" name="wrong" placeholder="<?php if(session('error') !== null): ?><?= session('error') ?><?php else: ?>You see something wrong? Tell Us!<?php endif; ?>"></textarea>
-                </div>
-              </div>
-              <div class="field is-grouped is-grouped-centered">
-                <div class="control">
-                  <button class="button is-primary has-text-dark" value="submit">Tell Us!</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        <?php endif; ?>
+        <div class="content has-text-centered mt-2">
+          <a href="https://forms.gle/H5Yh2G2u42qGgTty9" target="_blank"><p class="button is-warning has-text-dark">See something Wrong?</p></a>
+        </div>
       </section>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
