@@ -32,10 +32,6 @@ class Interviews extends Controller{
     $data['game_id'] = $this->request->getVar('game_id');
     $slug = $this->request->getVar('slug');
     $name = $this->request->getVar('game_name');
-    require(ROOTPATH.'twitter.php');
-    $statusmessage = "Check our new Small Interview added to DB! to ".$name." developers https://stdb.games/game/".$slug."#small_interview";
-    $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
-    $connection->post("statuses/update", ["status" => $statusmessage]);
     $interviewmodel->createInterviewDb($data);
     return redirect()->to('/game/'.$slug);
   }
