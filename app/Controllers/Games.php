@@ -315,8 +315,12 @@
     public function deletegame($id){
       $gamemodel = new GamesModel();
       $data[] = $gamemodel->getGameById($id);
-      unlink(ROOTPATH.'public/images/'.$data[0]['image'].'.jpeg');
-      unlink(ROOTPATH.'public/images/'.$data[0]['image'].'-thumb.jpeg');
+      if(file_exists(ROOTPATH.'public/images/'.$data[0]['image'].'.jpeg') == TRUE){
+        unlink(ROOTPATH.'public/images/'.$data[0]['image'].'.jpeg');
+      }
+      if(file_exists(ROOTPATH.'public/images/'.$data[0]['image'].'-thumb.jpeg') == TRUE){
+        unlink(ROOTPATH.'public/images/'.$data[0]['image'].'-thumb.jpeg');
+      }
       $gamemodel->deleteGame($id);
       return redirect()->to('/games');
     }
