@@ -3,14 +3,13 @@
         <div class="content">
           <div class="columns">
             <div class="column">
-              <p class="title is-5">Pro</p>
+              <p class="title is-5"><?php $total = count($pro); ?><strong><?= $total ?></strong> Pro</p>
               <p class="subtitle is-3">Games:</p>
             </div>
           </div>
           <div class="columns">
             <div class="column is-clipped">
               <div id="carousel-pro" class="carousel">
-                <?php $total = count($pro); ?>
                 <?php $i=0; while ($i < $total): ?>
                   <div class="item-<?= $i ?> mr-1">
                     <div class="card">
@@ -73,14 +72,13 @@
         <div class="columns">
           <div class="column">
             <p class="title is-5">This Month</p>
-            <p class="subtitle is-3">Releases:</p>
+            <p class="subtitle is-3"><?php $totalm = count($month); ?><strong><?= $totalm ?></strong> Releases:</p>
           </div>
         </div>
         <div class="columns">
           <div class="column is-clipped">
             <div id="carousel-month" class="carousel">
-              <?php $total = count($month); ?>
-              <?php $i=0; while ($i < $total): ?>
+              <?php $i=0; while ($i < $totalm): ?>
                 <div class="month-<?= $i ?> mr-1">
                   <div class="card">
                     <div class="card-content" style="height: 380px; background-image: url(<?= base_url() ?>/images/<?= $month[$i]['image'] ?>.jpeg); background-size: cover; background-position: center;">
