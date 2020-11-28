@@ -174,12 +174,12 @@ private static $installed = array (
     ),
     'phpunit/php-code-coverage' => 
     array (
-      'pretty_version' => '7.0.10',
-      'version' => '7.0.10.0',
+      'pretty_version' => '7.0.12',
+      'version' => '7.0.12.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f1884187926fbb755a9aaf0b3836ad3165b478bf',
+      'reference' => '52f55786aa2e52c26cd9e2db20aff2981e0f7399',
     ),
     'phpunit/php-file-iterator' => 
     array (
@@ -219,12 +219,12 @@ private static $installed = array (
     ),
     'phpunit/phpunit' => 
     array (
-      'pretty_version' => '8.5.9',
-      'version' => '8.5.9.0',
+      'pretty_version' => '8.5.11',
+      'version' => '8.5.11.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f5c8a5dd5e7e8d68d7562bfb48d47287d33937d6',
+      'reference' => '3123601e3b29339b20129acc3f989cfec3274566',
     ),
     'psr/log' => 
     array (

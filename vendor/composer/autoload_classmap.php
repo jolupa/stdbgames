@@ -82,7 +82,7 @@ return array(
     'PHPUnit\\Framework\\MockObject\\Builder\\Identity' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Identity.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\InvocationMocker' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/InvocationMocker.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\InvocationStubber' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/InvocationStubber.php',
-    'PHPUnit\\Framework\\MockObject\\Builder\\Match' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Match.php',
+    'PHPUnit\\Framework\\MockObject\\Builder\\Match_' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Match_.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\MethodNameMatch' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/MethodNameMatch.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\ParametersMatch' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/ParametersMatch.php',
     'PHPUnit\\Framework\\MockObject\\Builder\\Stub' => $vendorDir . '/phpunit/phpunit/src/Framework/MockObject/Builder/Stub.php',
