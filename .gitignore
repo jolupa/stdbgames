@@ -130,7 +130,9 @@ nb-configuration.xml
 writable/database/Stadia_DB.db
 
 #Public
-public/*
+public/assets/bulma/
+public/assets/*.png
+public/images/
 
 #SomeConfig
 twitter.php
