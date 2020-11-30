@@ -16,7 +16,7 @@
                 <a  class="is-inline-block" href="https://twitter.com/teamstadiaplay" alt="Team Stadia Play" title="Team Stadia Play" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/teamstadialogo.jpeg" alt="Team Stadia Play" title="Team Stadia Play"></a>&nbsp;
                 <a  class="is-inline-block" href="https://twitter.com/deolhonostadia" alt="De olho no Stadia" title="De olho no Stadia" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/deolhostadialogo.jpeg" alt="De olho no Stadia" title="De olho no Stadia"></a>&nbsp;
                 <a  class="is-inline-block" href="https://www.youtube.com/channel/UCvx7nDcdRYMuwbqcYscoDAg" alt="Dr. Spaceman" title="Dr. Spaceman" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/drspaceman.jpeg" alt="Dr. Spaceman" title="Dr. Spaceman"></a>&nbsp;
-                <a  class="is-inline-block" href="https://twitter.com/cloudgamingman" alt="Cloud Gaming Man" title="Cloud Gaming Man" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/cloudgamingman.jpeg" alt="Cloud Gaming Man" title="Cloud Gaming Man"></a>
+                <a  class="is-inline-block" href="https://twitter.com/cloudgamingman" alt="Cloud Gaming Man" title="Cloud Gaming Man" target="_blank"><img class="image is-96x96 mr-2" src="<?= base_url() ?>/images/friends/cloudgamingman.jpeg" alt="Cloud Gaming Man" title="Cloud Gaming Man"></a>&nbsp;
               </p>
             </div>
           </div>
