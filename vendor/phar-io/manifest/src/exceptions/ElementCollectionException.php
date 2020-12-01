@@ -9,10 +9,5 @@
  */
 namespace PharIo\Manifest;
 
-class ExtElementCollection extends ElementCollection {
-    public function current(): ExtElement {
-        return new ExtElement(
-            $this->getCurrentElement()
-        );
-    }
+class ElementCollectionException extends \InvalidArgumentException implements Exception {
 }
