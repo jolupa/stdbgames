@@ -33,6 +33,8 @@
           with State Share
         <?php elseif($type === 'deals'): ?>
           on Sale
+        <?php elseif($type === 'f2p'): ?>
+          Free 2 Play
         <?php else: ?>
           All Games:
         <?php endif; ?>
@@ -50,6 +52,7 @@
             <li <?php if($type === 'deals'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/deals">Deals</a></li>
             <li <?php if($type === 'earlyaccess'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/earlyaccess">Early Access</a></li>
             <li <?php if($type === 'firstonstadia'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a></li>
+            <li <?php if($type === 'f2p'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/f2p">Free to Play</a></li>
             <li <?php if($type === 'launched'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/launched">Launched</a></li>
             <li <?php if($type === 'pro'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/pro">Pro Games</a></li>
             <li <?php if($type === 'rumors'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/rumors">Rumoured Games</a></li>

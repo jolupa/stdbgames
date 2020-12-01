@@ -333,6 +333,19 @@
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.state_share', 1)
                       ->orderBy('games.release', 'ASC');
+      } elseif($type == 'f2p'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.is_f2p', 1)
+                      ->orderBy('games.release', 'ASC');
       } else {
         $builder = $db->table('games')
                       ->select('games.name,
