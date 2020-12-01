@@ -59,5 +59,13 @@ class Prices extends Controller{
     $pricemodel->updatePriceDb($data);
     return redirect()->to('/game/'.$slug);
   }
+  public function listdeals(){
+    $pricemodel = new PricesModel();
+    $data['type'] = 'deals';
+    $data['list'] = $pricemodel->getAllDeals();
+    echo view('templates/header');
+    echo view('games/list', $data);
+    echo view('templates/footer');
+  }
 }
 ?>

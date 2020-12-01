@@ -31,6 +31,8 @@
           with Cross Progression
         <?php elseif($type === 'stateshare'): ?>
           with State Share
+        <?php elseif($type === 'deals'): ?>
+          on sale
         <?php else: ?>
           All Games:
         <?php endif; ?>
@@ -45,6 +47,7 @@
             <li <?php if($type === 'crosssave'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossave">Cross Save</a></li>
             <li <?php if($type === 'crowdchoice'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crowdchoice">Crowd Choice</a></li>
             <li <?php if($type === 'crowdplay'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crowdplay">Crowd Play</a></li>
+            <li <?php if($type === 'deals'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/deals">Deals</a></li>
             <li <?php if($type === 'earlyaccess'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/earlyaccess">Early Access</a></li>
             <li <?php if($type === 'firstonstadia'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a></li>
             <li <?php if($type === 'launched'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/launched">Launched</a></li>
@@ -60,28 +63,46 @@
         <hr>
       </div>
       <div class="columns is-multiline">
-        <?php foreach($list as $list): ?>
-          <div class="column is-one-quarter">
-            <div class="media">
-              <figure class="media-left">
-                <p class="image is-64x64">
-                  <img title="<?= $list['name'] ?>" src="<?= base_url() ?>/images/<?= $list['image'] ?>-thumb.jpeg" alt="<?= $list['name'] ?>">
-                </p>
-              </figure>
-              <div class="media-content">
-                <p class="title is-5"><?php if($list['rumor'] == 1): ?><span class="icon has-text-danger" title="RUMOR!"><i class="fas fa-user-secret"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
-                <p class="subtitle is-7">Developer <?= $list['developer_name'] ?> / Publisher <?= $list['publisher_name'] ?><br>
-                  <?php if($list['release'] == '2099-01-01' || $list['release'] == 'TBA'): ?>
-                    TBA
-                  <?php else: ?>
-                    <?= $list['release'] ?>
-                  <?php endif; ?>
-                  <?php if($type === 'pro'): ?>Entered Pro:&nbsp;<?= $list['pro_from'] ?><?php endif; ?>
-                </p>
+        <?php if($type == 'deals'): ?>
+          <?php foreach($list as $list): ?>
+            <div class="column is-one-quarter">
+              <div class="media">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img title="<?= $list['name'] ?>" src="<?= base_url() ?>/images/<?= $list['image'] ?>-thumb.jpeg" alt="<?= $list['name'] ?>">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
+                  <p class="subtitle is-7">Retail Price: <strong><?= $list['game_price'] ?></strong><br>Sale Price: <strong><?= $list['price'] ?></strong><br>Valid til: <strong><?= $list['date_till'] ?></strong><br>Discount for: <strong><?php if($list['discount_type'] == 1): ?>Pro Members<?php else: ?>Everyone<?php endif; ?></strong></p>
+                </div>
               </div>
             </div>
-          </div>
-        <?php endforeach; ?>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <?php foreach($list as $list): ?>
+            <div class="column is-one-quarter">
+              <div class="media">
+                <figure class="media-left">
+                  <p class="image is-64x64">
+                    <img title="<?= $list['name'] ?>" src="<?= base_url() ?>/images/<?= $list['image'] ?>-thumb.jpeg" alt="<?= $list['name'] ?>">
+                  </p>
+                </figure>
+                <div class="media-content">
+                  <p class="title is-5"><?php if($list['rumor'] == 1): ?><span class="icon has-text-danger" title="RUMOR!"><i class="fas fa-user-secret"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
+                  <p class="subtitle is-7">Developer <?= $list['developer_name'] ?> / Publisher <?= $list['publisher_name'] ?><br>
+                    <?php if($list['release'] == '2099-01-01' || $list['release'] == 'TBA'): ?>
+                      TBA
+                    <?php else: ?>
+                      <?= $list['release'] ?>
+                    <?php endif; ?>
+                    <?php if($type === 'pro'): ?>Entered Pro:&nbsp;<?= $list['pro_from'] ?><?php endif; ?>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        <?php endif; ?>
       </div>
     </div>
   </section>

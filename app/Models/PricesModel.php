@@ -37,7 +37,7 @@ class PricesModel extends Model{
                   ->where('prices.date_till >=', date('Y-m-d'))
                   ->join('games', 'games.id = prices.game_id')
                   ->orderBy('prices.date_till', 'DESC');
-    return $builder->get(5)->getResultArray();
+    return $builder->get(4)->getResultArray();
   }
   public function updatePriceDb($data){
     $db = \Config\Database::connect();
@@ -49,6 +49,24 @@ class PricesModel extends Model{
                     ->where('id', $data['game_id']);
       return $builder->update(['updated_at'=>date('Y-m-d H:m:s')]);
     }
+  }
+  public function getAllDeals(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('prices')
+                  ->select('prices.price AS price,
+                            prices.date AS date,
+                            prices.date_till AS date_till,
+                            prices.discount_type AS discount_type,
+                            games.id AS game_id,
+                            games.name AS name,
+                            games.slug AS slug,
+                            games.image AS image,
+                            games.price AS game_price')
+                  ->where('prices.date_till >=', date('Y-m-d'))
+                  ->where('prices.date_till !=', '')
+                  ->join('games', 'games.id = prices.game_id')
+                  ->orderBy('prices.date_till', 'ASC');
+    return $builder->get()->getResultArray();
   }
 }
 ?>

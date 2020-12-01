@@ -35,6 +35,7 @@ $routes->get('/game/(:segment)', 'Games::overview/$1');
 $routes->get('/game/(:segment)/(:segment)', 'Games::overview/$1/$2');
 $routes->get('/games/game/(:segment)', 'Games::overview/$1');
 $routes->get('/list', 'Games::list');
+$routes->get('/list/deals', 'Prices::listdeals');
 $routes->get('/list/(:segment)', 'Games::list/$1');
 $routes->get('/create/game', 'Games::insertform');
 $routes->get('/create/developer', 'Developers::insertform');
