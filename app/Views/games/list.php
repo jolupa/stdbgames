@@ -32,7 +32,7 @@
         <?php elseif($type === 'stateshare'): ?>
           with State Share
         <?php elseif($type === 'deals'): ?>
-          on sale
+          on Sale
         <?php else: ?>
           All Games:
         <?php endif; ?>
