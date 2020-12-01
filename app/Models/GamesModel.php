@@ -53,6 +53,7 @@
                               games.fps,
                               games.hdr_sdr,
                               games.max_resolution,
+                              games.is_f2p,
                               developers.name AS developer_name,
                               developers.slug AS developer_slug,
                               publishers.name AS publisher_name,

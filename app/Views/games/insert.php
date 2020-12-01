@@ -22,6 +22,15 @@
           <div class="control is-expanded">
             <input type="text" class="input" name="price" placeholder="Release Price: €€.€€">
           </div>
+          <div class="control">
+            <div class="select">
+              <select name="is_f2p">
+                <option selected disable>Is F2P?</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
         </div>
         <div class="field is-grouped is-grouped-multiline">
           <div class="control">

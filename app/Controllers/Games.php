@@ -127,6 +127,7 @@
         $data['max_resolution'] = $this->request->getVar('max_resolution');
         $data['fps'] = $this->request->getVar('fps');
         $data['hdr_sdr'] = $this->request->getVar('hdr_sdr');
+        $data['is_f2p'] = $this->request->getVar('is_f2p');
         $data['created_at'] = date('Y-m-d H:m:s');
         if($_FILES['image']['error'] !== 4){
           if(is_dir(ROOTPATH.'/public/images') == FALSE){
@@ -212,6 +213,7 @@
       $data['max_resolution'] = $this->request->getVar('max_resolution');
       $data['fps'] = $this->request->getVar('fps');
       $data['hdr_sdr'] = $this->request->getVar('hdr_sdr');
+      $data['is_f2p'] = $this->request->getVar('is_f2p');
       $data['updated_at'] = date('Y-m-d H:m:s');
       if($_FILES['image']['error'] !== 4){
         if(file_exists(ROOTPATH.'public/images/'.$this->request->getVar('oldimage').'.jpeg') == TRUE){
@@ -294,6 +296,9 @@
       }
       if ($data['is_pxc'] != $this->request->getVar('oldis_pxc') || $data['max_resolution'] != $this->request->getVar('oldmax_resolution') || $data['fps'] != $this->request->getVar('oldfps') || $data['hdr_sdr'] != $this->request->getVar('oldhdr_sdr')){
         $statusmessage .= ' Updated Image resolution features';
+      }
+      if ($data['is_f2p'] !== $this->request->getVar('oldis_f2p') && $data['is_f2p'] == 1){
+        $statusmessage .= ' Now is Free To Play for Everyone!';
       }
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);

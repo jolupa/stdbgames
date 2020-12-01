@@ -37,6 +37,7 @@
           <input type="hidden" name="oldmax_resolution" value="<?= $game['max_resolution'] ?>">
           <input type="hidden" name="oldfps" value="<?= $game['fps'] ?>">
           <input type="hidden" name="oldhdr_sdr" value="<?= $game['hdr_sdr'] ?>">
+          <input type="hidden" name="oldis_f2p" value="<?= $game['is_f2p'] ?>">
           <div class="field">
             <div class="control">
               <label class="checkbox"><input type="checkbox" <?php if($game['rumor'] == 1): ?>checked<?php endif; ?> name="rumor">&nbsp;It's a Rumor?</label>
@@ -51,6 +52,15 @@
             </div>
             <div class="control is-expanded">
               <input type="text" class="input" name="price" <?php if(isset($game['price'])): ?>value="<?= $game['price'] ?>"<?php else: ?> placeholder="Release Price: €€.€€"<?php endif; ?>>
+            </div>
+            <div class="control">
+              <div class="select">
+                <select name="is_f2p">
+                  <option <?php if($game['is_f2p'] != 0 || $game['is_f2p'] != 1): ?>selected<?php endif; ?> disable>Is F2P?</option>
+                  <option <?php if($game['is_f2p'] == 0): ?>selected<?php endif; ?> value="0">No</option>
+                  <option <?php if($game['is_f2p'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
+                </select>
+              </div>
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
