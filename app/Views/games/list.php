@@ -74,7 +74,7 @@
                 </figure>
                 <div class="media-content">
                   <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
-                  <p class="subtitle is-7">Retail Price: <strong><?= $list['game_price'] ?></strong><br>Sale Price: <strong><?= $list['price'] ?></strong><br>Valid til: <strong><?= $list['date_till'] ?></strong><br>Discount for: <strong><?php if($list['discount_type'] == 1): ?>Pro Members<?php else: ?>Everyone<?php endif; ?></strong></p>
+                  <p class="subtitle is-7">Retail Price: <strong><?= $list['game_price'] ?>&nbsp;€</strong><br>Sale Price: <strong><?= $list['price'] ?>&nbsp;€</strong><br>Valid til: <strong><?= $list['date_till'] ?></strong><br>Discount for: <strong><?php if($list['discount_type'] == 1): ?>Pro Members<?php else: ?>Everyone<?php endif; ?></strong></p>
                 </div>
               </div>
             </div>
