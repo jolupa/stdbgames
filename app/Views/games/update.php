@@ -23,7 +23,6 @@
           <input type="hidden" name="oldpro_from" value="<?= $game['pro_from'] ?>">
           <input type="hidden" name="oldpro_till" value="<?= $game['pro_till'] ?>">
           <input type="hidden" name="oldcross_play" value="<?= $game['cross_play'] ?>">
-          <input type="hidden" name="oldcross_save" value="<?= $game['cross_save'] ?>">
           <input type="hidden" name="oldstream_connect" value="<?= $game['stream_connect'] ?>">
           <input type="hidden" name="oldcrowd_choice" value="<?= $game['crowd_choice'] ?>">
           <input type="hidden" name="oldcrowd_play" value="<?= $game['crowd_play'] ?>">
@@ -125,15 +124,6 @@
                 <select name="cross_progression">
                   <option value="0" <?php if($game['cross_progression'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['cross_progression'] == 1): ?>selected<?php endif; ?>>Yes</option>
-                </select>
-              </div>
-            </div>
-            <div class="control is-expanded">
-              <label class="label">Has CrossSave</label>
-              <div class="select">
-                <select name="cross_save">
-                  <option <?php if($game['cross_save'] == 0): ?>selected<?php endif; ?> value="0">No</option>
-                  <option <?php if($game['cross_save'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
                 </select>
               </div>
             </div>

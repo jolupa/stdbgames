@@ -98,15 +98,6 @@
             </div>
           </div>
           <div class="control is-expanded">
-            <label class="label">Has CrossSave</label>
-            <div class="select">
-              <select name="cross_save">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
-              </select>
-            </div>
-          </div>
-          <div class="control is-expanded">
             <label class="label">Has StreamConnect</label>
             <div class="select">
               <select name="stream_connect">
