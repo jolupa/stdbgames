@@ -10,7 +10,8 @@ class WishlistModel extends Model{
                             games.image AS game_image,
                             games.slug AS game_slug')
                   ->join('games', 'games.id = wishlists.game_id')
-                  ->where('user_id', $user_id);
+                  ->where('user_id', $user_id)
+                  ->orderBy('games.name', 'DESC');
     if($builder->countAllResults(false) > 0){
       return $builder->get()->getResultArray();
     } else {

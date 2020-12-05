@@ -11,7 +11,8 @@ class LibrariesModel extends Model{
                             games.image AS game_image,
                             games.appid AS game_appid')
                   ->join('games', 'games.id = libraries.game_id')
-                  ->where('user_id', $user_id);
+                  ->where('user_id', $user_id)
+                  ->orderBy('games.name', 'ASC');
     if($builder->countAllResults(false) > 0){
       return $builder->get()->getResultArray();
     } else {
@@ -33,6 +34,13 @@ class LibrariesModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('libraries');
     return $builder->insert(['game_id'=>$id, 'user_id'=>$user_id]);
+  }
+  public function deleteFromLibrary($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('libraries')
+                  ->where('game_id', $id)
+                  ->where('user_id', session('user_id'));
+    return $builder->delete();
   }
 }
 

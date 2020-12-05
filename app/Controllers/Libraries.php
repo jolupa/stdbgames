@@ -34,6 +34,12 @@ class Libraries extends Controller{
     }
     return redirect()->back();
   }
+  public function deleteuserlibrary($id){
+    $librarymodel = new LibrariesModel();
+    if ($librarymodel->deleteFromLibrary($id) == true){
+      return redirect()->back();
+    }
+  }
 }
 
 ?>
