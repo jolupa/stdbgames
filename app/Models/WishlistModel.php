@@ -11,7 +11,7 @@ class WishlistModel extends Model{
                             games.slug AS game_slug')
                   ->join('games', 'games.id = wishlists.game_id')
                   ->where('user_id', $user_id)
-                  ->orderBy('games.name', 'DESC');
+                  ->orderBy('games.name', 'ASC');
     if($builder->countAllResults(false) > 0){
       return $builder->get()->getResultArray();
     } else {
