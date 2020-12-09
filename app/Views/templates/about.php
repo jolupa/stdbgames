@@ -12,7 +12,7 @@
       <p>Also I worked, as an intern, at Yahoo! (remember it), in Spain in the Entertainment and Media section making all the banners that was advertising products at that time on my section.</p>
       <h1>Where goes my data</h1>
       <p>To the DB.</p>
-      <p>We only have the data of the users registered on the Database to access and to make his libraries and wishlist, we don't want nothing more, and if that changes we have your email to warning you that we are going to change that policie and give you the chanve to delete the account.</p>
+      <p>We only have the data of the users registered on the Database to access and to make his libraries and wishlist, we don't want nothing more, and if that changes we have your email to warning you that we are going to change that policie and give you the chance to delete the account.</p>
       <p>Yeah! We use the Google Tracker to track the visits for the page and Google is the one that manage that data.</p>
       <p>And I think we don't use anything more that track data...</p>
       <h1>Can we contact you:</h1>
@@ -23,7 +23,7 @@
       </ul>
       <h1>Can I collaborate?</h1>
       <p>I have a Patreon page to help pay the server where the page is hosted.</p>
-      <p>Also if I reach an ammount of money via Patreon we can start doing giveaways of Stadia games to our Patreon supporters, I good way to give back for the help!</p>
+      <p>Also if I reach an ammount of money via Patreon we can start doing giveaways of Stadia games to our Patreon supporters, A good way to give back for the help!</p>
       <p>If you want check the page here: <a href="https://patreon.com/stdbgames" target="_new"><strong>Stadia GamesDB! Patreon</strong></a></p>
     </div>
   </section>
