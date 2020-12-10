@@ -247,7 +247,7 @@
       if($data['rumor'] == 1){
         $statusmessage = "RUMOR!! Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
       } else {
-        $statusmessage = "Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+        $statusmessage = "Game Updated on DB! ".$data['name'];
       }
       if ($data['name'] !== $this->request->getVar('oldname')){
         $statusmessage .= ' / Name updated';
@@ -300,6 +300,7 @@
       if ($data['is_f2p'] !== $this->request->getVar('oldis_f2p') && $data['is_f2p'] == 1){
         $statusmessage .= ' / Now is Free To Play for Everyone!';
       }
+      $statusmessage .= " https://stdb.games/game/".$data['slug'];
       $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
       $connection->post("statuses/update", ["status" => $statusmessage]);
       return redirect()->to('/game/'.$data['slug']);
