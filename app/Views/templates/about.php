@@ -1,7 +1,7 @@
 <div class="container">
   <section class="section">
     <div class="content">
-      <figure class="image is-16by9">
+      <figure class="image is-fullwidth">
         <img src="<?= base_url() ?>/assets/stdb_logo_big.png">
       </figure>
       <h1>What's Stadia GamesDB!</h1>
