@@ -58,9 +58,9 @@
   <meta name="og_site_name" content="Stadia GamesDB!">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@DbStadia">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <!-- <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bulma.css"> -->
-  <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bulma-carousel.min.css">
+  <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">-->
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bulma.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/css/carousel.css">
   <?php if(isset($doodle)): ?>
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lightbox.css">
   <?php endif; ?>
