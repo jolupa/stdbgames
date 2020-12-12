@@ -26,6 +26,12 @@
                 <span class="subtitle is-6">Release date: <?= $game['release'] ?></span>
               <?php endif; ?>
               <br>
+              <?php if($game['price'] != ''): ?>
+                <span class="subtitle is-6">Price: <?= $game['price'] ?></span>
+              <?php else: ?>
+                <span class="subtitle is-6">Price: TBA</span>
+              <?php endif; ?>
+              <br>
               <?= view_cell('App\Controllers\Reviews::totalvotegameoverview', 'id='.$game['id']) ?>
             </h2>
           </div>

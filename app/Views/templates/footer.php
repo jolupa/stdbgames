@@ -1,4 +1,4 @@
-    <div class="footer">
+    <div class="footer mt-3">
       <section class="section">
         <div class="columns is-centered">
           <div class="column is-8 is-multiline">

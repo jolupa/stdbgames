@@ -1,15 +1,5 @@
 <table class="table is-fullwidth">
-  <thead>
-    <tr>
-      <th class="has-text-left">Release Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
   <tbody>
-    <tr>
-      <td class="has-text-left"><?php if(!$game['price']): ?>No Info<?php else: ?><?= number_format($game['price'], 2) ?>&nbsp;€<?php endif; ?></td>
-      <td colspan="3"></td>
-    </tr>
     <tr>
       <th class="has-text-left">Price</th>
       <th class="has-text-centered">Date Discounted</th>
