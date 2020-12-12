@@ -58,9 +58,12 @@
   <meta name="og_site_name" content="Stadia GamesDB!">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@DbStadia">
+  <?php if(isset($doodle)): ?>
+    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lightbox.css">
+  <?php endif; ?>
   <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">-->
-  <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bulma.css">
   <link rel="stylesheet" href="<?= base_url() ?>/assets/css/carousel.css">
+  <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bulma.css">
   <?php if(isset($doodle)): ?>
     <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lightbox.css">
   <?php endif; ?>
@@ -69,8 +72,8 @@
   <link rel="icon" type="image/png" href="<?= base_url() ?>/assets/stdb_logo_header.png">
 </head>
 <body>
-  <div class="container">
-    <nav class="navbar">
+  <nav class="navbar">
+    <div class="container">
       <div class="navbar-brand">
         <a title="Stadia GamesDB!" class="navbar-item" href="<?= base_url() ?>">
           <img src="<?= base_url() ?>/assets/stdb_logo_header.png">
@@ -104,8 +107,8 @@
           </div>
         </div>
       </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {

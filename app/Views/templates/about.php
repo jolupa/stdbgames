@@ -1,9 +1,9 @@
 <div class="container">
   <section class="section">
-    <div class="content">
-      <figure class="image is-fullwidth">
-        <img src="<?= base_url() ?>/assets/stdb_logo_big.png">
-      </figure>
+    <figure class="image is-fullwidth">
+      <img src="<?= base_url() ?>/assets/stdb_logo_big.png">
+    </figure>
+    <div class="content mt-5">
       <h1>What's Stadia GamesDB!</h1>
       <p>When I first saw Stadia in a presentation on Youtube at that same instant I thought: I want to make something with this... And this something was this page. <strong>Stadia GamesDB!</strong>, <strong>STDB</strong> or, as we say on Twitter, <strong>DB!</strong></p>
       <h1>Who are You?</h1>

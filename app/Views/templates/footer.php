@@ -1,5 +1,5 @@
-    <section class="section">
-      <div class="footer">
+    <div class="footer">
+      <section class="section">
         <div class="columns is-centered">
           <div class="column is-8 is-multiline">
             <div class="content has-text-centered">
@@ -21,8 +21,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </body>
 </html>
 
