@@ -31,7 +31,7 @@
       </div>
       <div class="content mt-2">
         <p class="subtitle is-5">Your</p>
-        <p class="title is-3">Whishlist</p>
+        <p class="title is-3">Wishlist</p>
         <?= view_cell('App\Controllers\Wishlists::userwishlist', 'user_id='.$user['id']) ?>
       </div>
       <?php if(session('role') == 1): ?>
