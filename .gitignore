@@ -130,7 +130,7 @@ nb-configuration.xml
 writable/database/Stadia_DB.db
 
 #Public
-public/assets/css/bulma.css.map
+public/assets/css/sass/
 public/assets/*.png
 public/images/
 
