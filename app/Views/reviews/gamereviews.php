@@ -93,7 +93,7 @@
         </p>
       </figure>
       <div class="media-content">
-        <div class="content has-background-light px-2 py-1">
+        <div class="content has-background-gunmetal px-2 py-1">
           <p>
             <a id="Review<?= $review['id'] ?>">#</a>Review by <strong><?= $review['user_name'] ?></strong><?php if($review['user_role'] == 2): ?>&nbsp;<span class="icon has-text-danger is-small"><i class="far fa-newspaper"></i></span><?php endif; ?><br>
             Writted on: <strong><?= $review['date'] ?></strong><br>

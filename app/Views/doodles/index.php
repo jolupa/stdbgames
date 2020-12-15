@@ -40,10 +40,10 @@
                 </div>
                 <?= view_cell('\App\Controllers\Games::allgames') ?>
                 <div class="control">
-                  <button class="button is-primary has-text-dark" value="submit">Add Doodle</button>
+                  <button class="button is-primary" value="submit">Add Doodle</button>
                 </div>
                 <div class="control">
-                  <button class="button is-danger has-text-white" value="reset">Start Over</button>
+                  <button class="button is-danger" value="reset">Start Over</button>
                 </div>
               </div>
             </form>

@@ -26,10 +26,10 @@
           </div>
           <div class="field is-grouped is-grouped-multiline">
             <div class="control">
-              <button class="button is-small is-primary has-text-dark" value="submit">Update Publisher!</button>
+              <button class="button is-small is-primary" value="submit">Update Publisher!</button>
             </div>
             <div class="control">
-              <button class="button is-small is-danger has-text-white" value="reset">Clear All!</button>
+              <button class="button is-small is-danger" value="reset">Clear All!</button>
             </div>
           </div>
         </form>

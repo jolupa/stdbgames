@@ -16,8 +16,8 @@
           <p class="title is-7">Developer <?= $chart['developer_name'] ?> Publisher <?= $chart['publisher_name'] ?></p>
         </div>
         <div class="media-right">
-          <figure class="image is-64x64 has-text-centered <?php if($chart['score'] > 9): ?>has-background-primary<?php elseif($chart['score'] > 5): ?>has-background-warning<?php elseif($chart['score'] > 3): ?>has-background-link has-text-color-white<?php else: ?>has-background-danger has-text-white<?php endif; ?>">
-          <br><p class="title is-5"><strong><?= round($chart['score']) ?></strong></p>
+          <figure class="image is-64x64 has-text-centered">
+            <br><p class="title is-5"><strong><?= round($chart['score']) ?></strong></p>
           </figure>
         </div>
       </div>

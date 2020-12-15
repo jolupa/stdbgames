@@ -1,4 +1,4 @@
-    <div class="container has-background-light">
+    <div class="container has-background-gunmetal">
       <section class="section">
         <div class="columns">
           <div class="column">
@@ -12,7 +12,7 @@
           <?php $i = 0; while ($i < $total): ?>
             <div class="card $interview-<?= $i ?> mr-1 is-shadowless">
               <div class="card-image" style="height: 200px; background-image: url(<?= base_url() ?>/images/<?= $interview[$i]['game_image'] ?>.jpeg); background-size: cover; background-position: center;"></div>
-              <div class="card-content has-background-white">
+              <div class="card-content has-background-green-eagle-2">
                 <div class="content">
                   <p>Small Interview with <a href="<?= base_url() ?>/game/<?= $interview[$i]['game_slug'] ?>#small_interview"><strong><?= $interview[$i]['game_name'] ?></strong></a> Developers</p>
                 </div>

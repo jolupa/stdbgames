@@ -64,9 +64,6 @@
   <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">-->
   <link rel="stylesheet" href="<?= base_url() ?>/assets/css/carousel.css">
   <link rel="stylesheet" href="<?= base_url() ?>/assets/css/bulma.css">
-  <?php if(isset($doodle)): ?>
-    <link rel="stylesheet" href="<?= base_url() ?>/assets/css/lightbox.css">
-  <?php endif; ?>
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" integrity="sha384-3Nqiqht3ZZEO8FKj7GR1upiI385J92VwWNLj+FqHxtLYxd9l+WYpeqSOrLh0T12c" crossorigin="anonymous"></script>
   <script src="https://cdn.tiny.cloud/1/25k6xs0os5kaxnymng45nlq4065x2mg02j2nrjqy70yfqrk0/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
   <link rel="icon" type="image/png" href="<?= base_url() ?>/assets/stdb_logo_header.png">
@@ -95,13 +92,13 @@
           </div>
           <div class="navbar-item">
             <div class="buttons">
-              <a class="button is-danger has-text-white is-small" style="border: none;" href="https://stadia.com/link/home?si_rid=10063878286671281778" target="_blank"><strong>Try Stadia Free One Month</strong></a>
+              <a class="button is-info is-small" style="border: none;" href="https://stadia.com/link/home?si_rid=10063878286671281778" target="_blank"><strong>Try Stadia Free One Month</strong></a>
               <?php if(session('logged') == true): ?>
                 <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/user/profile/<?= session('slug') ?>">Profile</a>
-                <a class="button is-light has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/logout">Log Out</a>
+                <a class="button is-danger has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/logout">Log Out</a>
               <?php else: ?>
-                <a class="button is-primary has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/signup">Sign Up</a>
-                <a class="button is-light has-text-dark is-small" style="border: none;" href="<?= base_url() ?>/login">Log In</a>
+                <a class="button is-primary is-small" style="border: none;" href="<?= base_url() ?>/signup">Sign Up</a>
+                <a class="button is-primary is-small" style="border: none;" href="<?= base_url() ?>/login">Log In</a>
               <?php endif; ?>
             </div>
           </div>

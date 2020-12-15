@@ -27,7 +27,7 @@
       </div>
     <?php endforeach; ?>
     <div class="column is-12 has-text-centered">
-      <a class="button is-small is-warning has-text-dark" href="<?= base_url() ?>/list/deals">See all Discounts</a>
+      <a class="button is-info" href="<?= base_url() ?>/list/deals">See all Discounts</a>
     </div>
   <?php endif; ?>
 </div>

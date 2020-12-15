@@ -4,9 +4,9 @@
         <nav class="tabs is-boxed is-fullwidth" data-content-target="mainTabs">
           <div class="container">
             <ul>
-              <li class="tab is-active has-background-light" onclick="openTab(event,'About')"><a>About</a></li>
-              <li class="tab has-background-light" onclick="openTab(event,'Reviews')"><a>Reviews</a></li>
-              <li class="tab has-background-light" onclick="openTab(event,'Price')"><a>Price History</a></li>
+              <li class="tab is-active has-background-gunmetal" onclick="openTab(event,'About')"><a>About</a></li>
+              <li class="tab has-background-gunmetal" onclick="openTab(event,'Reviews')"><a>Reviews</a></li>
+              <li class="tab has-background-gunmetal" onclick="openTab(event,'Price')"><a>Price History</a></li>
             </ul>
           </div>
         </nav>
@@ -18,7 +18,7 @@
           <div class="content has-text-centered">
             <h1 class="title"><?php if($game['rumor'] == 1): ?><span class="icon has-text-danger is-small" title="RUMOR!"><i class="fas fa-user-secret"></i></span>&nbsp;<?php endif; ?><?= $game['name'] ?></h1>
             <h2 class="subtitle">
-              <a class="has-text-dark" href="<?= base_url() ?>/developer/<?= $game['developer_slug'] ?>"><?= $game['developer_name'] ?></a> / <a class="has-text-dark" href="<?= base_url() ?>/publisher/<?= $game['publisher_slug'] ?>"><?= $game['publisher_name'] ?></a>
+              <a href="<?= base_url() ?>/developer/<?= $game['developer_slug'] ?>"><?= $game['developer_name'] ?></a> / <a href="<?= base_url() ?>/publisher/<?= $game['publisher_slug'] ?>"><?= $game['publisher_name'] ?></a>
               <br>
               <?php if($game['release'] == '2099-01-01' || $game['release'] == 'TBA'): ?>
                 <span class="subtitle is-6">Release date: TBA</span>
@@ -38,63 +38,63 @@
           <div class="content has-text-centered">
             <p>
               <?php if(isset($game['appid']) && $game['appid'] !== '' && date('Y-m-d') >= $game['release']): ?>
-                <a class="button is-danger has-text-white is-small mt-1 mr-2" href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go to Stadia Store</a>
+                <a class="button is-info is-small mt-1 mr-2" href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go to Stadia Store</a>
               <?php endif; ?>
               <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
                 <?php if($game['release'] > date('Y-m-d')): ?>
-                  <a class="button is-danger has-text-white is-small mt-1 mr-2" href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Pre-Order on Stadia</a>
+                  <a class="button is-info is-small mt-1 mr-2" href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Pre-Order on Stadia</a>
                 <?php else: ?>
-                  <a class="button is-danger has-text-white is-small mt-1 mr-2" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
+                  <a class="button is-info is-small mt-1 mr-2" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
                 <?php endif; ?>
               <?php endif; ?>
               <?php if($game['is_f2p'] == 1): ?>
-                <button class="button is-warning has-text-dark is-small mt-1 mr-2"><strong>F2P Now!</strong></button>
+                <button class="button is-warning is-small mt-1 mr-2"><strong>F2P Now!</strong></button>
               <?php endif; ?>
               <?php if($game['pro'] == 1 && $game['release'] === '2099-01-01'): ?>
-                <button class="button is-primary has-text-dark is-small mt-1 mr-2">Will be&nbsp;<strong>Free for PRO</strong>&nbsp;on Launch</button>
+                <button class="button is-primary is-small mt-1 mr-2">Will be&nbsp;<strong>Free for PRO</strong>&nbsp;on Launch</button>
               <?php endif; ?>
               <?php if($game['pro'] == 1 && date('Y-m-d') > $game['pro_from'] && $game['release'] !== 'TBA' && $game['release'] !== '2099-01-01'): ?>
-                <button class="button is-primary has-text-dark is-small mt-1 mr-2">Free for Pro&nbsp;<strong>Now!</strong></button>
+                <button class="button is-primary is-small mt-1 mr-2">Free for Pro&nbsp;<strong>Now!</strong></button>
               <?php endif; ?>
               <?php if($game['pro_till'] != '' && date('Y-m-d') <= $game['pro_till']): ?>
-                <button class="button is-warning has-text-dark is-small mt-1 mr-2">Hurry claim it before&nbsp;<strong><?= $game['pro_till'] ?></strong></button>
+                <button class="button is-warning is-small mt-1 mr-2">Hurry claim it before&nbsp;<strong><?= $game['pro_till'] ?></strong></button>
               <?php elseif($game['pro_from'] && $game['pro'] == 0): ?>
-                <button class="button is-danger has-text-white is-small mt-1 mr-2">Was free from&nbsp;<strong><?= $game['pro_from'] ?></strong>&nbsp;until&nbsp;<strong><?= $game['pro_till'] ?></strong></button>
+                <button class="button is-danger is-small mt-1 mr-2">Was free from&nbsp;<strong><?= $game['pro_from'] ?></strong>&nbsp;until&nbsp;<strong><?= $game['pro_till'] ?></strong></button>
               <?php endif; ?>
               <?php if(session('logged') == true): ?>
                 <?= view_cell('App\Controllers\Libraries::isinlibrary', 'id='.$game['id']) ?>
               <?php endif; ?>
               <?php if($game['first_on_stadia'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a>
+                <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a>
               <?php endif; ?>
               <?php if($game['stadia_exclusive'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/stadiaexclusive">Stadia Exclusive</a>
+                <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/stadiaexclusive">Stadia Exclusive</a>
               <?php endif; ?>
               <?php if($game['early_access'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/earlyaccess">Early Access Game</a>
+                <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/earlyaccess">Early Access Game</a>
               <?php endif; ?>
               <?php if($game['cross_play'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crossplay"><span class="icon is-small"><i class="fas fa-exchange-alt"></i></span>&nbsp;&nbsp;Cross Play</a>
+                <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/crossplay"><span class="icon is-small"><i class="fas fa-exchange-alt"></i></span>&nbsp;&nbsp;Cross Play</a>
               <?php endif; ?>
               <?php if($game['cross_progression'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crossprogression"><span class="icon is-small"><i class="fas fa-spinner"></i></span>&nbsp;&nbsp;Cross Progression</a>
+                <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/crossprogression"><span class="icon is-small"><i class="fas fa-spinner"></i></span>&nbsp;&nbsp;Cross Progression</a>
               <?php endif; ?>
               <?php if($game['crowd_choice'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crowdchoice"><span class="icon is-small"><i class="fas fa-user-injured"></i></span>&nbsp;&nbsp;Crowd Choice</a>
+                <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/crowdchoice"><span class="icon is-small"><i class="fas fa-user-injured"></i></span>&nbsp;&nbsp;Crowd Choice</a>
               <?php endif; ?>
               <?php if($game['crowd_play'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/crowdplay"><span class="icon is-small"><i class="fas fa-globe-europe"></i></span>&nbsp;&nbsp;Crowd Play</a>
+                <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/crowdplay"><span class="icon is-small"><i class="fas fa-globe-europe"></i></span>&nbsp;&nbsp;Crowd Play</a>
               <?php endif; ?>
               <?php if($game['stream_connect'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/streamconnect"><span class="icon is-small"><i class="fas fa-desktop"></i></span>&nbsp;&nbsp;Stream Connect</a>
+                <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/streamconnect"><span class="icon is-small"><i class="fas fa-desktop"></i></span>&nbsp;&nbsp;Stream Connect</a>
               <?php endif; ?>
               <?php if($game['state_share'] == 1): ?>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;" href="<?= base_url() ?>/list/stateshare"><span class="icon is-small"><i class="fas fa-share-alt"></i></span>&nbsp;&nbsp;State Share</a>
+                <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/stateshare"><span class="icon is-small"><i class="fas fa-share-alt"></i></span>&nbsp;&nbsp;State Share</a>
               <?php endif; ?>
             </p>
             <?php if($game['max_resolution'] != ''): ?>
               <p>
-                <a class="button is-primary has-text-dark is-small mt-1 mr-2" style="border: none;">
+                <a class="button is-info is-small mt-1 mr-2">
                   <span class="icon is-small">
                     <i class="fas fa-desktop"></i>
                   </span>&nbsp;&nbsp;
@@ -140,7 +140,7 @@
           </div>
         <?php endif; ?>
         <div class="content has-text-centered mt-2">
-          <a href="https://forms.gle/H5Yh2G2u42qGgTty9" target="_blank"><p class="button is-warning has-text-dark">See something Wrong?</p></a>
+          <a href="https://forms.gle/H5Yh2G2u42qGgTty9" target="_blank"><p class="button is-info">See something Wrong?</p></a>
         </div>
       </section>
     </div>

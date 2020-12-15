@@ -27,10 +27,10 @@
             </div>
           </div>
           <div class="control">
-            <button class="button is-primary has-text-dark" value="submit">Update!</button>
+            <button class="button is-primary" value="submit">Update!</button>
           </div>
           <div class="control">
-            <button class="button is-danger has-text-white" value="reset">Clear</button>
+            <button class="button is-danger" value="reset">Clear</button>
           </div>
         </div>
       </form>

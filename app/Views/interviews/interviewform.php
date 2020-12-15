@@ -32,10 +32,10 @@
       </div>
       <div class="field is-grouped">
         <div class="control">
-          <button class="button is-small is-primary has-text-dark" value="submit">Update</button>
+          <button class="button is-primary" value="submit">Update</button>
         </div>
         <div class="control">
-          <button class="button is-small is-danger has-text-white" value="reset">Start Over!</button>
+          <button class="button is-danger" value="reset">Start Over!</button>
         </div>
       </div>
     </form>

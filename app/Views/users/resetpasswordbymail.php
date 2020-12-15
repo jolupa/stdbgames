@@ -14,10 +14,10 @@
         </div>
         <div class="field is-grouped is-grouped-centered is-grouped-multiline">
           <div class="control">
-            <button class="button is-primary has-text-dark" value="submit">Reset password</button>
+            <button class="button is-danger" value="submit">Reset password</button>
           </div>
           <div class="control">
-            <button class="button is-danger has-text-white" value="reset">Start Over</button>
+            <button class="button is-primary" value="reset">Start Over</button>
           </div>
         </div>
       </form>

@@ -14,10 +14,10 @@
         </div>
         <div class="field is-grouped is-grouped-centered">
           <div class="control">
-            <button class="button is-primary has-text-color-dark" value="submit">Log In</button>
+            <button class="button is-primary" value="submit">Log In</button>
           </div>
           <div class="control">
-            <button class="button is-light has-text-color-dark" value="reset">Cancel</button>
+            <button class="button is-danger" value="reset">Cancel</button>
           </div>
         </div>
         <?php if(isset($error)): ?>

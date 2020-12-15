@@ -201,8 +201,8 @@
           </div>
           <div class="control">
             <div class="buttons">
-              <button class="button is-primary has-text-dark" value="submit">Add Game!</button>
-              <button class="button is-danger has-text-white" value="reset">Start Over</button>
+              <button class="button is-primary" value="submit">Add Game!</button>
+              <button class="button is-danger" value="reset">Start Over</button>
             </div>
           </div>
         </div>

@@ -24,10 +24,10 @@
           </div>
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-small is-primary has-text-dark" value="submit">Add Developer!</button>
+              <button class="button is-small is-primary" value="submit">Add Developer!</button>
             </div>
             <div class="control">
-              <button class="button is-small is-danger has-text-white" value="reset">Start Over</button>
+              <button class="button is-small is-danger" value="reset">Start Over</button>
             </div>
           </div>
         </form>

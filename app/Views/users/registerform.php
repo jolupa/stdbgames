@@ -41,10 +41,10 @@
         </div>
         <div class="field is-grouped is-grouped-centered">
           <div class="control">
-            <button class="button is-primary has-text-dark" value="submit">Register!</button>
+            <button class="button is-primary" value="submit">Register!</button>
           </div>
           <div class="control">
-            <button class="button is-light has-text-dark" value="reset">Cancel</button>
+            <button class="button is-danger" value="reset">Cancel</button>
           </div>
         </div>
       </form>

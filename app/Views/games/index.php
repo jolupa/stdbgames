@@ -17,14 +17,14 @@
                         <div class="is-overlay">
                           <div class="content mt-2 ml-4">
                             <p class="is-inline-block">
-                              <a class="tag is-small is-warning has-text-dark" href="<?= base_url() ?>/game/<?= $pro[$i]['slug'] ?>" title="<?= $pro[$i]['name'] ?>"><?= $pro[$i]['name'] ?></a>
+                              <a class="tag is-small is-primary" href="<?= base_url() ?>/game/<?= $pro[$i]['slug'] ?>" title="<?= $pro[$i]['name'] ?>"><?= $pro[$i]['name'] ?></a>
                               <br>
-                              <a class="tag is-small is-warning has-text-dark" href="<?= base_url() ?>/developer/<?= $pro[$i]['developer_slug'] ?>" title="<?= $pro[$i]['developer_name'] ?>"><?= $pro[$i]['developer_name'] ?></a>
+                              <a class="tag is-small is-primary" href="<?= base_url() ?>/developer/<?= $pro[$i]['developer_slug'] ?>" title="<?= $pro[$i]['developer_name'] ?>"><?= $pro[$i]['developer_name'] ?></a>
                               <br>
-                              <a class="tag is-small is-warning has-text-dark" href="<?= base_url() ?>/publisher/<?= $pro[$i]['publisher_slug'] ?>" title="<?= $pro[$i]['publisher_name'] ?>"><?= $pro[$i]['publisher_name'] ?></a>
+                              <a class="tag is-small is-primary" href="<?= base_url() ?>/publisher/<?= $pro[$i]['publisher_slug'] ?>" title="<?= $pro[$i]['publisher_name'] ?>"><?= $pro[$i]['publisher_name'] ?></a>
                               <?php if($pro[$i]['pro_till'] != ''): ?>
                                 <br>
-                                <span class="tag is-small is-danger has-test-white">Claim it before <?= $pro[$i]['pro_till'] ?></span>
+                                <span class="tag is-small is-danger">Claim it before <?= $pro[$i]['pro_till'] ?></span>
                               <?php endif; ?>
                             </p>
                           </div>
@@ -67,7 +67,7 @@
       	});
       }
     </script>
-    <div class="container has-background-light">
+    <div class="container has-background-gunmetal">
       <section class="section">
         <div class="columns">
           <div class="column">
@@ -85,11 +85,11 @@
                       <div class="is-overlay">
                         <div class="content mt-2 ml-4">
                           <p class="is-inline-block">
-                            <a class="tag is-small is-warning has-text-dark" href="<?= base_url() ?>/game/<?= $month[$i]['slug'] ?>" title="<?= $month[$i]['name'] ?>"><?= $month[$i]['name'] ?></a>
+                            <a class="tag is-small is-primary" href="<?= base_url() ?>/game/<?= $month[$i]['slug'] ?>" title="<?= $month[$i]['name'] ?>"><?= $month[$i]['name'] ?></a>
                             <br>
-                            <a class="tag is-small is-warning has-text-dark" href="<?= base_url() ?>/developer/<?= $month[$i]['developer_slug'] ?>" title="<?= $month[$i]['developer_name'] ?>"><?= $month[$i]['developer_name'] ?></a>
+                            <a class="tag is-small is-primary" href="<?= base_url() ?>/developer/<?= $month[$i]['developer_slug'] ?>" title="<?= $month[$i]['developer_name'] ?>"><?= $month[$i]['developer_name'] ?></a>
                             <br>
-                            <a class="tag is-small is-warning has-text-dark" href="<?= base_url() ?>/publisher/<?= $month[$i]['publisher_slug'] ?>" title="<?= $month[$i]['publisher_name'] ?>"><?= $month[$i]['publisher_name'] ?></a>
+                            <a class="tag is-small is-primary" href="<?= base_url() ?>/publisher/<?= $month[$i]['publisher_slug'] ?>" title="<?= $month[$i]['publisher_name'] ?>"><?= $month[$i]['publisher_name'] ?></a>
                         </div>
                       </div>
                     </div>
@@ -101,7 +101,7 @@
         </div>
         <div class="columns">
           <div class="column has-text-centered">
-            <a class="button is-warning is-small has-text-dark" href="<?= base_url() ?>/list/launched">See All Games Launched!</a>
+            <a class="button is-info" href="<?= base_url() ?>/list/launched">See All Games Launched!</a>
           </div>
         </div>
       </section>
@@ -167,7 +167,7 @@
         </div>
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <a class="button is-warning is-small" style="border: none;" href="<?= base_url() ?>/list/soon">See All Games Coming!</a>
+            <a class="button is-info" style="border: none;" href="<?= base_url() ?>/list/soon">See All Games Coming!</a>
           </div>
         </div>
       </section>
@@ -227,7 +227,7 @@
       </section>
     </div>
     <div class="container">
-      <section class="section has-background-light">
+      <section class="section has-background-gunmetal">
         <div class="columns">
           <div class="column">
             <?= view_cell('App\Controllers\Reviews::chart') ?>

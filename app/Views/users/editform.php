@@ -28,10 +28,10 @@
         </div>
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-primary has-text-dark" value="submit">Update!</button>
+            <button class="button is-primary" value="submit">Update!</button>
           </div>
           <div class="control">
-            <button class="button is-danger has-text-white" value="reset">Cancel</button>
+            <button class="button is-danger" value="reset">Cancel</button>
           </div>
         </div>
       </form>
@@ -54,10 +54,10 @@
         </div>
         <div class="field is-grouped is-grouped-multiline">
           <div class="control">
-            <button class="button is-primary has-text-black" value="submit">Change Password!</button>
+            <button class="button is-primary" value="submit">Change Password!</button>
           </div>
           <div class="control">
-            <button class="button is-danger has-text-white" value="reset">Start Over</button>
+            <button class="button is-danger" value="reset">Start Over</button>
           </div>
         </div>
       </form>
