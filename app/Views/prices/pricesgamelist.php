@@ -12,7 +12,7 @@
       </tr>
     <?php else: ?>
       <?php foreach($price as $price): ?>
-        <tr <?php if($price['discount_type'] == 1): ?>class="has-background-light"<?php endif; ?>>
+        <tr>
           <td class="has-text-left"><?= number_format($price['price'], 2) ?>&nbsp;€</td>
           <td class="has-text-centered"><?= $price['date'] ?></td>
           <td class="has-text-centered"><?= $price['date_till'] ?></td>
