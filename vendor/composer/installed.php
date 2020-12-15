@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '6770557470303d8fea1fc716460b7fedc150755f',
+    'reference' => '067337084d20d5ad6f96c6c1abfbc0d269c0b42d',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -27,7 +27,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '6770557470303d8fea1fc716460b7fedc150755f',
+      'reference' => '067337084d20d5ad6f96c6c1abfbc0d269c0b42d',
     ),
     'codeigniter4/framework' => 
     array (
@@ -116,12 +116,12 @@
     ),
     'phar-io/version' => 
     array (
-      'pretty_version' => '3.0.3',
-      'version' => '3.0.3.0',
+      'pretty_version' => '3.0.4',
+      'version' => '3.0.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '726c026815142e4f8677b7cb7f2249c9ffb7ecae',
+      'reference' => 'e4782611070e50613683d2b9a57730e9a3ba5451',
     ),
     'phpdocumentor/reflection-common' => 
     array (
@@ -161,12 +161,12 @@
     ),
     'phpunit/php-code-coverage' => 
     array (
-      'pretty_version' => '7.0.13',
-      'version' => '7.0.13.0',
+      'pretty_version' => '7.0.14',
+      'version' => '7.0.14.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'ad0dcd7b184e76f7198a1fe07685bfbec3ae911a',
+      'reference' => 'bb7c9a210c72e4709cdde67f8b7362f672f2225c',
     ),
     'phpunit/php-file-iterator' => 
     array (
@@ -197,12 +197,12 @@
     ),
     'phpunit/php-token-stream' => 
     array (
-      'pretty_version' => '3.1.2',
-      'version' => '3.1.2.0',
+      'pretty_version' => '4.0.4',
+      'version' => '4.0.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '472b687829041c24b25f475e14c2f38a09edf1c2',
+      'reference' => 'a853a0e183b9db7eed023d7933a858fa1c8d25a3',
     ),
     'phpunit/phpunit' => 
     array (
