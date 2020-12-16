@@ -47,11 +47,13 @@
                   <a class="button is-info is-small mt-1 mr-2" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
                 <?php endif; ?>
               <?php endif; ?>
+            </p>
+            <p>
               <?php if($game['is_f2p'] == 1): ?>
-                <button class="button is-warning is-small mt-1 mr-2"><strong>F2P Now!</strong></button>
+                <button class="button is-info is-small mt-1 mr-2"><strong>F2P Now!</strong></button>
               <?php endif; ?>
               <?php if($game['pro'] == 1 && $game['release'] === '2099-01-01'): ?>
-                <button class="button is-primary is-small mt-1 mr-2">Will be&nbsp;<strong>Free for PRO</strong>&nbsp;on Launch</button>
+                <button class="button is-info is-small mt-1 mr-2">Will be&nbsp;<strong>Free for PRO</strong>&nbsp;on Launch</button>
               <?php endif; ?>
               <?php if($game['pro'] == 1 && date('Y-m-d') > $game['pro_from'] && $game['release'] !== 'TBA' && $game['release'] !== '2099-01-01'): ?>
                 <button class="button is-primary is-small mt-1 mr-2">Free for Pro&nbsp;<strong>Now!</strong></button>
@@ -61,9 +63,13 @@
               <?php elseif($game['pro_from'] && $game['pro'] == 0): ?>
                 <button class="button is-danger is-small mt-1 mr-2">Was free from&nbsp;<strong><?= $game['pro_from'] ?></strong>&nbsp;until&nbsp;<strong><?= $game['pro_till'] ?></strong></button>
               <?php endif; ?>
+            </p>
+            <p>
               <?php if(session('logged') == true): ?>
                 <?= view_cell('App\Controllers\Libraries::isinlibrary', 'id='.$game['id']) ?>
               <?php endif; ?>
+            </p>
+            <p>
               <?php if($game['first_on_stadia'] == 1): ?>
                 <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a>
               <?php endif; ?>
@@ -91,9 +97,7 @@
               <?php if($game['state_share'] == 1): ?>
                 <a class="button is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/stateshare"><span class="icon is-small"><i class="fas fa-share-alt"></i></span>&nbsp;&nbsp;State Share</a>
               <?php endif; ?>
-            </p>
-            <?php if($game['max_resolution'] != ''): ?>
-              <p>
+              <?php if($game['max_resolution'] != ''): ?>
                 <a class="button is-info is-small mt-1 mr-2">
                   <span class="icon is-small">
                     <i class="fas fa-desktop"></i>
@@ -107,8 +111,8 @@
                     <?php if($game['hdr_sdr'] == 'hdr'): ?>HDR&nbsp;&nbsp;<?php elseif($game['hdr_sdr'] == 'sdr'): ?>SDR&nbsp;&nbsp;<?php endif; ?>
                   <?php endif; ?>
                 </a>
-              </p>
-            <?php endif; ?>
+              <?php endif; ?>
+            </p>
           </div>
           <div class="content">
             <p class="title is-5">About</p>
