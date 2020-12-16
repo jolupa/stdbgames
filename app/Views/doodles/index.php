@@ -18,7 +18,7 @@
             <div class="column is-4">
               <div class="card is-shadowless">
                 <div class="card-image">
-                  <figure class="image is-5by4">
+                  <figure class="image is-5by4 is-fullwidth">
                     <img src="<?= base_url() ?>/images/doodles/<?= $doodle['image'] ?>-thumb.jpeg">
                   </figure>
                 </div>

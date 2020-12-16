@@ -15,8 +15,8 @@
     <?php foreach($prices as $prices): ?>
       <div class="column is-12">
         <div class="media">
-          <figure class="media-left">
-            <img class="image is-64x64" src="<?= base_url() ?>/images/<?= $prices['game_image'] ?>-thumb.jpeg" alt="<?= $prices['game_name'] ?>" title="<?= $prices['game_name'] ?>">
+          <figure class="media-left image is-64x64 is-fullwidth">
+            <img src="<?= base_url() ?>/images/<?= $prices['game_image'] ?>-thumb.jpeg" alt="<?= $prices['game_name'] ?>" title="<?= $prices['game_name'] ?>">
           </figure>
           <div class="media-content">
             <p><a href="<?= base_url() ?>/game/<?= $prices['game_url'] ?>"><strong><?= $prices['game_name'] ?></strong></a></p>

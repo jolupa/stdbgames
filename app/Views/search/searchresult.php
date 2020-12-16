@@ -12,8 +12,8 @@
             <?php foreach($searchgames as $searchgames): ?>
               <div class="column is-3">
                 <div class="media">
-                  <figure class="media-left">
-                    <p class="image is-64x64">
+                  <figure class="media-left image is-64x64 is-fullwidth">
+                    <p>
                       <img src="<?= base_url() ?>/images/<?= $searchgames['image'] ?>-thumb.jpeg">
                     </p>
                   </figure>

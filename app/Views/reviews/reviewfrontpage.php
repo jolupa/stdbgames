@@ -8,8 +8,8 @@
     <?php foreach($review as $review): ?>
       <div class="column is-12">
         <div class="media">
-          <figure class="media-left">
-            <img class="image is-64x64" src="<?= base_url() ?>/images/<?= $review['game_image'] ?>-thumb.jpeg" alt="<?= $review['game_name'] ?>" title="<?= $review['game_name'] ?>">
+          <figure class="media-left image is-64x64 is-fullwidth">
+            <img src="<?= base_url() ?>/images/<?= $review['game_image'] ?>-thumb.jpeg" alt="<?= $review['game_name'] ?>" title="<?= $review['game_name'] ?>">
           </figure>
           <div class="media-content">
             <p><?= $review['user_name'] ?>&nbsp;<?php if($review['user_role'] == 2): ?><span class="icon has-text-danger is-small"><i class="far fa-newspaper"></i></span><?php endif; ?></p>

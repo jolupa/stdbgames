@@ -146,8 +146,8 @@
           <?php foreach($soon as $soon): ?>
             <div class="column is-one-quarter">
               <div class="media">
-                <figure class="media-left">
-                  <p class="image is-64x64">
+                <figure class="media-left image is-64x64 is-fullwidth">
+                  <p>
                     <img title="<?= $soon['name'] ?>" src="<?= base_url() ?>/images/<?= $soon['image'] ?>-thumb.jpeg" alt="<?= $soon['name'] ?>">
                   </p>
                 </figure>
@@ -185,8 +185,8 @@
           <?php foreach($last as $last): ?>
             <div class="column is-one-quarter">
               <div class="media">
-                <figure class="media-left">
-                  <p class="image is-64x64">
+                <figure class="media-left image is-64x64 is-fullwidth">
+                  <p>
                     <img title="<?= $last['name'] ?>" src="<?= base_url() ?>/images/<?= $last['image'] ?>-thumb.jpeg" alt="<?= $last['name'] ?>">
                   </p>
                 </figure>
@@ -209,8 +209,8 @@
           <?php foreach($lastupdated as $lastupdated): ?>
             <div class="column is-one-quarter">
               <div class="media">
-                <figure class="media-left">
-                  <p class="image is-64x64">
+                <figure class="media-left image is-64x64">
+                  <p>
                     <img title="<?= $lastupdated['name'] ?>" src="<?= base_url() ?>/images/<?= $lastupdated['image'] ?>-thumb.jpeg" alt="<?= $lastupdated['name'] ?>">
                   </p>
                 </figure>
