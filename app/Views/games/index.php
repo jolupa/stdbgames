@@ -44,10 +44,12 @@
     	bulmaCarousel.attach('#carousel-pro', {
     		slidesToScroll: 3,
     		slidesToShow: 3,
+        navigation: true,
+        navigationKeys: true,
+        navigatioSwipe: true,
         pagination: false,
-        loop: true,
-        breakpoints: [{ changePoint: 480, slidesToShow: 1, slidesToScroll: 1, navigationKeys: false, navigation: false },
-                      { changePoint: 640, slidesToShow: 2, slidesToScroll: 2, navigationKeys: false, navigation: false },
+        breakpoints: [{ changePoint: 480, slidesToShow: 1, slidesToScroll: 1 },
+                      { changePoint: 640, slidesToShow: 2, slidesToScroll: 2 },
                       { changePoint: 768, slidesToShow: 3, slidesToScroll: 3 }
                     ],
     	});
@@ -112,7 +114,6 @@
         slidesToScroll: 3,
         slidesToShow: 3,
         pagination: false,
-        loop: true,
         breakpoints: [{ changePoint: 480, slidesToShow: 1, slidesToScroll: 1, navigationKeys: false, navigation: false },
                       { changePoint: 640, slidesToShow: 2, slidesToScroll: 2, navigationKeys: false, navigation: false },
                       { changePoint: 768, slidesToShow: 3, slidesToScroll: 3 }
