@@ -4,7 +4,7 @@
       <th class="has-text-left">Price</th>
       <th class="has-text-centered">Date Discounted</th>
       <th class="has-text-centered">Discount is Valid</th>
-      <th class="has-text-centered">Discount Type</th>
+      <th class="has-text-centered is-hidden-touch">Discount Type</th>
     </tr>
     <?php if($price == FALSE): ?>
       <tr>
@@ -16,7 +16,7 @@
           <td class="has-text-left"><?= number_format($price['price'], 2) ?>&nbsp;€</td>
           <td class="has-text-centered"><?= $price['date'] ?></td>
           <td class="has-text-centered"><?= $price['date_till'] ?></td>
-          <td class="has-text-centered"><?php if($price['discount_type'] == 1): ?>Pro<?php else: ?>Everyone<?php endif; ?></td>
+          <td class="has-text-centered is-hidden-touch"><?php if($price['discount_type'] == 1): ?>Pro<?php else: ?>Everyone<?php endif; ?></td>
         </tr>
       <?php endforeach; ?>
     <?php endif; ?>
