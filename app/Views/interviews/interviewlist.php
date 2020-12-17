@@ -7,7 +7,7 @@
           </div>
         </div>
         <div class="columns">
-          <div id="carousel-interview" class="column is-clipped">
+          <div id="carousel-interview" class="column is-clipped carousel-interview">
           <?php $total = count($interview); ?>
           <?php $i = 0; while ($i < $total): ?>
             <div class="card $interview-<?= $i ?> mr-1 is-shadowless">
@@ -22,30 +22,41 @@
         </div>
       </div>
     </div>
-    <script>
-      bulmaCarousel.attach('#carousel-interview', {
-        slidesToScroll: 3,
-        slidesToShow: 3,
-        pagination: false,
-        loop: true,
-        breakpoints: [{ changePoint: 480, slidesToShow: 1, slidesToScroll: 1, navigationKeys: false, navigation: false },
-                      { changePoint: 640, slidesToShow: 2, slidesToScroll: 2, navigationKeys: false, navigation: false},
-                      { changePoint: 768, slidesToShow: 3, slidesToScroll: 3 }
-                    ],
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.carousel-interview').slick({
+          dots: true,
+          infinite: false,
+          speed: 300,
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          arrows: false,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+              }
+            },
+            {
+              breakpoint: 600,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+              }
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+              }
+            }]
+        });
       });
-      // Loop on each carousel initialized
-      for(var i = 0; i < carousels.length; i++) {
-        // Add listener to  event
-        carousels[i].on('before:show', state => {
-          console.log(state);
-        });
-      }
-      // Access to bulmaCarousel instance of an element
-      var element = document.querySelector('#carousel-interview');
-      if (element && element.bulmaCarousel) {
-        // bulmaCarousel instance is available as element.bulmaCarousel
-        element.bulmaCarousel.on('before-show', function(state) {
-          console.log(state);
-        });
-      }
     </script>
