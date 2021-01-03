@@ -139,3 +139,7 @@ twitter.php
 
 #Others
 spark
+tests/*
+builds
+composer.json
+phpunit.xml.dist
