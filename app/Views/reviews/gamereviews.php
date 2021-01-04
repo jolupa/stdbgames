@@ -1,8 +1,8 @@
 <?php if(session('logged') == TRUE): ?>
   <?php if($review_user == FALSE): ?>
     <p class="subtitle is-5">Add your</p>
-    <p class="title is-3">Review:</p>
-    <form method="post" action="<?= base_url() ?>/reviews/addreview">
+    <p class="title is-3">#Review:</p>
+    <form method="post" action="<?= base_url() ?>/reviews/addreview" class="mb-5">
       <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
       <input type="hidden" name="user_id" value="<?= session('user_id') ?>">
       <input type="hidden" name="game_name" value="<?= $game['name'] ?>">
@@ -35,11 +35,10 @@
         </div>
       </div>
     </form>
-    <hr>
   <?php elseif($review_user == TRUE): ?>
     <p class="subtitle is-5">Update your</p>
-    <p class="title is-3">Review:</p>
-    <form method="post" action="<?= base_url() ?>/reviews/updatereview">
+    <p class="title is-3">#Review:</p>
+    <form method="post" action="<?= base_url() ?>/reviews/updatereview" class="mb-5">
       <input type="hidden" name="id" value="<?= $review_user['id'] ?>">
       <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
       <input type="hidden" name="user_id" value="<?= session('user_id') ?>">
@@ -73,7 +72,6 @@
         </div>
       </div>
     </form>
-    <hr>
   <?php endif; ?>
 <?php endif; ?>
 <?php if($review == FALSE): ?>
@@ -81,6 +79,8 @@
     <p>Be the first to add a Review for <strong><?= $game['name'] ?></strong>. <?php if(session('logged') !== true): ?> <a href="<?= base_url() ?>/signup" title="Sign Up">Sign Up</a> or <a href="<?= base_url() ?>/login" title="Log In">Log In</a> to add yours.<?php endif; ?></p>
   </div>
 <?php else: ?>
+  <p class="subtitle is-5">Game</p>
+  <p class="title is-3">#Reviews:</p>
   <?php foreach($review as $review): ?>
     <div class="media">
       <figure class="media-left">
@@ -93,7 +93,7 @@
         </p>
       </figure>
       <div class="media-content">
-        <div class="content has-background-gunmetal px-2 py-1">
+        <div class="content has-background-gunmetal">
           <p>
             <a id="Review<?= $review['id'] ?>">#</a>Review by <strong><?= $review['user_name'] ?></strong><?php if($review['user_role'] == 2): ?>&nbsp;<span class="icon has-text-danger is-small"><i class="far fa-newspaper"></i></span><?php endif; ?><br>
             Writted on: <strong><?= $review['date'] ?></strong><br>

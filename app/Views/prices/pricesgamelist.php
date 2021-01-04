@@ -1,3 +1,5 @@
+<p class="title is-5">Price</p>
+<p class="subtitle is-3">#History</p>
 <table class="table is-fullwidth">
   <tbody>
     <tr>
