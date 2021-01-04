@@ -29,7 +29,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '067337084d20d5ad6f96c6c1abfbc0d269c0b42d',
+    'reference' => 'ffa6b730fe58d7e566fe74dd00ac9ac5fe86f4ae',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -50,7 +50,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '067337084d20d5ad6f96c6c1abfbc0d269c0b42d',
+      'reference' => 'ffa6b730fe58d7e566fe74dd00ac9ac5fe86f4ae',
     ),
     'codeigniter4/framework' => 
     array (
@@ -175,12 +175,12 @@ private static $installed = array (
     ),
     'phpspec/prophecy' => 
     array (
-      'pretty_version' => '1.12.1',
-      'version' => '1.12.1.0',
+      'pretty_version' => '1.12.2',
+      'version' => '1.12.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8ce87516be71aae9b956f81906aaf0338e0d8a2d',
+      'reference' => '245710e971a030f42e08f4912863805570f23d39',
     ),
     'phpunit/php-code-coverage' => 
     array (
