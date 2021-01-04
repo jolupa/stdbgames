@@ -2,7 +2,7 @@
       <div class="hero-body"></div>
       <div class="hero-foot">
         <?php if(session('logged') == true): ?>
-          <?php if($game['release'] < '2020-12-31' || $game['release'] > '2019-11-19' && $game['release'] != '2099-01-01' && $game['release'] != 'TBA'): ?>
+          <?php if($game['release'] < '2020-12-31' && $game['release'] != '2099-01-01' && $game['release'] != 'TBA'): ?>
             <?= view_cell('App\Controllers\Award::vote') ?>
           <?php endif; ?>
         <?php endif; ?>
