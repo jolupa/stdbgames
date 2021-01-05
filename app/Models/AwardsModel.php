@@ -6,8 +6,8 @@
     public function checkVote(){
       $db = \Config\Database::connect();
       $builder = $db->table('awards')
-                    ->where('user_id', session('id'));
-      if($builder->countAll() > 0){
+                    ->where('user_id', session('user_id'));
+      if($builder->countAllResults() > 0){
         return true;
       } else {
         return false;
