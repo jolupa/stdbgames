@@ -6,11 +6,8 @@ use CodeIgniter\Controller;
 class Wishlists extends Controller{
   public function userwishlist($user_id){
     $wishlistmodel = new WishlistModel();
-    if(is_array($wishlistmodel->getUserWishlist($user_id))){
-      $data['wishlist'] = $wishlistmodel->getUserWishlist($user_id);
-    } else {
-      $data['error'] = "You don't have games on your Wishlist. Add some games!";
-    }
+    $data['wishlist'] = (array) $wishlistmodel->getUserWishlist($user_id);
+    
     return view('wishlists/userwishlist', $data);
   }
   public function isinwishlist($id){
