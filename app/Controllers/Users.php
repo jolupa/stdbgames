@@ -1,7 +1,8 @@
 <?php
+
 namespace App\Controllers;
+
 use \App\Models\UsersModel;
-use \App\Models\ConfigModel;
 use CodeIgniter\Controller;
 
 helper(['text']);
@@ -14,23 +15,8 @@ class Users extends Controller{
   }
   public function createuserdb(){
     $usermodel = new UsersModel();
-    $val = $this->validate([
-      'name' => [
-        'label' => 'Name',
-        'rules' => 'required|is_unique[users.name]',
-        'errors'=>  ['required' => 'You need a username', 'is_unique' => 'Your username exists'],
-      ],
-      'password' => [
-        'label' => 'Password',
-        'rules' => 'required|min_length[6]|max_length[20]',
-        'errors'=> ['required' => 'Set a Password', 'min_length' => 'A minimum of six(6) characters', 'max_length' => 'A maximum of twenty(20) characters'],
-      ],
-      'accept' => [
-        'label' => 'Accept',
-        'rules' => 'required',
-        'errors'=> ['required' => 'You have to accept that we are not going to sell your data to anyone.',]
-      ],
-    ]);
+    $val = $this->validate('userSignup');
+
     if(!$val){
       echo view('templates/header');
       echo view('users/registerform', ['validations' => $this->validator]);
@@ -65,33 +51,41 @@ class Users extends Controller{
     echo view('templates/footer');
   }
   public function loguser(){
-    $usersmodel = new UsersModel();
-    $user = $this->request->getVar('user');
-    $password = $this->request->getVar('password');
-    if($usersmodel->getUserByName($user) == true){
-      $data = $usersmodel->getUserByName($user);
-      if(password_verify($password, $data['password']) == true){
-        $session = \Config\Services::session();
-        $session->set([
-          'username' => $data['name'],
-          'slug' => $data['slug'],
-          'user_id' => $data['id'],
-          'role' => $data['role'],
-          'logged' => true,
-        ]);
-        return redirect()->to('/games/');
+    $isValid = $this->validate('userLogin');
+    $errors = [];
+
+    if ($isValid) {
+      $usersmodel = new UsersModel();
+      $user       = $this->request->getVar('user');
+      $password   = $this->request->getVar('password');
+
+      if ($usersmodel->getUserByName($user)) {
+        $data = $usersmodel->getUserByName($user);
+
+        if (password_verify($password, $data['password'])) {
+          $session = \Config\Services::session();
+          $session->set([
+              'username' => $data['name'],
+              'slug'     => $data['slug'],
+              'user_id'  => $data['id'],
+              'role'     => $data['role'],
+              'logged'   => true,
+          ]);
+          return redirect()->to('/games/');
+        } else {
+          $errors[] = "Your username or password doesn't match. Try again";
+        }
       } else {
-        $data['error'] = "Your username or password doesn't match. Try again";
-        echo view('templates/header');
-        echo view('users/loginform', $data);
-        echo view('templates/footer');
+        $errors[] = "Your Username is not in the DB!";
       }
-    } else {
-      $data['error'] = "Your Username is not in the DB!";
-      echo view('templates/header');
-      echo view('users/loginform', $data);
-      echo view('templates/footer');
     }
+
+    echo view('templates/header');
+    echo view('users/loginform', [
+        'user'        => $this->request->getVar('user'),
+        'errors'      => $errors
+    ]);
+    echo view('templates/footer');
   }
   public function profile($slug){
     if(session('logged') == TRUE && $slug == session('slug')){
