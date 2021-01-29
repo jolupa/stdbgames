@@ -31,7 +31,7 @@
         </div>
       <?php endif; ?>
       <?php if(isset($insert)): ?>
-        <div class="columns mt-2">
+        <div class="columns mt-2 is-hidden-touch">
           <div class="column">
             <form action="<?= base_url() ?>/doodles/insertdoodle" method="post" enctype="multipart/form-data">
               <div class="field is-grouped is-grouped-multiline">
