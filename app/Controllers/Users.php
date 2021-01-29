@@ -102,9 +102,13 @@ class Users extends Controller{
     }
   }
   public function listusers(){
-    $usersmodel = new UsersModel();
-    $data['userlist'] = $usersmodel->getAllUsers();
-    return view('users/listusers', $data);
+    if (session('logged') != true && session('role') != 1) {
+      return '';
+    } else {
+      $usersmodel = new UsersModel();
+      $data['userlist'] = $usersmodel->getAllUsers();
+      return view('users/listusers', $data);
+    }
   }
   public function edituser($id){
     $usersmodel = new UsersModel();
