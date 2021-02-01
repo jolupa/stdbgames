@@ -15,10 +15,10 @@
         <input class="input" type="date" name="date" placeholder="Starts...">
       </div>
       <div class="control">
-        <input class="input" type="date" name="till_pro" placeholder="Ends Pro...">
+        <input class="input" type="date" name="date_till_pro" placeholder="Ends Pro...">
       </div>
       <div class="control">
-        <input class="input" type="date" name="till_nonpro" placeholder="End Non Pro...">
+        <input class="input" type="date" name="date_till_nonpro" placeholder="End Non Pro...">
       </div>
       <div class="control">
         <label class="checkbox">
