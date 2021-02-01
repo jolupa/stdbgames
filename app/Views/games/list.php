@@ -87,7 +87,7 @@
                     <?php elseif($list['date_till_pro'] != ''): ?>
                       Pro Valid Until: <strong><?= $list['date_till_pro'] ?></strong>
                     <?php elseif($list['date_till_nonpro'] != ''): ?>
-                      Everyone Valid Untill: <strong><?= $list['date_till_nonpro'] ?></strong>
+                      Everyone Valid Until: <strong><?= $list['date_till_nonpro'] ?></strong>
                     <?php endif; ?></p>
                 </div>
               </div>

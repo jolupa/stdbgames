@@ -20,8 +20,14 @@
           </figure>
           <div class="media-content">
             <p><a href="<?= base_url() ?>/game/<?= $prices['game_url'] ?>"><strong><?= $prices['game_name'] ?></strong></a></p>
-            <p class="title is-7">Till <?php if($prices['date_till_pro']): ?><?= $prices['date_till_pro'] ?> Pro <?php endif; ?>
-              <?php if($prices['date_till_nonpro'] != ''): ?><br><?= $prices['date_till_nonpro'] ?> Everyone<?php endif; ?></p>
+            <p class="title is-7">
+              <?php if($prices['date_till_pro'] === $prices['date_till_nonpro']): ?>
+                Valid Until: <?= $prices['date_till_pro'] ?>
+              <?php else: ?>
+                Valid for Pro Until: <?= $prices['date_till_pro'] ?><br>
+                Valid for Everyone Until: <?= $prices['date_till_nonpro'] ?><br>
+              <?php endif; ?>
+            </p>
           </div>
         </div>
       </div>
