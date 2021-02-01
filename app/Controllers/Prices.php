@@ -24,7 +24,7 @@ class Prices extends Controller{
     $data['price_pro'] = $this->request->getVar('price_pro');
     $data['price_nonpro'] = $this->request->getVar('price_nonpro');
     $data['date'] = $this->request->getVar('date');
-    $data['date_till_pro'] = $this->request->getVar('date_till');
+    $data['date_till_pro'] = $this->request->getVar('date_till_pro');
     $data['date_till_nonpro'] = $this->request->getVar('date_till_nonpro');
     if($this->request->getVar('for_pro') != null){
       $data['for_pro'] = 1;
