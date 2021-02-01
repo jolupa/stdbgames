@@ -37,10 +37,8 @@ class PricesModel extends Model{
                             games.name AS game_name,
                             games.image AS game_image,
                             games.slug AS game_url,')
-                  ->where('prices.date_till_pro !=', '')
-                  ->where('prices.date_till_nonpro !=', '')
                   ->where('prices.date_till_pro >=', date('Y-m-d'))
-                  ->where('prices.date_till_nonpro >=', date('Y-m-d'))
+                  ->Orwhere('prices.date_till_nonpro >=', date('Y-m-d'))
                   ->join('games', 'games.id = prices.game_id')
                   ->orderBy('prices.date_till_pro, prices.date_till_nonpro', 'ASC');
     return $builder->get(4)->getResultArray();
@@ -70,11 +68,9 @@ class PricesModel extends Model{
                             games.image AS image,
                             games.price AS game_price')
                   ->where('prices.date_till_pro >=', date('Y-m-d'))
-                  ->where('prices.date_till_nonpro >=', date('Y-m-d'))
-                  ->where('prices.date_till_pro !=', '')
-                  ->where('prices.date_till_nonpro !=', '')
+                  ->orWhere('prices.date_till_nonpro >=', date('Y-m-d'))
                   ->join('games', 'games.id = prices.game_id')
-                  ->orderBy('prices.date_till_pro', 'prices.date_till_nonpro', 'ASC');
+                  ->orderBy('prices.date', 'ASC');
     return $builder->get()->getResultArray();
   }
 }

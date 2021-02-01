@@ -84,10 +84,13 @@
                         Pro Valid Until: <strong><?= $list['date_till_pro'] ?></strong><br>
                         Everyone Valid Until: <strong><?= $list['date_till_nonpro'] ?></strong>
                       <?php endif; ?>
-                    <?php elseif($list['date_till_pro'] != ''): ?>
-                      Pro Valid Until: <strong><?= $list['date_till_pro'] ?></strong>
-                    <?php elseif($list['date_till_nonpro'] != ''): ?>
-                      Everyone Valid Until: <strong><?= $list['date_till_nonpro'] ?></strong>
+                    <?php else: ?>
+                      <?php if($list['date_till_pro'] != ''): ?>
+                        Valid for Pro Until: <?= $list['date_till_pro'] ?>
+                      <?php endif; ?>
+                      <?php if($list['date_till_nonpro'] != ''): ?>
+                        Valid for Everyone Until: <?= $list['date_till_nonpro'] ?>
+                      <?php endif; ?>
                     <?php endif; ?></p>
                 </div>
               </div>

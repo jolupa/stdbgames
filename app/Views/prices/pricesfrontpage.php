@@ -24,8 +24,11 @@
               <?php if($prices['date_till_pro'] === $prices['date_till_nonpro']): ?>
                 Valid Until: <?= $prices['date_till_pro'] ?>
               <?php else: ?>
-                Valid for Pro Until: <?= $prices['date_till_pro'] ?><br>
-                Valid for Everyone Until: <?= $prices['date_till_nonpro'] ?><br>
+                <?php if($prices['date_till_pro'] != ''): ?>
+                  Valid for Pro Until: <?= $prices['date_till_pro'] ?><br>
+                <?php elseif($prices['date_till_nonpro'] != ''): ?>
+                  Valid for Everyone Until: <?= $prices['date_till_nonpro'] ?><br>
+                <?php endif; ?>
               <?php endif; ?>
             </p>
           </div>
