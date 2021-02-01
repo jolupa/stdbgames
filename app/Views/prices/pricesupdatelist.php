@@ -9,22 +9,29 @@
         <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
         <div class="field is-grouped is-grouped-multiline">
           <div class="control is-expanded">
-            <input type="text" class="input" name="price" placeholder="€€.€€" value="<?= $price['price'] ?>">
+            <input type="text" class="input" name="price_pro" placeholder="€€.€€" value="<?= $price['price_pro'] ?>">
           </div>
-          <div class="control is-expanded">
+            <div class="control is-expanded">
+              <input type="text" class="input" name="price_nonpro" placeholder="Price for Non Pro €€.€€" value="<?= $price['price_nonpro'] ?>">
+            </div>
+          <div class="control">
             <input type="date" class="input" name="date" placeholder="Starts..." value="<?= $price['date'] ?>">
           </div>
-          <div class="control is-expanded">
-            <input type="date" class="input" name="date_till" placeholder="Ends..." value="<?= $price['date_till'] ?>">
+          <div class="control">
+            <input type="date" class="input" name="date_till_pro" placeholder="Ends..." value="<?= $price['date_till_pro'] ?>">
           </div>
           <div class="control">
-            <div class="select">
-              <select name="discount_type">
-                <option value="" <?php if($price['discount_type'] != 1 || $price['discount_type'] != 0): ?>disabled selected<?php endif; ?>>Disc. Type</option>
-                <option value="0" <?php if($price['discount_type'] == 0): ?>selected<?php endif; ?>>Everyone</option>
-                <option value="1" <?php if($price['discount_type'] == 1): ?>selected<?php endif; ?>>Pro</option>
-              </select>
-            </div>
+            <input type="date" class="input" name="date_till_nonpro" placeholder="Ends Non Pro..." value="<?= $price['date_till_nonpro'] ?>">
+          </div>
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" name="for_pro" <?php if($price['for_pro'] == 1): ?>checked<?php endif; ?>>
+              Is For Pro
+            </label>
+            <liabel class="checkbox">
+              <input type="checkbox" name="for_nonpro" <?php if($price['for_nonpro'] == 1): ?>checked<?php endif; ?>>
+              Is For non pro
+            </label>
           </div>
           <div class="control">
             <button class="button is-primary" value="submit">Update!</button>

@@ -1,12 +1,5 @@
     <section class="hero is-large has-background-dark" style="background-image: url(<?= base_url() ?>/images/<?= $game['image'] ?>.jpeg); background-size: cover; background-position: center;">
       <div class="hero-body"></div>
-      <div class="hero-foot">
-        <?php if(session('logged') == true): ?>
-          <?php if($game['release'] > '2019-11-18' && $game['release'] < '2021-01-01' && $game['release'] != '2099-01-01' && $game['release'] != 'TBA'): ?>
-            <?= view_cell('App\Controllers\Award::vote') ?>
-          <?php endif; ?>
-        <?php endif; ?>
-      </div>
     </section>
     <div class="container">
       <section class="section">

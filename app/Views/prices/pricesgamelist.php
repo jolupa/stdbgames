@@ -3,10 +3,9 @@
 <table class="table is-fullwidth">
   <tbody>
     <tr>
-      <th class="has-text-left">Price</th>
+      <th class="has-text-left">Price (Pro/Non Pro)</th>
       <th class="has-text-centered">Date Discounted</th>
-      <th class="has-text-centered">Discount is Valid</th>
-      <th class="has-text-centered is-hidden-touch">Discount Type</th>
+      <th class="has-text-centered">Discount is Valid (Pro/Non Pro)</th>
     </tr>
     <?php if($price == FALSE): ?>
       <tr>
@@ -15,10 +14,9 @@
     <?php else: ?>
       <?php foreach($price as $price): ?>
         <tr>
-          <td class="has-text-left"><?= number_format($price['price'], 2) ?>&nbsp;€</td>
+          <td class="has-text-left"><?php if($price['price_pro'] != ''):?><?= number_format($price['price_pro'], 2) ?>&nbsp;€&nbsp;<?php else: ?>--&nbsp;<?php endif; ?>/<?php if($price['price_nonpro'] != ''): ?>&nbsp;<?= number_format($price['price_nonpro'], 2) ?>&nbsp;€&nbsp;<?php else: ?>&nbsp;--<?php endif; ?></td>
           <td class="has-text-centered"><?= $price['date'] ?></td>
-          <td class="has-text-centered"><?= $price['date_till'] ?></td>
-          <td class="has-text-centered is-hidden-touch"><?php if($price['discount_type'] == 1): ?>Pro<?php else: ?>Everyone<?php endif; ?></td>
+          <td class="has-text-centered"><?php if($price['date_till_pro'] != ''): ?><?= $price['date_till_pro'] ?>&nbsp;<?php else: ?>--&nbsp;<?php endif; ?>/<?php if($price['date_till_nonpro'] != ''): ?>&nbsp;<?= $price['date_till_nonpro'] ?><?php else: ?>&nbsp;--<?php endif; ?></td>
         </tr>
       <?php endforeach; ?>
     <?php endif; ?>

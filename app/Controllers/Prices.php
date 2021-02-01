@@ -21,10 +21,21 @@ class Prices extends Controller{
   public function createpricedb(){
     $pricemodel = new PricesModel();
     $data['game_id'] = $this->request->getVar('game_id');
-    $data['price'] = $this->request->getVar('price');
+    $data['price_pro'] = $this->request->getVar('price_pro');
+    $data['price_nonpro'] = $this->request->getVar('price_nonpro');
     $data['date'] = $this->request->getVar('date');
-    $data['date_till'] = $this->request->getVar('date_till');
-    $data['discount_type'] = $this->request->getVar('discount_type');
+    $data['date_till_pro'] = $this->request->getVar('date_till');
+    $data['date_till_nonpro'] = $this->request->getVar('date_till_nonpro');
+    if($this->request->getVar('for_pro') != null){
+      $data['for_pro'] = 1;
+    } else {
+      $data['for_pro'] = 0;
+    }
+    if ($this->request->getVar('for_nonpro') != null){
+      $data['for_nonpro'] = 1;
+    } else {
+      $data['for_nonpro'] = 0;
+    }
     $slug = $this->request->getVar('slug');
     require(ROOTPATH.'twitter.php');
     $statusmessage = "New Deal! https://stdb.games/game/".$slug;
@@ -49,12 +60,23 @@ class Prices extends Controller{
   }
   public function updatepricedb(){
     $pricemodel = new PricesModel();
-    $data['price'] = $this->request->getVar('price');
+    $data['price_pro'] = $this->request->getVar('price_pro');
+    $data['price_nonpro'] = $this->request->getVar('price_nonpro');
     $data['date'] = $this->request->getVar('date');
-    $data['date_till'] = $this->request->getVar('date_till');
-    $data['discount_type'] = $this->request->getVar('discount_type');
+    $data['date_till_pro'] = $this->request->getVar('date_till_pro');
+    $data['date_till_nonpro'] = $this->request->getVar('date_till_nonpro');
     $data['game_id'] = $this->request->getVar('game_id');
     $data['id'] = $this->request->getVar('id');
+    if($this->request->getVar('for_pro') != null){
+      $data['for_pro'] = 1;
+    } else {
+      $data['for_pro'] = 0;
+    }
+    if ($this->request->getVar('for_nonpro') != null){
+      $data['for_nonpro'] = 1;
+    } else {
+      $data['for_nonpro'] = 0;
+    }
     $slug = $this->request->getVar('slug');
     $pricemodel->updatePriceDb($data);
     return redirect()->to('/game/'.$slug);

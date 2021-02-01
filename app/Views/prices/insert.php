@@ -6,22 +6,30 @@
     <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
     <div class="field is-grouped is-grouped-multiline">
       <div class="control is-expanded">
-        <input class="input" type="text" name="price" placeholder="€€.€€">
+        <input class="input" type="text" name="price_pro" placeholder="€€.€€">
+      </div>
+      <div class="control">
+        <input class="input" type="text" name="price_nonpro" placeholder="Non Pro €€.€€">
       </div>
       <div class="control">
         <input class="input" type="date" name="date" placeholder="Starts...">
       </div>
       <div class="control">
-        <input class="input" type="date" name="date_till" placeholder="Ends...">
+        <input class="input" type="date" name="till_pro" placeholder="Ends Pro...">
       </div>
       <div class="control">
-        <div class="select">
-          <select name="discount_type">
-            <option value="" disabled selected>Disc. Type</option>
-            <option value="0">Everyone</option>
-            <option value="1">Pro</option>
-          </select>
-        </div>
+        <input class="input" type="date" name="till_nonpro" placeholder="End Non Pro...">
+      </div>
+      <div class="control">
+        <label class="checkbox">
+          <input type="checkbox" name="for_pro">
+          For Pro
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="for_nonpro">
+          For NonPro
+          </input>
+        </label>
       </div>
       <div class="control">
         <button class="button is-primary" value="submit">Add!</button>

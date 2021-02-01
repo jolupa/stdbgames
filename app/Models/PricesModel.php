@@ -27,16 +27,22 @@ class PricesModel extends Model{
   public function getPricesFrontPage(){
     $db = \Config\Database::connect();
     $builder = $db->table('prices')
-                  ->select('prices.price AS price,
-                            prices.date_till AS date_till,
-                            prices.discount_type AS discount_type,
+                  ->select('price_pro AS price_pro,
+                            price_nonpro AS price_nonpro,
+                            date AS date,
+                            date_till_pro AS date_till_pro,
+                            date_till_nonpro AS date_till_nonpro,
+                            for_pro AS for_pro,
+                            for_nonpro AS for_nonpro,
                             games.name AS game_name,
                             games.image AS game_image,
                             games.slug AS game_url,')
-                  ->where('prices.date_till !=', '')
-                  ->where('prices.date_till >=', date('Y-m-d'))
+                  ->where('prices.date_till_pro !=', '')
+                  ->where('prices.date_till_nonpro !=', '')
+                  ->where('prices.date_till_pro >=', date('Y-m-d'))
+                  ->where('prices.date_till_nonpro >=', date('Y-m-d'))
                   ->join('games', 'games.id = prices.game_id')
-                  ->orderBy('prices.date_till', 'DESC');
+                  ->orderBy('prices.date_till_pro, prices.date_till_nonpro', 'ASC');
     return $builder->get(4)->getResultArray();
   }
   public function updatePriceDb($data){
@@ -53,19 +59,22 @@ class PricesModel extends Model{
   public function getAllDeals(){
     $db = \Config\Database::connect();
     $builder = $db->table('prices')
-                  ->select('prices.price AS price,
+                  ->select('prices.price_pro AS price_pro,
+                            prices.price_nonpro AS price_nonpro,
                             prices.date AS date,
-                            prices.date_till AS date_till,
-                            prices.discount_type AS discount_type,
+                            prices.date_till_pro AS date_till_pro,
+                            prices.date_till_nonpro AS date_till_nonpro,
                             games.id AS game_id,
                             games.name AS name,
                             games.slug AS slug,
                             games.image AS image,
                             games.price AS game_price')
-                  ->where('prices.date_till >=', date('Y-m-d'))
-                  ->where('prices.date_till !=', '')
+                  ->where('prices.date_till_pro >=', date('Y-m-d'))
+                  ->where('prices.date_till_nonpro >=', date('Y-m-d'))
+                  ->where('prices.date_till_pro !=', '')
+                  ->where('prices.date_till_nonpro !=', '')
                   ->join('games', 'games.id = prices.game_id')
-                  ->orderBy('prices.date_till', 'ASC');
+                  ->orderBy('prices.date_till_pro', 'prices.date_till_nonpro', 'ASC');
     return $builder->get()->getResultArray();
   }
 }
