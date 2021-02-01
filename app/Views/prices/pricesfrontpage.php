@@ -19,7 +19,7 @@
             <img src="<?= base_url() ?>/images/<?= $prices['game_image'] ?>-thumb.jpeg" alt="<?= $prices['game_name'] ?>" title="<?= $prices['game_name'] ?>">
           </figure>
           <div class="media-content">
-            <p><a href="<?= base_url() ?>/game/<?= $prices['game_url'] ?>"><strong><?= $prices['game_name'] ?></strong></a></p>
+            <p><a href="<?= base_url() ?>/game/<?= $prices['game_url'] ?>"><?= character_limiter($prices['game_name'], 15, '...') ?></a></p>
             <p class="title is-7">
               <?php if($prices['date_till_pro'] === $prices['date_till_nonpro']): ?>
                 Valid Until: <?= $prices['date_till_pro'] ?>

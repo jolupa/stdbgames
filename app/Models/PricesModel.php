@@ -40,7 +40,7 @@ class PricesModel extends Model{
                   ->where('prices.date_till_pro >=', date('Y-m-d'))
                   ->Orwhere('prices.date_till_nonpro >=', date('Y-m-d'))
                   ->join('games', 'games.id = prices.game_id')
-                  ->orderBy('prices.date_till_pro, prices.date_till_nonpro', 'ASC');
+                  ->orderBy('games.name', 'ASC');
     return $builder->get(4)->getResultArray();
   }
   public function updatePriceDb($data){
@@ -70,7 +70,7 @@ class PricesModel extends Model{
                   ->where('prices.date_till_pro >=', date('Y-m-d'))
                   ->orWhere('prices.date_till_nonpro >=', date('Y-m-d'))
                   ->join('games', 'games.id = prices.game_id')
-                  ->orderBy('prices.date', 'ASC');
+                  ->orderBy('games.name', 'ASC');
     return $builder->get()->getResultArray();
   }
 }
