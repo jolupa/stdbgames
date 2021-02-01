@@ -74,7 +74,21 @@
                 </figure>
                 <div class="media-content">
                   <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
-                  <p class="subtitle is-7">Retail Price: <strong><?= $list['game_price'] ?>&nbsp;€</strong><br>Sale Price: <strong><?= $list['price'] ?>&nbsp;€</strong><br>Valid til: <strong><?= $list['date_till'] ?></strong><br>Discount for: <strong><?php if($list['discount_type'] == 1): ?>Pro Members<?php else: ?>Everyone<?php endif; ?></strong></p>
+                  <p class="subtitle is-7">Retail Price: <strong><?= $list['game_price'] ?>&nbsp;€</strong><br>
+                    <?php if($list['price_pro'] != ''): ?>Pro Sale Price: <strong><?= $list['price_pro'] ?>&nbsp;€</strong><br><?php endif; ?>
+                    <?php if($list['price_nonpro'] != ''): ?>Everyone Sale Price: <strong><?= $list['price_nonpro'] ?>&nbsp;€</strong><br><?php endif; ?>
+                    <?php if($list['date_till_pro'] != '' && $list['date_till_nonpro'] != ''): ?>
+                      <?php if($list['date_till_pro'] === $list['date_till_nonpro']): ?>
+                        Valid Until: <strong><?= $list['date_till_pro'] ?></strong><br>
+                      <?php else: ?>
+                        Pro Valid Until: <strong><?= $list['date_till_pro'] ?></strong><br>
+                        Everyone Valid Until: <strong><?= $list['date_till_nonpro'] ?></strong>
+                      <?php endif; ?>
+                    <?php elseif($list['date_till_pro'] != ''): ?>
+                      Pro Valid Until: <strong><?= $list['date_till_pro'] ?></strong>
+                    <?php elseif($list['date_till_nonpro'] != ''): ?>
+                      Everyone Valid Untill: <strong><?= $list['date_till_nonpro'] ?></strong>
+                    <?php endif; ?></p>
                 </div>
               </div>
             </div>
