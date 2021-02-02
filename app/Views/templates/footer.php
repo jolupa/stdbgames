@@ -3,7 +3,7 @@
         <div class="columns is-centered">
           <div class="column is-8 is-multiline">
             <div class="content has-text-centered">
-              <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> In Barcelona <span class="icon"><i class="fas fa-copyright"></i></span>&nbsp;<?= date('Y') ?> <strong>jolupa</strong><br>
+              <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> In Barcelona <span class="icon"><i class="fas fa-copyright"></i></span>&nbsp;2020&nbsp;/&nbsp;<?= date('Y') ?><strong>&nbsp;jolupa</strong><br>
               Stadia and the Stadia Logo are <span class="icon"><i class="fas fa-copyright"></i></span> & <span class="icon"><i class="fas fa-trademark"></i></span> of Google Inc.<br>
               All Games Names, Images, and Logos are property of their respective owners<br>
               <a href="https://twitter.com/DbStadia" target="_blank" title="Follow Us on Twitter"><span class="icon"><i class="fab fa-twitter"></i></span></a> <a href="https://github.com/jolupa/stdbgames" target="_blank" title="Help Us on GitHub"><span class="icon"><i class="fab fa-github"></i></span></a> <a href="https://www.patreon.com/stdbgames" target="_blank" title="Help Us on Patreon"><span class="icon"><i class="fab fa-patreon"></i></span></a> <a href="https://paypal.me/stdbgames" target="_blank" title="Tip what you want on PayPal"><span class="icon"><i class="fab fa-paypal"></i></span></a></p>

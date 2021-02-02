@@ -15,7 +15,7 @@
             <?php endif; ?>
             <br>
             <?php if($game['price'] != ''): ?>
-              <span class="subtitle is-6">Price: <?= $game['price'] ?></span>
+              <span class="subtitle is-6">Price: <?= $game['price'] ?>&nbsp;€</span>
             <?php else: ?>
               <span class="subtitle is-6">Price: TBA</span>
             <?php endif; ?>
