@@ -29,7 +29,7 @@ class InstalledVersions
     'aliases' => 
     array (
     ),
-    'reference' => '789c3c851993fef9930a271715ca37ed1b41cbb2',
+    'reference' => '34d001f1c53022247051129c9845108147c895e9',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -50,16 +50,16 @@ class InstalledVersions
       'aliases' => 
       array (
       ),
-      'reference' => '789c3c851993fef9930a271715ca37ed1b41cbb2',
+      'reference' => '34d001f1c53022247051129c9845108147c895e9',
     ),
     'codeigniter4/framework' => 
     array (
-      'pretty_version' => 'v4.1.0',
-      'version' => '4.1.0.0',
+      'pretty_version' => 'v4.1.1',
+      'version' => '4.1.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '424bfa7ba7b2d8fb88a24272d750273c31d47d58',
+      'reference' => 'ddc18eb2f42a17a51347c4c25cce9d2aaebcb718',
     ),
     'composer/ca-bundle' => 
     array (
