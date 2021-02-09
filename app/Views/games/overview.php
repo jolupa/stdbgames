@@ -11,7 +11,7 @@
             <?php if($game['release'] == '2099-01-01' || $game['release'] == 'TBA'): ?>
               <span class="subtitle is-6">Release date: TBA</span>
             <?php else: ?>
-              <span class="subtitle is-6">Release date: <?= $game['release'] ?></span>
+              <span class="subtitle is-6">Release date: <?= date('d-m-Y', strtotime($game['release'])) ?></span>
             <?php endif; ?>
             <br>
             <?php if($game['price'] != ''): ?>

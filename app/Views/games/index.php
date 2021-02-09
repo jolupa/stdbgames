@@ -24,7 +24,7 @@
                               <a class="tag is-small is-primary" href="<?= base_url() ?>/publisher/<?= $pro[$i]['publisher_slug'] ?>" title="<?= $pro[$i]['publisher_name'] ?>"><?= character_limiter($pro[$i]['publisher_name'], 15, '...') ?></a>
                               <?php if($pro[$i]['pro_till'] != ''): ?>
                                 <br>
-                                <span class="tag is-small is-danger">Claim it before <?= $pro[$i]['pro_till'] ?></span>
+                                <span class="tag is-small is-danger">Claim it before <?= date('d-m-Y', strtotime($pro[$i]['pro_till'])) ?></span>
                               <?php endif; ?>
                             </p>
                           </div>
@@ -179,7 +179,7 @@
                     <?php if($soon['release'] == '2099-01-01' || $soon['release'] == 'TBA'): ?>
                       TBA
                     <?php else: ?>
-                      <?= $soon['release'] ?>
+                      <?= date('d-m-Y', strtotime($soon['release'])) ?>
                     <?php endif; ?>
                   </p>
                 </div>
@@ -215,7 +215,7 @@
                 <div class="media-content">
                   <p class="title is-5"><?php if($last['rumor'] == 1): ?><span class="icon has-text-danger is-small" title="RUMOR!"><i class="fas fa-user-secret"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $last['slug'] ?>"><?= character_limiter($last['name'], 15, '...') ?></a></p>
                   <p class="subtitle is-7">Developer <?= $last['developer_name'] ?> / Publisher <?= $last['publisher_name'] ?><br>
-                    Added: <strong><?= $last['created_at'] ?></strong>
+                    Added: <strong><?= date('d-m-Y', strtotime($last['created_at'])) ?></strong>
                   </p>
                 </div>
               </div>
@@ -239,7 +239,7 @@
                 <div class="media-content">
                   <p class="title is-5"><?php if($lastupdated['rumor'] == 1): ?><span class="icon has-text-danger is-small" title="RUMOR!"><i class="fas fa-user-secret"></i></span></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $lastupdated['slug'] ?>"><?= character_limiter($lastupdated['name'], 15, '...') ?></a></p>
                   <p class="subtitle is-7">Developer <?= $lastupdated['developer_name'] ?> / Publisher <?= $lastupdated['publisher_name'] ?><br>
-                    Last update: <strong><?= $lastupdated['updated_at'] ?></strong>
+                    Last update: <strong><?= date('d-m-Y', strtotime($lastupdated['updated_at'])) ?></strong>
                   </p>
                 </div>
               </div>

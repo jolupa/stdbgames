@@ -22,12 +22,12 @@
             <p><a href="<?= base_url() ?>/game/<?= $prices['game_url'] ?>"><?= character_limiter($prices['game_name'], 15, '...') ?></a></p>
             <p class="title is-7">
               <?php if($prices['date_till_pro'] === $prices['date_till_nonpro']): ?>
-                Valid Until: <?= $prices['date_till_pro'] ?>
+                Valid Until: <?= date('d-m-Y', strtotime($prices['date_till_pro'])) ?>
               <?php else: ?>
                 <?php if($prices['date_till_pro'] != ''): ?>
-                  Valid for Pro Until: <?= $prices['date_till_pro'] ?><br>
+                  Valid for Pro Until: <?= date('d-m-Y', strtotime($prices['date_till_pro'])) ?><br>
                 <?php elseif($prices['date_till_nonpro'] != ''): ?>
-                  Valid for Everyone Until: <?= $prices['date_till_nonpro'] ?><br>
+                  Valid for Everyone Until: <?= date('d-m-Y', strtotime($prices['date_till_nonpro'])) ?><br>
                 <?php endif; ?>
               <?php endif; ?>
             </p>

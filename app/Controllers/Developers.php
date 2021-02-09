@@ -43,10 +43,16 @@ class Developers extends Controller{
   }
   public function createdeveloperdb(){
     $developermodel = new DevelopersModel();
-    $data['name'] = $this->request->getVar('name');
-    $data['slug'] = strtolower(url_title($this->request->getVar('name')));
-    $data['url'] = $this->request->getVar('url');
-    $data['about'] = $this->request->getVar('about');
+    if ( $this->request->getVar('name') !== '' ) {
+      $data['name'] = $this->request->getVar('name');
+      $data['slug'] = strtolower(url_title($this->request->getVar('name')));
+    }
+    if ( $this->request->getVar('url') !== '') {
+      $data['url'] = $this->request->getVar('url');
+    }
+    if ( $this->request->getVar('about') !== '' ) {
+      $data['about'] = $this->request->getVar('about');
+    }
     $data['created_at'] = date('Y-m-d H:m:s');
     $developermodel->createDeveloperDb($data);
     return redirect()->to('/developer/'.$data['slug']);
@@ -68,10 +74,18 @@ class Developers extends Controller{
   }
   public function updatedeveloperdb(){
     $developermodel = new DevelopersModel();
-    $data['id'] = $this->request->getVar('id');
-    $data['name'] = $this->request->getVar('name');
-    $data['url'] = $this->request->getVar('url');
-    $data['about'] = $this->request->getVar('about');
+    if ( $this->request->getVar('id') !== '' ) {
+      $data['id'] = $this->request->getVar('id');
+    }
+    if ( $this->request->getVar('name') !== '' ) {
+      $data['name'] = $this->request->getVar('name');
+    }
+    if ( $this->request->getVar('url') !== '') {
+      $data['url'] = $this->request->getVar('url');
+    }
+    if ( $this->request->getVar('about') !== '' ) {
+      $data['about'] = $this->request->getVar('about');
+    }
     $data['updated_at'] = date('Y-m-d H:m:s');
     $developermodel->updateDeveloperDb($data);
     return redirect()->to('/developer/'.$this->request->getVar('slug'));

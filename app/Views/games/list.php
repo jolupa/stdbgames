@@ -79,17 +79,17 @@
                     <?php if($list['price_nonpro'] != ''): ?>Everyone Sale Price: <strong><?= $list['price_nonpro'] ?>&nbsp;€</strong><br><?php endif; ?>
                     <?php if($list['date_till_pro'] != '' && $list['date_till_nonpro'] != ''): ?>
                       <?php if($list['date_till_pro'] === $list['date_till_nonpro']): ?>
-                        Valid Until: <strong><?= $list['date_till_pro'] ?></strong><br>
+                        Valid Until: <strong><?= date('d-m-Y', strtotime($list['date_till_pro'])) ?></strong><br>
                       <?php else: ?>
                         Pro Valid Until: <strong><?= $list['date_till_pro'] ?></strong><br>
-                        Everyone Valid Until: <strong><?= $list['date_till_nonpro'] ?></strong>
+                        Everyone Valid Until: <strong><?= date('d-m-Y', strtotime($list['date_till_nonpro'])) ?></strong>
                       <?php endif; ?>
                     <?php else: ?>
                       <?php if($list['date_till_pro'] != ''): ?>
-                        Valid for Pro Until: <?= $list['date_till_pro'] ?>
+                        Valid for Pro Until: <?= date('d-m-Y', strtotime($list['date_till_pro'])) ?>
                       <?php endif; ?>
                       <?php if($list['date_till_nonpro'] != ''): ?>
-                        Valid for Everyone Until: <?= $list['date_till_nonpro'] ?>
+                        Valid for Everyone Until: <?= date('d-m-Y', strtotime($list['date_till_nonpro'])) ?>
                       <?php endif; ?>
                     <?php endif; ?></p>
                 </div>
@@ -111,9 +111,9 @@
                     <?php if($list['release'] == '2099-01-01' || $list['release'] == 'TBA'): ?>
                       TBA
                     <?php else: ?>
-                      <?= $list['release'] ?>
+                      <?= date('d-m-Y', strtotime($list['release'])) ?>
                     <?php endif; ?>
-                    <?php if($type === 'pro'): ?>Entered Pro:&nbsp;<?= $list['pro_from'] ?><?php endif; ?>
+                    <?php if($type === 'pro'): ?>Entered Pro:&nbsp;<?= date('d-m-Y', strtotime($list['pro_from'])) ?><?php endif; ?>
                   </p>
                 </div>
               </div>
