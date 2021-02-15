@@ -42,7 +42,7 @@ class InterviewsModel extends Model{
                             games.slug AS game_slug')
                   ->join('games', 'games.id = interviews.game_id')
                   ->orderBy('interviews.id', 'DESC');
-    return $builder->get(4)->getResultArray();
+    return $builder->get(6)->getResultArray();
   }
 }
 
