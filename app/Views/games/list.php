@@ -109,9 +109,9 @@
                   <p class="title is-5"><?php if($list['rumor'] == 1): ?><span class="icon has-text-danger" title="RUMOR!"><i class="fas fa-user-secret"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
                   <p class="subtitle is-7">Developer <?= $list['developer_name'] ?> / Publisher <?= $list['publisher_name'] ?><br>
                     <?php if($list['release'] == '2099-01-01' || $list['release'] == 'TBA'): ?>
-                      TBA
+                      Release date: TBA
                     <?php else: ?>
-                      <?= date('d-m-Y', strtotime($list['release'])) ?>
+                      Release date: <?= date('d-m-Y', strtotime($list['release'])) ?>
                     <?php endif; ?>
                     <?php if($type === 'pro'): ?>Entered Pro:&nbsp;<?= date('d-m-Y', strtotime($list['pro_from'])) ?><?php endif; ?>
                   </p>
