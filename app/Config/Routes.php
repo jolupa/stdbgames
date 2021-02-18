@@ -32,7 +32,6 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Games::index');
 $routes->get('/game/(:segment)', 'Games::overview/$1');
-$routes->get('/game/(:segment)/(:segment)', 'Games::overview/$1/$2');
 $routes->get('/games/game/(:segment)', 'Games::overview/$1');
 $routes->get('/list', 'Games::list');
 $routes->get('/list/deals', 'Prices::listdeals');
