@@ -116,7 +116,7 @@
         <?= view_cell('App\Controllers\Games::releasebydate', 'id='.$game['id'].', date='.$game['release']) ?>
         <?php if(isset($game['updated_at'])): ?>
           <div class="content mt-5">
-            <p class="help"><strong>Game Last Update:</strong> <?= $game['updated_at'] ?></p>
+            <p class="help"><strong>Game Last Update:</strong> <?= date('d-m-Y', strtotime($game['updated_at'])) ?></p>
           </div>
         <?php endif; ?>
         <div class="content has-text-centered mt-2">

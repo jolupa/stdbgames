@@ -153,9 +153,9 @@
         //If the game is inserted correctly we send a Tweet
         require(ROOTPATH.'twitter.php');
         if($data['rumor'] == 1){
-          $statusmessage = "RUMOR!! Game Added to DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+          $statusmessage = "RUMOR!! Game Added to DB! Wishlist it on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
         } else {
-          $statusmessage = "Game Added to DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+          $statusmessage = "Game Added to DB! Wishlist it on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
         }
         $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
         $connection->post("statuses/update", ["status" => $statusmessage]);
