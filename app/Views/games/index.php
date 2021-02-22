@@ -17,11 +17,11 @@
                         <div class="is-overlay">
                           <div class="content mt-2 ml-4">
                             <p class="is-inline-block">
-                              <a class="tag is-small is-primary" href="<?= base_url() ?>/game/<?= $pro[$i]['slug'] ?>" title="<?= $pro[$i]['name'] ?>"><?= character_limiter($pro[$i]['name'], 15, '...') ?></a>
+                              <a class="tag is-small is-green-eagle" href="<?= base_url() ?>/game/<?= $pro[$i]['slug'] ?>" title="<?= $pro[$i]['name'] ?>"><?= character_limiter($pro[$i]['name'], 15, '...') ?></a>
                               <br>
-                              <a class="tag is-small is-primary" href="<?= base_url() ?>/developer/<?= $pro[$i]['developer_slug'] ?>" title="<?= $pro[$i]['developer_name'] ?>"><?= character_limiter($pro[$i]['developer_name'], 15, '...') ?></a>
+                              <a class="tag is-small is-green-eagle" href="<?= base_url() ?>/developer/<?= $pro[$i]['developer_slug'] ?>" title="<?= $pro[$i]['developer_name'] ?>"><?= character_limiter($pro[$i]['developer_name'], 15, '...') ?></a>
                               <br>
-                              <a class="tag is-small is-primary" href="<?= base_url() ?>/publisher/<?= $pro[$i]['publisher_slug'] ?>" title="<?= $pro[$i]['publisher_name'] ?>"><?= character_limiter($pro[$i]['publisher_name'], 15, '...') ?></a>
+                              <a class="tag is-small is-green-eagle" href="<?= base_url() ?>/publisher/<?= $pro[$i]['publisher_slug'] ?>" title="<?= $pro[$i]['publisher_name'] ?>"><?= character_limiter($pro[$i]['publisher_name'], 15, '...') ?></a>
                               <?php if($pro[$i]['pro_till'] != ''): ?>
                                 <br>
                                 <span class="tag is-small is-danger">Claim it before <?= date('d-m-Y', strtotime($pro[$i]['pro_till'])) ?></span>
@@ -95,11 +95,11 @@
                       <div class="is-overlay">
                         <div class="content mt-2 ml-4">
                           <p class="is-inline-block">
-                            <a class="tag is-small is-primary" href="<?= base_url() ?>/game/<?= $month[$i]['slug'] ?>" title="<?= $month[$i]['name'] ?>"><?= character_limiter($month[$i]['name'], 15, '..') ?></a>
+                            <a class="tag is-small is-green-eagle" href="<?= base_url() ?>/game/<?= $month[$i]['slug'] ?>" title="<?= $month[$i]['name'] ?>"><?= character_limiter($month[$i]['name'], 15, '..') ?></a>
                             <br>
-                            <a class="tag is-small is-primary" href="<?= base_url() ?>/developer/<?= $month[$i]['developer_slug'] ?>" title="<?= $month[$i]['developer_name'] ?>"><?= character_limiter($month[$i]['developer_name'], 15, '...') ?></a>
+                            <a class="tag is-small is-green-eagle" href="<?= base_url() ?>/developer/<?= $month[$i]['developer_slug'] ?>" title="<?= $month[$i]['developer_name'] ?>"><?= character_limiter($month[$i]['developer_name'], 15, '...') ?></a>
                             <br>
-                            <a class="tag is-small is-primary" href="<?= base_url() ?>/publisher/<?= $month[$i]['publisher_slug'] ?>" title="<?= $month[$i]['publisher_name'] ?>"><?= character_limiter($month[$i]['publisher_name'], 15, '...') ?></a>
+                            <a class="tag is-small is-green-eagle" href="<?= base_url() ?>/publisher/<?= $month[$i]['publisher_slug'] ?>" title="<?= $month[$i]['publisher_name'] ?>"><?= character_limiter($month[$i]['publisher_name'], 15, '...') ?></a>
                         </div>
                       </div>
                     </div>

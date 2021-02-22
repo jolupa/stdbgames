@@ -15,7 +15,7 @@
     <p class="title is-5">Also released</p>
     <p class="subtitle is-3">#this day:</p>
     <?php foreach($released_day as $released_day): ?>
-      <figure class="image is-96x96 is-fullwidth is-inline-block mt-0 mr-0">
+      <figure class="image is-96x96 is-fullwidth is-inline-block mr-0 ml-0 mt-0">
         <a href="<?= base_url() ?>/game/<?= $released_day['slug'] ?>" title="<?= $released_day['name'] ?>"><img src="<?= base_url() ?>/images/<?= $released_day['image'] ?>-thumb.jpeg" alt="<?= $released_day['name'] ?>" title="<?= $released_day['name'] ?>"></a>
       </figure>
     <?php endforeach; ?>

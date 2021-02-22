@@ -18,12 +18,12 @@
             <div class="column is-4">
               <div class="card is-shadowless">
                 <div class="card-image">
-                  <figure class="image is-5by4 is-fullwidth">
+                  <figure class="image is-4by3">
                     <img src="<?= base_url() ?>/images/doodles/<?= $doodle['image'] ?>-thumb.jpeg">
                   </figure>
                 </div>
-                <div class="card-content is-overlay">
-                  <span class="tag is-primary has-text-dark"><a href="<?= base_url() ?>/images/doodles/<?= $doodle['image'] ?>.jpeg" data-lightbox="doodle">Enlarge</a>&nbsp;|&nbsp;<a href="<?= base_url() ?>/game/<?= $doodle['game_slug'] ?>">Game Info</a></span>
+                <div class="is-overlay">
+                  <span class="tag is-green-eagle has-text-dark"><a href="<?= base_url() ?>/images/doodles/<?= $doodle['image'] ?>.jpeg" data-lightbox="doodle">Enlarge</a>&nbsp;|&nbsp;<a href="<?= base_url() ?>/game/<?= $doodle['game_slug'] ?>">Game Info</a></span>
                 </div>
               </div>
             </div>
