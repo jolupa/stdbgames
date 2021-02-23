@@ -245,9 +245,9 @@
       require(ROOTPATH.'twitter.php');
       //Check the update changes to compose the tweet
       if($data['rumor'] == 1){
-        $statusmessage = "RUMOR!! Game Updated on DB! ".$data['name']." https://stdb.games/game/".$data['slug'];
+        $statusmessage = "RUMOR!! Game Updated wishlist on DB!".$data['name']." https://stdb.games/game/".$data['slug'];
       } else {
-        $statusmessage = "Game Updated on DB! ".$data['name'];
+        $statusmessage = "Game Updated wishlist on DB! ".$data['name'];
       }
       if ($data['name'] !== $this->request->getVar('oldname')){
         $statusmessage .= ' / Name updated';
