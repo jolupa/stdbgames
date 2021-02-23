@@ -45,7 +45,7 @@
                 <a class="tag is-primary is-small mt-1 mr-2">Free for Pro&nbsp;<strong>Now!</strong></a>
               <?php endif; ?>
               <?php if($game['pro_till'] != '' && date('Y-m-d') <= $game['pro_till']): ?>
-                <buttona class="tag is-warning is-small mt-1 mr-2">Hurry claim it before&nbsp;<strong><?= $game['pro_till'] ?></strong></a>
+                <a class="tag is-warning is-small mt-1 mr-2">Hurry claim it before&nbsp;<strong><?= $game['pro_till'] ?></strong></a>
               <?php elseif($game['pro_from'] && $game['pro'] == 0): ?>
                 <a class="tag is-danger is-small mt-1 mr-2">Was free from&nbsp;<strong><?= $game['pro_from'] ?></strong>&nbsp;until&nbsp;<strong><?= $game['pro_till'] ?></strong></a>
               <?php endif; ?>
