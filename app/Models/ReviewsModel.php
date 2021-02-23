@@ -8,7 +8,6 @@ class ReviewsModel extends Model{
     $builder = $db->table('reviews')
                   ->select('reviews.id AS id,
                             reviews.about AS about,
-                            reviews.score AS score,
                             reviews.created_at AS date,
                             reviews.url AS url,
                             reviews.updated_at AS updated_at,
@@ -32,7 +31,6 @@ class ReviewsModel extends Model{
     $builder = $db->table('reviews')
                   ->select('reviews.id AS id,
                             reviews.about AS about,
-                            reviews.score AS score,
                             reviews.created_at AS date,
                             reviews.url AS url,
                             reviews.updated_at AS updated_at,
@@ -63,7 +61,6 @@ class ReviewsModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('reviews')
                   ->select('reviews.id AS id,
-                            reviews.score AS score,
                             reviews.about AS about,
                             reviews.created_at AS date,
                             users.name AS user_name,

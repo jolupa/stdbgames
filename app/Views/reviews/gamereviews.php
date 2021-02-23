@@ -19,17 +19,7 @@
           </div>
         </div>
       <?php endif; ?>
-      <div class="field is-grouped is-grouped-multiline">
-        <div class="control">
-          <div class="select">
-            <select name="score">
-              <option disabled selected>Cast Your Vote!</option>
-              <?php $i = 0; while($i < 11): ?>
-                <option value="<?= $i ?>"><?= $i ?></option>
-              <?php $i++; endwhile; ?>
-            </select>
-          </div>
-        </div>
+      <div class="field">
         <div class="control">
           <button class="button is-primary has-text-dark" value="submit">Add Review!</button>
         </div>
@@ -56,17 +46,7 @@
           </div>
         </div>
       <?php endif; ?>
-      <div class="field is-grouped is-grouped-multiline">
-        <div class="control">
-          <div class="select">
-            <select name="score">
-              <option disabled selected>Cast Your Vote!</option>
-              <?php $i = 0; while($i < 11): ?>
-                <option value="<?= $i ?>" <?php if($i == $review_user['score']): ?>selected<?php endif; ?>><?= $i ?></option>
-              <?php $i++; endwhile; ?>
-            </select>
-          </div>
-        </div>
+      <div class="field">
         <div class="control">
           <button class="button is-primary has-text-dark" value="submit">Update Review!</button>
         </div>
@@ -99,8 +79,7 @@
             Writted on: <strong><?= date('d-m-Y', strtotime($review['date'])) ?></strong><br>
             <?php if($review['updated_at'] != ''): ?>
               Edited on: <strong><?= date('d-m-Y', strtotime($review['updated_at'])) ?></strong><br>
-            <?php endif; ?>
-            Voted with: <strong><?= $review['score'] ?></strong>
+            <?php endif; ?></strong>
           </p>
         </div>
         <?= $review['about'] ?>

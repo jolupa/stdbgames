@@ -45,7 +45,6 @@ class Reviews extends Controller{
       if($this->request->getVar('url') !== null){
         $data['url'] = $this->request->getVar('url');
       }
-      $data['score'] = $this->request->getVar('score');
       $data['created_at'] = date('Y-m-d H:m:s');
       $game_name = $this->request->getVar('game_name');
       $return = $this->request->getVar('return');
@@ -66,7 +65,6 @@ class Reviews extends Controller{
     if($this->request->getVar('url') != null){
       $data['url'] = $this->request->getVar('url');
     }
-    $data['score'] = $this->request->getVar('score');
     $data['updated_at'] = date('Y-m-d H:m:s');
     $return = $this->request->getVar('return');
     $reviewmodel->updateReviewDB($data);
