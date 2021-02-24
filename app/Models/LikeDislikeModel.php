@@ -46,7 +46,9 @@ class LikeDislikeModel extends Model {
                             games.slug AS game_slug,
                             games.image AS game_image,
                             developers.name AS developer_name,
+                            developers.slug AS developer_slug,
                             publishers.name AS publisher_name,
+                            publishers.slug AS publisher_slug,
                             SUM(likedislike.like) AS like')
                   ->join('games', 'games.id = likedislike.game_id')
                   ->join('developers', 'developers.id = games.developer_id')

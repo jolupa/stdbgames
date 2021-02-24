@@ -13,7 +13,11 @@
         </figure>
         <div class="media-content">
           <p><a href="<?= base_url() ?>/game/<?= $chart['game_slug'] ?>"><?= character_limiter($chart['game_name'], 15, '...') ?></a></p>
-          <p class="title is-7">Developer <?= $chart['developer_name'] ?><br>Publisher <?= $chart['publisher_name'] ?></p>
+          <p class="title is-7">
+            Developer <a href="<?= base_url() ?>/developer/<?= $chart['developer_slug'] ?>"><?= character_limiter($chart['developer_name'], 15, '...') ?></a>
+            <br>
+            Publisher <a href="<?= base_url() ?>/publisher/<?= $chart['publisher_slug'] ?>"><?= character_limiter($chart['publisher_name'], 15, '...') ?></a>
+          </p>
         </div>
         <div class="media-right">
           <figure class="image is-64x64 has-text-centered">
