@@ -39,5 +39,21 @@ class LikeDislikeModel extends Model {
     $builder = $db->table('likedislike');
     return $builder->insert(['game_id' => $id, 'ip' => $ip, 'dislike' => 1]);
   }
+  public function getLikeDislikeChart(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('likedislike')
+                  ->select('games.name AS game_name,
+                            games.slug AS game_slug,
+                            games.image AS game_image,
+                            developers.name AS developer_name,
+                            publishers.name AS publisher_name,
+                            SUM(likedislike.like) AS like')
+                  ->join('games', 'games.id = likedislike.game_id')
+                  ->join('developers', 'developers.id = games.developer_id')
+                  ->join('publishers', 'publishers.id = games.publisher_id')
+                  ->groupBy('likedislike.game_id')
+                  ->orderBy('like', 'DESC');
+    return $builder->get(5)->getResultArray();
+  }
 }
  ?>

@@ -252,7 +252,7 @@
       <section class="section has-background-gunmetal">
         <div class="columns">
           <div class="column">
-            <?= view_cell('App\Controllers\Reviews::chart') ?>
+            <?= view_cell('App\Controllers\Likedislike::likedislikechart') ?>
           </div>
           <div class="column">
             <?= view_cell('App\Controllers\Reviews::latestreviews') ?>

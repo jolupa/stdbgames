@@ -26,5 +26,10 @@ class LikeDislike extends Controller {
     }
     return redirect()->back();
   }
+  public function likedislikechart(){
+    $likedislikemodel = new LikeDislikeModel();
+    $data['chart'] = $likedislikemodel->getLikeDislikeChart();
+    return view('likedislike/likedislikechart', $data);
+  }
 }
  ?>
