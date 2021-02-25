@@ -73,22 +73,6 @@ class ReviewsModel extends Model{
                   ->orderBy('reviews.created_at', 'DESC');
     return $builder->get(5)->getResultArray();
   }
-  public function chart(){
-    $db = \Config\Database::connect();
-    $builder = $db->table('reviews')
-                  ->select('AVG(score) AS score,
-                            games.name AS game_name,
-                            games.image AS game_image,
-                            games.slug AS game_slug,
-                            developers.name AS developer_name,
-                            publishers.name AS publisher_name')
-                  ->join('games', 'games.id = reviews.game_id')
-                  ->join('developers', 'developers.id = games.developer_id')
-                  ->join('publishers', 'publishers.id = games.publisher_id')
-                  ->groupBy('game_id')
-                  ->orderBy('score', 'DESC');
-    return $builder->get(5)->getResultArray();
-  }
   public function addReviewDb($data){
     $db = \Config\Database::connect();
     $builder = $db->table('reviews');

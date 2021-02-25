@@ -29,11 +29,6 @@ class Reviews extends Controller{
     $data['review'] = $reviewmodel->getAllReviews();
     return view('reviews/reviewfrontpage', $data);
   }
-  public function chart(){
-    $reviewmodel = new ReviewsModel();
-    $data['chart'] = $reviewmodel->chart();
-    return view('reviews/chart', $data);
-  }
   public function addreview(){
     $reviewmodel = new ReviewsModel();
     if($this->request->getVar('about') == null || $this->request->getVar('score') == 'Cast Your Vote!'){
