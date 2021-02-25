@@ -2853,16 +2853,16 @@ div.icon-text {
   .table.is-fullwidth {
     width: 100%; }
   .table.is-hoverable tbody tr:not(.is-selected):hover {
-    background-color: #fafafa; }
+    background-color: #004052; }
   .table.is-hoverable.is-striped tbody tr:not(.is-selected):hover {
-    background-color: #fafafa; }
+    background-color: #004052; }
     .table.is-hoverable.is-striped tbody tr:not(.is-selected):hover:nth-child(even) {
       background-color: whitesmoke; }
   .table.is-narrow td,
   .table.is-narrow th {
     padding: 0.25em 0.5em; }
   .table.is-striped tbody tr:not(.is-selected):nth-child(even) {
-    background-color: #fafafa; }
+    background-color: #004052; }
 
 .table-container {
   -webkit-overflow-scrolling: touch;
@@ -10473,7 +10473,7 @@ a.has-text-light-blue-dark:hover, a.has-text-light-blue-dark:focus {
       padding: 18rem 1.5rem; } }
 
 .footer {
-  background-color: #00303d;
+  background-color: #004052;
   padding: 3rem 1.5rem 6rem; }
 
 /*# sourceMappingURL=bulma.css.map */

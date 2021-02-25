@@ -8,7 +8,7 @@
         </span>
         <span class="tag is-green-eagle-2 is-medium ml-1 mr-1">
           <span class="icon"><a href="<?= base_url() ?>/likedislike/insertdislike/<?= $game['id'] ?>" title="Dislike this game"><i class="fas fa-heart-broken has-text-coral"></i></a></span>
-          <span><?php if($dislike['total'] == null): ?>0 Dislikes<?php elseif($dislike['total'] == 1): ?><?= $dislike['total'] ?> Dislike<?php else: ?><?= $dislike['total'] ?> Likes<?php endif; ?></span>
+          <span><?php if($dislike['total'] == null): ?>0 Dislikes<?php elseif($dislike['total'] == 1): ?><?= $dislike['total'] ?> Dislike<?php else: ?><?= $dislike['total'] ?> Dislikes<?php endif; ?></span>
         </span>
       </span>
     </p>
