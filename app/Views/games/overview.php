@@ -112,9 +112,7 @@
           </div>
           <hr \>
         <?php endif; ?>
-        <div class="content">
-          <?= view_cell('App\Controllers\Prices::gamepricehistory', 'id='.$game['id']) ?>
-        </div>
+        <?= view_cell('App\Controllers\Prices::pricechart', 'id='.$game['id']) ?>
         <hr \>
         <?= view_cell('App\Controllers\Games::releasebydate', 'id='.$game['id'].', date='.$game['release']) ?>
         <?php if(isset($game['updated_at'])): ?>

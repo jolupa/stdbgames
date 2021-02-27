@@ -73,5 +73,25 @@ class PricesModel extends Model{
                   ->orderBy('games.name', 'ASC');
     return $builder->get()->getResultArray();
   }
+  public function getPricesPro($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('prices')
+                  ->select('prices.date AS date,
+                            prices.price_pro AS price_pro')
+                  ->where('prices.game_id', $id)
+                  ->where('prices.price_pro !=', '')
+                  ->orderBy('prices.date', 'ASC');
+    return $builder->get()->getResultArray();
+  }
+  public function getPricesEveryone($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('prices')
+                  ->select('prices.date AS date,
+                            prices.price_nonpro AS price_nonpro')
+                  ->where('prices.game_id', $id)
+                  ->where('prices.price_nonpro !=', '')
+                  ->orderBy('prices.date', 'ASC');
+    return $builder->get()->getResultArray();
+  }
 }
 ?>

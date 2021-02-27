@@ -89,5 +89,11 @@ class Prices extends Controller{
     echo view('games/list', $data);
     echo view('templates/footer');
   }
+  public function pricechart($id){
+    $pricemodel = new PricesModel();
+    $data['prochart'] = $pricemodel->getPricesPro($id);
+    $data['everyonechart'] = $pricemodel->getPricesEveryone($id);
+    return view('prices/historychart', $data);
+  }
 }
 ?>

@@ -73,7 +73,7 @@
                   </p>
                 </figure>
                 <div class="media-content">
-                  <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
+                  <p class="title is-5"><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>#Deals_Chart"><?= character_limiter($list['name'], 15, '...') ?></a></p>
                   <p class="subtitle is-7">Retail Price: <strong><?= $list['game_price'] ?>&nbsp;€</strong><br>
                     <?php if($list['price_pro'] != ''): ?>Pro Sale Price: <strong><?= $list['price_pro'] ?>&nbsp;€</strong><br><?php endif; ?>
                     <?php if($list['price_nonpro'] != ''): ?>Everyone Sale Price: <strong><?= $list['price_nonpro'] ?>&nbsp;€</strong><br><?php endif; ?>
