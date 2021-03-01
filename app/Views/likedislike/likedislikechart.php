@@ -6,7 +6,7 @@
 </div>
 <div class="columns is-multiline">
   <?php foreach($chart as $chart): ?>
-    <?php if($chart['like'] - $chart['dislike'] > 0): ?>
+    <?php if($chart['total'] > 0): ?>
       <div class="column is-12">
         <div class="media">
           <figure class="media-left image is-64x64 is-fullwidth">
@@ -22,7 +22,7 @@
           </div>
           <div class="media-right">
             <figure class="image is-64x64 has-text-centered">
-              <br><p class="title is-5"><strong><?= $chart['like'] - $chart['dislike'] ?></strong></p>
+              <br><p class="title is-5"><strong><?= $chart['total'] ?></strong></p>
             </figure>
           </div>
         </div>
