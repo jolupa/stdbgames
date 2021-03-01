@@ -49,12 +49,12 @@ class LikeDislikeModel extends Model {
                             developers.slug AS developer_slug,
                             publishers.name AS publisher_name,
                             publishers.slug AS publisher_slug,
-                            SUM(likedislike.like) - SUM(likedislike.dislike) AS total')
+                            SUM(likedislike.like) AS like')
                   ->join('games', 'games.id = likedislike.game_id')
                   ->join('developers', 'developers.id = games.developer_id')
                   ->join('publishers', 'publishers.id = games.publisher_id')
                   ->groupBy('likedislike.game_id')
-                  ->orderBy('total', 'DESC');
+                  ->orderBy('like', 'DESC');
     return $builder->get(5)->getResultArray();
   }
 }
