@@ -1,4 +1,4 @@
-<?php if(count($wishlist) === 0): ?>
+<?php if(isset($error)): ?>
   <p>You don't have games on your wishlist. Add some games!</p>
 <?php else: ?>
   <?php foreach($wishlist as $wishlistGame): ?>
