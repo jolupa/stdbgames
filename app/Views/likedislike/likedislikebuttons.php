@@ -14,7 +14,7 @@
               <?php endif; ?>
             <?php else: ?>
               <?php if(isset($user_like) && $user_like == 1): ?>
-                You and <?= $like['total'] ?> more people Like this game
+                You and <?= $like['total'] ?> people Like this game
               <?php else: ?>
                 <?= $like['total'] ?> Likes
               <?php endif; ?>
@@ -47,7 +47,7 @@
               <?php endif; ?>
             <?php else: ?>
               <?php if(isset($user_dislike) && $user_dislike == 1): ?>
-                You and <?= $dislike['total'] ?> more people Dislike this game
+                You and <?= $dislike['total'] ?> people Dislike this game
               <?php else: ?>
                 <?= $dislike['total'] ?> Dislikes
               <?php endif; ?>
