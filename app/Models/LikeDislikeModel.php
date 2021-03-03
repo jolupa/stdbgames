@@ -29,15 +29,27 @@ class LikeDislikeModel extends Model {
       return false;
     }
   }
-  public function insertLike($id, $ip){
+  public function getLikeDislikeByUserId($id){
     $db = \Config\Database::connect();
-    $builder = $db->table('likedislike');
-    return $builder->insert(['game_id' => $id, 'ip' => $ip, 'like' => 1]);
+    $builder = $db->table('likedislike')
+                  ->select('user_id')
+                  ->where('user_id', session('user_id'))
+                  ->where('game_id', $id);
+    if($builder->countAllResults(false) > 0){
+      return true;
+    } else {
+      return false;
+    }
   }
-  public function insertDislike($id, $ip){
+  public function insertLike($id){
     $db = \Config\Database::connect();
     $builder = $db->table('likedislike');
-    return $builder->insert(['game_id' => $id, 'ip' => $ip, 'dislike' => 1]);
+    return $builder->insert(['game_id' => $id, 'user_id' => session('user_id'), 'like' => 1]);
+  }
+  public function insertDislike($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('likedislike');
+    return $builder->insert(['game_id' => $id, 'user_id' => session('user_id'), 'dislike' => 1]);
   }
   public function getLikeDislikeChart(){
     $db = \Config\Database::connect();
@@ -50,12 +62,39 @@ class LikeDislikeModel extends Model {
                             publishers.name AS publisher_name,
                             publishers.slug AS publisher_slug,
                             SUM(likedislike.like) AS like')
+                  ->where('likedislike.like !=', '')
                   ->join('games', 'games.id = likedislike.game_id')
                   ->join('developers', 'developers.id = games.developer_id')
                   ->join('publishers', 'publishers.id = games.publisher_id')
                   ->groupBy('likedislike.game_id')
                   ->orderBy('like', 'DESC');
     return $builder->get(5)->getResultArray();
+  }
+  public function getLikesByUserId($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('likedislike')
+                  ->select('user_id')
+                  ->where('user_id', session('user_id'))
+                  ->where('game_id', $id)
+                  ->where('like', 1);
+    if($builder->countAllResults(false) > 0){
+      return true;
+    } else {
+      return false;
+    }
+  }
+  public function getDislikesByUserId($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('likedislike')
+                  ->select('user_id')
+                  ->where('user_id', session('user_id'))
+                  ->where('game_id', $id)
+                  ->where('dislike', 1);
+    if($builder->countAllResults(false) > 0){
+      return true;
+    } else {
+      return false;
+    }
   }
 }
  ?>
