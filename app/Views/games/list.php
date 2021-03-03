@@ -86,10 +86,10 @@
                       <?php endif; ?>
                     <?php else: ?>
                       <?php if($list['date_till_pro'] != ''): ?>
-                        Valid for Pro Until: <?= date('d-m-Y', strtotime($list['date_till_pro'])) ?>
+                        Valid for Pro Until: <strong><?= date('d-m-Y', strtotime($list['date_till_pro'])) ?></strong>
                       <?php endif; ?>
                       <?php if($list['date_till_nonpro'] != ''): ?>
-                        Valid for Everyone Until: <?= date('d-m-Y', strtotime($list['date_till_nonpro'])) ?>
+                        Valid for Everyone Until: <strong><?= date('d-m-Y', strtotime($list['date_till_nonpro'])) ?></strong>
                       <?php endif; ?>
                     <?php endif; ?></p>
                 </div>
