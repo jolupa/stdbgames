@@ -126,7 +126,9 @@ class Users extends Controller{
     $data['slug'] = $this->request->getVar('slug');
     if($_FILES['image']['error'] !== 4){
       $oldname = $this->request->getVar('oldimage');
-      unlink(ROOTPATH.'public/images/avatar/'.$oldname.'.jpeg');
+      if(file_exists(ROOTPATH.'public/images/avatar/'.$oldname.'jpeg')){
+        unlink(ROOTPATH.'public/images/avatar/'.$oldname.'.jpeg');
+      }
       $newname = $data['slug'];
       $file = $this->request->getFile('image')
                             ->move(WRITEPATH.'uploads/', $newname);
