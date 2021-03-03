@@ -49,6 +49,7 @@
           slidesToShow: 3,
           slidesToScroll: 3,
           dots: true,
+          arrows: false,
           responsive: [
             {
               breakpoint: 1024,
