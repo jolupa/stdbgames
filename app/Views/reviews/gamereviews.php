@@ -65,10 +65,10 @@
     <div class="media">
       <figure class="media-left">
         <p class="image is-96x96">
-          <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$review['user_image'].'.jpeg') == TRUE): ?>
-            <img src="<?= base_url() ?>/images/avatar/<?= $review['user_image'] ?>.jpeg" alt="<?= $review['user_name'] ?>" title="<?= $review['user_name'] ?>">
+          <?php if(file_exists(ROOTPATH.'/public/images/avatar/'.$review['user_image'].'.png') == TRUE): ?>
+            <img src="<?= base_url() ?>/images/avatar/<?= $review['user_image'] ?>.png" alt="<?= $review['user_name'] ?>" title="<?= $review['user_name'] ?>">
           <?php else: ?>
-            <img src="<?= base_url() ?>/images/avatar/avatar01.jpeg" title="Generic Avatar" alt="Generic Avatar">
+            <img src="<?= base_url() ?>/images/avatar/avatar01.png" title="Generic Avatar" alt="Generic Avatar">
           <?php endif; ?>
         </p>
       </figure>
