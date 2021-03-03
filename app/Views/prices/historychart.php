@@ -23,6 +23,13 @@
           title: 'Pro Deals Over Time',
           legend: { position: 'none',},
           backgroundColor: '#76949F',
+          vAxis: {
+            viewWindow: {
+              min: 0,
+              max: 100,
+            },
+            ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+          },
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById('pro'));
@@ -55,6 +62,13 @@
           title: 'Everyone Deals Over Time',
           legend: { position: 'none',},
           backgroundColor: '#76949F',
+          vAxis: {
+            viewWindow: {
+              min: 0,
+              max: 100,
+            },
+            ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+          },
         };
 
         var chart = new google.visualization.ColumnChart(document.getElementById('non_pro'));
