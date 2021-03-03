@@ -7,10 +7,10 @@
         <div class="media">
           <figure class="media-left">
             <p class="image is-128x128">
-              <?php if(file_exists(ROOTPATH.'public/images/avatar/'.$user['image'].'.jpeg') == TRUE): ?>
-                <img src="<?= base_url() ?>/images/avatar/<?= $user['image'] ?>.jpeg" title="<?= $user['name'] ?>">
+              <?php if(file_exists(ROOTPATH.'public/images/avatar/'.$user['image'].'.png')): ?>
+                <img src="<?= base_url() ?>/images/avatar/<?= $user['image'] ?>.png" title="<?= $user['name'] ?>">
               <?php else: ?>
-                <img src="<?= base_url() ?>/images/avatar/avatar01.jpeg" title="<?= $user['name'] ?>">
+                <img src="<?= base_url() ?>/images/avatar/avatar01.png" title="<?= $user['name'] ?>">
               <?php endif; ?>
             </p>
           </figure>

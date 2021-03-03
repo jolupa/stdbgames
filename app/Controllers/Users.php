@@ -36,8 +36,8 @@ class Users extends Controller{
         $image = \Config\Services::image('imagick')
                 ->withFile(WRITEPATH.'uploads/'.$newname)
                 ->fit(256, 256, 'center')
-                ->convert(IMAGETYPE_JPEG)
-                ->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
+                ->convert(IMAGETYPE_PNG)
+                ->save(ROOTPATH.'public/images/avatar/'.$newname.'.png');
         unlink(WRITEPATH.'uploads/'.$newname);
         $data['image'] = $newname;
       }
@@ -126,8 +126,8 @@ class Users extends Controller{
     $data['slug'] = $this->request->getVar('slug');
     if($_FILES['image']['error'] !== 4){
       $oldname = $this->request->getVar('oldimage');
-      if(file_exists(ROOTPATH.'public/images/avatar/'.$oldname.'jpeg')){
-        unlink(ROOTPATH.'public/images/avatar/'.$oldname.'.jpeg');
+      if(file_exists(ROOTPATH.'public/images/avatar/'.$oldname.'png')){
+        unlink(ROOTPATH.'public/images/avatar/'.$oldname.'.png');
       }
       $newname = $data['slug'];
       $file = $this->request->getFile('image')
@@ -135,8 +135,8 @@ class Users extends Controller{
       $image = \Config\Services::image('imagick')
                 ->withFile(WRITEPATH.'uploads/'.$newname)
                 ->fit(256, 256, 'center')
-                ->convert(IMAGETYPE_JPEG)
-                ->save(ROOTPATH.'public/images/avatar/'.$newname.'.jpeg');
+                ->convert(IMAGETYPE_PNG)
+                ->save(ROOTPATH.'public/images/avatar/'.$newname.'.png');
       unlink(WRITEPATH.'uploads/'.$newname);
       $data['image'] = $newname;
     } else {
