@@ -95,6 +95,9 @@
                     ->join('developers', 'developers.id = games.developer_id')
                     ->join('publishers', 'publishers.id = games.publisher_id')
                     ->where('strftime("%Y-%m", release) >', date('Y-m'))
+                    ->where('games.release !=', '2099-01-01')
+                    ->where('games.release !=', 'TBA')
+                    ->where('games.rumor !=', 1)
                     ->orderBy('release', 'ASC');
       return $builder->get(12)->getResultArray();
     }
@@ -161,6 +164,8 @@
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.release >', date('Y-m-d'))
+                      ->where('games.rumor !=', 1)
+                      ->where('games.release !=', '2099-01-01')
                       ->orderBy('games.release', 'ASC');
       } elseif($type == 'launched'){
         $builder = $db->table('games')
@@ -332,6 +337,20 @@
                       ->join('publishers', 'publishers.id = games.publisher_id')
                       ->where('games.is_f2p', 1)
                       ->orderBy('games.release', 'ASC');
+      } elseif($type == 'tba'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.release', '2099-01-01')
+                      ->orWhere('games.release', 'TBA')
+                      ->orderBy('games.name');
       } else {
         $builder = $db->table('games')
                       ->select('games.name,

@@ -5,7 +5,7 @@
     <div class="container">
       <section class="section">
         <div class="content has-text-centered">
-          <h1 class="title"><?php if($game['rumor'] == 1): ?><span class="icon has-text-danger is-small" title="RUMOR!"><i class="fas fa-user-secret"></i></span>&nbsp;<?php endif; ?><?= $game['name'] ?></h1>
+          <h1 class="title"><span class="icon-text"><?php if($game['rumor'] == 1): ?><span class="icon has-text-danger is-small" title="RUMOR!"><i class="fas fa-user-secret fa-1x"></i></span>&nbsp;<?php endif; ?><span><?= $game['name'] ?></span></span></h1>
           <h2 class="subtitle">
             <a href="<?= base_url() ?>/developer/<?= $game['developer_slug'] ?>"><?= $game['developer_name'] ?></a> / <a href="<?= base_url() ?>/publisher/<?= $game['publisher_slug'] ?>"><?= $game['publisher_name'] ?></a>
             <br>

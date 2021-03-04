@@ -33,6 +33,8 @@
           on Sale
         <?php elseif($type === 'f2p'): ?>
           Free 2 Play
+        <?php elseif($type === 'tba'): ?>
+          Without Date
         <?php else: ?>
           All Games:
         <?php endif; ?>
@@ -57,6 +59,7 @@
             <li <?php if($type === 'stadiaexclusive'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/stadiaexclusive">Stadia Exclusives</a></li>
             <li <?php if($type === 'stateshare'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/stateshare">State Share</a></li>
             <li <?php if($type === 'streamconnect'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/streamconnect">Stream Connect</a></li>
+            <li <?php if($type === 'tba'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/tba">Without Date</a></li>
             <li></li>
           </ul>
         </nav>
@@ -106,7 +109,7 @@
                   </p>
                 </figure>
                 <div class="media-content">
-                  <p class="title is-5"><?php if($list['rumor'] == 1): ?><span class="icon has-text-danger" title="RUMOR!"><i class="fas fa-user-secret"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
+                  <p class="title is-5"><?php if($list['rumor'] == 1): ?><span class="icon" title="RUMOR!"><i class="fas fa-user-secret fa-1x has-text-danger"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $list['slug'] ?>"><?= character_limiter($list['name'], 15, '...') ?></a></p>
                   <p class="subtitle is-7">Developer <?= $list['developer_name'] ?> / Publisher <?= $list['publisher_name'] ?><br>
                     <?php if($list['release'] == '2099-01-01' || $list['release'] == 'TBA'): ?>
                       Release date: TBA
