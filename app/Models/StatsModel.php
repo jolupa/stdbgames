@@ -18,7 +18,8 @@ class StatsModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('games')
                   ->where('release >', date('Y-m-d'))
-                  ->where('rumor !=', 1);
+                  ->where('rumor !=', 1)
+                  ->where('release !=', '2099-01-01');
     return $builder->countAllResults();
   }
   public function proGames(){
@@ -32,6 +33,13 @@ class StatsModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('games')
                   ->where('rumor', 1);
+    return $builder->countAllResults();
+  }
+  public function withoutDateGames(){
+    $db = \Config\Database::connect();
+    $builder = $db->table('games')
+                  ->where('games.release', '2099-01-01')
+                  ->orWhere('games.release', 'TBA');
     return $builder->countAllResults();
   }
 }

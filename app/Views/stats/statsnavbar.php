@@ -6,5 +6,6 @@
 		<a class="navbar-item" href="<?= base_url() ?>/list/soon"><strong><?= $cominggames ?></strong>&nbsp;Waiting for Launch</a>
 		<a class="navbar-item" href="<?= base_url() ?>/list/pro"><strong><?= $prostats ?></strong>&nbsp;Pro Games since launch</a>
 		<a class="navbar-item" href="<?= base_url() ?>/list/rumors"><strong><?= $rumoredgames ?></strong>&nbsp;Rumoured Games</a>
+		<a class="navbar-item" href="<?= base_url() ?>/list/tba"><strong><?= $withoutdate ?></strong>&nbsp;Without Date Games</a>
 	</div>
 </div>

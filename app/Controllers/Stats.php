@@ -11,6 +11,7 @@ class Stats extends Controller{
     $data['cominggames'] = $statsmodel->comingGames();
     $data['prostats'] = $statsmodel->proGames();
     $data['rumoredgames'] = $statsmodel->rumorGames();
+    $data['withoutdate'] = $statsmodel->withoutDateGames();
     return view('stats/statsnavbar', $data);
   }
 }
