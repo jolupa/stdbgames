@@ -25,14 +25,24 @@ class LikeDislike extends Controller {
   public function insertLike($id){
     $likedislikemodel = new LikeDislikeModel();
     if(session('logged') == true){
-      $likedislikemodel->insertLike($id);
+      if($likedislikemodel->getDislikesByUserId($id) == true){
+        $likedislikemodel->deleteDislike($id);
+        $likedislikemodel->insertlike($id);
+      } else {
+        $likedislikemodel->insertLike($id);
+      }
       return redirect()->back();
     }
   }
   public function insertdislike($id){
     $likedislikemodel = new LikeDislikeModel();
     if(session('logged') == true){
-      $likedislikemodel->insertDislike($id);
+      if($likedislikemodel->getLikesByUserId($id) == true){
+        $likedislikemodel->deleteLike($id);
+        $likedislikemodel->insertDislike($id);
+      } else {
+        $likedislikemodel->insertDislike($id);
+      }
       return redirect()->back();
     }
   }
@@ -40,6 +50,16 @@ class LikeDislike extends Controller {
     $likedislikemodel = new LikeDislikeModel();
     $data['chart'] = $likedislikemodel->getLikeDislikeChart();
     return view('likedislike/likedislikechart', $data);
+  }
+  public function unsetlike($id){
+    $likedislikemodel = new LikeDislikeModel();
+    $likedislikemodel->deleteLike($id);
+    return redirect()->back();
+  }
+  public function unsetdislike($id){
+    $likedislikemodel = new LikeDislikeModel();
+    $likedislikemodel->deleteDislike($id);
+    return redirect()->back();
   }
 }
  ?>

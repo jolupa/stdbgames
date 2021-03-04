@@ -7,50 +7,42 @@
             <?php if ($like['total'] == null): ?>
               0 Likes
             <?php elseif ($like['total'] == 1): ?>
-              <?php if (isset($user_like) && $user_like == 1): ?>
-                You Liked this game
-              <?php else: ?>
-                <?= $like['total'] ?> Like
-              <?php endif; ?>
+              <?= $like['total'] ?> Like
             <?php else: ?>
-              <?php if(isset($user_like) && $user_like == 1): ?>
-                You and <?= $like['total'] ?> people Like this game
-              <?php else: ?>
-                <?= $like['total'] ?> Likes
-              <?php endif; ?>
+              <?= $like['total'] ?> Likes
             <?php endif; ?>
           </span>
-          <?php if(isset($user_like) && $user_like == 0 && isset($user_dislike) && $user_dislike != 1 && session('logged') == true): ?>
-            <span class="icon">
+          <span class="icon">
+            <?php if(isset($user_like) && $user_like == 0): ?>
               <a href="<?= base_url() ?>/likedislike/insertlike/<?= $game['id'] ?>" title="Like this game">
                 <i class="fas fa-heart has-text-coral"></i>
               </a>
-            </span>
-          <?php endif; ?>
+            <?php else: ?>
+              <a href="<?= base_url() ?>/likedislike/unsetlike/<?= $game['id'] ?>" title="Unset like">
+                <i class="fas fa-heart has-text-coral"></i>
+              </a>
+            <?php endif; ?>
+          </span>
         </span>
         <span class="tag is-green-eagle-2 is-medium ml-1 mr-1">
-          <?php if(isset($user_dislike) && $user_dislike == 0 && isset($user_like) && $user_like != 1 && session('logged') == true): ?>
-            <span class="icon">
+          <span class="icon">
+            <?php if(isset($user_dislike) && $user_dislike == 0): ?>
               <a href="<?= base_url() ?>/likedislike/insertdislike/<?= $game['id'] ?>" title="Dislike this game">
                 <i class="fas fa-heart-broken has-text-coral"></i>
               </a>
-            </span>
-          <?php endif; ?>
+            <?php else: ?>
+              <a href="<?= base_url() ?>/likedislike/unsetdislike/<?= $game['id'] ?>" title="Unset Dislike">
+                <i class="fas fa-heart-broken has-text-coral"></i>
+              </a>
+            <?php endif; ?>
+          </span>
           <span>
             <?php if($dislike['total'] == null): ?>
               0 Dislikes
             <?php elseif($dislike['total'] == 1): ?>
-              <?php if(isset($user_dislike) && $user_dislike == 1): ?>
-                You disliked this game
-              <?php else: ?>
-                <?= $dislike['total'] ?> Dislike
-              <?php endif; ?>
+              <?= $dislike['total'] ?> Dislike
             <?php else: ?>
-              <?php if(isset($user_dislike) && $user_dislike == 1): ?>
-                You and <?= $dislike['total'] ?> people Dislike this game
-              <?php else: ?>
-                <?= $dislike['total'] ?> Dislikes
-              <?php endif; ?>
+              <?= $dislike['total'] ?> Dislikes
             <?php endif; ?>
           </span>
         </span>

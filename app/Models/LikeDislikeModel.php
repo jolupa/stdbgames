@@ -96,5 +96,19 @@ class LikeDislikeModel extends Model {
       return false;
     }
   }
+  public function deleteLike($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('likedislike')
+                  ->where('game_id', $id)
+                  ->where('user_id', session('user_id'));
+    return $builder->delete();
+  }
+  public function deleteDislike($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('likedislike')
+                  ->where('game_id', $id)
+                  ->where('user_id', session('user_id'));
+    return $builder->delete();
+  }
 }
  ?>
