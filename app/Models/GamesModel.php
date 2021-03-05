@@ -166,6 +166,7 @@
                       ->where('games.release >', date('Y-m-d'))
                       ->where('games.rumor !=', 1)
                       ->where('games.release !=', '2099-01-01')
+                      ->where('games.release !=', 'TBA')
                       ->orderBy('games.release', 'ASC');
       } elseif($type == 'launched'){
         $builder = $db->table('games')
@@ -348,6 +349,7 @@
                                 publishers.name AS publisher_name')
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.rumor', 0)
                       ->where('games.release', '2099-01-01')
                       ->orWhere('games.release', 'TBA')
                       ->orderBy('games.name');
