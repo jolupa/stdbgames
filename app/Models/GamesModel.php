@@ -79,7 +79,7 @@
                     ->where('games.pro', 1)
                     ->where('games.release !=', '2099-01-01')
                     ->where('games.pro_from <=', date('Y-m-d'))
-                    ->orderBy('games.pro_from', 'ASC');
+                    ->orderBy('games.pro_from', 'DESC');
       return $builder->get()->getResultArray();
     }
     public function getSoonGames(){
