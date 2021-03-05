@@ -364,7 +364,7 @@
                                 publishers.name AS publisher_name')
                       ->join('developers', 'developers.id = games.developer_id')
                       ->join('publishers', 'publishers.id = games.publisher_id')
-                      ->orderBy('games.release', 'ASC');
+                      ->orderBy('games.name', 'ASC');
       }
       return $builder->get()->getResultArray();
     }
