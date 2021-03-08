@@ -6,15 +6,13 @@
       <section class="section">
         <div class="content has-text-centered">
           <h1 class="title">
-            <span class="icon-text">
-              <?php if($game['rumor'] == 1): ?>
-                <span class="icon has-text-danger is-small" title="RUMOR!">
-                  <i class="fas fa-exclamation"></i>
-                </span>&nbsp;
-              <?php endif; ?>
-              <span>
-                <?= $game['name'] ?>
-              </span>
+            <?php if($game['rumor'] == 1): ?>
+              <span class="icon has-text-danger is-small" title="RUMOR!">
+                <i class="fas fa-exclamation">&nbsp;</i>
+              </span>&nbsp;
+            <?php endif; ?>
+            <span>
+              <?= $game['name'] ?>
             </span>
           </h1>
           <h2 class="subtitle">
@@ -26,8 +24,10 @@
               <span class="subtitle is-6">Release date: <?= date('d-m-Y', strtotime($game['release'])) ?></span>
             <?php endif; ?>
             <br>
-            <?php if($game['price'] != ''): ?>
+            <?php if($game['price'] != '' && $game['is_f2p'] == 0): ?>
               <span class="subtitle is-6">Price: <?= $game['price'] ?>&nbsp;€</span>
+            <?php elseif($game['is_f2p'] == 1): ?>
+              <tag class="tag is-info"><strong>Now Free To Play!</strong></tag>
             <?php else: ?>
               <span class="subtitle is-6">Price: TBA</span>
             <?php endif; ?>
@@ -45,9 +45,6 @@
                 <?php else: ?>
                   <a class="tag is-info is-small mt-1 mr-2" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
                 <?php endif; ?>
-              <?php endif; ?>
-              <?php if($game['is_f2p'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2"><strong>F2P Now!</strong></a>
               <?php endif; ?>
               <?php if($game['pro'] == 1 && $game['release'] === '2099-01-01'): ?>
                 <a class="tag is-info is-small mt-1 mr-2">Will be&nbsp;<strong>Free for PRO</strong>&nbsp;on Launch</a>
@@ -83,6 +80,12 @@
               <?php endif; ?>
               <?php if($game['crowd_play'] == 1): ?>
                 <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/crowdplay"><span class="icon"><i class="fas fa-globe-europe"></i></span><span>Crowd Play</span></a>
+              <?php endif; ?>
+              <?php if($game['multi_couch'] == 1): ?>
+                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/couch"><span class="icon"><i class="fas fa-couch"></i></span><span>Couch Multiplayer</span></a>
+              <?php endif; ?>
+              <?php if($game['multi_online'] == 1): ?>
+                <a class="tag is-info is-small mt-1 mr-2" href="<? base_url() ?>/list/online"><span class="icon"><i class="fas fa-globe"></i></span><span>Online Multiplayer</span></a>
               <?php endif; ?>
               <?php if($game['stream_connect'] == 1): ?>
                 <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/streamconnect"><span class="icon"><i class="fas fa-desktop"></i></span><span>Stream Connect</span></a>

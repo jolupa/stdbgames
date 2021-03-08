@@ -34,41 +34,43 @@
         </div>
         <div class="field is-grouped is-grouped-multiline">
           <div class="control">
-            <label class="label">Is First on Stadia?</label>
             <div class="select">
               <select name="first_on_stadia">
-                <option value="0" selected>No</option>
+                <option disable selected>First on Stadia?</option>
+                <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
           <div class="control">
-            <label class="label">Is Stadia Exclusive?</label>
             <div class="select">
               <select name="stadia_exclusive">
-                <option value="0" selected>No</option>
+                <option disable selected>Stadia Exclusive?</option>
+                <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
           <div class="control">
-            <label class="label">Is Early Access?</label>
             <div class="select">
               <select name="early_access">
-                <option value="0" selected>No</option>
+                <option disable selected>Early Access?</option>
+                <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
           <div class="control">
-            <label class="label">Is Pro?</label>
             <div class="select">
               <select name="pro">
-                <option value="0" selected>No</option>
+                <option disable selected>Is Pro?</option>
+                <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
+        </div>
+        <div class="field is-grouped is-grouped-multiline">
           <div class="control is-expanded">
             <label class="label">Is Pro From date</label>
             <input type="date" name="pro_from" class="input" placeholder="Is Free From: YYYY-MM-DD">
@@ -79,55 +81,73 @@
           </div>
         </div>
         <div class="field is-grouped is-grouped-multiline">
-          <div class="control is-expanded">
-            <label class="label">Has CrossPlay</label>
+          <div class="control">
             <div class="select">
               <select name="cross_play">
+                <option disable selected>Has Crossplay?</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
-          <div class="control is-expanded">
-            <label class="label">Has CrossProgression</label>
+          <div class="control">
             <div class="select">
               <select name="cross_progression">
+                <option disable selected>Has Cross-Progression?</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
-          <div class="control is-expanded">
-            <label class="label">Has StreamConnect</label>
+          <div class="control">
+            <div class="select">
+              <select name="multi_couch">
+                <option disabled selected>Has Coop-Couch?</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="control">
+            <div class="select">
+              <select name="multi_online">
+                <option disabled selected>Has Coop-Online?</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="control">
             <div class="select">
               <select name="stream_connect">
+                <option disabled selected>Has Stream Connect?</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
-          <div class="control is-expanded">
-            <label class="label">Has CrowdChoice</label>
+          <div class="control">
             <div class="select">
               <select name="crowd_choice">
+                <option disabled selected>Has Crowd Choice?</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
-          <div class="control is-expanded">
-            <label class="label">Has CrowdPlay</label>
+          <div class="control">
             <div class="select">
               <select name="crowd_play">
+                <option disabled selected>Has Crowd Play?</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
-          <div class="control is-expanded">
-            <label class="label">Has StateShare</label>
+          <div class="control">
             <div class="select">
               <select name="state_share">
+                <option disabled selected>Has State Share?</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
@@ -136,19 +156,18 @@
         </div>
         <div class="field is-grouped is-grouped-multiline">
           <div class="control">
-            <label class="label">Is Pixel Count?</label>
             <div class="select">
               <select name="is_pxc">
-                <option value="0" selected>No</option>
+                <option disabled selected>Is Pixel Count?</option>
+                <option value="0">No</option>
                 <option value="1">Yes</option>
               </select>
             </div>
           </div>
           <div class="control">
-            <label class="label">Max. Resolution</label>
             <div class="select">
               <select name="max_resolution">
-                <option disabled selected>Choose Resolution:</option>
+                <option disabled selected>Max. Resolution:</option>
                 <option value="3840x2160 (4K)">3840x2160 (4K)</option>
                 <option value="3200x1800 (3.5K)">3200x1800 (3.5K)</option>
                 <option value="2880x1620 (3K)">2880x1620 (3K)</option>
@@ -159,10 +178,9 @@
             </div>
           </div>
           <div class="control">
-            <label class="label">FPS</label>
             <div class="select">
               <select name="fps">
-                <option disabled selected>Choose FPS</option>
+                <option disabled selected>Max FPS</option>
                 <option value="120">120</option>
                 <option value="60">60</option>
                 <option value="30">30</option>
@@ -170,10 +188,9 @@
             </div>
           </div>
           <div class="control">
-            <label class="label">Is HDR or SDR?</label>
             <div class="select">
               <select name="hdr_sdr">
-                <option disabled selected>Choose:</option>
+                <option disabled selected>HDR/SDR</option>
                 <option value="sdr">SDR</option>
                 <option value="hdr">HDR</option>
               </select>

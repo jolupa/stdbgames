@@ -119,6 +119,8 @@
         $data['cross_play'] = $this->request->getVar('cross_play');
         $data['crowd_play'] = $this->request->getVar('crowd_choice');
         $data['cross_save'] = $this->request->getVar('cross_save');
+        $data['multi_couch'] = $this->request->getVar('multi_couch');
+        $data['multi_online'] = $this->request->getVar('multi_online');
         $data['stream_connect'] = $this->request->getVar('stream_connect');
         $data['crowd_play'] = $this->request->getVar('crowd_play');
         $data['cross_progression'] = $this->request->getVar('cross_progression');
@@ -205,6 +207,8 @@
       $data['cross_play'] = $this->request->getVar('cross_play');
       $data['crowd_choice'] = $this->request->getVar('crowd_choice');
       $data['cross_save'] = $this->request->getVar('cross_save');
+      $data['multi_couch'] = $this->request->getVar('multi_couch');
+      $data['multi_online'] = $this->request->getVar('multi_online');
       $data['stream_connect'] = $this->request->getVar('stream_connect');
       $data['crowd_play'] = $this->request->getVar('crowd_play');
       $data['cross_progression'] = $this->request->getVar('cross_progression');

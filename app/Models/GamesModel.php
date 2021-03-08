@@ -53,6 +53,8 @@
                               games.hdr_sdr,
                               games.max_resolution,
                               games.is_f2p,
+                              games.multi_couch,
+                              games.multi_online,
                               developers.name AS developer_name,
                               developers.slug AS developer_slug,
                               publishers.name AS publisher_name,
@@ -352,6 +354,32 @@
                       ->where('games.rumor', 0)
                       ->where('games.release', '2099-01-01')
                       ->orWhere('games.release', 'TBA')
+                      ->orderBy('games.name');
+      } elseif($type == 'couch'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.multi_couch', 1)
+                      ->orderBy('games.name');
+      } elseif($type == 'online'){
+        $builder = $db->table('games')
+                      ->select('games.name,
+                                games.slug,
+                                games.image,
+                                games.release,
+                                games.rumor,
+                                developers.name AS developer_name,
+                                publishers.name AS publisher_name')
+                      ->join('developers', 'developers.id = games.developer_id')
+                      ->join('publishers', 'publishers.id = games.publisher_id')
+                      ->where('games.multi_online', 1)
                       ->orderBy('games.name');
       } else {
         $builder = $db->table('games')

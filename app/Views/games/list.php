@@ -35,6 +35,10 @@
           Free 2 Play
         <?php elseif($type === 'tba'): ?>
           Without Date
+        <?php elseif($type === 'couch'): ?>
+          With Couch Multiplayer
+        <?php elseif($type === 'online'): ?>
+          With Online Multiplayer
         <?php else: ?>
           All Games:
         <?php endif; ?>
@@ -46,6 +50,7 @@
             <li <?php if($type === 'all'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/all">All</a></li>
             <li <?php if($type === 'crossplay'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossplay">Cross Play</a></li>
             <li <?php if($type === 'crossprogression'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crossprogression">Cross Progression</a></li>
+            <li <?php if($type === 'couch'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/couch">Couch Multiplayer</a></li>
             <li <?php if($type === 'crowdchoice'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crowdchoice">Crowd Choice</a></li>
             <li <?php if($type === 'crowdplay'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/crowdplay">Crowd Play</a></li>
             <li <?php if($type === 'deals'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/deals">Deals</a></li>
@@ -53,6 +58,7 @@
             <li <?php if($type === 'firstonstadia'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a></li>
             <li <?php if($type === 'f2p'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/f2p">Free to Play</a></li>
             <li <?php if($type === 'launched'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/launched">Launched</a></li>
+            <li <?php if($type === 'online'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/online">Online Multiplayer</a></li>
             <li <?php if($type === 'pro'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/pro">Pro Games</a></li>
             <li <?php if($type === 'rumors'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/rumors">Rumoured Games</a></li>
             <li <?php if($type === 'soon'): ?>class="is-active"<?php endif; ?>><a href="<?= base_url() ?>/list/soon">Soon</a></li>

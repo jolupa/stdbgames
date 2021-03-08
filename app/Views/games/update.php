@@ -23,6 +23,8 @@
           <input type="hidden" name="oldpro_from" value="<?= $game['pro_from'] ?>">
           <input type="hidden" name="oldpro_till" value="<?= $game['pro_till'] ?>">
           <input type="hidden" name="oldcross_play" value="<?= $game['cross_play'] ?>">
+          <input type="hidden" name="oldmulti_couch" value"<?= $game['multi_couch'] ?>">
+          <input type="hidden" name="oldmulti_online" value="<?= $game['multi_online'] ?>">
           <input type="hidden" name="oldstream_connect" value="<?= $game['stream_connect'] ?>">
           <input type="hidden" name="oldcrowd_choice" value="<?= $game['crowd_choice'] ?>">
           <input type="hidden" name="oldcrowd_play" value="<?= $game['crowd_play'] ?>">
@@ -55,7 +57,7 @@
             <div class="control">
               <div class="select">
                 <select name="is_f2p">
-                  <option <?php if($game['is_f2p'] != 0 || $game['is_f2p'] != 1): ?>selected<?php endif; ?> disable>Is F2P?</option>
+                  <option disable>Is F2P?</option>
                   <option <?php if($game['is_f2p'] == 0): ?>selected<?php endif; ?> value="0">No</option>
                   <option <?php if($game['is_f2p'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
                 </select>
@@ -64,41 +66,43 @@
           </div>
           <div class="field is-grouped is-grouped-multiline">
             <div class="control">
-              <label class="label">Is First on Stadia?</label>
               <div class="select">
                 <select name="first_on_stadia">
+                  <option disabled>First on Stadia</option>
                   <option value="0" <?php if($game['first_on_stadia'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['first_on_stadia'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
               </div>
             </div>
             <div class="control">
-              <label class="label">Is Stadia Exclusive?</label>
               <div class="select">
                 <select name="stadia_exclusive">
+                  <option disabled>Stadia Exclusive?</option>
                   <option value="0" <?php if($game['stadia_exclusive'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['stadia_exclusive'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
               </div>
             </div>
             <div class="control">
-              <label class="label">Is Early Access?</label>
               <div class="select">
                 <select name="early_access">
+                  <option disabled>Early Access?</option>
                   <option value="0" <?php if($game['early_access'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['early_access'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
               </div>
             </div>
             <div class="control">
-              <label class="label">Is Pro?</label>
               <div class="select">
                 <select name="pro">
+                  <option disabled>Is Pro?</option>
                   <option value="0" <?php if($game['pro'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['pro'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
               </div>
             </div>
+          </div>
+          <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
               <label class="label">Is Pro From date</label>
               <input type="date" name="pro_from" class="input" <?php if(isset($game['pro_from'])): ?>value="<?=$game['pro_from'] ?>" <?php else: ?>placeholder="Is Free From: YYYY-MM-DD"<?php endif; ?>>
@@ -109,55 +113,73 @@
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
-            <div class="control is-expanded">
-              <label class="label">Has CrossPlay</label>
+            <div class="control">
               <div class="select">
                 <select name="cross_play">
+                  <option disabled>Has CrossPlay</option>
                   <option <?php if($game['cross_play'] == 0): ?>selected<?php endif; ?> value="0">No</option>
                   <option <?php if($game['cross_play'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
                 </select>
               </div>
             </div>
-            <div class="control is-expanded">
-              <label class="label">Has CrossProgression</label>
+            <div class="control">
               <div class="select">
                 <select name="cross_progression">
+                  <option disabled>Has Crosss Progression</option>
                   <option value="0" <?php if($game['cross_progression'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['cross_progression'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
               </div>
             </div>
-            <div class="control is-expanded">
-              <label class="label">Has StreamConnect</label>
+            <div class="control">
               <div class="select">
                 <select name="stream_connect">
+                  <option disabled>Has Stream Connect?</option>
                   <option <?php if($game['stream_connect'] == 0): ?>selected<?php endif; ?> value="0">No</option>
                   <option <?php if($game['stream_connect'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
                 </select>
               </div>
             </div>
-            <div class="control is-expanded">
-              <label class="label">Has CrowdChoice</label>
+            <div class="control">
               <div class="select">
                 <select name="crowd_choice">
+                  <option disabled>Has Crowd Choice?</option>
                   <option <?php if($game['crowd_choice'] == 0): ?>selected<?php endif; ?> value="0">No</option>
                   <option <?php if($game['crowd_choice'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
                 </select>
               </div>
             </div>
-            <div class="control is-expanded">
-              <label class="label">Has CrowdPlay</label>
+            <div class="control">
               <div class="select">
                 <select name="crowd_play">
+                  <option disabled>Has Crowd Play?</option>
                   <option <?php if($game['crowd_play'] == 0): ?>selected<?php endif; ?> value="0">No</option>
                   <option <?php if($game['crowd_play'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
                 </select>
               </div>
             </div>
-            <div class="control is-expanded">
-              <label class="label">Has StateShare</label>
+            <div class="control">
+              <div class="select">
+                <select name="multi_couch">
+                  <option disabled>Has Coop-Couch?</option>
+                  <option <?php if($game['multi_couch'] == 0): ?>selected<?php endif; ?> value="0">No</option>
+                  <option <?php if($game['multi_couch'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="control">
+              <div class="select">
+                <select name="multi_online">
+                  <option disabled>Has Coop-Online?</option>
+                  <option <?php if($game['multi_online'] == 0): ?>selected<?php endif; ?> value="0">No</option>
+                  <option <?php if($game['multi_online'] == 1): ?>selected<?php endif; ?> value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="control">
               <div class="select">
                 <select name="state_share">
+                  <option disabled>Has State Share</option>
                   <option value="0" <?php if($game['state_share'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['state_share'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
@@ -166,18 +188,18 @@
           </div>
           <div class="field is-grouped is-grouped-multiline">
             <div class="control">
-              <label class="label">Is Pixel Count?</label>
               <div class="select">
                 <select name="is_pxc">
+                  <option disabled>Is Pixel Count?</option>
                   <option value="0" <?php if($game['is_pxc'] == '' || $game['is_pxc'] == 0): ?>selected<?php endif; ?>>No</option>
                   <option value="1" <?php if($game['is_pxc'] == 1): ?>selected<?php endif; ?>>Yes</option>
                 </select>
               </div>
             </div>
             <div class="control">
-              <label class="label">Max. Resolution</label>
               <div class="select">
                 <select name="max_resolution">
+                  <option disabled>Choose Max. Resolution</option>
                   <option disabled <?php if($game['max_resolution'] == ''): ?>selected<?php endif; ?>>Choose Resolution:</option>
                   <option value="3840x2160 (4K)" <?php if($game['max_resolution'] == '3840x2160 (4K)'): ?>selected<?php endif; ?>>3840x2160 (4K)</option>
                   <option value="3200x1800 (3.5K)" <?php if($game['max_resolution'] == '3200x1800 (3.5K)'): ?>selected<?php endif; ?>>3200x1800 (3.5K)</option>
@@ -189,9 +211,9 @@
               </div>
             </div>
             <div class="control">
-              <label class="label">FPS</label>
               <div class="select">
                 <select name="fps">
+                  <optiion disabled>Max. FPS</option>
                   <option disabled <?php if($game['fps'] == ''): ?>selected<?php endif; ?>>Choose FPS</option>
                   <option value="120" <?php if($game['fps'] == 120): ?>selected<?php endif; ?>>120</option>
                   <option value="60" <?php if($game['fps'] == 60): ?>selected<?php endif; ?>>60</option>
@@ -200,9 +222,9 @@
               </div>
             </div>
             <div class="control">
-              <label class="label">Is HDR or SDR?</label>
               <div class="select">
                 <select name="hdr_sdr">
+                  <option disabled>HDR/SDR</option>
                   <option disabled <?php if($game['hdr_sdr'] == ''): ?>selected<?php endif; ?>>Choose:</option>
                   <option value="sdr" <?php if($game['hdr_sdr'] == 'sdr'): ?>selected<?php endif; ?>>SDR</option>
                   <option value="hdr" <?php if($game['hdr_sdr'] == 'hdr'): ?>selected<?php endif; ?>>HDR</option>
