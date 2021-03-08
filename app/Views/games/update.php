@@ -42,6 +42,7 @@
           <div class="field">
             <div class="control">
               <label class="checkbox"><input type="checkbox" <?php if($game['rumor'] == 1): ?>checked<?php endif; ?> name="rumor">&nbsp;It's a Rumor?</label>
+              &nbsp;<label class="checkbox"><input type="checkbox" name="send_tweet">&nbsp;Send Tweet?</label>
             </div>
           </div>
           <div class="field is-grouped is-grouped-multiline">
