@@ -309,6 +309,9 @@
         if ($data['is_f2p'] !== $this->request->getVar('oldis_f2p') && $data['is_f2p'] == 1){
           $statusmessage .= ' / Now is Free To Play for Everyone!';
         }
+        if ($data['multi_couch'] !== $this->request->getVar('oldmulti_couch') || $data['multi_online'] !== $this->request->getVar('oldmulti_online')){
+          $statusmessage .= ' / Updated Multiplayer information';
+        }
         $statusmessage .= " https://stdb.games/game/".$data['slug'];
         $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
         $connection->post("statuses/update", ["status" => $statusmessage]);
