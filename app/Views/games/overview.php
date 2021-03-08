@@ -85,7 +85,7 @@
                 <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/couch"><span class="icon"><i class="fas fa-couch"></i></span><span>Couch Multiplayer</span></a>
               <?php endif; ?>
               <?php if($game['multi_online'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<? base_url() ?>/list/online"><span class="icon"><i class="fas fa-globe"></i></span><span>Online Multiplayer</span></a>
+                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/online"><span class="icon"><i class="fas fa-globe"></i></span><span>Online Multiplayer</span></a>
               <?php endif; ?>
               <?php if($game['stream_connect'] == 1): ?>
                 <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/streamconnect"><span class="icon"><i class="fas fa-desktop"></i></span><span>Stream Connect</span></a>
