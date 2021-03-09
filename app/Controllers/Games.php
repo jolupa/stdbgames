@@ -34,6 +34,7 @@
     //overview is the main game view page all the game information
     public function overview($slug){
       $gamemodel = new GamesModel();
+      $gamemodel->addVisit($slug);
       $data['game'] = $gamemodel->gameOverview($slug);
       $data['editor'] = true;
       echo view('templates/header', $data);

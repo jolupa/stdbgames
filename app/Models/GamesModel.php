@@ -431,5 +431,12 @@
                     ->where('id', $id);
       return $builder->delete();
     }
+    public function addVisit($slug){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->set('visits', 'visits+1', false)
+                    ->where('slug', $slug);
+      return $builder->update();
+    }
   }
 ?>
