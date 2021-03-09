@@ -438,5 +438,13 @@
                     ->where('slug', $slug);
       return $builder->update();
     }
+    public function getMostVisitedGames(){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->select('games.name AS name,
+                              games.visits AS views')
+                    ->orderBy('games.visits', 'DESC');
+      return $builder->get(10)->getResultArray();
+    }
   }
 ?>

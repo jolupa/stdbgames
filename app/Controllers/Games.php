@@ -344,6 +344,15 @@
       $gamemodel->deleteGame($id);
       return redirect()->to('/games');
     }
+    public function mostvisitedgames(){
+      if(session('logged') == true && session('role') == 1){
+        $gamemodel = new GamesModel();
+        $data['mostvisited'] = $gamemodel->getMostVisitedGames();
+        return view('games/mostvisited', $data);
+      } else {
+        return '';
+      }
+    }
   }
 
 ?>

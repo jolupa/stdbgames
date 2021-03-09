@@ -38,5 +38,6 @@
         <?= view_cell('App\Controllers\Users::listusers') ?>
       <?php endif; ?>
     <?php endif; ?>
+    <?= view_cell('App\Controllers\Games::mostvisitedgames') ?>
   </section>
 </div>
