@@ -230,5 +230,19 @@ class Users extends Controller{
       return redirect()->back();
     }
   }
+  public function changeroleform(){
+    if(session('logged') == true && session('role') == 1){
+      return view('users/changerole');
+    } else {
+      return '';
+    }
+  }
+  public function changerole(){
+    $usermodel = new UsersModel();
+    $id = $this->request->getVar('user_id');
+    $role = $this->request->getVar('role');
+    $usermodel->chageUserRole($id, $role);
+    return redirect()->back(2);
+  }
 }
 ?>

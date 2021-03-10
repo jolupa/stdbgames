@@ -63,6 +63,13 @@ class UsersModel extends Model{
                   ->where('id', $id);
     return $builder->update(['password'=>password_hash($newpassword, PASSWORD_DEFAULT)]);
   }
+  public function chageUserRole($id, $role){
+    $db = \Config\Database::connect();
+    $builder = $db->table('users')
+                  ->set('role', $role)
+                  ->where('id', $id);
+    return $builder->update();
+  }
 }
 
 ?>

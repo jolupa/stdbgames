@@ -37,7 +37,7 @@
       <?php if(session('role') == 1): ?>
         <?= view_cell('App\Controllers\Users::listusers') ?>
       <?php endif; ?>
+      <?= view_cell('App\Controllers\Games::mostvisitedgames') ?>
     <?php endif; ?>
-    <?= view_cell('App\Controllers\Games::mostvisitedgames') ?>
   </section>
 </div>

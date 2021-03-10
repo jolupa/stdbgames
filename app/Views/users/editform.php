@@ -36,6 +36,7 @@
         </div>
       </form>
     </div>
+    <?= view_cell('App\Controllers\Users::changeroleform') ?>
     <div class="content mt-2">
       <p class="subtitle is-5">Change</p>
       <p class="title is-3">Password:</p>
