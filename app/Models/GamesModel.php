@@ -453,7 +453,7 @@
                               games.slug AS slug,
                               games.image AS image')
                     ->orderBy('games.visits', 'DESC');
-      return $builder->get()->getRowArray();
+      return $builder->get(3)->getResultArray();
     }
   }
 ?>
