@@ -1,7 +1,7 @@
-    <?= view_cell('App\Controllers\Games::trending') ?>
     <div class="container">
       <section class="section">
-        <div class="content">
+        <?= view_cell('App\Controllers\Games::trending') ?>
+        <div class="content mt-3">
           <div class="columns">
             <div class="column">
               <p class="title is-5"><?php $total = count($pro); ?><strong><?= $total ?></strong> Pro</p>
