@@ -1,3 +1,4 @@
+    <?= view_cell('App\Controllers\Games::trending') ?>
     <div class="container">
       <section class="section">
         <div class="content">

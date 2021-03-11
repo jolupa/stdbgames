@@ -353,6 +353,11 @@
         return '';
       }
     }
+    public function trending(){
+      $gamesmodel = new GamesModel();
+      $data['trending'] = $gamesmodel->gamesTrending();
+      return view('games/parts/trending', $data);
+    }
   }
 
 ?>

@@ -446,5 +446,14 @@
                     ->orderBy('games.visits', 'DESC');
       return $builder->get(10)->getResultArray();
     }
+    public function gamesTrending(){
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->select('games.name AS name,
+                              games.slug AS slug,
+                              games.image AS image')
+                    ->orderBy('games.visits', 'DESC');
+      return $builder->get()->getRowArray();
+    }
   }
 ?>
