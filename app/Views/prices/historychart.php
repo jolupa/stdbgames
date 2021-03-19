@@ -1,8 +1,7 @@
+<hr \>
 <p class="title is-5">Deals</p>
 <p class="subtitle is-3"><a id="Deals_Chart">#</a>Chart</p>
-<?php if($prochart == false): ?>
-  <p class="has-text-centered">No Deals for <strong><?= $game['name'] ?></strong> Valid for Pro Members</p>
-<?php else: ?>
+<?php if(isset($prochart)): ?>
   <div class="content" style="overflow-x: auto; overflow-y: hidden;">
     <div id="pro" style="width: 100%; height:500px"></div>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -39,9 +38,7 @@
     </script>
   </div>
 <?php endif; ?>
-<?php if($everyonechart == false): ?>
-  <p class="has-text-centered">No Deals for <strong><?= $game['name'] ?></strong> Valid for everyone</p>
-<?php else: ?>
+<?php if(isset($everyonechart)): ?>
   <div class="content" style="overflow-x: auto; overflow-y: hidden;">
     <div id="non_pro" style="width:100%; height:500px;"></div>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>

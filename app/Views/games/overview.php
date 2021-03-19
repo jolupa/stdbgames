@@ -119,15 +119,12 @@
           <?= $game['about'] ?>
           <?= view_cell('App\Controllers\Interviews::interviews', 'game_id='.$game['id']) ?>
         </div>
-        <hr \>
         <?php if(date('Y-m-d') >= $game['release']): ?>
           <div class="content mt-5">
             <?= view_cell('App\Controllers\Reviews::gamereviews', 'id='.$game['id']) ?>
           </div>
-          <hr \>
         <?php endif; ?>
         <?= view_cell('App\Controllers\Prices::pricechart', 'id='.$game['id']) ?>
-        <hr \>
         <?= view_cell('App\Controllers\Games::releasebydate', 'id='.$game['id'].', date='.$game['release']) ?>
         <?php if(isset($game['updated_at'])): ?>
           <div class="content mt-5">

@@ -1,4 +1,5 @@
 <?php if(!$released_day): ?>
+  <hr \>
   <div class="content mt-5">
     <p class="title is-5">Also released</p>
     <p class="subtitle is-3">#this day:</p>
@@ -11,6 +12,7 @@
     <?php endif; ?>
   </div>
 <?php else: ?>
+  <hr \>
   <div class="content mt-5">
     <p class="title is-5">Also released</p>
     <p class="subtitle is-3">#this day:</p>

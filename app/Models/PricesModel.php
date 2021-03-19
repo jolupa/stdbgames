@@ -93,5 +93,19 @@ class PricesModel extends Model{
                   ->orderBy('prices.date', 'ASC');
     return $builder->get()->getResultArray();
   }
+  public function checkPricesPro($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('prices')
+                  ->select('prices.game_id')
+                  ->where('prices.game_id', $id);
+    return $builder->countAllResults(false);
+  }
+  public function checkPricesEveryone($id){
+    $db = \Config\Database::connect();
+    $builder = $db->table('prices')
+                  ->select('prices.game_id')
+                  ->where('prices.game_id', $id);
+    return $builder->countAllResults(false);
+  }
 }
 ?>

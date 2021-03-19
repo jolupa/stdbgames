@@ -91,9 +91,19 @@ class Prices extends Controller{
   }
   public function pricechart($id){
     $pricemodel = new PricesModel();
-    $data['prochart'] = $pricemodel->getPricesPro($id);
-    $data['everyonechart'] = $pricemodel->getPricesEveryone($id);
-    return view('prices/historychart', $data);
+    if($pricemodel->checkPricesPro($id) > 0 && $pricemodel->checkPricesEveryone($id) > 0){
+      $data['prochart'] = $pricemodel->getPricesPro($id);
+      $data['everyonechart'] = $pricemodel->getPricesEveryone($id);
+      return view('prices/historychart', $data);
+    } elseif ($pricemodel->checkPricesPro($id) > 0){
+      $data['prochart'] = $pricemodel->getPricesPro($id);
+      return view('prices/historychart', $data);
+    } elseif ($pricemodel->checkPricesEveryone($id) > 0){
+      $data['everyonechart'] = $pricemodel->getPricesEveryone($id);
+      return view('prices/historychart', $data);
+    } else {
+      return '';
+    }
   }
 }
 ?>

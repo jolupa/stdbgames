@@ -1,3 +1,4 @@
+<hr \>
 <?php if(session('logged') == TRUE): ?>
   <?php if($review_user == FALSE): ?>
     <p class="subtitle is-5">Add your</p>
