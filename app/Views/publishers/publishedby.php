@@ -11,7 +11,7 @@
         </figure>
         <div class="media-content">
           <p class="title is-5"><?php if($game['rumor'] == 1): ?><span class="icon has-text-danger is-small" title="RUMOR!"><i class="fas fa-exclamation"></i></span>&nbsp;<?php endif; ?><a href="<?= base_url() ?>/game/<?= $game['slug'] ?>"><?= character_limiter($game['name'], 15, '...') ?></a></p>
-          <p class="subtitle is-7">Release <?php if($game['release'] == '2099-01-01' || $game['release'] == 'TBA'): ?>Release: TBA<?php else: ?><?= date('d-m-Y', strtotime($game['release'])) ?><?php endif; ?></p>
+          <p class="subtitle is-7">Release <?php if($game['release'] == '2099-01-01' || $game['release'] == 'TBA'): ?>TBA<?php else: ?><?= date('d-m-Y', strtotime($game['release'])) ?><?php endif; ?></p>
         </div>
       </div>
     </div>
