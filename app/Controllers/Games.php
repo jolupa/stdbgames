@@ -61,8 +61,12 @@
     //Games launched the same day that the game we are watching
     public function releasebydate($id, $date){
       $gamemodel = new GamesModel();
-      $data['released_day'] = $gamemodel->releaseByDate($id, $date);
-      return view('games/releasebydate', $data);
+      if(!empty($gamemodel->releaseByDate($id, $date))){
+        $data['release_day'] = $gamemodel->releaseByDate($id, $date);
+        return view('games/releasebydate', $data);
+      } else {
+        return '';
+      }
     }
     //Form for adding new games
     public function insertform(){

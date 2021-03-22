@@ -1,25 +1,10 @@
-<?php if(!$released_day): ?>
-  <hr \>
-  <div class="content mt-5">
-    <p class="title is-5">Also released</p>
-    <p class="subtitle is-3">#this day:</p>
-    <?php if($game['release'] === '2099-01-01'): ?>
-      <p><strong><?= $game['name'] ?></strong> Has no Release date yet!</p>
-    <?php elseif(date('Y-m-d') <= $game['release'] && $game['release'] !== '2099-01-01'): ?>
-      <p><strong><?= $game['name'] ?></strong> is the only game, at this moment, with this release date</p>
-    <?php else: ?>
-      <p><strong><?= $game['name'] ?></strong> is the only game released this day.</p>
-    <?php endif; ?>
-  </div>
-<?php else: ?>
-  <hr \>
-  <div class="content mt-5">
-    <p class="title is-5">Also released</p>
-    <p class="subtitle is-3">#this day:</p>
-    <?php foreach($released_day as $released_day): ?>
-      <figure class="image is-96x96 is-fullwidth is-inline-block mr-1 mt-1">
-        <a href="<?= base_url() ?>/game/<?= $released_day['slug'] ?>" title="<?= $released_day['name'] ?>"><img src="<?= base_url() ?>/images/<?= $released_day['image'] ?>-thumb.jpeg" alt="<?= $released_day['name'] ?>" title="<?= $released_day['name'] ?>"></a>
-      </figure>
-    <?php endforeach; ?>
-  </div>
-<?php endif; ?>
+<hr \>
+<div class="content mt-5">
+  <p class="title is-5">Also released</p>
+  <p class="subtitle is-3">#this day:</p>
+  <?php foreach($release_day as $release_day): ?>
+    <figure class="image is-96x96 is-fullwidth is-inline-block mr-1 mt-1">
+      <a href="<?= base_url() ?>/game/<?= $release_day['slug'] ?>" title="<?= $release_day['name'] ?>"><img src="<?= base_url() ?>/images/<?= $release_day['image'] ?>-thumb.jpeg" alt="<?= $release_day['name'] ?>" title="<?= $release_day['name'] ?>"></a>
+    </figure>
+  <?php endforeach; ?>
+</div>
