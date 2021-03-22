@@ -1,7 +1,7 @@
     <div class="footer mt-3">
       <section class="section">
         <div class="columns is-centered">
-          <div class="column is-8 is-multiline">
+          <div class="column is-12 is-multiline">
             <div class="content has-text-centered">
               <p><strong>Stadia GamesDB!</strong> is made with <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> In Barcelona <span class="icon"><i class="fas fa-copyright"></i></span>&nbsp;2020&nbsp;/&nbsp;<?= date('Y') ?><strong>&nbsp;jolupa</strong><br>
               Stadia and the Stadia Logo are <span class="icon"><i class="fas fa-copyright"></i></span> & <span class="icon"><i class="fas fa-trademark"></i></span> of Google Inc.<br>

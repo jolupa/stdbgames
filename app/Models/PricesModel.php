@@ -97,6 +97,7 @@ class PricesModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('prices')
                   ->select('prices.game_id')
+                  ->where('prices.price_pro !=', '')
                   ->where('prices.game_id', $id);
     return $builder->countAllResults(false);
   }
@@ -104,6 +105,7 @@ class PricesModel extends Model{
     $db = \Config\Database::connect();
     $builder = $db->table('prices')
                   ->select('prices.game_id')
+                  ->where('prices.price_nonpro !=', '')
                   ->where('prices.game_id', $id);
     return $builder->countAllResults(false);
   }
