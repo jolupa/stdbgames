@@ -6,21 +6,35 @@
   helper(['text']);
 
   class Games extends Controller{
-    //Index function
-    //getProGames List all Pro Games
-    //getSoonGames all the games coming
-    //getLastsGames the last games added to DB
-    //getLastsUpdatedGames the last games updated on DB
-    //getMonthRelease the games releasing the actual month
-    public function index(){
+
+    public function progames()
+    {
       $gamemodel = new GamesModel();
       $data['pro'] = $gamemodel->getProGames();
+      return view('games/parts/pro', $data);
+    }
+    public function thismonth()
+    {
+      $gamemodel = new GamesModel();
+      $data['month'] = $gamemodel->getMonthRelease();
+      return view('games/parts/thismonth', $data);
+    }
+    public function comingsoon()
+    {
+      $gamemodel = new GamesModel();
       $data['soon'] = $gamemodel->getSoonGames();
+      return view('games/parts/soongames', $data);
+    }
+    public function addedupdated()
+    {
+      $gamemodel = new GamesModel();
       $data['last'] = $gamemodel->getLastsGames();
       $data['lastupdated'] = $gamemodel->getLastsUpdatedGames();
-      $data['month'] = $gamemodel->getMonthRelease();
-      echo view('templates/header', $data);
-      echo view('games/index', $data);
+      return view('games/parts/addedupdated', $data);
+    }
+    public function index(){
+      echo view('templates/header');
+      echo view('games/index');
       echo view('templates/footer');
     }
     /*
