@@ -7,7 +7,7 @@
 <div class="columns is-multiline">
   <?php foreach($chart as $chart): ?>
     <div class="column is-12">
-      <div class="media">
+      <article class="media">
         <figure class="media-left image is-64x64 is-fullwidth">
             <img src="<?= base_url() ?>/images/<?= $chart['game_image'] ?>-thumb.jpeg" title="<?= $chart['game_name'] ?>" alt="<?= $chart['game_name'] ?>">
         </figure>
@@ -24,7 +24,7 @@
             <br><p class="title is-5"><strong><?= $chart['like'] ?></strong></p>
           </figure>
         </div>
-      </div>
+      </article>
     </div>
   <?php endforeach; ?>
 </div>

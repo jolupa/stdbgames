@@ -7,7 +7,7 @@
 <div class="columns is-multiline">
     <?php foreach($review as $review): ?>
       <div class="column is-12">
-        <div class="media">
+        <article class="media">
           <figure class="media-left image is-64x64 is-fullwidth">
             <img src="<?= base_url() ?>/images/<?= $review['game_image'] ?>-thumb.jpeg" alt="<?= $review['game_name'] ?>" title="<?= $review['game_name'] ?>">
           </figure>
@@ -19,7 +19,7 @@
               <?php endif; ?>
             </p>
           </div>
-        </div>
+        </article>
       </div>
     <?php endforeach; ?>
 </div>

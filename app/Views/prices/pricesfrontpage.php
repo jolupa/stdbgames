@@ -14,7 +14,7 @@
   <?php else: ?>
     <?php foreach($prices as $prices): ?>
       <div class="column is-12">
-        <div class="media">
+        <article class="media">
           <figure class="media-left image is-64x64 is-fullwidth">
             <img src="<?= base_url() ?>/images/<?= $prices['game_image'] ?>-thumb.jpeg" alt="<?= $prices['game_name'] ?>" title="<?= $prices['game_name'] ?>">
           </figure>
@@ -32,7 +32,7 @@
               <?php endif; ?>
             </p>
           </div>
-        </div>
+        </article>
       </div>
     <?php endforeach; ?>
     <div class="column is-12 has-text-centered">
