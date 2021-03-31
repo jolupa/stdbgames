@@ -75,7 +75,7 @@
         <?php if($type == 'deals'): ?>
           <?php foreach($list as $list): ?>
             <div class="column is-one-quarter">
-              <div class="media">
+              <article class="media">
                 <figure class="media-left">
                   <p class="image is-64x64">
                     <img title="<?= $list['name'] ?>" src="<?= base_url() ?>/images/<?= $list['image'] ?>-thumb.jpeg" alt="<?= $list['name'] ?>">
@@ -102,13 +102,13 @@
                       <?php endif; ?>
                     <?php endif; ?></p>
                 </div>
-              </div>
+              </article>
             </div>
           <?php endforeach; ?>
         <?php else: ?>
           <?php foreach($list as $list): ?>
             <div class="column is-one-quarter">
-              <div class="media">
+              <article class="media">
                 <figure class="media-left">
                   <p class="image is-64x64">
                     <img title="<?= $list['name'] ?>" src="<?= base_url() ?>/images/<?= $list['image'] ?>-thumb.jpeg" alt="<?= $list['name'] ?>">
@@ -125,7 +125,7 @@
                     <?php if($type === 'pro'): ?>Entered Pro:&nbsp;<?= date('d-m-Y', strtotime($list['pro_from'])) ?><?php endif; ?>
                   </p>
                 </div>
-              </div>
+              </article>
             </div>
           <?php endforeach; ?>
         <?php endif; ?>
