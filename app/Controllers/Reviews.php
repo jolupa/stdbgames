@@ -3,6 +3,7 @@
   namespace App\Controllers;
   use App\Models\ReviewsModel;
   use League\CommonMark\CommonMarkConverter;
+  use Abraham\TwitterOAuth\TwitterOAuth;
 
   class Reviews extends BaseController {
 
@@ -171,6 +172,11 @@
       }
 
       $model->save( $data );
+      require ( ROOTPATH.'twitter.php' );
+      $statusmessage = 'Our user '.session( 'username').' Write a review for '.$this->request->getVar('game_name').' You agree with him or want to tell us your view '.previous_url();
+      $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
+      $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
+
       return redirect()->to( previous_url() );
 
     }

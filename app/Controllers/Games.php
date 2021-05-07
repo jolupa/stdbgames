@@ -920,7 +920,7 @@
 
         }
 
-        return redirect()->to('/games/'.$data['slug']);
+        return redirect()->to('/game/'.$data['slug']);
 
       }
 
@@ -1231,7 +1231,7 @@
 
       }
 
-      return redirect()->to('/games/'.$this->request->getVar('slug'));
+      return redirect()->to('/game/'.$this->request->getVar('slug'));
 
     }
 

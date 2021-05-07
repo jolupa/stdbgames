@@ -4,6 +4,7 @@
     <div class="column">
       <form action="<?= base_url ( '/reviews/addreview' ) ?>" method="post" enctype="multipart/form-data">
         <input type="hidden" name="game_id" value="<?= $game['id'] ?>">
+        <input type="hidden" name="game_name" value="<?= $game['name'] ?>">
         <div class="field">
           <div class="control">
             <textarea class="textarea" name="about"></textarea>
