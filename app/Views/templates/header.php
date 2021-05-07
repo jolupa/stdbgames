@@ -1,0 +1,111 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title><?= $page_title ?></title>
+  <meta name="description" content="<?= $page_description ?>">
+  <meta name="keywords" content="<?= $page_keywords ?>">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="<?= $page_title ?>">
+  <meta property="og:type" content="<?= $page_description ?>">
+  <meta property="og:url" content="<?= $page_url ?>">
+  <meta property="og:image" content="<?= $page_image ?>">
+
+  <link rel="manifest" href="<?= base_url('/site.webmanifest') ?>">
+  <link rel="apple-touch-icon" href="<?= base_url('/icon.png') ?>">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="icon" href="<?= base_url('/favicon.ico') ?>">
+
+  <link rel="stylesheet" href="<?= base_url('/css/normalize.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('/css/bulma.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('/css/embla.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?= base_url ( '/css/slick.css' ) ?>"/>
+  <link rel="stylesheet" type="text/css" href="<?= base_url ( '/slick-theme.css' ) ?>">
+
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" integrity="sha384-3Nqiqht3ZZEO8FKj7GR1upiI385J92VwWNLj+FqHxtLYxd9l+WYpeqSOrLh0T12c" crossorigin="anonymous"></script>
+
+  <meta name="theme-color" content="#002029">
+</head>
+<body>
+  <nav id="main_navbar" class="container navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="<?= base_url() ?>">
+        <img src="<?= base_url('/img/stdb_logo_header.png') ?>">
+      </a>
+      <a class="navbar-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+    <a class="navbar-item is-inline-flex-mobile" href="https://twitter.com/DbStadia" target="_blank">
+      <span class="icon-text">
+        <span class="icon"><i class="fab fa-twitter"></i></span><span class="is-hidden-touch">Twitter</span>
+      </span>
+    </a>
+    <a class="navbar-item is-inline-flex-mobile" href="https://patreon.com/stdbgames" target="_blank">
+      <span class="icon-text">
+        <span class="icon"><i class="fab fa-patreon"></i></span><span class="is-hidden-touch">Patreon</span>
+      </span>
+    </a>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="<?= base_url ( '/db/list' ) ?>">Game List</a>
+        <?= view_cell ( 'App\Controllers\Games::stats' ) ?>
+        <a class="navbar-item">About</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <form action="<?= base_url('/search/search') ?>" method="get" enctype="text/plain">
+            <div class="field">
+              <div class="control has-icons-left">
+                <input type="text" class="input is-small is-gunmetal" placeholder="Search..." name="keyword">
+                <span class="icon is-small has-text-dark-jungle is-left">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="navbar-item buttons">
+          <?php if ( session ( 'logged' ) == true ): ?>
+            <a href="<?= base_url ( '/users/profile' ) ?>"  class="button is-primary is-small">Profile</a>
+            <a href="<?= base_url ( '/users/userslogout' ) ?>" class="button is-coral is-small"> Log Out</a>
+          <?php else: ?>
+            <a href="<?= base_url('/users/login') ?>" class="button is-info is-small">Log In OR Sign Up</a>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <script src="<?= base_url('/js/vendor/jquery-3.6.0.min.js') ?>"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+
+        // Add a click event on each of them
+        $navbarBurgers.forEach( el => {
+          el.addEventListener('click', () => {
+
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+
+          });
+        });
+      }
+
+    });
+  </script>

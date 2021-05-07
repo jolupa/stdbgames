@@ -1,0 +1,19 @@
+<div id="games_wishlisted" class="container mt-5">
+  <div class="mx-3">
+    <p class="title is-4">Games on your Library</p>
+    <div class="columns is-multiline is-mobile">
+      <?php foreach ( $libraries as $libraries ): ?>
+        <div class="column is-2-desktop is-4-mobile">
+          <div class="card is-shadowless">
+            <div class="card-image">
+              <figure class="image is-16by9">
+                <a href="<?= base_url ( '/games/'.$libraries['slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$libraries['image'].'.jpeg' ) ?>"></a>
+              </figure>
+            </div>
+          </div>
+        </div>
+      <?php endforeach; ?>
+    </div>
+    <?= $pager->links('library') ?>
+  </div>
+</div>

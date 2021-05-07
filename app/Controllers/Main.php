@@ -1,0 +1,24 @@
+<?php
+  namespace App\Controllers;
+
+  class Main extends BaseController {
+
+    protected $helpers = ['text'];
+
+    public function index( $nextmonth = false ) {
+
+      $data['page_title'] = 'Stadia GamesDB!';
+      $data['page_description'] = 'All the information you need about games coming and launched on Stadia. Build your libraries, wishlist and more';
+      $data['page_keywords'] = 'stadia, google, stream, games, cloud, online, streaming, fun, party';
+      $data['page_image'] = base_url('/assets/images/stdb_logo_big.png');
+      $data['page_url'] = base_url();
+      $data['page_twitterimagealt'] = 'Stadia GamesDB!';
+
+      echo view('templates/header', $data);
+      echo view('main/index');
+      echo view('templates/footer');
+
+    }
+
+  }
+ ?>
