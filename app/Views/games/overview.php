@@ -118,6 +118,7 @@
           <?= $game['about'] ?>
         </div>
         <?= view_cell ( 'App\Controllers\Interviews::gameinterview', 'id='.$game['id'] ) ?>
+        <?= view_cell ( 'App\Controllers\Gallery::galleryitems', 'query='.mb_url_title( $game['dev_name'].' '.$game['name'].' trailer google stadia', '+', true ) ) ?>
         <?= view_cell ( 'App\Controllers\Reviews::gamereviews', 'id='.$game['id'] ) ?>
         <?= view_cell ( 'App\Controllers\Prices::historyprices', 'id='.$game['id'] ) ?>
         <?= view_cell ( 'App\Controllers\Games::samedayreleases', 'id='.$game['id'].' release='.$game['release'] ) ?>
