@@ -1,0 +1,16 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    jolupa -- programming -- @DbStadia
+
+# THANKS
+
+    jdeslipe
+    stocked4good
+
+# TECHNOLOGY COLOPHON
+
+    CodeIgniter, BulmaCSS, Leaghe Markdown, Abraham TwitterOAuth, CSS3, HTML5
+    Apache Server Configs, jQuery, Modernizr, Normalize.css, Bulma.css,

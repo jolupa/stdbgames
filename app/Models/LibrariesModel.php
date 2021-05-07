@@ -1,47 +1,45 @@
 <?php
-namespace App\Models;
-use CodeIgniter\Model;
 
-class LibrariesModel extends Model{
-  public function getUserLibrary($user_id){
-    $db = \Config\Database::connect();
-    $builder = $db->table('libraries')
-                  ->select('games.name AS game_name,
-                            games.slug AS game_slug,
-                            games.image AS game_image,
-                            games.appid AS game_appid')
-                  ->join('games', 'games.id = libraries.game_id')
-                  ->where('user_id', $user_id)
-                  ->orderBy('games.name', 'ASC');
-    if($builder->countAllResults(false) > 0){
-      return $builder->get()->getResultArray();
-    } else {
-      return false;
-    }
-  }
-  public function checkGameLibrary($id, $user_id){
-    $db = \Config\Database::connect();
-    $builder = $db->table('libraries')
-                  ->where('game_id', $id)
-                  ->where('user_id', $user_id);
-    if($builder->countAllResults() > 0){
-      return true;
-    } else {
-      return false;
-    }
-  }
-  public function addToUserLibrary($id, $user_id){
-    $db = \Config\Database::connect();
-    $builder = $db->table('libraries');
-    return $builder->insert(['game_id'=>$id, 'user_id'=>$user_id]);
-  }
-  public function deleteFromLibrary($id){
-    $db = \Config\Database::connect();
-    $builder = $db->table('libraries')
-                  ->where('game_id', $id)
-                  ->where('user_id', session('user_id'));
-    return $builder->delete();
-  }
-}
+  namespace App\Models;
+  use CodeIgniter\Model;
 
-?>
+  class LibrariesModel extends Model {
+
+    protected $DBGroup = 'default';
+    protected $table = 'libraries';
+    //protected $primaryKey = 'id';
+    //protected $useAutoIncrement = true;
+    protected $returnType = 'array';
+    protected $useSoftDeletes = false;
+    protected $allowedFields = ['user_id', 'game_id'];
+    protected $useTimestamps = false;
+    //protected $createdField = 'created_at';
+    //protected $updatedField = 'updated_at';
+    //protected $deletedField = 'deleted_at';
+    //protected $dateFormat = 'datetime';
+    //protected $skipvalidation = true;
+    //protected $beforeInsert = [ 'isLike', 'isDislike' ];
+
+    public function updatewishlist ( int $game_id, int $user_id ) {
+
+      // check if the game is wishlisted by user
+      $db = \Config\Database::connect();
+      $builder = $db->table('wishlists')
+                      ->where('game_id', $game_id)
+                      ->where('user_id', $user_id);
+
+      if ( ! empty ( $builder->get()->getRowArray ) ) {
+
+        $builder->delete();
+        return true;
+
+      } else {
+
+        return false;
+
+      }
+    }
+
+  }
+
+ ?>

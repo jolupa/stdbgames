@@ -1,17 +1,19 @@
-<div class="container">
-  <section class="section">
-    <p class="tile is-5">Publisher</p>
-    <p class="subtitle is-3">
-      <?= $publisher['name'] ?>
+<article id="publisher-info" class="container mt-5">
+  <div class="mx-3">
+    <p class="title is-4"><?= $publisher['name'] ?></p>
+    <p class="subtitle is-6">
+      <?php if ( ! empty ($publisher['url']) ): ?>
+        <a href="<?= $publisher['url'] ?>" target="_blank">Website</a>
+      <?php endif; ?>
+      <?php if ( ! empty ($publisher['twitter_account']) ): ?>
+        &nbsp;|&nbsp;<a href="<?= $publisher['twitter_account'] ?>" target="_blank">Twitter</a></p>
+      <?php endif; ?>
     </p>
     <div class="content">
-      <?php if($publisher['url'] !== ''): ?>
-        <p><span class="icon"><i class="fas fa-chevron-right"></i></span>&nbsp;<a href="<?= $publisher['url'] ?>" target="_blank">Visit Website</a></p>
-      <?php endif; ?>
-      <?php if(isset($publisher['about']) && $publisher['about'] !== ''): ?>
+      <?php if ( ! empty ( $publisher['about'] ) ): ?>
         <?= $publisher['about'] ?>
       <?php endif; ?>
     </div>
-    <?= view_cell('App\Controllers\Publishers::gamespublishedby', 'publisher_id='.$publisher['id']) ?>
-  </section>
-</div>
+    <?= view_cell ( 'App\Controllers\Games::Publishergames', 'id='.$publisher['id'] ) ?>
+  </div>
+</article>

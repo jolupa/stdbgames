@@ -1,39 +1,72 @@
 <?php
-namespace App\Controllers;
-use App\Models\SearchModel;
-use CodeIgniter\Controller;
 
-helper(['text']);
+  namespace App\Controllers;
+  use App\Models\GamesModel;
+  use App\Models\DevelopersModel;
+  use App\Models\PublishersModel;
 
-class Search extends Controller{
-  public function result(){
-    $searchmodel = new SearchModel();
-    $keyword = $this->request->getVar('keyword');
-    if(is_array($searchmodel->searchGames($keyword))){
-      $data['searchgames'] = $searchmodel->searchGames($keyword);
-    } else {
-      $data['searchgames'] = false;
+  class Search extends BaseController {
+
+    protected $helpers = ['text'];
+
+    public function search () {
+
+      if ( empty ( $this->request->getVar('keyword') ) ) {
+
+        return redirect()->to( '/' )->with('error_sear', 'If you can\'t tell us what are searching is not easy');
+
+      } else {
+
+        $modelg = new GamesModel();
+        $modeld = new DevelopersModel();
+        $modelp = new PublishersModel();
+
+        $data['games'] = $modelg->select('id, name, slug, image')
+                                ->like('name', $this->request->getVar('keyword'))
+                                ->orLike('about', $this->request->getVar('keyword'))
+                                ->findAll();
+        $data['developers'] = $modeld->select('id, name, slug, image')
+                                ->like('name', $this->request->getVar('keyword'))
+                                ->orLike('about', $this->request->getVar('keyword'))
+                                ->findAll();
+        $data['publishers'] = $modelp->select('id, name, slug, image')
+                                ->like('name', $this->request->getVar('keyword'))
+                                ->orLike('about', $this->request->getVar('keyword'))
+                                ->findAll();
+
+        $data['page_title'] = 'Search results for '.$this->request->getVar('keyword').' - On Stadia GamesDB!';
+        $data['page_description'] = 'Search Results page on DB!';
+        $data['page_keywords'] = 'stadia, google, stream, games, cloud, online, streaming, fun, party, search';
+        $data['page_image'] = base_url('/img/stdb_logo_big.png');
+        $data['page_url'] = base_url('');
+        $data['page_twitterimagealt'] = 'Search - Stadia GamesDB!';
+
+        echo view ( 'templates/header', $data );
+
+        if ( ! empty ( $data['games'] ) ) {
+
+          echo view ( 'search/parts/games', $data );
+
+        }
+
+        if ( ! empty ( $data['developers'] ) ) {
+
+          echo view ( 'search/parts/developers', $data );
+
+        }
+
+        if ( ! empty ( $data['publishers'] ) ) {
+
+          echo view ( 'search/parts/publishers', $data );
+
+        }
+
+        echo view ( 'templates/footer' );
+
+      }
+
     }
-    if(is_array($searchmodel->searchDevelopers($keyword))){
-      $data['searchdevelopers'] = $searchmodel->searchDevelopers($keyword);
-    } else {
-      $data['searchdevelopers'] = false;
-    }
-    if(is_array($searchmodel->searchPublishers($keyword))){
-      $data['searchpublishers'] = $searchmodel->searchPublishers($keyword);
-    } else {
-      $data['searchpublishers'] = false;
-    }
-    $data['keyword'] = $keyword;
-    echo view('templates/header');
-    echo view('search/searchresult', $data);
-    echo view('templates/footer');
+
   }
-  public function searchform(){
-    return view('search/form');
-  }
-  public function searchnavbarform(){
-    return view('search/navbarsearchform');
-  }
-}
-?>
+
+ ?>

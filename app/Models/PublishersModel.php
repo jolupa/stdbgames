@@ -1,42 +1,24 @@
 <?php
-namespace App\Models;
-use CodeIgniter\Model;
 
-class PublishersModel extends Model{
-  public function getPublisherById($id){
-    $db = \Config\Database::connect();
-    $builder = $db->table('publishers')
-                  ->where('id', $id);
-    return $builder->get()->getRowArray();
+  namespace App\Models;
+  use CodeIgniter\Model;
+
+  class PublishersModel extends Model {
+
+    protected $DBGroup = 'default';
+    protected $table = 'publishers';
+    protected $primaryKey = 'id';
+    protected $useAutoIncrement = true;
+    protected $returnType = 'array';
+    protected $useSoftDeletes = true;
+    protected $allowedFields = ['id', 'name', 'slug', 'url', 'about', 'twitter_account'];
+    protected $useTimestamps = true;
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
+    protected $dateFormat = 'datetime';
+    protected $skipvalidation = true;
+
   }
-  public function getPublisherBySlug($slug){
-    $db = \Config\Database::connect();
-    $builder = $db->table('publishers')
-                  ->where('slug', $slug);
-    return $builder->get()->getRowArray();
-  }
-  public function getAllPublishers(){
-    $db = \Config\Database::connect();
-    $builder = $db->table('publishers')
-                  ->orderBy('publishers.name', 'ASC');
-    return $builder->get()->getResultArray();
-  }
-  public function getGamesPublishedBy($publisher_id){
-    $db = \Config\Database::connect();
-    $builder = $db->table('games')
-                  ->where('games.publisher_id', $publisher_id);
-    return $builder->get()->getResultArray();
-  }
-  public function createPublisherDb($data){
-    $db = \Config\Database::connect();
-    $builder = $db->table('publishers');
-    return $builder->insert($data);
-  }
-  public function updatePublisherDb($data){
-    $db = \Config\Database::connect();
-    $builder = $db->table('publishers')
-                  ->where('id', $data['id']);
-    return $builder->update($data);
-  }
-}
-?>
+
+ ?>

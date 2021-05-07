@@ -5,13 +5,29 @@
 	"homepage": "https://codeigniter.com",
 	"license": "MIT",
 	"require": {
-		"php": ">=7.2",
+		"php": "^7.3||^8.0",
 		"codeigniter4/framework": "^4",
-		"abraham/twitteroauth": "^1.2"
+		"madcoda/php-youtube-api": "^1.2",
+		"league/commonmark": "^1.5",
+		"simplehtmldom/simplehtmldom": "2.0-RC2",
+		"abraham/twitteroauth": "^2.0"
 	},
 	"require-dev": {
-		"mikey179/vfsstream": "1.6.*",
-		"phpunit/phpunit": "8.5.*"
+		"fakerphp/faker": "^1.9",
+		"mikey179/vfsstream": "^1.6",
+		"phpunit/phpunit": "^9.1"
+	},
+	"suggest": {
+		"ext-fileinfo": "Improves mime type detection for files"
+	},
+	"autoload": {
+		"psr-4": {
+			"App\\": "app",
+			"Config\\": "app/Config"
+		},
+		"exclude-from-classmap": [
+			"**/Database/Migrations/**"
+		]
 	},
 	"autoload-dev": {
 		"psr-4": {
@@ -19,10 +35,7 @@
 		}
 	},
 	"scripts": {
-		"test": "phpunit",
-		"post-update-cmd": [
-			"@composer dump-autoload"
-		]
+		"test": "phpunit"
 	},
 	"support": {
 		"forum": "http://forum.codeigniter.com/",

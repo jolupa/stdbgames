@@ -1,17 +1,19 @@
-<div class="container">
-  <section class="section">
-    <p class="title is-5">Developer:</p>
-    <p class="subtitle is-3">
-      <?= $developer['name'] ?>
+<article id="game-info" class="container mt-5">
+  <div class="mx-3">
+    <p class="title is-4"><?= $developer['name'] ?></p>
+    <p class="subtitle is-6">
+      <?php if ( ! empty ($developer['url']) ): ?>
+        <a href="<?= $developer['url'] ?>" target="_blank">Website</a>
+      <?php endif; ?>
+      <?php if ( ! empty ($developer['twitter_account']) ): ?>
+        &nbsp;|&nbsp;<a href="<?= $developer['twitter_account'] ?>" target="_blank">Twitter</a></p>
+      <?php endif; ?>
     </p>
     <div class="content">
-      <?php if($developer['url'] !== ''): ?>
-        <p><span class="icon"><i class="fas fa-chevron-right"></i></span>&nbsp;<a href="<?= $developer['url'] ?>" target="_blank">Visit Website</a></p>
-      <?php endif; ?>
-      <?php if(isset($developer['about']) && $developer['about'] !== ''): ?>
+      <?php if ( ! empty ( $developer['about'] ) ): ?>
         <?= $developer['about'] ?>
       <?php endif; ?>
     </div>
-    <?= view_cell('App\Controllers\Developers::gamesdevelopedby', 'developer_id='.$developer['id']) ?>
-  </section>
-</div>
+    <?= view_cell ( 'App\Controllers\Games::Developergames', 'id='.$developer['id'] ) ?>
+  </div>
+</article>

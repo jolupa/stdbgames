@@ -130,9 +130,8 @@ nb-configuration.xml
 writable/database/Stadia_DB.db
 
 #Public
-public/assets/css/sass/
-public/assets/*.png
-public/images/
+public/img/
+public/doc/
 
 #SomeConfig
 twitter.php

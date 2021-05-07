@@ -1,75 +1,34 @@
 <?php
-namespace App\Models;
-use CodeIgniter\Model;
 
-class UsersModel extends Model{
-  public function createUserDb($data){
-    $db = \Config\Database::connect();
-    $builder = $db->table('users');
-    return $builder->insert($data);
-  }
-  public function getUserByName($name){
-    $db = \Config\Database::connect();
-    $builder = $db->table('users')
-                  ->where('name', $name);
-    if($builder->countAllResults(false) > 0){
-      return $builder->get()->getRowArray();
-    } else {
-      return false;
-    }
-  }
-  public function getUserBySlug($slug){
-    $db = \Config\Database::connect();
-    $builder = $db->table('users')
-                  ->where('slug', $slug);
-    if($builder->countAllResults(false) > 0){
-      return $builder->get()->getRowArray();
-    } else {
-      return false;
-    }
-  }
-  public function getUserById($id){
-    $db = \Config\Database::connect();
-    $builder = $db->table('users')
-                  ->where('id', $id);
-    if ($builder->countAllResults(false) > 0){
-      return $builder->get()->getRowArray();
-    } else {
-      return false;
-    }
-  }
-  public function getAllUsers(){
-    $db = \Config\Database::connect();
-    $builder = $db->table('users')
-                  ->where('role !=', 1)
-                  ->orderBy('created_at', 'DESC');
-    return $builder->get()->getResultArray();
-  }
-  public function getUsersById($id){
-    $db = \Config\Database::connect();
-    $builder = $db->table('users')
-                  ->where('id', $id);
-    return $builder->get()->getRowArray();
-  }
-  public function updateUserDb($data){
-    $db = \Config\Database::connect();
-    $builder = $db->table('users')
-                  ->where('id', $data['id']);
-    return $builder->update($data);
-  }
-  public function userResetPassword($newpassword, $id){
-    $db = \Config\Database::connect();
-    $builder = $db->table('users')
-                  ->where('id', $id);
-    return $builder->update(['password'=>password_hash($newpassword, PASSWORD_DEFAULT)]);
-  }
-  public function chageUserRole($id, $role){
-    $db = \Config\Database::connect();
-    $builder = $db->table('users')
-                  ->set('role', $role)
-                  ->where('id', $id);
-    return $builder->update();
-  }
-}
+  namespace App\Models;
+  use CodeIgniter\Model;
 
-?>
+  class UsersModel extends Model {
+
+    protected $DBGroup = 'default';
+    protected $table = 'users';
+    protected $primaryKey = 'id';
+    protected $useAutoIncrement = true;
+    protected $returnType = 'array';
+    protected $useSoftDeletes = true;
+    protected $allowedFields = ['id', 'name', 'slug', 'image', 'password', 'birth_date', 'email', 'role'];
+    protected $useTimestamps = true;
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
+    protected $deletedField = 'deleted_at';
+    protected $dateFormat = 'datetime';
+    protected $skipvalidation = true;
+
+    public function getMailPass () {
+
+      $db = \Config\Database::connect();
+      $querybuilder = $db->table('config')
+                          ->select('pass')
+                          ->where('service', 'mail');
+      return $querybuilder->get()->getRowArray();
+
+    }
+
+  }
+
+ ?>

@@ -1,138 +1,128 @@
-    <section class="hero is-large has-background-dark" style="background-image: url(<?= base_url() ?>/images/<?= $game['image'] ?>.jpeg); background-size: cover; background-position: center;">
-      <div class="hero-body"></div>
-      <?= view_cell('App\Controllers\Likedislike::getLikeDislikes', 'id='.$game['id']) ?>
-    </section>
-    <div class="container">
-      <section class="section">
-        <div class="content has-text-centered">
-          <h1 class="title">
-            <?php if($game['rumor'] == 1): ?>
-              <span class="icon has-text-danger is-small" title="RUMOR!">
-                <i class="fas fa-exclamation">&nbsp;</i>
-              </span>&nbsp;
-            <?php endif; ?>
-            <span>
-              <?= $game['name'] ?>
-            </span>
-          </h1>
-          <h2 class="subtitle">
-            <a href="<?= base_url() ?>/developer/<?= $game['developer_slug'] ?>"><?= $game['developer_name'] ?></a> / <a href="<?= base_url() ?>/publisher/<?= $game['publisher_slug'] ?>"><?= $game['publisher_name'] ?></a>
-            <br>
-            <?php if($game['release'] == '2099-01-01' || $game['release'] == 'TBA'): ?>
-              <span class="subtitle is-6">Release date: TBA</span>
-            <?php else: ?>
-              <span class="subtitle is-6">Release date: <?= date('d-m-Y', strtotime($game['release'])) ?></span>
-            <?php endif; ?>
-            <br>
-            <?php if($game['price'] != '' && $game['is_f2p'] == 0): ?>
-              <span class="subtitle is-6">Price: <?= $game['price'] ?>&nbsp;€</span>
-            <?php elseif($game['is_f2p'] == 1): ?>
-              <tag class="tag is-info"><strong>Now Free To Play!</strong></tag>
-            <?php else: ?>
-              <span class="subtitle is-6">Price: TBA</span>
-            <?php endif; ?>
-          </h2>
-        </div>
-        <div class="content has-text-centered">
-          <p>
-            <span class="icon-text">
-              <?php if(isset($game['appid']) && $game['appid'] !== '' && date('Y-m-d') >= $game['release']): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go to Stadia Store</a>
-              <?php endif; ?>
-              <?php if(isset($game['appid']) && $game['appid'] !== ''): ?>
-                <?php if($game['release'] > date('Y-m-d')): ?>
-                  <a class="tag is-info is-small mt-1 mr-2" href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Pre-Order on Stadia</a>
+<article id="game-image-header">
+  <div class="hero is-large" style="background-image: url(<?= base_url('/img/games/'.$game['image'].'.jpeg') ?>); background-size: cover; background-position: center;">
+    <div class="hero-body"></div>
+  </div>
+</article>
+<article id="game-info" class="container mt-5">
+  <div class="mx-3">
+    <div class="columns">
+      <div class="column is-3">
+        <div class="columns is-multiline">
+          <div class="column is-full">
+            <p class="has-text-centered">
+              <span class="icon-text">
+                <?php if ( session ( 'likes' ) != null && in_array ( $game['id'], session ( 'likes' ) ) ): ?>
+                  <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $game['like'] ?></span></tag>
+                  <tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $game['dislike'] ?></span></tag>
+                <?php elseif ( session ( 'dislikes') != null && in_array ( $game['id'], session ( 'dislikes' ) ) ): ?>
+                  <tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $game['like'] ?></span></tag>
+                  <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $game['dislike'] ?></span></tag>
                 <?php else: ?>
-                  <a class="tag is-info is-small mt-1 mr-2" href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
+                  <a href="<?= base_url ( '/games/like/'.$game['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $game['like'] ?></span></tag></a>
+                  <a href="<?= base_url ( '/games/dislike/'.$game['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $game['dislike'] ?></span></tag></a>
                 <?php endif; ?>
+                <?php if ( session ( 'library' ) != null && in_array ( $game['id'], session ( 'library' ) ) ): ?>
+                  <a href="<?= base_url ( '/libraries/removefromlibrary/'.$game['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="far fa-minus-square"></i></span> <span>In Library</span></tag></a>
+                <?php elseif ( session ( 'wishlisted' ) != null && in_array ( $game['id'], session ( 'wishlisted' ) ) ): ?>
+                  <a href="<?= base_url ( 'libraries/addtolibrary/'.$game['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="far fa-plus-square"></i></span> <span>Library</span></tag></a>
+                  <a href="<?= base_url ( '/wishlists/removefromwishlist/'.$game['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="far fa-minus-square"></i></span> <span>Wishlist</span></tag></a>
+                <?php else: ?>
+                  <a href="<?= base_url ( '/libraries/addtolibrary/'.$game['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="far fa-plus-square"></i></span> <span>Library</span></tag></a>
+                  <a href="<?= base_url ( '/wishlists/addtowishlist/'.$game['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="far fa-plus-square"></i></span> <span>Wishlist</span></tag></a>
+                <?php endif; ?>
+              </span>
+            </p>
+            <?php if ( session ( 'error_lidi' ) != null ): ?>
+              <p class="help has-text-centered"><?= session ( 'error_lidi' ) ?></p>
+            <?php endif; ?>
+            <?php if ( session ( 'error_wis' ) != null ): ?>
+              <p class="help has-text-centered"><?= session ( 'error_wis' ) ?></p>
+            <?php endif; ?>
+          </div>
+          <div class="column is-full">
+            <div class="panel">
+              <div class="panel-heading has-background-gunmetal">Data Sheet</div>
+              <?php if ( ! empty ( $game['url'] ) || ! empty ( $game['twitter_account'] ) ): ?>
+                <div class="panel-block">
+                  <?php if ( ! empty ( $game['url'] ) ): ?>
+                    <a href="<?= $game['url'] ?>" target="_blank"><span class="icon"><i class="fas fa-blog"></i></span></a>
+                  <?php endif; ?>
+                  <?php if ( ! empty ( $game['twitter_account'] ) ): ?>
+                    &nbsp;<a href="<?= $game['twitter_account'] ?>" target="_blank"><span class="icon"><i class="fab fa-twitter-square"></i></span></a>
+                  <?php endif; ?>
+                </div>
               <?php endif; ?>
-              <?php if($game['pro'] == 1 && $game['release'] === '2099-01-01'): ?>
-                <a class="tag is-info is-small mt-1 mr-2">Will be&nbsp;<strong>Free for PRO</strong>&nbsp;on Launch</a>
+              <?php if ( ! empty ( $game['pro_till'] ) ): ?>
+                <div class="panel-block">Pro |&nbsp;<strong><?= date ( 'd-m-Y', strtotime ( $game['pro_from'] ) ) ?></strong>&nbsp;/&nbsp;<strong><?= date ( 'd-m-Y', strtotime ( $game['pro_till'] ) ) ?></strong></div>
               <?php endif; ?>
-              <?php if($game['pro'] == 1 && date('Y-m-d') > $game['pro_from'] && $game['release'] !== 'TBA' && $game['release'] !== '2099-01-01'): ?>
-                <a class="tag is-primary is-small mt-1 mr-2">Free for Pro&nbsp;<strong>Now!</strong></a>
+              <?php if ( $game['first_on_stadia'] == 1 ): ?>
+                <div class="panel-block">First on Stadia</div>
               <?php endif; ?>
-              <?php if($game['pro_till'] != '' && date('Y-m-d') <= $game['pro_till']): ?>
-                <a class="tag is-warning is-small mt-1 mr-2">Hurry claim it before&nbsp;<strong><?= $game['pro_till'] ?></strong></a>
-              <?php elseif($game['pro_from'] && $game['pro'] == 0): ?>
-                <a class="tag is-danger is-small mt-1 mr-2">Was free from&nbsp;<strong><?= $game['pro_from'] ?></strong>&nbsp;until&nbsp;<strong><?= $game['pro_till'] ?></strong></a>
+              <?php if ( $game['multi_couch'] == 1 ): ?>
+                <div class="panel-block">Couch Multiplayer</div>
               <?php endif; ?>
-              <?php if(session('logged') == true): ?>
-                <?= view_cell('App\Controllers\Libraries::isinlibrary', 'id='.$game['id']) ?>
+              <?php if ( $game['multi_online'] == 1 ): ?>
+                <div class="panel-block">Online Multiplayer</div>
               <?php endif; ?>
-              <?php if($game['first_on_stadia'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/firstonstadia">First On Stadia</a>
+              <?php if ( $game['cross_play'] == 1 ): ?>
+                <div class="panel-block">Cross Play</div>
               <?php endif; ?>
-              <?php if($game['stadia_exclusive'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/stadiaexclusive">Stadia Exclusive</a>
+              <?php if ( $game['crowd_choice'] == 1 ): ?>
+                <div class="panel-block">Crowd Choice</div>
               <?php endif; ?>
-              <?php if($game['early_access'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/earlyaccess">Early Access Game</a>
+              <?php if ( $game['cross_progression'] == 1 ): ?>
+                <div class="panel-block">Cross Progression</div>
               <?php endif; ?>
-              <?php if($game['cross_play'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/crossplay"><span class="icon"><i class="fas fa-exchange-alt"></i></span><span>Cross Play</span></a>
+              <?php if ( $game['state_share'] == 1 ): ?>
+                <div class="panel-block">State Share</div>
               <?php endif; ?>
-              <?php if($game['cross_progression'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/crossprogression"><span class="icon"><i class="fas fa-spinner"></i></span><span>Cross Progression</span></a>
+              <?php if ( $game['stream_connect'] == 1 ): ?>
+                <div class="panel-block">Stream Connect</div>
               <?php endif; ?>
-              <?php if($game['crowd_choice'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/crowdchoice"><span class="icon"><i class="fas fa-user-injured"></i></span><span>Crowd Choice</span></a>
+              <?php if ( ! empty ($game['max_resolution']) ): ?>
+                <div class="panel-block"><?php if ( ! empty ($game['is_pxc'] ) ): ?>Is PxC<?php endif; ?>&nbsp;<?= $game['max_resolution'] ?> <?php if ( ! empty ( $game['fps'] ) ): ?>&nbsp;<strong><?= $game['fps'] ?>fps</strong><?php endif; ?><?php if ( ! empty ( $game['hdr_sdr'] ) ): ?>&nbsp;<?= $game['hdr_sdr'] ?><?php endif; ?></div>
               <?php endif; ?>
-              <?php if($game['crowd_play'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/crowdplay"><span class="icon"><i class="fas fa-globe-europe"></i></span><span>Crowd Play</span></a>
-              <?php endif; ?>
-              <?php if($game['multi_couch'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/couch"><span class="icon"><i class="fas fa-couch"></i></span><span>Couch Multiplayer</span></a>
-              <?php endif; ?>
-              <?php if($game['multi_online'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/online"><span class="icon"><i class="fas fa-globe"></i></span><span>Online Multiplayer</span></a>
-              <?php endif; ?>
-              <?php if($game['stream_connect'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/streamconnect"><span class="icon"><i class="fas fa-desktop"></i></span><span>Stream Connect</span></a>
-              <?php endif; ?>
-              <?php if($game['state_share'] == 1): ?>
-                <a class="tag is-info is-small mt-1 mr-2" href="<?= base_url() ?>/list/stateshare"><span class="icon"><i class="fas fa-share-alt"></i></span><span>State Share</span></a>
-              <?php endif; ?>
-              <?php if($game['max_resolution'] != ''): ?>
-                <a class="tag is-info is-small mt-1 mr-2">
-                  <span class="icon">
-                    <i class="fas fa-desktop"></i>
-                  </span>
-                  <span>
-                    <?= $game['max_resolution'] ?>&nbsp;
-                    <?php if($game['is_pxc'] == 1): ?>
-                      <strong>PxC</strong>&nbsp;
-                    <?php endif; ?>
-                    <strong><?= $game['fps'] ?>FPS</strong>&nbsp;
-                    <?php if($game['hdr_sdr'] != ''): ?>
-                      <?php if($game['hdr_sdr'] == 'hdr'): ?>HDR<?php elseif($game['hdr_sdr'] == 'sdr'): ?>SDR<?php endif; ?>
-                    <?php endif; ?>
-                  </span>
-                </a>
-              <?php endif; ?>
-            </span>
-          </p>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="column">
+        <p class="title is-3"><span class="icon-text"><?php if ( $game['rumor'] == 1): ?><span class="icon"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><?= $game['name'] ?></span></p>
+        <p class="subtitle is-5">
+          Dev <a href="<?= base_url ('/developers/'.$game['dev_slug']) ?>"><?= $game['dev_name'] ?></a>
+           | Pub <a href="<?= base_url ('/publishers/'.$game['pub_slug']) ?>"><?= $game['pub_name'] ?></a>
+            | Rel
+            <?php if ( $game['release'] == 'TBA' || $game['release'] == '2099-01-01' ): ?>
+              TBA
+            <?php else: ?>
+              <?= date ( 'd-m-Y', strtotime ( $game['release'] ) ) ?>
+            <?php endif; ?>
+             <?= view_cell ( 'App\Controllers\Prices::dealongame', 'id='.$game['id'] ) ?>
+          <br \>
+          <?php if ( ! empty ( $game['appid'] ) ): ?>
+            <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go Stadia Store</a> | <a href="https://stadia.google.com/player/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Play on Stadia</a>
+          <?php else: ?>
+            <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
+              <a href="https://stadia.google.com/store/details/<?= $game['demo_appid'] ?>/sku/<?= $game['demo_appid'] ?>" target="_blank">Play the Demo</a>
+            <?php endif; ?>
+            <?php if ( ! empty ( $game['preorder_appid'] ) ): ?>
+              <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
+                &nbsp;|&nbsp;
+              <?php endif; ?>
+              <a href="https://stadia.google.com/store/details/<?= $game['preorder_appid'] ?>/sku/<?= $game['preorder_sku'] ?>" target="_blank">Pre Order</a>
+            <?php endif; ?>
+          <?php endif; ?>
+        </p>
         <div class="content">
-          <p class="title is-5">About</p>
-          <p class="subtitle is-3">#the Game:</p>
+          <p class="title is-4">About the game</p>
           <?= $game['about'] ?>
-          <?= view_cell('App\Controllers\Interviews::interviews', 'game_id='.$game['id']) ?>
         </div>
-        <?php if(date('Y-m-d') >= $game['release']): ?>
-          <div class="content mt-5">
-            <?= view_cell('App\Controllers\Reviews::gamereviews', 'id='.$game['id']) ?>
-          </div>
-        <?php endif; ?>
-        <?= view_cell('App\Controllers\Prices::pricechart', 'id='.$game['id']) ?>
-        <?= view_cell('App\Controllers\Games::releasebydate', 'id='.$game['id'].', date='.$game['release']) ?>
-        <?php if(isset($game['updated_at'])): ?>
-          <div class="content mt-5">
-            <p class="help"><strong>Game Last Update:</strong> <?= date('d-m-Y', strtotime($game['updated_at'])) ?></p>
-          </div>
-        <?php endif; ?>
-        <div class="content has-text-centered mt-2">
-          <a href="https://forms.gle/H5Yh2G2u42qGgTty9" target="_blank"><p class="button is-info">See something Wrong?</p></a>
-        </div>
-      </section>
+        <?= view_cell ( 'App\Controllers\Interviews::gameinterview', 'id='.$game['id'] ) ?>
+        <?= view_cell ( 'App\Controllers\Gallery::galleryitems', 'query='.mb_url_title( $game['dev_name'].' '.$game['name'].' trailer google stadia', '+', true ) ) ?>
+        <?= view_cell ( 'App\Controllers\Reviews::gamereviews', 'id='.$game['id'] ) ?>
+        <?= view_cell ( 'App\Controllers\Prices::historyprices', 'id='.$game['id'] ) ?>
+        <?= view_cell ( 'App\Controllers\Games::samedayreleases', 'id='.$game['id'].' release='.$game['release'] ) ?>
+      </div>
     </div>
+  </div>
+</article>

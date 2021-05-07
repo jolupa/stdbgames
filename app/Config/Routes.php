@@ -1,4 +1,6 @@
-<?php namespace Config;
+<?php
+
+namespace Config;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -16,13 +18,13 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php'))
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Games');
+$routes->setDefaultController('Main');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 $routes->setAutoRoute(true);
 
-/**
+/*
  * --------------------------------------------------------------------
  * Route Definitions
  * --------------------------------------------------------------------
@@ -30,38 +32,46 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Games::index');
+$routes->get('/', 'Main::index');
+$routes->get('/developer/(:segment)', 'Developers::overview/$1');
+$routes->get('/db/list', 'Games::list');
+$routes->get('/prices/list', 'Prices::list');
+$routes->get('/add/game/', 'Games::addformgames');
+$routes->get('/add/developer', 'Developers::addformdevelopers');
+$routes->get('/add/publisher', 'Publishers::addformpublishers');
+$routes->get('/games/coming', 'Games::listcoming');
+$routes->get('/games/couch', 'Games::listcouch');
+$routes->get('/games/crossplay', 'Games::listcrossplay');
+$routes->get('/games/crossprogression', 'Games::listcrossprogression');
+$routes->get('/games/crowdchoice', 'Games::listcrowdchoice');
+$routes->get('/games/crowdplay', 'Games::listcrowdplay');
+$routes->get('/games/earlyaccess', 'Games::listearlyaccess');
+$routes->get('/games/exclusives', 'Games::listexclusives');
+$routes->get('/games/firstonstadia', 'Games::listfirstonstadia');
+$routes->get('/games/freetoplay', 'Games::listfreetoplay');
+$routes->get('/games/launched', 'Games::listlaunched');
+$routes->get('/games/online', 'Games::listonline');
+$routes->get('/games/nodate', 'Games::listnodate');
+$routes->get('/games/pro', 'Games::listpro');
+$routes->get('/games/rumours', 'Games::listrumours');
+$routes->get('/games/stateshare', 'Games::liststateshare');
+$routes->get('/games/streamconnect', 'Games::liststreamconnect');
+$routes->get('/update/game/(:segment)', 'Games::updateformgames/$1');
+$routes->get('/update/developer/(:segment)', 'Developers::updateformdeveloper/$1');
+$routes->get('/update/publisher/(:segment)', 'Publishers::updateformpublisher/$1');
 $routes->get('/game/(:segment)', 'Games::overview/$1');
-$routes->get('/games/game/(:segment)', 'Games::overview/$1');
-$routes->get('/list', 'Games::list');
-$routes->get('/list/deals', 'Prices::listdeals');
-$routes->get('/list/(:segment)', 'Games::list/$1');
-$routes->get('/create/game', 'Games::insertform');
-$routes->get('/create/developer', 'Developers::insertform');
-$routes->get('/create/publisher', 'Publishers::insertform');
-$routes->get('/update/game/(:segment)', 'Games::updateform/$1');
-$routes->get('/update/developer/(:segment)', 'Developers::updateform/$1');
-$routes->get('/update/publisher/(:segment)', 'Publishers::updateform/$1');
-$routes->get('developer/(:segment)', 'Developers::overview/$1');
-$routes->get('publisher/(:segment)', 'Publishers::overview/$1');
-$routes->get('/signup', 'Users::signupform');
-$routes->get('/login', 'Users::loginform');
-$routes->get('/logout', 'Users::logoutuser');
-$routes->get('/user/profile/(:segment)', 'Users::profile/$1');
-$routes->get('/user/edit/(:segment)', 'Users::edituser/$1');
-$routes->get('/user/reset', 'Users::resetpasswordbymailform');
-$routes->get('/add/tolibrary/(:segment)', 'Libraries::addtouserlibrary/$1');
-$routes->get('/add/towishlist/(:segment)', 'Wishlists::addToUserWishlist/$1');
-$routes->get('/about', 'Games::about');
-$routes->get('/doodles', 'Doodles::index');
+$routes->get('/interviews/list', 'Interviews::list');
+$routes->get('/publisher/(:segment)', 'Publishers::overview/$1');
+$routes->get('/user/login', 'Users::usersloginform');
+$routes->get('/user/verify', 'Users::userslogin');
 
-/**
+/*
  * --------------------------------------------------------------------
  * Additional Routing
  * --------------------------------------------------------------------
  *
  * There will often be times that you need additional routing and you
- * need to it be able to override any defaults in this file. Environment
+ * need it to be able to override any defaults in this file. Environment
  * based routes is one such time. require() additional route files here
  * to make that happen.
  *

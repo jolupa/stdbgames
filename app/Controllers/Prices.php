@@ -1,109 +1,191 @@
 <?php
-namespace App\Controllers;
-use App\Models\PricesModel;
-use Abraham\TwitterOAuth\TwitterOAuth;
-use CodeIgniter\Controller;
-helper(['text']);
 
-class Prices extends Controller{
-  public function gamepricehistory($id){
-    $pricemodel = new PricesModel();
-    if($pricemodel->getPricesByGameId($id) == TRUE){
-      $data['price'] = $pricemodel->getPricesByGameId($id);
-    } else {
-      $data['price'] = FALSE;
+  namespace App\Controllers;
+  use App\Models\PricesModel;
+
+  class Prices extends BaseController {
+
+    protected $helpers = ['text'];
+
+    public function dealsfrontpage () {
+
+      $model = new PricesModel();
+      $data['deals'] = $model->select('price_pro, price_nonpro, date_till_pro, date_till_nonpro, games.name, games.slug, games.image')
+                            ->where('date_till_pro >', date('Y-m-d'))
+                            ->orWhere('date_till_nonpro >', date('Y-m-d'))
+                            ->join('games', 'games.id = prices.game_id')
+                            ->orderBy('date_till_pro, date_till_nonpro', 'DESC')
+                            ->findAll(6);
+
+      if ( ! empty ( $data['deals'] ) ) {
+
+        return view ( 'prices/parts/dealsfrontpage', $data );
+
+      } else {
+
+        return '';
+
+      }
+
     }
-    return view('prices/pricesgamelist', $data);
-  }
-  public function addpriceform(){
-    return view('prices/insert');
-  }
-  public function createpricedb(){
-    $pricemodel = new PricesModel();
-    $data['game_id'] = $this->request->getVar('game_id');
-    $data['price_pro'] = $this->request->getVar('price_pro');
-    $data['price_nonpro'] = $this->request->getVar('price_nonpro');
-    $data['date'] = $this->request->getVar('date');
-    $data['date_till_pro'] = $this->request->getVar('date_till_pro');
-    $data['date_till_nonpro'] = $this->request->getVar('date_till_nonpro');
-    if($this->request->getVar('for_pro') != null){
-      $data['for_pro'] = 1;
-    } else {
-      $data['for_pro'] = 0;
+
+    public function dealongame ( int $id ) {
+
+      $model = new PricesModel();
+      $data['dealongame'] = $model->where('game_id', $id)
+                                  ->where('date_till_nonpro >', date('Y-m-d'))
+                                  ->orWhere('date_till_pro >', date('Y-m-d'))
+                                  ->orderBy('id', 'DESC')
+                                  ->first();
+      if ( ! empty ( $data['dealongame'] ) ) {
+
+        return view ( 'prices/parts/dealongame', $data );
+
+      } else {
+
+        return view ( 'prices/parts/dealongame' );
+
+      }
+
     }
-    if ($this->request->getVar('for_nonpro') != null){
-      $data['for_nonpro'] = 1;
-    } else {
-      $data['for_nonpro'] = 0;
+
+    public function list () {
+
+      $model = new PricesModel();
+      $data['list'] = $model->select('prices.price_pro, prices.price_nonpro, games.name AS name, games.slug AS slug, games.image AS image, games.price AS price')
+                            ->where('date_till_pro >', date('Y-m-d'))
+                            ->orWhere('date_till_nonpro >', date('Y-m-d'))
+                            ->join('games', 'games.id = prices.game_id')
+                            ->orderBy('date_till_pro, date_till_nonpro', 'DESC')
+                            ->paginate(44);
+      if ( empty ( $data['list'] ) ) {
+        $data['error'] = 'No deals at this momment';
+      }
+      $data['pager'] = $model->pager;
+      $data['page_title'] = 'All the Game Deals on Stadia - Stadia GamesDB!';
+      $data['page_description'] = 'All the game deals on Stadia';
+      $total = count ( $data['list'] );
+      $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, deals";
+      if ( empty ( $data['list'] ) ) {
+
+        $data['page_image'] = base_url ( '/img/stdb_logo_big.png' );
+
+      } else {
+
+        $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 1, $total )]['image'].'.jpeg');
+
+      }
+      $data['page_url'] = base_url ( '/prices/list');
+      $data['page_twitterimagealt'] = 'All deals on Stadia';
+      $data['page_header'] = 'All the game deals on Stadia';
+
+      if ( ! empty ( $data['list'] ) ) {
+
+        echo view ( 'templates/header', $data);
+        echo view ( 'templates/list', $data);
+        echo view ( 'templates/footer');
+
+      } else {
+
+        echo view ( 'templates/header', $data );
+        echo view ( 'templates/list', $data );
+        echo view ( 'templates/footer');
+      }
+
     }
-    $slug = $this->request->getVar('slug');
-    require(ROOTPATH.'twitter.php');
-    $statusmessage = "New Deal! https://stdb.games/game/".$slug;
-    $connection = new TwitterOAuth($consumerkey, $consumersecret, $token, $tokensecret);
-    $connection->post("statuses/update", ["status" => $statusmessage]);
-    $pricemodel->createPriceDb($data);
-    return redirect()->to('/game/'.$slug);
-  }
-  public function pricesfrontpage(){
-    $pricemodel = new PricesModel();
-    $data['prices'] = $pricemodel->getPricesFrontPage();
-    return view('prices/pricesfrontpage', $data);
-  }
-  public function updateprice($game_id){
-    $pricemodel = new PricesModel();
-    if($pricemodel->getPricesByGameId($game_id) == TRUE){
-      $data['price'] = $pricemodel->getPricesByGameId($game_id);
-    } else {
-      $data['price'] = FALSE;
+
+    public function historyprices ( int $id ) {
+
+      $model = new PricesModel();
+      $pager = \Config\Services::pager();
+      $data['history'] = $model->where('game_id', $id)
+                                ->orderBy('date', 'DESC')
+                                ->paginate(10, 'history');
+      $data['pager'] = $model->pager;
+
+      if ( ! empty ( $data['history'] ) ) {
+
+        return view ( 'prices/parts/historyprices', $data );
+
+      } else {
+
+        return '';
+
+      }
+
     }
-    return view('prices/pricesupdatelist', $data);
-  }
-  public function updatepricedb(){
-    $pricemodel = new PricesModel();
-    $data['price_pro'] = $this->request->getVar('price_pro');
-    $data['price_nonpro'] = $this->request->getVar('price_nonpro');
-    $data['date'] = $this->request->getVar('date');
-    $data['date_till_pro'] = $this->request->getVar('date_till_pro');
-    $data['date_till_nonpro'] = $this->request->getVar('date_till_nonpro');
-    $data['game_id'] = $this->request->getVar('game_id');
-    $data['id'] = $this->request->getVar('id');
-    if($this->request->getVar('for_pro') != null){
-      $data['for_pro'] = 1;
-    } else {
-      $data['for_pro'] = 0;
+
+    public function priceaddform ( int $id) {
+
+      $model = new PricesModel();
+      $data['prices'] = $model->where('game_id', $id)
+                              ->orderBy('date', 'DESC')
+                              ->findAll();
+
+      if ( ! empty ( $data['prices'] ) ) {
+
+        return view ( 'prices/parts/priceaddform', $data );
+
+      } else {
+
+        return view ( 'prices/parts/priceaddform');
+
+      }
+
     }
-    if ($this->request->getVar('for_nonpro') != null){
-      $data['for_nonpro'] = 1;
-    } else {
-      $data['for_nonpro'] = 0;
+
+    public function savepricesdb () {
+
+      $model = new PricesModel();
+      $validation = $this->validate('addprices');
+
+      if ( ! $validation ) {
+
+        return redirect()->back()->with( 'validation', 'We need a date to know when the deal starts');
+
+      } else {
+
+        if ( $this->request->getVar('id') ) {
+
+          $data['id'] = $this->request->getVar('id');
+
+        }
+
+
+        $data['game_id'] = $this->request->getVar('game_id');
+        $data['date'] = $this->request->getVar('date');
+
+        if ( ! empty ( $this->request->getVar('price_pro' ) ) ) {
+
+          $data['price_pro'] = $this->request->getVar('price_pro');
+
+        }
+
+        if ( ! empty ( $this->request->getVar('date_till_pro') ) ) {
+
+          $data['date_till_pro'] = $this->request->getVar('date_till_pro');
+
+        }
+
+        if ( ! empty ( $this->request->getVar('price_nonpro') ) ) {
+
+          $data['price_nonpro'] = $this->request->getVar('price_nonpro');
+
+        }
+
+        if ( ! empty ( $this->request->getVar('date_till_nonpro') ) ) {
+
+          $data['date_till_nonpro'] = $this->request->getVar('date_till_nonpro');
+
+        }
+
+        $model->save( $data );
+        return redirect()->to( '/update/game/'.$this->request->getVar('slug') );
+
+      }
+
     }
-    $slug = $this->request->getVar('slug');
-    $pricemodel->updatePriceDb($data);
-    return redirect()->to('/game/'.$slug);
+
   }
-  public function listdeals(){
-    $pricemodel = new PricesModel();
-    $data['type'] = 'deals';
-    $data['list'] = $pricemodel->getAllDeals();
-    echo view('templates/header');
-    echo view('games/list', $data);
-    echo view('templates/footer');
-  }
-  public function pricechart($id){
-    $pricemodel = new PricesModel();
-    if($pricemodel->checkPricesPro($id) > 0 && $pricemodel->checkPricesEveryone($id) > 0){
-      $data['prochart'] = $pricemodel->getPricesPro($id);
-      $data['everyonechart'] = $pricemodel->getPricesEveryone($id);
-      return view('prices/historychart', $data);
-    } elseif ($pricemodel->checkPricesPro($id) > 0){
-      $data['prochart'] = $pricemodel->getPricesPro($id);
-      return view('prices/historychart', $data);
-    } elseif ($pricemodel->checkPricesEveryone($id) > 0){
-      $data['everyonechart'] = $pricemodel->getPricesEveryone($id);
-      return view('prices/historychart', $data);
-    } else {
-      return '';
-    }
-  }
-}
-?>
+
+ ?>

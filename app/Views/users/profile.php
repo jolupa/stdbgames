@@ -1,43 +1,26 @@
-<div class="container">
-  <section class="section">
-    <div class="content">
-      <?php if(isset($error)): ?>
-        <p><?= $error ?></p>
-      <?php else: ?>
+<div id="user_profile" class="container mt-5">
+  <div class="mx-3">
+    <div class="columns">
+      <div class="column">
         <div class="media">
-          <figure class="media-left">
+          <div class="media-left">
             <p class="image is-128x128">
-              <?php if(file_exists(ROOTPATH.'public/images/avatar/'.$user['image'].'.png')): ?>
-                <img src="<?= base_url() ?>/images/avatar/<?= $user['image'] ?>.png" title="<?= $user['name'] ?>">
-              <?php else: ?>
-                <img src="<?= base_url() ?>/images/avatar/avatar01.png" title="<?= $user['name'] ?>">
-              <?php endif; ?>
+              <img <?php if ( ! empty ( $profile['image'] ) ): ?>src="<?= base_url ( '/img/users/'.$profile['image'].'.png' ) ?>"<?php else: ?>src="<?= base_url ( '/img/users/avatar01.png' ) ?>"<?php endif; ?>>
             </p>
-          </figure>
+          </div>
           <div class="media-content">
-            <p class="title is-5"><?= $user['name'] ?> <?php if($user['role'] == 2): ?>&nbsp;<span class="has-background-danger has-text-white subtitle is-7 px-1">MEDIA MEMBER</span><?php endif; ?></p>
-            <p class="subtitle is-7">E-mail: <?= $user['email'] ?><br>
-              Birthdate: <?= date('d-m-Y', strtotime($user['birth_date'])) ?><br>
-              Registered: <?= date('d-m-Y H:m:s', strtotime($user['created_at'])) ?>
+            <p class="title is-4"><?= $profile['name'] ?> Profile:</p>
+            <p class="subtitle is-6">
+              Birthdate: <?= date ( 'd-m-Y', strtotime ( $profile['birth_date'] ) ) ?><br>
+              Registered: <?= date( 'd-m-Y', strtotime ( $profile['created_at'] ) ) ?><br>
+              <a href="<?= base_url ( '/users/updateprofileform/'.$profile['id'] ) ?>"><button class="button is-primary mt-1" type="button">Edit</button></a>
             </p>
-            <a href="<?= base_url() ?>/user/edit/<?= $user['id'] ?>"><p class="button is-primary is-small has-text-dark">Edit Profile</p></a>
           </div>
         </div>
       </div>
-      <div class="content mt-2">
-        <p class="subtitle is-5">Your</p>
-        <p class="title is-3">Library</p>
-        <?= view_cell('App\Controllers\Libraries::userlibrary', 'user_id='.$user['id']) ?>
-      </div>
-      <div class="content mt-2">
-        <p class="subtitle is-5">Your</p>
-        <p class="title is-3">Wishlist</p>
-        <?= view_cell('App\Controllers\Wishlists::userwishlist', 'user_id='.$user['id']) ?>
-      </div>
-      <?php if(session('role') == 1): ?>
-        <?= view_cell('App\Controllers\Users::listusers') ?>
-      <?php endif; ?>
-      <?= view_cell('App\Controllers\Games::mostvisitedgames') ?>
-    <?php endif; ?>
-  </section>
+    </div>
+  </div>
 </div>
+<?= view_cell ( 'App\Controllers\Libraries::gamesinlibrary' ) ?>
+<?= view_cell ( 'App\Controllers\Wishlists::gameswishlisted' ) ?>
+<?= view_cell ( 'App\Controllers\Users::lastusers' ) ?>

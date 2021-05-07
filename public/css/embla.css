@@ -1,0 +1,34 @@
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+.embla.container.is-draggable{
+  cursor: pointer;
+  cursor: pointer;
+}
+
+.is-draggable{
+  cursor: grab;
+}
+.is-dragging{
+  cursor: grabbing;
+}
+
+.embla.is-dragging{
+  cursor: grabbing;
+}
+
+.embla__slide {
+  position: relative;
+  flex: 0 0 25%;
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .embla__slide {
+    flex: 0 0 100%;
+  }
+}

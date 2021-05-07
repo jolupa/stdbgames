@@ -1,248 +1,476 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\UsersModel;
 
-use \App\Models\UsersModel;
-use CodeIgniter\Controller;
+class Users extends BaseController {
 
-helper(['text']);
+  protected $helpers = ['text'];
 
-class Users extends Controller{
-  public function signupform(){
-    echo view('templates/header');
-    echo view('users/registerform');
-    echo view('templates/footer');
+  public function usersloginform () {
+
+    $data['page_title'] = 'User Login Form - On Stadia GamesDB!';
+    $data['page_description'] = 'Form Login for registered Users';
+    $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party';
+    $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+    $data['page_url'] = base_url('/users/login');
+    $data['page_twitterimagealt'] ='User Login Form - Stadia GamesDB!';
+
+    echo view ( 'templates/header', $data );
+    echo view ( 'users/usersloginform' );
+    echo view ( 'templates/footer' );
+
   }
-  public function createuserdb(){
-    $usermodel = new UsersModel();
-    $val = $this->validate('userSignup');
 
-    if(!$val){
-      echo view('templates/header');
-      echo view('users/registerform', ['validations' => $this->validator]);
-      echo view('templates/footer');
+  public function createuserdb () {
+
+    $model = new UsersModel();
+    $validation = $this->validate('usersignup');
+
+    if ( ! $validation ) {
+
+      $data['page_title'] = 'User Login Form - On Stadia GamesDB!';
+      $data['page_description'] = 'Form Login for registered Users';
+      $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party';
+      $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+      $data['page_url'] = base_url('/users/login');
+      $data['page_twitterimagealt'] ='User Login Form - Stadia GamesDB!';
+
+      echo view ( 'templates/header', $data );
+      echo view ( 'users/usersloginform', [ 'validation' => $this->validator ] );
+      echo view ( 'templates/footer' );
+
     } else {
-      $data['name'] = $this->request->getVar('name');
-      $data['slug'] = strtolower(url_title($data['name']));
-      $data['password'] = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
-      $data['email'] = $this->request->getVar('email');
-      $data['birth_date'] = $this->request->getVar('birth_date');
-      $data['created_at'] = date('Y-m-d H:m:s');
+
+      $data['name'] = $this->request->getVar('name_signup');
+      $data['slug'] = strtolower ( url_title ( $data['name'] ) );
+      $data['email'] = $this->request->getVar('email_signup');
+      $data['birth_date'] = $this->request->getVar('birth_date_signup');
+
+      if ( ! empty ( $this->request->getVar('patreon') ) ) {
+
+        $data['patreon_usernam'] = $this->request->getVar('patreon_username');
+
+      }
+
       $data['role'] = 0;
-      if($_FILES['image']['error'] !== 4){
-        $newname = $data['slug'];
-        $file = $this->request->getFile('image')
-                              ->move(WRITEPATH.'uploads', $newname);
-        $image = \Config\Services::image('imagick')
-                ->withFile(WRITEPATH.'uploads/'.$newname)
-                ->fit(256, 256, 'center')
-                ->convert(IMAGETYPE_PNG)
-                ->save(ROOTPATH.'public/images/avatar/'.$newname.'.png');
-        unlink(WRITEPATH.'uploads/'.$newname);
-        $data['image'] = $newname;
+
+      if ( ! empty ( $this->request->getVar('patreon_username') ) ) {
+
+        $data['patreon_username'] = $this->request->getVar('patreon_username');
+
       }
-      $usermodel->createUserDb($data);
-      return redirect()->to('/login');
-    }
-  }
-  public function loginform(){
-    echo view('templates/header');
-    echo view('users/loginform');
-    echo view('templates/footer');
-  }
-  public function loguser(){
-    $isValid = $this->validate('userLogin');
-    $errors = [];
 
-    if ($isValid) {
-      $usersmodel = new UsersModel();
-      $user       = $this->request->getVar('user');
-      $password   = $this->request->getVar('password');
+      if ( ! empty ( $this->request->getVar('stadia_profile') ) ) {
 
-      if ($usersmodel->getUserByName($user)) {
-        $data = $usersmodel->getUserByName($user);
+        $data['stadia_profile'] = $this->request->getVar('stadia_profile');
 
-        if (password_verify($password, $data['password'])) {
-          $session = \Config\Services::session();
-          $session->set([
-              'username' => $data['name'],
-              'slug'     => $data['slug'],
-              'user_id'  => $data['id'],
-              'role'     => $data['role'],
-              'logged'   => true,
-          ]);
-          return redirect()->to('/games/');
-        } else {
-          $errors[] = "Your username or password doesn't match. Try again";
-        }
+      }
+
+      $data['password'] = password_hash ( $this->request->getVar('password'), PASSWORD_DEFAULT );
+
+      if ( $_FILES['image_signup']['error'] == 4 ) {
+
+        return redirect()->back()->with( 'validation_image', 'Please, upload an Avatar to be more friendly!' );
+
       } else {
-        $errors[] = "Your Username is not in the DB!";
+
+        $file = $this->request->getFile('image_signup')
+                              ->move(WRITEPATH.'uploads', $data['slug']);
+        $image = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+                                                    ->fit(256, 256, 'center')
+                                                    ->convert(IMAGETYPE_PNG)
+                                                    ->save(ROOTPATH.'public/img/users/'.$data['slug'].'.png');
+
+        unlink (WRITEPATH.'uploads/'.$data['slug']);
+        $data['image'] = $data['slug'];
+
       }
+
+      $model->save( $data );
+      return redirect()->to( previous_url() );
+
     }
 
-    echo view('templates/header');
-    echo view('users/loginform', [
-        'user'        => $this->request->getVar('user'),
-        'errors'      => $errors
-    ]);
-    echo view('templates/footer');
   }
-  public function profile($slug){
-    if(session('logged') == TRUE && $slug == session('slug')){
-      $usersmodel = new UsersModel();
-      $data['user'] = $usersmodel->getUserBySlug($slug);
-      echo view('templates/header');
-      echo view('users/profile', $data);
-      echo view('templates/footer');
+
+  public function userslogin () {
+
+    $model = new UsersModel();
+    $validation = $this->validate('userslogin');
+
+    $data['page_title'] = 'User Login Form - On Stadia GamesDB!';
+    $data['page_description'] = 'Form Login for registered Users';
+    $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party';
+    $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+    $data['page_url'] = base_url('/users/login');
+    $data['page_twitterimagealt'] ='User Login Form - Stadia GamesDB!';
+
+    if ( ! $validation ) {
+
+      echo view ( 'templates/header', $data );
+      echo view ( 'users/usersloginform', [ 'validation' => $this->validator ] );
+      echo view ( 'templates/footer' );
+
     } else {
-      $data['error'] = "You are not allowed to see this page. Go to the <strong>Homepage</strong>";
-      echo view('templates/header');
-      echo view('users/profile', $data);
-      echo view('templates/footer');
-    }
-  }
-  public function listusers(){
-    if (session('logged') != true && session('role') != 1) {
-      return '';
-    } else {
-      $usersmodel = new UsersModel();
-      $data['userlist'] = $usersmodel->getAllUsers();
-      return view('users/listusers', $data);
-    }
-  }
-  public function edituser($id){
-    $usersmodel = new UsersModel();
-    $data['user'] = $usersmodel->getUsersById($id);
-    echo view('templates/header');
-    echo view('users/editform', $data);
-    echo view('templates/footer');
-  }
-  public function updateuserdb(){
-    $usersmodel = new UsersModel();
-    $data['id'] = $this->request->getVar('id');
-    $data['name'] = $this->request->getVar('name');
-    $data['birth_date'] = $this->request->getVar('birth_date');
-    $data['email'] = $this->request->getVar('email');
-    $data['slug'] = $this->request->getVar('slug');
-    if($_FILES['image']['error'] !== 4){
-      $oldname = $this->request->getVar('oldimage');
-      if(file_exists(ROOTPATH.'public/images/avatar/'.$oldname.'png')){
-        unlink(ROOTPATH.'public/images/avatar/'.$oldname.'.png');
+
+      $data['name'] = $this->request->getVar('name');
+      $data['password'] = $this->request->getVar('password');
+      $checkname = $model->where('name', $data['name'])
+                          ->first();
+
+      if ( empty ( $checkname ) ) {
+
+        return redirect()->to('/users/login')->with('validation', 'The username is not in DB!');
+
+      } elseif ( password_verify ( $data['password'], $checkname['password'] ) ) {
+
+        $gwishlists = $model->select('wishlists.game_id as w_gameid')
+                              ->where('users.id', $checkname['id'])
+                              ->join('wishlists', 'wishlists.user_id = users.id')
+                              ->findAll();
+
+        $glibrary = $model->select('libraries.game_id as l_gameid')
+                            ->where('users.id', $checkname['id'])
+                            ->join('libraries', 'libraries.user_id = users.id')
+                            ->findAll();
+        $glike = $model->select('likedislike.game_id AS li_gameid')
+                        ->where('users.id', $checkname['id'])
+                        ->where('likedislike.like', 1)
+                        ->join('likedislike', 'likedislike.user_id = users.id')
+                        ->findAll();
+        $gdislike = $model->select('likedislike.game_id AS di_gameid')
+                          ->where('users.id', $checkname['id'])
+                          ->where('likedislike.dislike', 1)
+                          ->join('likedislike', 'likedislike.user_id = users.id')
+                          ->findAll();
+        $wishlisted = array();
+        $library = array();
+        $like = array();
+        $dislike = array();
+
+        foreach ( $gwishlists as $wishlists ){
+
+          array_push ( $wishlisted, $wishlists['w_gameid'] );
+
+        }
+
+        foreach ( $glibrary as $glibrary ) {
+
+          array_push ( $library, $glibrary['l_gameid'] );
+
+        }
+
+        foreach ( $glike as $glike ) {
+
+          array_push ( $like, $glike['li_gameid'] );
+
+        }
+
+        foreach ( $gdislike as $gdislike ) {
+
+          array_push ( $dislike, $gdislike['di_gameid'] );
+
+        }
+
+        $session = \Config\Services::session();
+        $session->set ([
+
+          'username' => $checkname['name'],
+          'slug' => $checkname['slug'],
+          'user_id' => $checkname['id'],
+          'role' => $checkname['role'],
+          'wishlisted' => $wishlisted,
+          'library' => $library,
+          'likes' => $like,
+          'dislikes' => $dislike,
+          'logged' => true,
+
+        ]);
+
+        return redirect()->to( '/' );
+
+      } else {
+
+        return redirect()->to( '/users/login')->with('validation_pass', 'Your password is wrong');
+
       }
-      $newname = $data['slug'];
-      $file = $this->request->getFile('image')
-                            ->move(WRITEPATH.'uploads/', $newname);
-      $image = \Config\Services::image('imagick')
-                ->withFile(WRITEPATH.'uploads/'.$newname)
-                ->fit(256, 256, 'center')
-                ->convert(IMAGETYPE_PNG)
-                ->save(ROOTPATH.'public/images/avatar/'.$newname.'.png');
-      unlink(WRITEPATH.'uploads/'.$newname);
-      $data['image'] = $newname;
-    } else {
-      $data['image'] = $this->request->getVar('oldimage');
+
     }
-    $usersmodel->updateUserDb($data);
-    return redirect()->to('/user/profile/'.$data['slug']);
+
   }
-  public function logoutuser(){
+
+  public function userslogout () {
+
     $session = \Config\Services::session();
     $session->destroy();
-    return redirect()->to('/games');
+
+    return redirect()->to( '/' );
+
   }
-  public function resetpasswordbymailform(){
-    echo view('templates/header');
-    echo view('users/resetpasswordbymail');
-    echo view('templates/footer');
-  }
-  public function resetpasswordbymail(){
-    $usermodel = new UsersModel();
-    $mail = $this->request->getVar('email');
-    $slug = strtolower(url_title($this->request->getVar('name')));
-    if($usermodel->getUserBySlug($slug) == true){
-      $data = $usermodel->getUserBySlug($slug);
-      $communications = new CommunicationsModel();
-      $mconfig = $communications->getMailConfig();
-      if($mail == $data['email']){
-        $newpassword = random_string('alnum', 16);
-        $id = $data['id'];
-        $usermodel->userResetPassword($newpassword, $id);
-        $email = \Config\Services::email();
-        $config['protocol'] = 'smtp';
-        $config['SMTPHost'] = 'smtp-relay.gmail.com';
-        $config['SMTPUser'] = 'hello@stdb.games';
-        $config['SMTPPass'] = $mconfig['pass'];
-        $config['SMTPCrypto'] = 'tls';
-        $config['SMTPPort'] = 587;
-        $config['wordWrap'] = true;
-        $config['wrapChars'] = 80;
-        $config['mailType'] = 'text';
-        $config['priority'] = 3;
-        $email->initialize($config);
-        $email->setFrom('hello@stdb.games', 'Stadia GamesDB!');
-        $email->setTo($data['email']);
-        $email->setSubject('Password Reset for Stadia GamesDB!');
-        $email->setMessage('Here\'s your automated generated password '.$newpassword.' Please change it when you log back to the web!');
-        $email->send();
-        $data['success'] = "We send you an email with the new password, please change it when possible.";
-        echo view('templates/header');
-        echo view('users/rememberpassword', $data);
-        echo view('templates/footer');
-      } else {
-        $data['error'] = "We can't find the email address you give us on the Database, is it correct?";
-        echo view('templates/header');
-        echo view('users/rememberpassword', $data);
-        echo view('templates/footer');
-      }
+
+  public function profile () {
+
+    if ( session ( 'logged' ) == false || session ( 'username' ) == null ) {
+
+      return redirect()->to( '/' )->with( 'error_usun', 'You can\'t view your or other user(s) profile without register');
+
     } else {
-      $data['error'] = "We can't find your username on the Database, is it correct?";
-      echo view('templates/header');
-      echo view('users/rememberpassword', $data);
-      echo view('templates/footer');
+
+      $model = new UsersModel();
+      $data['profile'] = $model->where('slug', session('slug'))
+                                ->first();
+
+      $data['page_title'] = $data['profile']['name'].' - On Stadia GamesDB!';
+      $data['page_description'] = 'Page Profile';
+      $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party';
+
+      if ( ! empty ( $data['profile']['image'] ) ) {
+
+        $data['page_image'] = base_url ( '/img/users/'.$data['profile']['image'].'.png' );
+
+      } else {
+
+        $data['page_image'] = base_url ( '/img/users/stdb_logo_big.png' );
+
+      }
+
+      $data['page_url'] = base_url('/users/profile/'.$data['profile']['slug'] );
+      $data['page_twitterimagealt'] ='User Login Form - Stadia GamesDB!';
+
+      echo view ( 'templates/header', $data );
+      echo view ( 'users/profile', $data );
+      echo view ( 'templates/footer' );
+
     }
+
   }
-  public function changepassword(){
-    $session = \Config\Services::session();
-    $usermodel = new UsersModel();
-    $id = $this->request->getVar('id');
-    $oldpassword = $this->request->getVar('oldpassword');
-    $newpassword = $this->request->getVar('newpassword');
-    $checkpassword = $this->request->getVar('checkpassword');
-    if($newpassword == $checkpassword){
-      if($usermodel->getUserById($id) == true){
-        $data = $usermodel->getUserById($id);
-        if(password_verify($oldpassword, $data['password']) == true){
-          $usermodel->userResetPassword($newpassword, $id);
-          return redirect()->to('/logout');
+
+  public function resetpasswordform () {
+
+    $data['page_title'] = 'Reset User Password - On Stadia GamesDB!';
+    $data['page_description'] = 'Reset Password for registered Users';
+    $data['page_keywords'] = 'users, login, reset, stadia, google, stream, games, cloud, online, streaming, fun, party';
+    $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+    $data['page_url'] = base_url('/users/reset');
+    $data['page_twitterimagealt'] ='Reset User Password - Stadia GamesDB!';
+
+    echo view ( 'templates/header', $data );
+    echo view ( 'users/resetpasswordform' );
+    echo view ( 'templates/footer' );
+
+  }
+
+  public function resetpassword (string $option = null ) {
+
+    if ( $option == 'logged' ) {
+
+      $model = new UsersModel();
+
+      if ( empty ( $this->request->getVar( 'new_password' ) ) || empty ( $this->request->getVar( 'confirm' ) ) ) {
+
+        return redirect()->back()->with( 'validation', 'The new Password and the Confirmation can\'t be empty' );
+
+      } elseif ( $this->request->getVar('new_password') !== $this->request->getVar( 'confirm' ) ) {
+
+        return redirect()->back()->with( 'validation', 'The new password and the confirmation are not the shame maybe you have to change your keyboard' );
+
+      } elseif ( strlen ( $this->request->getVar( 'new_password' ) ) < 6 || strlen ( $this->request->getVar( 'new_password' ) ) > 20 ) {
+
+        return redirect()->back()->with( 'validation', 'The password needs to be between 6 and 20 characters, if not you see this error' );
+
+      } else {
+
+        $getpass = $model->select('password')
+                          ->where('id', $this->request->getVar('id'))
+                          ->firts();
+
+        if ( password_verify ( $this->request->getVar('password' ), $getpass['password'] ) ) {
+
+          $data['id'] = $this->request->getVar('id');
+          $data['password'] = password_hash ( $this->request->getVar('new_password'), PASSWORD_DEFAULT );
+          $model->save( $data );
+
+          return redirect()->back()->with( 'success', 'We changed your password correctly, remember to take note in some place' );
+
         } else {
-          $errorpass = "Can't find the password on DB! Try again!";
-          $session->setFlashdata(['errorpass'=>$errorpass]);
-          return redirect()->back();
+
+          return redirect()->back()->with( 'validation', 'The Current Password is not the same that we have on DB!, you write it well?' );
+
         }
-      } else {
-        $errorpass = "It seems that we can't find the user... Weird, try again!";
-        $session->setFlashdata(['errorpass'=>$errorpass]);
-        return redirect()->back();
+
       }
+
     } else {
-      $errorpass = "The new password don't match with the check. Try again!";
-      $session->setFlashdata(['errorpass'=>$errorpass]);
-      return redirect()->back();
+
+      $model = new UsersModel();
+      $validation = $this->validate('resetpassword');
+
+      if ( ! $validation ) {
+
+
+        $data['page_title'] = 'Reset User Password - On Stadia GamesDB!';
+        $data['page_description'] = 'Reset Password for registered Users';
+        $data['page_keywords'] = 'users, login, reset, stadia, google, stream, games, cloud, online, streaming, fun, party';
+        $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+        $data['page_url'] = base_url('/users/reset');
+        $data['page_twitterimagealt'] ='Reset User Password - Stadia GamesDB!';
+
+        echo view ( 'templates/header', $data );
+        echo view ( 'users/resetpasswordform', [ 'validation' => $this->validator ] );
+        echo view ( 'templates/footer' );
+
+      } else {
+
+        $checkuser = $model->where('name', $this->request->getVar('name'))
+                            ->where('email', $this->request->getVar('email'))
+                            ->first();
+
+        if ( empty ( $checkuser['name'] ) || empty ( $checkuser['email'] ) ) {
+
+          return redirect()->to( '/users/resetpasswordform' )->with( 'validation', 'Username or Email don\'t exists on DB! Are you sure you are a registered user?');
+
+        } else {
+
+          $mailpass = $model->getMailPass();
+          $newpass = random_string ( 'alnum', 16 );
+          $newpassencrypt = password_hash ( $newpass, PASSWORD_DEFAULT );
+          $data = [
+
+            'id' => $checkuser['id'],
+            'password' => $newpassencrypt,
+
+          ];
+
+          $model->save ( $data );
+          unset ( $data );
+
+          $email = \Config\Services::email();
+          $config['protocol'] = 'smtp';
+          $config['SMTPHost'] = 'smtp-relay.gmail.com';
+          $config['SMTPUser'] = 'hello@stdb.games';
+          $config['SMTPPass'] = $mailpass['pass'];
+          $config['SMTPCrypto'] = 'tls';
+          $config['SMTPPort'] = 587;
+          $config['wordWrap'] = true;
+          $config['wrapChars'] = 80;
+          $config['mailType'] = 'text';
+          $config['priority'] = 3;
+          $email->initialize ( $config )
+                ->setFrom ( 'hello@stdb.games', 'Stadia GamesDB!' )
+                ->setTo ( $checkuser['email'] )
+                ->setSubject ( 'Password Reset for Stadia GamesDB!' )
+                ->setMessage ( 'Here\'s your automated generated password. \n'.$newpass.'\n Please change it when you log back on DB!.')
+                ->send();
+
+          return redirect()->to( '/users/resetpasswordform' )->with( 'success', 'We send you an email with the new password. Please change it when possible' );
+
+        }
+
+      }
+
     }
+
   }
-  public function changeroleform(){
-    if(session('logged') == true && session('role') == 1){
-      return view('users/changerole');
+
+  public function updateprofileform ( int $id ) {
+
+    if ( session ( 'logged' ) == false || session ( 'user_id' ) != $id ) {
+
+      return redirect()->to( '/' )->with( 'error_usun', 'You can only edit your user profile when logged and only your user profile');
+
     } else {
+
+      $model = new UsersModel();
+      $data['user'] = $model->where('id', $id )
+                            ->first();
+      $data['page_title'] = 'Edit User Profile Form - On Stadia GamesDB!';
+      $data['page_description'] = 'Form To Edit the Profile of registered Users';
+      $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party, edit';
+      $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+      $data['page_url'] = base_url('/users/updateprofileform');
+      $data['page_twitterimagealt'] ='Edit User Profile Form - Stadia GamesDB!';
+
+      echo view ( 'templates/header', $data );
+      echo view ( 'users/updateprofileform', $data );
+      echo view ( 'templates/footer' );
+
+    }
+
+  }
+
+  public function updateprofile () {
+
+    $model = new UsersModel();
+
+    $data['id'] = $this->request->getVar('id');
+    $data['name'] = $this->request->getVar('name');
+    $data['email'] = $this->request->getVar('email');
+    $data['birth_date'] = $this->request->getVar('birth_date');
+
+    if ( ! empty ( $this->request->getVar('patreon') ) ) {
+
+      $data['patreon_username'] = $this->request->getVar('patreon_username');
+
+    }
+
+    $data['stadia_profile'] = $this->request->getVar('stadia_profile');
+
+    if ( $_files['image']['error'] != 4 ) {
+
+      if ( ! empty ( $this->request->getVar('old_image') ) ) {
+
+        unlink ( WRITEPATH.'img/users/'.$this->request->getVar('old_image').'.png' );
+
+      }
+
+      $file = $this->request->getFile('image')
+                            ->move( WRITEPATH.'uploads', $this->request->getVar('slug') );
+      $image = \Config\Services::image('imagick')->withFile( WRITEPATH.'uploads/'.$this->request->getVar('slug') )
+                                                  ->fit( 256, 256, 'center' )
+                                                  ->convert( IMAGETYPE_PNG )
+                                                  ->save( ROOTPATH.'img/users/'.$this->request->getVar('slug') );
+      unlink ( WRITEPATH.'uploads/'.$this->request->getVar('slug') );
+      $data['image'] = $this->request->getVar('slug');
+
+    }
+
+    $model->save( $data );
+    return redirect()->to( '/users/profile/'.$this->request->getVar('slug') );
+
+  }
+
+  public function lastusers () {
+
+    if ( session ( 'logged' ) == false || session ( 'role' ) != 1 ) {
+
       return '';
+
+    } else {
+
+      $model = new UsersModel();
+      $pager = \Config\Services::pager();
+      $data['users'] = $model->where('role !=', 1)
+                              ->orderBy('id', 'DESC')
+                              ->paginate(20, 'users');
+      $data['pager'] = $model->pager;
+      return view ( 'users/parts/lastusers', $data );
+
     }
+
   }
-  public function changerole(){
-    $usermodel = new UsersModel();
-    $id = $this->request->getVar('user_id');
-    $role = $this->request->getVar('role');
-    $usermodel->chageUserRole($id, $role);
-    return redirect()->back(2);
+
+  public function changerole () {
+
+    $model = new UsersModel();
+    $data['id'] = $this->request->getVar('id');
+    $data['role'] = $this->request->getVar('role');
+
+    $model->save( $data );
+    return redirect()->back();
   }
+
 }
-?>
+
+
+ ?>
