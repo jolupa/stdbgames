@@ -122,3 +122,8 @@ nb-configuration.xml
 /results/
 /phpunit*.xml
 /.phpunit.*.cache
+
+youtube.php
+twitter.php
+/public/img
+/writable/database
