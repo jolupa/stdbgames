@@ -113,7 +113,7 @@
 
       $model->save($data);
 
-      return redirect()->to('/games/'.$this->request->getVar('slug'));
+      return redirect()->to('/game/'.$this->request->getVar('slug'));
     }
 
   }
