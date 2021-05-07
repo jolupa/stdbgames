@@ -89,8 +89,8 @@
       <div class="column">
         <p class="title is-3"><span class="icon-text"><?php if ( $game['rumor'] == 1): ?><span class="icon"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><?= $game['name'] ?></span></p>
         <p class="subtitle is-5">
-          Dev <a href="<?= base_url ('/developers/'.$game['dev_slug']) ?>"><?= $game['dev_name'] ?></a>
-           | Pub <a href="<?= base_url ('/publishers/'.$game['pub_slug']) ?>"><?= $game['pub_name'] ?></a>
+          Dev <a href="<?= base_url ('/developer/'.$game['dev_slug']) ?>"><?= $game['dev_name'] ?></a>
+           | Pub <a href="<?= base_url ('/publisher/'.$game['pub_slug']) ?>"><?= $game['pub_name'] ?></a>
             | Rel
             <?php if ( $game['release'] == 'TBA' || $game['release'] == '2099-01-01' ): ?>
               TBA

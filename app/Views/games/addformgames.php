@@ -1,4 +1,4 @@
-  <div id="form_add_developers" class="container mt-5">
+  <div id="form_add_games" class="container mt-5">
   <div class="mx-3">
     <p class="title is-4">Add Game</p>
     <form action="<?= base_url ( '/games/creategamedb') ?>" method="post" enctype="multipart/form-data">

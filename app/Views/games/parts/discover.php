@@ -9,7 +9,7 @@
         <div class="card is-shadowless">
           <div class="card-image">
             <figure class="image is-16by9">
-              <a href="<?= base_url ( '/games/'.$discover[0]['slug']) ?>"><img src="<?= base_url('/img/games/'.$discover[0]['image'].'.jpeg') ?>"></a>
+              <a href="<?= base_url ( '/game/'.$discover[0]['slug']) ?>"><img src="<?= base_url('/img/games/'.$discover[0]['image'].'.jpeg') ?>"></a>
               <div class="is-overlay" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                 <span class="icon-text is-hidden-touch">
                   <?php if ( session ( 'likes') != null && in_array ( $discover[0]['id'], session ('likes' ) ) ): ?>
@@ -50,8 +50,8 @@
             </figure>
           </div>
           <div class="card-content">
-            <p class="title is-5"><a href="<?= base_url('/games/'.$discover[0]['slug']) ?>" title="<?= $discover[0]['name'] ?>"><span class="icon-text"><?php if ( $discover[0]['rumor'] == 1 ): ?><span class="icon"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><?= $discover[0]['name'] ?></span></a></p>
-            <p class="subtitle is-7">Dev <strong><a href="<?= base_url('/developers/'.$discover[0]['dev_slug']) ?>" title="<?= $discover[0]['dev_name'] ?>"><?= $discover[0]['dev_name'] ?></a></strong> | Pub <strong><a href="<?= base_url('/publishers/'.$discover[0]['pub_slug']) ?>" title="<?= $discover[0]['pub_name'] ?>"><?= $discover[0]['pub_name'] ?></a></strong></p>
+            <p class="title is-5"><a href="<?= base_url('/game/'.$discover[0]['slug']) ?>" title="<?= $discover[0]['name'] ?>"><span class="icon-text"><?php if ( $discover[0]['rumor'] == 1 ): ?><span class="icon"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><?= $discover[0]['name'] ?></span></a></p>
+            <p class="subtitle is-7">Dev <strong><a href="<?= base_url('/developer/'.$discover[0]['dev_slug']) ?>" title="<?= $discover[0]['dev_name'] ?>"><?= $discover[0]['dev_name'] ?></a></strong> | Pub <strong><a href="<?= base_url('/publisher/'.$discover[0]['pub_slug']) ?>" title="<?= $discover[0]['pub_name'] ?>"><?= $discover[0]['pub_name'] ?></a></strong></p>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@
         <div class="card is-shadowless">
           <div class="card-image">
             <figure class="image is-16by9">
-              <a href="<?= base_url ( '/games/'.$discover[1]['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$discover[1]['image'].'.jpeg') ?>"></a>
+              <a href="<?= base_url ( '/game/'.$discover[1]['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$discover[1]['image'].'.jpeg') ?>"></a>
               <div class="is-overlay" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                 <span class="icon-text is-hidden-touch">
                   <?php if ( session ( 'likes' ) != null && in_array ( $discover[1]['id'], session ( 'likes' ) ) ): ?>
@@ -100,8 +100,8 @@
             </figure>
           </div>
           <div class="card-content">
-            <p class="title is-5"><a href="<?= base_url('/games/'.$discover[1]['slug']) ?>" title="<?= $discover[1]['name'] ?>"><span class="icon-text"><?php if ( $discover[1]['rumor'] == 1 ): ?><span class="icon"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><?= $discover[1]['name'] ?></span></a></p>
-            <p class="subtitle is-7">Dev <strong><a href="<?= base_url('/developers/'.$discover[1]['dev_slug']) ?>" title="<?= $discover[1]['dev_name'] ?>"><?= $discover[1]['dev_name'] ?></a></strong> | Pub <strong><a href="<?= base_url('/publishers/'.$discover[1]['pub_slug']) ?>" title="<?= $discover[1]['pub_name'] ?>"><?= $discover[1]['pub_name'] ?></a></strong></p>
+            <p class="title is-5"><a href="<?= base_url('/game/'.$discover[1]['slug']) ?>" title="<?= $discover[1]['name'] ?>"><span class="icon-text"><?php if ( $discover[1]['rumor'] == 1 ): ?><span class="icon"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><?= $discover[1]['name'] ?></span></a></p>
+            <p class="subtitle is-7">Dev <strong><a href="<?= base_url('/developer/'.$discover[1]['dev_slug']) ?>" title="<?= $discover[1]['dev_name'] ?>"><?= $discover[1]['dev_name'] ?></a></strong> | Pub <strong><a href="<?= base_url('/publisher/'.$discover[1]['pub_slug']) ?>" title="<?= $discover[1]['pub_name'] ?>"><?= $discover[1]['pub_name'] ?></a></strong></p>
           </div>
         </div>
       </div>

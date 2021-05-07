@@ -8,7 +8,7 @@
       <div class="card is-shadowless">
         <div class="card-image">
           <figure class="image is-3by2">
-            <a href="<?= base_url ( '/games/'.$published['game_slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$published['game_image'].'.jpeg' ) ?>"></a>
+            <a href="<?= base_url ( '/game/'.$published['game_slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$published['game_image'].'.jpeg' ) ?>"></a>
             <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
               <span class="icon-text">
                 <?php if ( session ( 'likes') != null && in_array ( $published['id'], session ( 'likes' ) ) ): ?>
@@ -40,7 +40,7 @@
           </figure>
         </div>
         <div class="card-content">
-          <p class="title is-5"><a href="<?= base_url ( '/games/'.$published['game_slug'] ) ?>"><?= ellipsize ( $published['game_name'], 15, 1, '...' ) ?></a></p>
+          <p class="title is-5"><a href="<?= base_url ( '/game/'.$published['game_slug'] ) ?>"><?= ellipsize ( $published['game_name'], 15, 1, '...' ) ?></a></p>
           <p class="subtitle is-7">Dev <a href="<?= base_url ( '/developers/'.$published['dev_slug'] ) ?>"><?= $published['dev_name'] ?></a></p>
         </div>
       </div>

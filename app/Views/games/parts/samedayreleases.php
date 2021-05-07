@@ -5,7 +5,7 @@
       <div class="card is-shadowless">
         <div class="card-image">
           <figure class="image is-3by2">
-            <a href="<?= base_url('/games/'.$sameday['slug']) ?>"><img src="<?= base_url('/img/games/'.$sameday['image'].'-thumb.jpeg') ?>"></a>
+            <a href="<?= base_url('/game/'.$sameday['slug']) ?>"><img src="<?= base_url('/img/games/'.$sameday['image'].'-thumb.jpeg') ?>"></a>
           </figure>
         </div>
       </div>

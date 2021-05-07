@@ -7,7 +7,7 @@
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-3by2">
-                <a href="<?= base_url ( '/games/'.$release['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$release['image'].'.jpeg') ?>" title="<?= $release['name'] ?>"></a>
+                <a href="<?= base_url ( '/game/'.$release['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$release['image'].'.jpeg') ?>" title="<?= $release['name'] ?>"></a>
                 <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                   <span class="icon-text">
                     <?php if ( session ( 'likes') != null && in_array ( $release['id'], session ( 'likes' ) ) ): ?>
@@ -39,8 +39,8 @@
               </figure>
             </div>
             <div class="card-content">
-              <p class="title is-5"><a href="<?= base_url('/games/'.$release['slug']) ?>"><?= ellipsize($release['name'], 15, 1, '...') ?></a></p>
-              <p class="subtitle is-7">Dev <a href="<?= base_url('/developers/'.$release['dev_slug']) ?>"><?= ellipsize($release['dev_name'], 15, 1, '...') ?></a> | Pub <a href="<?= base_url('/publishers/'.$release['pub_slug']) ?>"><?= ellipsize($release['pub_name'], 15, 1, '...') ?></a> | Rel <?= date('d-m-Y', strtotime($release['release'])) ?></p>
+              <p class="title is-5"><a href="<?= base_url('/game/'.$release['slug']) ?>"><?= ellipsize($release['name'], 15, 1, '...') ?></a></p>
+              <p class="subtitle is-7">Dev <a href="<?= base_url('/developer/'.$release['dev_slug']) ?>"><?= ellipsize($release['dev_name'], 15, 1, '...') ?></a> | Pub <a href="<?= base_url('/publisher/'.$release['pub_slug']) ?>"><?= ellipsize($release['pub_name'], 15, 1, '...') ?></a> | Rel <?= date('d-m-Y', strtotime($release['release'])) ?></p>
             </div>
           </div>
         </div>

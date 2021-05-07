@@ -7,7 +7,7 @@
           <div class="card">
             <div class="card-image">
               <figure class="image is-3by2">
-                <a href="<?= base_url('/games/'.$liked['slug']) ?>"><img src="<?= base_url('/img/games/'.$liked['image'].'.jpeg') ?>" title="<?= $liked['name'] ?>"></a>
+                <a href="<?= base_url('/game/'.$liked['slug']) ?>"><img src="<?= base_url('/img/games/'.$liked['image'].'.jpeg') ?>" title="<?= $liked['name'] ?>"></a>
               </figure>
               <div class="is-overlay" style="left: auto; top: auto; right: 10px; bottom: 10px;">
                 <span class="icon-text"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $liked['total'] ?></span></tag></span>

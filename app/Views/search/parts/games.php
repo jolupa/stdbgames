@@ -7,7 +7,7 @@
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-16by9">
-                <a href="<?= base_url ( '/games/'.$games['slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$games['image'].'.jpeg' ) ?>"></a>
+                <a href="<?= base_url ( '/game/'.$games['slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$games['image'].'.jpeg' ) ?>"></a>
               </figure>
             </div>
           </div>

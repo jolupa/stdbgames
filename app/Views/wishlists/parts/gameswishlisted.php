@@ -7,7 +7,7 @@
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-16by9">
-                <a href="<?= base_url ( '/games/'.$wishlist['slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$wishlist['image'].'.jpeg' ) ?>"></a>
+                <a href="<?= base_url ( '/game/'.$wishlist['slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$wishlist['image'].'.jpeg' ) ?>"></a>
               </figure>
             </div>
           </div>

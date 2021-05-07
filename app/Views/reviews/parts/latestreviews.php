@@ -7,12 +7,12 @@
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-3by2">
-                <a href="<?= base_url ( '/games/'.$reviews['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$reviews['image'].'.jpeg') ?>" title="<?= $reviews['name'] ?>"></a>
+                <a href="<?= base_url ( '/game/'.$reviews['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$reviews['image'].'.jpeg') ?>" title="<?= $reviews['name'] ?>"></a>
               </figure>
             </div>
             <div class="card-content">
               <p class="title is-5"><span class="icon-text"><span><?= $reviews['uname'] ?></span><?php if ( $reviews['urole'] == 2 ): ?>&nbsp;<span class="icon"><i class="far fa-newspaper"></i></span><?php endif; ?></span></p>
-              <p class="subtitle is-7">reviewed <a href="<?= base_url ( '/games/'.$reviews['slug'] ) ?>"><?= ellipsize ( $reviews['name'], 15, 1, '...') ?></a></p>
+              <p class="subtitle is-7">reviewed <a href="<?= base_url ( '/game/'.$reviews['slug'] ) ?>"><?= ellipsize ( $reviews['name'], 15, 1, '...') ?></a></p>
             </div>
           </div>
         </div>

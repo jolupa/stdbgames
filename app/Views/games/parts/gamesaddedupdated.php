@@ -7,7 +7,7 @@
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-3by2">
-                <a href="<?= base_url ( '/games/'.$added['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$added['image'].'.jpeg') ?>" title="<?= $added['name'] ?>"></a>
+                <a href="<?= base_url ( '/game/'.$added['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$added['image'].'.jpeg') ?>" title="<?= $added['name'] ?>"></a>
                 <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                   <span class="icon-text">
                     <?php if ( session ( 'likes') != null && in_array ( $added['id'], session ('likes' ) ) ): ?>
@@ -48,7 +48,7 @@
               </figure>
             </div>
             <div class="card-content">
-              <p class="title is-5"><span class="icon-text"><?php if ($added['rumor'] == 1): ?><span class="icon has-text-color-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url('/games/'.$added['slug']) ?>" title="<?= $added['name'] ?>"><?= ellipsize($added['name'], 15, 1, '...') ?></a></span></p>
+              <p class="title is-5"><span class="icon-text"><?php if ($added['rumor'] == 1): ?><span class="icon has-text-color-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url('/game/'.$added['slug']) ?>" title="<?= $added['name'] ?>"><?= ellipsize($added['name'], 15, 1, '...') ?></a></span></p>
             </div>
           </div>
         </div>
@@ -61,7 +61,7 @@
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-3by2">
-                <a href="<?= base_url ( '/games/'.$updated['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$updated['image'].'.jpeg') ?>" title="<?= $updated['name'] ?>"></a>
+                <a href="<?= base_url ( '/game/'.$updated['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$updated['image'].'.jpeg') ?>" title="<?= $updated['name'] ?>"></a>
                 <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                   <span class="icon-text">
                     <?php if ( session ( 'likes') != null && in_array ( $updated['id'], session ('likes' ) ) ): ?>

@@ -8,7 +8,7 @@
       <div class="card is-shadowless">
         <div class="card-image">
           <figure class="image is-3by2">
-            <a href="<?= base_url ( '/games/'.$developed['game_slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$developed['game_image'].'.jpeg' ) ?>"></a>
+            <a href="<?= base_url ( '/game/'.$developed['game_slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$developed['game_image'].'.jpeg' ) ?>"></a>
           </figure>
           <div class="is-overlay" style="top: auto; right: 10px; bottom: 10px; left: auto;">
             <span class="icon-text is-hidden-touch">
@@ -40,8 +40,8 @@
           </div>
         </div>
         <div class="card-content">
-          <p class="title is-5"><a href="<?= base_url ( '/games/'.$developed['game_slug'] ) ?>"><?= ellipsize ( $developed['game_name'], 15, 1, '...' ) ?></a></p>
-          <p class="subtitle is-7">Pub <a href="<?= base_url ( '/publishers/'.$developed['pub_slug'] ) ?>"><?= $developed['pub_name'] ?></a></p>
+          <p class="title is-5"><a href="<?= base_url ( '/game/'.$developed['game_slug'] ) ?>"><?= ellipsize ( $developed['game_name'], 15, 1, '...' ) ?></a></p>
+          <p class="subtitle is-7">Pub <a href="<?= base_url ( '/publisher/'.$developed['pub_slug'] ) ?>"><?= $developed['pub_name'] ?></a></p>
         </div>
       </div>
     </div>

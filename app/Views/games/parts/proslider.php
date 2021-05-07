@@ -11,7 +11,7 @@
                   <div class="card is-shadowless">
                     <div class="card-image">
                       <figure class="image is-16by9">
-                        <a href="<?= base_url ( '/games/'.$proslider[$i]['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$proslider[$i]['image'].'.jpeg') ?>" title="<?= $proslider[$i]['name'] ?>"></a>
+                        <a href="<?= base_url ( '/game/'.$proslider[$i]['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$proslider[$i]['image'].'.jpeg') ?>" title="<?= $proslider[$i]['name'] ?>"></a>
                         <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                           <span class="icon-text">
                             <?php if ( session ( 'logged' ) == true ): ?>
@@ -47,7 +47,7 @@
                       </figure>
                     </div>
                     <div class="card-content">
-                      <p class="title is-5"><a href="<?= base_url('/games/'.$proslider[$i]['slug']) ?>" title="<?= $proslider[$i]['name'] ?>"><?= ellipsize($proslider[$i]['name'], 15, 1, '...') ?></a></p>
+                      <p class="title is-5"><a href="<?= base_url('/game/'.$proslider[$i]['slug']) ?>" title="<?= $proslider[$i]['name'] ?>"><?= ellipsize($proslider[$i]['name'], 15, 1, '...') ?></a></p>
                       <p class="subtitle is-7">From <?= date('d-m-Y', strtotime($proslider[$i]['pro_from'])) ?> <?php if($proslider[$i]['pro_till'] != ''): ?>| Till <?= date('d-m-Y', strtotime($proslider[$i]['pro_till'])) ?><?php endif; ?></p>
                     </div>
                   </div>

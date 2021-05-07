@@ -33,11 +33,12 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Main::index');
-$routes->get('/developers/add', 'Developers::addformdevelopers');
-$routes->get('/developers/(:segment)', 'Developers::overview/$1');
+$routes->get('/add/developer', 'Developers::addformdevelopers');
+$routes->get('/add/game', 'Games::addformgames');
+$routes->get('/add/publisher', 'Publishers::addformpublishers');
+$routes->get('/developer/(:segment)', 'Developers::overview/$1');
 $routes->get('/db/list', 'Games::list');
 $routes->get('/prices/list', 'Prices::list');
-$routes->get('/games/add', 'Games::addformgames');
 $routes->get('/games/coming', 'Games::listcoming');
 $routes->get('/games/couch', 'Games::listcouch');
 $routes->get('/games/crossplay', 'Games::listcrossplay');
@@ -55,11 +56,12 @@ $routes->get('/games/pro', 'Games::listpro');
 $routes->get('/games/rumours', 'Games::listrumours');
 $routes->get('/games/stateshare', 'Games::liststateshare');
 $routes->get('/games/streamconnect', 'Games::liststreamconnect');
-$routes->get('/games/update/(:segment)', 'Games::updateformgames/$1');
 $routes->get('/games/(:segment)', 'Games::overview/$1');
 $routes->get('/interviews/list', 'Interviews::list');
-$routes->get('/publishers/add', 'Publishers::addformpublishers');
 $routes->get('/publishers/(:segment)', 'Publishers::overview/$1');
+$routes->get('/update/game/(:segment)', 'Games::updateformgames/$1');
+$routes->get('/update/developer/(:segment)', 'Developers::updateformdeveloper/$1');
+$routes->get('/update/publisher/(:segment)', 'Games::updateformpulisher/$1');
 $routes->get('/users/login', 'Users::usersloginform');
 $routes->get('/users/verify', 'Users::userslogin');
 

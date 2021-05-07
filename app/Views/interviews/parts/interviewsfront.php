@@ -11,7 +11,7 @@
               </figure>
             </div>
             <div class="card-content">
-              <p class="title is-5">Interview with <a href="<?= base_url('/games/'.$list['slug'].'#small_interview') ?>"><?= $list['dev_name'] ?></a></p>
+              <p class="title is-5">Interview with <a href="<?= base_url('/game/'.$list['slug'].'#small_interview') ?>"><?= $list['dev_name'] ?></a></p>
             </div>
           </div>
         </div>

@@ -8,12 +8,12 @@
             <?php if ( ! empty ( $developers['image'] ) ): ?>
               <div class="card-image">
                 <figure class="image is-16by9">
-                  <a href="<?= base_url ( '/developers/'.$developers['slug'] ) ?>"><img src="<?= base_url ( '/img/developers/'.$developers['image'].'.jpeg') ?>"></a>
+                  <a href="<?= base_url ( '/developer/'.$developers['slug'] ) ?>"><img src="<?= base_url ( '/img/developers/'.$developers['image'].'.jpeg') ?>"></a>
                 </figure>
               </div>
             <?php else: ?>
               <div class="card-content">
-                <a href="<?= ( '/developers/'.$developers['slug']) ?>"><?= $developers['name'] ?></a>
+                <a href="<?= ( '/developer/'.$developers['slug']) ?>"><?= $developers['name'] ?></a>
               </div>
             <?php endif; ?>
           </div>
