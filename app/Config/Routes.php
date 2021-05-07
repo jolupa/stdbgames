@@ -56,7 +56,7 @@ $routes->get('/games/pro', 'Games::listpro');
 $routes->get('/games/rumours', 'Games::listrumours');
 $routes->get('/games/stateshare', 'Games::liststateshare');
 $routes->get('/games/streamconnect', 'Games::liststreamconnect');
-$routes->get('/games/(:segment)', 'Games::overview/$1');
+$routes->get('/game/(:segment)', 'Games::overview/$1');
 $routes->get('/interviews/list', 'Interviews::list');
 $routes->get('/publishers/(:segment)', 'Publishers::overview/$1');
 $routes->get('/update/game/(:segment)', 'Games::updateformgames/$1');
