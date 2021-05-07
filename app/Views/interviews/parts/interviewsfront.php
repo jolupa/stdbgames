@@ -7,7 +7,7 @@
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-3by2">
-                <img src="<?= base_url('/img/games/'.$list['image'].'.jpeg') ?>" title="<?= $list['name'] ?>">
+                <a href="<?= base_url ( '/game/'.$list['slug'].'#small_interview' ) ?>"><img src="<?= base_url('/img/games/'.$list['image'].'.jpeg') ?>" title="<?= $list['name'] ?>"></a>
               </figure>
             </div>
             <div class="card-content">
