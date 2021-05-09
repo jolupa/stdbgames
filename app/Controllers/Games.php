@@ -90,8 +90,8 @@
       $data['page_title'] = $data['game']['name'].' - On Stadia GamesDB!';
       $data['page_description'] = ellipsize($data['game']['about'], 80, 1, '...');
       $data['page_keywords'] = $data['game']['name'].', '.$data['game']['dev_name'].', '.$data['game']['pub_name'].', stadia, google, stream, games, cloud, online, streaming, fun, party';
-      $data['page_image'] = base_url('/img/games'.$data['game']['image'].'.jpeg');
-      $data['page_url'] = base_url('/games/'.$slug);
+      $data['page_image'] = base_url('/img/games/'.$data['game']['image'].'.jpeg');
+      $data['page_url'] = base_url('/game/'.$slug);
       $data['page_twitterimagealt'] = $data['game']['name'].' - Stadia GamesDB!';
 
       echo view('templates/header', $data);
@@ -134,7 +134,7 @@
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads";
       $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg');
-      $data['page_url'] = base_url ( '/games/list');
+      $data['page_url'] = base_url ( '/db/list');
       $data['page_twitterimagealt'] = 'All the Games on DB!';
       $data['page_header'] = 'All the games on DB!';
 
@@ -187,7 +187,7 @@
       $data['page_description'] = 'All the games without a clear release date on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, without date";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/nodate' );
       $data['page_twitterimagealt'] = 'Games without release date on Stadia';
       $data['page_header'] = 'Games without release date';
@@ -212,7 +212,7 @@
       $data['page_description'] = 'All the games with Local Multiplayer on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, local multiplayer";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/couch' );
       $data['page_twitterimagealt'] = 'Games with local multiplayer on Stadia';
       $data['page_header'] = 'Games with Couch Multiplayer';
@@ -237,7 +237,7 @@
       $data['page_description'] = 'All the games with Cross Play on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, cross play";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/crossplay' );
       $data['page_twitterimagealt'] = 'Games with cross play on Stadia';
       $data['page_header'] = 'Games with Cross Play';
@@ -262,7 +262,7 @@
       $data['page_description'] = 'All the games with Cross Progression on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, cross progression";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/crossprogression' );
       $data['page_twitterimagealt'] = 'Games with cross progression on Stadia';
       $data['page_header'] = 'Games with Cross Progression';
@@ -287,7 +287,7 @@
       $data['page_description'] = 'All the games with Crowd Choice on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, crowd choice";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/crowdchoice' );
       $data['page_twitterimagealt'] = 'Games with crowd choice on Stadia';
       $data['page_header'] = 'Games with Crowd Choice';
@@ -312,7 +312,7 @@
       $data['page_description'] = 'All the games with Crowd Play on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, crowd play";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/crowdplay' );
       $data['page_twitterimagealt'] = 'Games with crowd play on Stadia';
       $data['page_header'] = 'Games with Crowd Play';
@@ -337,7 +337,7 @@
       $data['page_description'] = 'All the games in Early Access on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, early access";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/earlyaccess' );
       $data['page_twitterimagealt'] = 'Games in early access on Stadia';
       $data['page_header'] = 'Games in Early Access';
@@ -362,7 +362,7 @@
       $data['page_description'] = 'All the games first on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, first on stadia, staida first, timed exclusives";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/firstonstadia' );
       $data['page_twitterimagealt'] = 'Games First on Stadia';
       $data['page_header'] = 'Games First on Stadia';
@@ -387,7 +387,7 @@
       $data['page_description'] = 'All the games free to play on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, free to play, f2p";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/freetoplay' );
       $data['page_twitterimagealt'] = 'Games free to play on Stadia';
       $data['page_header'] = 'Games Free to Play';
@@ -412,7 +412,7 @@
       $data['page_description'] = 'All the games released on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, catalogue, released, launched";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/launched' );
       $data['page_twitterimagealt'] = 'Games release on Stadia';
       $data['page_header'] = 'Games Released';
@@ -437,7 +437,7 @@
       $data['page_description'] = 'All the with online multiplayer on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, online multiplayer";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/online' );
       $data['page_twitterimagealt'] = 'Games with online multiplayer on Stadia';
       $data['page_header'] = 'Games with Online Multiplayer';
@@ -464,7 +464,7 @@
       $data['page_description'] = 'All pro games on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, pro games, pro, free, subscription";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/pro' );
       $data['page_twitterimagealt'] = 'Pro games on Stadia';
       $data['page_header'] = 'Pro Games Released';
@@ -490,7 +490,7 @@
       $data['page_description'] = 'All rumoured games maybe coming to Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, rumours, leaks, possible";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/rumours' );
       $data['page_twitterimagealt'] = 'Rumoured games coming to Stadia';
       $data['page_header'] = 'Rumoured Games Coming to Stadia';
@@ -515,7 +515,7 @@
       $data['page_description'] = 'All games exclusive for Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, exclusives";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/exclusives' );
       $data['page_twitterimagealt'] = 'Exclusives games for Stadia';
       $data['page_header'] = 'All Exclusive Games for Stadia';
@@ -540,7 +540,7 @@
       $data['page_description'] = 'All games with State Share for Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, features, state share";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/stateshare' );
       $data['page_twitterimagealt'] = 'Games with State Share for Stadia';
       $data['page_header'] = 'All Games with State Share for Stadia';
@@ -565,7 +565,7 @@
       $data['page_description'] = 'All games with stream connect for Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, features, stream connect";
-      $data['page_image'] = base_url ( '/img/games'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/streamconnect' );
       $data['page_twitterimagealt'] = 'Games with stream connect for Stadia';
       $data['page_header'] = 'All Games with Stream Connect for Stadia';

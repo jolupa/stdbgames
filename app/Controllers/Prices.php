@@ -66,7 +66,7 @@
       $data['page_description'] = 'All the game deals on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, deals";
-      if ( empty ( $data['list'] ) ) {
+      if ( empty ( $data['list']['image'] ) ) {
 
         $data['page_image'] = base_url ( '/img/stdb_logo_big.png' );
 

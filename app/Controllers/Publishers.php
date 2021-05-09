@@ -46,7 +46,7 @@
 
       $data['page_keywords'] = $data['publisher']['name'].', stadia, google, stream, games, cloud, online, streaming, fun, party';
       $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
-      $data['page_url'] = base_url( '/publishers/'.$slug );
+      $data['page_url'] = base_url( '/publisher/'.$slug );
       $data['page_twitterimagealt'] = $data['publisher']['name'].' - Stadia GamesDB!';
 
       echo view ( 'templates/header', $data );
