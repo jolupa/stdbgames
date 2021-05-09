@@ -681,16 +681,24 @@
 
     public function addformgames () {
 
-      $data['page_title'] = 'Add Game to DB!';
-      $data['page_description'] = 'Page only to insert games on DB! - Staff only';
-      $data['page_keywords'] = '';
-      $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
-      $data['page_url'] = base_url( '/games/add' );
-      $data['page_twitterimagealt'] = 'Games add form - Stadia GamesDB!';
+      if ( session( 'logged') == false || session ( 'role') != 1 ) {
 
-      echo view ( 'templates/header', $data );
-      echo view ( 'games/addformgames' );
-      echo view ( 'templates/footer' );
+        return redirect()->to( '/' )->with( 'error_usun', 'You can\'t create games on DB! if you are not a DB! Staff' );
+
+      } else {
+
+        $data['page_title'] = 'Add Game to DB!';
+        $data['page_description'] = 'Page only to insert games on DB! - Staff only';
+        $data['page_keywords'] = '';
+        $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+        $data['page_url'] = base_url( '/games/add' );
+        $data['page_twitterimagealt'] = 'Games add form - Stadia GamesDB!';
+
+        echo view ( 'templates/header', $data );
+        echo view ( 'games/addformgames' );
+        echo view ( 'templates/footer' );
+
+      }
 
     }
 
