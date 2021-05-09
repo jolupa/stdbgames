@@ -1,19 +1,19 @@
 <div id="last_registered_users" class="container mt-5">
   <div class="mx-3">
     <p class="title is-4">Last Users Registered</p>
-    <table class="table">
+    <table class="table is-fullwidth">
       <thead>
         <tr class="has-text-centered">
-          <th>Image</th>
+          <th class="is-hidden-mobile">Image</th>
           <th>Name</th>
-          <th>Birthdate</th>
+          <th class="is-hidden-mobile">Birthdate</th>
           <th>Change Role</th>
         </tr>
       </thead>
       <tbody>
         <?php foreach ( $users as $users ): ?>
           <tr class="has-text-centered">
-            <td>
+            <td class="is-hidden-mobile">
               <figure class="image is-32x32">
                 <img src="
                 <?php if ( ! empty ( $users['image'] ) ): ?>
@@ -24,7 +24,7 @@
               </figure>
             </td>
             <td><?= $users['name'] ?></td>
-            <td><?= date ('d-m-Y', strtotime ( $users['birth_date'] ) ) ?></td>
+            <td class="is-hidden-mobile"><?= date ('d-m-Y', strtotime ( $users['birth_date'] ) ) ?></td>
             <td>
               <form action="<?= base_url ( '/users/changerole' ) ?>" method="post" enctype="application/x-www-form-urlencoded">
                 <input type="hidden" name="id" value="<?= $users['id'] ?>">
