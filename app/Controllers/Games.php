@@ -580,9 +580,8 @@
 
       $pager = \Config\Services::pager();
       $model = new GamesModel();
-      $data['dev_games'] = $model->select('games.id, games.name AS game_name, games.image AS game_image, games.slug AS game_slug, games.like, games.dislike, publishers.name AS pub_name, publishers.slug AS pub_slug')
+      $data['dev_games'] = $model->select('games.id, games.rumor, games.name AS game_name, games.image AS game_image, games.slug AS game_slug, games.like, games.dislike, publishers.name AS pub_name, publishers.slug AS pub_slug')
                                   ->where('developer_id', $id)
-                                  ->where('games.rumor !=', 1)
                                   ->join('publishers', 'publishers.id = games.publisher_id')
                                   ->orderBy('games.release', 'ASC')
                                   ->paginate(44);
@@ -596,9 +595,8 @@
 
       $pager = \Config\Services::pager();
       $model = new GamesModel();
-      $data['pub_games'] = $model->select('games.id, games.name AS game_name, games.image AS game_image, games.slug AS game_slug, games.like, games.dislike, developers.name AS dev_name, developers.slug AS dev_slug')
+      $data['pub_games'] = $model->select('games.id, games.rumor, games.name AS game_name, games.image AS game_image, games.slug AS game_slug, games.like, games.dislike, developers.name AS dev_name, developers.slug AS dev_slug')
                                   ->where('publisher_id', $id)
-                                  ->where('rumor', 0)
                                   ->join('developers', 'developers.id = games.developer_id')
                                   ->orderBy('games.release', 'ASC')
                                   ->paginate(44);

@@ -1,4 +1,4 @@
-<p class="title is-4">Games Developed</p>
+<p class="subtitle is-4 mt-5">Games Developed</p>
 <?php if ( session ( 'error_lidi' ) == true ): ?>
   <p class="help mb-3"><?= session ( 'error_lidi' ) ?></p>
 <?php endif; ?>
@@ -24,9 +24,14 @@
               <?php endif; ?>
             </span>
           </div>
+          <div class="is-overlay is-hidden-desktop" style="top:auto; right: 5px; bottom: 5xp; left:auto;">
+            <?php if ( ! empty ( $developed['rumor'] ) ): ?>
+              <tag class=" tag is-info"><span class="icon"><i class="fas fa-exclamation"></span></i></tag>
+            <?php endif; ?>
+          </div>
         </div>
         <div class="card-content is-hidden-mobile">
-          <p class="title is-5"><a href="<?= base_url ( '/game/'.$developed['game_slug'] ) ?>"><?= ellipsize ( $developed['game_name'], 15, 1, '...' ) ?></a></p>
+          <p class="title is-5"><span class="icon-text"><?php if ( ! empty ( $developed['rumor'] ) ): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$developed['game_slug'] ) ?>"><?= ellipsize ( $developed['game_name'], 15, 1, '...' ) ?></a></span></span></p>
           <p class="subtitle is-7">Pub <a href="<?= base_url ( '/publisher/'.$developed['pub_slug'] ) ?>"><?= $developed['pub_name'] ?></a></p>
         </div>
       </div>
