@@ -1,7 +1,7 @@
 <p class="title is-4 mt-5">Also released this day</p>
-<div class="columns is-multiline">
+<div class="columns is-multiline is-mobile">
   <?php foreach ( $sameday as $sameday ): ?>
-    <div class="column is-2">
+    <div class="column is-2-desktop is-one-third-mobile">
       <div class="card is-shadowless">
         <div class="card-image">
           <figure class="image is-3by2">

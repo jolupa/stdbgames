@@ -8,14 +8,11 @@
       </div>
       <div class="columns">
         <div class="column is-full">
-          <p class="title is-5 has-text-centered">
-            <span class="icon-text"><span><strong>Stadia GamesDB!</strong> is made with</span> <span class="icon has-text-danger"><i class="fas fa-heart"></i></span> <span>In Barcelona</span></span>
-            <br>
-            <span class="icon-text"><span class="icon"><i class="fas fa-copyright"></i></span><span>&nbsp;2020&nbsp;/&nbsp;<?= date('Y') ?><strong>&nbsp;jolupa</strong></span></span>
-            <br>
-            <span class="icon-text"><span>Stadia and the Stadia Logo are</span> <span class="icon"><i class="fas fa-copyright"></i></span> <span>&</span>&nbsp;<span class="icon"><i class="fas fa-trademark"></i></span>&nbsp;of Google Inc.</span>
-            <br>
-            All Games Names, Images, and Logos are property of their respective owners.
+          <p class="has-text-centered">
+            <strong>Stadia GamesDB!</strong> is made with <strong>{{LOVE}}</strong> In Barcelona.<br>
+            <strong>{{c}}</strong> 2020/<?= date('Y') ?> <strong>jolupa</strong><br>
+            Stadia and the Stadia Logo are <strong>{{c}}</strong> and <strong>{{tm}}</strong> of <strong>Google Inc.</strong><br>
+            All Game Names, Images and Logos are poperty of their respective owners.
           </p>
         </div>
       </div>
