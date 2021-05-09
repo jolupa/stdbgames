@@ -50,7 +50,8 @@
       if ( session ( 'logged' ) == true ) {
 
         $model = new LibrariesModel();
-        $model->where( 'game_id', $id )->where( 'user_id', session ( 'user_id' ) )->delete();
+        $model->deleteGameInLibrary( $id, session ( 'user_id' ) );
+
         $key = array_search ( $id, session ( 'library' ) );
 
         if ( ! empty ( $key ) ) {

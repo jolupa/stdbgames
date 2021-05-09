@@ -28,7 +28,7 @@
                       ->where('game_id', $game_id)
                       ->where('user_id', $user_id);
 
-      if ( ! empty ( $builder->get()->getRowArray ) ) {
+      if ( $builder->countAllResults(false) > 0 ) {
 
         $builder->delete();
         return true;
@@ -38,6 +38,17 @@
         return false;
 
       }
+
+    }
+
+    public function deleteGameInLibrary( int $game_id, int $user_id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('libraries')
+                    ->where('game_id', $game_id)
+                    ->where('user_id', $user_id)
+                    ->delete();
+
     }
 
   }
