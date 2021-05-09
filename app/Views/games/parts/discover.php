@@ -4,8 +4,8 @@
     <?php if ( session ( 'error_lidi') != null ): ?>
       <p class="subtitle is-6"><?= session ( 'error_lidi' ) ?></p>
     <?php endif; ?>
-    <div class="columns is-inline-flex-mobile">
-      <div class="column is-half">
+    <div class="columns is-multiline-is-mobile">
+      <div class="column is-half-desktop">
         <div class="card is-shadowless">
           <div class="card-image">
             <figure class="image is-16by9">
@@ -49,7 +49,7 @@
               </div>
             </figure>
           </div>
-          <div class="card-content">
+          <div class="card-content is-hidden-mobile">
             <p class="title is-5"><a href="<?= base_url('/game/'.$discover[0]['slug']) ?>" title="<?= $discover[0]['name'] ?>"><span class="icon-text"><?php if ( $discover[0]['rumor'] == 1 ): ?><span class="icon"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><?= $discover[0]['name'] ?></span></a></p>
             <p class="subtitle is-7">Dev <strong><a href="<?= base_url('/developer/'.$discover[0]['dev_slug']) ?>" title="<?= $discover[0]['dev_name'] ?>"><?= $discover[0]['dev_name'] ?></a></strong> | Pub <strong><a href="<?= base_url('/publisher/'.$discover[0]['pub_slug']) ?>" title="<?= $discover[0]['pub_name'] ?>"><?= $discover[0]['pub_name'] ?></a></strong></p>
           </div>
@@ -99,7 +99,7 @@
               </div>
             </figure>
           </div>
-          <div class="card-content">
+          <div class="card-content is-hidden-mobile">
             <p class="title is-5"><a href="<?= base_url('/game/'.$discover[1]['slug']) ?>" title="<?= $discover[1]['name'] ?>"><span class="icon-text"><?php if ( $discover[1]['rumor'] == 1 ): ?><span class="icon"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><?= $discover[1]['name'] ?></span></a></p>
             <p class="subtitle is-7">Dev <strong><a href="<?= base_url('/developer/'.$discover[1]['dev_slug']) ?>" title="<?= $discover[1]['dev_name'] ?>"><?= $discover[1]['dev_name'] ?></a></strong> | Pub <strong><a href="<?= base_url('/publisher/'.$discover[1]['pub_slug']) ?>" title="<?= $discover[1]['pub_name'] ?>"><?= $discover[1]['pub_name'] ?></a></strong></p>
           </div>

@@ -1,9 +1,9 @@
 <article id="this-month" class="container mt-5">
   <div class="mx-3">
     <p class="title is-4">Out this month</p>
-    <div class="columns is-multiline is-inline-flex-mobile">
+    <div class="columns is-multiline is-mobile">
       <?php foreach ($thismonth as $release): ?>
-        <div class="column is-one-quarter is-half-mobile">
+        <div class="column is-one-quarter-desktop is-half-mobile">
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-3by2">
@@ -38,7 +38,7 @@
                 </div>
               </figure>
             </div>
-            <div class="card-content">
+            <div class="card-content is-hidden-mobile">
               <p class="title is-5"><a href="<?= base_url('/game/'.$release['slug']) ?>"><?= ellipsize($release['name'], 15, 1, '...') ?></a></p>
               <p class="subtitle is-7">Dev <a href="<?= base_url('/developer/'.$release['dev_slug']) ?>"><?= ellipsize($release['dev_name'], 15, 1, '...') ?></a> | Pub <a href="<?= base_url('/publisher/'.$release['pub_slug']) ?>"><?= ellipsize($release['pub_name'], 15, 1, '...') ?></a> | Rel <?= date('d-m-Y', strtotime($release['release'])) ?></p>
             </div>

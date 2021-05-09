@@ -1,16 +1,16 @@
 <article id="interviews" class="container mt-5">
   <div class="mx-3">
     <p class="title is-4">Our small interviews</p>
-    <div class="columns is-multiline is-inline-flex-mobile">
+    <div class="columns is-multiline is-mobile">
       <?php foreach ($interviewslist as $list): ?>
-        <div class="column is-one-quarter is-half-mobile">
+        <div class="column is-one-quarter-desktop is-half-mobile">
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-3by2">
                 <a href="<?= base_url ( '/game/'.$list['slug'].'#small_interview' ) ?>"><img src="<?= base_url('/img/games/'.$list['image'].'.jpeg') ?>" title="<?= $list['name'] ?>"></a>
               </figure>
             </div>
-            <div class="card-content">
+            <div class="card-content is-hidden-mobile">
               <p class="title is-5">Interview with <a href="<?= base_url('/game/'.$list['slug'].'#small_interview') ?>"><?= $list['dev_name'] ?></a></p>
             </div>
           </div>
