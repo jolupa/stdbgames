@@ -24,6 +24,7 @@
         $data['games'] = $modelg->select('id, name, slug, image')
                                 ->like('name', $this->request->getVar('keyword'))
                                 ->orLike('about', $this->request->getVar('keyword'))
+                                ->where('deleted_at', '')
                                 ->findAll();
         $data['developers'] = $modeld->select('id, name, slug, image')
                                 ->like('name', $this->request->getVar('keyword'))

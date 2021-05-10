@@ -1204,15 +1204,15 @@
 
       if ( ! empty ( $this->request->getVar('preorder_appid') ) ) {
 
-        $data['demo_appid'] = $this->request->getVar('preorder_appid');
-        $data['demo_sku'] = $this->request->getVar('preorder_sku');
+        $data['demo_appid'] = $this->request->getVar('demo_appid');
+        $data['demo_sku'] = $this->request->getVar('demo_sku');
 
       }
 
       if ( ! empty ( $this->request->getVar('demo_appid') ) ) {
 
-        $data['preorder_appid'] = $this->request->getVar('demo_appid');
-        $data['preorder_sku'] = $this->request->getVar('demo_sku');
+        $data['preorder_appid'] = $this->request->getVar('preorder_appid');
+        $data['preorder_sku'] = $this->request->getVar('preorder_sku');
 
       }
 
