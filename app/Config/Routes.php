@@ -61,7 +61,7 @@ $routes->get('/interviews/list', 'Interviews::list');
 $routes->get('/publisher/(:segment)', 'Publishers::overview/$1');
 $routes->get('/update/game/(:segment)', 'Games::updateformgames/$1');
 $routes->get('/update/developer/(:segment)', 'Developers::updateformdeveloper/$1');
-$routes->get('/update/publisher/(:segment)', 'Games::updateformpulisher/$1');
+$routes->get('/update/publisher/(:segment)', 'Publishers::updateformpublisher/$1');
 $routes->get('/users/login', 'Users::usersloginform');
 $routes->get('/users/verify', 'Users::userslogin');
 

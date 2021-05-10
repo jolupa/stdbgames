@@ -113,6 +113,50 @@
         echo view ( 'publishers/addformpublishers', [ 'validation' => $this->validator ] );
         echo view ( 'templates/footer' );
 
+      } else {
+
+        $model = new PublishersModel();
+        $data['name'] = $this->request->getVar('name');
+        $data['slug'] = strtolower( url_title ( $data['name'] ) );
+
+        if ( ! empty ( $this->request->getVar('url') ) ) {
+
+          $data['url'] = $this->request->getVar('url');
+
+        }
+
+        if ( ! empty ( $this->request->getVar('twitter_account') ) ) {
+
+          $data['twitter_account'] = $this->request->getVar('twitter_account');
+
+        }
+
+        if ( ! empty ( $this->request->getVar('about') ) ) {
+
+          $data['about'] = $this->request->getVar('about');
+
+        }
+
+        if ( $_FILES['image']['error'] != 4 ) {
+
+          $file = $this->request->getFile('image')
+                                ->move(WRITEPATH.'uploads', $data['slug']);
+          $image = \Config\Services\image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+                                                    ->resize(1370, 728, 'width')
+                                                    ->convert(IMAGETYPE_JPEG)
+                                                    ->save(ROOTPATH.'publi/img/publishers/'.$data['slug'].'.jpeg');
+          $imagethumb = \Config\Services\image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+                                                          ->fit(256, 256, 'center')
+                                                          ->convert(IMAGETYPE_JPEG)
+                                                          ->save(ROOTPATH.'public/img/publishers/'.$data['slug'].'-thumb.jpeg');
+          unlink (WRITEPATH.'uploads/'.$data['slug']);
+          $data['image'] = $data['slug'];
+
+        }
+
+        $model->save( $data );
+        return redirect()->to( '/publisher/'.$data['slug'] );
+
       }
 
     }
@@ -169,7 +213,7 @@
       }
 
       $model->save( $data );
-      return redirect()->to( base_url( '/publishers/'.$this->request->getVar('slug') ) );
+      return redirect()->to( base_url( '/publisher/'.$this->request->getVar('slug') ) );
 
     }
 
