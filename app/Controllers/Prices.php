@@ -2,6 +2,7 @@
 
   namespace App\Controllers;
   use App\Models\PricesModel;
+  use Abraham\TwitterOAuth\TwitterOAuth;
 
   class Prices extends BaseController {
 
@@ -180,7 +181,12 @@
         }
 
         $model->save( $data );
-        return redirect()->to( '/games/update/'.$this->request->getVar('slug') );
+        require ( ROOTPATH.'twitter.php' );
+        $statusmessage = 'Don\'t miss the deal on '.$this->request->getVar('name').' Check it out! https://stdb.games/game/'.$this->request->getVar('slug');
+        $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
+        $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
+
+        return redirect()->to( '/update/game/'.$this->request->getVar('slug') );
 
       }
 

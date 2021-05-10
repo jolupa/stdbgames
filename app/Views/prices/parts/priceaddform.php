@@ -2,6 +2,7 @@
 <form method="post" action="<?= base_url ( '/prices/savepricesdb' ) ?>" enctype="multipart/form-data">
   <input type="hidden" name="slug" value="<?= $game [ 'slug' ] ?>">
   <input type="hidden" name="game_id" value="<?= $game ['id'] ?>">
+  <input type="hidden" name="name" value="<?= $game['name'] ?>">
   <div class="field is-grouped">
     <div class="control">
       <label class="label">Valid From</label>
