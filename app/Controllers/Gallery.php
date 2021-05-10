@@ -32,7 +32,7 @@
 
       catch ( \Exception $e ) {
 
-        return '';
+        return $e->getMessage();
 
       }
 
