@@ -22,7 +22,7 @@
 
     }
 
-    public function gamereviews ( int $id ) {
+    public function gamereviews ( int $id, string $release ) {
 
       $model = new ReviewsModel();
       $pager = \Config\Services::pager();
@@ -33,118 +33,128 @@
                                 ->paginate(10, 'gamereviews');
       $data['pager'] = $model->pager;
 
-      // We make sure that are reviews for the game
+      //We check if the game is launched to give access to Reviews
 
-      if ( ! empty ( $data[ 'reviews' ] ) ) {
+      if ( $release > date ( 'Y-m-d') ) {
+
+        return '';
+
+      } else {
+
+        // We make sure that are reviews for the game
+
+        if ( ! empty ( $data[ 'reviews' ] ) ) {
 
 
 
-        // 'Cause there are reviews we convert the Markup to html if there are reviews with Markup
+          // 'Cause there are reviews we convert the Markup to html if there are reviews with Markup
 
-        $total = count ( $data['reviews'] );
-        $i = 0;
-        $convert = new CommonMarkConverter([
+          $total = count ( $data['reviews'] );
+          $i = 0;
+          $convert = new CommonMarkConverter([
 
-          'html_input' => 'strip',
-          'allow_unsafe_links' => false,
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
 
-        ]);
+          ]);
 
-        // If there are only one review we convert only that Markup
+          // If there are only one review we convert only that Markup
 
-        if ( $total == 1 ) {
+          if ( $total == 1 ) {
 
-          // 'Cause at the beggining of the page there was reviews without about we check if it's not empty
+            // 'Cause at the beggining of the page there was reviews without about we check if it's not empty
 
-          if ( ! empty ( $data['reviews'][0]['about'] ) ) {
+            if ( ! empty ( $data['reviews'][0]['about'] ) ) {
 
-            $conversion = $convert->convertToHtml( $data['reviews'][0]['about'] );
+              $conversion = $convert->convertToHtml( $data['reviews'][0]['about'] );
 
-            // Beacuse the CommonMark plugin returns empty when there's html we check that to not pass an empty value to
-            // the review
+              // Beacuse the CommonMark plugin returns empty when there's html we check that to not pass an empty value to
+              // the review
 
-            if ( ! empty ( $conversion) ) {
+              if ( ! empty ( $conversion) ) {
 
-              $data['reviews'][0]['about'] = $conversion;
-
-            }
-
-          }
-
-        } else {
-
-          // If there are more than one review we make a while loop to convert all
-
-          while ( $i <= $total ) {
-
-            // As before we check that there's not empty about for the review
-
-            if ( ! empty ( $data['reviews'][$i]['about'] ) ) {
-
-              $conversion = $convert->convertToHtml( $data['reviews'][$i]['about'] );
-
-              // We check again if the CommonMark don't return an empty value
-
-              if ( ! empty ( $conversion ) ) {
-
-                $data['reviews'][$i]['about'] = $conversion;
+                $data['reviews'][0]['about'] = $conversion;
 
               }
 
             }
 
-            $i++;
+          } else {
+
+            // If there are more than one review we make a while loop to convert all
+
+            while ( $i <= $total ) {
+
+              // As before we check that there's not empty about for the review
+
+              if ( ! empty ( $data['reviews'][$i]['about'] ) ) {
+
+                $conversion = $convert->convertToHtml( $data['reviews'][$i]['about'] );
+
+                // We check again if the CommonMark don't return an empty value
+
+                if ( ! empty ( $conversion ) ) {
+
+                  $data['reviews'][$i]['about'] = $conversion;
+
+                }
+
+              }
+
+              $i++;
+
+            }
 
           }
 
-        }
+          // Now we decide what to present to user depending if its logged and if there's any review from the user
 
-        // Now we decide what to present to user depending if its logged and if there's any review from the user
+          if ( session ( 'logged' ) == true ) {
 
-        if ( session ( 'logged' ) == true ) {
+            // We check if the user has Reviews
 
-          // We check if the user has Reviews
+            $checkuser = $model->where('game_id', $id)
+                                ->where('user_id', session ( 'user_id' ))
+                                ->findAll();
 
-          $checkuser = $model->where('game_id', $id)
-                              ->where('user_id', session ( 'user_id' ))
-                              ->findAll();
+            // If the user has reviews we return only the reviews
 
-          // If the user has reviews we return only the reviews
+            if ( ! empty ( $checkuser ) ) {
 
-          if ( ! empty ( $checkuser ) ) {
+              return view ( 'reviews/gamereviews', $data );
 
-            return view ( 'reviews/gamereviews', $data );
+            } else {
+
+              // If the user don't have any review we return the review with the form to insert one.
+
+              $data['createreview'] = true;
+              return view ( 'reviews/gamereviews', $data );
+
+            }
 
           } else {
 
-            // If the user don't have any review we return the review with the form to insert one.
+            // 'Cause the user is not logged but are reviews we return only the reviews
 
-            $data['createreview'] = true;
             return view ( 'reviews/gamereviews', $data );
 
           }
 
         } else {
 
-          // 'Cause the user is not logged but are reviews we return only the reviews
+          // If there are no reviews we check if the user is loged to offer the possibility to add a new one
 
-          return view ( 'reviews/gamereviews', $data );
+          if ( session ( 'logged' ) == true ) {
 
-        }
+            return view ( 'reviews/parts/createreview' );
 
-      } else {
+          } else {
 
-        // If there are no reviews we check if the user is loged to offer the possibility to add a new one
+            // 'Cause the user is not loged and there's no reviews we don't return nothing
 
-        if ( session ( 'logged' ) == true ) {
+            return '';
 
-          return view ( 'reviews/parts/createreview' );
-
-        } else {
-
-          // 'Cause the user is not loged and there's no reviews we don't return nothing
-
-          return '';
+          }
 
         }
 

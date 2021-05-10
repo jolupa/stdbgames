@@ -1195,26 +1195,12 @@
 
       }
 
-      if ( ! empty ( $this->request->getVar('appid') ) ) {
-
-        $data['appid'] = $this->request->getVar('appid');
-        $data['sku'] = $this->request->getVar('sku');
-
-      }
-
-      if ( ! empty ( $this->request->getVar('preorder_appid') ) ) {
-
-        $data['demo_appid'] = $this->request->getVar('demo_appid');
-        $data['demo_sku'] = $this->request->getVar('demo_sku');
-
-      }
-
-      if ( ! empty ( $this->request->getVar('demo_appid') ) ) {
-
-        $data['preorder_appid'] = $this->request->getVar('preorder_appid');
-        $data['preorder_sku'] = $this->request->getVar('preorder_sku');
-
-      }
+      $data['appid'] = $this->request->getVar('appid');
+      $data['sku'] = $this->request->getVar('sku');
+      $data['demo_appid'] = $this->request->getVar('demo_appid');
+      $data['demo_sku'] = $this->request->getVar('demo_sku');
+      $data['preorder_appid'] = $this->request->getVar('preorder_appid');
+      $data['preorder_sku'] = $this->request->getVar('preorder_sku');
 
       $model->save( $data );
 
