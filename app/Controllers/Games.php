@@ -1210,11 +1210,11 @@
 
         if ( $data['rumor'] == 1 ) {
 
-          $statusmessage = 'Updated '.$data['name'].' on DB! Is still a rumor, so be carefull with espectations. But like it, dislike it or add to wishlist or library https://stdb.games/game/'.$data['slug'];
+          $statusmessage = 'Updated '.$data['name'].' on DB! Is still a rumor, so be carefull with espectations. But like it, dislike it or add to wishlist or library https://stdb.games/game/'.$this->request->getVar('slug');
 
         } else {
 
-          $statusmessage = 'Updated '.$data['name'].' on DB!. Like it dislike it or add it to your wishlist or library! https://stdb.games/game/'.$data['slug'];
+          $statusmessage = 'Updated '.$data['name'].' on DB!. Like it dislike it or add it to your wishlist or library! https://stdb.games/game/'.$this->request->getVar('slug');
 
         }
 
