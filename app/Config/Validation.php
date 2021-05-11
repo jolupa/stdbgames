@@ -155,19 +155,6 @@ class Validation
 
 		],
 
-		'confirm' => [
-
-			'label' => 'confirm',
-			'rules' => 'required|matches[password]',
-			'errors' => [
-
-				'required' => 'Confirm your password, just in case',
-				'matches' => 'The password and Confirmation are not the same, are you trying something?',
-
-			],
-
-		],
-
 	];
 
 	public $usersignup = [

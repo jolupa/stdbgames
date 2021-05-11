@@ -25,13 +25,6 @@
                   <p class="help has-text-coral"><?= session ( 'validation_pass' ) ?></p>
                 <?php endif; ?>
               </div>
-              <label class="label mt-1">Confirm Password</label>
-              <div class="control">
-                <input class="input" type="password" name="confirm">
-                <?php if ( isset ( $validation ) && $validation->hasError('confirm') ): ?>
-                  <p class="help has-text-coral"><?= $validation->getError('confirm') ?></p>
-                <?php endif; ?>
-              </div>
             </div>
           </div>
           <div class="field is-grouped">
