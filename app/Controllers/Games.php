@@ -1017,7 +1017,7 @@
         }
 
         $file = $this->request->getFile('image')
-                              ->move(WRITEPATH.'uploads/', $data['slug']);
+                              ->move(WRITEPATH.'uploads/', $this->request->getVar('slug'));
 
         $image = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
                                                   ->resize(1370, 728, true, 'width')
