@@ -1007,7 +1007,7 @@
 
       }
 
-      if ( $_FILES['image']['error'] != 4 ) {
+      if ( $_FILES['image']['error'] !== 4 ) {
 
         if ( ! empty ( $this->request->getVar('oldimage') ) ) {
 
