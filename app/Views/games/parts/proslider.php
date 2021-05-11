@@ -55,6 +55,12 @@
               <?php $i++; endwhile; ?>
             </div>
           </div>
+          <div class="embla__prev is-overlay is-hidden-mobile" style="top: 40px; right: auto; bottom: auto; left: -10px;">
+            <button class="button is-minion"><span class="icon has-text-coral"><i class="is-large fas fa-arrow-alt-circle-left"></i></span></button>
+          </div>
+          <div class="embla__next is-overlay is-hidden-mobile" style="top: 40px; right: -10px; bottom: auto; left: auto;">
+            <button class="button is-minion"><span class="icon has-text-coral is-large"><i class="fas fa-arrow-alt-circle-right"></i></span></button>
+          </div>
         </div>
       </div>
     </div>
@@ -68,14 +74,19 @@
 
 <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
 <script type="text/javascript">
-  var emblaNode = document.querySelector('.embla__viewport')
+  var rootNode = document.querySelector('.embla')
+  var viewportNode = document.querySelector('.embla__viewport')
+  var prevButtonNode = rootNode.querySelector('.embla__prev')
+  var nextButtonNode = rootNode.querySelector('.embla__next')
   var options = {
                   loop: true,
-                  slidesToScroll: 1,
+                  slidesToScroll: 3,
                   draggable: true,
                   startIndex: 0,
                   align: 'start'
                 }
 
-  var embla = EmblaCarousel(emblaNode, options)
+  var embla = EmblaCarousel(viewportNode, options)
+  prevButtonNode.addEventListener('click', embla.scrollPrev, false)
+  nextButtonNode.addEventListener('click', embla.scrollNext, false)
 </script>
