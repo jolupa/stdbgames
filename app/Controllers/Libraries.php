@@ -74,7 +74,7 @@
 
       $pager = \Config\Services::pager();
       $model = new LibrariesModel();
-      $data['libraries'] = $model->select('games.id, games.name, games.slug, games.image, games.like, games.dislike')
+      $data['libraries'] = $model->select('games.id, games.name, games.slug, games.image, games.like, games.dislike, games.rumor')
                                 ->where('libraries.user_id', session ( 'user_id' ) )
                                 ->join('games', 'games.id = libraries.game_id')
                                 ->orderBy('games.name', 'ASC')

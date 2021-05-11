@@ -9,6 +9,11 @@
               <figure class="image is-16by9">
                 <a href="<?= base_url ( '/game/'.$wishlist['slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$wishlist['image'].'.jpeg' ) ?>"></a>
               </figure>
+              <?php if ( $wishlist['rumor'] == 1 ): ?>
+                <div class="is-overlay" style="top: auto; left: auto; bottom: 5px; right: 5px;">
+                  <tag class="tag is-info"><span class="icon"><i class="fas fa-exclamation"></i></span></tag>
+                </div>
+              <?php endif; ?>
             </div>
           </div>
         </div>

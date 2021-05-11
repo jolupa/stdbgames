@@ -60,7 +60,7 @@
 
       $pager = \Config\Services::pager();
       $model = new WishlistsModel();
-      $data['wishlist'] = $model->select('games.id, games.name, games.slug, games.image, games.like, games.dislike')
+      $data['wishlist'] = $model->select('games.id, games.name, games.slug, games.image, games.like, games.dislike, games.rumor')
                                 ->where('wishlists.user_id', session ( 'user_id' ) )
                                 ->join('games', 'games.id = wishlists.game_id')
                                 ->orderBy('games.name', 'ASC')
