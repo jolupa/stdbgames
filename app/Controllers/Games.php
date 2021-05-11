@@ -913,11 +913,11 @@
 
           if ( $data['rumor'] == 1 ) {
 
-            $statusmessage = 'A new '.$data['name'].' on DB! Be careful is a RUMOR! but you can like, dislike or add it to your library or wishlist! https://stdb.games/game/'.$data['slug'];
+            $statusmessage = 'We added a new game to DB! '.$data['name'].' Be careful is a RUMOR! but you can like, dislike or add it to your library or wishlist! https://stdb.games/game/'.$data['slug'];
 
           } else {
 
-            $statusmessage = 'A new '.$data['name'].' on DB! Like, dislike add it to your wishlist or library and tell us what you think! https://stdb.games/game/'.$data['slug'];
+            $statusmessage = 'We added a new game to DB! '.$data['name'].' Like, dislike add it to your wishlist or library and tell us what you think! https://stdb.games/game/'.$data['slug'];
 
           }
 
