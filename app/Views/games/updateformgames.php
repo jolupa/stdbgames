@@ -275,6 +275,7 @@
         </div>
       </div>
     </form>
+    <?= view_cell ( 'App\Controllers\Editions::addeditionform', 'id='.$game['id'] ) ?>
     <?= view_cell ( 'App\Controllers\Interviews::interviewforms', 'id='.$game['id'] ) ?>
     <?= view_cell ( 'App\Controllers\Prices::priceaddform', 'id='.$game['id'] ) ?>
   </div>

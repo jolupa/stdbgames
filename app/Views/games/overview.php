@@ -114,6 +114,7 @@
           <?php endif; ?>
         </p>
         <div class="content">
+          <?= view_cell ( 'App\Controllers\Editions::editions', 'id='.$game['id'] ) ?>
           <p class="title is-4">About the game</p>
           <?= $game['about'] ?>
         </div>

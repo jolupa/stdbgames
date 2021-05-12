@@ -35,3 +35,9 @@ $(document).ready(function(){
     $('.navbar-menu').toggleClass('is-active');
   });
 });
+
+$(document).ready(function(){
+  $('#content').click(function(){
+    $('#editions').toggleClass('is-hidden');
+  });
+});
