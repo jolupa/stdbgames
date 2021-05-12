@@ -15,7 +15,7 @@
       <div class="field">
         <label class="label" for="url">Website</label>
         <div class="control">
-          <input class="input" type="url" placeholder="URL..." name="url">
+          <input class="input" type="text" placeholder="URL..." name="url">
         </div>
       </div>
       <div class="field">

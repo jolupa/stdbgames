@@ -14,7 +14,7 @@
       <div class="field">
         <label class="label" for="url">Website</label>
         <div class="control">
-          <input class="input" type="url" placeholder="URL..." name="url" <?php if ( ! empty ( $developer['url'] ) ): ?>value="<?= $developer['url'] ?><?php endif; ?>">
+          <input class="input" type="text" placeholder="URL..." name="url" <?php if ( ! empty ( $developer['url'] ) ): ?>value="<?= $developer['url'] ?><?php endif; ?>">
         </div>
       </div>
       <div class="field">
