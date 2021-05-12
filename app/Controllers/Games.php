@@ -1246,7 +1246,7 @@
                               ->where('release !=', '2099-01-01')
                               ->where('rumor', 0)
                               ->findAll();
-      $allprogames = $model->where('pro_till !=', '')
+      $allprogames = $model->where('pro_from !=', '')
                             ->findAll();
       $rumors = $model->where('rumor', 1)
                       ->findAll();
