@@ -141,7 +141,7 @@
         }
 
         $model->save( $data );
-        return redirect()->to( '/publishers/'.$data['slug'] );
+        return redirect()->to( '/developer/'.$data['slug'] );
 
       }
 
@@ -236,7 +236,7 @@
       }
 
       $model->save( $data );
-      return redirect()->to( base_url( '/developers/'.$this->request->getVar('slug') ) );
+      return redirect()->to( base_url( '/developer/'.$this->request->getVar('slug') ) );
 
     }
 
