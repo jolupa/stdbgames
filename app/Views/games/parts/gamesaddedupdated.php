@@ -78,7 +78,7 @@
                 </div>
                 <div class="is-overlay is-hidden-desktop" style="top: auto; right: 5px; bottom: 5px; left: auto;">
                   <span class="icon-text">
-                    <?php if ( $added['rumor'] == 1 ): ?><tag class="tag is-info"><span class="icon"><i class="fas fa-exclamation"></i></span></tag><?php endif; ?>
+                    <?php if ( $updated['rumor'] == 1 ): ?><tag class="tag is-info"><span class="icon"><i class="fas fa-exclamation"></i></span></tag><?php endif; ?>
                   </span>
                 </div>
               </figure>
