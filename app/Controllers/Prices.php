@@ -146,7 +146,7 @@
 
       } else {
 
-        if ( $this->request->getVar('id') ) {
+        if ( ! empty ( $this->request->getVar('id') ) ) {
 
           $data['id'] = $this->request->getVar('id');
 
@@ -181,10 +181,10 @@
         }
 
         $model->save( $data );
-        require ( ROOTPATH.'twitter.php' );
-        $statusmessage = 'Don\'t miss the deal on '.$this->request->getVar('name').' Check it out! https://stdb.games/game/'.$this->request->getVar('slug');
-        $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
-        $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
+        // require ( ROOTPATH.'twitter.php' );
+        // $statusmessage = 'Don\'t miss the deal on '.$this->request->getVar('name').' Check it out! https://stdb.games/game/'.$this->request->getVar('slug');
+        // $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
+        // $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
 
         return redirect()->to( '/update/game/'.$this->request->getVar('slug') );
 
