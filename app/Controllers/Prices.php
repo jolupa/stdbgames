@@ -34,13 +34,19 @@
 
       $model = new PricesModel();
       $data['dealongame'] = $model->where('game_id', $id)
-                                  ->where('date_till_nonpro >', date('Y-m-d'))
-                                  ->orWhere('date_till_pro >', date('Y-m-d'))
                                   ->orderBy('id', 'DESC')
                                   ->first();
       if ( ! empty ( $data['dealongame'] ) ) {
 
-        return view ( 'prices/parts/dealongame', $data );
+        if ( $data['dealongame']['date_till_pro'] > date('Y-m-d') || $data['dealongame']['date_till_nonpro'] > date('Y-m-d') ) {
+
+          return view ( 'prices/parts/dealongame', $data );
+
+        } else {
+
+          return view ( 'prices/parts/dealongame' );
+
+        }
 
       } else {
 
@@ -181,10 +187,10 @@
         }
 
         $model->save( $data );
-        // require ( ROOTPATH.'twitter.php' );
-        // $statusmessage = 'Don\'t miss the deal on '.$this->request->getVar('name').' Check it out! https://stdb.games/game/'.$this->request->getVar('slug');
-        // $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
-        // $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
+        require ( ROOTPATH.'twitter.php' );
+        $statusmessage = 'Don\'t miss the deal on '.$this->request->getVar('name').' Check it out! https://stdb.games/game/'.$this->request->getVar('slug');
+        $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
+        $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
 
         return redirect()->to( '/update/game/'.$this->request->getVar('slug') );
 
