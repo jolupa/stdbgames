@@ -80,7 +80,7 @@
   var nextButtonNode = rootNode.querySelector('.embla__next')
   var options = {
                   loop: true,
-                  slidesToScroll: 3,
+                  slidesToScroll: 1,
                   draggable: true,
                   startIndex: 0,
                   align: 'start'
@@ -89,9 +89,4 @@
   var embla = EmblaCarousel(viewportNode, options)
   prevButtonNode.addEventListener('click', embla.scrollPrev, false)
   nextButtonNode.addEventListener('click', embla.scrollNext, false)
-  embla.on('resize', () => {
-    embla.reInit({
-      slidesToScroll: 1,
-    })
-  })
 </script>
