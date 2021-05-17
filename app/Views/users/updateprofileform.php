@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column">
         <p class="title is-4">Update Profile</p>
-        <form action="<?= base_url ( '/users/editprofile' ) ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url ( '/users/updateprofile' ) ?>" method="post" enctype="multipart/form-data">
           <input type="hidden" name="id" value="<?= $user['id'] ?>">
           <input type="hidden" name="slug" value="<?= $user['slug'] ?>">
           <div class="field">

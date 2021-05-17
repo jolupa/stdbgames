@@ -416,11 +416,11 @@ class Users extends BaseController {
 
     $data['stadia_profile'] = $this->request->getVar('stadia_profile');
 
-    if ( $_files['image']['error'] != 4 ) {
+    if ( $_FILES['image']['error'] != 4 ) {
 
       if ( ! empty ( $this->request->getVar('old_image') ) ) {
 
-        unlink ( WRITEPATH.'img/users/'.$this->request->getVar('old_image').'.png' );
+        unlink ( ROOTPATH.'public/img/users/'.$this->request->getVar('old_image').'.png' );
 
       }
 
@@ -429,7 +429,7 @@ class Users extends BaseController {
       $image = \Config\Services::image('imagick')->withFile( WRITEPATH.'uploads/'.$this->request->getVar('slug') )
                                                   ->fit( 256, 256, 'center' )
                                                   ->convert( IMAGETYPE_PNG )
-                                                  ->save( ROOTPATH.'img/users/'.$this->request->getVar('slug') );
+                                                  ->save( ROOTPATH.'public/img/users/'.$this->request->getVar('slug').'.png' );
       unlink ( WRITEPATH.'uploads/'.$this->request->getVar('slug') );
       $data['image'] = $this->request->getVar('slug');
 
