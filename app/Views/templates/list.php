@@ -46,9 +46,9 @@
                 </figure>
               </div>
               <div class="card-content">
-                <p class="title is-5"><span class="icon-text"><?php if ( ! empty ( $list['rumor'] ) && $list['rumor'] == 1 ): ?><span class="icon has-text-coral is-hidden-touch"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$list['slug'] ) ?>"><?= ellipsize( $list['name'], 12, 1, '...' ) ?></span></a></span></p>
+                <p><span class="icon-text"><?php if ( ! empty ( $list['rumor'] ) && $list['rumor'] == 1 ): ?><span class="icon has-text-coral is-hidden-touch"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$list['slug'] ) ?>"><?= $list['name'] ?></span></a></span></p>
                 <?php if (! empty ( $list['release'] ) ): ?>
-                  <p class="subtitle is-7">Rel <?php if ( $list['release'] == '2099-01-01' || $list['release'] == 'TBA' ): ?>TBA<?php else: ?><?= date ( 'd-m-Y', strtotime( $list['release'] ) ) ?><?php endif; ?>
+                  <p>Rel <?php if ( $list['release'] == '2099-01-01' || $list['release'] == 'TBA' ): ?>TBA<?php else: ?><?= date ( 'd-m-Y', strtotime( $list['release'] ) ) ?><?php endif; ?>
                     <br>
                 <?php endif; ?>
                 <?php if ( ! empty ( $list['price_pro'] ) || ! empty ( $list['price_nonpro'] ) ): ?>
