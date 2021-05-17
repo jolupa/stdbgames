@@ -89,4 +89,9 @@
   var embla = EmblaCarousel(viewportNode, options)
   prevButtonNode.addEventListener('click', embla.scrollPrev, false)
   nextButtonNode.addEventListener('click', embla.scrollNext, false)
+  embla.on('resize', () => {
+    embla.reInit({
+      slidesToScroll: 1,
+    })
+  })
 </script>
