@@ -33,7 +33,7 @@
     <?php else: ?>
       <div class="columns is-multiline is-mobile mt-5">
         <?php foreach ( $list as $list ): ?>
-          <div class="column is-3-desktop is-one-third-mobile">
+          <div class="column is-3-desktop is-half-touch">
             <div class="card is-shadowless">
               <div class="card-image">
                 <figure class="image is-3by2">
@@ -45,8 +45,8 @@
                   </div>
                 </figure>
               </div>
-              <div class="card-content is-hidden-mobile">
-                <p class="title is-5"><span class="icon-text"><?php if ( ! empty ( $list['rumor'] ) && $list['rumor'] == 1 ): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$list['slug'] ) ?>"><?= ellipsize( $list['name'], 12, 1, '...' ) ?></span></a></span></p>
+              <div class="card-content">
+                <p class="title is-5"><span class="icon-text"><?php if ( ! empty ( $list['rumor'] ) && $list['rumor'] == 1 ): ?><span class="icon has-text-coral is-hidden-touch"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$list['slug'] ) ?>"><?= ellipsize( $list['name'], 12, 1, '...' ) ?></span></a></span></p>
                 <?php if (! empty ( $list['release'] ) ): ?>
                   <p class="subtitle is-7">Rel <?php if ( $list['release'] == '2099-01-01' || $list['release'] == 'TBA' ): ?>TBA<?php else: ?><?= date ( 'd-m-Y', strtotime( $list['release'] ) ) ?><?php endif; ?>
                     <br>
