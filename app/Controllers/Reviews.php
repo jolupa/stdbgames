@@ -183,7 +183,7 @@
 
       $model->save( $data );
       require ( ROOTPATH.'twitter.php' );
-      $statusmessage = 'Our user '.session( 'username').' Write a review for '.$this->request->getVar('game_name').' You agree with him or want to tell us your point of view? '.previous_url();
+      $statusmessage = 'Our user '.session( 'username').' Wrote a review for '.$this->request->getVar('game_name').' You agree with him or want to tell us your point of view? '.previous_url();
       $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
       $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
 
