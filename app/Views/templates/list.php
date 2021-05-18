@@ -52,7 +52,7 @@
                     <br>
                 <?php endif; ?>
                 <?php if ( ! empty ( $list['price_pro'] ) || ! empty ( $list['price_nonpro'] ) ): ?>
-                  <strike>Pri <?= $list['price'] ?>&nbsp;€</strike><?php if ( ! empty ( $list['price_pro'] ) ): ?> | Pro <?= $list['price_pro'] ?>&nbsp;€<?php endif; ?><?php if ( ! empty ( $list['price_nonpro'] ) ): ?> | All <?= $list['price_nonpro'] ?>&nbsp;€<?php endif; ?>
+                  <strike>Pri <?= $list['price'] ?> €</strike><?php if ( ! empty ( $list['price_pro'] ) ): ?> | Pro <?= $list['price_pro'] ?> €<?php endif; ?><?php if ( ! empty ( $list['price_nonpro'] ) ): ?> | All <?= $list['price_nonpro'] ?> €<?php endif; ?>
                   <br>
                 <?php endif; ?>
                 <?php if ( ! empty ( $list['int_id'] ) ): ?>

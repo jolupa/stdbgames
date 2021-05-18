@@ -29,7 +29,7 @@
 
       ]);
 
-      $data['gameinterview'] = $model->select('body')
+      $data['gameinterview'] = $model->select('body, created_at')
                                     ->where('game_id', $id)
                                     ->first();
 

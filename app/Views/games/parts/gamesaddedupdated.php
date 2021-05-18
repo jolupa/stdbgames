@@ -11,14 +11,14 @@
                 <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                   <span class="icon-text">
                     <?php if ( session ( 'likes') != null && in_array ( $added['id'], session ('likes' ) ) ): ?>
-                      <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i><span>&nbsp;<span><?= $added['like'] ?></span></tag>
+                      <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i><span> <span><?= $added['like'] ?></span></tag>
                     <?php else: ?>
-                      <a href="<?= base_url ( '/games/like/'.$added['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $added['like'] ?></span></tag></a>
+                      <a href="<?= base_url ( '/games/like/'.$added['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $added['like'] ?></span></tag></a>
                     <?php endif; ?>
                     <?php if ( session ( 'dislikes' ) != null && in_array ($added['id'], session ( 'dislikes' ) ) ): ?>
-                      <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $added['dislike'] ?></span></tag>
+                      <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $added['dislike'] ?></span></tag>
                     <?php else: ?>
-                      <a href="<?= base_url ( '/games/dislike'.$added['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $added['dislike'] ?></span></tag></a>
+                      <a href="<?= base_url ( '/games/dislike'.$added['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $added['dislike'] ?></span></tag></a>
                     <?php endif; ?>
                     <?php if ( session ( 'library' ) != null && in_array ( $added['id'], session ( 'library' ) ) ): ?>
                       <a href="<?= base_url ( '/libraries/removefromlibrary/'.$added['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="far fa-minus-square"></i></span> <span>In Library</span></tag></a>
@@ -56,14 +56,14 @@
                 <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                   <span class="icon-text">
                     <?php if ( session ( 'likes') != null && in_array ( $updated['id'], session ('likes' ) ) ): ?>
-                      <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i><span>&nbsp;<span><?= $updated['like'] ?></span></tag>
+                      <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i><span> <span><?= $updated['like'] ?></span></tag>
                     <?php else: ?>
-                      <a href="<?= base_url ( '/games/like/'.$updated['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $updated['like'] ?></span></tag></a>
+                      <a href="<?= base_url ( '/games/like/'.$updated['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $updated['like'] ?></span></tag></a>
                     <?php endif; ?>
                     <?php if ( session ( 'dislikes' ) != null && in_array ($updated['id'], session ( 'dislikes' ) ) ): ?>
-                      <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $updated['dislike'] ?></span></tag>
+                      <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $updated['dislike'] ?></span></tag>
                     <?php else: ?>
-                      <a href="<?= base_url ( '/games/dislike'.$updated['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $updated['dislike'] ?></span></tag></a>
+                      <a href="<?= base_url ( '/games/dislike'.$updated['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $updated['dislike'] ?></span></tag></a>
                     <?php endif; ?>
                     <?php if ( session ( 'library' ) != null && in_array ( $updated['id'], session ( 'library' ) ) ): ?>
                       <a href="<?= base_url ( '/libraries/removefromlibrary/'.$updated['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="far fa-minus-square"></i></span> <span>In Library</span></tag></a>

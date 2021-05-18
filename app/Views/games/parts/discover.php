@@ -13,14 +13,14 @@
               <div class="is-overlay" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                 <span class="icon-text is-hidden-touch">
                   <?php if ( session ( 'likes') != null && in_array ( $discover[0]['id'], session ('likes' ) ) ): ?>
-                    <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i><span>&nbsp;<span><?= $discover[0]['like'] ?></span></tag>
+                    <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i><span> <span><?= $discover[0]['like'] ?></span></tag>
                   <?php else: ?>
-                    <a href="<?= base_url ( '/games/like/'.$discover[0]['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $discover[0]['like'] ?></span></tag></a>
+                    <a href="<?= base_url ( '/games/like/'.$discover[0]['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $discover[0]['like'] ?></span></tag></a>
                   <?php endif; ?>
                   <?php if ( session ( 'dislikes' ) != null && in_array ($discover[0]['id'], session ( 'dislikes' ) ) ): ?>
-                    <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $discover[0]['dislike'] ?></span></tag>
+                    <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $discover[0]['dislike'] ?></span></tag>
                   <?php else: ?>
-                    <a href="<?= base_url ( '/games/dislike/'.$discover[0]['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $discover[0]['dislike'] ?></span></tag></a>
+                    <a href="<?= base_url ( '/games/dislike/'.$discover[0]['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $discover[0]['dislike'] ?></span></tag></a>
                   <?php endif; ?>
                   <?php if ( session ( 'library' ) != null && in_array ( $discover[0]['id'], session ( 'library' ) ) ): ?>
                     <a href="<?= base_url ( '/libraries/removefromlibrary/'.$discover[0]['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="far fa-minus-square"></i></span> <span>In Library</span></tag></a>
@@ -36,12 +36,12 @@
               <div class="is-overlay" style="top: auto; right: 5px; bottom: 5px; left: auto;">
                 <span class="icon-text is-hidden-desktop">
                   <?php if ( session ( 'likes') != null && in_array ( $discover[0]['id'], session ( 'likes' ) ) ): ?>
-                    <tag class="tag is-coral ml-1"><span class="icon"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $discover[0]['like'] ?></span></tag>
+                    <tag class="tag is-coral ml-1"><span class="icon"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $discover[0]['like'] ?></span></tag>
                   <?php else: ?>
                     <a href="<?= base_url ( '/games/like/'.$discover[0]['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $discover[0]['like'] ?></span></tag></a>
                   <?php endif; ?>
                   <?php if ( session ( 'dislikes') != null && in_array ( $discover[0]['id'], session ( 'dislikes' ) ) ): ?>
-                    <tag class="tag is-coral ml-1"><span class="icon"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $discover[0]['dislike'] ?></span></tag>
+                    <tag class="tag is-coral ml-1"><span class="icon"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $discover[0]['dislike'] ?></span></tag>
                   <?php else: ?>
                     <a href="<?= base_url ( '/games/dislike/'.$discover[0]['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $discover[0]['dislike'] ?></span></tag></a>
                   <?php endif; ?>
@@ -60,15 +60,15 @@
           <div class="card-image">
             <figure class="image is-16by9">
               <a href="<?= base_url ( '/game/'.$discover[1]['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$discover[1]['image'].'.jpeg') ?>"></a>
-              <div class="is-overlay" style="top: auto; right: 10px; bottom: 10px; left: auto;">
-                <span class="icon-text is-hidden-touch">
+              <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
+                <span class="icon-text">
                   <?php if ( session ( 'likes' ) != null && in_array ( $discover[1]['id'], session ( 'likes' ) ) ): ?>
-                    <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $discover[1]['like'] ?></span></tag>
+                    <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $discover[1]['like'] ?></span></tag>
                   <?php else: ?>
                     <a href="<?= base_url ( '/games/like/'.$discover[1]['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $discover[1]['like'] ?></span></tag></a>
                   <?php endif; ?>
                   <?php if ( session ( 'dislikes' ) != null && in_array ( $discover[1]['id'], session ( 'dislikes' ) ) ): ?>
-                    <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $discover[1]['dislike'] ?></span></tag>
+                    <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $discover[1]['dislike'] ?></span></tag>
                   <?php else: ?>
                     <a href="<?= base_url ( '/games/dislike/'.$discover[1]['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $discover[1]['dislike'] ?></span></tag></a>
                   <?php endif; ?>

@@ -16,12 +16,12 @@
                           <span class="icon-text">
                             <?php if ( session ( 'logged' ) == true ): ?>
                               <?php if ( session ( 'likes') != null && in_array ( $proslider[$i]['id'], session ( 'likes' ) ) ): ?>
-                                <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $proslider[$i]['like'] ?></span></tag>
+                                <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $proslider[$i]['like'] ?></span></tag>
                               <?php else: ?>
                                 <a href="<?= base_url ( '/games/like/'.$proslider[$i]['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $proslider[$i]['like'] ?></span></tag></a>
                               <?php endif; ?>
                               <?php if ( session ( 'dislike' ) != null && in_array ( $proslider[$i]['id'], session ( 'dislikes' ) ) ): ?>
-                                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $proslider[$i]['dislike'] ?></span></tag>
+                                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $proslider[$i]['dislike'] ?></span></tag>
                               <?php else: ?>
                                 <a href="<?= base_url ( '/games/dislike/'.$proslider[$i]['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $proslider[$i]['dislike'] ?></span></tag></a>
                               <?php endif; ?>
@@ -32,12 +32,12 @@
                           <span class="icon-text">
                             <?php if ( session ( 'logged' ) == true ): ?>
                               <?php if ( session ( 'likes') != null && in_array ( $proslider[$i]['id'], session ( 'likes' ) ) ): ?>
-                                <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $proslider[$i]['like'] ?></span></tag>
+                                <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $proslider[$i]['like'] ?></span></tag>
                               <?php else: ?>
                                 <a href="<?= base_url ( '/games/like/'.$proslider[$i]['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $proslider[$i]['like'] ?></span></tag></a>
                               <?php endif; ?>
                               <?php if ( session ( 'dislike' ) != null && in_array ( $proslider[$i]['id'], session ( 'dislikes' ) ) ): ?>
-                                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $proslider[$i]['dislike'] ?></span></tag>
+                                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $proslider[$i]['dislike'] ?></span></tag>
                               <?php else: ?>
                                 <a href="<?= base_url ( '/games/dislike/'.$proslider[$i]['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $proslider[$i]['dislike'] ?></span></tag></a>
                               <?php endif; ?>
