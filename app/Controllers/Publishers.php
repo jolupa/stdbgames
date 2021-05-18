@@ -98,26 +98,88 @@
 
     public function createpublisherdb () {
 
-      $data['page_title'] = 'Add Publisher to DB!';
-      $data['page_description'] = "Page only to insert publishers on DB! - Staff only";
-      $data['page_keywords'] = '';
-      $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
-      $data['page_url'] = base_url( '/publishers/add' );
-      $data['page_twitterimagealt'] = 'Publisher add form - Stadia GamesDB!';
-      $model = new PublishersModel();
-      $validation = $this->validate('addPublisher');
+      if ( session ( 'logged' ) == false || session ( 'role' ) != 1 ) {
 
-      if ( ! $validation ) {
+        return redirect()->to( '/' )->with( 'error_adup', 'You can\'t Edit or Add content without being a DB! staff' );
 
-        echo view ( 'templates/header', $data );
-        echo view ( 'publishers/addformpublishers', [ 'validation' => $this->validator ] );
-        echo view ( 'templates/footer' );
+      } else {
+
+        $data['page_title'] = 'Add Publisher to DB!';
+        $data['page_description'] = "Page only to insert publishers on DB! - Staff only";
+        $data['page_keywords'] = '';
+        $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+        $data['page_url'] = base_url( '/publishers/add' );
+        $data['page_twitterimagealt'] = 'Publisher add form - Stadia GamesDB!';
+        $model = new PublishersModel();
+        $validation = $this->validate('addPublisher');
+
+        if ( ! $validation ) {
+
+          echo view ( 'templates/header', $data );
+          echo view ( 'publishers/addformpublishers', [ 'validation' => $this->validator ] );
+          echo view ( 'templates/footer' );
+
+        } else {
+
+          $model = new PublishersModel();
+          $data['name'] = $this->request->getVar('name');
+          $data['slug'] = strtolower( url_title ( $data['name'] ) );
+
+          if ( ! empty ( $this->request->getVar('url') ) ) {
+
+            $data['url'] = $this->request->getVar('url');
+
+          }
+
+          if ( ! empty ( $this->request->getVar('twitter_account') ) ) {
+
+            $data['twitter_account'] = $this->request->getVar('twitter_account');
+
+          }
+
+          if ( ! empty ( $this->request->getVar('about') ) ) {
+
+            $data['about'] = $this->request->getVar('about');
+
+          }
+
+          if ( $_FILES['image']['error'] != 4 ) {
+
+            $file = $this->request->getFile('image')
+                                  ->move(WRITEPATH.'uploads', $data['slug']);
+            $image = \Config\Services\image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+                                                      ->resize(1370, 728, 'width')
+                                                      ->convert(IMAGETYPE_JPEG)
+                                                      ->save(ROOTPATH.'publi/img/publishers/'.$data['slug'].'.jpeg');
+            $imagethumb = \Config\Services\image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+                                                            ->fit(256, 256, 'center')
+                                                            ->convert(IMAGETYPE_JPEG)
+                                                            ->save(ROOTPATH.'public/img/publishers/'.$data['slug'].'-thumb.jpeg');
+            unlink (WRITEPATH.'uploads/'.$data['slug']);
+            $data['image'] = $data['slug'];
+
+          }
+
+          $model->save( $data );
+          return redirect()->to( '/publisher/'.$data['slug'] );
+
+        }
+
+      }
+
+    }
+
+    public function updatepublisherdb () {
+
+      if ( session ( 'logged' ) == false || session ( 'role' ) != 1 ) {
+
+        return redirect()->to( '/' )->with( 'error_adup', 'You can\'t Edit or Add content without being a DB! staff' );
 
       } else {
 
         $model = new PublishersModel();
+        $data['id'] = $this->request->getVar('id');
         $data['name'] = $this->request->getVar('name');
-        $data['slug'] = strtolower( url_title ( $data['name'] ) );
 
         if ( ! empty ( $this->request->getVar('url') ) ) {
 
@@ -139,81 +201,35 @@
 
         if ( $_FILES['image']['error'] != 4 ) {
 
+          if ( ! empty ( $this->request->getVar('old_image') ) ) {
+
+            unlink(ROOTPATH.'public/img/publishers/'.$this->request->getVar('old_image').'.jpeg' );
+            unlink(ROOTPATH.'public/img/publishers/'.$this->request->getVar('old_image').'-thumb.jpeg' );
+
+          }
+
           $file = $this->request->getFile('image')
-                                ->move(WRITEPATH.'uploads', $data['slug']);
-          $image = \Config\Services\image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
-                                                    ->resize(1370, 728, 'width')
+                                ->move(WRITEPATH.'uploads/', $this->request->getVar('slug'));
+
+          $image = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
+                                                    ->resize(1370, 728, true, 'width')
                                                     ->convert(IMAGETYPE_JPEG)
-                                                    ->save(ROOTPATH.'publi/img/publishers/'.$data['slug'].'.jpeg');
-          $imagethumb = \Config\Services\image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+                                                    ->save(ROOTPATH.'public/img/publishers/'.$this->request->getVar('slug').'.jpeg');
+
+          $imagethumb = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
                                                           ->fit(256, 256, 'center')
                                                           ->convert(IMAGETYPE_JPEG)
-                                                          ->save(ROOTPATH.'public/img/publishers/'.$data['slug'].'-thumb.jpeg');
-          unlink (WRITEPATH.'uploads/'.$data['slug']);
-          $data['image'] = $data['slug'];
+                                                          ->save(ROOTPATH.'public/img/publishers/'.$this->request->getVar('slug').'-thumb.jpeg');
+
+          unlink(WRITEPATH.'uploads/'.$this->request->getVar('slug'));
+          $data['image'] = $this->request->getVar('slug');
 
         }
 
         $model->save( $data );
-        return redirect()->to( '/publisher/'.$data['slug'] );
+        return redirect()->to( base_url( '/publisher/'.$this->request->getVar('slug') ) );
 
       }
-
-    }
-
-    public function updatepublisherdb () {
-
-      $model = new PublishersModel();
-      $data['id'] = $this->request->getVar('id');
-      $data['name'] = $this->request->getVar('name');
-
-      if ( ! empty ( $this->request->getVar('url') ) ) {
-
-        $data['url'] = $this->request->getVar('url');
-
-      }
-
-      if ( ! empty ( $this->request->getVar('twitter_account') ) ) {
-
-        $data['twitter_account'] = $this->request->getVar('twitter_account');
-
-      }
-
-      if ( ! empty ( $this->request->getVar('about') ) ) {
-
-        $data['about'] = $this->request->getVar('about');
-
-      }
-
-      if ( $_FILES['image']['error'] != 4 ) {
-
-        if ( ! empty ( $this->request->getVar('old_image') ) ) {
-
-          unlink(ROOTPATH.'public/img/publishers/'.$this->request->getVar('old_image').'.jpeg' );
-          unlink(ROOTPATH.'public/img/publishers/'.$this->request->getVar('old_image').'-thumb.jpeg' );
-
-        }
-
-        $file = $this->request->getFile('image')
-                              ->move(WRITEPATH.'uploads/', $this->request->getVar('slug'));
-
-        $image = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
-                                                  ->resize(1370, 728, true, 'width')
-                                                  ->convert(IMAGETYPE_JPEG)
-                                                  ->save(ROOTPATH.'public/img/publishers/'.$this->request->getVar('slug').'.jpeg');
-
-        $imagethumb = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
-                                                        ->fit(256, 256, 'center')
-                                                        ->convert(IMAGETYPE_JPEG)
-                                                        ->save(ROOTPATH.'public/img/publishers/'.$this->request->getVar('slug').'-thumb.jpeg');
-
-        unlink(WRITEPATH.'uploads/'.$this->request->getVar('slug'));
-        $data['image'] = $this->request->getVar('slug');
-
-      }
-
-      $model->save( $data );
-      return redirect()->to( base_url( '/publisher/'.$this->request->getVar('slug') ) );
 
     }
 
