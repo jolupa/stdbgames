@@ -11,7 +11,7 @@
                 <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                   <span class="icon-text">
                     <?php if ( session ( 'likes') != null && in_array ( $added['id'], session ('likes' ) ) ): ?>
-                      <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i><span>&nbsp;<span><?= $added['like'] ?></span></tag>
+                      <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $added['like'] ?></span></tag>
                     <?php else: ?>
                       <a href="<?= base_url ( '/games/like/'.$added['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $added['like'] ?></span></tag></a>
                     <?php endif; ?>
@@ -56,7 +56,7 @@
                 <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                   <span class="icon-text">
                     <?php if ( session ( 'likes') != null && in_array ( $updated['id'], session ('likes' ) ) ): ?>
-                      <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i><span>&nbsp;<span><?= $updated['like'] ?></span></tag>
+                      <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $updated['like'] ?></span></tag>
                     <?php else: ?>
                       <a href="<?= base_url ( '/games/like/'.$updated['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span>&nbsp;<span><?= $updated['like'] ?></span></tag></a>
                     <?php endif; ?>
