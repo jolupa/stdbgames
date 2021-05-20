@@ -481,8 +481,7 @@
       $model = new GamesModel();
       $data['list'] = $model->select('games.name, games.image, games.slug, games.release, games.rumor, games.pro_from, games.pro_till')
                             ->where('games.rumor', 1)
-                            ->Where('games.pro_till !=', null)
-                            ->orderBy('release', 'DESC')
+                            ->orderBy('id', 'DESC')
                             ->paginate(44);
       $data['pager'] = $model->pager;
 
