@@ -10,10 +10,10 @@
           <div class="card-image">
             <figure class="image is-16by9">
               <a href="<?= base_url ( '/game/'.$discover[0]['slug']) ?>"><img src="<?= base_url('/img/games/'.$discover[0]['image'].'.jpeg') ?>"></a>
-              <div class="is-overlay" style="top: auto; right: 10px; bottom: 10px; left: auto;">
-                <span class="icon-text is-hidden-touch">
+              <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
+                <span class="icon-text">
                   <?php if ( session ( 'likes') != null && in_array ( $discover[0]['id'], session ('likes' ) ) ): ?>
-                    <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i><span> <span><?= $discover[0]['like'] ?></span></tag>
+                    <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $discover[0]['like'] ?></span></tag>
                   <?php else: ?>
                     <a href="<?= base_url ( '/games/like/'.$discover[0]['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $discover[0]['like'] ?></span></tag></a>
                   <?php endif; ?>
