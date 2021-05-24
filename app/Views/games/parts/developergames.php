@@ -24,7 +24,7 @@
               <?php endif; ?>
             </span>
           </div>
-          <div class="is-overlay is-hidden-desktop" style="top:auto; right: 5px; bottom: 5xp; left:auto;">
+          <div class="is-overlay is-hidden-desktop" style="top:auto; right: 5px; bottom: 5px; left:auto;">
             <?php if ( ! empty ( $developed['rumor'] ) ): ?>
               <tag class=" tag is-info"><span class="icon"><i class="fas fa-exclamation"></span></i></tag>
             <?php endif; ?>
