@@ -38,28 +38,12 @@
       $data['game_id'] = $this->request->getVar('game_id');
       $data['name'] = $this->request->getVar('name');
       $data['price'] = $this->request->getVar('price');
-
-      if ( ! empty ( $this->request->getVar('ed_appid') ) ) {
-
-        $data['ed_appid'] = $this->request->getVar('ed_appid');
-        $data['ed_sku'] = $this->request->getVar('ed_sku');
-
-      }
-
-      if ( ! empty ( $this->request->getVar('ed_preorder_appid') ) ) {
-
-        $data['ed_preorder_appid'] = $this->request->getVar('ed_preorder_appid');
-        $data['ed_preorder_sku'] = $this->request->getVar('ed_preorder_sku');
-
-      }
-
-      if ( ! empty ( $this->request->getVar('ed_demo_appid') ) ) {
-
-        $data['ed_demo_appid'] = $this->request->getVar('ed_demo_appid');
-        $data['ed_demo_sku'] = $this->request->getVar('ed_demo_sku');
-
-      }
-
+      $data['ed_appid'] = $this->request->getVar('ed_appid');
+      $data['ed_sku'] = $this->request->getVar('ed_sku');
+      $data['ed_preorder_appid'] = $this->request->getVar('ed_preorder_appid');
+      $data['ed_preorder_sku'] = $this->request->getVar('ed_preorder_sku');
+      $data['ed_demo_appid'] = $this->request->getVar('ed_demo_appid');
+      $data['ed_demo_sku'] = $this->request->getVar('ed_demo_sku');
       $model->save( $data );
       return redirect()->to( '/update/game/'.$this->request->getVar('slug') );
 
