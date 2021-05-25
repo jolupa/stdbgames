@@ -11,7 +11,7 @@
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['game_id', 'name', 'price', 'ed_appid', 'ed_sku'];
+    protected $allowedFields = ['game_id', 'name', 'price', 'ed_appid', 'ed_sku', 'ed_preorder_appid', 'ed_preorder_sku', 'ed_demo_appid', 'ed_demo_sku'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';

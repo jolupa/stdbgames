@@ -18,6 +18,20 @@
   </div>
   <div class="field is-grouped is-grouped-multiline">
     <div class="control is-expanded">
+      <label class="label">Edition Preorder AppId</label>
+      <div class="control is-expanded">
+        <input class="input" name="ed_preorder_appid">
+      </div>
+    </div>
+    <div class="control is-expanded">
+      <label class="label">Edition Preorder SKU</label>
+      <div class="control is-expanded">
+        <input class="input" name="ed_preorder_sku">
+      </div>
+    </div>
+  </div>
+  <div class="field is-grouped is-grouped-multiline">
+    <div class="control is-expanded">
       <label class="label">Edition AppId</label>
       <div class="control is-expanded">
         <input class="input" name="ed_appid">
@@ -27,6 +41,20 @@
       <label class="label">Edition SKU</label>
       <div class="control is-expanded">
         <input class="input" name="ed_sku">
+      </div>
+    </div>
+  </div>
+  <div class="field is-grouped is-grouped-multiline">
+    <div class="control is-expanded">
+      <label class="label">Edition Demo AppId</label>
+      <div class="control is-expanded">
+        <input class="input" name="ed_demo_appid">
+      </div>
+    </div>
+    <div class="control is-expanded">
+      <label class="label">Edition Demo SKU</label>
+      <div class="control is-expanded">
+        <input class="input" name="ed_demo_sku">
       </div>
     </div>
   </div>
@@ -62,6 +90,20 @@
       </div>
       <div class="field is-grouped is-grouped-multiline">
         <div class="control is-expanded">
+          <label class="label">Edition Preorder AppId</label>
+          <div class="control is-expanded">
+            <input class="input" name="ed_preorder_appid" <?php if ( ! empty ( $editions['ed_preorder_appid'] ) ): ?>value="<?= $editions['ed_preorder_appid'] ?>"<?php endif; ?>>
+          </div>
+        </div>
+        <div class="control is-expanded">
+          <label class="label">Edition Preorder SKU</label>
+          <div class="control is-expanded">
+            <input class="input" name="ed_preorder_sku" <?php if ( ! empty ( $editions['ed_preorder_sku'] ) ): ?>value="<?= $editions['ed_preorder_sku'] ?>"<?php endif; ?>>
+          </div>
+        </div>
+      </div>
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control is-expanded">
           <label class="label">Edition AppId</label>
           <div class="control is-expanded">
             <input class="input" name="ed_appid" <?php if ( ! empty ( $editions['ed_appid'] ) ): ?>value="<?= $editions['ed_appid'] ?>"<?php endif; ?>>
@@ -74,12 +116,29 @@
           </div>
         </div>
       </div>
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control is-expanded">
+          <label class="label">Edition Demo AppId</label>
+          <div class="control is-expanded">
+            <input class="input" name="ed_demo_appid" <?php if ( ! empty ( $editions['ed_demo_appid'] ) ): ?>value="<?= $editions['ed_demo_appid'] ?>"<?php endif; ?>>
+          </div>
+        </div>
+        <div class="control is-expanded">
+          <label class="label">Edition Demo SKU</label>
+          <div class="control is-expanded">
+            <input class="input" name="ed_demo_sku" <?php if ( ! empty ( $editions['ed_demo_sku'] ) ): ?>value="<?= $editions['ed_demo_sku'] ?>"<?php endif; ?>>
+          </div>
+        </div>
+      </div>
       <div class="field is-grouped">
         <div class="control">
           <button class="button is-primary" type="submit">Edit Edtion</button>
         </div>
         <div class="control">
           <button class="button is-coral" type="reset">Reset</button>
+        </div>
+        <div class="control">
+          <a href="<?= base_url ( '/edprices/addedpriceform/'.$editions['id'] ) ?>"><button class="button is-info" type="button">Add Deal</button></a>
         </div>
       </div>
     </form>

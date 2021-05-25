@@ -46,6 +46,20 @@
 
       }
 
+      if ( ! empty ( $this->request->getVar('ed_preorder_appid') ) ) {
+
+        $data['ed_preorder_appid'] = $this->request->getVar('ed_preorder_appid');
+        $data['ed_preorder_sku'] = $this->request->getVar('ed_preorder_sku');
+
+      }
+
+      if ( ! empty ( $this->request->getVar('ed_demo_appid') ) ) {
+
+        $data['ed_demo_appid'] = $this->request->getVar('ed_demo_appid');
+        $data['ed_demo_sku'] = $this->request->getVar('ed_demo_sku');
+
+      }
+
       $model->save( $data );
       return redirect()->to( '/update/game/'.$this->request->getVar('slug') );
 
