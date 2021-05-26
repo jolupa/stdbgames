@@ -21,8 +21,7 @@
   <link rel="stylesheet" href="<?= base_url('/css/normalize.css') ?>">
   <link rel="stylesheet" href="<?= base_url('/css/bulma.css') ?>">
   <link rel="stylesheet" href="<?= base_url('/css/embla.css') ?>">
-  <link rel="stylesheet" type="text/css" href="<?= base_url ( '/css/slick.css' ) ?>"/>
-  <link rel="stylesheet" type="text/css" href="<?= base_url ( '/slick-theme.css' ) ?>">
+  <link rel="stylesheet" href="<?= base_url('/css/things.css') ?>">
 
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" integrity="sha384-3Nqiqht3ZZEO8FKj7GR1upiI385J92VwWNLj+FqHxtLYxd9l+WYpeqSOrLh0T12c" crossorigin="anonymous"></script>
 
@@ -45,9 +44,9 @@
         <span class="icon"><i class="fab fa-twitter"></i></span><span class="is-hidden-touch">Twitter</span>
       </span>
     </a>
-    <a class="navbar-item is-inline-flex-mobile" href="https://patreon.com/stdbgames" target="_blank">
+    <a class="navbar-item is-inline-flex-mobile" href="https://buymeacoffee.com/stadiagamesdb" target="_blank">
       <span class="icon-text">
-        <span class="icon"><i class="fab fa-patreon"></i></span><span class="is-hidden-touch">Patreon</span>
+        <span class="icon"><i class="own icon-buymeacoffee"></i></span><span class="is-hidden-touch">Buy Me A Coffee</span>
       </span>
     </a>
     <div class="navbar-menu">
