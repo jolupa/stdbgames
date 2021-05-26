@@ -100,7 +100,7 @@
              <?= view_cell ( 'App\Controllers\Prices::dealongame', 'id='.$game['id'] ) ?>
           <br \>
           <?php if ( ! empty ( $game['appid'] ) ): ?>
-            <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go Stadia Store</a> | <a href="https://stadia.google.com/player/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Play on Stadia</a>
+            <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go Stadia Store</a> | <a href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
           <?php else: ?>
             <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
               <a href="https://stadia.google.com/store/details/<?= $game['demo_appid'] ?>/sku/<?= $game['demo_appid'] ?>" target="_blank">Play the Demo</a>
