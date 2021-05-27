@@ -19,7 +19,7 @@
                 <tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $developed['like'] ?></span></tag>
                 <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $developed['dislike'] ?></span></tag>
               <?php else: ?>
-                <a href="<?= base_url ( '/games/like/'.$developed['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $developed['like'] ?></span></tag></a>
+                <a href="<?= base_url ( '/games/like/'.$developed['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $developed['like'] ?></span></tag></a> 
                 <a href="<?= base_url ( '/games/dislike/'.$developed['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $developed['dislike'] ?></span></tag></a>
               <?php endif; ?>
             </span>
