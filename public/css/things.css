@@ -25,6 +25,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-stadia:before {
+  content: "\e901";
+  color: #cd2640;
+}
+
 .icon-buymeacoffee:before {
   content: "\e900";
 }

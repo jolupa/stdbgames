@@ -38,6 +38,6 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $('#content').click(function(){
-    $('#editions').toggleClass('is-hidden');
+    $('#editions').toggleClass('is-hidden')
   });
 });

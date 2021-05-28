@@ -49,6 +49,11 @@
         <span class="icon"><i class="own icon-buymeacoffee"></i></span><span class="is-hidden-touch">Buy Me A Coffee</span>
       </span>
     </a>
+    <a class="navbar-item is-inline-flex-mobile" href="https://stadia.com/link/home?si_rid=10063878286671281778" target="_blank">
+      <span class="icon-text">
+        <span class="icon"><i class="own icon-stadia"></i></span><span class="is-hidden-touch">Try One Month Free!</span>
+      </span>
+    </a>
     <div class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="<?= base_url ( '/db/list' ) ?>">Game List</a>
