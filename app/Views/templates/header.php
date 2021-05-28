@@ -58,7 +58,6 @@
       <div class="navbar-start">
         <a class="navbar-item" href="<?= base_url ( '/db/list' ) ?>">Game List</a>
         <?= view_cell ( 'App\Controllers\Games::stats' ) ?>
-        <a class="navbar-item">About</a>
       </div>
       <div class="navbar-end">
         <div class="navbar-item">
