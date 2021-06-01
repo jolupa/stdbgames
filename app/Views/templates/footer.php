@@ -19,6 +19,7 @@
     </article>
   </div>
   <script src="<?= base_url('/js/vendor/modernizr-3.11.2.min.js') ?>"></script>
+  <script src="<?= base_url('/js/vendor/jquery-3.6.0.min.js') ?>"></script>
   <script src="<?= base_url('/js/plugins.js') ?>"></script>
   <script src="<?= base_url('/js/main.js') ?>"></script>
 

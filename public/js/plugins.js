@@ -42,6 +42,7 @@ $(document).ready(function(){
   });
 });
 
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // Get all "navbar-burger" elements
