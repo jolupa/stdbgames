@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f58bb7ed4e56a52bbd639a98f00893f1e96d75a0',
+    'reference' => '72195023a241966722140fc28dea6c30dd45a2d5',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -27,7 +27,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f58bb7ed4e56a52bbd639a98f00893f1e96d75a0',
+      'reference' => '72195023a241966722140fc28dea6c30dd45a2d5',
     ),
     'codeigniter4/framework' => 
     array (
@@ -431,12 +431,12 @@
     ),
     'symfony/polyfill-ctype' => 
     array (
-      'pretty_version' => 'v1.22.1',
-      'version' => '1.22.1.0',
+      'pretty_version' => 'v1.23.0',
+      'version' => '1.23.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c6c942b1ac76c82448322025e084cadc56048b4e',
+      'reference' => '46cd95797e9df938fdd2b03693b5fca5e64b01ce',
     ),
     'theseer/tokenizer' => 
     array (
