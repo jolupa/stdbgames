@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="<?= base_url('/css/embla.css') ?>">
   <link rel="stylesheet" href="<?= base_url('/css/things.css') ?>">
 
-  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js" integrity="sha384-3Nqiqht3ZZEO8FKj7GR1upiI385J92VwWNLj+FqHxtLYxd9l+WYpeqSOrLh0T12c" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/7cb3f7dca8.js" crossorigin="anonymous"></script>
 
   <meta name="theme-color" content="#002029">
 </head>
