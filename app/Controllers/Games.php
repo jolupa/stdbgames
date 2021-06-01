@@ -415,7 +415,7 @@
       $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/launched' );
       $data['page_twitterimagealt'] = 'Games release on Stadia';
-      $data['page_header'] = 'Games Released';
+      $data['page_header'] = 'Games Launched';
 
       echo view ( 'templates/header', $data );
       echo view ( 'templates/list', $data );
@@ -467,7 +467,7 @@
       $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg' );
       $data['page_url'] = base_url ( '/games/pro' );
       $data['page_twitterimagealt'] = 'Pro games on Stadia';
-      $data['page_header'] = 'Pro Games Released';
+      $data['page_header'] = 'Pro Games Since Launch';
 
       echo view ( 'templates/header', $data );
       echo view ( 'templates/list', $data );
