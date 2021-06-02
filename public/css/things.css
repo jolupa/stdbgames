@@ -33,3 +33,10 @@
 .icon-buymeacoffee:before {
   content: "\e900";
 }
+
+.is-text-overflow {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

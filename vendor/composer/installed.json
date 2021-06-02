@@ -66,17 +66,17 @@
         },
         {
             "name": "codeigniter4/framework",
-            "version": "v4.1.1",
-            "version_normalized": "4.1.1.0",
+            "version": "v4.1.2",
+            "version_normalized": "4.1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/framework.git",
-                "reference": "ddc18eb2f42a17a51347c4c25cce9d2aaebcb718"
+                "reference": "0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/ddc18eb2f42a17a51347c4c25cce9d2aaebcb718",
-                "reference": "ddc18eb2f42a17a51347c4c25cce9d2aaebcb718",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4",
+                "reference": "0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
             "suggest": {
                 "ext-fileinfo": "Improves mime type detection for files"
             },
-            "time": "2021-02-01T18:41:38+00:00",
+            "time": "2021-05-18T02:07:31+00:00",
             "type": "project",
             "installation-source": "dist",
             "autoload": {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e1017e81071bcae1bc96751a3e021495",
+    "content-hash": "d34328c31fcd1c9a2b664934f16c1618",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -69,16 +69,16 @@
         },
         {
             "name": "codeigniter4/framework",
-            "version": "v4.1.1",
+            "version": "v4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/framework.git",
-                "reference": "ddc18eb2f42a17a51347c4c25cce9d2aaebcb718"
+                "reference": "0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/ddc18eb2f42a17a51347c4c25cce9d2aaebcb718",
-                "reference": "ddc18eb2f42a17a51347c4c25cce9d2aaebcb718",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4",
+                "reference": "0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4",
                 "shasum": ""
             },
             "require": {
@@ -122,7 +122,7 @@
                 "slack": "https://codeigniterchat.slack.com",
                 "source": "https://github.com/codeigniter4/CodeIgniter4"
             },
-            "time": "2021-02-01T18:41:38+00:00"
+            "time": "2021-05-18T02:07:31+00:00"
         },
         {
             "name": "composer/ca-bundle",

@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"require": {
 		"php": "^7.3||^8.0",
-		"codeigniter4/framework": "4.1.1",
+		"codeigniter4/framework": "^4",
 		"madcoda/php-youtube-api": "^1.2",
 		"league/commonmark": "^1.5",
 		"simplehtmldom/simplehtmldom": "2.0-RC2",

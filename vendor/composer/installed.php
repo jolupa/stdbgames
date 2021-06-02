@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '72195023a241966722140fc28dea6c30dd45a2d5',
+    'reference' => '382948b0fcd69cd6336c5d6a53cc1f9720f53465',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -27,16 +27,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => '72195023a241966722140fc28dea6c30dd45a2d5',
+      'reference' => '382948b0fcd69cd6336c5d6a53cc1f9720f53465',
     ),
     'codeigniter4/framework' => 
     array (
-      'pretty_version' => 'v4.1.1',
-      'version' => '4.1.1.0',
+      'pretty_version' => 'v4.1.2',
+      'version' => '4.1.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'ddc18eb2f42a17a51347c4c25cce9d2aaebcb718',
+      'reference' => '0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4',
     ),
     'composer/ca-bundle' => 
     array (
