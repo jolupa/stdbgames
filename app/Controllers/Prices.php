@@ -124,18 +124,37 @@
 
     public function priceaddform ( int $id) {
 
-      $model = new PricesModel();
-      $data['prices'] = $model->where('game_id', $id)
-                              ->orderBy('date', 'DESC')
-                              ->findAll();
+      if ( session ('logged') == false || session ('role') != 1 ) {
 
-      if ( ! empty ( $data['prices'] ) ) {
-
-        return view ( 'prices/parts/priceaddform', $data );
+        return redirect()->to( '/' )->with( 'error_adup', 'You can\'t Edit or Add content wthour being a DB! Staff' );
 
       } else {
 
-        return view ( 'prices/parts/priceaddform');
+        $model = new PricesModel();
+        $data['prices'] = $model->where('game_id', $id)
+                                ->orderBy('date', 'DESC')
+                                ->findAll();
+        $data['game'] = $model->getGameForDeal( $id );
+        $data['page_title'] = 'Add Game Deals on Stadia - Stadia GamesDB!';
+        $data['page_description'] = 'Add game deals on Stadia - Staff Only';
+        $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, deals";
+        $data['page_image'] = base_url ( '/img/stdb_logo_big.png' );
+        $data['page_url'] = base_url ( '/prices/priceaddform');
+        $data['page_twitterimagealt'] = 'Add deals on Stadia - Staff Only';
+
+        if ( ! empty ( $data['prices'] ) ) {
+
+          echo view ( 'templates/header', $data );
+          echo view ( 'prices/priceaddform', $data );
+          echo view ( 'templates/footer' );
+
+        } else {
+
+          echo view ( 'templates/header', $data );
+          echo view ( 'prices/priceaddform', $data );
+          echo view ( 'templates/footer' );
+
+        }
 
       }
 

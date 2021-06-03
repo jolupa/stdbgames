@@ -59,7 +59,7 @@
       </div>
       <div class="field">
         <label class="label" for="about">About</label>
-        <textarea class="textarea" placeholder="About..." name="about"><?php if ( ! empty ( old('about' ) ) ): ?><?= old( 'about' ) ?><?php endif; ?></textarea>
+        <textarea class="textarea" rows="25" placeholder="About..." name="about"><?php if ( ! empty ( old('about' ) ) ): ?><?= old( 'about' ) ?><?php endif; ?></textarea>
         <div class="control">
           <p class="help">
             We use Markdown for this field<br>

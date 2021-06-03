@@ -19,6 +19,16 @@
     protected $dateFormat = 'datetime';
     protected $skipvalidation = true;
 
+    public function getGameForInterview ( int $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->select('id, slug, name')
+                    ->where('id', $id);
+      return $builder->get()->getRowArray();
+
+    }
+
   }
 
  ?>

@@ -81,17 +81,39 @@
 
     public function interviewforms ( int $id ) {
 
-      $model = new InterviewsModel();
-      $data['interview'] = $model->where('game_id', $id )
-                                  ->first();
+      if ( session ( 'logged' ) == false || session ( 'role' ) !== 1 ) {
 
-      if ( ! empty ( $data['interview'] ) ) {
-
-        return view ( 'interviews/updateforminterview', $data );
+        return redirect()->to( '/' )->with( 'error_adup', 'You can\'t Edit or Add content wthour being a DB! Staff' );
 
       } else {
 
-        return view ( 'interviews/addforminterview' );
+        $model = new InterviewsModel();
+        $data['interview'] = $model->select( 'interviews.id, interviews.game_id, interviews.body, games.slug AS slug')
+                                    ->where('game_id', $id )
+                                    ->join('games', 'games.id = interviews.game_id')
+                                    ->first();
+        $data['page_title'] = 'Add Small Interviews - Stadia GamesDB!';
+        $data['page_description'] = 'Form to add Small Interviews - Staff Only';
+        $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, dates, interviews";
+        $data['page_image'] = base_url ( '/img/stdb_logo_big.png' );
+        $data['page_url'] = base_url ( '/interviews/interviewforms' );
+        $data['page_twitterimagealt'] = 'Add Small Interviews - Staff Only';
+
+        if ( ! empty ( $data['interview'] ) ) {
+
+          echo view ( 'templates/header', $data );
+          echo view ( 'interviews/updateforminterview', $data );
+          echo view ( 'templates/footer' );
+
+        } else {
+
+          $data['game'] = $model->getGameForInterview( $id );
+
+          echo view ( 'templates/header', $data );
+          echo view ( 'interviews/addforminterview', $data );
+          echo view ( 'templates/footer' );
+
+        }
 
       }
 
