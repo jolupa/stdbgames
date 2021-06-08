@@ -1239,18 +1239,24 @@
     public function stats () {
 
       $model = new GamesModel();
-      $totalgames = $model->findAll();
-      $gameslaunched = $model->where('release <', date('Y-m-d'))
+      $totalgames = $model->where('is_edition', 0)
+                          ->findAll();
+      $gameslaunched = $model->where('is_edition', 0)
+                              ->where('release <', date('Y-m-d'))
                               ->findAll();
-      $waitinglaunch = $model->where('release >', date('Y-m-d'))
+      $waitinglaunch = $model->where('is_edition', 0)
+                              ->where('release >', date('Y-m-d'))
                               ->where('release !=', '2099-01-01')
                               ->where('rumor', 0)
                               ->findAll();
-      $allprogames = $model->where('pro_from !=', '')
+      $allprogames = $model->where('is_edition', 0)
+                            ->where('pro_from !=', '')
                             ->findAll();
-      $rumors = $model->where('rumor', 1)
+      $rumors = $model->where('is_edition', 0)
+                      ->where('rumor', 1)
                       ->findAll();
-      $nodate = $model->where('release', '2099-01-01')
+      $nodate = $model->where('is_edition', 0)
+                      ->where('release', '2099-01-01')
                       ->where('rumor', 0)
                       ->findAll();
 
