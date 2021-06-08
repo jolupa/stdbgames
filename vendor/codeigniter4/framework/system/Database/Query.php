@@ -315,7 +315,7 @@ class Query implements QueryInterface
 	 *
 	 * @return void
 	 *
-	 * @see https://regex101.com/r/qvzPaZ/1
+	 * @see https://regex101.com/r/EUEhay/4
 	 */
 	protected function compileBinds()
 	{

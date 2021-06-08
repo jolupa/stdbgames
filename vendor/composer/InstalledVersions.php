@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '382948b0fcd69cd6336c5d6a53cc1f9720f53465',
+    'reference' => '996897fd928725293192f9cb658b39e39a272579',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -53,16 +53,16 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '382948b0fcd69cd6336c5d6a53cc1f9720f53465',
+      'reference' => '996897fd928725293192f9cb658b39e39a272579',
     ),
     'codeigniter4/framework' => 
     array (
-      'pretty_version' => 'v4.1.2',
-      'version' => '4.1.2.0',
+      'pretty_version' => 'v4.1.3',
+      'version' => '4.1.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4',
+      'reference' => '3416a0b4ca5c824f639beaf43f9e5b7e87511c5c',
     ),
     'composer/ca-bundle' => 
     array (
@@ -268,12 +268,12 @@ private static $installed = array (
     ),
     'phpunit/phpunit' => 
     array (
-      'pretty_version' => '9.5.4',
-      'version' => '9.5.4.0',
+      'pretty_version' => '9.5.5',
+      'version' => '9.5.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c73c6737305e779771147af66c96ca6a7ed8a741',
+      'reference' => '89ff45ea9d70e35522fb6654a2ebc221158de276',
     ),
     'psr/container' => 
     array (
@@ -421,12 +421,12 @@ private static $installed = array (
     ),
     'sebastian/type' => 
     array (
-      'pretty_version' => '2.3.1',
-      'version' => '2.3.1.0',
+      'pretty_version' => '2.3.2',
+      'version' => '2.3.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '81cd61ab7bbf2de744aba0ea61fae32f721df3d2',
+      'reference' => '0d1c587401514d17e8f9258a27e23527cb1b06c1',
     ),
     'sebastian/version' => 
     array (

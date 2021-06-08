@@ -66,17 +66,17 @@
         },
         {
             "name": "codeigniter4/framework",
-            "version": "v4.1.2",
-            "version_normalized": "4.1.2.0",
+            "version": "v4.1.3",
+            "version_normalized": "4.1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeigniter4/framework.git",
-                "reference": "0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4"
+                "reference": "3416a0b4ca5c824f639beaf43f9e5b7e87511c5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4",
-                "reference": "0bf61820417a3e4a6e7f6c725c5cccf285a1b7c4",
+                "url": "https://api.github.com/repos/codeigniter4/framework/zipball/3416a0b4ca5c824f639beaf43f9e5b7e87511c5c",
+                "reference": "3416a0b4ca5c824f639beaf43f9e5b7e87511c5c",
                 "shasum": ""
             },
             "require": {
@@ -100,7 +100,7 @@
             "suggest": {
                 "ext-fileinfo": "Improves mime type detection for files"
             },
-            "time": "2021-05-18T02:07:31+00:00",
+            "time": "2021-06-05T23:58:18+00:00",
             "type": "project",
             "installation-source": "dist",
             "autoload": {
@@ -1575,17 +1575,17 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "9.5.4",
-            "version_normalized": "9.5.4.0",
+            "version": "9.5.5",
+            "version_normalized": "9.5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "c73c6737305e779771147af66c96ca6a7ed8a741"
+                "reference": "89ff45ea9d70e35522fb6654a2ebc221158de276"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c73c6737305e779771147af66c96ca6a7ed8a741",
-                "reference": "c73c6737305e779771147af66c96ca6a7ed8a741",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/89ff45ea9d70e35522fb6654a2ebc221158de276",
+                "reference": "89ff45ea9d70e35522fb6654a2ebc221158de276",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1615,7 @@
                 "sebastian/global-state": "^5.0.1",
                 "sebastian/object-enumerator": "^4.0.3",
                 "sebastian/resource-operations": "^3.0.3",
-                "sebastian/type": "^2.3",
+                "sebastian/type": "^2.3.2",
                 "sebastian/version": "^3.0.2"
             },
             "require-dev": {
@@ -1626,7 +1626,7 @@
                 "ext-soap": "*",
                 "ext-xdebug": "*"
             },
-            "time": "2021-03-23T07:16:29+00:00",
+            "time": "2021-06-05T04:49:07+00:00",
             "bin": [
                 "phpunit"
             ],
@@ -1665,7 +1665,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.4"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.5.5"
             },
             "funding": [
                 {
@@ -2682,17 +2682,17 @@
         },
         {
             "name": "sebastian/type",
-            "version": "2.3.1",
-            "version_normalized": "2.3.1.0",
+            "version": "2.3.2",
+            "version_normalized": "2.3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/type.git",
-                "reference": "81cd61ab7bbf2de744aba0ea61fae32f721df3d2"
+                "reference": "0d1c587401514d17e8f9258a27e23527cb1b06c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/81cd61ab7bbf2de744aba0ea61fae32f721df3d2",
-                "reference": "81cd61ab7bbf2de744aba0ea61fae32f721df3d2",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/0d1c587401514d17e8f9258a27e23527cb1b06c1",
+                "reference": "0d1c587401514d17e8f9258a27e23527cb1b06c1",
                 "shasum": ""
             },
             "require": {
@@ -2701,7 +2701,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^9.3"
             },
-            "time": "2020-10-26T13:18:59+00:00",
+            "time": "2021-06-04T13:02:07+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2729,7 +2729,7 @@
             "homepage": "https://github.com/sebastianbergmann/type",
             "support": {
                 "issues": "https://github.com/sebastianbergmann/type/issues",
-                "source": "https://github.com/sebastianbergmann/type/tree/2.3.1"
+                "source": "https://github.com/sebastianbergmann/type/tree/2.3.2"
             },
             "funding": [
                 {
