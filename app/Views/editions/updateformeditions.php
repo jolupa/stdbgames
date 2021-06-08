@@ -8,6 +8,7 @@
    <p class="title is-4">Update Game Edition</p>
    <form action="<?= base_url ( '/editions/save') ?>" method="post" enctype="multipart/form-data">
      <input type="hidden" name="id" value="<?= $edition['id'] ?>">
+     <input type="hidden" name="edition_game_id" value="<?= $edition['edition_game_id'] ?>">
      <input type="hidden" name="slug" value="<?= $edition['slug'] ?>">
      <div class="field is-grouped">
        <div class="control">

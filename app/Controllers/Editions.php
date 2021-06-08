@@ -68,23 +68,9 @@
 
       }
 
-      if ( ! empty ( $this->request->getVar('is_edition') ) ) {
-
-        $data['is_edition'] = 1;
-
-      }
-
-      if ( ! empty ( $this->request->getVar('edition_game_id' ) ) ) {
-
-        $data['edition_game_id'] = $this->request->getVar('edition_game_id');
-
-      }
-
-      if ( ! empty ( $this->request->getVar('slug') ) ) {
-
-        $data['slug'] = $this->request->getVar('slug');
-
-      }
+      $data['is_edition'] = $this->request->getVar('is_edition');
+      $data['edition_game_id'] = $this->request->getVar('edition_game_id');
+      $data['slug'] = $this->request->getVar('slug');
 
       if ( empty ( $this->request->getVar('name') ) ) {
 
