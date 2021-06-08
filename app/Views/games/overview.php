@@ -103,7 +103,7 @@
             <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go Stadia Store</a> | <a href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
           <?php else: ?>
             <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
-              <a href="https://stadia.google.com/store/details/<?= $game['demo_appid'] ?>/sku/<?= $game['demo_appid'] ?>" target="_blank">Play the Demo</a>
+              <a href="https://stadia.google.com/store/details/<?= $game['demo_appid'] ?>" target="_blank">Play the Demo</a>
             <?php endif; ?>
             <?php if ( ! empty ( $game['preorder_appid'] ) ): ?>
               <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
@@ -118,6 +118,7 @@
           <?= $game['about'] ?>
         </div>
         <?= view_cell ( 'App\Controllers\Interviews::gameinterview', 'id='.$game['id'] ) ?>
+        <?= view_cell ( 'App\Controllers\Editions::editionsbygame', 'id='.$game['id'] ) ?>
         <?= view_cell ( 'App\Controllers\Gallery::galleryitems', 'query='.mb_url_title( $game['dev_name'].' '.$game['name'].' trailer google stadia', '+', true ) ) ?>
         <?= view_cell ( 'App\Controllers\Reviews::gamereviews', 'id='.$game['id'].', release='.$game['release'] ) ?>
         <?= view_cell ( 'App\Controllers\Prices::historyprices', 'id='.$game['id'] ) ?>

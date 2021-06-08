@@ -6,12 +6,12 @@
   class EditionsModel extends Model {
 
     protected $DBGroup = 'default';
-    protected $table = 'editions';
+    protected $table = 'games';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['game_id', 'name', 'price', 'ed_appid', 'ed_sku', 'ed_preorder_appid', 'ed_preorder_sku', 'ed_demo_appid', 'ed_demo_sku'];
+    protected $allowedFields = ['name', 'slug', 'release', 'pro', 'pro_from', 'pro_till', 'image', 'sku', 'appid', 'price', 'first_on_stadia', 'stadia_exclusive', 'early_acces', 'rumor', 'cross_play', 'multi_couch', 'multi_online', 'crowd_choice', 'cross_save', 'cross_progression', 'state_share', 'stream_connect', 'crowd_play', 'is_f2p', 'demo_appid', 'demo_sku', 'preorder_appid', 'preorder_sku', 'is_edition', 'edition_game_id'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';
@@ -20,6 +20,5 @@
     protected $skipvalidation = true;
 
   }
-
 
  ?>

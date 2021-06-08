@@ -19,6 +19,27 @@
     protected $dateFormat = 'datetime';
     protected $skipvalidation = true;
 
+    public function getNonDealEdition ( int $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->select('price, pro, pro_from')
+                    ->where('id' , $id);
+
+      return $builder->get()->getRowArray();
+
+    }
+
+    public function getGameForDeal ( $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->select('slug, id, name')
+                    ->where('id', $id);
+      return $builder->get()->getRowArray();
+
+    }
+
   }
 
  ?>

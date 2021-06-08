@@ -9,16 +9,24 @@ class Users extends BaseController {
 
   public function usersloginform () {
 
-    $data['page_title'] = 'User Login Form - On Stadia GamesDB!';
-    $data['page_description'] = 'Form Login for registered Users';
-    $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party';
-    $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
-    $data['page_url'] = base_url('/users/login');
-    $data['page_twitterimagealt'] ='User Login Form - Stadia GamesDB!';
+    if ( session ('logged') == true ) {
 
-    echo view ( 'templates/header', $data );
-    echo view ( 'users/usersloginform' );
-    echo view ( 'templates/footer' );
+      return redirect()->to( '/');
+
+    } else {
+
+      $data['page_title'] = 'User Login Form - On Stadia GamesDB!';
+      $data['page_description'] = 'Form Login for registered Users';
+      $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party';
+      $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+      $data['page_url'] = base_url('/users/login');
+      $data['page_twitterimagealt'] ='User Login Form - Stadia GamesDB!';
+
+      echo view ( 'templates/header', $data );
+      echo view ( 'users/usersloginform' );
+      echo view ( 'templates/footer' );
+
+    }
 
   }
 

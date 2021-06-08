@@ -2,7 +2,7 @@
  <div class="mx-3">
    <div class="columns is-multiline is-mobile">
      <div class="column">
-       <a href="<?= base_url ( '/editions/add/'.$game['id'] ) ?>"><button class="button is-info" type="button">Add Edition</button></a>
+       <a href="<?= base_url ( '/editions/addformeditions/'.$game['id'].'/'.$game['slug'] ) ?>"><button class="button is-info" type="button">Add Edition</button></a>
        <a href="<?= base_url ( '/prices/priceaddform/'.$game['id'] ) ?>"><button class="button is-info" type="button">Add/Update Deal</button></a>
        <a href="<?= base_url ('/interviews/interviewforms/'.$game['id'] ) ?>"><button class="button is-info" type="button">Add/Update Interview</button></a>
      </div>

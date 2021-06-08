@@ -217,6 +217,35 @@
 
     }
 
+    public function dealoneditions ( int $id ) {
+
+      $model = new PricesModel();
+      $data['editiondeals'] = $model->where('game_id', $id)
+                                    ->orderBy('id', 'DESC')
+                                    ->first();
+
+      if ( ! empty ( $data['editiondeals'] ) ) {
+
+        if ( $data['editiondeals']['price_pro'] > date ('Y-m-d') || $data['editiondeals']['price_nonpro'] > date ('Y-m-d') ) {
+
+          return view ( 'prices/parts/editiondeals', $data );
+
+        } else {
+
+          $data['price'] = $model->getNonDealEdition($id);
+          return view ( 'prices/parts/editiondeals', $data );
+
+        }
+
+      } else {
+
+        $data['price'] = $model->getNonDealEdition($id);
+        return view ( 'prices/parts/editiondeals', $data );
+
+      }
+
+    }
+
   }
 
  ?>

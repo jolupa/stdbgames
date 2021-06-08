@@ -7,19 +7,52 @@
 
     protected $helpers = ['text'];
 
-    public function addeditionform ( int $id ) {
+    public function addformeditions ( int $id, string $slug ) {
 
-      $model = new EditionsModel();
-      $data['editions'] = $model->where('game_id', $id)
-                                ->findAll();
+      if ( session ( 'logged' ) == false || session ( 'role' ) != 1 ) {
 
-      if ( empty ( $data['editions'] ) ) {
-
-        return view ( 'editions/parts/addeditionform' );
+        return redirect()->to( '/' )->with( 'error_adup', 'You can\'t Edit or Add content wthout being a DB! Staff' );
 
       } else {
 
-        return view ( 'editions/parts/addeditionform', $data );
+        $data['game'] = $id;
+        $data['page_title'] = 'Add Game Edition';
+        $data['page_description'] = 'Add Game Edition to DB! - Staff Only';
+        $data['page_keywords'] ='stadia, google, stream, games, cloud, online, streaming, fun, party';
+        $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
+        $data['page_url'] = base_url( '/editions/addformeditions' );
+        $data['page_twitterimagealt'] = 'Add Game Edition to DB! - Staff Only';
+        $data['game_slug'] = $slug;
+
+        echo view ( 'templates/header', $data );
+        echo view ( 'editions/addformeditions', $data );
+        echo view ( 'templates/footer' );
+
+      }
+
+    }
+
+    public function updateformeditions ( int $id ) {
+
+      if ( session ( 'logged' ) == false || session ( 'role' ) != 1 ) {
+
+        return redirect()->to( '/' )->with( 'error_adup', 'You cam\'t Edit or Add content without being a DB! Staff' );
+
+      } else {
+
+        $model = new EditionsModel();
+        $data['edition'] = $model->where('id', $id)
+                                  ->first();
+        $data['page_title'] = 'Update Game Edition';
+        $data['page_description'] = 'Update Game Edition to DB! - Staff Only';
+        $data['page_keywords'] ='stadia, google, stream, games, cloud, online, streaming, fun, party';
+        $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
+        $data['page_url'] = base_url( '/editions/addformeditions' );
+        $data['page_twitterimagealt'] = 'Update Game Edition to DB! - Staff Only';
+
+        echo view ( 'templates/header', $data );
+        echo view ( 'editions/updateformeditions', $data );
+        echo view ( 'templates/footer' );
 
       }
 
@@ -35,39 +68,140 @@
 
       }
 
-      $data['game_id'] = $this->request->getVar('game_id');
-      $data['name'] = $this->request->getVar('name');
-      $data['price'] = $this->request->getVar('price');
-      $data['ed_appid'] = $this->request->getVar('ed_appid');
-      $data['ed_sku'] = $this->request->getVar('ed_sku');
-      $data['ed_preorder_appid'] = $this->request->getVar('ed_preorder_appid');
-      $data['ed_preorder_sku'] = $this->request->getVar('ed_preorder_sku');
-      $data['ed_demo_appid'] = $this->request->getVar('ed_demo_appid');
-      $data['ed_demo_sku'] = $this->request->getVar('ed_demo_sku');
-      $model->save( $data );
-      return redirect()->to( '/update/game/'.$this->request->getVar('slug') );
+      if ( ! empty ( $this->request->getVar('is_edition') ) ) {
 
-    }
+        $data['is_edition'] = 1;
 
-    public function editions ( int $id ) {
+      }
 
-      $model = new EditionsModel();
-      $data['editions'] = $model->where('game_id', $id)
-                                ->findAll();
+      if ( ! empty ( $this->request->getVar('edition_game_id' ) ) ) {
 
-      if ( empty ( $data['editions'] ) ) {
+        $data['edition_game_id'] = $this->request->getVar('edition_game_id');
 
-        return '';
+      }
+
+      if ( ! empty ( $this->request->getVar('slug') ) ) {
+
+        $data['slug'] = $this->request->getVar('slug');
+
+      }
+
+      if ( empty ( $this->request->getVar('name') ) ) {
+
+        return redirect()->back()->withInput()->with( 'validation_name', 'Name Required');
 
       } else {
 
-        return view ( 'editions/parts/editions', $data );
+        $data['name'] = $this->request->getVar('name');
+
+      }
+
+      if ( ! empty ( $this->request->getVar('release') ) ) {
+
+        $data['release'] = $this->request->getVar('release');
+
+      }
+
+      if ( ! empty ( $this->request->getVar('price') ) ) {
+
+        $data['price'] = $this->request->getVar('price');
+
+      }
+
+      if ( $_FILES['image']['error'] == 4) {
+
+        if ( ! empty ( $this->request->getVar( 'old_image' ) ) ) {
+
+          $data['image'] = $this->request->getVar('old_image');
+
+        } else {
+
+          return redirect()->back()->withInput()->with('validation', 'We need an image to make more beauty the edition presentation' );
+
+        }
+
+      } else {
+
+        $file = $this->request->getFile('image')
+                              ->move(WRITEPATH.'uploads', strtolower ( url_title ( $data['name'] ) ) );
+
+        $image = \Config\Services::image('imagick')->withfile(WRITEPATH.'uploads/'.strtolower ( url_title ( $data['name'] ) ) )
+                                                    ->resize(1370, 728, 'width')
+                                                    ->convert(IMAGETYPE_JPEG)
+                                                    ->save(ROOTPATH.'public/img/games/'.strtolower ( url_title ( $data['name'] ) ).'.jpeg' );
+
+        $imagethumb = \Config\Services::image('imagick')->withfile(WRITEPATH.'uploads/'.strtolower ( url_title ( $data['name'] ) ) )
+                                                    ->fit(256, 256, 'center')
+                                                    ->convert(IMAGETYPE_JPEG)
+                                                    ->save(ROOTPATH.'public/img/games/'.strtolower ( url_title ( $data['name'] ) ).'-thumb.jpeg' );
+
+        unlink ( WRITEPATH.'uploads/'.strtolower ( url_title ( $data['name'] ) ) );
+        $data['image'] = strtolower ( url_title ( $data['name'] ) );
+
+      }
+
+      if ( ! empty ( $this->request->getVar('pro') ) && empty ( $this->request->getVar('pro_from') ) ) {
+
+        return redirect()->back()->withInput()->with( 'validation_pro', 'If a Game is Pro we need When it Starts the Pro Feature' );
+
+      } elseif ( ! empty ( $this->request->getVar('pro') ) && ! empty ( $this->request->getVar('pro_from') ) ) {
+
+        $data['pro'] = 1;
+        $data['pro_from'] = $this->request->getVar('pro_from');
+
+      }
+
+      if ( ! empty ( $this->request->getVar('pro_till') ) ) {
+
+        $data['pro_till'] = $this->request->getVar('pro_till');
+
+      }
+
+      if ( ! empty ( $this->request->getVar('preorder_appid') ) ) {
+
+        $data['preorder_appid'] = $this->request->getVar('preorder_appid');
+        $data['preorder_sku'] = $this->request->getVar('preorder_sku');
+
+      }
+
+      if ( ! empty ( $this->request->getVar('appid') ) ) {
+
+        $data['appid'] = $this->request->getVar('appid');
+        $data['sku'] = $this->request->getVar('sku');
+
+      }
+
+      if ( ! empty ( $this->request->getVar('demo_appid') ) ) {
+
+        $data['demo_appid'] = $this->request->getVar('demo_appid');
+        $data['demo_sku'] = $this->request->getVar('demo_sku');
+
+      }
+
+      $model->save( $data );
+      return redirect()->to( '/game/'.$this->request->getVar('slug') );
+
+    }
+
+    public function editionsbygame ( int $id ) {
+
+      $model = new EditionsModel();
+      $data['editions'] = $model->where('is_edition', 1)
+                                ->where('edition_game_id', $id)
+                                ->orderBy('release', 'DESC')
+                                ->findAll();
+      if ( ! empty ( $data['editions'] ) ) {
+
+        return view ( 'editions/parts/editionsbygame', $data );
+
+      } else {
+
+        return '';
 
       }
 
     }
 
   }
-
 
  ?>
