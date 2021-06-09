@@ -190,11 +190,11 @@
 
       } else {
 
-        $name = session( 'username' );
+        $name = 'Our user '.session( 'username' );
 
       }
 
-      $statusmessage = 'Our user '.$name.' wrote a review for '.$this->request->getVar('game_name').' You agree? Want to say your own? '.previous_url().'#game_reviews';
+      $statusmessage = $name.' wrote a review for '.$this->request->getVar('game_name').' You agree? Want to say your own? '.previous_url().'#game_reviews';
       $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
       $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
 
