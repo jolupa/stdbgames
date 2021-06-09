@@ -223,6 +223,7 @@
       $data['editiondeals'] = $model->where('game_id', $id)
                                     ->orderBy('id', 'DESC')
                                     ->first();
+      $data['editions'] = $model->thePrice($id);
 
       if ( ! empty ( $data['editiondeals'] ) ) {
 

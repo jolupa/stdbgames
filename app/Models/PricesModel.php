@@ -30,11 +30,21 @@
 
     }
 
-    public function getGameForDeal ( $id ) {
+    public function getGameForDeal ( int $id ) {
 
       $db = \Config\Database::connect();
       $builder = $db->table('games')
                     ->select('slug, id, name')
+                    ->where('id', $id);
+      return $builder->get()->getRowArray();
+
+    }
+
+    public function thePrice( int $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('games')
+                    ->select('price, pro, pro_from, pro_till')
                     ->where('id', $id);
       return $builder->get()->getRowArray();
 
