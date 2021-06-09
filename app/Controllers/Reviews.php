@@ -12,7 +12,7 @@
     public function latestreviews () {
 
       $model = new ReviewsModel();
-      $data['latestreviews'] = $model->select('reviews.url, games.name as name, games.slug as slug, games.image as image, users.name as uname, users.image as uimage, users.role as urole')
+      $data['latestreviews'] = $model->select('reviews.id, reviews.url, games.name as name, games.slug as slug, games.image as image, users.name as uname, users.image as uimage, users.role as urole')
                                       ->join('games', 'games.id = reviews.game_id')
                                       ->join('users', 'users.id = reviews.user_id')
                                       ->orderBy('reviews.created_at', 'DESC')
@@ -26,7 +26,7 @@
 
       $model = new ReviewsModel();
       $pager = \Config\Services::pager();
-      $data['reviews'] = $model->select('reviews.url AS url, reviews.created_at AS created_at, reviews.about AS about, users.name AS name, users.image AS image, users.role AS role')
+      $data['reviews'] = $model->select('reviews.id, reviews.url AS url, reviews.created_at AS created_at, reviews.about AS about, users.name AS name, users.image AS image, users.role AS role')
                                 ->where('game_id', $id)
                                 ->join('users', 'users.id = reviews.user_id')
                                 ->orderBy('reviews.created_at', 'DESC')
@@ -183,7 +183,18 @@
 
       $model->save( $data );
       require ( ROOTPATH.'twitter.php' );
-      $statusmessage = 'Our user '.session( 'username').' wrote a review for '.$this->request->getVar('game_name').' You agree? Want to say your own? '.previous_url().'#game_reviews';
+
+      if ( session( 'role' ) == 1 ) {
+
+        $name = 'Our Staff';
+
+      } else {
+
+        $name = session( 'username' );
+
+      }
+
+      $statusmessage = 'Our user '.$name.' wrote a review for '.$this->request->getVar('game_name').' You agree? Want to say your own? '.previous_url().'#game_reviews';
       $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
       $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
 

@@ -1,7 +1,7 @@
 <div id="game_reviews" class="content">
   <p class="title is-4 mt-5">Game Reviews</p>
   <?php foreach ( $reviews as $reviews ): ?>
-    <div class="columns">
+    <div id="review_<?= $reviews['id'] ?>" class="columns">
       <div class="column">
         <div class="media is-shadowless">
           <div class="media-left">
@@ -14,7 +14,7 @@
             </figure>
           </div>
           <div class="media-content">
-            <p class="title is-5"><span class="icon-text"><span><?= $reviews['name'] ?>&nbsp;Review</span><?php if ( $reviews['role'] == 1 ): ?>&nbsp;<span class="icon"><i class="fas fa-users"></i></span><?php endif; ?><?php if ( $reviews['role'] == 2 ): ?>&nbsp<span class="icon"><i class="far fa-newspaper"></i></span><?php endif; ?></span></p>
+            <p class="title is-5"><span class="icon-text"><span><?php if ( $reviews['role'] == 1 ): ?>Our Staff Reviewed<?php else: ?><?= $reviews['name'] ?> Review<?php endif; ?></span><?php if ( $reviews['role'] == 1 ): ?>&nbsp;<span class="icon"><i class="fas fa-users"></i></span><?php endif; ?><?php if ( $reviews['role'] == 2 ): ?>&nbsp<span class="icon"><i class="far fa-newspaper"></i></span><?php endif; ?></span></p>
             <p class="subtitle is-7">Date: <?= date ( 'd-m-Y', strtotime ( $reviews['created_at'] ) ) ?></p>
             <div class="content">
               <?= $reviews['about'] ?>
