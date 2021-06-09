@@ -39,7 +39,7 @@
               </figure>
             </div>
             <div class="card-content is-hidden-mobile">
-              <p class="title is-5"><a href="<?= base_url('/game/'.$release['slug']) ?>"><?= ellipsize($release['name'], 15, 1, '...') ?></a></p>
+              <p class="title is-5"><span class="icon-text"><a href="<?= base_url('/game/'.$release['slug']) ?>"><?php if ( $release['rumor'] == 1 ): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?> <span><?= ellipsize($release['name'], 15, 1, '...') ?></span></a></span></p>
               <p class="subtitle is-7">Dev <a href="<?= base_url('/developer/'.$release['dev_slug']) ?>"><?= ellipsize($release['dev_name'], 15, 1, '...') ?></a> | Pub <a href="<?= base_url('/publisher/'.$release['pub_slug']) ?>"><?= ellipsize($release['pub_name'], 15, 1, '...') ?></a> | Rel <?= date('d-m-Y', strtotime($release['release'])) ?></p>
             </div>
           </div>
