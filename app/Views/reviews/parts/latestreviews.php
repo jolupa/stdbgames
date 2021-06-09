@@ -11,7 +11,7 @@
               </figure>
             </div>
             <div class="card-content">
-              <p class="title is-5"><span class="icon-text"><span><?= $reviews['uname'] ?></span><?php if ( $reviews['urole'] == 2 ): ?>&nbsp;<span class="icon"><i class="far fa-newspaper"></i></span><?php endif; ?></span></p>
+              <p class="title is-5"><span class="icon-text"><span><?= $reviews['uname'] ?></span><?php if ( $reviews['urole'] == 1 ): ?>&nbsp;<span class="icon"><i class="fas fa-users"></i></span><?php endif; ?><?php if ( $reviews['urole'] == 2 ): ?>&nbsp;<span class="icon"><i class="far fa-newspaper"></i></span><?php endif; ?></span></p>
               <p class="subtitle is-7">reviewed <a href="<?= base_url ( '/game/'.$reviews['slug'] ) ?>"><?= ellipsize ( $reviews['name'], 15, 1, '...') ?></a></p>
             </div>
           </div>
