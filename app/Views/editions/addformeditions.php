@@ -2,7 +2,6 @@
   <div class="mx-3">
     <p class="title is-4">Add Game Edition</p>
     <form action="<?= base_url ( '/editions/save') ?>" method="post" enctype="multipart/form-data">
-      <input type="hidden" name="is_edition" value="1">
       <input type="hidden" name="edition_game_id" <?php if ( ! empty ( old ('edition_game_id') ) ): ?>value="<?= old ('edition_game_id') ?>"<?php else: ?>value="<?= $game ?>"<?php endif; ?>>
       <input type="hidden" name="slug" <?php if ( ! empty ( old ('slug') ) ): ?>value="<?= old('slug') ?>"<?php else: ?>value="<?= $game_slug ?>"<?php endif; ?>>
       <div class="field">

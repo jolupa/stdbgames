@@ -68,7 +68,7 @@
 
       }
 
-      $data['is_edition'] = $this->request->getVar('is_edition');
+      $data['is_edition'] = 1;
       $data['edition_game_id'] = $this->request->getVar('edition_game_id');
       $data['slug'] = $this->request->getVar('slug');
 
@@ -107,6 +107,13 @@
         }
 
       } else {
+
+        if ( ! empty ( $this->request->getVar('old_image') ) ) {
+
+          unlink ( ROOTPATH.'public/img/games/'.$this->request->getVar('old_image').'.jpeg' );
+          unlink ( ROOTPATH.'public/img/games/'.$this->request->getVar('old_image').'-thumb.jpeg' );
+
+        }
 
         $file = $this->request->getFile('image')
                               ->move(WRITEPATH.'uploads', strtolower ( url_title ( $data['name'] ) ) );
