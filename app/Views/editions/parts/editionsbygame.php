@@ -38,14 +38,14 @@
           <div class="is-overlay is-hidden-desktop" style="top:auto; bottom: 5px; left: auto; right: 5px;">
             <span class="icon-text">
               <?php if ( session ( 'likes' ) != null && in_array ( $editions['like'], session ( 'likes' ) ) ): ?>
-                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $editions['like'] ?> Likes</span></tag>
+                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $editions['like'] ?></span></tag>
               <?php else: ?>
-                <a href="<?= base_url( '/games/like/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $editions['like'] ?> Likes</span></tag></a>
+                <a href="<?= base_url( '/games/like/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $editions['like'] ?></span></tag></a>
               <?php endif; ?>
               <?php if ( session ( 'dislikes' ) != null && in_array ( $editions['dislike'], session ( 'dislikes' ) ) ): ?>
-                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $editions['dislike'] ?> Dislikes</span></tag>
+                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $editions['dislike'] ?></span></tag>
               <?php else: ?>
-                <a href="<?= base_url ( '/game/dislike/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $editions['dislike'] ?> Dislikes</span></tag></a>
+                <a href="<?= base_url ( '/game/dislike/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $editions['dislike'] ?></span></tag></a>
               <?php endif; ?>
             </span>
           </div>
