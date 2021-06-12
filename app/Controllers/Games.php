@@ -108,6 +108,7 @@
                                 ->where('release', $release)
                                 ->where('release !=', '2099-01-01')
                                 ->Where('id !=', $id)
+                                ->where('is_edition', 0)
                                 ->findAll();
       if ( ! empty ( $data['sameday'] ) ) {
 
