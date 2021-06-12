@@ -16,7 +16,7 @@
                 <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $developed['like'] ?></span></tag>
                 <tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $developed['dislike'] ?></span></tag>
               <?php elseif ( session ( 'dislikes' ) != null && in_array ( $developed['id'], session ( 'dislikes') ) ): ?>
-                <tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $developed['like'] ?></span></tag> 
+                <tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $developed['like'] ?></span></tag>
                 <tag class="tag is-coral"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $developed['dislike'] ?></span></tag>
               <?php else: ?>
                 <a href="<?= base_url ( '/games/like/'.$developed['id'] ) ?>"><tag class="tag is-info"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $developed['like'] ?></span></tag></a>
