@@ -54,13 +54,6 @@ class Users extends BaseController {
       $data['slug'] = strtolower ( url_title ( $data['name'] ) );
       $data['email'] = $this->request->getVar('email_signup');
       $data['birth_date'] = $this->request->getVar('birth_date_signup');
-
-      if ( ! empty ( $this->request->getVar('patreon') ) ) {
-
-        $data['patreon_usernam'] = $this->request->getVar('patreon_username');
-
-      }
-
       $data['role'] = 0;
 
       if ( ! empty ( $this->request->getVar('patreon_username') ) ) {
@@ -122,14 +115,14 @@ class Users extends BaseController {
 
     } else {
 
-      $data['name'] = $this->request->getVar('name');
+      $data['email'] = $this->request->getVar('email');
       $data['password'] = $this->request->getVar('password');
-      $checkname = $model->where('name', $data['name'])
+      $checkname = $model->where('email', $data['email'])
                           ->first();
 
       if ( empty ( $checkname ) ) {
 
-        return redirect()->to('/users/login')->with('validation', 'The username is not in DB!');
+        return redirect()->to('/users/login')->with('validation', 'The email is not in DB!');
 
       } elseif ( password_verify ( $data['password'], $checkname['password'] ) ) {
 

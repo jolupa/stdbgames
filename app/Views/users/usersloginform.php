@@ -6,11 +6,11 @@
         <form action="<?= base_url ( '/users/userslogin' ) ?>" method="post" enctype="multipart/form-data">
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
-              <label class="label">User Name</label>
+              <label class="label">E-Mail</label>
               <div class="control">
-                <input class="input" type="text" name="name">
-                <?php if ( isset ( $validation) && $validation->hasError('name') ): ?>
-                  <p class="help has-text-coral"><?= $validation->getError('name') ?></p>
+                <input class="input" type="email" name="email">
+                <?php if ( isset ( $validation) && $validation->hasError('email') ): ?>
+                  <p class="help has-text-coral"><?= $validation->getError('email') ?></p>
                 <?php endif; ?>
               </div>
             </div>

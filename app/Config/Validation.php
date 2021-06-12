@@ -129,13 +129,13 @@ class Validation
 
 	public $userslogin = [
 
-		'name' => [
+		'email' => [
 
-			'label' => 'name',
+			'label' => 'email',
 			'rules' => 'required',
 			'errors' => [
 
-				'required' => 'Provide your username we are not magicians!',
+				'required' => 'Provide your email we are not magicians!',
 
 			],
 

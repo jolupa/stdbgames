@@ -35,6 +35,7 @@
                         <option value="0" <?php if ( $users['role'] == 0 ): ?>selected<?php endif; ?>>User</option>
                         <option value="1" <?php if ( $users['role'] == 1 ): ?>selected<?php endif; ?>>Staff</option>
                         <option value="2" <?php if ( $users['role'] == 2 ): ?>selected<?php endif; ?>>Content Creators</option>
+                        <option value="3" <?php if ( $users['role'] == 3 ): ?>selected<?php endif; ?>>Supporter</option>
                       </select>
                     </div>
                   </div>
