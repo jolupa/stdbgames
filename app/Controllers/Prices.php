@@ -15,7 +15,7 @@
                             ->where('date_till_pro >', date('Y-m-d'))
                             ->orWhere('date_till_nonpro >', date('Y-m-d'))
                             ->join('games', 'games.id = prices.game_id')
-                            ->orderBy('date_till_pro, date_till_nonpro', 'DESC')
+                            ->orderBy('name', 'ASC')
                             ->findAll(6);
 
       if ( ! empty ( $data['deals'] ) ) {
@@ -63,7 +63,7 @@
                             ->where('date_till_pro >', date('Y-m-d'))
                             ->orWhere('date_till_nonpro >', date('Y-m-d'))
                             ->join('games', 'games.id = prices.game_id')
-                            ->orderBy('name', 'DESC')
+                            ->orderBy('name', 'ASC')
                             ->paginate(44);
       if ( empty ( $data['list'] ) ) {
 
@@ -101,7 +101,7 @@
         echo view ( 'templates/header', $data );
         echo view ( 'templates/list', $data );
         echo view ( 'templates/footer');
-        
+
       }
 
     }
