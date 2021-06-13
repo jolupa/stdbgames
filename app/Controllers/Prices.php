@@ -63,16 +63,19 @@
                             ->where('date_till_pro >', date('Y-m-d'))
                             ->orWhere('date_till_nonpro >', date('Y-m-d'))
                             ->join('games', 'games.id = prices.game_id')
-                            ->orderBy('date_till_pro, date_till_nonpro', 'DESC')
+                            ->orderBy('name', 'DESC')
                             ->paginate(44);
       if ( empty ( $data['list'] ) ) {
+
         $data['error'] = 'No deals at this momment';
+
       }
       $data['pager'] = $model->pager;
       $data['page_title'] = 'All the Game Deals on Stadia - Stadia GamesDB!';
       $data['page_description'] = 'All the game deals on Stadia';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads, deals";
+
       if ( empty ( $data['list']['image'] ) ) {
 
         $data['page_image'] = base_url ( '/img/stdb_logo_big.png' );
@@ -82,6 +85,7 @@
         $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 1, $total )]['image'].'.jpeg');
 
       }
+
       $data['page_url'] = base_url ( '/prices/list');
       $data['page_twitterimagealt'] = 'All deals on Stadia';
       $data['page_header'] = 'All the game deals on Stadia';
@@ -97,6 +101,7 @@
         echo view ( 'templates/header', $data );
         echo view ( 'templates/list', $data );
         echo view ( 'templates/footer');
+        
       }
 
     }

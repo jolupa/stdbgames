@@ -2,6 +2,7 @@
 
   namespace App\Controllers;
   use App\Models\EditionsModel;
+  use Abraham\TwitterOAuth\TwitterOAuth;
 
   class Editions extends BaseController {
 
@@ -172,6 +173,26 @@
       }
 
       $model->save( $data );
+
+      if ( ! empty ( $this->request->getVar('tweet') ) ) {
+
+        require ( ROOTPATH.'twitter.php' );
+
+        if ( ! empty ( $this->request->getVar('id') ) ) {
+
+          $statusmessage = 'We updated a Game Edition '.$data['name'].' Like, Dislike or add it to your Library or Wishlist! https://stdb.games/game/'.$this->request->getVar('slug');
+
+        } else {
+
+          $statusmessage = 'We added a new Game Edition to DB! '.$data['name'].' Like, Dislike or add it to your Library or Wishlist! https://stdb.games/game/'.$this->request->getVar('slug');
+
+        }
+
+        $connection = new TwitterOAuth ( $sonsumerkey, $consumersecret, $token, $tokensecret );
+        $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
+
+      }
+
       return redirect()->to( '/game/'.$this->request->getVar('slug') );
 
     }
