@@ -47,7 +47,7 @@
                       </figure>
                     </div>
                     <div class="card-content">
-                      <p class="title is-5"><a href="<?= base_url('/game/'.$proslider[$i]['slug']) ?>" title="<?= $proslider[$i]['name'] ?>"><?= ellipsize($proslider[$i]['name'], 15, 1, '...') ?></a></p>
+                      <p class="title is-5"><a href="<?= base_url('/game/'.$proslider[$i]['slug']) ?>" title="<?= $proslider[$i]['name'] ?>"><?= $proslider[$i]['name'] ?></a></p>
                       <p class="subtitle is-7">From <?= date('d-m-Y', strtotime($proslider[$i]['pro_from'])) ?> <?php if($proslider[$i]['pro_till'] != ''): ?>| Till <?= date('d-m-Y', strtotime($proslider[$i]['pro_till'])) ?><?php endif; ?></p>
                     </div>
                   </div>

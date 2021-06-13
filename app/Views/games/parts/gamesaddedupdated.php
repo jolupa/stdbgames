@@ -39,7 +39,7 @@
               </figure>
             </div>
             <div class="card-content is-hidden-mobile">
-              <p class="title is-5"><span class="icon-text"><?php if ($added['rumor'] == 1): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url('/game/'.$added['slug']) ?>" title="<?= $added['name'] ?>"><?= ellipsize($added['name'], 15, 1, '...') ?></a></span></p>
+              <p class="title is-5"><span class="icon-text"><?php if ($added['rumor'] == 1): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url('/game/'.$added['slug']) ?>" title="<?= $added['name'] ?>"><?= $added['name'] ?></a></span></p>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@
               </figure>
             </div>
             <div class="card-content is-hidden-mobile">
-              <p class="title is-5"><span class="icon-text"><?php if ($updated['rumor'] == 1): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a  href="<?= base_url('/game/'.$updated['slug']) ?>" title="<?= $updated['name'] ?>"><?= ellipsize($updated['name'], 15, 1, '...') ?></a></span></p>
+              <p class="title is-5"><span class="icon-text"><?php if ($updated['rumor'] == 1): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a  href="<?= base_url('/game/'.$updated['slug']) ?>" title="<?= $updated['name'] ?>"><?= $updated['name'] ?></a></span></p>
             </div>
           </div>
         </div>
