@@ -32,6 +32,11 @@
                 <?php endif; ?>
               </span>
             </p>
+            <?php if ( session ('logged') == true && session ('role') == 1 ): ?>
+              <p class="has-text-centered">
+                <a href="<?= base_url ('/update/game/'.$game['slug']) ?>"><tag class="tag is-minion">Update</tag></a>
+              </p>
+            <?php endif; ?>
             <?php if ( session ( 'error_lidi' ) != null ): ?>
               <p class="help has-text-centered"><?= session ( 'error_lidi' ) ?></p>
             <?php endif; ?>
