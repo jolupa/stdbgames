@@ -74,11 +74,11 @@
             <div class="control">
               <label class="checkbox">
                 <input type="checkbox" name="patreon">
-                Are you a Patreon subscriber?
+                Are you a Patreon/Buy Me a Coffe subscriber?
               </label>
             </div>
             <div class="control is-expanded">
-              <label class="label">Your Patreon username</label>
+              <label class="label">Your Patreon/Buy Me a Coffee username</label>
               <div class="control">
                 <input class="input" type="text" name="patreon_username">
                 <?php if ( isset ( $validation ) && $validation->hasError( 'patreon_username' ) ): ?>

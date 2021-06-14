@@ -28,11 +28,11 @@
             <div class="control">
               <label class="checkbox">
                 <input type="checkbox" name="patreon" <?php if ( ! empty ( $user['patreon_username'] ) ): ?>checked<?php endif; ?>>
-                Are you a Patreon subscriber?
+                Are you a Patreon/Buy Me a Coffee subscriber?
               </label>
             </div>
             <div class="control is-expanded">
-              <label class="label">Your Patreon username</label>
+              <label class="label">Your Patreon/Buy Me a Coffee username</label>
               <div class="control">
                 <input class="input" type="text" name="patreon_username" <?php if ( ! empty ( $user['patreon_username'] ) ): ?>value="<?= $user['patreon_username'] ?>"<?php endif; ?>>
                 <?php if ( isset ( $validation ) && $validation->hasError( 'patreon_username' ) ): ?>
