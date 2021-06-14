@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="card-content is-hidden-mobile">
-          <p class="title is-5"><span class="icon-text"><?php if ( ! empty ( $developed['rumor'] ) ): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$developed['game_slug'] ) ?>"><?= $developed['game_name'] ) ?></a></span></span></p>
+          <p class="title is-5"><span class="icon-text"><?php if ( ! empty ( $developed['rumor'] ) ): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$developed['game_slug'] ) ?>"><?= $developed['game_name'] ?></a></span></span></p>
           <p class="subtitle is-7">Pub <a href="<?= base_url ( '/publisher/'.$developed['pub_slug'] ) ?>"><?= $developed['pub_name'] ?></a></p>
         </div>
       </div>
