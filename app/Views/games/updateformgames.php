@@ -278,7 +278,7 @@
          <button class="button is-coral" type="reset">Reset!</button>
        </div>
        <div class="control">
-         <a href="<?= base_url ( '/games/deletegame/'.$game['id'] ) ?>"><button class="button is-coral" type="button">Delete!</button></a>
+         <a href="<?= base_url ( '/games/delete/'.$game['id'] ) ?>"><button class="button is-coral" type="button">Delete!</button></a>
        </div>
      </div>
    </form>

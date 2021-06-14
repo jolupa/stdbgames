@@ -1228,12 +1228,25 @@
 
     }
 
-    public function deletegame ( int $id ) {
+    public function delete ( int $id ) {
 
-      $model = new GamesModel();
-      $model->delete( $id );
+      if ( session ('logged') == false || session ('role') != 1 ) {
 
-      return redirect()->to( '/')->with( 'error_del', 'Deleted succesfully');
+        return redirect()->to( '/' )->with( 'error_adup', 'You can\'t edit internal page data without being a DB! staff');
+
+      } else {
+
+        $model = new GamesModel();
+
+        $data['game'] = $model->where('id', $id)
+                              ->first();
+
+        unlink ( ROOTPATH.'public/img/games/'.$data['game']['image'].'.jpeg' );
+        unlink ( ROOTPATH.'public/img/games/'.$data['game']['image'].'-thumb.jpeg' );
+        $model->delete($id, true);
+        return redirect()->to( '/')->with( 'error_del', 'Deleted succesfully');
+
+      }
 
     }
 

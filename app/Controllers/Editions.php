@@ -216,6 +216,28 @@
 
     }
 
+    public function delete ( int $id ) {
+
+      if ( session ('logged') == false || session ('role') != 1 ) {
+
+        return redirect()->to( '/' )->with( 'error_adup', 'You can\'t edit internal page data without being a DB! staff');
+
+      } else {
+
+        $model = new EditionsModel();
+
+        $data['edition'] = $model->where('id', $id)
+                                  ->first();
+
+        unlink ( ROOTPATH.'public/img/games/'.$data['edition']['image'].'.jpeg' );
+        unlink ( ROOTPATH.'public/img/games/'.$data['edition']['image'].'-thumb.jpeg' );
+        $model->delete($id, true);
+        return redirect()->to( '/' )->with( 'error_del', 'Deleted succesfully');
+
+      }
+
+    }
+
   }
 
  ?>

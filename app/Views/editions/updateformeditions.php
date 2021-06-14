@@ -275,7 +275,7 @@
          <button class="button is-coral" type="reset">Reset!</button>
        </div>
        <div class="control">
-         <a href="<?= base_url ( '/editions/deletegame/'.$edition['id'] ) ?>"><button class="button is-coral" type="button">Delete!</button></a>
+         <a href="<?= base_url ( '/editions/delete/'.$edition['id'] ) ?>"><button class="button is-coral" type="button">Delete!</button></a>
        </div>
      </div>
    </form>
