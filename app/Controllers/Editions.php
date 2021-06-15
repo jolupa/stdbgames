@@ -188,7 +188,7 @@
 
         }
 
-        $connection = new TwitterOAuth ( $sonsumerkey, $consumersecret, $token, $tokensecret );
+        $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
         $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
 
       }
