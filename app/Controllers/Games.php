@@ -15,6 +15,7 @@
       $data['discover'] = $model->select('games.id, games.name, games.slug, games.image, games.rumor, developers.name AS dev_name, games.like, games.dislike, developers.slug AS dev_slug, publishers.name AS pub_name, publishers.slug AS pub_slug')
                                 ->where('release !=', '2099-01-01')
                                 ->where('is_edition', 0)
+                                ->where('dropped', 0)
                                 ->join('developers', 'developers.id = games.developer_id')
                                 ->join('publishers', 'publishers.id = games.publisher_id')
                                 ->orderBy('games.id', 'RANDOM')
@@ -70,7 +71,7 @@
         'html_input' => 'strip',
         'allow_unsafe_links' => false,
       ]);
-      $data['game'] = $model->select('games.id, games.name, games.slug, games.image, games.about, games.price, games.release, games.pro, games.pro_from, games.pro_till, games.appid, games.sku, games.rumor, games.is_f2p, games.first_on_stadia, games.stadia_exclusive, games.early_access, games.cross_play, games.cross_progression, games.multi_couch, games.multi_online, games.crowd_choice, games.cross_save, games.state_share, games.stream_connect, games.crowd_play, games.max_resolution, games.is_pxc, games.fps, games.hdr_sdr, games.like, games.dislike, games.url, games.twitter_account, games.demo_appid, games.demo_sku, games.preorder_appid, games.preorder_sku, developers.name AS dev_name, developers.slug AS dev_slug, publishers.name AS pub_name, publishers.slug AS pub_slug')
+      $data['game'] = $model->select('games.id, games.name, games.slug, games.image, games.about, games.price, games.release, games.pro, games.pro_from, games.pro_till, games.appid, games.sku, games.rumor, games.is_f2p, games.first_on_stadia, games.stadia_exclusive, games.early_access, games.cross_play, games.cross_progression, games.multi_couch, games.multi_online, games.crowd_choice, games.cross_save, games.state_share, games.stream_connect, games.crowd_play, games.max_resolution, games.is_pxc, games.fps, games.hdr_sdr, games.like, games.dislike, games.url, games.twitter_account, games.demo_appid, games.demo_sku, games.preorder_appid, games.preorder_sku, games.dropped, developers.name AS dev_name, developers.slug AS dev_slug, publishers.name AS pub_name, publishers.slug AS pub_slug')
                             ->where('games.slug', $slug)
                             ->join('developers', 'developers.id = games.developer_id')
                             ->join('publishers', 'publishers.id = games.publisher_id')
@@ -726,6 +727,16 @@
 
         }
 
+        if ( ! empty ( $this->request->getVar('dropped') ) ) {
+
+          $data['dropped'] = 1;
+
+        } else {
+
+          $data['dropped'] = 0;
+
+        }
+
         $data['name'] = $this->request->getVar('name');
         $data['slug'] = strtolower( url_title ( $data['name'] ) );
 
@@ -971,6 +982,16 @@
       } else {
 
         $data['rumor'] = 0;
+
+      }
+
+      if ( ! empty ( $this->request->getVar('dropped') ) ) {
+
+        $data['dropped'] = 1;
+
+      } else {
+
+        $data['dropped'] = 0;
 
       }
 
@@ -1256,20 +1277,25 @@
       $totalgames = $model->where('is_edition', 0)
                           ->findAll();
       $gameslaunched = $model->where('is_edition', 0)
+                              ->where('dropped', 0)
                               ->where('release <', date('Y-m-d'))
                               ->findAll();
       $waitinglaunch = $model->where('is_edition', 0)
+                              ->where('dropped', 0)
                               ->where('release >', date('Y-m-d'))
                               ->where('release !=', '2099-01-01')
                               ->where('rumor', 0)
                               ->findAll();
       $allprogames = $model->where('is_edition', 0)
+                            ->where('dropped', 0)
                             ->where('pro_from !=', '')
                             ->findAll();
       $rumors = $model->where('is_edition', 0)
+                      ->where('dropped', 0)
                       ->where('rumor', 1)
                       ->findAll();
       $nodate = $model->where('is_edition', 0)
+                      ->where('dropped', 0)
                       ->where('release', '2099-01-01')
                       ->where('rumor', 0)
                       ->findAll();

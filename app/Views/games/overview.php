@@ -104,17 +104,19 @@
             <?php endif; ?>
              <?= view_cell ( 'App\Controllers\Prices::dealongame', 'id='.$game['id'] ) ?>
           <br \>
-          <?php if ( ! empty ( $game['appid'] ) ): ?>
-            <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go Stadia Store</a> | <a href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
-          <?php else: ?>
-            <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
-              <a href="https://stadia.google.com/store/details/<?= $game['demo_appid'] ?>" target="_blank">Play the Demo</a>
-            <?php endif; ?>
-            <?php if ( ! empty ( $game['preorder_appid'] ) ): ?>
+          <?php if ( $game['dropped'] == 0 ): ?>
+            <?php if ( ! empty ( $game['appid'] ) ): ?>
+              <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go Stadia Store</a> | <a href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
+            <?php else: ?>
               <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
-                &nbsp;|&nbsp;
+                <a href="https://stadia.google.com/store/details/<?= $game['demo_appid'] ?>" target="_blank">Play the Demo</a>
               <?php endif; ?>
-              <a href="https://stadia.google.com/store/details/<?= $game['preorder_appid'] ?>/sku/<?= $game['preorder_sku'] ?>" target="_blank">Pre Order</a>
+              <?php if ( ! empty ( $game['preorder_appid'] ) ): ?>
+                <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
+                  &nbsp;|&nbsp;
+                <?php endif; ?>
+                <a href="https://stadia.google.com/store/details/<?= $game['preorder_appid'] ?>/sku/<?= $game['preorder_sku'] ?>" target="_blank">Pre Order</a>
+              <?php endif; ?>
             <?php endif; ?>
           <?php endif; ?>
         </p>

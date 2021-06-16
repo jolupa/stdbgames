@@ -11,7 +11,7 @@
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['name', 'slug', 'developer_id', 'publisher_id', 'release', 'about', 'pro', 'pro_from', 'pro_till', 'image', 'sku', 'appid', 'price', 'first_on_stadia', 'stadia_exclusive', 'early_acces', 'rumor', 'cross_play', 'multi_couch', 'multi_online', 'crowd_choice', 'cross_save', 'cross_progression', 'state_share', 'stream_connect', 'crowd_play', 'is_pxc', 'max_resolution', 'fps', 'hdr_sdr', 'is_f2p', 'like', 'dislike', 'url', 'twitter_account', 'demo_appid', 'demo_sku', 'preorder_appid', 'preorder_sku'];
+    protected $allowedFields = ['name', 'slug', 'developer_id', 'publisher_id', 'release', 'about', 'pro', 'pro_from', 'pro_till', 'image', 'sku', 'appid', 'price', 'first_on_stadia', 'stadia_exclusive', 'early_acces', 'rumor', 'cross_play', 'multi_couch', 'multi_online', 'crowd_choice', 'cross_save', 'cross_progression', 'state_share', 'stream_connect', 'crowd_play', 'is_pxc', 'max_resolution', 'fps', 'hdr_sdr', 'is_f2p', 'like', 'dislike', 'url', 'twitter_account', 'demo_appid', 'demo_sku', 'preorder_appid', 'preorder_sku', 'dropped'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';

@@ -73,6 +73,16 @@
       $data['edition_game_id'] = $this->request->getVar('edition_game_id');
       $data['slug'] = $this->request->getVar('slug');
 
+      if ( ! empty ( $this->request->getVar('dropped') ) ) {
+
+        $data['dropped'] = 1;
+
+      } else {
+
+        $data['dropped'] = 0;
+
+      }
+
       if ( empty ( $this->request->getVar('name') ) ) {
 
         return redirect()->back()->withInput()->with( 'validation_name', 'Name Required');

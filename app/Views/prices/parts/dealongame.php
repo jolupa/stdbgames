@@ -1,5 +1,7 @@
 <?php if ( isset ( $game['is_f2p'] ) && $game['is_f2p'] == 1 ): ?>
   | Free to Play
+<?php elseif ( isset ( $game['dropped'] ) && $game['dropped'] == 1 ): ?>
+  | Dropped from the Store
 <?php else: ?>
   <?php if ( isset ($dealongame['price_pro']) || isset ($dealongame['price_nonpro']) ): ?>
 
