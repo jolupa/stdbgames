@@ -32,19 +32,19 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '447ddb5fbb202412a59ee8cc45f06bab812817b7',
+    'reference' => '71b2c2c63a55095f26be1e13adac59bdd79d8a0c',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
   array (
     'abraham/twitteroauth' => 
     array (
-      'pretty_version' => '2.0.1',
-      'version' => '2.0.1.0',
+      'pretty_version' => '2.0.2',
+      'version' => '2.0.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'af6d0ba772731d4f83524fccb24281fe6149ef43',
+      'reference' => '5a424e80a1200674451844fbaae8a0098a316a01',
     ),
     'codeigniter4/appstarter' => 
     array (
@@ -53,7 +53,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '447ddb5fbb202412a59ee8cc45f06bab812817b7',
+      'reference' => '71b2c2c63a55095f26be1e13adac59bdd79d8a0c',
     ),
     'codeigniter4/framework' => 
     array (
@@ -421,12 +421,12 @@ private static $installed = array (
     ),
     'sebastian/type' => 
     array (
-      'pretty_version' => '2.3.2',
-      'version' => '2.3.2.0',
+      'pretty_version' => '2.3.4',
+      'version' => '2.3.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0d1c587401514d17e8f9258a27e23527cb1b06c1',
+      'reference' => 'b8cd8a1c753c90bc1a0f5372170e3e489136f914',
     ),
     'sebastian/version' => 
     array (
