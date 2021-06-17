@@ -7,6 +7,7 @@
 
     protected $DBGroup = 'default';
     protected $table = 'galleries';
+    protected $primarykey = 'id';
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
     protected $allowedFields = ['game_id', 'type', 'url'];
