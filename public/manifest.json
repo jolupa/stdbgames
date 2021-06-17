@@ -1,0 +1,13 @@
+{
+  "short_name": "STDB!",
+  "name": "Stadia GamesDB!",
+  "icons": [{
+    "src": "icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#002029",
+  "theme_color": "#002029"
+}
