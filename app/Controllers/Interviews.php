@@ -11,9 +11,9 @@
     public function interviewsfront () {
 
       $model = new InterviewsModel();
-      $data['interviewslist'] = $model->select('interviews.body, developers.name AS dev_name, games.name AS name, games.slug AS slug, games.image AS image')
+      $data['interviewslist'] = $model->select('developers.name AS dev_name, games.name AS name, games.slug AS slug, games.image AS image')
                                       ->join('games', 'games.id = interviews.game_id')
-                                      ->join('developers', 'developers.id = games.developer_id')
+                                      ->join('developers', 'developers.id = interviews.developer_id')
                                       ->orderBy('interviews.id', 'DESC')
                                       ->findAll(4);
       return view('interviews/parts/interviewsfront', $data);
@@ -59,7 +59,7 @@
       $model = new InterviewsModel();
       $data['list'] = $model->select('interviews.id AS int_id, games.name, games.image, games.slug, developers.name AS dev_name')
                             ->join('games', 'games.id = interviews.game_id')
-                            ->join('developers', 'developers.id = games.developer_id')
+                            ->join('developers', 'developers.id = interviews.developer_id')
                             ->orderBy('interviews.id', 'DESC')
                             ->paginate(44);
       $data['pager'] = $model->pager;
@@ -88,7 +88,7 @@
       } else {
 
         $model = new InterviewsModel();
-        $data['interview'] = $model->select( 'interviews.id, interviews.game_id, interviews.body, games.slug AS slug')
+        $data['interview'] = $model->select( 'interviews.id, interviews.game_id, interviews.body, interviews.developer_id, games.slug AS slug')
                                     ->where('game_id', $id )
                                     ->join('games', 'games.id = interviews.game_id')
                                     ->first();
@@ -132,6 +132,7 @@
 
       $data['game_id'] = $this->request->getVar('game_id');
       $data['body'] = $this->request->getVar('body');
+      $data['developer_id'] = $this->request->getVar('developer');
 
       $model->save($data);
 

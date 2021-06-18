@@ -11,7 +11,7 @@
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
-    protected $allowedFields = ['id', 'game_id', 'body'];
+    protected $allowedFields = ['id', 'game_id', 'body', 'developer_id'];
     protected $useTimestamps = true;
     protected $createdField = 'created_at';
     protected $updatedField = 'updated_at';

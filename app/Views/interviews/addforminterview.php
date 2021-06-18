@@ -22,6 +22,7 @@
           </p>
         </div>
       </div>
+      <?= view_cell ( 'App\Controllers\Developers::alldevelopers' ) ?>
       <div class="field is-grouped">
         <div class="control">
           <button class="button is-primary" type="submit">Add!</button>
