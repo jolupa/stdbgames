@@ -1329,10 +1329,6 @@
 
         }
 
-      } else {
-
-        return 'nothing to do';
-        
       }
 
     }
