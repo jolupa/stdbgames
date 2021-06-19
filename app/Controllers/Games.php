@@ -1311,6 +1311,32 @@
 
     }
 
+    public function automaticproremover () {
+
+      $model = new GamesModel();
+      $data['toremove'] = $model->select('id')
+                                ->where('pro', 1)
+                                ->Where('pro_till', date('Y-m-d'))
+                                ->findAll();
+
+      if ( ! empty ( $data['toremove'] ) ) {
+
+        foreach ( $data['toremove'] as $toremove ) {
+
+          $data['id'] = $toremove['id'];
+          $data['pro'] = 0;
+          $model->save( $data );
+
+        }
+
+      } else {
+
+        return 'nothing to do';
+        
+      }
+
+    }
+
   }
 
  ?>
