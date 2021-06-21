@@ -32,7 +32,7 @@
         </div>
         <div class="card-content is-hidden-mobile">
           <p class="title is-5"><span class="icon-text"><?php if (  $published['rumor'] == 1 ): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$published['game_slug'] ) ?>"><?= $published['game_name'] ?></a></span></span></p>
-          <p class="subtitle is-7">Dev <a href="<?= base_url ( '/developers/'.$published['dev_slug'] ) ?>"><?= $published['dev_name'] ?></a></p>
+          <p class="subtitle is-7">Dev <a href="<?= base_url ( '/developer/'.$published['dev_slug'] ) ?>"><?= $published['dev_name'] ?></a></p>
         </div>
       </div>
     </div>
