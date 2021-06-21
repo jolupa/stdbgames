@@ -7,5 +7,7 @@
     <a class="navbar-item" href="<?= base_url ( '/games/pro' ) ?>"><strong><?= $totalpro ?></strong>&nbsp;Pro games since launch</a>
     <a class="navbar-item" href="<?= base_url ( '/games/rumours' ) ?>"><strong><?= $rumors ?></strong>&nbsp;Rumoured games</a>
     <a class="navbar-item" href="<?= base_url ( '/games/nodate' ) ?>"><strong><?= $nodate ?></strong>&nbsp;Games without date</a>
+    <hr class="navbar-divider">
+    <a class="navbar-item" href="<?= base_url ( '/charts') ?>">Charts</a>
   </div>
 </div>
