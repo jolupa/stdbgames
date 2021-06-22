@@ -63,6 +63,9 @@
               <?php if ( $game['first_on_stadia'] == 1 ): ?>
                 <div class="panel-block">First on Stadia</div>
               <?php endif; ?>
+              <?php if ( $game['early_access'] == 1 ): ?>
+                <div class="panel-block">Game on Early Access</div>
+              <?php endif; ?>
               <?php if ( $game['multi_couch'] == 1 ): ?>
                 <div class="panel-block">Couch Multiplayer</div>
               <?php endif; ?>
