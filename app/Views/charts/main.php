@@ -7,5 +7,8 @@
       <?= view_cell ( 'App\Controllers\Charts::totalvalueofgamesyear' ) ?>
       <?= view_cell ( 'App\Controllers\Charts::totalvalueprogamesyear' ) ?>
     </div>
+    <nav class="level">
+      <?= view_cell ( 'App\Controllers\Charts::prices' ) ?>
+    </nav>
   </div>
 </div>

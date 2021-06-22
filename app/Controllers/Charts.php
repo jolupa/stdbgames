@@ -67,7 +67,31 @@
                                               ->findAll();
 
       return view ( 'charts/parts/totalvalueprogamesyear', $data );
-      
+
+    }
+
+    public function prices () {
+
+      $model = new ChartsModel();
+      $data['cheaperprice'] = $model->select('price')
+                                      ->where('price !=', '')
+                                      ->where('release <=', date('Y-m-d'))
+                                      ->where('is_edition', 0)
+                                      ->groupBy('price')
+                                      ->orderBy('price', 'ASC')
+                                      ->first();
+      $data['higherprice'] = $model->select('price')
+                                        ->where('price !=', '')
+                                        ->where('release <=', date('Y-m-d'))
+                                        ->where('is_edition', 0)
+                                        ->groupBy('price')
+                                        ->orderBy('price', 'DESC')
+                                        ->first();
+      $data['cheapestpricepro'] = $model->cheapestpricepro();
+      $data['cheapestpriceall'] = $model->cheapestpriceall();
+
+      return view ( 'charts/parts/prices', $data );
+
     }
 
   }

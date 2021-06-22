@@ -20,6 +20,32 @@
     protected $skipvalidation = true;
     //protected $beforeInsert = [];
 
+    public function cheapestpricepro () {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('prices')
+                    ->select('price_pro')
+                    ->where('price_pro !=', '')
+                    ->groupBy('price_pro')
+                    ->orderBy('price_pro', 'ASC');
+
+      return $builder->get()->getRowArray();
+
+    }
+
+    public function cheapestpriceall () {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('prices')
+                    ->select('price_nonpro')
+                    ->where('price_nonpro !=', '')
+                    ->groupBy('price_nonpro')
+                    ->orderBy('price_nonpro', 'ASC');
+
+      return $builder->get()->getRowArray();
+      
+    }
+
   }
 
  ?>
