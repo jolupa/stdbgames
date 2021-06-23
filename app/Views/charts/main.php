@@ -1,7 +1,11 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div id="charts" class="container mt-5">
   <div class="mx-3">
-    <?= view_cell ( 'App\Controllers\Charts::gamebyyear' ) ?>
+    <p class="title is-5">Games Launched By Year</p>
+    <nav class="level is-mobile">
+      <?= view_cell ( 'App\Controllers\Charts::gamebyyear' ) ?>
+    </nav>
+    <p class="title is-5">Games with Pro Every Month</p>
     <?= view_cell ( 'App\Controllers\Charts::gameprobymonth' ) ?>
     <div class="columns is-multiline-is-mobile">
       <?= view_cell ( 'App\Controllers\Charts::totalvalueofgamesyear' ) ?>

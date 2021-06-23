@@ -16,7 +16,6 @@
     chart.draw(data, options);
   }
 </script>
-<p class="title is-5">Pro Games release by month</p>
 <div class="content">
   <div id="chart_gameprobymonth"></div>
 </div>
