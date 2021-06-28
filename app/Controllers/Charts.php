@@ -94,6 +94,23 @@
 
     }
 
+    public function mostwishlisted () {
+
+      $model = new ChartsModel();
+      $data['mostwishlisted'] = $model->mostWishlisted();
+
+      if ( ! empty ( $data['mostwishlisted'] ) ) {
+
+        return view ( 'charts/parts/mostwishlisted', $data );
+
+      } else {
+
+        return '';
+        
+      }
+
+    }
+
   }
 
  ?>

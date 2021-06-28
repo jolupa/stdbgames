@@ -14,5 +14,12 @@
     <nav class="level">
       <?= view_cell ( 'App\Controllers\Charts::prices' ) ?>
     </nav>
+    <div class="columns is-multiline-is-mobile">
+      <div class="column is-full">
+        <p class="title is-5">Most Wishlisted Games</p>
+      </div>
+    </div>
+      <?= view_cell ( 'App\Controllers\Charts::mostwishlisted' ) ?>
+    </div>
   </div>
 </div>

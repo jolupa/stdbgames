@@ -43,7 +43,20 @@
                     ->orderBy('price_nonpro', 'ASC');
 
       return $builder->get()->getRowArray();
-      
+
+    }
+
+    public function mostWishlisted () {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('wishlists')
+                    ->select('COUNT(user_id) AS total, games.name, games.image, games.slug')
+                    ->join('games', 'games.id = wishlists.game_id')
+                    ->groupBy('game_id')
+                    ->orderBy('total', 'DESC');
+
+      return $builder->get(3)->getResultArray();
+
     }
 
   }
