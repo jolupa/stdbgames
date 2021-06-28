@@ -78,6 +78,9 @@
               <?php if ( $game['crowd_choice'] == 1 ): ?>
                 <div class="panel-block">Crowd Choice</div>
               <?php endif; ?>
+              <?php if ( $game['crowd_play'] == 1 ): ?>
+                <div class="panel-block">Crowd Play</div>
+              <?php endif; ?>
               <?php if ( $game['cross_progression'] == 1 ): ?>
                 <div class="panel-block">Cross Progression</div>
               <?php endif; ?>
