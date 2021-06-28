@@ -8,7 +8,7 @@
           </figure>
         </div>
         <div class="card-content">
-          <p class="title is-5">Wishlisted By <?= $mostwishlisted['total'] ?> Users</p>
+          <p class="title is-5">Wishlisted by <?= $mostwishlisted['total'] ?> users</p>
         </div>
       </div>
     </div>
