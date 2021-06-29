@@ -9,7 +9,7 @@
 
   <?php else: ?>
 
-    | Pri <?php if ( $game['price'] == '' ): ?>TBA<?php else: ?><?= $game['price'] ?> €<?php endif; ?><?php if ( $game['pro'] == 1 && $game['pro_from'] <= date ('Y-m-d') ): ?> | Free for Pro<?php elseif ( $game['pro'] == 1 ): ?><?php if ( $game['pro_from'] == $game['release'] ): ?> | Free for Pro on Launch<?php endif; ?><?php endif; ?>
+    | Pri <?php if ( $game['price'] == '' ): ?>TBA<?php else: ?><?= $game['price'] ?> €<?php endif; ?><?php if ( $game['pro'] == 1 && $game['pro_from'] <= date ('Y-m-d') ): ?> | Free for Pro<?php elseif ( $game['pro'] == 1 ): ?><?php if ( $game['pro_from'] == $game['release'] ): ?> | Free for Pro on Launch<?php elseif ( $game['pro_till'] != '' ): ?><span class="has-text-coral">Leaving Pro Soon claim it!</span><?php endif; ?><?php endif; ?>
 
   <?php endif; ?>
 
