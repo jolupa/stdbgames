@@ -262,9 +262,9 @@ class Users extends BaseController {
 
   }
 
-  public function resetpassword (string $option = null ) {
+  public function resetpassword () {
 
-    if ( $option == 'logged' ) {
+    if ( $this->request->getVar('option') === 'logged' ) {
 
       $model = new UsersModel();
 
@@ -282,17 +282,17 @@ class Users extends BaseController {
 
       } else {
 
-        $getpass = $model->select('password')
+        $data['current'] = $model->select('password')
                           ->where('id', $this->request->getVar('id'))
                           ->first();
 
-        if ( password_verify ( $this->request->getVar('password' ), $getpass['password'] ) ) {
+        if ( password_verify ( $this->request->getVar('password' ), $data['current']['password'] ) ) {
 
           $data['id'] = $this->request->getVar('id');
           $data['password'] = password_hash ( $this->request->getVar('new_password'), PASSWORD_DEFAULT );
           $model->save( $data );
 
-          return redirect()->back()->with( 'success', 'We changed your password correctly, remember to take note in some place' );
+          return redirect()->to( '/users/userslogout' );
 
         } else {
 

@@ -69,7 +69,8 @@
     <div class="columns">
       <div class="column">
         <p class="title is-4 mt-5">Change Password</p>
-        <form action="<?= base_url ( 'users/resetpassword/logged' ) ?>" method="post" enctype="multipart/form-data">
+        <form action="<?= base_url ( 'users/resetpassword' ) ?>" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="<?= $user['id'] ?>">
           <div class="field is-grouped is-grouped-multiline">
             <div class="control is-expanded">
               <label class="label">Current Password</label>
@@ -100,7 +101,7 @@
           <?php endif; ?>
           <div class="field is-grouped">
             <div class="control">
-              <button class="button is-coral" type="submit">Change Password</button>
+              <button class="button is-coral" type="submit" name="option" value="logged">Change Password</button>
             </div>
             <div class="control">
               <button class="button is-info" type="reset">Reset</button>
