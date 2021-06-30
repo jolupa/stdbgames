@@ -284,7 +284,7 @@ class Users extends BaseController {
 
         $getpass = $model->select('password')
                           ->where('id', $this->request->getVar('id'))
-                          ->firts();
+                          ->first();
 
         if ( password_verify ( $this->request->getVar('password' ), $getpass['password'] ) ) {
 
@@ -469,6 +469,14 @@ class Users extends BaseController {
 
     $model->save( $data );
     return redirect()->back();
+
+  }
+
+  public function test () {
+
+    $data['password'] = password_hash('verisimo', PASSWORD_DEFAULT);
+
+    return $data['password'];
 
   }
 
