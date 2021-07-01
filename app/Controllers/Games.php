@@ -1316,7 +1316,7 @@
       $model = new GamesModel();
       $data['toremove'] = $model->select('id')
                                 ->where('pro', 1)
-                                ->Where('pro_till', date('Y-m-d', strtotime( '-1 day' )))
+                                ->Where('pro_till', date('Y-m-d', strtotime('-1 day')))
                                 ->findAll();
 
       if ( ! empty ( $data['toremove'] ) ) {
