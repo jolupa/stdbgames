@@ -5,6 +5,7 @@
        <a href="<?= base_url ( '/editions/addformeditions/'.$game['id'].'/'.$game['slug'] ) ?>"><button class="button is-info" type="button">Add Edition</button></a>
        <a href="<?= base_url ( '/prices/priceaddform/'.$game['id'] ) ?>"><button class="button is-info" type="button">Add/Update Deal</button></a>
        <a href="<?= base_url ('/interviews/interviewforms/'.$game['id'] ) ?>"><button class="button is-info" type="button">Add/Update Interview</button></a>
+       <a href="<?= base_url ('/gallery/changevideoform/  '.$game['id'] ) ?>"><button class="button is-info" type="button">Modify Video Gallery</button></a>
      </div>
    </div>
    <p class="title is-4">Update Game</p>
