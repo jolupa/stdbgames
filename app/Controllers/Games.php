@@ -71,7 +71,7 @@
         'html_input' => 'strip',
         'allow_unsafe_links' => false,
       ]);
-      $data['game'] = $model->select('games.id, games.name, games.slug, games.image, games.about, games.price, games.release, games.pro, games.pro_from, games.pro_till, games.appid, games.sku, games.rumor, games.is_f2p, games.first_on_stadia, games.stadia_exclusive, games.early_access, games.cross_play, games.cross_progression, games.multi_couch, games.multi_online, games.crowd_choice, games.cross_save, games.state_share, games.stream_connect, games.crowd_play, games.max_resolution, games.is_pxc, games.fps, games.hdr_sdr, games.like, games.dislike, games.url, games.twitter_account, games.demo_appid, games.demo_sku, games.preorder_appid, games.preorder_sku, games.dropped, developers.name AS dev_name, developers.slug AS dev_slug, publishers.name AS pub_name, publishers.slug AS pub_slug')
+      $data['game'] = $model->select('games.id, games.name, games.slug, games.image, games.about, games.price, games.release, games.pro, games.pro_from, games.pro_till, games.appid, games.sku, games.rumor, games.is_f2p, games.ed_only, games.first_on_stadia, games.stadia_exclusive, games.early_access, games.cross_play, games.cross_progression, games.multi_couch, games.multi_online, games.crowd_choice, games.cross_save, games.state_share, games.stream_connect, games.crowd_play, games.max_resolution, games.is_pxc, games.fps, games.hdr_sdr, games.like, games.dislike, games.url, games.twitter_account, games.demo_appid, games.demo_sku, games.preorder_appid, games.preorder_sku, games.dropped, developers.name AS dev_name, developers.slug AS dev_slug, publishers.name AS pub_name, publishers.slug AS pub_slug')
                             ->where('games.slug', $slug)
                             ->join('developers', 'developers.id = games.developer_id')
                             ->join('publishers', 'publishers.id = games.publisher_id')
@@ -764,6 +764,20 @@
 
           $data['is_f2p'] = 1;
 
+        } else {
+
+          $data['is_f2p'] = 0;
+
+        }
+
+        if ( ! empty ( $this->request->getVar('ed_only') ) ) {
+
+          $data['ed_only'] = 1;
+
+        } else {
+
+          $data['ed_only'] = 0;
+
         }
 
         if ( ! empty ( $this->request->getVar('about') ) ) {
@@ -1020,6 +1034,16 @@
       } else {
 
         $data['is_f2p'] = 0;
+
+      }
+
+      if ( ! empty ( $this->request->getVar('ed_only') ) ) {
+
+        $data['ed_only'] = 1;
+
+      } else {
+
+        $data['ed_only'] = 0;
 
       }
 

@@ -1,10 +1,18 @@
 <div id="form_update_games" class="container mt-5">
  <div class="mx-3">
    <div class="columns is-multiline is-mobile">
-     <div class="column">
+     <div class="column is-narrow">
        <a href="<?= base_url ( '/editions/addformeditions/'.$game['id'].'/'.$game['slug'] ) ?>"><button class="button is-info" type="button">Add Edition</button></a>
-       <a href="<?= base_url ( '/prices/priceaddform/'.$game['id'] ) ?>"><button class="button is-info" type="button">Add/Update Deal</button></a>
+     </div>
+     <?php if ( $game['ed_only'] == 0 ): ?>
+       <div class="column is-narrow">
+         <a href="<?= base_url ( '/prices/priceaddform/'.$game['id'] ) ?>"><button class="button is-info" type="button">Add/Update Deal</button></a>
+       </div>
+     <?php endif; ?>
+     <div class="column is-narrow">
        <a href="<?= base_url ('/interviews/interviewforms/'.$game['id'] ) ?>"><button class="button is-info" type="button">Add/Update Interview</button></a>
+     </div>
+     <div class="column is-narrow">
        <a href="<?= base_url ('/gallery/changevideoform/  '.$game['id'] ) ?>"><button class="button is-info" type="button">Modify Video Gallery</button></a>
      </div>
    </div>
@@ -12,7 +20,7 @@
    <form action="<?= base_url ( '/games/updategamedb') ?>" method="post" enctype="multipart/form-data">
      <input type="hidden" name="id" value="<?= $game['id'] ?>">
      <input type="hidden" name="slug" value="<?= $game['slug'] ?>">
-     <div class="field is-grouped">
+     <div class="field is-grouped-multiline">
        <div class="control">
          <label class="checkbox">
            <input type="checkbox" name="rumor" <?php if ( $game['rumor'] == 1 ): ?>checked<?php endif; ?>>
@@ -64,10 +72,14 @@
          <input class="input" type="text" placeholder="00.00" name="price" <?php if ( ! empty ( $game['price'] ) ): ?>value="<?= $game['price'] ?>"<?php endif; ?>>
        </div>
      </div>
-     <div class="field">
+     <div class="field is-grouped-multiline">
        <label class="checkbox">
          <input type="checkbox" name="is_f2p" <?php if ( $game['is_f2p'] == 1 ): ?>checked<?php endif; ?>>
          Is F2P?
+       </label>
+       <label class="checkbox">
+         <input type="checkbox" name="ed_only" <?php if ( $game['ed_only'] == 1 ): ?>checked<?php endif; ?>>
+         Only Abalaible Inside Editions?
        </label>
      </div>
      <div class="field">

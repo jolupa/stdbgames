@@ -51,10 +51,14 @@
           <input class="input" type="text" placeholder="00.00" name="price" <?php if ( ! empty ( old( 'price' ) ) ): ?>value="<?= old( 'price' ) ?>"<?php endif; ?>>
         </div>
       </div>
-      <div class="field">
+      <div class="field is-grouped-multiline">
         <label class="checkbox">
           <input type="checkbox" name="is_f2p" <?php if ( ! empty ( old('is_f2p' ) ) ): ?>checked<?php endif; ?>>
           Is F2P?
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" name="ed_only" <?php if ( ! empty ( old('ed_only' ) ) ): ?>checked<?php endif; ?>>
+          Only Abalaible Inside Editions?
         </label>
       </div>
       <div class="field">
