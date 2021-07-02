@@ -1,6 +1,15 @@
 <article id="deals" class="container mt-5">
   <div class="mx-3">
-    <p class="title is-4">Discounted Games</p>
+    <div class="columns">
+      <div class="column is-narrow">
+        <p class="title is-4">Discounted Games</p>
+      </div>
+      <?php $total = count ( $deals ); if ( $total >= 6 ): ?>
+        <div class="column has-text-right">
+          <a href="<?= base_url ( '/prices/list' ) ?>"><button class="button is-info">See all discounts</button></a>
+        </div>
+      <?php endif; ?>
+    </div>
     <div class="columns is-multiline is-mobile">
       <?php foreach ($deals as $deal): ?>
         <div class="column is-2-desktop is-one-quarter-mobile">
@@ -22,12 +31,5 @@
         </div>
       <?php endforeach; ?>
     </div>
-    <?php $total = count ( $deals ); if ( $total >= 6 ): ?>
-      <div class="columns">
-        <div class="column is-2 is-offset-10">
-          <a href="<?= base_url ( '/prices/list' ) ?>"><button class="button is-info">See all discounts</button></a>
-        </div>
-      </div>
-    <?php endif; ?>
   </div>
 </article>

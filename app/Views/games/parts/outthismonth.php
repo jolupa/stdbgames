@@ -1,6 +1,13 @@
 <article id="this-month" class="container mt-5">
   <div class="mx-3">
-    <p class="title is-4">Out this month</p>
+    <div class="columns">
+      <div class="column is-narrow">
+        <p class="title is-4">Out this month</p>
+      </div>
+      <div class="column has-text-right">
+        <a href="<?= base_url('/games/coming') ?>"><button class="button is-info">See Coming Games</button></a>
+      </div>
+    </div>
     <div class="columns is-multiline is-mobile">
       <?php foreach ($thismonth as $release): ?>
         <div class="column is-one-quarter-desktop is-half-mobile">
@@ -45,11 +52,6 @@
           </div>
         </div>
       <?php endforeach ?>
-    </div>
-    <div class="columns">
-      <div class="column is-2 is-offset-10">
-        <a href="<?= base_url('/games/coming') ?>"><button class="button is-info">See Coming Games</button></a>
-      </div>
     </div>
   </div>
 </article>

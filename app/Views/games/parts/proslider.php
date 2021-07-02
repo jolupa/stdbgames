@@ -1,6 +1,13 @@
 <article id="pro_slider" class="container mt-5">
   <div class="mx-3">
-    <p class="title is-4">Games on PRO</p>
+    <div class="columns">
+      <div class="column is-narrow">
+        <p class="title is-4">Games on PRO</p>
+      </div>
+      <div class="column has-text-right">
+        <a href="<?= base_url ( '/games/pro') ?>"><button class="button is-info">See all Pro Games</button></a>
+      </div>
+    </div>
     <div class="columns">
       <div class="column is-12">
         <div class="embla">
@@ -55,10 +62,10 @@
               <?php $i++; endwhile; ?>
             </div>
           </div>
-          <div class="embla__prev is-overlay is-hidden-mobile" style="top: 40px; right: auto; bottom: auto; left: -10px;">
+          <div class="embla__prev is-overlay is-hidden-mobile" style="top: 75px; right: auto; bottom: auto; left: -10px;">
             <button class="button is-minion"><span class="icon has-text-coral"><i class="is-large fas fa-arrow-alt-circle-left"></i></span></button>
           </div>
-          <div class="embla__next is-overlay is-hidden-mobile" style="top: 40px; right: -10px; bottom: auto; left: auto;">
+          <div class="embla__next is-overlay is-hidden-mobile" style="top: 75px; right: -10px; bottom: auto; left: auto;">
             <button class="button is-minion"><span class="icon has-text-coral is-large"><i class="fas fa-arrow-alt-circle-right"></i></span></button>
           </div>
         </div>
@@ -66,7 +73,7 @@
     </div>
     <div class="columns">
       <div class="column is-2 is-offset-10">
-        <a href="<?= base_url ( '/games/pro') ?>"><button class="button is-info">See all Pro Games</button></a>
+
       </div>
     </div>
   </div>
