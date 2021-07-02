@@ -71,11 +71,6 @@
         </div>
       </div>
     </div>
-    <div class="columns">
-      <div class="column is-2 is-offset-10">
-
-      </div>
-    </div>
   </div>
 </article>
 
