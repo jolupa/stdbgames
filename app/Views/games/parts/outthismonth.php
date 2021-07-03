@@ -1,11 +1,11 @@
 <article id="this-month" class="container mt-5">
   <div class="mx-3">
-    <div class="columns">
+    <div class="columns is-mobile">
       <div class="column is-narrow">
         <p class="title is-4">Out this month</p>
       </div>
       <div class="column has-text-right">
-        <a href="<?= base_url('/games/coming') ?>"><button class="button is-info">See Coming Games</button></a>
+        <a href="<?= base_url('/games/coming') ?>"><button class="button is-info">More...</button></a>
       </div>
     </div>
     <div class="columns is-multiline is-mobile">

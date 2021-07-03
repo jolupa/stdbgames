@@ -1,12 +1,12 @@
 <article id="deals" class="container mt-5">
   <div class="mx-3">
-    <div class="columns">
+    <div class="columns is-mobile">
       <div class="column is-narrow">
         <p class="title is-4">Discounted Games</p>
       </div>
       <?php $total = count ( $deals ); if ( $total >= 6 ): ?>
         <div class="column has-text-right">
-          <a href="<?= base_url ( '/prices/list' ) ?>"><button class="button is-info">See all discounts</button></a>
+          <a href="<?= base_url ( '/prices/list' ) ?>"><button class="button is-info">More...</button></a>
         </div>
       <?php endif; ?>
     </div>
