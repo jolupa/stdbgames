@@ -85,7 +85,7 @@
               <button class="button is-primary" type="submit">Update!</button>
             </div>
             <div class="control">
-              <button class="button is-coral" type="reset">Delete!</button>
+              <a href="<?= base_url ( '/prices/delete/'.$prices['id'] ) ?>"><button class="button is-coral" type="button">Delete!</button></a>
             </div>
           </div>
         </form>
