@@ -21,13 +21,13 @@
                       <a href="<?= base_url ( '/games/dislike'.$added['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $added['dislike'] ?></span></tag></a>
                     <?php endif; ?>
                     <?php if ( session ( 'library' ) != null && in_array ( $added['id'], session ( 'library' ) ) ): ?>
-                      <a href="<?= base_url ( '/libraries/removefromlibrary/'.$added['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="far fa-minus"></i></span>&nbsp;<span>In Library</span></tag></a>
+                      <a href="<?= base_url ( '/libraries/removefromlibrary/'.$added['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-minus"></i></span>&nbsp;<span>In Library</span></tag></a>
                     <?php elseif ( session ( 'wishlisted' ) != null && in_array ( $added['id'], session ( 'wishlisted' ) ) ): ?>
-                      <a href="<?= base_url ( '/libraries/addtolibrary/'.$added['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="far fa-plus"></i></span>&nbsp;<span>Library</span></tag></a>
-                      <a href="<?= base_url ( '/wishlists/removefromwishlist/'.$added['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="far fa-minus"></i></span>&nbsp;<span>Wishlist</span></tag></a>
+                      <a href="<?= base_url ( '/libraries/addtolibrary/'.$added['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-plus"></i></span>&nbsp;<span>Library</span></tag></a>
+                      <a href="<?= base_url ( '/wishlists/removefromwishlist/'.$added['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-minus"></i></span>&nbsp;<span>Wishlist</span></tag></a>
                     <?php else: ?>
-                      <a href="<?= base_url ( '/libraries/addtolibrary/'.$added['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="far fa-plus"></i></span>&nbsp;<span>Library</span></tag></a>
-                      <a href="<?= base_url ( '/wishlists/addtowishlist/'.$added['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="far fa-plus"></i></span>&nbsp;<span>Wishlist</span></tag></a>
+                      <a href="<?= base_url ( '/libraries/addtolibrary/'.$added['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-plus"></i></span>&nbsp;<span>Library</span></tag></a>
+                      <a href="<?= base_url ( '/wishlists/addtowishlist/'.$added['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-plus"></i></span>&nbsp;<span>Wishlist</span></tag></a>
                     <?php endif; ?>
                   </span>
                 </div>
@@ -66,13 +66,13 @@
                       <a href="<?= base_url ( '/games/dislike'.$updated['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span>&nbsp;<span><?= $updated['dislike'] ?></span></tag></a>
                     <?php endif; ?>
                     <?php if ( session ( 'library' ) != null && in_array ( $updated['id'], session ( 'library' ) ) ): ?>
-                      <a href="<?= base_url ( '/libraries/removefromlibrary/'.$updated['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="far fa-minus"></i></span>&nbsp;<span>In Library</span></tag></a>
+                      <a href="<?= base_url ( '/libraries/removefromlibrary/'.$updated['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-minus"></i></span>&nbsp;<span>In Library</span></tag></a>
                     <?php elseif ( session ( 'wishlisted' ) != null && in_array ( $updated['id'], session ( 'wishlisted' ) ) ): ?>
-                      <a href="<?= base_url ( '/libraries/addtolibrary/'.$updated['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="far fa-plus"></i></span>&nbsp;<span>Library</span></tag></a>
-                      <a href="<?= base_url ( '/wishlists/removefromwishlist/'.$updated['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="far fa-minus"></i></span>&nbsp;<span>Wishlist</span></tag></a>
+                      <a href="<?= base_url ( '/libraries/addtolibrary/'.$updated['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-plus"></i></span>&nbsp;<span>Library</span></tag></a>
+                      <a href="<?= base_url ( '/wishlists/removefromwishlist/'.$updated['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-minus"></i></span>&nbsp;<span>Wishlist</span></tag></a>
                     <?php else: ?>
-                      <a href="<?= base_url ( '/libraries/addtolibrary/'.$updated['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="far fa-plus"></i></span>&nbsp;<span>Library</span></tag></a>
-                      <a href="<?= base_url ( '/wishlists/addtowishlist/'.$updated['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="far fa-plus"></i></span>&nbsp;<span>Wishlist</span></tag></a>
+                      <a href="<?= base_url ( '/libraries/addtolibrary/'.$updated['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-plus"></i></span>&nbsp;<span>Library</span></tag></a>
+                      <a href="<?= base_url ( '/wishlists/addtowishlist/'.$updated['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-plus"></i></span>&nbsp;<span>Wishlist</span></tag></a>
                     <?php endif; ?>
                   </span>
                 </div>
