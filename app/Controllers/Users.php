@@ -474,9 +474,17 @@ class Users extends BaseController {
 
   public function test () {
 
-    $data['password'] = password_hash('verisimo', PASSWORD_DEFAULT);
+    if ( session ('logged') == 'false' || session ('role') != 1 ) {
 
-    return $data['password'];
+      return 'Ops! That\'s not nice!';
+
+    } else {
+
+      $data['password'] = password_hash('verisimo', PASSWORD_DEFAULT);
+
+      return $data['password'];
+
+    }
 
   }
 
