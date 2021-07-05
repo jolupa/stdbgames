@@ -232,21 +232,21 @@
 
       if ( ! empty ( $data['editiondeals'] ) ) {
 
-        if ( $data['editiondeals']['price_pro'] > date ('Y-m-d') || $data['editiondeals']['price_nonpro'] > date ('Y-m-d') ) {
+        if ( $data['editiondeals']['date_till_pro'] > date ('Y-m-d') || $data['editiondeals']['date_till_nonpro'] > date ('Y-m-d') ) {
 
           return view ( 'prices/parts/editiondeals', $data );
 
         } else {
 
           $data['price'] = $model->getNonDealEdition($id);
-          return view ( 'prices/parts/editiondeals', $data );
+          return view ( 'prices/parts/nodealedition', $data );
 
         }
 
       } else {
 
         $data['price'] = $model->getNonDealEdition($id);
-        return view ( 'prices/parts/editiondeals', $data );
+        return view ( 'prices/parts/nodealedition', $data );
 
       }
 
