@@ -23,6 +23,12 @@
            Send an info Tweet?
          </label>
        </div>
+       <div class="control">
+         <label class="checkbox">
+           <input type="checkbox" name="dropped" <?php if ( $game['dropped'] == 1 ): ?>checked<?php endif; ?>>
+           Dropped from Store?
+         </label>
+       </div>
      </div>
      <p class=" title is-5">Basic info:</p>
      <div class="field">
