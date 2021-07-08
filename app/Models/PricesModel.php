@@ -23,7 +23,7 @@
 
       $db = \Config\Database::connect();
       $builder = $db->table('games')
-                    ->select('price, pro, pro_from')
+                    ->select('price, pro, pro_from, dropped')
                     ->where('id' , $id);
 
       return $builder->get()->getRowArray();
@@ -44,7 +44,7 @@
 
       $db = \Config\Database::connect();
       $builder = $db->table('games')
-                    ->select('price, pro, pro_from, pro_till')
+                    ->select('price, pro, pro_from, pro_till, dropped')
                     ->where('id', $id);
       return $builder->get()->getRowArray();
 

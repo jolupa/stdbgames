@@ -25,7 +25,7 @@
        </div>
        <div class="control">
          <label class="checkbox">
-           <input type="checkbox" name="dropped" <?php if ( $game['dropped'] == 1 ): ?>checked<?php endif; ?>>
+           <input type="checkbox" name="dropped" <?php if ( $edition['dropped'] == 1 ): ?>checked<?php endif; ?>>
            Dropped from Store?
          </label>
        </div>
