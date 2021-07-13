@@ -128,6 +128,7 @@
       $pager = \Config\Services::pager();
       $model = new GamesModel();
       $data['list'] = $model->select('games.name, games.image, games.slug, games.release, games.rumor')
+                            ->where('is_edition', 0)
                             ->orderBy('games.name', 'ASC')
                             ->paginate(44);
       $data['pager'] = $model->pager;
