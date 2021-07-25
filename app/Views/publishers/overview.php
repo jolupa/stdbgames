@@ -6,7 +6,10 @@
         <a href="<?= $publisher['url'] ?>" target="_blank">Website</a>
       <?php endif; ?>
       <?php if ( ! empty ($publisher['twitter_account']) ): ?>
-        &nbsp;|&nbsp;<a href="<?= $publisher['twitter_account'] ?>" target="_blank">Twitter</a></p>
+        <?php if ( ! empty ($publisher['url']) ): ?>
+          &nbsp;|&nbsp;
+        <?php endif; ?>
+        <a href="<?= $publisher['twitter_account'] ?>" target="_blank">Twitter</a></p>
       <?php endif; ?>
     </p>
     <div class="content">

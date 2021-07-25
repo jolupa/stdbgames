@@ -6,7 +6,10 @@
         <a href="<?= $developer['url'] ?>" target="_blank">Website</a>
       <?php endif; ?>
       <?php if ( ! empty ($developer['twitter_account']) ): ?>
-        &nbsp;|&nbsp;<a href="<?= $developer['twitter_account'] ?>" target="_blank">Twitter</a></p>
+        <?php if ( ! empty ($developer['url']) ): ?>
+          &nbsp;|&nbsp;
+        <?php endif; ?>
+        <a href="<?= $developer['twitter_account'] ?>" target="_blank">Twitter</a></p>
       <?php endif; ?>
     </p>
     <div class="content">
