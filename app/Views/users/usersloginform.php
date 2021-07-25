@@ -35,7 +35,7 @@
               <button class="button is-coral" type="reset">Reset</button>
             </div>
             <div class="control">
-              <a href="<?= base_url ( '/users/resetpasswordform' ) ?>"><button class="button is-info" type="button">Change Password</button></a>
+              <a href="<?= base_url ( '/users/resetpasswordform' ) ?>"><button class="button is-info is-static" type="button">Change Password</button></a>
             </div>
           </div>
         </form>
