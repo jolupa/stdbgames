@@ -240,6 +240,24 @@
 
     }
 
+    public function numberofdevs () {
+
+      $model = new DevelopersModel();
+      $totaldevelopers = $model->findAll();
+
+      if ( ! empty ( $totaldevelopers ) ) {
+
+        $data['numdevs'] = count ( $totaldevelopers );
+        return view ('developers/parts/numberofdevs', $data );
+
+      } else {
+
+        return '';
+
+      }
+
+    }
+
   }
 
  ?>

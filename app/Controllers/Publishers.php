@@ -244,6 +244,24 @@
 
     }
 
+    public function numberofpubs () {
+
+      $model = new PublishersModel();
+      $totalpublishers = $model->findAll();
+
+      if ( ! empty ( $totalpublishers ) ) {
+
+        $data['numpubs'] = count ( $totalpublishers );
+        return view ( 'publishers/parts/numberofpubs', $data );
+
+      } else {
+
+        return '';
+
+      }
+
+    }
+
   }
 
  ?>
