@@ -38,7 +38,7 @@
 
     }
 
-    public function outthismonth ( $nextmonth = false ) {
+    public function outthismonth () {
 
       $model = new GamesModel();
       $data['thismonth'] = $model->select('games.rumor, games.id, games.name, games.slug, games.image, games.release, games.like, games.dislike, developers.name AS dev_name, developers.slug AS dev_slug, publishers.name AS pub_name, publishers.slug AS pub_slug')

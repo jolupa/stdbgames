@@ -58,7 +58,7 @@
         </label>
         <label class="checkbox">
           <input type="checkbox" name="ed_only" <?php if ( ! empty ( old('ed_only' ) ) ): ?>checked<?php endif; ?>>
-          Only Abalaible Inside Editions?
+          Only Avalaible Inside Editions?
         </label>
       </div>
       <div class="field">

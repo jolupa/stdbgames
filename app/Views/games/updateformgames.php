@@ -79,7 +79,7 @@
        </label>
        <label class="checkbox">
          <input type="checkbox" name="ed_only" <?php if ( $game['ed_only'] == 1 ): ?>checked<?php endif; ?>>
-         Only Abalaible Inside Editions?
+         Only Avalaible Inside Editions?
        </label>
      </div>
      <div class="field">
