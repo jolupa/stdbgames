@@ -21,5 +21,10 @@
     </div>
       <?= view_cell ( 'App\Controllers\Charts::mostwishlisted' ) ?>
     </div>
+    <p class="title is-5">Resolutions:</p>
+    <p class="subtitle is-7">Info Provided by <a href="https://airtable.com/shrZudGtuGAZNYrQK/tblVXkiYyDsFwmiMa" target="_blank">Original Penguin DB</a></p>
+    <nav class="level is-mobile">
+      <?= view_cell ( 'App\Controllers\Charts::resolutions' ) ?>
+    </nav>
   </div>
 </div>

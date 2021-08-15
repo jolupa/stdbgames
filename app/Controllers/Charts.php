@@ -111,6 +111,27 @@
 
     }
 
+    public function resolutions () {
+
+      $model = new ChartsModel();
+      $data['resolutions'] = $model->select('count(id) AS total, max_resolution AS resolution')
+                                    ->where('max_resolution !=', '')
+                                    ->groupBy('resolution')
+                                    ->orderBy('resolution', 'DESC')
+                                    ->findAll();
+
+      if ( ! empty ( $data['resolutions'] ) ) {
+
+        return view ( 'charts/parts/resolutions', $data );
+
+      } else {
+
+        return '';
+
+      }
+
+    }
+
   }
 
  ?>
