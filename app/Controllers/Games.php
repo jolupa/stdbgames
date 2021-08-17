@@ -1302,7 +1302,7 @@
       $totalgames = $model->where('is_edition', 0)
                           ->findAll();
       $gameslaunched = $model->where('is_edition', 0)
-                              ->where('release <', date('Y-m-d'))
+                              ->where('release <=', date('Y-m-d'))
                               ->findAll();
       $waitinglaunch = $model->where('is_edition', 0)
                               ->where('dropped', 0)
