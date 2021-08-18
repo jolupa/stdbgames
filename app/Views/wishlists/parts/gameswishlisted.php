@@ -1,6 +1,6 @@
 <div id="games_wishlisted" class="container mt-5">
   <div class="mx-3">
-    <p class="title is-4">Games on your Wishlist</p>
+    <p class="title is-4">Games on your Wishlist <span class="subtitle is-6">(<?= $totalinwishlist[0]['total'] ?> games in wishlist)</span></p>
     <div class="columns is-multiline is-mobile">
       <?php foreach ( $wishlist as $wishlist ): ?>
         <div class="column is-2-desktop is-4-mobile">

@@ -69,6 +69,9 @@
 
       if ( ! empty ( $data['wishlist'] ) ) {
 
+        $data['totalinwishlist'] = $model->select('count(user_id) as total')
+                                          ->where('user_id', session ( 'user_id' ) )
+                                          ->findAll();
         return view ( 'wishlists/parts/gameswishlisted', $data );
 
       } else {

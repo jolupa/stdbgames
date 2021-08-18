@@ -83,6 +83,9 @@
 
       if ( ! empty ( $data['libraries'] ) ) {
 
+        $data['totalinlibrary'] = $model->select('count(user_id) as total')
+                                        ->where('user_id', session ( 'user_id' ) )
+                                        ->findAll();
         return view ( 'libraries/parts/gamesinlibrary', $data );
 
       } else {
