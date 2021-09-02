@@ -1311,8 +1311,8 @@
                               ->where('rumor', 0)
                               ->findAll();
       $allprogames = $model->where('is_edition', 0)
-                            ->where('dropped', 0)
                             ->where('pro_from !=', '')
+                            ->where('release !=', '2099-01-01')
                             ->findAll();
       $rumors = $model->where('is_edition', 0)
                       ->where('dropped', 0)
