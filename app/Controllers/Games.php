@@ -1304,8 +1304,7 @@
       $gameslaunched = $model->where('is_edition', 0)
                               ->where('release <=', date('Y-m-d'))
                               ->findAll();
-      $waitinglaunch = $model->where('is_edition', 0)
-                              ->where('dropped', 0)
+      $waitinglaunch = $model->where('dropped', 0)
                               ->where('release >', date('Y-m-d'))
                               ->where('release !=', '2099-01-01')
                               ->where('rumor', 0)
