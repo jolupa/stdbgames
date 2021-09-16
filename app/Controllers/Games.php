@@ -407,6 +407,7 @@
       $pager = \Config\Services::pager();
       $model = new GamesModel();
       $data['list'] = $model->select('games.name, games.image, games.slug, games.release, games.rumor')
+                            ->where('is_edition', 0)
                             ->where('games.release <=', date('Y-m-d'))
                             ->orderBy('release', 'DESC')
                             ->paginate(44);
