@@ -115,7 +115,7 @@
               <a href="https://stadia.google.com/store/details/<?= $game['appid'] ?>/sku/<?= $game['sku'] ?>" target="_blank">Go Stadia Store</a> | <a href="https://stadia.google.com/player/<?= $game['appid'] ?>" target="_blank">Play on Stadia</a>
             <?php else: ?>
               <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
-                <a href="https://stadia.google.com/store/details/<?= $game['demo_appid'] ?>" target="_blank">Play the Demo</a>
+                <a href="https://stadia.google.com/player/<?= $game['demo_appid'] ?>" target="_blank">Play the Demo</a>
               <?php endif; ?>
               <?php if ( ! empty ( $game['preorder_appid'] ) ): ?>
                 <?php if ( ! empty ( $game['demo_appid'] ) ): ?>
