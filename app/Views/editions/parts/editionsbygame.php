@@ -12,43 +12,6 @@
               <a href="<?= base_url ( 'editions/updateformeditions/'.$editions['id'] ) ?>"><tag class="tag is-minion"><span>Update</span></tag></a>
             <?php endif; ?>
           </div>
-          <div class="is-overlay is-hidden-touch" style="top:auto; bottom: 10px; left: auto; right: 10px;">
-            <span class="icon-text">
-              <?php if ( session ( 'likes' ) != null && in_array ( $editions['like'], session ( 'likes' ) ) ): ?>
-                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $editions['like'] ?> Likes</span></tag>
-              <?php else: ?>
-                <a href="<?= base_url( '/games/like/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $editions['like'] ?></span></tag></a>
-              <?php endif; ?>
-              <?php if ( session ( 'dislikes' ) != null && in_array ( $editions['dislike'], session ( 'dislikes' ) ) ): ?>
-                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $editions['dislike'] ?></span></tag>
-              <?php else: ?>
-                <a href="<?= base_url ( '/game/dislike/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $editions['dislike'] ?></span></tag></a>
-              <?php endif; ?>
-              <?php if ( session ( 'library' ) != null && in_array ( $editions['id'], session ( 'library' ) ) ): ?>
-                <a href="<?= base_url ( '/libraries/removefromlibrary/'.$editions['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-minus"></i></span> <span>In Library</span></tag></a>
-              <?php elseif ( session ( 'wishlisted' ) != null && in_array ( $editions['id'], session ( 'wishlisted' ) ) ) : ?>
-                <a href="<?= base_url ('/libraries/addtolibrary/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-plus"></i></span> <span>Add Library</span></tag></a>
-                <a href="<?= base_url ( '/wishlists/removefromwishlist/'.$editions['id'] ) ?>"><tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-minus"></i></span> <span>Wishlisted</span></tag></a>
-              <?php else: ?>
-                <a href="<?= base_url ( '/libraries/addtolibrary/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-plus"></i></span> <span>Add Library</span></tag></a>
-                <a href="<?= base_url ( '/wishlists/addtowishlist/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-plus"></i></span> <span>Add Wishlist</span></tag></a>
-              <?php endif; ?>
-            </span>
-          </div>
-          <div class="is-overlay is-hidden-desktop" style="top:auto; bottom: 5px; left: auto; right: 5px;">
-            <span class="icon-text">
-              <?php if ( session ( 'likes' ) != null && in_array ( $editions['like'], session ( 'likes' ) ) ): ?>
-                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $editions['like'] ?></span></tag>
-              <?php else: ?>
-                <a href="<?= base_url( '/games/like/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-up"></i></span> <span><?= $editions['like'] ?></span></tag></a>
-              <?php endif; ?>
-              <?php if ( session ( 'dislikes' ) != null && in_array ( $editions['dislike'], session ( 'dislikes' ) ) ): ?>
-                <tag class="tag is-coral ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $editions['dislike'] ?></span></tag>
-              <?php else: ?>
-                <a href="<?= base_url ( '/game/dislike/'.$editions['id'] ) ?>"><tag class="tag is-info ml-1"><span class="icon"><i class="fas fa-thumbs-down"></i></span> <span><?= $editions['dislike'] ?></span></tag></a>
-              <?php endif; ?>
-            </span>
-          </div>
         </div>
         <div class="card-content">
           <p class="title is-5"><?= $editions['name'] ?></p>
