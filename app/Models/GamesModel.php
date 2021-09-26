@@ -28,6 +28,60 @@
 
     }
 
+    public function deletegamelikedislike ( int $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = db->table('likedislike')
+                    ->where('game_id', $id);
+      $builder->delete();
+
+    }
+
+    public function deletegamewishlists ( int $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('wishlists')
+                    ->where('game_id', $id);
+      $builder->delete();
+
+    }
+
+    public function deletegamelibraries ( int $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('libraries')
+                    ->where('game_id', $id);
+      $builder->delete();
+
+    }
+
+    public function deletegameprices ( int $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('prices')
+                    ->where('game_id', $id);
+      $builder->delete();
+
+    }
+
+    public function deletegamegalleries ( int $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('galleries')
+                    ->where('game_id', $id);
+      $builder->delete();
+
+    }
+
+    public function deletegamereviews ( int $id ) {
+
+      $db = \Config\Database::connect();
+      $builder = $db->table('reviews')
+                    ->where('game_id', $id);
+      $builder->delete();
+      
+    }
+
   }
 
  ?>

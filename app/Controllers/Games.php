@@ -1290,6 +1290,12 @@
 
         unlink ( ROOTPATH.'public/img/games/'.$data['game']['image'].'.jpeg' );
         unlink ( ROOTPATH.'public/img/games/'.$data['game']['image'].'-thumb.jpeg' );
+        $model->deletegamelikedislike($id);
+        $model->deletegamewishlists($id);
+        $model->deletegamelibraries($id);
+        $model->deletegameprices($id);
+        $model->deletegamereviews($id);
+        $model->deletegamegalleries($id);
         $model->delete($id, true);
         return redirect()->to( '/')->with( 'error_del', 'Deleted succesfully');
 
