@@ -14,6 +14,7 @@
       $model = new GamesModel();
       $data['discover'] = $model->select('games.id, games.name, games.slug, games.image, games.rumor, developers.name AS dev_name, games.like, games.dislike, developers.slug AS dev_slug, publishers.name AS pub_name, publishers.slug AS pub_slug')
                                 ->where('release !=', '2099-01-01')
+                                ->where('release <=', date('Y-m-d'))
                                 ->where('is_edition', 0)
                                 ->where('dropped', 0)
                                 ->join('developers', 'developers.id = games.developer_id')
