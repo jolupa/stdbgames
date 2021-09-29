@@ -31,7 +31,7 @@
     public function deletegamelikedislike ( int $id ) {
 
       $db = \Config\Database::connect();
-      $builder = db->table('likedislike')
+      $builder = $db->table('likedislike')
                     ->where('game_id', $id);
       $builder->delete();
 
@@ -79,7 +79,7 @@
       $builder = $db->table('reviews')
                     ->where('game_id', $id);
       $builder->delete();
-      
+
     }
 
   }

@@ -1289,8 +1289,23 @@
         $data['game'] = $model->where('id', $id)
                               ->first();
 
-        unlink ( ROOTPATH.'public/img/games/'.$data['game']['image'].'.jpeg' );
-        unlink ( ROOTPATH.'public/img/games/'.$data['game']['image'].'-thumb.jpeg' );
+        if ( file_exists ( ROOTPATH.'public/img/games/'.$data['game']['image'].'.jpeg' ) ) {
+
+          unlink ( ROOTPATH.'public/img/games/'.$data['game']['image'].'.jpeg' );
+
+        }
+
+        if ( file_exists ( ROOTPATH.'public/img/games/'.$data['game']['image'].'-thumb.jpeg' ) ) {
+
+          unlink ( ROOTPATH.'public/img/games/'.$data['game']['image'].'-thumb.jpeg' );
+
+        }
+        $model->deletegameprices($id);
+        $model->deletegamereviews($id);
+        $model->deletegamegalleries($id);
+        $model->deletegamelibraries($id);
+        $model->deletegamewishlists($id);
+        $model->deletegamelikedislike($id);
         $model->delete($id, true);
         return redirect()->to( '/')->with( 'error_del', 'Deleted succesfully');
 
