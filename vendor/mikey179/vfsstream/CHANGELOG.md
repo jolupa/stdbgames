@@ -1,3 +1,15 @@
+1.6.10 (2021-09-25)
+-------------------
+
+  * Fix more deprecation warnings for PHP 8.1 support affecting the following:
+    - `vfsStreamContainerIterator::current()`
+    - `vfsStreamContainerIterator::next()`
+    - `vfsStreamContainerIterator::key()`
+    - `vfsStreamContainerIterator::rewind()`
+    - `vfsStreamDirectory::getIterator()`
+    - `vfsStreamPrintVisitor::printContent()`
+  * Fix PHP 8.1 support in `vfsStreamPrintVisitor`
+
 1.6.9 (2021-07-16)
 ------------------
 
