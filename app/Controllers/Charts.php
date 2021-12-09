@@ -24,7 +24,8 @@
 
       $model = new ChartsModel();
       $data['gamebyyear'] = $model->select('strftime("%Y", release) AS year, COUNT(id) AS total')
-                              ->where('strftime("%Y", release) <=', date('Y'))
+                              ->where('is_edition', 0)
+                              ->where('strftime("%Y-%m", release) <=', date('Y-m'))
                               ->groupBy('year')
                               ->findAll();
 

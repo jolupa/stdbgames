@@ -474,7 +474,7 @@ class Users extends BaseController {
 
   public function test () {
 
-    if ( session ('logged') == 'false' || session ('role') != 1 ) {
+    if ( session ('logged') == 'false' && session ('role') != 1 ) {
 
       return 'Ops! That\'s not nice!';
 
