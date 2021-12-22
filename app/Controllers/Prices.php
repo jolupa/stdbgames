@@ -212,7 +212,7 @@
 
         $model->save( $data );
         require ( ROOTPATH.'twitter.php' );
-        $statusmessage = 'Don\'t miss the deal on '.$this->request->getVar('name').' Check it out! https://stdb.games/game/'.$this->request->getVar('slug');
+        $statusmessage = 'Don\'t miss the #Stadia deal on '.$this->request->getVar('name').' Check it out! https://stdb.games/game/'.$this->request->getVar('slug');
         $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
         $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
 

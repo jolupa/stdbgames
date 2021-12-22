@@ -7,7 +7,7 @@
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-3by2">
-                <a href="<?= base_url ( '/game/'.$added['slug'] ) ?>"><img src="<?= base_url('/img/games/'.$added['image'].'.jpeg') ?>" title="<?= $added['name'] ?>"></a>
+                <?php if ($added['is_edition'] == 1): ?><a href="<?= base_url('/game/'.$added['slug'].'#edition_by_games') ?>" title="<?= $added['name'] ?>"><?php else: ?><a href="<?= base_url ( '/game/'.$added['slug'] ) ?>"><?php endif; ?><img src="<?= base_url('/img/games/'.$added['image'].'.jpeg') ?>" title="<?= $added['name'] ?>"></a>
                 <div class="is-overlay is-hidden-touch" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                   <span class="icon-text">
                     <?php if ( session ( 'likes') != null && in_array ( $added['id'], session ('likes' ) ) ): ?>
@@ -39,7 +39,7 @@
               </figure>
             </div>
             <div class="card-content is-hidden-mobile">
-              <p class="title is-5"><span class="icon-text"><?php if ($added['rumor'] == 1): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url('/game/'.$added['slug']) ?>" title="<?= $added['name'] ?>"><?= $added['name'] ?></a></span></p>
+              <p class="title is-5"><span class="icon-text"><?php if ($added['rumor'] == 1): ?><span class="icon has-text-coral"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><?php if ($added['is_edition'] == 1): ?><a href="<?= base_url('/game/'.$added['slug'].'#edition_by_games') ?>" title="<?= $added['name'] ?>"><?= $added['name'] ?></a><?php else: ?><a href="<?= base_url('/game/'.$added['slug']) ?>" title="<?= $added['name'] ?>"><?= $added['name'] ?></a><?php endif; ?></span></p>
             </div>
           </div>
         </div>
