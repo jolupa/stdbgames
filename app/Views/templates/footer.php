@@ -8,6 +8,11 @@
       </div>
       <div class="columns">
         <div class="column is-full">
+          <p class="has-text-centered">The resolution information was manually pulled by <strong>OriginalPenguin</strong> and sourced from his <a href="https://airtable.com/shrHXaF85D1upSKSs/tblVXkiYyDsFwmiMa" target="_new">Stadia Database</a>.<br \>Sometimes the count will change over time, with those changes reflected first on the <a href="https://airtable.com/shrHXaF85D1upSKSs/tblVXkiYyDsFwmiMa" target="_blank">Stadia Database</a> website.</p>
+        </div>
+      </div>
+      <div class="columns">
+        <div class="column is-full">
           <p class="has-text-centered">
             <strong>Stadia GamesDB!</strong> is made with <strong>{{LOVE}}</strong> In Barcelona.<br>
             <strong>{{c}}</strong> 2020/<?= date('Y') ?> <strong>jolupa</strong><br>
