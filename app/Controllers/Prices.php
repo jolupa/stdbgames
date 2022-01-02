@@ -269,6 +269,33 @@
 
     }
 
+    public function dealgameswishlisted ( int $id ) {
+
+      $model = new PricesModel();
+      $data['dealonwishlist'] = $model->where('game_id', $id)
+                                      ->orderBy('id', 'DESC')
+                                      ->first();
+
+      if ( ! empty ($data['dealonwishlist'] ) ) {
+
+        if ( $data['dealonwishlist']['date_till_pro'] >= date ('Y-m-d') || $data['dealonwishlist']['date_till_nonpro'] >= date ('Y-m-d') ) {
+
+          return view ( 'prices/parts/dealonwishlist' );
+
+        } else {
+
+          return '';
+
+        }
+
+      } else {
+
+        return '';
+        
+      }
+
+    }
+
   }
 
  ?>

@@ -14,6 +14,7 @@
                   <tag class="tag is-info"><span class="icon"><i class="fas fa-exclamation"></i></span></tag>
                 </div>
               <?php endif; ?>
+              <?= view_cell ( 'App\Controllers\Prices::dealgameswishlisted', 'id='.$wishlist['id'] ) ?>
             </div>
           </div>
         </div>
