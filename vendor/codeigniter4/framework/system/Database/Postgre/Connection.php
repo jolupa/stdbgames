@@ -117,6 +117,7 @@ class Connection extends BaseConnection
             return $this->dataCache['version'];
         }
 
+        // @phpstan-ignore-next-line
         if (! $this->connID || ($pgVersion = pg_version($this->connID)) === false) {
             $this->initialize();
         }
@@ -432,11 +433,8 @@ class Connection extends BaseConnection
             $this->DSN = "host={$this->hostname} ";
         }
 
-        // ctype_digit only accepts strings
-        $port = (string) $this->port;
-
-        if ($port !== '' && ctype_digit($port)) {
-            $this->DSN .= "port={$port} ";
+        if (! empty($this->port) && ctype_digit($this->port)) {
+            $this->DSN .= "port={$this->port} ";
         }
 
         if ($this->username !== '') {

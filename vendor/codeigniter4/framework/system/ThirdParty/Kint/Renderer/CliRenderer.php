@@ -25,9 +25,7 @@
 
 namespace Kint\Renderer;
 
-use Exception;
-use Kint\Zval\Value;
-use Throwable;
+use Kint\Object\BasicObject;
 
 class CliRenderer extends TextRenderer
 {
@@ -75,13 +73,7 @@ class CliRenderer extends TextRenderer
 
         if (!self::$terminal_width) {
             if (!KINT_WIN && self::$detect_width) {
-                try {
-                    self::$terminal_width = \exec('tput cols');
-                } catch (Exception $e) {
-                    self::$terminal_width = self::$default_width;
-                } catch (Throwable $t) {
-                    self::$terminal_width = self::$default_width;
-                }
+                self::$terminal_width = \exec('tput cols');
             }
 
             if (self::$terminal_width < self::$min_terminal_width) {
@@ -121,7 +113,7 @@ class CliRenderer extends TextRenderer
         return "\x1b[36m".\str_replace("\n", "\x1b[0m\n\x1b[36m", $string)."\x1b[0m";
     }
 
-    public function renderTitle(Value $o)
+    public function renderTitle(BasicObject $o)
     {
         if ($this->windows_output) {
             return $this->utf8ToWindows(parent::renderTitle($o));
@@ -152,8 +144,8 @@ class CliRenderer extends TextRenderer
     protected function utf8ToWindows($string)
     {
         return \str_replace(
-            ['┌', '═', '┐', '│', '└', '─', '┘'],
-            ["\xda", "\xdc", "\xbf", "\xb3", "\xc0", "\xc4", "\xd9"],
+            array('┌', '═', '┐', '│', '└', '─', '┘'),
+            array("\xda", "\xdc", "\xbf", "\xb3", "\xc0", "\xc4", "\xd9"),
             $string
         );
     }

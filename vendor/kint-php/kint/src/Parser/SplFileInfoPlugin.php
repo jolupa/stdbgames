@@ -25,8 +25,8 @@
 
 namespace Kint\Parser;
 
-use Kint\Zval\Representation\SplFileInfoRepresentation;
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
+use Kint\Object\Representation\SplFileInfoRepresentation;
 use SplFileInfo;
 use SplFileObject;
 
@@ -34,7 +34,7 @@ class SplFileInfoPlugin extends Plugin
 {
     public function getTypes()
     {
-        return ['object'];
+        return array('object');
     }
 
     public function getTriggers()
@@ -42,7 +42,7 @@ class SplFileInfoPlugin extends Plugin
         return Parser::TRIGGER_COMPLETE;
     }
 
-    public function parse(&$var, Value &$o, $trigger)
+    public function parse(&$var, BasicObject &$o, $trigger)
     {
         if (!$var instanceof SplFileInfo || $var instanceof SplFileObject) {
             return;

@@ -273,25 +273,37 @@ class Query implements QueryInterface
      */
     protected function compileBinds()
     {
-        $sql   = $this->finalQueryString;
-        $binds = $this->binds;
+        $sql = $this->finalQueryString;
 
-        if (empty($binds)) {
+        $hasBinds      = strpos($sql, $this->bindMarker) !== false;
+        $hasNamedBinds = ! $hasBinds
+            && preg_match('/:(?!=).+:/', $sql) === 1;
+
+        if (empty($this->binds)
+            || empty($this->bindMarker)
+            || (! $hasNamedBinds && ! $hasBinds)
+        ) {
             return;
         }
 
-        if (is_int(array_key_first($binds))) {
-            $bindCount = count($binds);
-            $ml        = strlen($this->bindMarker);
-
-            $this->finalQueryString = $this->matchSimpleBinds($sql, $binds, $bindCount, $ml);
+        if (! is_array($this->binds)) {
+            $binds     = [$this->binds];
+            $bindCount = 1;
         } else {
-            // Reverse the binds so that duplicate named binds
-            // will be processed prior to the original binds.
-            $binds = array_reverse($binds);
-
-            $this->finalQueryString = $this->matchNamedBinds($sql, $binds);
+            $binds     = $this->binds;
+            $bindCount = count($binds);
         }
+
+        // Reverse the binds so that duplicate named binds
+        // will be processed prior to the original binds.
+        if (! is_numeric(key(array_slice($binds, 0, 1)))) {
+            $binds = array_reverse($binds);
+        }
+
+        $ml  = strlen($this->bindMarker);
+        $sql = $hasNamedBinds ? $this->matchNamedBinds($sql, $binds) : $this->matchSimpleBinds($sql, $binds, $bindCount, $ml);
+
+        $this->finalQueryString = $sql;
     }
 
     /**

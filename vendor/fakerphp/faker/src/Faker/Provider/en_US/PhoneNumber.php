@@ -59,7 +59,7 @@ class PhoneNumber extends \Faker\Provider\PhoneNumber
     ];
 
     protected static $e164Formats = [
-        '+1{{areaCode}}{{exchangeCode}}####',
+        '+1{{areaCode}}#######',
     ];
 
     /**

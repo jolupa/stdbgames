@@ -564,6 +564,7 @@ if (! function_exists('random_string')) {
                         break;
                 }
 
+                // @phpstan-ignore-next-line
                 return substr(str_shuffle(str_repeat($pool, ceil($len / strlen($pool)))), 0, $len);
 
             case 'md5':

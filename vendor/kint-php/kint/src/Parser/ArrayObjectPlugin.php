@@ -26,13 +26,13 @@
 namespace Kint\Parser;
 
 use ArrayObject;
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
 
 class ArrayObjectPlugin extends Plugin
 {
     public function getTypes()
     {
-        return ['object'];
+        return array('object');
     }
 
     public function getTriggers()
@@ -40,7 +40,7 @@ class ArrayObjectPlugin extends Plugin
         return Parser::TRIGGER_BEGIN;
     }
 
-    public function parse(&$var, Value &$o, $trigger)
+    public function parse(&$var, BasicObject &$o, $trigger)
     {
         if (!$var instanceof ArrayObject) {
             return;

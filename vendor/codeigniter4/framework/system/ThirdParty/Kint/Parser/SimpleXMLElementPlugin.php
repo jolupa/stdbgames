@@ -25,10 +25,9 @@
 
 namespace Kint\Parser;
 
-use Kint\Zval\BlobValue;
-use Kint\Zval\Representation\Representation;
-use Kint\Zval\SimpleXMLElementValue;
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
+use Kint\Object\BlobObject;
+use Kint\Object\Representation\Representation;
 use SimpleXMLElement;
 
 class SimpleXMLElementPlugin extends Plugin
@@ -42,7 +41,7 @@ class SimpleXMLElementPlugin extends Plugin
 
     public function getTypes()
     {
-        return ['object'];
+        return array('object');
     }
 
     public function getTriggers()
@@ -50,11 +49,13 @@ class SimpleXMLElementPlugin extends Plugin
         return Parser::TRIGGER_SUCCESS;
     }
 
-    public function parse(&$var, Value &$o, $trigger)
+    public function parse(&$var, BasicObject &$o, $trigger)
     {
         if (!$var instanceof SimpleXMLElement) {
             return;
         }
+
+        $o->hints[] = 'simplexml_element';
 
         if (!self::$verbose) {
             $o->removeRepresentation('properties');
@@ -62,156 +63,92 @@ class SimpleXMLElementPlugin extends Plugin
             $o->removeRepresentation('methods');
         }
 
-        // An invalid SimpleXMLElement can gum up the works with
-        // warnings if we call stuff children/attributes on it.
-        if (!$var) {
-            $o->size = null;
-
-            return;
-        }
-
-        $x = new SimpleXMLElementValue();
-        $x->transplant($o);
-
-        $namespaces = \array_merge([null], $var->getDocNamespaces());
-
         // Attributes
         $a = new Representation('Attributes');
 
-        $base_obj = new Value();
-        $base_obj->depth = $x->depth;
+        $base_obj = new BasicObject();
+        $base_obj->depth = $o->depth;
 
-        if ($x->access_path) {
-            $base_obj->access_path = '(string) '.$x->access_path;
+        if ($o->access_path) {
+            $base_obj->access_path = '(string) '.$o->access_path;
         }
 
-        // Attributes are strings. If we're too deep set the
-        // depth limit to enable parsing them, but no deeper.
-        if ($this->parser->getDepthLimit() && $this->parser->getDepthLimit() - 2 < $base_obj->depth) {
-            $base_obj->depth = $this->parser->getDepthLimit() - 2;
+        if ($attribs = $var->attributes()) {
+            $attribs = \iterator_to_array($attribs);
+            $attribs = \array_map('strval', $attribs);
+        } else {
+            $attribs = array();
         }
 
-        $attribs = [];
+        // XML attributes are by definition strings and don't have children,
+        // so up the depth limit in case we're just below the limit since
+        // there won't be any recursive stuff anyway.
+        $a->contents = $this->parser->parseDeep($attribs, $base_obj)->value->contents;
 
-        foreach ($namespaces as $nsAlias => $nsUrl) {
-            if ($nsAttribs = $var->attributes($nsUrl)) {
-                $cleanAttribs = [];
-                foreach ($nsAttribs as $name => $attrib) {
-                    $cleanAttribs[(string) $name] = $attrib;
-                }
-
-                if (null === $nsUrl) {
-                    $obj = clone $base_obj;
-                    if ($obj->access_path) {
-                        $obj->access_path .= '->attributes()';
-                    }
-
-                    $a->contents = $this->parser->parse($cleanAttribs, $obj)->value->contents;
-                } else {
-                    $obj = clone $base_obj;
-                    if ($obj->access_path) {
-                        $obj->access_path .= '->attributes('.\var_export($nsAlias, true).', true)';
-                    }
-
-                    $cleanAttribs = $this->parser->parse($cleanAttribs, $obj)->value->contents;
-
-                    foreach ($cleanAttribs as $attribute) {
-                        $attribute->name = $nsAlias.':'.$attribute->name;
-                        $a->contents[] = $attribute;
-                    }
-                }
-            }
-        }
-
-        $x->addRepresentation($a, 0);
+        $o->addRepresentation($a, 0);
 
         // Children
-        $c = new Representation('Children');
+        // We need to check children() separately from the values we already parsed because
+        // text contents won't show up in children() but they will show up in properties.
+        //
+        // Why do we still need to check for attributes if we already have an attributes()
+        // method? Hell if I know!
+        $children = $var->children();
 
-        foreach ($namespaces as $nsAlias => $nsUrl) {
-            // This is doubling items because of the root namespace
-            // and the implicit namespace on its children.
-            $thisNs = $var->getNamespaces();
-            if (isset($thisNs['']) && $thisNs[''] === $nsUrl) {
-                continue;
-            }
+        if ($o->value) {
+            $c = new Representation('Children');
 
-            if ($nsChildren = $var->children($nsUrl)) {
-                $nsap = [];
-                foreach ($nsChildren as $name => $child) {
-                    $obj = new Value();
-                    $obj->depth = $x->depth + 1;
-                    $obj->name = (string) $name;
-                    if ($x->access_path) {
-                        if (null === $nsUrl) {
-                            $obj->access_path = $x->access_path.'->children()->';
-                        } else {
-                            $obj->access_path = $x->access_path.'->children('.\var_export($nsAlias, true).', true)->';
+            foreach ($o->value->contents as $value) {
+                if ('@attributes' === $value->name) {
+                    continue;
+                }
+
+                if (isset($children->{$value->name})) {
+                    $i = 0;
+
+                    while (isset($children->{$value->name}[$i])) {
+                        $base_obj = new BasicObject();
+                        $base_obj->depth = $o->depth + 1;
+                        $base_obj->name = $value->name;
+                        if ($value->access_path) {
+                            $base_obj->access_path = $value->access_path.'['.$i.']';
                         }
 
-                        if (\preg_match('/^[a-zA-Z_\\x7f-\\xff][a-zA-Z0-9_\\x7f-\\xff]+$/', (string) $name)) {
-                            $obj->access_path .= (string) $name;
-                        } else {
-                            $obj->access_path .= '{'.\var_export((string) $name, true).'}';
+                        $value = $this->parser->parse($children->{$value->name}[$i], $base_obj);
+
+                        if ($value->access_path && 'string' === $value->type) {
+                            $value->access_path = '(string) '.$value->access_path;
                         }
 
-                        if (isset($nsap[$obj->access_path])) {
-                            ++$nsap[$obj->access_path];
-                            $obj->access_path .= '['.$nsap[$obj->access_path].']';
-                        } else {
-                            $nsap[$obj->access_path] = 0;
-                        }
+                        $c->contents[] = $value;
+
+                        ++$i;
                     }
-
-                    $value = $this->parser->parse($child, $obj);
-
-                    if ($value->access_path && 'string' === $value->type) {
-                        $value->access_path = '(string) '.$value->access_path;
-                    }
-
-                    $c->contents[] = $value;
                 }
             }
+
+            $o->size = \count($c->contents);
+
+            if (!$o->size) {
+                $o->size = null;
+
+                if (\strlen((string) $var)) {
+                    $base_obj = new BlobObject();
+                    $base_obj->depth = $o->depth + 1;
+                    $base_obj->name = $o->name;
+                    if ($o->access_path) {
+                        $base_obj->access_path = '(string) '.$o->access_path;
+                    }
+
+                    $value = (string) $var;
+
+                    $c = new Representation('Contents');
+                    $c->implicit_label = true;
+                    $c->contents = array($this->parser->parseDeep($value, $base_obj));
+                }
+            }
+
+            $o->addRepresentation($c, 0);
         }
-
-        $x->size = \count($c->contents);
-
-        if ($x->size) {
-            $x->addRepresentation($c, 0);
-        } else {
-            $x->size = null;
-
-            if (\strlen((string) $var)) {
-                $base_obj = new BlobValue();
-                $base_obj->depth = $x->depth + 1;
-                $base_obj->name = $x->name;
-                if ($x->access_path) {
-                    $base_obj->access_path = '(string) '.$x->access_path;
-                }
-
-                $value = (string) $var;
-
-                $s = $this->parser->parse($value, $base_obj);
-                $srep = $s->getRepresentation('contents');
-                $svalrep = $s->value && 'contents' == $s->value->getName() ? $s : null;
-
-                if ($srep || $svalrep) {
-                    $x->setIsStringValue(true);
-                    $x->value = $srep ?: $svalrep;
-
-                    if ($srep) {
-                        $x->replaceRepresentation($x->value, 0);
-                    }
-                }
-
-                $reps = \array_reverse($s->getRepresentations());
-
-                foreach ($reps as $rep) {
-                    $x->addRepresentation($rep, 0);
-                }
-            }
-        }
-
-        $o = $x;
     }
 }

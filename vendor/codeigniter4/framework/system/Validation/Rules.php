@@ -22,7 +22,8 @@ class Rules
     /**
      * The value does not match another field in $data.
      *
-     * @param array $data Other field/value pairs
+     * @param string $str
+     * @param array  $data Other field/value pairs
      */
     public function differs(?string $str, string $field, array $data): bool
     {
@@ -35,6 +36,8 @@ class Rules
 
     /**
      * Equals the static value provided.
+     *
+     * @param string $str
      */
     public function equals(?string $str, string $val): bool
     {
@@ -44,13 +47,15 @@ class Rules
     /**
      * Returns true if $str is $val characters long.
      * $val = "5" (one) | "5,8,12" (multiple values)
+     *
+     * @param string $str
      */
     public function exact_length(?string $str, string $val): bool
     {
         $val = explode(',', $val);
 
         foreach ($val as $tmp) {
-            if (is_numeric($tmp) && (int) $tmp === mb_strlen($str ?? '')) {
+            if (is_numeric($tmp) && (int) $tmp === mb_strlen($str)) {
                 return true;
             }
         }
@@ -60,6 +65,8 @@ class Rules
 
     /**
      * Greater than
+     *
+     * @param string $str
      */
     public function greater_than(?string $str, string $min): bool
     {
@@ -68,6 +75,8 @@ class Rules
 
     /**
      * Equal to or Greater than
+     *
+     * @param string $str
      */
     public function greater_than_equal_to(?string $str, string $min): bool
     {
@@ -82,6 +91,8 @@ class Rules
      * Example:
      *    is_not_unique[table.field,where_field,where_value]
      *    is_not_unique[menu.id,active,1]
+     *
+     * @param string $str
      */
     public function is_not_unique(?string $str, string $field, array $data): bool
     {
@@ -91,8 +102,9 @@ class Rules
         // Break the table and field apart
         sscanf($field, '%[^.].%[^.]', $table, $field);
 
-        $row = Database::connect($data['DBGroup'] ?? null)
-            ->table($table)
+        $db = Database::connect($data['DBGroup'] ?? null);
+
+        $row = $db->table($table)
             ->select('1')
             ->where($field, $str)
             ->limit(1);
@@ -106,6 +118,8 @@ class Rules
 
     /**
      * Value should be within an array of values
+     *
+     * @param string $value
      */
     public function in_list(?string $value, string $list): bool
     {
@@ -122,15 +136,20 @@ class Rules
      * Example:
      *    is_unique[table.field,ignore_field,ignore_value]
      *    is_unique[users.email,id,5]
+     *
+     * @param string $str
      */
     public function is_unique(?string $str, string $field, array $data): bool
     {
+        // Grab any data for exclusion of a single row.
         [$field, $ignoreField, $ignoreValue] = array_pad(explode(',', $field), 3, null);
 
+        // Break the table and field apart
         sscanf($field, '%[^.].%[^.]', $table, $field);
 
-        $row = Database::connect($data['DBGroup'] ?? null)
-            ->table($table)
+        $db = Database::connect($data['DBGroup'] ?? null);
+
+        $row = $db->table($table)
             ->select('1')
             ->where($field, $str)
             ->limit(1);
@@ -144,6 +163,8 @@ class Rules
 
     /**
      * Less than
+     *
+     * @param string $str
      */
     public function less_than(?string $str, string $max): bool
     {
@@ -152,6 +173,8 @@ class Rules
 
     /**
      * Equal to or Less than
+     *
+     * @param string $str
      */
     public function less_than_equal_to(?string $str, string $max): bool
     {
@@ -161,7 +184,8 @@ class Rules
     /**
      * Matches the value of another field in $data.
      *
-     * @param array $data Other field/value pairs
+     * @param string $str
+     * @param array  $data Other field/value pairs
      */
     public function matches(?string $str, string $field, array $data): bool
     {
@@ -174,18 +198,22 @@ class Rules
 
     /**
      * Returns true if $str is $val or fewer characters in length.
+     *
+     * @param string $str
      */
     public function max_length(?string $str, string $val): bool
     {
-        return is_numeric($val) && $val >= mb_strlen($str ?? '');
+        return is_numeric($val) && $val >= mb_strlen($str);
     }
 
     /**
      * Returns true if $str is at least $val length.
+     *
+     * @param string $str
      */
     public function min_length(?string $str, string $val): bool
     {
-        return is_numeric($val) && $val <= mb_strlen($str ?? '');
+        return is_numeric($val) && $val <= mb_strlen($str);
     }
 
     /**
@@ -209,23 +237,19 @@ class Rules
     }
 
     /**
-     * @param mixed $str
+     * Required
+     *
+     * @param mixed $str Value
+     *
+     * @return bool True if valid, false if not
      */
     public function required($str = null): bool
     {
-        if ($str === null) {
-            return false;
-        }
-
         if (is_object($str)) {
             return true;
         }
 
-        if (is_array($str)) {
-            return $str !== [];
-        }
-
-        return trim((string) $str) !== '';
+        return is_array($str) ? ! empty($str) : (trim($str) !== '');
     }
 
     /**
@@ -246,10 +270,11 @@ class Rules
             throw new InvalidArgumentException('You must supply the parameters: fields, data.');
         }
 
+        $fields = explode(',', $fields);
+
         // If the field is present we can safely assume that
         // the field is here, no matter whether the corresponding
         // search field is present or not.
-        $fields  = explode(',', $fields);
         $present = $this->required($str ?? '');
 
         if ($present) {
@@ -286,10 +311,11 @@ class Rules
             throw new InvalidArgumentException('You must supply the parameters: fields, data.');
         }
 
+        $fields = explode(',', $fields);
+
         // If the field is present we can safely assume that
         // the field is here, no matter whether the corresponding
         // search field is present or not.
-        $fields  = explode(',', $fields);
         $present = $this->required($str ?? '');
 
         if ($present) {

@@ -14,10 +14,6 @@ use function count;
 use function function_exists;
 use function get_class;
 use function sprintf;
-use function xdebug_get_monitored_functions;
-use function xdebug_is_debugger_active;
-use function xdebug_start_function_monitor;
-use function xdebug_stop_function_monitor;
 use AssertionError;
 use Countable;
 use Error;
@@ -456,7 +452,7 @@ final class TestResult implements Countable
 
             $this->passed[$key] = [
                 'result' => $test->getResult(),
-                'size'   => TestUtil::getSize(
+                'size'   => \PHPUnit\Util\Test::getSize(
                     $class,
                     $test->getName(false)
                 ),
@@ -640,15 +636,12 @@ final class TestResult implements Countable
     {
         Assert::resetCount();
 
-        $size = TestUtil::UNKNOWN;
-
         if ($test instanceof TestCase) {
             $test->setRegisterMockObjectsFromTestArgumentsRecursively(
                 $this->registerMockObjectsFromTestArgumentsRecursively
             );
 
             $isAnyCoverageRequired = TestUtil::requiresCodeCoverageDataCollection($test);
-            $size                  = $test->getSize();
         }
 
         $error      = false;
@@ -683,7 +676,7 @@ final class TestResult implements Countable
         $monitorFunctions = $this->beStrictAboutResourceUsageDuringSmallTests &&
                             !$test instanceof ErrorTestCase &&
                             !$test instanceof WarningTestCase &&
-                            $size === TestUtil::SMALL &&
+                            $test->getSize() === \PHPUnit\Util\Test::SMALL &&
                             function_exists('xdebug_start_function_monitor');
 
         if ($monitorFunctions) {
@@ -699,26 +692,29 @@ final class TestResult implements Countable
 
             if (!$test instanceof ErrorTestCase &&
                 !$test instanceof WarningTestCase &&
-                $this->shouldTimeLimitBeEnforced($size) &&
+                $this->enforceTimeLimit &&
+                ($this->defaultTimeLimit || $test->getSize() != \PHPUnit\Util\Test::UNKNOWN) &&
                 $invoker->canInvokeWithTimeout()) {
-                switch ($size) {
-                    case TestUtil::SMALL:
+                switch ($test->getSize()) {
+                    case \PHPUnit\Util\Test::SMALL:
                         $_timeout = $this->timeoutForSmallTests;
 
                         break;
 
-                    case TestUtil::MEDIUM:
+                    case \PHPUnit\Util\Test::MEDIUM:
                         $_timeout = $this->timeoutForMediumTests;
 
                         break;
 
-                    case TestUtil::LARGE:
+                    case \PHPUnit\Util\Test::LARGE:
                         $_timeout = $this->timeoutForLargeTests;
 
                         break;
 
-                    default:
+                    case \PHPUnit\Util\Test::UNKNOWN:
                         $_timeout = $this->defaultTimeLimit;
+
+                        break;
                 }
 
                 $invoker->invoke([$test, 'runBare'], [], $_timeout);
@@ -833,12 +829,12 @@ final class TestResult implements Countable
 
             if ($append && $test instanceof TestCase) {
                 try {
-                    $linesToBeCovered = TestUtil::getLinesToBeCovered(
+                    $linesToBeCovered = \PHPUnit\Util\Test::getLinesToBeCovered(
                         get_class($test),
                         $test->getName(false)
                     );
 
-                    $linesToBeUsed = TestUtil::getLinesToBeUsed(
+                    $linesToBeUsed = \PHPUnit\Util\Test::getLinesToBeUsed(
                         get_class($test),
                         $test->getName(false)
                     );
@@ -1289,30 +1285,5 @@ final class TestResult implements Countable
     private function recordWarning(Test $test, Throwable $t): void
     {
         $this->warnings[] = new TestFailure($test, $t);
-    }
-
-    private function shouldTimeLimitBeEnforced(int $size): bool
-    {
-        if (!$this->enforceTimeLimit) {
-            return false;
-        }
-
-        if (!(($this->defaultTimeLimit || $size !== TestUtil::UNKNOWN))) {
-            return false;
-        }
-
-        if (!extension_loaded('pcntl')) {
-            return false;
-        }
-
-        if (!class_exists(Invoker::class)) {
-            return false;
-        }
-
-        if (extension_loaded('xdebug') && xdebug_is_debugger_active()) {
-            return false;
-        }
-
-        return true;
     }
 }

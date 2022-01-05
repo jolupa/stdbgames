@@ -310,10 +310,6 @@ class Toolbar
      */
     protected function collectVarData(): array
     {
-        if (! ($this->config->collectVarData ?? true)) {
-            return [];
-        }
-
         $data = [];
 
         foreach ($this->collectors as $collector) {

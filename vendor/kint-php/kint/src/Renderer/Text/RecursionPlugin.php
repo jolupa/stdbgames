@@ -25,11 +25,11 @@
 
 namespace Kint\Renderer\Text;
 
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
 
 class RecursionPlugin extends Plugin
 {
-    public function render(Value $o)
+    public function render(BasicObject $o)
     {
         $out = '';
 

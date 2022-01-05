@@ -25,13 +25,13 @@
 
 namespace Kint\Renderer\Rich;
 
-use Kint\Zval\Representation\ColorRepresentation;
-use Kint\Zval\Representation\Representation;
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
+use Kint\Object\Representation\ColorRepresentation;
+use Kint\Object\Representation\Representation;
 
-class ColorPlugin extends Plugin implements TabPluginInterface, ValuePluginInterface
+class ColorPlugin extends Plugin implements TabPluginInterface, ObjectPluginInterface
 {
-    public function renderValue(Value $o)
+    public function renderObject(BasicObject $o)
     {
         $r = $o->getRepresentation('color');
 
@@ -92,7 +92,7 @@ class ColorPlugin extends Plugin implements TabPluginInterface, ValuePluginInter
         }
 
         if (!\strlen($out)) {
-            return;
+            return false;
         }
 
         return '<pre>'.$out.'</pre>';

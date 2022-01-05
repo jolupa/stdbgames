@@ -25,19 +25,19 @@
 
 namespace Kint\Parser;
 
-use Kint\Zval\InstanceValue;
-use Kint\Zval\Representation\Representation;
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
+use Kint\Object\InstanceObject;
+use Kint\Object\Representation\Representation;
 use ReflectionClass;
 use ReflectionProperty;
 
 class ClassStaticsPlugin extends Plugin
 {
-    private static $cache = [];
+    private static $cache = array();
 
     public function getTypes()
     {
-        return ['object'];
+        return array('object');
     }
 
     public function getTriggers()
@@ -45,7 +45,7 @@ class ClassStaticsPlugin extends Plugin
         return Parser::TRIGGER_SUCCESS;
     }
 
-    public function parse(&$var, Value &$o, $trigger)
+    public function parse(&$var, BasicObject &$o, $trigger)
     {
         $class = \get_class($var);
         $reflection = new ReflectionClass($class);
@@ -53,14 +53,14 @@ class ClassStaticsPlugin extends Plugin
         // Constants
         // TODO: PHP 7.1 allows private consts but reflection doesn't have a way to check them yet
         if (!isset(self::$cache[$class])) {
-            $consts = [];
+            $consts = array();
 
             foreach ($reflection->getConstants() as $name => $val) {
-                $const = Value::blank($name, '\\'.$class.'::'.$name);
+                $const = BasicObject::blank($name, '\\'.$class.'::'.$name);
                 $const->const = true;
                 $const->depth = $o->depth + 1;
                 $const->owner_class = $class;
-                $const->operator = Value::OPERATOR_STATIC;
+                $const->operator = BasicObject::OPERATOR_STATIC;
                 $const = $this->parser->parse($val, $const);
 
                 $consts[] = $const;
@@ -73,18 +73,18 @@ class ClassStaticsPlugin extends Plugin
         $statics->contents = self::$cache[$class];
 
         foreach ($reflection->getProperties(ReflectionProperty::IS_STATIC) as $static) {
-            $prop = new Value();
+            $prop = new BasicObject();
             $prop->name = '$'.$static->getName();
             $prop->depth = $o->depth + 1;
             $prop->static = true;
-            $prop->operator = Value::OPERATOR_STATIC;
+            $prop->operator = BasicObject::OPERATOR_STATIC;
             $prop->owner_class = $static->getDeclaringClass()->name;
 
-            $prop->access = Value::ACCESS_PUBLIC;
+            $prop->access = BasicObject::ACCESS_PUBLIC;
             if ($static->isProtected()) {
-                $prop->access = Value::ACCESS_PROTECTED;
+                $prop->access = BasicObject::ACCESS_PROTECTED;
             } elseif ($static->isPrivate()) {
-                $prop->access = Value::ACCESS_PRIVATE;
+                $prop->access = BasicObject::ACCESS_PRIVATE;
             }
 
             if ($this->parser->childHasPath($o, $prop)) {
@@ -92,37 +92,31 @@ class ClassStaticsPlugin extends Plugin
             }
 
             $static->setAccessible(true);
-
-            if (KINT_PHP74 && !$static->isInitialized()) {
-                $prop->type = 'uninitialized';
-                $statics->contents[] = $prop;
-            } else {
-                $static = $static->getValue();
-                $statics->contents[] = $this->parser->parse($static, $prop);
-            }
+            $static = $static->getValue();
+            $statics->contents[] = $this->parser->parse($static, $prop);
         }
 
         if (empty($statics->contents)) {
             return;
         }
 
-        \usort($statics->contents, ['Kint\\Parser\\ClassStaticsPlugin', 'sort']);
+        \usort($statics->contents, array('Kint\\Parser\\ClassStaticsPlugin', 'sort'));
 
         $o->addRepresentation($statics);
     }
 
-    private static function sort(Value $a, Value $b)
+    private static function sort(BasicObject $a, BasicObject $b)
     {
         $sort = ((int) $a->const) - ((int) $b->const);
         if ($sort) {
             return $sort;
         }
 
-        $sort = Value::sortByAccess($a, $b);
+        $sort = BasicObject::sortByAccess($a, $b);
         if ($sort) {
             return $sort;
         }
 
-        return InstanceValue::sortByHierarchy($a->owner_class, $b->owner_class);
+        return InstanceObject::sortByHierarchy($a->owner_class, $b->owner_class);
     }
 }

@@ -25,14 +25,14 @@
 
 namespace Kint\Renderer\Rich;
 
-use Kint\Zval\TraceFrameValue;
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
+use Kint\Object\TraceFrameObject;
 
-class TraceFramePlugin extends Plugin implements ValuePluginInterface
+class TraceFramePlugin extends Plugin implements ObjectPluginInterface
 {
-    public function renderValue(Value $o)
+    public function renderObject(BasicObject $o)
     {
-        if (!$o instanceof TraceFrameValue) {
+        if (!$o instanceof TraceFrameObject) {
             return;
         }
 

@@ -43,23 +43,20 @@ final class ComposerScripts
      */
     private static $dependencies = [
         'kint-src' => [
-            'license' => __DIR__ . '/../vendor/kint-php/kint/LICENSE',
-            'from'    => __DIR__ . '/../vendor/kint-php/kint/src/',
-            'to'      => __DIR__ . '/ThirdParty/Kint/',
+            'from' => __DIR__ . '/../vendor/kint-php/kint/src/',
+            'to'   => __DIR__ . '/ThirdParty/Kint/',
         ],
         'kint-resources' => [
             'from' => __DIR__ . '/../vendor/kint-php/kint/resources/',
             'to'   => __DIR__ . '/ThirdParty/Kint/resources/',
         ],
         'escaper' => [
-            'license' => __DIR__ . '/../vendor/laminas/laminas-escaper/LICENSE.md',
-            'from'    => __DIR__ . '/../vendor/laminas/laminas-escaper/src/',
-            'to'      => __DIR__ . '/ThirdParty/Escaper/',
+            'from' => __DIR__ . '/../vendor/laminas/laminas-escaper/src/',
+            'to'   => __DIR__ . '/ThirdParty/Escaper/',
         ],
         'psr-log' => [
-            'license' => __DIR__ . '/../vendor/psr/log/LICENSE',
-            'from'    => __DIR__ . '/../vendor/psr/log/Psr/Log/',
-            'to'      => __DIR__ . '/ThirdParty/PSR/Log/',
+            'from' => __DIR__ . '/../vendor/psr/log/Psr/Log/',
+            'to'   => __DIR__ . '/ThirdParty/PSR/Log/',
         ],
     ];
 
@@ -73,10 +70,6 @@ final class ComposerScripts
 
         foreach (self::$dependencies as $dependency) {
             self::recursiveMirror($dependency['from'], $dependency['to']);
-            if (isset($dependency['license'])) {
-                $license = basename($dependency['license']);
-                copy($dependency['license'], $dependency['to'] . '/' . $license);
-            }
         }
 
         self::copyKintInitFiles();

@@ -158,8 +158,6 @@ class CookieStore implements Countable, IteratorAggregate
 
     /**
      * Dispatches all cookies in store.
-     *
-     * @deprecated Response should dispatch cookies.
      */
     public function dispatch(): void
     {
@@ -234,8 +232,6 @@ class CookieStore implements Countable, IteratorAggregate
      * Extracted call to `setrawcookie()` in order to run unit tests on it.
      *
      * @codeCoverageIgnore
-     *
-     * @deprecated
      */
     protected function setRawCookie(string $name, string $value, array $options): void
     {
@@ -246,8 +242,6 @@ class CookieStore implements Countable, IteratorAggregate
      * Extracted call to `setcookie()` in order to run unit tests on it.
      *
      * @codeCoverageIgnore
-     *
-     * @deprecated
      */
     protected function setCookie(string $name, string $value, array $options): void
     {

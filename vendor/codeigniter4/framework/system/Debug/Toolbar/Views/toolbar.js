@@ -58,13 +58,6 @@ var ciDebugBar = {
 		{
 			buttons[i].addEventListener('click', ciDebugBar.showTab, true);
 		}
-
-		// Hook up generic toggle via data attributes `data-toggle="foo"`
-		var links = document.querySelectorAll('[data-toggle]');
-		for (var i = 0; i < links.length; i++)
-		{
-			links[i].addEventListener('click', ciDebugBar.toggleRows, true);
-		}
 	},
 
 	showTab: function () {
@@ -132,21 +125,6 @@ var ciDebugBar = {
 	},
 
 	/**
-	 * Toggle display of another object based on
-	 * the data-toggle value of this object
-	 *
-	 * @param event
-	 */
-	toggleRows : function(event) {
-		if(event.target)
-		{
-			let row = event.target.closest('tr');
-			let target = document.getElementById(row.getAttribute('data-toggle'));
-			target.style.display = target.style.display === 'none' ? 'table-row' : 'none';
-		}
-	},
-
-	/**
 	 * Toggle display of a data table
 	 *
 	 * @param obj
@@ -159,7 +137,7 @@ var ciDebugBar = {
 
 		if (obj)
 		{
-			obj.style.display = obj.style.display === 'none' ? 'block' : 'none';
+			obj.style.display = obj.style.display == 'none' ? 'block' : 'none';
 		}
 	},
 
@@ -177,7 +155,7 @@ var ciDebugBar = {
 
 		if (par && obj)
 		{
-			obj.style.display = obj.style.display === 'none' ? '' : 'none';
+			obj.style.display = obj.style.display == 'none' ? '' : 'none';
 			par.classList.toggle('timeline-parent-open');
 		}
 	},

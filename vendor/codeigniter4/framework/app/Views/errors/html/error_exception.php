@@ -195,7 +195,7 @@
 					<tbody>
 						<tr>
 							<td style="width: 10em">Path</td>
-							<td><?= esc($request->getUri()) ?></td>
+							<td><?= esc($request->uri) ?></td>
 						</tr>
 						<tr>
 							<td>HTTP Method</td>

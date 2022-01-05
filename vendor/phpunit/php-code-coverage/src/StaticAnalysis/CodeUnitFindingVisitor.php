@@ -49,7 +49,7 @@ final class CodeUnitFindingVisitor extends NodeVisitorAbstract
      */
     private $functions = [];
 
-    public function enterNode(Node $node): void
+    public function enterNode(Node $node)
     {
         if ($node instanceof Class_) {
             if ($node->isAnonymous()) {
@@ -64,7 +64,7 @@ final class CodeUnitFindingVisitor extends NodeVisitorAbstract
         }
 
         if (!$node instanceof ClassMethod && !$node instanceof Function_) {
-            return;
+            return null;
         }
 
         if ($node instanceof ClassMethod) {
