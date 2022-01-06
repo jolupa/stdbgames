@@ -510,12 +510,12 @@ class Fabricator
         $fields = [];
 
         if (! empty($this->model->useTimestamps)) {
-            $fields[$this->model->createdField] = $datetime;
-            $fields[$this->model->updatedField] = $datetime;
+            $fields[$this->model->createdField] = $datetime; // @phpstan-ignore-line
+            $fields[$this->model->updatedField] = $datetime; // @phpstan-ignore-line
         }
 
         if (! empty($this->model->useSoftDeletes)) {
-            $fields[$this->model->deletedField] = null;
+            $fields[$this->model->deletedField] = null; // @phpstan-ignore-line
         }
 
         // Iterate over new entities and add the necessary fields

@@ -25,20 +25,20 @@
 
 namespace Kint\Parser;
 
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
 
 class TimestampPlugin extends Plugin
 {
-    public static $blacklist = [
+    public static $blacklist = array(
         2147483648,
         2147483647,
         1073741824,
         1073741823,
-    ];
+    );
 
     public function getTypes()
     {
-        return ['string', 'integer'];
+        return array('string', 'integer');
     }
 
     public function getTriggers()
@@ -46,7 +46,7 @@ class TimestampPlugin extends Plugin
         return Parser::TRIGGER_SUCCESS;
     }
 
-    public function parse(&$var, Value &$o, $trigger)
+    public function parse(&$var, BasicObject &$o, $trigger)
     {
         if (\is_string($var) && !\ctype_digit($var)) {
             return;
@@ -56,7 +56,7 @@ class TimestampPlugin extends Plugin
             return;
         }
 
-        $len = \strlen((string) $var);
+        $len = \strlen($var);
 
         // Guess for anything between March 1973 and November 2286
         if (9 === $len || 10 === $len) {

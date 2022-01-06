@@ -139,13 +139,11 @@ class CLIRequest extends Request
                 $out .= "-{$name} ";
             }
 
-            if ($value === null) {
-                continue;
-            }
-
+            // If there's a space, we need to group
+            // so it will pass correctly.
             if (mb_strpos($value, ' ') !== false) {
                 $out .= '"' . $value . '" ';
-            } else {
+            } elseif ($value !== null) {
                 $out .= "{$value} ";
             }
         }
@@ -172,17 +170,17 @@ class CLIRequest extends Request
                 if ($optionValue) {
                     $optionValue = false;
                 } else {
-                    $this->segments[] = $arg;
+                    $this->segments[] = esc(strip_tags($arg));
                 }
 
                 continue;
             }
 
-            $arg   = ltrim($arg, '-');
+            $arg   = esc(strip_tags(ltrim($arg, '-')));
             $value = null;
 
             if (isset($args[$i + 1]) && mb_strpos($args[$i + 1], '-') !== 0) {
-                $value       = $args[$i + 1];
+                $value       = esc(strip_tags($args[$i + 1]));
                 $optionValue = true;
             }
 

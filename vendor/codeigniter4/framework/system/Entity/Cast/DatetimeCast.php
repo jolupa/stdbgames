@@ -32,7 +32,7 @@ class DatetimeCast extends BaseCast
         }
 
         if ($value instanceof DateTime) {
-            return Time::createFromInstance($value);
+            return Time::instance($value);
         }
 
         if (is_numeric($value)) {

@@ -27,7 +27,7 @@ namespace Kint\Renderer\Rich;
 
 use DateTime;
 use DateTimeZone;
-use Kint\Zval\Representation\Representation;
+use Kint\Object\Representation\Representation;
 
 class TimestampPlugin extends Plugin implements TabPluginInterface
 {

@@ -25,12 +25,9 @@
 
 namespace Kint\Renderer\Rich;
 
-use Kint\Zval\Representation\Representation;
+use Kint\Object\Representation\Representation;
 
 interface TabPluginInterface extends PluginInterface
 {
-    /**
-     * @return null|string
-     */
-    public function renderTab(Representation $r);
+    public function renderTab(Representation $o);
 }

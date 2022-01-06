@@ -25,17 +25,17 @@
 
 namespace Kint\Parser;
 
-use Kint\Zval\Representation\SplFileInfoRepresentation;
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
+use Kint\Object\Representation\SplFileInfoRepresentation;
 use SplFileInfo;
 
 class FsPathPlugin extends Plugin
 {
-    public static $blacklist = ['/', '.'];
+    public static $blacklist = array('/', '.');
 
     public function getTypes()
     {
-        return ['string'];
+        return array('string');
     }
 
     public function getTriggers()
@@ -43,7 +43,7 @@ class FsPathPlugin extends Plugin
         return Parser::TRIGGER_SUCCESS;
     }
 
-    public function parse(&$var, Value &$o, $trigger)
+    public function parse(&$var, BasicObject &$o, $trigger)
     {
         if (\strlen($var) > 2048) {
             return;

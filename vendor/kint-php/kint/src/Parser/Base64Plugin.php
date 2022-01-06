@@ -25,8 +25,8 @@
 
 namespace Kint\Parser;
 
-use Kint\Zval\Representation\Representation;
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
+use Kint\Object\Representation\Representation;
 
 class Base64Plugin extends Plugin
 {
@@ -46,7 +46,7 @@ class Base64Plugin extends Plugin
 
     public function getTypes()
     {
-        return ['string'];
+        return array('string');
     }
 
     public function getTriggers()
@@ -54,7 +54,7 @@ class Base64Plugin extends Plugin
         return Parser::TRIGGER_SUCCESS;
     }
 
-    public function parse(&$var, Value &$o, $trigger)
+    public function parse(&$var, BasicObject &$o, $trigger)
     {
         if (\strlen($var) < self::$min_length_hard || \strlen($var) % 4) {
             return;
@@ -68,13 +68,14 @@ class Base64Plugin extends Plugin
             return;
         }
 
+        /** @var false|string */
         $data = \base64_decode($var, true);
 
         if (false === $data) {
             return;
         }
 
-        $base_obj = new Value();
+        $base_obj = new BasicObject();
         $base_obj->depth = $o->depth + 1;
         $base_obj->name = 'base64_decode('.$o->name.')';
 

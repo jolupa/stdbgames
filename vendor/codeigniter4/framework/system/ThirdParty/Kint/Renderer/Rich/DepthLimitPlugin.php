@@ -25,11 +25,11 @@
 
 namespace Kint\Renderer\Rich;
 
-use Kint\Zval\Value;
+use Kint\Object\BasicObject;
 
-class DepthLimitPlugin extends Plugin implements ValuePluginInterface
+class DepthLimitPlugin extends Plugin implements ObjectPluginInterface
 {
-    public function renderValue(Value $o)
+    public function renderObject(BasicObject $o)
     {
         return '<dl>'.$this->renderLockedHeader($o, '<var>Depth Limit</var>').'</dl>';
     }

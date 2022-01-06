@@ -158,7 +158,7 @@ class Model extends BaseModel
      */
     protected function doFindColumn(string $columnName)
     {
-        return $this->select($columnName)->asArray()->find();
+        return $this->select($columnName)->asArray()->find(); // @phpstan-ignore-line
     }
 
     /**
@@ -584,17 +584,12 @@ class Model extends BaseModel
      */
     protected function shouldUpdate($data): bool
     {
-        if (parent::shouldUpdate($data) === false) {
-            return false;
-        }
-
-        if ($this->useAutoIncrement === true) {
-            return true;
-        }
-
-        // When useAutoIncrement feature is disabled, check
+        // When useAutoIncrement feature is disabled check
         // in the database if given record already exists
-        return $this->where($this->primaryKey, $this->getIdValue($data))->countAllResults() === 1;
+        return parent::shouldUpdate($data)
+            && $this->useAutoIncrement
+                ? true
+                : $this->where($this->primaryKey, $this->getIdValue($data))->countAllResults() === 1;
     }
 
     /**
