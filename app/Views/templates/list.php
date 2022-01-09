@@ -37,7 +37,7 @@
             <div class="card is-shadowless">
               <div class="card-image">
                 <figure class="image is-3by2">
-                  <a href="<?= base_url ( '/game/'.$list['slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$list['image'].'.jpeg') ?>"></a>
+                  <a href="<?= base_url ( '/game/'.$list['slug'] ) ?><?php if ( url_is ('interviews/list*') ): ?>#small_interview"<?php endif; ?>><img src="<?= base_url ( '/img/games/'.$list['image'].'.jpeg') ?>"></a>
                   <div class="is-overlay is-hidden-desktop" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                     <span class="icon-text">
                       <?php if ( ! empty ( $list['rumor'] ) ): ?><tag class="tag is-info"><span class="icon"><i class="fas fa-exclamation"></i></span></tag><?php endif; ?>
@@ -46,7 +46,7 @@
                 </figure>
               </div>
               <div class="card-content">
-                <p><span class="icon-text"><?php if ( ! empty ( $list['rumor'] ) && $list['rumor'] == 1 ): ?><span class="icon has-text-coral is-hidden-touch"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$list['slug'] ) ?>"><?= $list['name'] ?></span></a></span></p>
+                <p><span class="icon-text"><?php if ( ! empty ( $list['rumor'] ) && $list['rumor'] == 1 ): ?><span class="icon has-text-coral is-hidden-touch"><i class="fas fa-exclamation"></i></span><?php endif; ?><span><a href="<?= base_url ( '/game/'.$list['slug'] ) ?><?php if ( url_is ('interviews/list*') ): ?>#small_interview<?php endif; ?>"><?= $list['name'] ?></span></a></span></p>
                 <?php if (! empty ( $list['release'] ) ): ?>
                   <p>Rel <?php if ( $list['release'] == '2099-01-01' || $list['release'] == 'TBA' ): ?>TBA<?php else: ?><?= date ( 'd-m-Y', strtotime( $list['release'] ) ) ?><?php endif; ?>
                     <br>
