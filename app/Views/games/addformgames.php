@@ -2,7 +2,7 @@
   <div class="mx-3">
     <p class="title is-4">Add Game</p>
     <form action="<?= base_url ( '/games/creategamedb') ?>" method="post" enctype="multipart/form-data">
-      <div class="field is-grouped">
+      <div class="field is-grouped-multiline">
         <div class="control">
           <label class="checkbox">
             <input type="checkbox" name="rumor" <?php if ( ! empty ( old('rumor') ) ): ?>checked<?php endif; ?>>

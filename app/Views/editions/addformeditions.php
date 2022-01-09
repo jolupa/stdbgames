@@ -4,7 +4,7 @@
     <form action="<?= base_url ( '/editions/save') ?>" method="post" enctype="multipart/form-data">
       <input type="hidden" name="edition_game_id" <?php if ( ! empty ( old ('edition_game_id') ) ): ?>value="<?= old ('edition_game_id') ?>"<?php else: ?>value="<?= $game ?>"<?php endif; ?>>
       <input type="hidden" name="slug" <?php if ( ! empty ( old ('slug') ) ): ?>value="<?= old('slug') ?>"<?php else: ?>value="<?= $game_slug ?>"<?php endif; ?>>
-      <div class="field">
+      <div class="field is-grouped-multiline">
         <div class="control">
           <label class="checkbox">
             <input type="checkbox" name="tweet" <?php if ( ! empty ( old( 'tweet') ) ): ?>checked<?php endif; ?>>
