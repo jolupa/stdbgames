@@ -37,7 +37,7 @@
             <div class="card is-shadowless">
               <div class="card-image">
                 <figure class="image is-3by2">
-                  <a href="<?= base_url ( '/game/'.$list['slug'] ) ?><?php if ( url_is ('interviews/list*') ): ?>#small_interview"<?php endif; ?>><img src="<?= base_url ( '/img/games/'.$list['image'].'.jpeg') ?>"></a>
+                  <a href="<?= base_url ( '/game/'.$list['slug'] ) ?><?php if ( url_is ('interviews/list*') ): ?>#small_interview<?php endif; ?>"><img src="<?= base_url ( '/img/games/'.$list['image'].'.jpeg') ?>"></a>
                   <div class="is-overlay is-hidden-desktop" style="top: auto; right: 10px; bottom: 10px; left: auto;">
                     <span class="icon-text">
                       <?php if ( ! empty ( $list['rumor'] ) ): ?><tag class="tag is-info"><span class="icon"><i class="fas fa-exclamation"></i></span></tag><?php endif; ?>
