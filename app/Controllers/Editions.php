@@ -37,7 +37,7 @@
 
       if ( session ( 'logged' ) == false || session ( 'role' ) != 1 ) {
 
-        return redirect()->to( '/' )->with( 'error_adup', 'You cam\'t Edit or Add content without being a DB! Staff' );
+        return redirect()->to( '/' )->with( 'error_adup', 'You can\'t Edit or Add content without being a DB! Staff' );
 
       } else {
 
