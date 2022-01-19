@@ -147,11 +147,11 @@
 
             $file = $this->request->getFile('image')
                                   ->move(WRITEPATH.'uploads', $data['slug']);
-            $image = \Config\Services\image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+            $image = \Config\Services\image('gd')->withFile(WRITEPATH.'uploads/'.$data['slug'])
                                                       ->resize(1370, 728, 'width')
                                                       ->convert(IMAGETYPE_JPEG)
                                                       ->save(ROOTPATH.'publi/img/publishers/'.$data['slug'].'.jpeg');
-            $imagethumb = \Config\Services\image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+            $imagethumb = \Config\Services\image('gd')->withFile(WRITEPATH.'uploads/'.$data['slug'])
                                                             ->fit(256, 256, 'center')
                                                             ->convert(IMAGETYPE_JPEG)
                                                             ->save(ROOTPATH.'public/img/publishers/'.$data['slug'].'-thumb.jpeg');
@@ -211,12 +211,12 @@
           $file = $this->request->getFile('image')
                                 ->move(WRITEPATH.'uploads/', $this->request->getVar('slug'));
 
-          $image = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
+          $image = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
                                                     ->resize(1370, 728, true, 'width')
                                                     ->convert(IMAGETYPE_JPEG)
                                                     ->save(ROOTPATH.'public/img/publishers/'.$this->request->getVar('slug').'.jpeg');
 
-          $imagethumb = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
+          $imagethumb = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
                                                           ->fit(256, 256, 'center')
                                                           ->convert(IMAGETYPE_JPEG)
                                                           ->save(ROOTPATH.'public/img/publishers/'.$this->request->getVar('slug').'-thumb.jpeg');

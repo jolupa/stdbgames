@@ -78,7 +78,7 @@ class Users extends BaseController {
 
         $file = $this->request->getFile('image_signup')
                               ->move(WRITEPATH.'uploads', $data['slug']);
-        $image = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+        $image = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$data['slug'])
                                                     ->fit(256, 256, 'center')
                                                     ->convert(IMAGETYPE_PNG)
                                                     ->save(ROOTPATH.'public/img/users/'.$data['slug'].'.png');
@@ -427,7 +427,7 @@ class Users extends BaseController {
 
       $file = $this->request->getFile('image')
                             ->move( WRITEPATH.'uploads', $this->request->getVar('slug') );
-      $image = \Config\Services::image('imagick')->withFile( WRITEPATH.'uploads/'.$this->request->getVar('slug') )
+      $image = \Config\Services::image('gd')->withFile( WRITEPATH.'uploads/'.$this->request->getVar('slug') )
                                                   ->fit( 256, 256, 'center' )
                                                   ->convert( IMAGETYPE_PNG )
                                                   ->save( ROOTPATH.'public/img/users/'.$this->request->getVar('slug').'.png' );

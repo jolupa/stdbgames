@@ -129,12 +129,12 @@
         $file = $this->request->getFile('image')
                               ->move(WRITEPATH.'uploads', strtolower ( url_title ( $data['name'] ) ) );
 
-        $image = \Config\Services::image('imagick')->withfile(WRITEPATH.'uploads/'.strtolower ( url_title ( $data['name'] ) ) )
+        $image = \Config\Services::image('gd')->withfile(WRITEPATH.'uploads/'.strtolower ( url_title ( $data['name'] ) ) )
                                                     ->resize(1370, 728, 'width')
                                                     ->convert(IMAGETYPE_JPEG)
                                                     ->save(ROOTPATH.'public/img/games/'.strtolower ( url_title ( $data['name'] ) ).'.jpeg' );
 
-        $imagethumb = \Config\Services::image('imagick')->withfile(WRITEPATH.'uploads/'.strtolower ( url_title ( $data['name'] ) ) )
+        $imagethumb = \Config\Services::image('gd')->withfile(WRITEPATH.'uploads/'.strtolower ( url_title ( $data['name'] ) ) )
                                                     ->fit(256, 256, 'center')
                                                     ->convert(IMAGETYPE_JPEG)
                                                     ->save(ROOTPATH.'public/img/games/'.strtolower ( url_title ( $data['name'] ) ).'-thumb.jpeg' );
