@@ -138,7 +138,7 @@
       $data['page_description'] = 'All the games we have on DB!';
       $total = count ( $data['list'] );
       $data['page_keywords'] = "db, database, games, stadia, google stadia, fun, cloud gaming, gaming, gamepads";
-      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total )]['image'].'.jpeg');
+      $data['page_image'] = base_url ( '/img/games/'.$data['list'][rand( 0, $total-1 )]['image'].'.jpeg');
       $data['page_url'] = base_url ( '/db/list');
       $data['page_twitterimagealt'] = 'All the Games on DB!';
       $data['page_header'] = 'All the games on DB!';
@@ -798,12 +798,12 @@
           $file = $this->request->getFile('image')
                                 ->move(WRITEPATH.'uploads', $data['slug']);
 
-          $image = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+          $image = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$data['slug'])
                                         ->resize(1370, 728, true, 'width')
                                         ->convert(IMAGETYPE_JPEG)
                                         ->save(ROOTPATH.'public/img/games/'.$data['slug'].'.jpeg');
 
-          $imagethumb = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+          $imagethumb = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$data['slug'])
                                               ->fit(256, 256, 'center')
                                               ->convert(IMAGETYPE_JPEG)
                                               ->save(ROOTPATH.'public/img/games/'.$data['slug'].'-thumb.jpeg');
@@ -1068,12 +1068,12 @@
         $file = $this->request->getFile('image')
                               ->move(WRITEPATH.'uploads/', $this->request->getVar('slug'));
 
-        $image = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
+        $image = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
                                                   ->resize(1370, 728, true, 'width')
                                                   ->convert(IMAGETYPE_JPEG)
                                                   ->save(ROOTPATH.'public/img/games/'.$this->request->getVar('slug').'.jpeg');
 
-        $imagethumb = \Config\Services::image('imagick')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
+        $imagethumb = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$this->request->getVar('slug'))
                                                         ->fit(256, 256, 'center')
                                                         ->convert(IMAGETYPE_JPEG)
                                                         ->save(ROOTPATH.'public/img/games/'.$this->request->getVar('slug').'-thumb.jpeg');
