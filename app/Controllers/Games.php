@@ -728,6 +728,10 @@
 
           $data['rumor'] = 1;
 
+        } else {
+
+          $data['rumor'] = 0;
+          
         }
 
         if ( ! empty ( $this->request->getVar('dropped') ) ) {
