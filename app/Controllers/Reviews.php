@@ -194,7 +194,7 @@
 
       }
 
-      $statusmessage = $name.' wrote a review for '.$this->request->getVar('game_name').'on #Stadia. You agree? Want to say your own? '.previous_url().'#game_reviews';
+      $statusmessage = $name.' wrote a review for '.$this->request->getVar('game_name').' on #Stadia. You agree? Want to say your own? '.previous_url().'#game_reviews';
       $connection = new TwitterOAuth ( $consumerkey, $consumersecret, $token, $tokensecret );
       $connection->post ( 'statuses/update', [ 'status' => $statusmessage ] );
 
