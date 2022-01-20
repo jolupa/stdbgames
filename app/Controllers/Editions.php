@@ -190,11 +190,11 @@
 
         if ( ! empty ( $this->request->getVar('id') ) ) {
 
-          $statusmessage = 'We updated a Game Edition '.$data['name'].' Like, Dislike or add it to your Library or Wishlist! https://stdb.games/game/'.$this->request->getVar('slug');
+          $statusmessage = 'We updated a #Stadia Game Edition '.$data['name'].' Like, Dislike or add it to your Library or Wishlist! https://stdb.games/game/'.$this->request->getVar('slug');
 
         } else {
 
-          $statusmessage = 'We added a new Game Edition to DB! '.$data['name'].' Like, Dislike or add it to your Library or Wishlist! https://stdb.games/game/'.$this->request->getVar('slug');
+          $statusmessage = 'We added a new #Stadia Game Edition to DB! '.$data['name'].' Like, Dislike or add it to your Library or Wishlist! https://stdb.games/game/'.$this->request->getVar('slug');
 
         }
 
