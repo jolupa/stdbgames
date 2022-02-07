@@ -10,8 +10,7 @@
 		"madcoda/php-youtube-api": "^1.2",
 		"league/commonmark": "^1.5",
 		"simplehtmldom/simplehtmldom": "2.0-RC2",
-		"abraham/twitteroauth": "^2.0",
-		"hooshid/metacritic-scraper": "^0.1.3"
+		"abraham/twitteroauth": "^2.0"
 	},
 	"require-dev": {
 		"fakerphp/faker": "^1.9",

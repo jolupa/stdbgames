@@ -125,6 +125,20 @@ class Validation
 
 		],
 
+		'image' => [
+
+			'label' => 'image',
+			'rules' => 'uploaded[image]|max_size[image,10000]|ext_in[image,jpg,png,webp]',
+			'errors' => [
+
+				'uploaded' => 'You have to provide a file image to upload... Or maybe we have a problem on the server... Try again!',
+				'max_size' => 'The maximun file size of the image is 10Mb',
+				'ext_in' => 'We only admit image files such JPG, PNG or WEBP',
+
+			],
+
+		],
+
 	];
 
 	public $userslogin = [

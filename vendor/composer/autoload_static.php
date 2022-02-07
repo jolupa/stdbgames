@@ -15,10 +15,6 @@ class ComposerStaticInita43681abb78f34c280af0859c7568557
     );
 
     public static $prefixLengthsPsr4 = array (
-        'v' => 
-        array (
-            'voku\\helper\\' => 12,
-        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -34,7 +30,6 @@ class ComposerStaticInita43681abb78f34c280af0859c7568557
         'S' => 
         array (
             'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Symfony\\Component\\CssSelector\\' => 30,
         ),
         'P' => 
         array (
@@ -55,10 +50,6 @@ class ComposerStaticInita43681abb78f34c280af0859c7568557
         'K' => 
         array (
             'Kint\\' => 5,
-        ),
-        'H' => 
-        array (
-            'Hooshid\\MetacriticScraper\\' => 26,
         ),
         'F' => 
         array (
@@ -83,10 +74,6 @@ class ComposerStaticInita43681abb78f34c280af0859c7568557
     );
 
     public static $prefixDirsPsr4 = array (
-        'voku\\helper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/voku/simple_html_dom/src/voku/helper',
-        ),
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
@@ -104,10 +91,6 @@ class ComposerStaticInita43681abb78f34c280af0859c7568557
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
-        ),
-        'Symfony\\Component\\CssSelector\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/css-selector',
         ),
         'Psr\\Log\\' => 
         array (
@@ -140,10 +123,6 @@ class ComposerStaticInita43681abb78f34c280af0859c7568557
         'Kint\\' => 
         array (
             0 => __DIR__ . '/..' . '/kint-php/kint/src',
-        ),
-        'Hooshid\\MetacriticScraper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/hooshid/metacritic-scraper/src',
         ),
         'Faker\\' => 
         array (

@@ -710,7 +710,7 @@
       $data['page_title'] = 'Add Game to DB!';
       $data['page_description'] = "Page only to insert games on DB! - Staff only";
       $data['page_keywords'] = '';
-      $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+      $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
       $data['page_url'] = base_url( '/games/add' );
       $data['page_twitterimagealt'] = 'Game add form - Stadia GamesDB!';
       $model = new GamesModel();
@@ -731,7 +731,7 @@
         } else {
 
           $data['rumor'] = 0;
-          
+
         }
 
         if ( ! empty ( $this->request->getVar('dropped') ) ) {
@@ -745,7 +745,7 @@
         }
 
         $data['name'] = $this->request->getVar('name');
-        $data['slug'] = strtolower( url_title ( $data['name'] ) );
+        $data['slug'] = url_title( $data['name'], '-', true );
 
         if ( ! empty ( $this->request->getVar('url') ) ) {
 
@@ -793,29 +793,21 @@
 
         }
 
-        if ( $_FILES['image']['error'] == 4 ){
+        $file = $this->request->getFile('image')
+                              ->move(WRITEPATH.'uploads', $data['slug']);
 
-          return redirect()->back()->withInput()->with('validation', 'You have to upload an image for the game');
+        $image = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+                                      ->resize(1370, 728, true, 'width')
+                                      ->convert(IMAGETYPE_JPEG)
+                                      ->save(ROOTPATH.'public/img/games/'.$data['slug'].'.jpeg');
 
-        } else {
+        $imagethumb = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$data['slug'])
+                                            ->fit(256, 256, 'center')
+                                            ->convert(IMAGETYPE_JPEG)
+                                            ->save(ROOTPATH.'public/img/games/'.$data['slug'].'-thumb.jpeg');
 
-          $file = $this->request->getFile('image')
-                                ->move(WRITEPATH.'uploads', $data['slug']);
-
-          $image = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$data['slug'])
-                                        ->resize(1370, 728, true, 'width')
-                                        ->convert(IMAGETYPE_JPEG)
-                                        ->save(ROOTPATH.'public/img/games/'.$data['slug'].'.jpeg');
-
-          $imagethumb = \Config\Services::image('gd')->withFile(WRITEPATH.'uploads/'.$data['slug'])
-                                              ->fit(256, 256, 'center')
-                                              ->convert(IMAGETYPE_JPEG)
-                                              ->save(ROOTPATH.'public/img/games/'.$data['slug'].'-thumb.jpeg');
-
-          unlink(WRITEPATH.'uploads/'.$data['slug']);
-          $data['image'] = $data['slug'];
-
-        }
+        unlink(WRITEPATH.'uploads/'.$data['slug']);
+        $data['image'] = $data['slug'];
 
         if ( ! empty ( $this->request->getVar('developer') ) ) {
 
