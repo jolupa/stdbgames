@@ -47,7 +47,7 @@
       }
 
       $data['page_keywords'] = $data['developer']['name'].', stadia, google, stream, games, cloud, online, streaming, fun, party';
-      $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+      $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
       $data['page_url'] = base_url( '/developer/'.$slug );
       $data['page_twitterimagealt'] = $data['developer']['name'].' - Stadia GamesDB!';
 
@@ -68,7 +68,7 @@
         $data['page_title'] = 'Add Developer to DB!';
         $data['page_description'] = 'Page only to insert developers on DB! - Staff only';
         $data['page_keywords'] = '';
-        $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+        $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
         $data['page_url'] = base_url( '/developers/add' );
         $data['page_twitterimagealt'] = 'Developer add form - Stadia GamesDB!';
 
@@ -85,7 +85,7 @@
       $data['page_title'] = 'Add Developer to DB!';
       $data['page_description'] = 'Page only to insert developers on DB! - Staff only';
       $data['page_keywords'] = '';
-      $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+      $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
       $data['page_url'] = base_url( '/developers/add' );
       $data['page_twitterimagealt'] = 'Developer add form - Stadia GamesDB!';
       $model = new DevelopersModel();
@@ -169,7 +169,7 @@
         $data['page_title'] = 'Update Developer on DB!';
         $data['page_description'] = 'Page only to update developers on DB! - Staff only';
         $data['page_keywords'] = '';
-        $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+        $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
         $data['page_url'] = base_url( '/developers/update/'.$slug );
         $data['page_twitterimagealt'] = 'Developer update form - Stadia GamesDB!';
         $model = new DevelopersModel();

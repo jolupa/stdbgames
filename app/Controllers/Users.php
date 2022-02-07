@@ -18,7 +18,7 @@ class Users extends BaseController {
       $data['page_title'] = 'User Login Form - On Stadia GamesDB!';
       $data['page_description'] = 'Form Login for registered Users';
       $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party';
-      $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+      $data['page_image'] = base_url('/img/stdb_logo_big.png');
       $data['page_url'] = base_url('/users/login');
       $data['page_twitterimagealt'] ='User Login Form - Stadia GamesDB!';
 
@@ -40,7 +40,7 @@ class Users extends BaseController {
       $data['page_title'] = 'User Login Form - On Stadia GamesDB!';
       $data['page_description'] = 'Form Login for registered Users';
       $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party';
-      $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+      $data['page_image'] = base_url('/img/stdb_logo_big.png');
       $data['page_url'] = base_url('/users/login');
       $data['page_twitterimagealt'] ='User Login Form - Stadia GamesDB!';
 
@@ -103,7 +103,7 @@ class Users extends BaseController {
     $data['page_title'] = 'User Login Form - On Stadia GamesDB!';
     $data['page_description'] = 'Form Login for registered Users';
     $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party';
-    $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+    $data['page_image'] = base_url('/img/stdb_logo_big.png');
     $data['page_url'] = base_url('/users/login');
     $data['page_twitterimagealt'] ='User Login Form - Stadia GamesDB!';
 
@@ -232,7 +232,7 @@ class Users extends BaseController {
 
       } else {
 
-        $data['page_image'] = base_url ( '/img/users/stdb_logo_big.png' );
+        $data['page_image'] = base_url ( '/img/stdb_logo_big.png' );
 
       }
 
@@ -252,7 +252,7 @@ class Users extends BaseController {
     $data['page_title'] = 'Reset User Password - On Stadia GamesDB!';
     $data['page_description'] = 'Reset Password for registered Users';
     $data['page_keywords'] = 'users, login, reset, stadia, google, stream, games, cloud, online, streaming, fun, party';
-    $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+    $data['page_image'] = base_url('/img/stdb_logo_big.png');
     $data['page_url'] = base_url('/users/reset');
     $data['page_twitterimagealt'] ='Reset User Password - Stadia GamesDB!';
 
@@ -313,7 +313,7 @@ class Users extends BaseController {
         $data['page_title'] = 'Reset User Password - On Stadia GamesDB!';
         $data['page_description'] = 'Reset Password for registered Users';
         $data['page_keywords'] = 'users, login, reset, stadia, google, stream, games, cloud, online, streaming, fun, party';
-        $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+        $data['page_image'] = base_url('/img/stdb_logo_big.png');
         $data['page_url'] = base_url('/users/reset');
         $data['page_twitterimagealt'] ='Reset User Password - Stadia GamesDB!';
 
@@ -388,7 +388,7 @@ class Users extends BaseController {
       $data['page_title'] = 'Edit User Profile Form - On Stadia GamesDB!';
       $data['page_description'] = 'Form To Edit the Profile of registered Users';
       $data['page_keywords'] = 'users, login, stadia, google, stream, games, cloud, online, streaming, fun, party, edit';
-      $data['page_image'] = base_url('/img/games/stdb_logo_big.png');
+      $data['page_image'] = base_url('/img/stdb_logo_big.png');
       $data['page_url'] = base_url('/users/updateprofileform');
       $data['page_twitterimagealt'] ='Edit User Profile Form - Stadia GamesDB!';
 

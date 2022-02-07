@@ -45,7 +45,7 @@
       }
 
       $data['page_keywords'] = $data['publisher']['name'].', stadia, google, stream, games, cloud, online, streaming, fun, party';
-      $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+      $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
       $data['page_url'] = base_url( '/publisher/'.$slug );
       $data['page_twitterimagealt'] = $data['publisher']['name'].' - Stadia GamesDB!';
 
@@ -60,7 +60,7 @@
       $data['page_title'] = 'Add Publisher to DB!';
       $data['page_description'] = "Page only to insert publishers on DB! - Staff only";
       $data['page_keywords'] = '';
-      $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+      $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
       $data['page_url'] = base_url( '/publishers/add' );
       $data['page_twitterimagealt'] = 'Publisher add form - Stadia GamesDB!';
 
@@ -81,7 +81,7 @@
         $data['page_title'] = 'Update Publisher on DB!';
         $data['page_description'] = 'Page only to update publishers on DB! - Staff only';
         $data['page_keywords'] = '';
-        $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+        $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
         $data['page_url'] = base_url( '/publishers/update/'.$slug );
         $data['page_twitterimagealt'] = 'Publisher update form - Stadia GamesDB!';
         $model = new PublishersModel();
@@ -107,7 +107,7 @@
         $data['page_title'] = 'Add Publisher to DB!';
         $data['page_description'] = "Page only to insert publishers on DB! - Staff only";
         $data['page_keywords'] = '';
-        $data['page_image'] = base_url( '/img/games/stdb_logo_big.png' );
+        $data['page_image'] = base_url( '/img/stdb_logo_big.png' );
         $data['page_url'] = base_url( '/publishers/add' );
         $data['page_twitterimagealt'] = 'Publisher add form - Stadia GamesDB!';
         $model = new PublishersModel();
