@@ -124,7 +124,9 @@ class Users extends BaseController {
 
         return redirect()->to('/users/login')->with('validation', 'The email is not in DB!');
 
-      } elseif ( password_verify ( $data['password'], $checkname['password'] ) ) {
+      }
+
+      if ( password_verify ( $data['password'], $checkname['password'] ) ) {
 
         $gwishlists = $model->select('wishlists.game_id as w_gameid')
                               ->where('users.id', $checkname['id'])

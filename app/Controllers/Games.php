@@ -1123,11 +1123,7 @@
 
       }
 
-      if ( ! empty ( $this->request->getVar('pro_till') ) ) {
-
-        $data['pro_till'] = $this->request->getVar('pro_till');
-
-      }
+      $data['pro_till'] = $this->request->getVar('pro_till');
 
       if ( ! empty ( $this->request->getVar('cross_play') ) ) {
 
