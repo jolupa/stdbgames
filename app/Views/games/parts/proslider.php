@@ -39,12 +39,13 @@
     new Splide( '#slide_1', {
       type: 'loop',
       perPage: 3,
+      pagination: false,
       breakpoints: {
-        390: {
+        640: {
           perPage: 1,
         },
       },
-      focus: 1,
+      focus: 0,
     } ).mount();
   </script>
 </section>
