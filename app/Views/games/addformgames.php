@@ -137,9 +137,7 @@
 								<input type="checkbox" id="is_f2p" name="is_f2p"
 								<?php if (isset ($_POST ['is_f2p']) && !empty ($_POST['is_f2p']) ||
 								isset ($game ['is_f2p']) && $game ['is_f2p'] == 1): ?>
-									value="1" checked
-								<?php else: ?>
-									value="0"
+									checked
 								<?php endif; ?>
 								>
 								Is F2P?
@@ -148,9 +146,7 @@
 								<input type="checkbox" id="ed_only" name="ed_only"
 								<?php if (isset ($_POST ['ed_only']) && !empty ($_POST['ed_only']) ||
 								isset ($game ['ed_only']) && $game ['ed_only'] == 1): ?>
-									value="1" checked
-								<?php else: ?>
-									value="0"
+									checked
 								<?php endif; ?>
 								>
 								Only Avalaible With Editions

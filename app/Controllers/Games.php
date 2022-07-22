@@ -38,7 +38,7 @@
       echo view ('games/allrumors', $data);
       echo view ('templates/footer');
     }
-
+    // Discover function on homepage
     public function discover () {
 
       $model = new GamesModel();
@@ -1541,15 +1541,15 @@
         if (!empty ($this->request->getVar ('price'))) {
           $data ['price'] = $this->request->getVar ('price');
         }
-        if (empty ($this->request->getVar ('is_f2p'))) {
-          $data ['is_f2p'] = 0;
-        } else {
+        if (!empty ($this->request->getVar ('is_f2p'))) {
           $data ['is_f2p'] = 1;
-        }
-        if (empty ($this->request->getVar ('ed_only'))) {
-          $data ['ed_only'] = 0;
         } else {
+          $data ['is_f2p'] = 0;
+        }
+        if (!empty ($this->request->getVar ('ed_only'))) {
           $data ['ed_only'] = 1;
+        } else {
+          $data ['ed_only'] = 0;
         }
          if (!empty ($this->request->getVar ('about'))) {
           $data ['about'] = $this->request->getVar ('about');
