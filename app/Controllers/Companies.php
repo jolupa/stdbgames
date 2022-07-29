@@ -106,13 +106,13 @@
     public function developedgames (int $developer_id) {
       $model = new CompaniesModel ();
       $data ['games_developed'] = $model->select ('games.name, games.slug, games.image, games.rumor')
-                                        ->where ('games.release <', date ('Y-m-d'))
+                                        ->where ('games.release <=', date ('Y-m-d'))
                                         ->where ('companies.id', $developer_id)
                                         ->join ('games', 'games.developer_id = companies.id')
                                         ->findAll (6);
       if (!empty ($data ['games_developed'])) {
         $data ['how_many_developed'] = $model->select ('games.developer_id')
-                                              ->where ('games.release <', date ('Y-m-d'))
+                                              ->where ('games.release <=', date ('Y-m-d'))
                                               ->where ('companies.id', $developer_id)
                                               ->join ('games', 'games.developer_id = companies.id')
                                               ->countAllResults ();
@@ -125,13 +125,13 @@
     public function publishedgames (int $publisher_id) {
       $model = new CompaniesModel ();
       $data ['games_published'] = $model->select ('games.name, games.slug, games.image, games.rumor')
-                                        ->where ('games.release <', date ('Y-m-d'))
+                                        ->where ('games.release <=', date ('Y-m-d'))
                                         ->where ('companies.id', $publisher_id)
                                         ->join ('games', 'games.publisher_id = companies.id')
                                         ->findAll (6);
       if (!empty ($data ['games_published'])) {
         $data ['how_many_published'] = $model->select ('games.publisher_id')
-                                              ->where ('games.release <', date ('Y-m-d'))
+                                              ->where ('games.release <=', date ('Y-m-d'))
                                               ->where ('companies.id', $publisher_id)
                                               ->join ('games', 'games.publisher_id = companies.id')
                                               ->countAllResults ();
