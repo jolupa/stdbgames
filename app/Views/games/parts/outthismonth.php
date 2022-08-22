@@ -25,7 +25,20 @@
             </h5>
             <?= view_cell ('\App\Controllers\Companies::devpubgame', 'dev_id='.$release['developer_id'].' pub_id='.$release['publisher_id']) ?>
             <p>
-              Release: <strong><?= date ('d-m-Y', strtotime ($release ['release'])) ?></strong>
+              Release: 
+              <?php if ( empty ($release ['release_day']) && empty ($release ['release_month']) && empty ($release ['release_year']) ): ?>
+                <strong>TBA</strong>
+              <?php else: ?>
+                <strong>
+                  <?php if (!empty ($release ['release_year']) && empty ($release ['release_month']) && empty ($release ['release_day'])): ?>
+                    <?= $release ['release_year'] ?>
+                  <?php elseif (!empty ($release ['release_month']) && !empty ($release ['release_month']) && empty ($release ['release_day'])): ?>
+                    <?= $release ['release_month'] ?>-<?= $release ['release_year'] ?>
+                  <?php else: ?>
+                    <?= $release ['release_day'] ?>-<?= $release ['release_month'] ?>-<?= $release ['release_year'] ?>
+                  <?php endif; ?>
+                </strong>
+              <?php endif; ?>
             </p>
             <p>
               <span class="icon-text">

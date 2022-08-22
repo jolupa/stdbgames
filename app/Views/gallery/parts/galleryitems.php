@@ -1,6 +1,6 @@
 <div class="content">
   <h1 class="title">
-    Game Trailer:
+    Related Video:
   </h1>
 </div>
 <figure class="image is-16by9">

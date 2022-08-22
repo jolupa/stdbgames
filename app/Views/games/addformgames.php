@@ -19,6 +19,46 @@
 					<input type="hidden" name="old_image" value="<?= $game ['image'] ?>">
 				<?php endif; ?>
 				<h2>
+					Release date:
+				</h2>
+				<div class="control">
+					<div class="field is-grouped is-grouped-multiline">
+						<div class="control">
+							<label class="label">Day:</label>
+							<input type="text" id="release_day" class="input" type="text" name="release_day"
+							<?php if (isset ($_POST ['release_day']) && !empty ($_POST['release_day'])): ?>
+								value="<?= $_POST['release_day'] ?>"
+							<?php endif; ?>
+							<?php if (isset ($game ['release_day']) && $game ['release_day'] != ''): ?>
+								value="<?= $game ['release_day'] ?>"
+							<?php endif; ?>
+							>
+						</div>
+						<div class="control">
+							<label class="label">Month:</label>
+							<input type="text" id="release_month" class="input" type="text" name="release_month"
+							<?php if (isset ($_POST ['release_month']) && !empty ($_POST['release_month'])): ?>
+								value="<?= $_POST['release_month'] ?>"
+							<?php endif; ?>
+							<?php if (isset ($game ['release_month']) && $game ['release_month'] != ''): ?>
+								value="<?= $game ['release_month'] ?>"
+							<?php endif; ?>
+							>
+						</div>
+						<div class="control">
+							<label class="label">Year:</label>
+							<input type="text" id="release_day" class="input" type="text" name="release_year"
+							<?php if (isset ($_POST ['release_year']) && !empty ($_POST['release_year'])): ?>
+								value="<?= $_POST['release_year'] ?>"
+							<?php endif; ?>
+							<?php if (isset ($game ['release_year']) && $game ['release_year'] != ''): ?>
+								value="<?= $game ['release_year'] ?>"
+							<?php endif; ?>
+							>
+						</div>
+					</div>
+				</div>
+				<h2>
 					Info:
 				</h2>
 				<div class="field is-grouped is-grouped-multiline">
@@ -111,17 +151,7 @@
 						<?php endif; ?>
 						>
 					</div>
-					<div class="control is-expanded">
-						<label class="label">Release Date:</label>
-						<input type="date" class="input" type="text" name="release"
-						<?php if (isset ($_POST ['release'])): ?>
-							value="<?= $_POST ['release'] ?>"
-						<?php endif; ?>
-						<?php if (isset ($game ['release'])): ?>
-							value="<?= $game ['release'] ?>"
-						<?php endif; ?>
-						>
-					</div>
+					
 					<div class="control is-expanded">
 						<label class="label">Price:</label>
 						<input type="text" class="input" type="text" name="price"

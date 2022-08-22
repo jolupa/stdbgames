@@ -45,9 +45,9 @@
             </figure>
           </div>
           <div class="card-content">
-            <?php if ($updated ['rumor'] == 1): ?>
+          <?php if ($updated ['rumor'] == 1): ?>
               <p class="help">
-                [RUMOR]
+                <a href="<?= base_url ('/game/rumors') ?>">[RUMOR]</a>
               </p>
             <?php endif; ?>
             <h4 class="title is-4">

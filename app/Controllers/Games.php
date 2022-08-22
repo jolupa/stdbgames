@@ -9,6 +9,158 @@
   class Games extends BaseController {
 
     protected $helpers = ['text'];
+    // Main function to save game on DB!
+    public function savegame () {
+      $model = new GamesModel ();
+      if (session ('logged') == false || session ('role') != 1) {
+        return redirect ()->to (base_url ());
+      } else {
+        if (!empty ($this->request->getVar ('id'))) {
+          $data ['id'] = $this->request->getVar ('id');
+          $data ['old_image'] = $this->request->getVar ('old_image');
+        }
+        if (!empty ($this->request->getVar ('rumor'))) {
+          $data ['rumor'] = 1;
+        } else {
+          $data ['rumor'] = 0;
+        }
+        if (!empty ($this->request->getVar ('dropped'))) {
+          $data ['dropped'] = 1;
+        } else {
+          $data ['dropped'] = 0;
+        }
+        $twitter = $this->request->getVar ('twitter');
+        if (!empty ($this->request->getVar ('is_edition'))) {
+          $data ['is_edition'] = 1;
+          $data ['edition_game_id'] = $this->request->getVar ('edition_game_id');
+        } else {
+          $data ['is_edition'] = 0;
+        }
+        $data ['name'] = $this->request->getVar ('name');
+        // Slug generation
+        // If it's an edition we don't need slug
+        if ($data ['is_edition'] == 0) {
+          // If it's not an edition we create the slug
+          if (empty ($this->request->getVar ('old_slug'))) {
+            $data ['slug'] = mb_url_title ($data ['name'], '-', true);
+          } else {
+            if ($this->request->getVar ('old_slug') != mb_url_title ($data ['name'], '-', true)) {
+              $data ['slug'] = mb_url_title ($data ['name'], '-', true);
+            } else {
+              $data ['slug'] = $this->request->getVar ('old_slug');
+            }
+          }
+        }
+        if (!empty ($this->request->getVar ('url'))) {
+          $data ['url'] = $this->request->getVar ('url');
+        }
+        if (!empty ($this->request->getVar ('twitter_account'))) {
+          $data ['twitter_account'] = $this->request->getVar ('twitter_account');
+        }
+        if (!empty ($this->request->getVar ('release_day'))) {
+          $data ['release_day'] = $this->request->getVar ('release_day');
+        } else {
+          $data ['release_day'] = NULL;
+        }
+        if (!empty ($this->request->getVar ('release_month'))) {
+          $data ['release_month'] = $this->request->getVar ('release_month');
+        } else {
+          $data ['release_month'] = NULL;
+        }
+        if (!empty ($this->request->getVar ('release_year'))) {
+          $data ['release_year'] = $this->request->getVar ('release_year');
+        } else {
+          $data ['release_year'] = NULL;
+        }
+        if (!empty ($this->request->getVar ('price'))) {
+          $data ['price'] = $this->request->getVar ('price');
+        }
+        if (!empty ($this->request->getVar ('is_f2p'))) {
+          $data ['is_f2p'] = 1;
+        } else {
+          $data ['is_f2p'] = 0;
+        }
+        if (!empty ($this->request->getVar ('ed_only'))) {
+          $data ['ed_only'] = 1;
+        } else {
+          $data ['ed_only'] = 0;
+        }
+         if (!empty ($this->request->getVar ('about'))) {
+          $data ['about'] = $this->request->getVar ('about');
+        }
+        $data ['developer_id'] = $this->request->getVar ('developer_id');
+        $data ['publisher_id'] = $this->request->getVar ('publisher_id');
+        if ($_FILES ['image']['error'] != 4) {
+          $imageprocess = new imageProcess ();
+          $file = $this->request->getFile ('image');
+          $name = mb_url_title ($data ['name'], '-', true);
+          $data ['image'] = $imageprocess->gameimagehead ($file, $name);
+        }
+        if (!empty ($this->request->getVar ('features'))) {
+          $data ['features'] = implode (',', $this->request->getVar ('features'));
+        }
+        if (!empty ($this->request->getVar ('genres'))) {
+          $data ['genres'] = implode (',', $this->request->getVar ('genres'));
+        }
+        if (!empty ($this->request->getVar ('pro'))) {
+          $data ['pro'] = 1;
+          $data ['pro_from'] = $this->request->getVar ('pro_from');
+          if (!empty ($this->request->getVar ('pro_till'))) {
+            $data ['pro_till'] = $this->request->getVar ('pro_till');
+          }
+        } else {
+          $data ['pro'] = 0;
+          if (!empty ($this->request->getVar ('pro_from'))) {
+            $data ['pro_from'] = $this->request->getVar ('pro_from');
+          }
+          if (!empty ($this->request->getVar ('pro_till'))) {
+            $data ['pro_till'] = $this->request->getVar ('pro_till');
+          }
+        }
+        $data ['demo_appid'] = $this->request->getVar ('demo_appid');
+        $data ['demo_sku'] = $this->request->getVar ('demo_sku');
+        $data ['preorder_appid'] = $this->request->getVar ('preorder_appid');
+        $data ['preorder_sku'] = $this->request->getVar ('preorder_sku');
+        $data ['appid'] = $this->request->getVar ('appid');
+        $data ['sku'] = $this->request->getVar ('sku');
+        $model->save ($data);
+        //if ($twitter == true) {
+          //Library to send info tweet
+        //}
+        $uri = previous_url (true);
+        if ($uri->getSegment (2) == 'edition' || $data ['is_edition'] == 1) {
+          $slug = $model->select ('slug')
+                          ->where ('id', $data['edition_game_id'])
+                          ->first ();
+          $data ['slug'] = implode (',', $slug);
+        }
+        return redirect ()->to ('/game/'.$data ['slug']);
+      }
+    }
+    // Convert to new date
+    public function convertdates () {
+      $model = new GamesModel ();
+      $data ['games'] = $model->select ('id, release')
+                              ->findAll ();
+      if (!empty ($data ['games'])){
+        foreach ($data ['games'] as $game) {
+          $fecha = explode ('-', $game ['release']);
+          if ($fecha [0] == '2099') {
+            $new ['id'] = $game ['id'];
+            $new ['release_day'] = NULL;
+            $new ['release_month'] = NULL;
+            $new ['release_year'] = NULL;
+            $model->save ($new);
+          } else {
+            $new ['id'] = $game ['id'];
+            $new ['release_day'] = $fecha [2];
+            $new ['release_month'] = $fecha [1];
+            $new ['release_year'] = $fecha [0];
+            $model->save ($new);
+          }
+        }
+      }
+    }
     // List of editions on Game Update
     public function editionstoupdate (int $id) {
       $model = new GamesModel ();
@@ -57,7 +209,6 @@
       $data['proslider'] = $model->select('games.id, games.name, games.slug, games.image, games.pro_from, games.pro_till, games.like, games.dislike')
                                 ->where('pro', 1)
                                 ->where('pro_from !=', '')
-                                ->where('release !=', '2099-01-01')
                                 ->where('pro_from <=', date('Y-m-d'))
                                 ->orderBy('pro_from', 'DESC')
                                 ->findAll();
@@ -68,7 +219,8 @@
     public function outthismonth () {
 
       $model = new GamesModel();
-      $data['thismonth'] = $model->where('strftime("%Y-%m", release)', date('Y-m'))
+      $data['thismonth'] = $model->where ('release_month', date ('m'))
+                                ->where ('release_year', date ('Y'))
                                 ->where ('is_edition', 0)
                                 ->orderBy('games.release', 'ASC')
                                 ->findAll();
@@ -122,12 +274,13 @@
 
     }
 
-    public function samedayreleases ( int $id, string $release ) {
+    public function samedayreleases ( int $id, string $release_day, string $release_month, string $release_year ) {
 
       $model = new GamesModel();
       $data['sameday'] = $model->select('games.image, games.name, games.slug')
-                                ->where('release', $release)
-                                ->where('release !=', '2099-01-01')
+                                ->where('release_day', $release_day)
+                                ->where('release_month', $release_month)
+                                ->where('release_year', $release_year)
                                 ->Where('id !=', $id)
                                 ->where('is_edition', 0)
                                 ->findAll();
@@ -1490,119 +1643,7 @@
       $data['genres'] = explode (',', $genres);
       return view ('/games/parts/genres', $data);
     }
-    public function savegame () {
-      $model = new GamesModel ();
-      if (session ('logged') == false || session ('role') != 1) {
-        return redirect ()->to (base_url ());
-      } else {
-        if (!empty ($this->request->getVar ('id'))) {
-          $data ['id'] = $this->request->getVar ('id');
-          $data ['old_image'] = $this->request->getVar ('old_image');
-        }
-        if (!empty ($this->request->getVar ('rumor'))) {
-          $data ['rumor'] = 1;
-        } else {
-          $data ['rumor'] = 0;
-        }
-        if (!empty ($this->request->getVar ('dropped'))) {
-          $data ['dropped'] = 1;
-        } else {
-          $data ['dropped'] = 0;
-        }
-        $twitter = $this->request->getVar ('twitter');
-        if (!empty ($this->request->getVar ('is_edition'))) {
-          $data ['is_edition'] = 1;
-          $data ['edition_game_id'] = $this->request->getVar ('edition_game_id');
-        } else {
-          $data ['is_edition'] = 0;
-        }
-        $data ['name'] = $this->request->getVar ('name');
-        // Slug generation
-        // If it's an edition we don't need slug
-        if ($data ['is_edition'] == 0) {
-          // If it's not an edition we create the slug
-          if (empty ($this->request->getVar ('old_slug'))) {
-            $data ['slug'] = mb_url_title ($data ['name'], '-', true);
-          } else {
-            if ($this->request->getVar ('old_slug') != mb_url_title ($data ['name'], '-', true)) {
-              $data ['slug'] = mb_url_title ($data ['name'], '-', true);
-            } else {
-              $data ['slug'] = $this->request->getVar ('old_slug');
-            }
-          }
-        }
-        if (!empty ($this->request->getVar ('url'))) {
-          $data ['url'] = $this->request->getVar ('url');
-        }
-        if (!empty ($this->request->getVar ('twitter_account'))) {
-          $data ['twitter_account'] = $this->request->getVar ('twitter_account');
-        }
-        $data ['release'] = $this->request->getVar ('release');
-        if (!empty ($this->request->getVar ('price'))) {
-          $data ['price'] = $this->request->getVar ('price');
-        }
-        if (!empty ($this->request->getVar ('is_f2p'))) {
-          $data ['is_f2p'] = 1;
-        } else {
-          $data ['is_f2p'] = 0;
-        }
-        if (!empty ($this->request->getVar ('ed_only'))) {
-          $data ['ed_only'] = 1;
-        } else {
-          $data ['ed_only'] = 0;
-        }
-         if (!empty ($this->request->getVar ('about'))) {
-          $data ['about'] = $this->request->getVar ('about');
-        }
-        $data ['developer_id'] = $this->request->getVar ('developer_id');
-        $data ['publisher_id'] = $this->request->getVar ('publisher_id');
-        if ($_FILES ['image']['error'] != 4) {
-          $imageprocess = new imageProcess ();
-          $file = $this->request->getFile ('image');
-          $name = mb_url_title ($data ['name'], '-', true);
-          $data ['image'] = $imageprocess->gameimagehead ($file, $name);
-        }
-        if (!empty ($this->request->getVar ('features'))) {
-          $data ['features'] = implode (',', $this->request->getVar ('features'));
-        }
-        if (!empty ($this->request->getVar ('genres'))) {
-          $data ['genres'] = implode (',', $this->request->getVar ('genres'));
-        }
-        if (!empty ($this->request->getVar ('pro'))) {
-          $data ['pro'] = 1;
-          $data ['pro_from'] = $this->request->getVar ('pro_from');
-          if (!empty ($this->request->getVar ('pro_till'))) {
-            $data ['pro_till'] = $this->request->getVar ('pro_till');
-          }
-        } else {
-          $data ['pro'] = 0;
-          if (!empty ($this->request->getVar ('pro_from'))) {
-            $data ['pro_from'] = $this->request->getVar ('pro_from');
-          }
-          if (!empty ($this->request->getVar ('pro_till'))) {
-            $data ['pro_till'] = $this->request->getVar ('pro_till');
-          }
-        }
-        $data ['demo_appid'] = $this->request->getVar ('demo_appid');
-        $data ['demo_sku'] = $this->request->getVar ('demo_sku');
-        $data ['preorder_appid'] = $this->request->getVar ('preorder_appid');
-        $data ['preorder_sku'] = $this->request->getVar ('preorder_sku');
-        $data ['appid'] = $this->request->getVar ('appid');
-        $data ['sku'] = $this->request->getVar ('sku');
-        $model->save ($data);
-        //if ($twitter == true) {
-          //Library to send info tweet
-        //}
-        $uri = previous_url (true);
-        if ($uri->getSegment (2) == 'edition' || $data ['is_edition'] == 1) {
-          $slug = $model->select ('slug')
-                          ->where ('id', $data['edition_game_id'])
-                          ->first ();
-          $data ['slug'] = implode (',', $slug);
-        }
-        return redirect ()->to ('/game/'.$data ['slug']);
-      }
-    }
+    
     public function getslug (int $game_id, string $name) {
       $model = new GamesModel ();
       $data ['slug'] = $model->select ('games.slug')
@@ -1614,7 +1655,7 @@
 
     public function gameeditions (int $edition_game_id) {
       $model = new GamesModel ();
-      $data ['editions'] = $model->select('id, name, image, price, release, edition_game_id, pro, pro_from, pro_till, is_f2p, dropped, rumor, demo_appid, demo_sku, preorder_appid, preorder_sku, appid, sku')
+      $data ['editions'] = $model->select('id, name, image, price, release_day, release_month, release_year, edition_game_id, pro, pro_from, pro_till, is_f2p, dropped, rumor, demo_appid, demo_sku, preorder_appid, preorder_sku, appid, sku')
                                   ->where ('edition_game_id', $edition_game_id)
                                   ->orderBy ('dropped', 'ASC')
                                   ->findAll ();

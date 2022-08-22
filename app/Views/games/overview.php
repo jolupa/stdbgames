@@ -31,10 +31,18 @@
       </h2>
       <?= view_cell ('App\Controllers\Companies::devpubgame', 'dev_id='.$game ['developer_id'].' pub_id='.$game ['publisher_id']) ?>
       <p>Release:
-        <?php if ( $game ['release'] == 'TBA' || $game ['release'] == '2099-01-01' ): ?>
+        <?php if ( empty ($game ['release_day']) && empty ($game ['release_month']) && empty ($game ['release_year']) ): ?>
           <strong>TBA</strong>
         <?php else: ?>
-          <strong><?= date ( 'd-m-Y', strtotime ( $game['release'] ) ) ?></strong>
+          <strong>
+            <?php if (!empty ($game ['release_year']) && empty ($game ['release_month']) && empty ($game ['release_day'])): ?>
+              <?= $game ['release_year'] ?>
+            <?php elseif (!empty ($game ['release_month']) && !empty ($game ['release_month']) && empty ($game ['release_day'])): ?>
+              <?= $game ['release_month'] ?>-<?= $game ['release_year'] ?>
+            <?php else: ?>
+              <?= $game ['release_day'] ?>-<?= $game ['release_month'] ?>-<?= $game ['release_year'] ?>
+            <?php endif; ?>
+          </strong>
         <?php endif; ?>
       </p>
       <?= view_cell ( 'App\Controllers\Prices::dealongame', 'id='.$game['id'] ) ?>
@@ -84,7 +92,7 @@
 				<?= view_cell ('App\Controllers\Reviews::gamereviews', 'id='.$game ['id'].' release='.$game ['release']) ?>
         <?= view_cell ('App\Controllers\Interviews::gameinterview', 'id='.$game ['id']) ?>
 				<?= view_cell ('App\Controllers\Prices::historyprices', 'id='.$game ['id']) ?>
-				<?= view_cell ('App\Controllers\Games::samedayreleases', 'id='.$game ['id'].' release='.$game ['release']) ?>
+				<?= view_cell ('App\Controllers\Games::samedayreleases', 'id='.$game ['id'].' release_day='.$game ['release_day'].' release_month='.$game ['release_month'].' release_year='.$game ['release_year']) ?>
 			</div>
 		</div>
 	</div>

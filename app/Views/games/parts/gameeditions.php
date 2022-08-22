@@ -41,7 +41,20 @@
             </span>
           </h6>
           <p>
-            Release: <strong><?= date ('d-m-Y', strtotime ($edition ['release'])) ?></strong>
+            Release: 
+            <?php if ( empty ($game ['release_day']) && empty ($game ['release_month']) && empty ($game ['release_year']) ): ?>
+              <strong>TBA</strong>
+            <?php else: ?>
+              <strong>
+                <?php if (!empty ($game ['release_year']) && empty ($game ['release_month']) && empty ($game ['release_day'])): ?>
+                  <?= $game ['release_year'] ?>
+                <?php elseif (!empty ($game ['release_month']) && !empty ($game ['release_month']) && empty ($game ['release_day'])): ?>
+                  <?= $game ['release_month'] ?>-<?= $game ['release_year'] ?>
+                <?php else: ?>
+                  <?= $game ['release_day'] ?>-<?= $game ['release_month'] ?>-<?= $edition ['release_year'] ?>
+                <?php endif; ?>
+              </strong>
+            <?php endif; ?>
           </p>
           <?= view_cell ('App\Controllers\Prices::dealoneditions', 'ed_price='.$edition ['price'].' ed_dropped='.$edition ['dropped'].' ed_id='.$edition ['id'].' ed_pro='.$edition ['pro']) ?>
         </div>
