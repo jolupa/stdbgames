@@ -11,9 +11,9 @@
 				unlink (ROOTPATH.'public/assets/images/games/'.$name.'.jpeg');
 			}
 			$image = \Config\Services::image ('gd')->withFile ($file)
-																							->resize (1920, 1080, true, 'width')
-																							->convert (IMAGETYPE_JPEG)
-																							->save (ROOTPATH.'public/assets/images/games/'.$name.'.jpeg');
+													->resize (1920, 1080, true, 'width')
+													->convert (IMAGETYPE_JPEG)
+													->save (ROOTPATH.'public/assets/images/games/'.$name.'.jpeg');
 			return $name;
 		}
 	}

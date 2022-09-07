@@ -222,7 +222,7 @@
       $data['thismonth'] = $model->where ('release_month', date ('m'))
                                 ->where ('release_year', date ('Y'))
                                 ->where ('is_edition', 0)
-                                ->orderBy('games.release', 'ASC')
+                                ->orderBy('release_day', 'ASC')
                                 ->findAll();
       return view('games/parts/outthismonth', $data);
 

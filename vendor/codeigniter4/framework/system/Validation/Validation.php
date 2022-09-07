@@ -168,7 +168,7 @@ class Validation implements ValidationInterface
             if (strpos($field, '*') !== false) {
                 // Process multiple fields
                 foreach ($values as $dotField => $value) {
-                    $this->processRules($dotField, $setup['label'] ?? $field, $value, $rules, $data);
+                    $this->processRules($dotField, $setup['label'] ?? $field, $value, $rules, $data, $field);
                 }
             } else {
                 // Process single field
@@ -201,10 +201,17 @@ class Validation implements ValidationInterface
      *
      * @param array|string $value
      * @param array|null   $rules
-     * @param array        $data
+     * @param array        $data          The array of data to validate, with `DBGroup`.
+     * @param string|null  $originalField The original asterisk field name like "foo.*.bar".
      */
-    protected function processRules(string $field, ?string $label, $value, $rules = null, ?array $data = null): bool
-    {
+    protected function processRules(
+        string $field,
+        ?string $label,
+        $value,
+        $rules = null,
+        ?array $data = null,
+        ?string $originalField = null
+    ): bool {
         if ($data === null) {
             throw new InvalidArgumentException('You must supply the parameter: data.');
         }
@@ -321,7 +328,9 @@ class Validation implements ValidationInterface
             if ($passed === false) {
                 // if the $value is an array, convert it to as string representation
                 if (is_array($value)) {
-                    $value = '[' . implode(', ', $value) . ']';
+                    $value = $this->isStringList($value)
+                        ? '[' . implode(', ', $value) . ']'
+                        : json_encode($value);
                 } elseif (is_object($value)) {
                     $value = json_encode($value);
                 }
@@ -333,9 +342,36 @@ class Validation implements ValidationInterface
                     $field,
                     $label,
                     $param,
-                    (string) $value
+                    (string) $value,
+                    $originalField
                 );
 
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Is the array a string list `list<string>`?
+     */
+    private function isStringList(array $array): bool
+    {
+        $expectedKey = 0;
+
+        foreach ($array as $key => $val) {
+            // Note: also covers PHP array key conversion, e.g. '5' and 5.1 both become 5
+            if (! is_int($key)) {
+                return false;
+            }
+
+            if ($key !== $expectedKey) {
+                return false;
+            }
+            $expectedKey++;
+
+            if (! is_string($val)) {
                 return false;
             }
         }
@@ -706,13 +742,21 @@ class Validation implements ValidationInterface
      *
      * @param string|null $value The value that caused the validation to fail.
      */
-    protected function getErrorMessage(string $rule, string $field, ?string $label = null, ?string $param = null, ?string $value = null): string
-    {
+    protected function getErrorMessage(
+        string $rule,
+        string $field,
+        ?string $label = null,
+        ?string $param = null,
+        ?string $value = null,
+        ?string $originalField = null
+    ): string {
         $param ??= '';
 
         // Check if custom message has been defined by user
         if (isset($this->customErrors[$field][$rule])) {
             $message = lang($this->customErrors[$field][$rule]);
+        } elseif (null !== $originalField && isset($this->customErrors[$originalField][$rule])) {
+            $message = lang($this->customErrors[$originalField][$rule]);
         } else {
             // Try to grab a localized version of the message...
             // lang() will return the rule name back if not found,

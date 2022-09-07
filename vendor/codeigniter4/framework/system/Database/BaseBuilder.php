@@ -577,7 +577,7 @@ class BaseBuilder
     {
         $table = $this->buildSubquery($from, true, $alias);
 
-        $this->trackAliases($table);
+        $this->db->addTableAlias($alias);
         $this->QBFrom[] = $table;
 
         return $this;
@@ -1928,6 +1928,7 @@ class BaseBuilder
      * @internal This is a temporary solution.
      *
      * @see https://github.com/codeigniter4/CodeIgniter4/pull/5376
+     *
      * @TODO Fix a root cause, and this method should be removed.
      */
     protected function removeAlias(string $from): string
@@ -2705,8 +2706,7 @@ class BaseBuilder
         $array = [];
 
         foreach (get_object_vars($object) as $key => $val) {
-            // There are some built in keys we need to ignore for this conversion
-            if (! is_object($val) && ! is_array($val) && $key !== '_parent_name') {
+            if (! is_object($val) && ! is_array($val)) {
                 $array[$key] = $val;
             }
         }
@@ -2732,13 +2732,10 @@ class BaseBuilder
         $fields = array_keys($out);
 
         foreach ($fields as $val) {
-            // There are some built in keys we need to ignore for this conversion
-            if ($val !== '_parent_name') {
-                $i = 0;
+            $i = 0;
 
-                foreach ($out[$val] as $data) {
-                    $array[$i++][$val] = $data;
-                }
+            foreach ($out[$val] as $data) {
+                $array[$i++][$val] = $data;
             }
         }
 
@@ -2952,7 +2949,7 @@ class BaseBuilder
             throw new DatabaseException('The subquery cannot be the same object as the main query object.');
         }
 
-        $subquery = strtr($builder->getCompiledSelect(), "\n", ' ');
+        $subquery = strtr($builder->getCompiledSelect(false), "\n", ' ');
 
         if ($wrapped) {
             $subquery = '(' . $subquery . ')';

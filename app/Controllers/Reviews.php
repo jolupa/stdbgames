@@ -22,7 +22,7 @@
 
     }
 
-    public function gamereviews ( int $id, string $release, $edit = null ) {
+    public function gamereviews ( int $id, string $release_day, string $release_month, string $release_year, $edit = null ) {
 
       $model = new ReviewsModel();
       $pager = \Config\Services::pager();
@@ -36,7 +36,8 @@
                                     'html_input' => 'strip',
                                     'allow_unsafe_links' => false,
                                   ]);
-      if ($release > date ('Y-m-d')) {
+      $release = $release_day.'-'.$release_month.'-'.$release_year;
+      if ($release < date ('d-m-Y')) {
         return '';
       }
       if (session ('logged') == true) {

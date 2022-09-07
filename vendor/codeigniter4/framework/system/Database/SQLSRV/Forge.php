@@ -119,13 +119,12 @@ class Forge extends BaseForge
     }
 
     /**
-     * @param mixed $field
+     * @param array|string $field
      *
      * @return false|string|string[]
      */
     protected function _alterTable(string $alterType, string $table, $field)
     {
-
         // Handle DROP here
         if ($alterType === 'DROP') {
             // check if fields are part of any indexes

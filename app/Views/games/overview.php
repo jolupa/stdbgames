@@ -89,7 +89,7 @@
 				</div>
         <?= view_cell ('App\Controllers\Games::gameeditions', 'edition_game_id='.$game ['id']) ?>
 				<?= view_cell ('App\Controllers\Gallery::galleryitems', 'id='. $game ['id']) ?>
-				<?= view_cell ('App\Controllers\Reviews::gamereviews', 'id='.$game ['id'].' release='.$game ['release']) ?>
+				<?= view_cell ('App\Controllers\Reviews::gamereviews', 'id='.$game ['id'].' release_day='.$game ['release_day'].' release_month='.$game ['release_month'].' release_year='.$game ['release_year']) ?>
         <?= view_cell ('App\Controllers\Interviews::gameinterview', 'id='.$game ['id']) ?>
 				<?= view_cell ('App\Controllers\Prices::historyprices', 'id='.$game ['id']) ?>
 				<?= view_cell ('App\Controllers\Games::samedayreleases', 'id='.$game ['id'].' release_day='.$game ['release_day'].' release_month='.$game ['release_month'].' release_year='.$game ['release_year']) ?>
