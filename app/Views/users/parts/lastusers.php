@@ -17,7 +17,7 @@
               <figure class="image is-32x32">
                 <img src="
                 <?php if ( ! empty ( $users['image'] ) ): ?>
-                  <?= base_url ( '/img/users/'.$users['image'].'.png' ) ?>
+                  <?= base_url ( '/assets/images/users/'.$users['image'].'.png' ) ?>
                 <?php else: ?>
                   <?= base_url ( '/img/users/avatar01.png' ) ?>
                 <?php endif; ?>">

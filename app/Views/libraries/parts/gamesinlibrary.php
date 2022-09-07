@@ -7,7 +7,7 @@
           <div class="card is-shadowless">
             <div class="card-image">
               <figure class="image is-16by9">
-                <a href="<?= base_url ( '/game/'.$libraries['slug'] ) ?>"><img src="<?= base_url ( '/img/games/'.$libraries['image'].'.jpeg' ) ?>"></a>
+                <a href="<?= base_url ( '/game/'.$libraries['slug'] ) ?>"><img src="<?= base_url ( '/assets/images/games/'.$libraries['image'].'.jpeg' ) ?>"></a>
               </figure>
               <?php if ( $libraries['rumor'] == 1 ): ?>
                 <div class="is-overlay" style="top: auto; right: 5px; bottom: 5px; left: auto;">

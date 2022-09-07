@@ -5,7 +5,7 @@
         <div class="media">
           <div class="media-left">
             <p class="image is-128x128">
-              <img <?php if ( ! empty ( $profile['image'] ) ): ?>src="<?= base_url ( '/img/users/'.$profile['image'].'.png' ) ?>"<?php else: ?>src="<?= base_url ( '/img/users/avatar01.png' ) ?>"<?php endif; ?>>
+              <img <?php if ( ! empty ( $profile['image'] ) ): ?>src="<?= base_url ( '/assets/images/users/'.$profile['image'].'.png' ) ?>"<?php else: ?>src="<?= base_url ( '/img/users/avatar01.png' ) ?>"<?php endif; ?>>
             </p>
           </div>
           <div class="media-content">
