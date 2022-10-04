@@ -1,1 +1,0 @@
-<span class="icon"><i class="fa-solid fa-face-smile"></i></span><span><?= $game ['like'] ?> /</span><span class="icon"><i class="fa-solid fa-face-frown"></i></span><span><?= $game ['dislike'] ?>&nbsp;</span>
